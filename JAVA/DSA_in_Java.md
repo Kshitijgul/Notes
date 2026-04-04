@@ -8,6 +8,7 @@
 | [Day 2](#day-2) | [Java Intro & Architecture](#day-2) | JDK, JRE, JVM, WORA |
 | [Day 3](#day-3) | [First Program in Java ](#day-3) | Hello World, Public , static , Archietecture |
 | [Day 4](#day-4) | [Variables in Java ](#day-4) |Errors ,Variables Scope |
+| [Day 5](#day-5) | [Data types in Java ](#day-5) |Data Types, Type casting , Errors  |
 
 
 ---
@@ -326,6 +327,7 @@ flowchart TD
 > END
 > ```
 
+
 # Day 2 <a id="day-2"></a>
 [⬆ Back to Top](#top)   
 
@@ -621,8 +623,479 @@ java Demo
 
 **✅ Day 2 Complete!**
 
+---
 
+## 9️⃣ Interpreter vs Compiler (NEW)
 
+> This is one of the most commonly confused topics. Let us understand it once and forever.
+
+### 5-Year-Old Explanation
+> Imagine your teacher gives you a book written in French.
+> - A **Compiler** is like translating the ENTIRE book to English FIRST, then you read it. Fast to read later!
+> - An **Interpreter** is like reading line-by-line and translating each sentence as you go. Slower, but flexible!
+
+---
+
+### What is a Compiler?
+
+A **Compiler** translates the entire source code into machine code (or bytecode) **all at once** before execution.
+
+- ✅ Fast execution (translated once, runs many times)
+- ❌ Errors shown only after full translation
+- ❌ Platform dependent (C/C++ compiles to OS-specific machine code)
+
+**Languages:** C, C++, Rust, Go
+
+```mermaid
+flowchart LR
+    A["Source Code\n(Full Program)"] --> B["Compiler\n(Translates ALL at once)"]
+    B --> C["Machine Code\n(.exe / binary)"]
+    C --> D["CPU Executes\n(Fast)"]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style B fill:#fef3c7,stroke:#d97706,color:#78350f
+    style C fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style D fill:#f0fdf4,stroke:#22c55e,color:#14532d
+```
+
+---
+
+### What is an Interpreter?
+
+An **Interpreter** translates and executes source code **line by line**, at runtime.
+
+- ✅ Errors shown immediately (on the line that failed)
+- ✅ Platform flexible (runs wherever interpreter exists)
+- ❌ Slower (translates EVERY time you run)
+
+**Languages:** Python, JavaScript (in browser), Ruby
+
+```mermaid
+flowchart TD
+    A["Source Code"] --> B["Interpreter reads Line 1"]
+    B --> C["Execute Line 1"]
+    C --> D["Interpreter reads Line 2"]
+    D --> E["Execute Line 2"]
+    E --> F["...continues line by line..."]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style B fill:#fef3c7,stroke:#d97706,color:#78350f
+    style C fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style D fill:#fef3c7,stroke:#d97706,color:#78350f
+    style E fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style F fill:#f3f4f6,stroke:#6b7280,color:#374151
+```
+
+---
+
+### Compiler vs Interpreter: Full Comparison
+
+| Feature | Compiler | Interpreter |
+|---------|----------|-------------|
+| **Translation** | Entire program at once | Line by line |
+| **Speed** | ✅ Fast (runs compiled code) | ❌ Slower (translates each run) |
+| **Error Detection** | After full compilation | Immediately on failing line |
+| **Output** | Separate executable file | No separate file |
+| **Platform** | Platform dependent | Platform flexible |
+| **Examples** | C, C++, Rust, Go | Python, JavaScript, Ruby |
+
+---
+
+### Which Languages use Which?
+
+```mermaid
+flowchart TD
+    subgraph Compiler_Lang["Compiler Based Languages"]
+        C["C\nCompiles to OS machine code"]
+        CPP["C++\nCompiles to OS machine code"]
+        GO["Go\nCompiles to native binary"]
+    end
+    
+    subgraph Interpreter_Lang["Interpreter Based Languages"]
+        JS["JavaScript\nBrowser's V8 Engine interprets it"]
+        PY["Python\nPython Interpreter runs it"]
+        RB["Ruby\nRuby Interpreter runs it"]
+    end
+    
+    subgraph Both["Both: Java (Hybrid)"]
+        JAVA["Java Source Code (.java)"]
+        JAVAC["javac Compiler\nCompiles to Bytecode"]
+        BYTE["Bytecode (.class)\nPlatform Independent"]
+        JVM_INT["JVM Interpreter\nRuns line by line (slow)"]
+        JIT_COMP["JIT Compiler\nOptimizes hot code (fast)"]
+        
+        JAVA --> JAVAC --> BYTE --> JVM_INT
+        BYTE --> JIT_COMP
+    end
+
+    style Compiler_Lang fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style Interpreter_Lang fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style Both fill:#dcfce7,stroke:#16a34a,color:#14532d
+```
+
+---
+
+### Who Requires What?
+
+| Language | Requires | Tool |
+|----------|----------|------|
+| **C / C++** | Compiler only | `gcc`, `g++` |
+| **JavaScript** | Interpreter (Browser) | V8 (Chrome), SpiderMonkey (Firefox) |
+| **Python** | Interpreter | `python3` |
+| **Java** | Compiler + Interpreter/JIT | `javac` + JVM |
+
+> **📌 Key Insight:** Java is **Hybrid**. It compiles to Bytecode (Compiler) and then the JVM interprets/JIT compiles the bytecode (Interpreter + Compiler). This is WHY Java gets both platform independence AND good performance.
+
+---
+
+## 🔟 How Java is Platform Independent (NEW)
+
+### The Problem with C/C++ (Platform Dependent)
+
+When you write C++ code and compile it on Windows, it produces a **Windows `.exe` file**. This file contains Windows-specific machine instructions. If you copy it to Linux or Mac, it will NOT run because the machine code is tied to Windows.
+
+```mermaid
+flowchart TD
+    CPP["C++ Source Code\nhello.cpp"]
+    
+    CPP --> WIN_COMP["Windows Compiler (g++)"]
+    CPP --> MAC_COMP["Mac Compiler (g++)"]
+    CPP --> LIN_COMP["Linux Compiler (g++)"]
+    
+    WIN_COMP --> WIN_EXE["hello.exe\n(Windows ONLY)"]
+    MAC_COMP --> MAC_EXE["hello (Mac ONLY)"]
+    LIN_COMP --> LIN_EXE["hello (Linux ONLY)"]
+    
+    WIN_EXE --> WIN_CPU["Windows CPU"]
+    MAC_EXE --> MAC_CPU["Mac CPU"]
+    LIN_EXE --> LIN_CPU["Linux CPU"]
+
+    style CPP fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style WIN_COMP fill:#fef3c7,stroke:#d97706,color:#78350f
+    style MAC_COMP fill:#fef3c7,stroke:#d97706,color:#78350f
+    style LIN_COMP fill:#fef3c7,stroke:#d97706,color:#78350f
+    style WIN_EXE fill:#f3f4f6,stroke:#6b7280,color:#374151
+    style MAC_EXE fill:#f3f4f6,stroke:#6b7280,color:#374151
+    style LIN_EXE fill:#f3f4f6,stroke:#6b7280,color:#374151
+```
+
+> **Problem:** Same source code needs to be compiled separately for each OS. The output binaries are not interchangeable.
+
+---
+
+### The Java Solution (Platform Independent)
+
+Java solves this with **Bytecode** as the middle layer. You compile ONCE to Bytecode. Then any OS that has a JVM can run that same Bytecode.
+
+```mermaid
+flowchart TD
+    JAVA["Java Source Code\nHello.java"]
+    JAVAC["javac Compiler\n(Compile ONCE)"]
+    BYTE["Hello.class\nBytecode\n(Universal - Platform Independent)"]
+    
+    JAVA --> JAVAC --> BYTE
+    
+    BYTE --> WIN_JVM["Windows JVM\n(Translates for Windows)"]
+    BYTE --> MAC_JVM["Mac JVM\n(Translates for Mac)"]
+    BYTE --> LIN_JVM["Linux JVM\n(Translates for Linux)"]
+    BYTE --> AND_JVM["Android JVM\n(Dalvik/ART)"]
+    
+    WIN_JVM --> WIN_CPU["Windows CPU"]
+    MAC_JVM --> MAC_CPU["Mac CPU"]
+    LIN_JVM --> LIN_CPU["Linux CPU"]
+    AND_JVM --> AND_CPU["Android CPU"]
+
+    style JAVA fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style JAVAC fill:#fef3c7,stroke:#d97706,color:#78350f
+    style BYTE fill:#dcfce7,stroke:#16a34a,color:#14532d,stroke-width:3px
+    style WIN_JVM fill:#ffe0f0,stroke:#db2777,color:#831843
+    style MAC_JVM fill:#ffe0f0,stroke:#db2777,color:#831843
+    style LIN_JVM fill:#ffe0f0,stroke:#db2777,color:#831843
+    style AND_JVM fill:#ffe0f0,stroke:#db2777,color:#831843
+```
+
+---
+
+### Code Comparison: C++ vs Java
+
+**C++ (Platform Dependent):**
+```cpp
+// hello.cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    cout << "Hello World" << endl;
+    return 0;
+}
+
+// On Windows: g++ hello.cpp -o hello.exe  → Only works on Windows
+// On Linux:   g++ hello.cpp -o hello      → Only works on Linux
+// ❌ You need to recompile for EVERY OS
+```
+
+**Java (Platform Independent):**
+```java
+// Hello.java
+public class Hello {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+
+// Compile ONCE: javac Hello.java → Creates Hello.class (Bytecode)
+// Run ANYWHERE:
+// Windows: java Hello  ✅
+// Mac:     java Hello  ✅
+// Linux:   java Hello  ✅
+// Android: Works with Dalvik/ART JVM ✅
+```
+
+---
+
+### Memory View During Java Execution
+
+When Java runs, the JVM manages 3 key memory areas:
+
+```mermaid
+flowchart TD
+    subgraph Disk["Hard Disk Storage"]
+        JAVA_FILE["First.java\n(Source Code)"]
+        CLASS_FILE["First.class\n(Bytecode)"]
+    end
+
+    subgraph JVM_MEM["JVM Memory (RAM)"]
+        direction TB
+        
+        subgraph HEAP["Heap Memory"]
+            STR_OBJ["String Object: 'Sum is:'"]
+        end
+        
+        subgraph STACK["Stack Memory"]
+            FRAME["main() Stack Frame"]
+            X["x = (value)"]
+            Y["y = 20"]
+            Z["z = x + y"]
+        end
+        
+        subgraph CODE_SEC["Code Section"]
+            BYTECODE["Bytecode Instructions"]
+        end
+    end
+    
+    CPU_BOX["CPU"]
+    
+    JAVA_FILE --> CLASS_FILE
+    CLASS_FILE --> JVM_MEM
+    JVM_MEM --> CPU_BOX
+
+    style Disk fill:#f3f4f6,stroke:#6b7280,color:#374151
+    style JVM_MEM fill:#fef3c7,stroke:#d97706,color:#78350f
+    style HEAP fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style STACK fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style CODE_SEC fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style CPU_BOX fill:#1e293b,color:#f8fafc,stroke:#475569
+```
+
+> This is exactly what the reference image shows:
+> - **Heap** → Objects (`new String("Sum is:")` lives here)
+> - **Stack** → Local variables (`x`, `y`, `z` live here)
+> - **Code Section** → Bytecode instructions
+
+---
+
+## 1️⃣1️⃣ Architecture of JVM (NEW)
+
+> Think of the JVM like a **big factory** that takes your `.class` file and produces results on your screen.
+
+### Complete JVM Architecture Diagram
+
+```mermaid
+flowchart TD
+    CLASS_FILE["📄 .class File (Bytecode)"]
+    
+    subgraph CLS["Class Loader Subsystem"]
+        direction LR
+        subgraph LOADING["Loading"]
+            BCL["Bootstrap\nClass Loader"]
+            ECL["Extension\nClass Loader"]
+            ACL["Application\nClass Loader"]
+        end
+        subgraph LINKING["Linking"]
+            VER["Verify"]
+            PREP["Prepare"]
+            RES["Resolve"]
+        end
+        subgraph INIT["Initialisation"]
+            INI["Initialisation"]
+        end
+        LOADING --> LINKING --> INIT
+    end
+    
+    subgraph JVM_MEM["JVM Memory Areas"]
+        direction LR
+        MA["Method Area\n(Class metadata)"]
+        HA["Heap Area\n(Objects, Strings)"]
+        SA["Stack\n(Thread 1, 2, 3)"]
+        PC["PC Registers\n(Per Thread)"]
+        NMS["Native Method\nStack"]
+    end
+    
+    subgraph EXEC_ENG["Execution Engine"]
+        direction LR
+        INT["Interpreter\n(Line by Line)"]
+        JIT["JIT Compiler\n(Hot Code)"]
+        GC["Garbage\nCollector"]
+    end
+    
+    subgraph NATIVE["Native Method Support"]
+        direction LR
+        JNI["Native Method\nInterface (JNI)"]
+        NML["Native Method\nLibraries"]
+        JNI <--> NML
+    end
+
+    CLASS_FILE --> CLS
+    CLS <--> JVM_MEM
+    JVM_MEM <--> EXEC_ENG
+    JVM_MEM <--> NATIVE
+
+    style CLS fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style JVM_MEM fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style EXEC_ENG fill:#fef3c7,stroke:#d97706,color:#78350f
+    style NATIVE fill:#f3e8ff,stroke:#9333ea,color:#581c87
+    style CLASS_FILE fill:#f0fdf4,stroke:#22c55e,color:#14532d
+```
+
+---
+
+### Explain Like I'm 5 (JVM Architecture)
+
+```mermaid
+flowchart TD
+    A["You write a book in a secret language\n(.class file = Bytecode)"]
+    B["A Librarian reads and organizes it\n(Class Loader)"]
+    C["A Safety Inspector checks it is safe\n(Bytecode Verifier)"]
+    D["A Big Storage Room stores everything\n(JVM Memory - Heap, Stack, etc.)"]
+    E{"How to execute?"}
+    F["A Slow Reader reads word by word\n(Interpreter)"]
+    G["A Fast Reader memorizes repeated pages\n(JIT Compiler)"]
+    H["A Janitor cleans unused stuff\n(Garbage Collector)"]
+    I["Final Output on Screen"]
+
+    A --> B --> C --> D --> E
+    E -- First time --> F
+    E -- Repeated code --> G
+    D --> H
+    F --> I
+    G --> I
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style B fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style C fill:#fef3c7,stroke:#d97706,color:#78350f
+    style D fill:#ffe4e6,stroke:#f43f5e,color:#881337
+    style E fill:#fff,stroke:#333,color:#000
+    style F fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style G fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style H fill:#f3e8ff,stroke:#9333ea,color:#581c87
+    style I fill:#1e293b,color:#f8fafc,stroke:#475569
+```
+
+---
+
+### Deep Dive: Each JVM Component
+
+#### 1. Class Loader Subsystem
+Responsible for **loading `.class` files** into memory. It has 3 phases:
+
+| Phase | Sub-steps | What happens |
+|-------|-----------|--------------|
+| **Loading** | Bootstrap, Extension, Application | Finds and loads `.class` files |
+| **Linking** | Verify, Prepare, Resolve | Checks safety, allocates memory for static vars, resolves symbolic references |
+| **Initialisation** | Initialisation | Assigns actual values to static variables, runs static blocks |
+
+#### 2. JVM Memory Areas
+| Area | What it Stores | Shared? |
+|------|---------------|---------|
+| **Method Area** | Class metadata, static variables, method code | ✅ Shared across all threads |
+| **Heap Area** | Objects created with `new` keyword | ✅ Shared across all threads |
+| **Stack** | Local variables, method call frames (one stack per thread) | ❌ Per thread |
+| **PC Registers** | Current instruction being executed (one per thread) | ❌ Per thread |
+| **Native Method Stack** | C/C++ native method calls | ❌ Per thread |
+
+#### 3. Execution Engine
+| Component | Role | Speed |
+|-----------|------|-------|
+| **Interpreter** | Reads and executes bytecode one line at a time | Slow (translates every run) |
+| **JIT Compiler** | Detects "hot code" (frequently run loops/methods) and compiles them to native machine code | Fast (compiled once, cached) |
+| **Garbage Collector** | Automatically frees heap memory of objects no longer in use | Background process |
+
+#### 4. Native Method Interface (JNI)
+Allows Java to call code written in **other languages** (C, C++). Used when Java needs to talk to OS-specific hardware.
+
+---
+
+## 1️⃣2️⃣ Java Buzzwords (NEW)
+
+As shown in the reference image, Java has 10 official buzzwords:
+
+```mermaid
+flowchart TD
+    JAVA["Java Buzzwords"] --> B1["1. Simple\nRemoved pointers, operator overloading from C/C++"]
+    JAVA --> B2["2. Secure\nJVM Sandbox. No direct memory access"]
+    JAVA --> B3["3. Portable\nSame bytecode runs on all OS via JVM"]
+    JAVA --> B4["4. Object-Oriented\nEverything is a class (except primitives)"]
+    JAVA --> B5["5. Robust\nStrong typing, exception handling, GC"]
+    JAVA --> B6["6. Multithreaded\njava.lang.Thread built-in"]
+    JAVA --> B7["7. Architecture-Neutral\nBytecode has no CPU-specific instructions"]
+    JAVA --> B8["8. Interpreted\nJVM interprets bytecode line by line"]
+    JAVA --> B9["9. High Performance\nJIT compiler optimizes hot code at runtime"]
+    JAVA --> B10["10. Distributed\nRMI, CORBA, Network APIs built-in"]
+
+    style JAVA fill:#1e293b,color:#f8fafc,stroke:#475569
+    style B1 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style B2 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style B3 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style B4 fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style B5 fill:#f3e8ff,stroke:#9333ea,color:#581c87
+    style B6 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style B7 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style B8 fill:#fef3c7,stroke:#d97706,color:#78350f
+    style B9 fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style B10 fill:#f3e8ff,stroke:#9333ea,color:#581c87
+```
+
+| # | Buzzword | Key Tool/Mechanism |
+|---|----------|--------------------|
+| 1 | Simple | Cleaner syntax vs C/C++ |
+| 2 | Secure | JVM (Bytecode Verifier, Sandbox) |
+| 3 | Portable | Bytecode + JVM |
+| 4 | Object-Oriented | Classes, Objects, OOP Pillars |
+| 5 | Robust | Checked Exceptions, GC, Strong Typing |
+| 6 | Multithreaded | `Thread` class, `synchronized` |
+| 7 | Architecture-Neutral | Bytecode has no CPU-specific opcodes |
+| 8 | Interpreted | JVM Interpreter |
+| 9 | High Performance | JIT Compiler |
+| 10 | Distributed | RMI, EJB, Sockets, HTTP |
+
+> **📌 Interview Tip:** When asked "What is Java?", mention **WORA** + **3-4 buzzwords** with mechanisms. Don't just list them — explain the mechanism briefly.
+
+---
+
+## ✅ Day 2 Complete (Updated)!
+
+You now understand:
+- [x] History & WORA Principle
+- [x] Java Editions (SE, EE, ME, FX)
+- [x] JDK vs JRE vs JVM
+- [x] Compiler vs Interpreter (with diagrams)
+- [x] How Java achieves Platform Independence (with C++ comparison)
+- [x] JVM Architecture (Class Loader, Memory, Execution Engine)
+- [x] Memory Layout (Heap, Stack, Code Section)
+- [x] Java Buzzwords (all 10)
+- [x] How Java code compiles and runs end-to-end
+
+**Next → Day 3: First Program in Java** 🚀
 
 
 # Day 3 <a id="day-3"></a>
@@ -1541,4 +2014,336 @@ flowchart TD
 ---
 
 **✅ Day 4 Complete!**
+
+# Day 5 <a id="day-5"></a>
+[⬆ Back to Top](#top)   
+
+## 📘 Day 5: Data Types in Java
+> **Goal:** Master Java's data types, understand memory allocation, learn how numbers are stored, handle type casting safely, and use literals & number systems like a pro.
+
+---
+
+## 1️⃣ What is a Data Type? (5-Year-Old Explanation)
+Imagine you have different containers:
+- A **small cup** holds water 💧
+- A **big box** holds toys 🧸
+- A **notebook** holds words 📝
+
+In Java, a **Data Type** tells the computer:
+1. **What kind of data** goes inside (number, letter, true/false)
+2. **How much memory** to reserve (small cup vs big box)
+3. **What operations** you can do with it (add numbers, but not add words)
+
+---
+
+## 2️⃣ Primitive vs Non-Primitive Data Types
+
+```mermaid
+flowchart TD
+    DT["📦 Data Types in Java"] --> P["🟢 Primitive Types<br/>(Built-in, Store Actual Value)"]
+    DT --> NP["🔵 Non-Primitive Types<br/>(Objects, Store Memory Address)"]
+    
+    P --> P1["byte, short, int, long"]
+    P --> P2["float, double"]
+    P --> P3["char"]
+    P --> P4["boolean"]
+    
+    NP --> NP1["String, Arrays"]
+    NP --> NP2["Classes, Interfaces"]
+    NP --> NP3["Enums, Wrappers"]
+
+    style P fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style NP fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+```
+
+| Feature | Primitive | Non-Primitive |
+|---------|-----------|---------------|
+| **Created by** | Java language (built-in) | Programmer (classes/objects) |
+| **Stores** | Actual value directly | Reference (memory address) to object |
+| **Default Value** | `0`, `false`, `\u0000` | `null` |
+| **Memory** | Stack (usually) | Heap (objects), Stack (references) |
+| **Examples** | `int`, `char`, `boolean` | `String`, `Scanner`, `ArrayList` |
+
+---
+
+## 3️⃣ The 8 Primitive Data Types (Complete Reference)
+
+| Type | Size | Range | Default | Example |
+|------|------|-------|---------|---------|
+| `byte` | 8-bit (1 byte) | `-128` to `127` | `0` | `byte b = 100;` |
+| `short` | 16-bit (2 bytes) | `-32,768` to `32,767` | `0` | `short s = 30000;` |
+| `int` | 32-bit (4 bytes) | `-2.14B` to `2.14B` | `0` | `int age = 25;` |
+| `long` | 64-bit (8 bytes) | `±9.22 Quintillion` | `0L` | `long id = 9876543210L;` |
+| `float` | 32-bit (4 bytes) | `±3.4E38` (7 digits) | `0.0f` | `float price = 19.99f;` |
+| `double` | 64-bit (8 bytes) | `±1.7E308` (15 digits) | `0.0d` | `double pi = 3.14159;` |
+| `char` | 16-bit (2 bytes) | `\u0000` to `\uffff` | `\u0000` | `char grade = 'A';` |
+| `boolean` | 1-bit (JVM uses 1 byte) | `true` or `false` | `false` | `boolean isJavaFun = true;` |
+
+> **📌 Important:** Java guarantees these sizes **regardless of OS**. Whether you run on 32-bit Windows or 64-bit Mac, `int` is ALWAYS 32-bit. This is part of Java's **WORA** promise.
+
+---
+
+## 4️⃣ Why Multiple Integral Types? (`byte`, `short`, `int`, `long`)
+
+| Type | Best Used For | Why? |
+|------|---------------|------|
+| `byte` | Flags, file reading, IoT sensors | Saves memory (1/4 of `int`). Good for arrays of millions of small numbers. |
+| `short` | Audio samples, old game coordinates | 16-bit was standard in legacy systems. Rarely used today. |
+| `int` | **Default choice** for numbers | Perfect balance of range & speed. CPU optimized for 32-bit. |
+| `long` | Timestamps, IDs, large calculations | `int` overflows at 2.14 billion. `long` handles dates after 2038. |
+
+### 💡 Memory Impact Example
+```java
+byte[] smallData = new byte[1_000_000]; // ~1 MB
+int[] bigData   = new int[1_000_000];   // ~4 MB
+// Using byte saves 75% memory when values are small!
+```
+
+---
+
+## 5️⃣ Positive & Negative Values + Two's Complement
+
+### Why Both Positive & Negative?
+Computers use **Signed Integers** by default. The **Most Significant Bit (MSB)** acts as a sign bit:
+- `0` = Positive
+- `1` = Negative
+
+### How Negative Numbers are Stored: Two's Complement
+Java uses **Two's Complement** to store negatives. It avoids having `+0` and `-0`.
+
+**Steps to store `-5` in 8-bit:**
+1. Write `5` in binary: `0000 0101`
+2. Flip all bits (One's Complement): `1111 1010`
+3. Add `1`: `1111 1011` → This is `-5` in memory!
+
+```mermaid
+flowchart LR
+    A["5 = 0000 0101"] --> B["Flip Bits → 1111 1010"]
+    B --> C["Add 1 → 1111 1011"]
+    C --> D["Result: -5 in Memory"]
+    
+    style A fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style B fill:#fef3c7,stroke:#d97706,color:#78350f
+    style C fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style D fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+```
+
+### How to Find Range?
+For an `n`-bit signed integer:
+- **Min:** $-2^{n-1}$
+- **Max:** $2^{n-1} - 1$
+
+| Type | Bits (n) | Min | Max |
+|------|----------|-----|-----|
+| `byte` | 8 | $-2^7 = -128$ | $2^7 - 1 = 127$ |
+| `short` | 16 | $-32,768$ | $32,767$ |
+| `int` | 32 | $-2,147,483,648$ | $2,147,483,647$ |
+| `long` | 64 | $-9.22 \times 10^{18}$ | $9.22 \times 10^{18}$ |
+
+---
+
+## 6️⃣ `char` : ASCII vs Unicode
+
+| Feature | ASCII | Unicode (Java `char`) |
+|---------|-------|------------------------|
+| **Size** | 7-bit (0-127) | 16-bit (0-65,535) |
+| **Covers** | English letters, digits, symbols | ALL world languages + emojis |
+| **Java Support** | Subset of Unicode | Native support |
+
+```java
+char c1 = 'A';      // Stores ASCII 65
+char c2 = 65;       // Also 'A' (implicit conversion)
+char c3 = '\u0041'; // Unicode for 'A'
+char c4 = '😊';     // Unicode emoji (requires surrogate pair in practice)
+```
+
+---
+
+## 7️⃣ Literals: What, Why & How
+
+### What is a Literal?
+A **literal** is a fixed value written directly in code. It's not a variable.
+```java
+int age = 25;      // 25 is an integer literal
+double pi = 3.14;  // 3.14 is a double literal
+boolean flag = true; // true is a boolean literal
+```
+
+### Literal Suffixes (Critical!)
+| Literal | Default Type | Suffix | Example |
+|---------|--------------|--------|---------|
+| `100` | `int` | `L` for long | `long big = 100L;` |
+| `3.14` | `double` | `F` for float, `D` for double | `float f = 3.14f;` |
+| `'A'` | `char` | None | `char c = 'A';` |
+| `"Hi"` | `String` | None | `String s = "Hi";` |
+
+> **⚠️ Common Mistake:** `float f = 3.14;` ❌ Error! `3.14` is double by default. Use `3.14f` ✅
+
+---
+
+## 8️⃣ Number Systems in Java
+
+Java supports 4 number systems natively:
+
+| System | Base | Prefix | Example | Decimal Value |
+|--------|------|--------|---------|---------------|
+| **Decimal** | 10 | None | `int a = 255;` | 255 |
+| **Binary** | 2 | `0b` or `0B` | `int b = 0b11111111;` | 255 |
+| **Octal** | 8 | `0` | `int c = 0377;` | 255 |
+| **Hexadecimal** | 16 | `0x` or `0X` | `int d = 0xFF;` | 255 |
+
+### Convert to Binary String
+```java
+int num = 42;
+System.out.println(Integer.toBinaryString(num)); // Output: 101010
+```
+
+---
+
+## 9️⃣ Type Casting: Implicit vs Explicit
+
+```mermaid
+flowchart TD
+    A["Type Casting"] --> B["Implicit (Widening)<br/>Small → Big<br/>✅ Safe, Automatic"]
+    A --> C["Explicit (Narrowing)<br/>Big → Small<br/>⚠️ Risky, Manual"]
+    
+    B --> B1["byte → short → int → long → float → double"]
+    C --> C1["double → float → long → int → short → byte"]
+    
+    style B fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style C fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+```
+
+### Implicit Casting (Automatic)
+```java
+int a = 100;
+double b = a; // ✅ Works! int → double (no data loss)
+```
+
+### Explicit Casting (Manual)
+```java
+double x = 9.78;
+int y = (int) x; // ✅ Works! y = 9 (decimal part TRUNCATED)
+```
+
+### 🔴 "Possible Lossy Conversion" Error
+```java
+double price = 19.99;
+int dollars = price; // ❌ Error: possible lossy conversion from double to int
+```
+**Fix:** Use explicit cast if you accept data loss:
+```java
+int dollars = (int) price; // ✅ Compiles, dollars = 19
+```
+
+---
+
+## 🔟 Practical Code: All Concepts Combined
+
+```java
+public class DataTypesDemo {
+    public static void main(String[] args) {
+        // 1. Primitives
+        byte b = 127;
+        short s = 32000;
+        int i = 2_147_483_647; // Underscores for readability
+        long l = 9_223_372_036_854_775_807L;
+        
+        float f = 3.14159f;
+        double d = 3.141592653589793;
+        
+        char c = 'A';
+        boolean flag = true;
+        
+        // 2. Number Systems
+        int dec = 255;
+        int bin = 0b11111111;
+        int oct = 0377;
+        int hex = 0xFF;
+        
+        System.out.println("All equal? " + (dec == bin && bin == oct && oct == hex)); // true
+        
+        // 3. Type Casting
+        double big = 100.99;
+        int small = (int) big; // Explicit cast
+        System.out.println("Cast result: " + small); // 100
+        
+        // 4. Constants & Ranges
+        System.out.println("Int Min: " + Integer.MIN_VALUE);
+        System.out.println("Int Max: " + Integer.MAX_VALUE);
+        System.out.println("Int Bytes: " + Integer.BYTES);
+        
+        // 5. Binary Conversion
+        System.out.println("42 in binary: " + Integer.toBinaryString(42));
+    }
+}
+```
+
+---
+
+## 1️⃣1️⃣ Useful Terminal Commands & Constants
+
+### 🔍 `javap` (Class File Disassembler)
+View compiled bytecode & constants without decompiling:
+```bash
+javap java.lang.Integer
+javap java.lang.Byte
+javap java.lang.Character
+```
+**Output shows:**
+- `public static final int MIN_VALUE = -2147483648;`
+- `public static final int MAX_VALUE = 2147483647;`
+- `public static final int BYTES = 4;`
+- `public static final int SIZE = 32;`
+
+### 📦 Wrapper Class Constants
+| Constant | Meaning | Example |
+|----------|---------|---------|
+| `Integer.MIN_VALUE` | Smallest `int` | `-2147483648` |
+| `Integer.MAX_VALUE` | Largest `int` | `2147483647` |
+| `Integer.BYTES` | Size in bytes | `4` |
+| `Integer.SIZE` | Size in bits | `32` |
+| `Double.NaN` | Not a Number | Result of `0.0/0.0` |
+| `Double.POSITIVE_INFINITY` | ∞ | Result of `1.0/0.0` |
+
+---
+
+## 1️⃣2️⃣ 🎯 Day 5: Interview Questions
+
+**Q1: Why is `int` always 32-bit even on 64-bit machines?**
+> **A:** Java guarantees fixed sizes for primitives to maintain **platform independence** (WORA). The JVM abstracts hardware differences.
+
+**Q2: What happens when you add 1 to `Integer.MAX_VALUE`?**
+> **A:** **Integer Overflow**. It wraps around to `Integer.MIN_VALUE` (negative). This is called **Two's Complement wrap-around**.
+
+**Q3: Why does `float f = 3.14;` give an error?**
+> **A:** Decimal literals are `double` by default. Assigning `double` to `float` requires explicit cast or `f` suffix: `float f = 3.14f;`
+
+**Q4: What is the difference between `char` and `String`?**
+> **A:** `char` is a primitive (16-bit Unicode character). `String` is a non-primitive object (sequence of chars). `char` uses single quotes `'A'`, `String` uses double quotes `"A"`.
+
+**Q5: How do you store a number larger than `long`?**
+> **A:** Use `java.math.BigInteger` (for integers) or `BigDecimal` (for decimals). They handle arbitrary precision.
+
+**Q6: Why does Java use Two's Complement for negatives?**
+> **A:** It simplifies hardware arithmetic. Addition/subtraction use the same circuit. No separate `-0`. Easy overflow detection.
+
+**Q7: What is the size of `boolean` in Java?**
+> **A:** The Java spec doesn't define exact size. JVM typically uses 1 byte in arrays, 4 bytes on stack. It's implementation-dependent.
+
+---
+
+## ✅ Day 5 Summary Checklist
+- [x] Understood Primitive vs Non-Primitive
+- [x] Memorized 8 primitive types, sizes, ranges, defaults
+- [x] Learned why multiple integral types exist (memory optimization)
+- [x] Mastered Two's Complement & range calculation
+- [x] Differentiated ASCII vs Unicode for `char`
+- [x] Used literals correctly with suffixes (`L`, `F`, `D`)
+- [x] Converted between Decimal, Binary, Octal, Hex
+- [x] Practiced Implicit vs Explicit casting
+- [x] Fixed "lossy conversion" errors
+- [x] Used `javap` and `Integer.MIN/MAX/BYTES`
+- [x] Ready for **Day 6: Operators & Expressions** 🚀
+
 ```
