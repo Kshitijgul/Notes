@@ -9,6 +9,7 @@
 | [Day 3](#day-3) | [First Program in Java ](#day-3) | Hello World, Public , static , Archietecture |
 | [Day 4](#day-4) | [Variables in Java ](#day-4) |Errors ,Variables Scope |
 | [Day 5](#day-5) | [Data types in Java ](#day-5) |Data Types, Type casting , Errors  |
+| [Day 6](#day-6) | [Operators  in Java ](#day-6) |All Operators , Bit masking , Type Conversion - widening and narrowing   |
 
 
 ---
@@ -2346,4 +2347,799 @@ javap java.lang.Character
 - [x] Used `javap` and `Integer.MIN/MAX/BYTES`
 - [x] Ready for **Day 6: Operators & Expressions** 🚀
 
+
+**✅ Day 5 Complete!**
+
+
+
+# Day 6 <a id="day-6"></a>
+[⬆ Back to Top](#top)   
+
+## 📘 Day 6: Operators in Java
+> **Goal:** Master every operator in Java — arithmetic, relational, logical, bitwise, and more. Understand precedence, associativity, type coercion, and bitwise tricks used in real interviews.
+
+---
+
+## 1️⃣ What is an Operator?
+
+An **operator** is a symbol that performs an operation on one or more **operands**.
+
+```java
+int result = 10 + 5;
+//           ^^   ^ operands
+//              ^ operator
 ```
+
+```mermaid
+flowchart LR
+    subgraph Types["Operator Types in Java"]
+        direction TB
+        A["Arithmetic\n+ - * / %"]
+        B["Relational\n== != > < >= <="]
+        C["Logical\n&& || !"]
+        D["Assignment\n= += -= *="]
+        E["Unary\n++ -- + - !"]
+        F["Bitwise\n& | ^ ~ << >>"]
+        G["Ternary\n? :"]
+        H["instanceof"]
+    end
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style B fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style C fill:#fef3c7,stroke:#d97706,color:#78350f
+    style D fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style E fill:#f3e8ff,stroke:#9333ea,color:#581c87
+    style F fill:#fff1f2,stroke:#f43f5e,color:#881337
+    style G fill:#ecfdf5,stroke:#059669,color:#064e3b
+    style H fill:#faf5ff,stroke:#7c3aed,color:#4c1d95
+```
+
+---
+
+## 2️⃣ Operator Precedence & Associativity
+
+**Precedence** decides which operator is evaluated first.
+**Associativity** decides the direction of evaluation when precedence is the same.
+
+> **5-Year-Old Explanation:**
+> Imagine you have `2 + 3 * 4`. Do you add first or multiply first?
+> Multiplication comes first (higher precedence), so `3 * 4 = 12`, then `2 + 12 = 14`.
+
+### Precedence Table (High to Low)
+
+| Level | Operators | Associativity | Example |
+|-------|-----------|---------------|---------|
+| 1 (Highest) | `()` `[]` `.` | Left to Right | `a.b()` |
+| 2 | `++` `--` (post) | Left to Right | `a++` |
+| 3 | `++` `--` `+` `-` `~` `!` (pre/unary) | Right to Left | `++a`, `!flag` |
+| 4 | `*` `/` `%` | Left to Right | `a * b / c` |
+| 5 | `+` `-` | Left to Right | `a + b - c` |
+| 6 | `<<` `>>` `>>>` | Left to Right | `a << 2` |
+| 7 | `<` `>` `<=` `>=` `instanceof` | Left to Right | `a > b` |
+| 8 | `==` `!=` | Left to Right | `a == b` |
+| 9 | `&` | Left to Right | `a & b` |
+| 10 | `^` | Left to Right | `a ^ b` |
+| 11 | `\|` | Left to Right | `a \| b` |
+| 12 | `&&` | Left to Right | `a && b` |
+| 13 | `\|\|` | Left to Right | `a \|\| b` |
+| 14 | `? :` | Right to Left | `a ? b : c` |
+| 15 (Lowest) | `=` `+=` `-=` etc. | Right to Left | `a = b = 5` |
+
+### Examples
+
+```java
+int result1 = 2 + 3 * 4;       // 14 (not 20), * has higher precedence
+int result2 = (2 + 3) * 4;     // 20, () overrides precedence
+int result3 = 10 - 3 - 2;      // 5, left to right: (10-3)-2 = 5
+int result4 = 2 << 1 + 1;      // 2 << 2 = 8, + has higher precedence than <<
+boolean b = 5 > 3 && 2 < 4;    // true, > evaluated before &&
+```
+
+---
+
+## 3️⃣ Result with Different Data Types (Type Coercion)
+
+### What is Coercion?
+**Coercion** (also called **Type Promotion**) is when Java automatically converts a smaller type to a larger type before performing an arithmetic operation.
+
+> **5-Year-Old Explanation:**
+> If you add a small lego block to a big lego block, Java puts the small block inside a big block box first, then adds them.
+
+```mermaid
+flowchart LR
+    A["byte (8-bit)"] --> B["short (16-bit)"]
+    B --> C["int (32-bit)"]
+    C --> D["long (64-bit)"]
+    D --> E["float (32-bit)"]
+    E --> F["double (64-bit)"]
+    
+    style A fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style B fill:#fef3c7,stroke:#d97706,color:#78350f
+    style C fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style D fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style E fill:#f3e8ff,stroke:#9333ea,color:#581c87
+    style F fill:#ecfdf5,stroke:#059669,color:#064e3b
+```
+
+### Rules of Type Promotion
+1. `byte` + `byte` = `int` (NOT byte!)
+2. `byte` + `short` = `int`
+3. `short` + `int` = `int`
+4. `int` + `long` = `long`
+5. `int` + `float` = `float`
+6. `int` + `double` = `double`
+7. `float` + `double` = `double`
+
+```java
+byte b1 = 10, b2 = 20;
+// byte result = b1 + b2; // ❌ Error! b1+b2 is int
+int result = b1 + b2;     // ✅ Correct: result = 30
+
+short s = 100;
+byte b = 10;
+int r = b + s;            // ✅ byte + short = int
+
+int i = 5;
+long l = 10L;
+long r2 = i + l;          // ✅ int + long = long
+
+int x = 5;
+double d = 2.5;
+double r3 = x + d;        // ✅ int + double = double → 7.5
+```
+
+---
+
+## 4️⃣ Finding Roots of a Quadratic Equation
+
+**Formula:** For `ax² + bx + c = 0`
+
+$$x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}$$
+
+```java
+public class QuadraticEquation {
+    public static void main(String[] args) {
+        double a = 1, b = -5, c = 6;
+        
+        // Calculate discriminant
+        double discriminant = (b * b) - (4 * a * c);
+        
+        System.out.println("Discriminant = " + discriminant);
+        
+        if (discriminant > 0) {
+            double root1 = (-b + Math.sqrt(discriminant)) / (2 * a);
+            double root2 = (-b - Math.sqrt(discriminant)) / (2 * a);
+            System.out.println("Root 1 = " + root1); // 3.0
+            System.out.println("Root 2 = " + root2); // 2.0
+        } else if (discriminant == 0) {
+            double root = -b / (2 * a);
+            System.out.println("One Root = " + root);
+        } else {
+            System.out.println("No Real Roots (Complex)");
+        }
+    }
+}
+```
+
+### Flowchart
+
+```mermaid
+flowchart TD
+    A([Start]) --> B["/Input a, b, c/"]
+    B --> C["disc = b² - 4ac"]
+    C --> D{disc > 0?}
+    D -- Yes --> E["root1 = (-b + √disc) / 2a<br/>root2 = (-b - √disc) / 2a"]
+    D -- No --> F{disc == 0?}
+    F -- Yes --> G["root = -b / 2a<br/>One Real Root"]
+    F -- No --> H["No Real Roots<br/>Complex Numbers"]
+    E --> I[/Print root1, root2/]
+    G --> I
+    H --> I
+    I --> J([End])
+
+    style D fill:#fef3c7,stroke:#d97706,color:#78350f
+    style F fill:#fef3c7,stroke:#d97706,color:#78350f
+    style E fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style G fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style H fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+```
+
+---
+
+## 5️⃣ Arithmetic Operators
+
+| Operator | Name | Example | Result |
+|----------|------|---------|--------|
+| `+` | Addition | `10 + 3` | `13` |
+| `-` | Subtraction | `10 - 3` | `7` |
+| `*` | Multiplication | `10 * 3` | `30` |
+| `/` | Division | `10 / 3` | `3` (integer division!) |
+| `%` | Modulus (Remainder) | `10 % 3` | `1` |
+
+### Division Trap (Integer vs Float)
+```java
+int a = 10, b = 3;
+System.out.println(a / b);   // 3 (NOT 3.33!) integer division truncates
+
+double x = 10.0, y = 3.0;
+System.out.println(x / y);   // 3.3333... correct decimal division
+
+// Fix for integers:
+System.out.println((double) a / b); // 3.3333...
+```
+
+### Modulus with Decimal Point
+The `%` operator works with `float` and `double` too!
+
+```java
+System.out.println(10 % 3);       // 1 (int)
+System.out.println(10.5 % 3.2);   // 0.9 (double: 10.5 - 3*3.2 = 0.9)
+System.out.println(-10 % 3);      // -1 (sign follows the DIVIDEND, not divisor)
+System.out.println(10 % -3);      // 1 (sign follows the DIVIDEND)
+```
+
+> **📌 Key Rule for Modulus:** The sign of the result follows the **sign of the LEFT operand (dividend)**.
+
+```mermaid
+flowchart LR
+    A["10.5 % 3.2"] --> B["How many times does 3.2 fit in 10.5?"]
+    B --> C["3 times: 3 × 3.2 = 9.6"]
+    C --> D["Remainder: 10.5 - 9.6 = 0.9"]
+
+    style A fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style D fill:#dcfce7,stroke:#16a34a,color:#14532d
+```
+
+---
+
+## 6️⃣ Increment & Decrement Operators
+
+| Operator | Type | Meaning |
+|----------|------|---------|
+| `++a` | Pre-increment | Increment first, then use |
+| `a++` | Post-increment | Use first, then increment |
+| `--a` | Pre-decrement | Decrement first, then use |
+| `a--` | Post-decrement | Use first, then decrement |
+
+```java
+int a = 5;
+System.out.println(++a); // 6  (increment then print)
+System.out.println(a++); // 6  (print then increment)
+System.out.println(a);   // 7  (now a is 7)
+
+int b = 5;
+System.out.println(--b); // 4  (decrement then print)
+System.out.println(b--); // 4  (print then decrement)
+System.out.println(b);   // 3  (now b is 3)
+```
+
+### With Different Data Types
+```java
+// With float
+float f = 5.5f;
+System.out.println(++f); // 6.5 (works fine)
+System.out.println(f--); // 6.5 (print 6.5, then becomes 5.5)
+
+// With byte (Tricky!)
+byte by = 127;
+by++;
+System.out.println(by); // -128 (OVERFLOW! Wraps around)
+
+// byte++ is special - it uses implicit cast internally
+// equivalent to: by = (byte)(by + 1)
+// So overflow wraps around in byte range
+
+// With char
+char c = 'A';
+c++;
+System.out.println(c); // B (moves to next ASCII/Unicode character)
+```
+
+---
+
+## 7️⃣ Relational Operators
+
+Used to compare two values. Always returns `boolean` (`true` or `false`).
+
+| Operator | Meaning | Example | Result |
+|----------|---------|---------|--------|
+| `==` | Equal to | `5 == 5` | `true` |
+| `!=` | Not equal to | `5 != 3` | `true` |
+| `>` | Greater than | `5 > 3` | `true` |
+| `<` | Less than | `5 < 3` | `false` |
+| `>=` | Greater than or equal | `5 >= 5` | `true` |
+| `<=` | Less than or equal | `3 <= 5` | `true` |
+
+```java
+int a = 10, b = 20;
+System.out.println(a == b);  // false
+System.out.println(a != b);  // true
+System.out.println(a > b);   // false
+System.out.println(a < b);   // true
+System.out.println(a >= 10); // true
+System.out.println(b <= 20); // true
+```
+
+> **⚠️ Common Mistake:** `==` compares VALUE for primitives, but for Objects it compares REFERENCE (memory address). Use `.equals()` for String comparison.
+
+---
+
+## 8️⃣ Logical Operators
+
+| Operator | Name | Returns true when |
+|----------|------|-------------------|
+| `&&` | AND | BOTH conditions are true |
+| `\|\|` | OR | AT LEAST ONE condition is true |
+| `!` | NOT | Condition is false |
+
+```java
+int age = 20;
+boolean hasID = true;
+
+// AND - both must be true
+System.out.println(age >= 18 && hasID); // true
+
+// OR - at least one true
+System.out.println(age < 18 || hasID); // true
+
+// NOT - flips the value
+System.out.println(!hasID); // false
+```
+
+### Short-Circuit Evaluation
+```java
+int x = 5;
+// && stops if left is false
+if (x > 10 && ++x > 6) { } // x stays 5 (right side not evaluated!)
+System.out.println(x); // 5
+
+// || stops if left is true
+if (x < 10 || ++x > 6) { } // x stays 5 (right side not evaluated!)
+System.out.println(x); // 5
+```
+
+---
+
+## 9️⃣ Assignment Operators
+
+| Operator | Equivalent | Example | Result (a=10) |
+|----------|-----------|---------|---------------|
+| `=` | `a = value` | `a = 5` | `5` |
+| `+=` | `a = a + value` | `a += 5` | `15` |
+| `-=` | `a = a - value` | `a -= 5` | `5` |
+| `*=` | `a = a * value` | `a *= 2` | `20` |
+| `/=` | `a = a / value` | `a /= 3` | `3` |
+| `%=` | `a = a % value` | `a %= 3` | `1` |
+| `&=` | `a = a & value` | `a &= 6` | `2` |
+| `\|=` | `a = a \| value` | `a \|= 6` | `14` |
+| `^=` | `a = a ^ value` | `a ^= 6` | `12` |
+| `<<=` | `a = a << value` | `a <<= 1` | `20` |
+| `>>=` | `a = a >> value` | `a >>= 1` | `5` |
+
+---
+
+## 🔟 Unary Operators
+
+Operators that work on a **single operand**.
+
+| Operator | Name | Example |
+|----------|------|---------|
+| `+` | Unary Plus | `+5` (positive) |
+| `-` | Unary Minus | `-5` (negate) |
+| `++` | Increment | `++a` or `a++` |
+| `--` | Decrement | `--a` or `a--` |
+| `!` | Logical NOT | `!true` = false |
+| `~` | Bitwise Complement | `~5` = -6 |
+
+```java
+int a = 5;
+System.out.println(-a);  // -5
+System.out.println(+a);  // 5
+System.out.println(!true); // false
+System.out.println(~5);    // -6 (flips all bits: ~n = -(n+1))
+```
+
+---
+
+## 1️⃣1️⃣ Bitwise Operators
+
+Bitwise operators work directly on the **binary representation** of numbers.
+
+> **5-Year-Old Explanation:**
+> Numbers in computers are just 0s and 1s. Bitwise operators work on each individual 0 or 1.
+
+### Key Concepts First
+
+| Term | Meaning | Example |
+|------|---------|---------|
+| **Bit** | Single binary digit (0 or 1) | `1` |
+| **Nibble** | 4 bits | `0101` = 5 |
+| **Byte** | 8 bits | `0000 0101` = 5 |
+
+```mermaid
+flowchart LR
+    subgraph Byte["1 Byte = 8 bits"]
+        B7["bit 7<br/>MSB"] --- B6["bit 6"] --- B5["bit 5"] --- B4["bit 4"] --- B3["bit 3"] --- B2["bit 2"] --- B1["bit 1"] --- B0["bit 0<br/>LSB"]
+    end
+    
+    subgraph Nibbles["2 Nibbles"]
+        N1["High Nibble<br/>bits 7-4"] --- N2["Low Nibble<br/>bits 3-0"]
+    end
+
+    style B7 fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style B0 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style N1 fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style N2 fill:#fef3c7,stroke:#d97706,color:#78350f
+```
+
+### Bitwise Operator Table
+
+| Operator | Name | Rule |
+|----------|------|------|
+| `&` | AND | 1 only if BOTH bits are 1 |
+| `\|` | OR | 1 if AT LEAST ONE bit is 1 |
+| `^` | XOR | 1 if bits are DIFFERENT |
+| `~` | NOT | Flips every bit |
+| `<<` | Left Shift | Shift bits left (multiply by 2) |
+| `>>` | Right Shift | Shift bits right (divide by 2) |
+| `>>>` | Unsigned Right Shift | Shift right, fill with 0 |
+
+### Examples with Binary
+
+```java
+int a = 5;  // 0000 0101
+int b = 3;  // 0000 0011
+
+System.out.println(a & b);  // 1  → 0000 0001 (AND)
+System.out.println(a | b);  // 7  → 0000 0111 (OR)
+System.out.println(a ^ b);  // 6  → 0000 0110 (XOR)
+System.out.println(~a);     // -6 → 1111 1010 (NOT, flips all bits)
+System.out.println(a << 1); // 10 → 0000 1010 (Left shift)
+System.out.println(a >> 1); // 2  → 0000 0010 (Right shift)
+```
+
+### Step-by-Step: AND, OR, XOR
+
+```
+  5 = 0000 0101
+& 3 = 0000 0011
+  ─────────────
+  1 = 0000 0001  (AND: 1 only if both 1)
+
+  5 = 0000 0101
+| 3 = 0000 0011
+  ─────────────
+  7 = 0000 0111  (OR: 1 if either 1)
+
+  5 = 0000 0101
+^ 3 = 0000 0011
+  ─────────────
+  6 = 0000 0110  (XOR: 1 if different)
+```
+
+---
+
+### Left Shift `<<` and Right Shift `>>`
+
+```mermaid
+flowchart TD
+    subgraph LeftShift["Left Shift (a << n) = a × 2ⁿ"]
+        L1["5 = 0000 0101"]
+        L2["5 << 1 = 0000 1010 = 10"]
+        L3["5 << 2 = 0001 0100 = 20"]
+        L1 --> L2 --> L3
+    end
+    
+    subgraph RightShift["Right Shift (a >> n) = a / 2ⁿ"]
+        R1["20 = 0001 0100"]
+        R2["20 >> 1 = 0000 1010 = 10"]
+        R3["20 >> 2 = 0000 0101 = 5"]
+        R1 --> R2 --> R3
+    end
+
+    style LeftShift fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style RightShift fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+```
+
+```java
+System.out.println(5 << 1);  // 10  (5 × 2¹)
+System.out.println(5 << 2);  // 20  (5 × 2²)
+System.out.println(20 >> 1); // 10  (20 / 2¹)
+System.out.println(20 >> 2); // 5   (20 / 2²)
+
+// Negative numbers (>> fills with sign bit)
+System.out.println(-8 >> 1); // -4  (sign preserved)
+System.out.println(-8 >>> 1);// 2147483644 (>>> fills with 0, ignores sign)
+```
+
+---
+
+### Bit Masking
+
+**Bit masking** extracts specific bits from a number using `&`.
+
+```java
+int num = 0b10110101; // 181
+
+// Check if bit 2 (3rd from right) is set
+int mask = 1 << 2;    // 0000 0100
+boolean isSet = (num & mask) != 0;
+System.out.println("Bit 2 is set: " + isSet); // true
+
+// Extract lower nibble (last 4 bits)
+int lowerNibble = num & 0x0F; // 0000 1111
+System.out.println("Lower nibble: " + lowerNibble); // 5
+
+// Extract upper nibble (first 4 bits)
+int upperNibble = (num >> 4) & 0x0F;
+System.out.println("Upper nibble: " + upperNibble); // 11
+```
+
+---
+
+### Bit Merging
+
+**Bit merging** combines two values using `|`.
+
+```java
+int upper = 0b1011; // 11 (high nibble)
+int lower = 0b0101; // 5  (low nibble)
+
+// Merge into one byte
+int merged = (upper << 4) | lower;
+System.out.println("Merged: " + merged);         // 181
+System.out.println(Integer.toBinaryString(merged)); // 10110101
+```
+
+---
+
+### XOR Swap (Swap without Temp Variable)
+
+```java
+int a = 5, b = 3;
+System.out.println("Before: a=" + a + " b=" + b);
+
+a = a ^ b; // a = 5^3 = 6
+b = a ^ b; // b = 6^3 = 5
+a = a ^ b; // a = 6^5 = 3
+
+System.out.println("After: a=" + a + " b=" + b);
+// After: a=3 b=5 (swapped!)
+```
+
+**Why it works:**
+```
+Step 1: a = a^b        → a = 5^3 = 110 ^ 011 = 101... wait
+5 = 0101
+3 = 0011
+a^b = 0110 = 6  → a is now 6
+
+Step 2: b = a^b = 6^3  = 0110^0011 = 0101 = 5 → b is now 5
+Step 3: a = a^b = 6^5  = 0110^0101 = 0011 = 3 → a is now 3
+```
+
+---
+
+## 1️⃣2️⃣ Ternary Operator
+
+Shorthand for if-else. Returns one of two values based on a condition.
+
+**Syntax:** `condition ? valueIfTrue : valueIfFalse`
+
+```java
+int age = 20;
+String result = (age >= 18) ? "Adult" : "Minor";
+System.out.println(result); // Adult
+
+// Nested ternary (use sparingly - reduces readability)
+int marks = 75;
+String grade = (marks >= 90) ? "A" :
+               (marks >= 75) ? "B" :
+               (marks >= 60) ? "C" : "F";
+System.out.println(grade); // B
+```
+
+---
+
+## 1️⃣3️⃣ `instanceof` Operator
+
+Checks whether an object is an instance of a specific class or interface.
+
+```java
+String name = "Java";
+System.out.println(name instanceof String);  // true
+System.out.println(name instanceof Object);  // true (String extends Object)
+
+Object obj = "Hello";
+if (obj instanceof String s) { // Java 16+ Pattern Matching
+    System.out.println(s.toUpperCase()); // HELLO
+}
+```
+
+---
+
+## 1️⃣4️⃣ Widening & Narrowing Conversions
+
+### Widening (Implicit / Safe)
+Small type → Large type. Done automatically by Java.
+
+```mermaid
+flowchart LR
+    BYTE["byte\n8-bit"] --> SHORT["short\n16-bit"]
+    SHORT --> INT["int\n32-bit"]
+    INT --> LONG["long\n64-bit"]
+    LONG --> FLOAT["float\n32-bit"]
+    FLOAT --> DOUBLE["double\n64-bit"]
+
+    style BYTE fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+    style SHORT fill:#fef3c7,stroke:#d97706,color:#78350f
+    style INT fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style LONG fill:#dbeafe,stroke:#2563eb,color:#1e3a8a
+    style FLOAT fill:#f3e8ff,stroke:#9333ea,color:#581c87
+    style DOUBLE fill:#ecfdf5,stroke:#059669,color:#064e3b
+```
+
+```java
+int i = 100;
+long l = i;       // ✅ Widening: int → long (automatic)
+float f = l;      // ✅ Widening: long → float (automatic)
+double d = f;     // ✅ Widening: float → double (automatic)
+```
+
+### Narrowing (Explicit / Risky)
+Large type → Small type. Must be done manually with cast operator `(type)`.
+
+```java
+double d = 9.99;
+int i = (int) d;          // ✅ Narrowing: double → int, i = 9 (truncated!)
+
+long l = 1000L;
+byte b = (byte) l;        // ✅ Narrowing: long → byte, possible data loss
+
+int x = 256;
+byte by = (byte) x;       // by = 0 (256 overflows byte range of -128 to 127)
+// 256 in binary = 1 0000 0000
+// byte takes only last 8 bits = 0000 0000 = 0
+```
+
+### Memory Diagram: Widening vs Narrowing
+
+```mermaid
+flowchart TD
+    subgraph Widening["Widening (Safe)"]
+        W1["int i = 42\n[0000...0010 1010]\n32-bit box"] --> W2["long l = i\n[00000000...0010 1010]\n64-bit box (extra space filled with 0)"]
+    end
+    
+    subgraph Narrowing["Narrowing (Risky)"]
+        N1["int i = 256\n[0000 0001 0000 0000]\n32-bit"] --> N2["byte b = (byte)i\n[0000 0000]\nOnly last 8 bits kept = 0 (DATA LOST!)"]
+    end
+
+    style Widening fill:#dcfce7,stroke:#16a34a,color:#14532d
+    style Narrowing fill:#fee2e2,stroke:#dc2626,color:#7f1d1d
+```
+
+---
+
+## 1️⃣5️⃣ Complete Practice Code
+
+```java
+public class OperatorsDemo {
+    public static void main(String[] args) {
+        
+        // ── Arithmetic ──
+        System.out.println("=== Arithmetic ===");
+        int a = 10, b = 3;
+        System.out.println(a + b);   // 13
+        System.out.println(a - b);   // 7
+        System.out.println(a * b);   // 30
+        System.out.println(a / b);   // 3 (integer division)
+        System.out.println(a % b);   // 1
+        System.out.println(10.5 % 3.2); // 0.9 (float mod)
+        
+        // ── Type Promotion ──
+        System.out.println("\n=== Type Promotion ===");
+        byte b1 = 10, b2 = 20;
+        int sum = b1 + b2;           // byte + byte = int
+        System.out.println(sum);     // 30
+        
+        // ── Increment / Decrement ──
+        System.out.println("\n=== Increment ===");
+        int x = 5;
+        System.out.println(x++);    // 5 (post)
+        System.out.println(++x);    // 7 (pre)
+        
+        // Byte overflow
+        byte bx = 127;
+        bx++;
+        System.out.println(bx);    // -128 (overflow!)
+        
+        // ── Bitwise ──
+        System.out.println("\n=== Bitwise ===");
+        int p = 5, q = 3;
+        System.out.println(p & q);  // 1
+        System.out.println(p | q);  // 7
+        System.out.println(p ^ q);  // 6
+        System.out.println(~p);     // -6
+        System.out.println(p << 1); // 10
+        System.out.println(p >> 1); // 2
+        
+        // XOR Swap
+        System.out.println("\n=== XOR Swap ===");
+        int m = 5, n = 3;
+        m = m ^ n;
+        n = m ^ n;
+        m = m ^ n;
+        System.out.println("m=" + m + " n=" + n); // m=3 n=5
+        
+        // ── Ternary ──
+        System.out.println("\n=== Ternary ===");
+        int age = 20;
+        String status = (age >= 18) ? "Adult" : "Minor";
+        System.out.println(status); // Adult
+        
+        // ── instanceof ──
+        System.out.println("\n=== instanceof ===");
+        String str = "Hello";
+        System.out.println(str instanceof String); // true
+        
+        // ── Widening / Narrowing ──
+        System.out.println("\n=== Type Casting ===");
+        double d = 9.99;
+        int narrowed = (int) d;        // 9
+        long widened = narrowed;       // automatic
+        System.out.println("Narrowed: " + narrowed);
+        System.out.println("Widened: " + widened);
+    }
+}
+```
+
+---
+
+## 🎯 Day 6: Interview Questions
+
+**Q1: What is the output of `byte b = 127; b++;`?**
+> **A:** `-128`. Because `byte` max is 127. Adding 1 causes overflow and wraps to `-128` (Two's Complement).
+
+**Q2: What is the output of `System.out.println(10 / 0);`?**
+> **A:** `ArithmeticException: / by zero` (runtime exception for integers). But `10.0 / 0.0` gives `Infinity`.
+
+**Q3: What is the difference between `>>` and `>>>`?**
+> **A:** `>>` is signed right shift (preserves sign bit, fills with sign). `>>>` is unsigned right shift (always fills with 0, ignores sign).
+
+**Q4: What is the output of `System.out.println(1 + 2 + "3");`?**
+> **A:** `"33"`. Left to right: `1 + 2 = 3` (int), then `3 + "3" = "33"` (String concatenation).
+
+**Q5: What is the output of `System.out.println("1" + 2 + 3);`?**
+> **A:** `"123"`. Left to right: `"1" + 2 = "12"`, then `"12" + 3 = "123"`.
+
+**Q6: What is Short-Circuit Evaluation?**
+> **A:** In `&&`, if left side is `false`, right side is NOT evaluated. In `||`, if left side is `true`, right side is NOT evaluated. This prevents unnecessary computation and avoids side effects.
+
+**Q7: How does XOR swap work without a temp variable?**
+> **A:** Using XOR property: `a ^ a = 0` and `a ^ 0 = a`. So `a=a^b`, `b=a^b`, `a=a^b` effectively swaps values.
+
+**Q8: What is the output of `System.out.println(5 & 3);`?**
+> **A:** `1`. `5 = 0101`, `3 = 0011`, `5 & 3 = 0001 = 1`.
+
+**Q9: What is bit masking? Give an example.**
+> **A:** Bit masking uses `&` to extract specific bits. Example: `n & 1` checks if `n` is odd (LSB is 1) or even (LSB is 0).
+
+**Q10: What is the difference between `&` and `&&`?**
+> **A:** `&` is bitwise AND (works on bits, evaluates both sides always). `&&` is logical AND (short-circuits, skips right side if left is false).
+
+---
+
+## ✅ Day 6 Summary Checklist
+- [x] Understood Operator Types and Precedence
+- [x] Mastered Type Promotion and Coercion rules
+- [x] Solved Quadratic Equation with Java
+- [x] Learned Arithmetic, Relational, Logical, Assignment operators
+- [x] Mastered Increment/Decrement with byte overflow
+- [x] Understood Modulus with decimals and negative numbers
+- [x] Mastered Bitwise: AND, OR, XOR, NOT, Shifts
+- [x] Learned Bit Masking, Bit Merging, XOR Swap
+- [x] Used Ternary and instanceof operators
+- [x] Understood Widening and Narrowing conversions
+- [x] Ready for **Day 7: Control Flow (if-else, switch, loops)** 🚀
+
+**✅ Day 6 Complete!**
