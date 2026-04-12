@@ -1,12 +1,83 @@
-# Section 2: JavaScript Basics — Variables, Hoisting, Types, Arrays, Operators
+# 🚀 JavaScript Deep Dive Notes - Section 2: JavaScript Basics <a id="section-2-top"></a>
+
+## 📑 Table of Contents
+<a id="section-2-toc"></a>
+
+- <a href="#s2-variables">2.1 Variables</a>
+  - <a href="#s2-what-is-variable">What is a Variable?</a>
+  - <a href="#s2-variable-lifecycle">Variable Lifecycle</a>
+  - <a href="#s2-why-variables-matter">Why Variables Matter</a>
+- <a href="#s2-var-let-const">2.2 `var`, `let`, `const` — All Important Points</a>
+  - <a href="#s2-var">2.2.1 `var`</a>
+  - <a href="#s2-let">2.2.2 `let`</a>
+  - <a href="#s2-const">2.2.3 `const`</a>
+- <a href="#s2-hoisting">2.3 Hoisting</a>
+  - <a href="#s2-hoisting-var">2.3.1 Hoisting with `var`</a>
+  - <a href="#s2-hoisting-let-const">2.3.2 Hoisting with `let` and `const`</a>
+  - <a href="#s2-hoisting-functions">2.3.3 Function Hoisting</a>
+  - <a href="#s2-hoisting-usecase">2.3.4 Use Case of Hoisting</a>
+- <a href="#s2-scope">2.4 Scope</a>
+  - <a href="#s2-global-scope">Global Scope</a>
+  - <a href="#s2-function-scope">Function Scope</a>
+  - <a href="#s2-block-scope">Block Scope</a>
+  - <a href="#s2-lexical-scope">Lexical Scope</a>
+- <a href="#s2-combined-view">2.5 Declaration, Hoisting, Scope — Combined View</a>
+- <a href="#s2-types">2.6 Built-in Types in JavaScript</a>
+  - <a href="#s2-primitive-types">2.6.1 Primitive Types</a>
+  - <a href="#s2-reference-types">2.6.2 Reference Types</a>
+  - <a href="#s2-types-detail">2.6.3 Types in Detail</a>
+- <a href="#s2-null-vs-undefined">2.7 `null` vs `undefined`</a>
+- <a href="#s2-arrays">2.8 Arrays in Detail</a>
+  - <a href="#s2-array-indexing">2.8.1 Array Indexing</a>
+  - <a href="#s2-array-length">2.8.2 `length` Property</a>
+  - <a href="#s2-array-methods">2.8.3 Common Array Methods</a>
+    - <a href="#s2-mutating-methods">A. Mutating Methods</a>
+    - <a href="#s2-non-mutating-methods">B. Non-Mutating Methods</a>
+    - <a href="#s2-iteration-methods">C. Iteration Methods</a>
+    - <a href="#s2-creation-methods">D. Array Creation Methods</a>
+  - <a href="#s2-array-usecases">2.8.4 Common Array Use Cases</a>
+- <a href="#s2-comments">2.9 Comments in JavaScript</a>
+- <a href="#s2-pros-cons">2.10 JavaScript Pros and Cons</a>
+- <a href="#s2-operators">2.11 All Types of Operators</a>
+  - <a href="#s2-arithmetic">2.11.1 Arithmetic Operators</a>
+  - <a href="#s2-assignment">2.11.2 Assignment Operators</a>
+  - <a href="#s2-comparison">2.11.3 Comparison Operators</a>
+  - <a href="#s2-logical">2.11.4 Logical Operators</a>
+  - <a href="#s2-unary">2.11.5 Unary Operators</a>
+  - <a href="#s2-bitwise">2.11.6 Bitwise Operators</a>
+  - <a href="#s2-ternary">2.11.7 Ternary Operator</a>
+  - <a href="#s2-comma">2.11.8 Comma Operator</a>
+  - <a href="#s2-optional-chaining">2.11.9 Optional Chaining</a>
+  - <a href="#s2-in-operator">2.11.10 `in` Operator</a>
+- <a href="#s2-equality">2.12 `==` vs `===`</a>
+- <a href="#s2-conditions">2.13 Combining Multiple Conditions</a>
+- <a href="#s2-increment-decrement">2.14 Increment and Decrement on Non-Numeric Values</a>
+- <a href="#s2-array-indexing-notes">2.15 Array Indexing — Important Notes</a>
+- <a href="#s2-array-vs-object">2.16 Array vs Object Quick Difference</a>
+- <a href="#s2-cheatsheet">2.17 Interview Cheat Sheet</a>
+- <a href="#s2-interview-optimized">🚀 Section 2: 100% Interview Optimized Q&A</a>
+  - <a href="#s2-topic1">📌 TOPIC 1: Variables & Declarations</a>
+  - <a href="#s2-topic2">📌 TOPIC 2: Hoisting & Temporal Dead Zone</a>
+  - <a href="#s2-topic3">📌 TOPIC 3: Scope</a>
+  - <a href="#s2-topic4">📌 TOPIC 4: Data Types</a>
+  - <a href="#s2-topic5">📌 TOPIC 5: Arrays</a>
+  - <a href="#s2-topic6">📌 TOPIC 6: Operators</a>
+  - <a href="#s2-topic7">📌 TOPIC 7: Comments</a>
+  - <a href="#s2-topic8">📌 TOPIC 8: JS Pros/Cons</a>
+  - <a href="#s2-never-say">❌ Answers You Should Never Give</a>
+  - <a href="#s2-top20">🔥 TOP 20 Interview Questions Mega-Cheat Sheet</a>
+
+<a href="#section-2-top">⬆ Back to Top</a>
+
+---
 
 > Interview-focused notes with practical examples and common pitfalls
 
 ---
 
-## 2.1 Variables
+## <a id="s2-variables"></a>2.1 Variables
 
-### What is a variable?
+### <a id="s2-what-is-variable"></a>What is a variable?
 A **variable** is a named container used to store data in memory.
 
 ```javascript
@@ -15,7 +86,7 @@ const name = "Alice";
 var city = "Delhi";
 ```
 
-### Variable lifecycle
+### <a id="s2-variable-lifecycle"></a>Variable lifecycle
 1. **Declaration** — create a variable name
 2. **Initialization** — assign first value
 3. **Assignment** — change value later
@@ -26,15 +97,17 @@ score = 10;       // initialization
 score = 20;       // assignment
 ```
 
-### Why variables matter
+### <a id="s2-why-variables-matter"></a>Why variables matter
 - Store user input
 - Hold API response data
 - Keep state in apps
 - Reuse values instead of repeating them
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
 ---
 
-## 2.2 `var`, `let`, `const` — All Important Points
+## <a id="s2-var-let-const"></a>2.2 `var`, `let`, `const` — All Important Points
 
 These are the three ways to declare variables in JavaScript.
 
@@ -49,7 +122,7 @@ These are the three ways to declare variables in JavaScript.
 
 ---
 
-### 2.2.1 `var`
+### <a id="s2-var"></a>2.2.1 `var`
 `var` is the old way to declare variables.
 
 #### Important points
@@ -80,7 +153,7 @@ console.log(a); // 2
 
 ---
 
-### 2.2.2 `let`
+### <a id="s2-let"></a>2.2.2 `let`
 `let` is the modern way to declare variables that may change.
 
 #### Important points
@@ -108,7 +181,7 @@ count = count + 1;
 
 ---
 
-### 2.2.3 `const`
+### <a id="s2-const"></a>2.2.3 `const`
 `const` declares a constant binding.
 
 #### Important points
@@ -143,19 +216,21 @@ console.log(nums); // [1, 2, 3, 4]
 #### Use case
 Use `const` by default when the variable should not be reassigned.
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
 ---
 
-## 2.3 Hoisting
+## <a id="s2-hoisting"></a>2.3 Hoisting
 
 ### What is hoisting?
-Hoisting is JavaScript’s behavior of moving declarations to the top of their scope during compilation.
+Hoisting is JavaScript's behavior of moving declarations to the top of their scope during compilation.
 
 ### Simple meaning
 You can access some declarations before they appear in the code.
 
 ---
 
-### 2.3.1 Hoisting with `var`
+### <a id="s2-hoisting-var"></a>2.3.1 Hoisting with `var`
 `var` declarations are hoisted and initialized with `undefined`.
 
 ```javascript
@@ -173,7 +248,7 @@ a = 10;
 
 ---
 
-### 2.3.2 Hoisting with `let` and `const`
+### <a id="s2-hoisting-let-const"></a>2.3.2 Hoisting with `let` and `const`
 `let` and `const` are also hoisted, but they are **not initialized** immediately.
 
 They stay in the **Temporal Dead Zone (TDZ)** until the line of declaration is executed.
@@ -190,7 +265,7 @@ const c = 30;
 
 ---
 
-### 2.3.3 Function hoisting
+### <a id="s2-hoisting-functions"></a>2.3.3 Function hoisting
 Function declarations are fully hoisted.
 
 ```javascript
@@ -214,14 +289,14 @@ var greet = function () {
 ---
 
 ### Hoisting interview answer
-**Hoisting is JavaScript’s mechanism where declarations are moved to the top of their scope.**
+**Hoisting is JavaScript's mechanism where declarations are moved to the top of their scope.**
 - `var` → hoisted and initialized as `undefined`
 - `let`/`const` → hoisted but not initialized, so they are in TDZ
 - function declarations → fully hoisted
 
 ---
 
-### 2.3.4 Use case of hoisting
+### <a id="s2-hoisting-usecase"></a>2.3.4 Use case of hoisting
 Hoisting is useful in function declarations when you want to organize code by putting helper functions later in the file.
 
 ```javascript
@@ -235,9 +310,11 @@ function calculateTotal() {
 ### Best practice
 Do **not** rely on hoisting for variable usage. It makes code harder to read and debug.
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
 ---
 
-## 2.4 Scope
+## <a id="s2-scope"></a>2.4 Scope
 
 ### What is scope?
 Scope decides where a variable can be accessed.
@@ -246,14 +323,14 @@ Scope decides where a variable can be accessed.
 
 ### Types of scope
 
-#### 1. Global scope
+#### <a id="s2-global-scope"></a>1. Global scope
 Accessible everywhere in the file/module.
 
 ```javascript
 let appName = "ShopApp";
 ```
 
-#### 2. Function scope
+#### <a id="s2-function-scope"></a>2. Function scope
 Variables declared inside a function are available only inside that function.
 
 ```javascript
@@ -263,7 +340,7 @@ function test() {
 }
 ```
 
-#### 3. Block scope
+#### <a id="s2-block-scope"></a>3. Block scope
 Variables declared inside `{}` are only accessible inside that block.
 
 ```javascript
@@ -273,7 +350,7 @@ if (true) {
 }
 ```
 
-#### 4. Lexical scope
+#### <a id="s2-lexical-scope"></a>4. Lexical scope
 Inner functions can access variables from outer functions.
 
 ```javascript
@@ -323,9 +400,11 @@ for (let i = 0; i < 3; i++) {
 
 If `var` were used, all callbacks would print `3`.
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
 ---
 
-## 2.5 Declaration, Hoisting, Scope — Combined View
+## <a id="s2-combined-view"></a>2.5 Declaration, Hoisting, Scope — Combined View
 
 ### Key idea
 These three concepts are connected:
@@ -351,15 +430,17 @@ function demo() {
 - `var x` is hoisted to the top of function scope
 - `let y` and `const z` are block-scoped and hoisted but in TDZ
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
 ---
 
-## 2.6 Built-in Types in JavaScript
+## <a id="s2-types"></a>2.6 Built-in Types in JavaScript
 
 JavaScript has **primitive types** and **reference types**.
 
 ---
 
-### 2.6.1 Primitive types
+### <a id="s2-primitive-types"></a>2.6.1 Primitive types
 These are immutable values:
 
 1. `number`
@@ -372,7 +453,7 @@ These are immutable values:
 
 ---
 
-### 2.6.2 Reference types
+### <a id="s2-reference-types"></a>2.6.2 Reference types
 These are objects:
 
 - `object`
@@ -383,128 +464,61 @@ These are objects:
 
 ---
 
-### 2.6.3 Types you asked for
+### <a id="s2-types-detail"></a>2.6.3 Types in Detail
 
 #### `number`
-Used for integers and decimals.
-
 ```javascript
 let price = 99.99;
 let count = 10;
-```
-
-**Important points**
-- All numbers are floating-point based (`IEEE 754`)
-- `NaN` means “Not a Number” but its type is still `"number"`
-
-```javascript
 console.log(typeof NaN); // number
 ```
 
----
-
 #### `string`
-Used for text.
-
 ```javascript
 let firstName = "John";
 let message = 'Hello';
 let quote = `Hi ${firstName}`;
-```
-
-**Important points**
-- Strings are immutable
-- Template literals use backticks
-
-```javascript
 let str = "hello";
 str[0] = "H"; // does not change original string
 console.log(str); // hello
 ```
 
----
-
 #### `boolean`
-Only two values:
-- `true`
-- `false`
-
 ```javascript
 let isLoggedIn = true;
 ```
 
-Used heavily in conditions and feature flags.
-
----
-
 #### `null`
-Represents an intentional empty value.
-
 ```javascript
 let user = null;
-```
-
-**Important points**
-- Means “nothing here on purpose”
-- Often used to reset a variable
-- `typeof null` is `"object"` — this is a long-standing JavaScript bug
-
-```javascript
 console.log(typeof null); // object
 ```
 
----
-
 #### `undefined`
-Means a value has not been assigned yet.
-
 ```javascript
 let x;
 console.log(x); // undefined
-```
-
-Also returned when accessing missing object properties.
-
-```javascript
 let obj = {};
 console.log(obj.name); // undefined
 ```
 
----
-
 #### `object`
-Used for key-value data structures.
-
 ```javascript
-let person = {
-  name: "Alex",
-  age: 25
-};
+let person = { name: "Alex", age: 25 };
 ```
-
-Objects are mutable and commonly used for API data, configs, and structured records.
-
----
 
 #### `array`
-Arrays are ordered lists of values.
-
 ```javascript
 let fruits = ["apple", "banana", "mango"];
-```
-
-**Important point:** Arrays are actually objects.
-
-```javascript
 console.log(typeof fruits); // object
 console.log(Array.isArray(fruits)); // true
 ```
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
 ---
 
-## 2.7 `null` vs `undefined`
-
-This is a very common interview question.
+## <a id="s2-null-vs-undefined"></a>2.7 `null` vs `undefined`
 
 | Feature | `null` | `undefined` |
 |---|---|---|
@@ -513,92 +527,50 @@ This is a very common interview question.
 | Type | object (bug) | undefined |
 | Use case | Reset a value | Variable declared but not assigned |
 
-### Example
 ```javascript
 let a;
 let b = null;
-
 console.log(a); // undefined
 console.log(b); // null
 ```
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
 ---
 
-## 2.8 Arrays in Detail
+## <a id="s2-arrays"></a>2.8 Arrays in Detail
 
-### What is an array?
 An array stores multiple values in one variable, in order.
 
 ```javascript
 const colors = ["red", "green", "blue"];
-```
-
----
-
-### Array key features
-- Zero-based indexing
-- Dynamic size
-- Can store mixed data types
-- Arrays are objects
-- Have many built-in methods
-
-```javascript
 const mixed = [1, "hello", true, null, { id: 1 }];
 ```
 
 ---
 
-### 2.8.1 Array indexing
-Arrays start at index `0`.
+### <a id="s2-array-indexing"></a>2.8.1 Array indexing
 
 ```javascript
 const nums = [10, 20, 30];
 console.log(nums[0]); // 10
-console.log(nums[1]); // 20
-console.log(nums[2]); // 30
-```
-
-Out of bounds gives `undefined`:
-
-```javascript
 console.log(nums[5]); // undefined
-```
-
-Negative indexing does **not** work like Python:
-
-```javascript
 console.log(nums[-1]); // undefined
-```
-
-Use `at()` if available:
-
-```javascript
 console.log(nums.at(-1)); // 30
 ```
 
 ---
 
-### 2.8.2 `length` property
-`length` is a **property**, not a function.
+### <a id="s2-array-length"></a>2.8.2 `length` property
 
 ```javascript
 const arr = [1, 2, 3];
 console.log(arr.length); // 3
-```
 
-#### Important points
-- `length` is always one more than the highest index
-- Changing `length` can shrink or expand the array
-
-```javascript
 const a = [1, 2, 3, 4];
 a.length = 2;
 console.log(a); // [1, 2]
-```
 
-Expanding creates empty slots:
-
-```javascript
 const b = [1, 2];
 b.length = 5;
 console.log(b); // [1, 2, empty × 3]
@@ -606,95 +578,66 @@ console.log(b); // [1, 2, empty × 3]
 
 ---
 
-## 2.8.3 Common Array Methods
+### <a id="s2-array-methods"></a>2.8.3 Common Array Methods
 
-Below are the most important array methods for interviews and practical coding.
+#### <a id="s2-mutating-methods"></a>A. Methods that mutate the original array
 
----
-
-### A. Methods that mutate the original array
-
-#### `push()`
-Adds item(s) to the end.
-
+#### `push()` — Adds item(s) to the end
 ```javascript
 const arr = [1, 2];
 arr.push(3);
 console.log(arr); // [1, 2, 3]
 ```
 
-#### `pop()`
-Removes the last item.
-
+#### `pop()` — Removes the last item
 ```javascript
 const arr = [1, 2, 3];
 arr.pop();
 console.log(arr); // [1, 2]
 ```
 
-#### `unshift()`
-Adds item(s) to the start.
-
+#### `unshift()` — Adds item(s) to the start
 ```javascript
 const arr = [2, 3];
 arr.unshift(1);
 console.log(arr); // [1, 2, 3]
 ```
 
-#### `shift()`
-Removes the first item.
-
+#### `shift()` — Removes the first item
 ```javascript
 const arr = [1, 2, 3];
 arr.shift();
 console.log(arr); // [2, 3]
 ```
 
-#### `splice()`
-Adds/removes/replaces items at any position.
-
+#### `splice()` — Adds/removes/replaces at any position
 ```javascript
 const arr = [1, 2, 3, 4];
 arr.splice(1, 2, "A", "B");
 console.log(arr); // [1, "A", "B", 4]
 ```
 
-#### `sort()`
-Sorts items in place.
-
+#### `sort()` — Sorts in place
 ```javascript
 const nums = [10, 2, 5];
-nums.sort();
-console.log(nums); // [10, 2, 5]  (string sorting)
+nums.sort(); // [10, 2, 5] string sort
+nums.sort((a, b) => a - b); // [2, 5, 10] numeric sort
 ```
 
-Proper numeric sort:
-
-```javascript
-nums.sort((a, b) => a - b);
-console.log(nums); // [2, 5, 10]
-```
-
-#### `reverse()`
-Reverses the array in place.
-
+#### `reverse()` — Reverses in place
 ```javascript
 const arr = [1, 2, 3];
 arr.reverse();
 console.log(arr); // [3, 2, 1]
 ```
 
-#### `fill()`
-Fills array with a static value.
-
+#### `fill()` — Fills with a static value
 ```javascript
 const arr = new Array(3).fill(0);
 console.log(arr); // [0, 0, 0]
 ```
 
-#### `copyWithin()`
-Copies part of the array into another location.
-
+#### `copyWithin()` — Copies part of array
 ```javascript
 const arr = [1, 2, 3, 4];
 arr.copyWithin(1, 3);
@@ -703,137 +646,97 @@ console.log(arr); // [1, 4, 3, 4]
 
 ---
 
-### B. Methods that do not mutate the original array
+#### <a id="s2-non-mutating-methods"></a>B. Methods that do not mutate the original array
 
-#### `slice()`
-Returns a shallow copy of part of the array.
-
+#### `slice()` — Shallow copy of part
 ```javascript
 const arr = [1, 2, 3, 4];
 const part = arr.slice(1, 3);
 console.log(part); // [2, 3]
-console.log(arr);  // unchanged
 ```
 
-#### `concat()`
-Combines arrays.
-
+#### `concat()` — Combines arrays
 ```javascript
 const a = [1, 2];
 const b = [3, 4];
 console.log(a.concat(b)); // [1, 2, 3, 4]
 ```
 
-#### `join()`
-Converts array elements to a string.
-
+#### `join()` — Array to string
 ```javascript
 const arr = ["a", "b", "c"];
 console.log(arr.join("-")); // a-b-c
 ```
 
-#### `includes()`
-Checks if a value exists.
-
+#### `includes()` — Checks if value exists
 ```javascript
-const arr = [1, 2, 3];
-console.log(arr.includes(2)); // true
+console.log([1, 2, 3].includes(2)); // true
 ```
 
-#### `indexOf()`
-Returns index of first match.
-
+#### `indexOf()` — First match index
 ```javascript
 console.log([1, 2, 3].indexOf(2)); // 1
 ```
 
-#### `lastIndexOf()`
-Returns last index of match.
-
+#### `lastIndexOf()` — Last match index
 ```javascript
 console.log([1, 2, 2, 3].lastIndexOf(2)); // 2
 ```
 
-#### `at()`
-Supports negative indexing.
-
+#### `at()` — Supports negative indexing
 ```javascript
-const arr = [10, 20, 30];
-console.log(arr.at(-1)); // 30
+console.log([10, 20, 30].at(-1)); // 30
 ```
 
 ---
 
-### C. Iteration methods
+#### <a id="s2-iteration-methods"></a>C. Iteration methods
 
-#### `forEach()`
-Runs a function for each item.
-
+#### `forEach()` — Runs function for each item
 ```javascript
 [1, 2, 3].forEach(n => console.log(n));
 ```
 
-#### `map()`
-Transforms each item and returns a new array.
-
+#### `map()` — Transforms and returns new array
 ```javascript
-const nums = [1, 2, 3];
-const doubled = nums.map(n => n * 2);
+const doubled = [1, 2, 3].map(n => n * 2);
 console.log(doubled); // [2, 4, 6]
 ```
 
-#### `filter()`
-Keeps items that match a condition.
-
+#### `filter()` — Keeps matching items
 ```javascript
-const nums = [1, 2, 3, 4];
-const evens = nums.filter(n => n % 2 === 0);
+const evens = [1, 2, 3, 4].filter(n => n % 2 === 0);
 console.log(evens); // [2, 4]
 ```
 
-#### `reduce()`
-Combines array values into one result.
-
+#### `reduce()` — Combines values
 ```javascript
-const nums = [1, 2, 3, 4];
-const sum = nums.reduce((acc, n) => acc + n, 0);
+const sum = [1, 2, 3, 4].reduce((acc, n) => acc + n, 0);
 console.log(sum); // 10
 ```
 
-#### `some()`
-Checks whether at least one item matches.
-
+#### `some()` — At least one matches
 ```javascript
-const hasEven = [1, 3, 5, 6].some(n => n % 2 === 0);
-console.log(hasEven); // true
+console.log([1, 3, 5, 6].some(n => n % 2 === 0)); // true
 ```
 
-#### `every()`
-Checks whether all items match.
-
+#### `every()` — All items match
 ```javascript
-const allPositive = [1, 2, 3].every(n => n > 0);
-console.log(allPositive); // true
+console.log([1, 2, 3].every(n => n > 0)); // true
 ```
 
-#### `find()`
-Returns first matching item.
-
+#### `find()` — First matching item
 ```javascript
 const users = [{ id: 1 }, { id: 2 }];
 console.log(users.find(u => u.id === 2)); // { id: 2 }
 ```
 
-#### `findIndex()`
-Returns index of first matching item.
-
+#### `findIndex()` — Index of first match
 ```javascript
 console.log(users.findIndex(u => u.id === 2)); // 1
 ```
 
-#### `findLast()` and `findLastIndex()`
-Search from the end.
-
+#### `findLast()` and `findLastIndex()` — Search from end
 ```javascript
 const arr = [1, 2, 3, 2];
 console.log(arr.findLast(n => n === 2)); // 2
@@ -842,26 +745,20 @@ console.log(arr.findLastIndex(n => n === 2)); // 3
 
 ---
 
-### D. Array creation methods
+#### <a id="s2-creation-methods"></a>D. Array creation methods
 
-#### `Array.isArray()`
-Checks whether value is an array.
-
+#### `Array.isArray()` — Checks if array
 ```javascript
 Array.isArray([]); // true
 Array.isArray({}); // false
 ```
 
-#### `Array.from()`
-Creates an array from iterable or array-like values.
-
+#### `Array.from()` — Creates from iterable
 ```javascript
 Array.from("hello"); // ["h", "e", "l", "l", "o"]
 ```
 
-#### `Array.of()`
-Creates an array from arguments.
-
+#### `Array.of()` — Creates from arguments
 ```javascript
 Array.of(5); // [5]
 Array.of(1, 2, 3); // [1, 2, 3]
@@ -869,63 +766,40 @@ Array.of(1, 2, 3); // [1, 2, 3]
 
 ---
 
-## 2.8.4 Common array use cases
+### <a id="s2-array-usecases"></a>2.8.4 Common array use cases
 
-### 1. Storing lists
 ```javascript
+// Storing lists
 const todos = ["study", "exercise", "sleep"];
-```
 
-### 2. Rendering UI
-```javascript
+// Rendering UI
 const items = ["A", "B", "C"];
 items.map(item => `<li>${item}</li>`);
-```
 
-### 3. Processing API data
-```javascript
-const users = [
-  { name: "A", active: true },
-  { name: "B", active: false }
-];
-
+// Processing API data
+const users = [{ name: "A", active: true }, { name: "B", active: false }];
 const activeUsers = users.filter(user => user.active);
-```
 
-### 4. Aggregating values
-```javascript
+// Aggregating values
 const cart = [100, 200, 300];
 const total = cart.reduce((sum, price) => sum + price, 0);
 ```
 
----
-
-## 2.9 Comments in JavaScript
-
-Comments are used to explain code and improve readability.
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-### 1. Single-line comments
-```javascript
-// This is a single-line comment
-let x = 10;
-```
+## <a id="s2-comments"></a>2.9 Comments in JavaScript
 
-### 2. Multi-line comments
 ```javascript
+// Single-line comment
+
 /*
-  This is a multi-line comment
-  Useful for longer explanations
+  Multi-line comment
 */
-```
 
-### 3. JSDoc comments
-Used for documentation and editor hints.
-
-```javascript
 /**
- * Adds two numbers
+ * JSDoc comment
  * @param {number} a
  * @param {number} b
  * @returns {number}
@@ -935,540 +809,245 @@ function add(a, b) {
 }
 ```
 
-### Best practices
-- Use comments to explain **why**, not obvious **what**
-- Avoid outdated comments
-- Remove commented-out dead code
+**Best practices**: Explain **why**, not obvious **what**. No outdated or dead commented code.
+
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 2.10 JavaScript Pros and Cons
+## <a id="s2-pros-cons"></a>2.10 JavaScript Pros and Cons
 
 ### Pros
-
-#### 1. Runs everywhere
-Works in browsers and on servers.
-
-#### 2. Easy to learn and start
-Simple syntax and immediate feedback.
-
-#### 3. Huge ecosystem
-NPM has millions of packages.
-
-#### 4. Great for web development
-Best language for interactive UI.
-
-#### 5. Full-stack capability
-Same language for frontend and backend.
-
-#### 6. Async support
-Excellent for event-driven applications.
-
----
+1. Runs everywhere (browser + server)
+2. Easy to learn
+3. Huge ecosystem (NPM)
+4. Best for web UI
+5. Full-stack capability
+6. Excellent async support
 
 ### Cons
+1. Dynamic typing causes bugs: `"5" + 1 // "51"`
+2. Type coercion: `[] == false // true`
+3. Single-threaded — CPU work blocks event loop
+4. Historical browser differences
+5. Client-side code is inspectable
 
-#### 1. Dynamic typing can cause bugs
-```javascript
-"5" + 1; // "51"
-"5" - 1; // 4
-```
-
-#### 2. Type coercion can be confusing
-```javascript
-[] == false; // true
-```
-
-#### 3. Single-threaded
-Heavy CPU work can block the UI or event loop.
-
-#### 4. Browser differences existed historically
-Modern engines are much more consistent, but legacy issues remain in older environments.
-
-#### 5. Security risks in browser context
-Code runs on the client side and can be inspected.
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 2.11 All Types of Operators
+## <a id="s2-operators"></a>2.11 All Types of Operators
 
-Operators perform operations on values.
-
----
-
-### 2.11.1 Arithmetic operators
-- `+` addition
-- `-` subtraction
-- `*` multiplication
-- `/` division
-- `%` modulus
-- `**` exponentiation
-
+### <a id="s2-arithmetic"></a>2.11.1 Arithmetic operators
 ```javascript
 10 + 5;  // 15
 10 % 3;  // 1
 2 ** 3;  // 8
 ```
 
----
-
-### 2.11.2 Assignment operators
-- `=`
-- `+=`
-- `-=`
-- `*=`
-- `/=`
-- `%=`
-- `**=`
-
+### <a id="s2-assignment"></a>2.11.2 Assignment operators
 ```javascript
 let x = 10;
 x += 5; // 15
 ```
 
----
-
-### 2.11.3 Comparison operators
-- `==` loose equality
-- `===` strict equality
-- `!=`
-- `!==`
-- `>`
-- `<`
-- `>=`
-- `<=`
-
+### <a id="s2-comparison"></a>2.11.3 Comparison operators
 ```javascript
-5 > 3; // true
-5 <= 5; // true
+5 > 3;   // true
+5 <= 5;  // true
 ```
 
----
-
-### 2.11.4 Logical operators
-- `&&` AND
-- `||` OR
-- `!` NOT
-- `??` nullish coalescing
-
+### <a id="s2-logical"></a>2.11.4 Logical operators
 ```javascript
 true && false; // false
 true || false; // true
-!true; // false
+!true;         // false
 ```
 
----
-
-### 2.11.5 Unary operators
-- `typeof`
-- `delete`
-- `void`
-- `++`
-- `--`
-- unary `+`
-- unary `-`
-
+### <a id="s2-unary"></a>2.11.5 Unary operators
 ```javascript
 typeof 5; // "number"
 + "10";   // 10
 - "10";   // -10
 ```
 
----
-
-### 2.11.6 Bitwise operators
-- `&`
-- `|`
-- `^`
-- `~`
-- `<<`
-- `>>`
-- `>>>`
-
-Used in low-level operations, flags, and performance-sensitive logic.
-
+### <a id="s2-bitwise"></a>2.11.6 Bitwise operators
 ```javascript
 5 & 1; // 1
 5 | 1; // 5
 ```
 
----
-
-### 2.11.7 Ternary operator
-A short form of `if-else`.
-
+### <a id="s2-ternary"></a>2.11.7 Ternary operator
 ```javascript
 const result = age >= 18 ? "Adult" : "Minor";
 ```
 
----
-
-### 2.11.8 Comma operator
-Evaluates multiple expressions, returns the last one.
-
+### <a id="s2-comma"></a>2.11.8 Comma operator
 ```javascript
 let x = (1, 2, 3);
 console.log(x); // 3
 ```
 
-Rarely used.
-
----
-
-### 2.11.9 Optional chaining
-Useful when nested objects may be missing.
-
+### <a id="s2-optional-chaining"></a>2.11.9 Optional chaining
 ```javascript
 user.profile?.address?.city;
 ```
 
----
-
-### 2.11.10 `in` operator
-Checks whether a property exists in an object.
-
+### <a id="s2-in-operator"></a>2.11.10 `in` operator
 ```javascript
 const obj = { name: "Alex" };
 console.log("name" in obj); // true
 ```
 
----
-
-## 2.12 `==` vs `===`
-
-This is a very common interview question.
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-### `==` loose equality
-Compares values after type conversion.
+## <a id="s2-equality"></a>2.12 `==` vs `===`
 
 ```javascript
-"5" == 5; // true
-0 == false; // true
+// == loose equality
+"5" == 5;          // true
+0 == false;        // true
 null == undefined; // true
-```
 
-### `===` strict equality
-Compares both value and type.
+// === strict equality
+"5" === 5;         // false
+0 === false;       // false
+null === undefined;// false
 
-```javascript
-"5" === 5; // false
-0 === false; // false
-null === undefined; // false
-```
-
----
-
-### Why `===` is preferred
-Because it avoids unexpected type coercion.
-
-```javascript
-[] == false; // true
+// Why === is preferred
+[] == false;  // true
 [] === false; // false
 ```
 
-### Best practice
-Use `===` in almost all cases.
+**Best practice**: Use `===` in almost all cases.
+
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 2.13 Combining Multiple Conditions
-
-JavaScript uses logical operators to combine conditions.
-
----
-
-### 1. AND `&&`
-Both conditions must be true.
+## <a id="s2-conditions"></a>2.13 Combining Multiple Conditions
 
 ```javascript
-if (age >= 18 && hasId) {
-  console.log("Allowed");
-}
-```
+// AND
+if (age >= 18 && hasId) { console.log("Allowed"); }
 
-### 2. OR `||`
-At least one condition must be true.
+// OR
+if (isAdmin || isOwner) { console.log("Access granted"); }
 
-```javascript
-if (isAdmin || isOwner) {
-  console.log("Access granted");
-}
-```
+// NOT
+if (!isLoggedIn) { console.log("Please login"); }
 
-### 3. NOT `!`
-Reverses the boolean value.
-
-```javascript
-if (!isLoggedIn) {
-  console.log("Please login");
-}
-```
-
----
-
-### Short-circuit behavior
-
-#### `&&`
-Stops as soon as one value is false.
-
-```javascript
+// Short-circuit
 false && console.log("Won't run");
-```
-
-#### `||`
-Stops as soon as one value is true.
-
-```javascript
 true || console.log("Won't run");
-```
 
----
-
-### Practical use cases
-
-#### Form validation
-```javascript
-if (email && password && password.length >= 8) {
-  console.log("Valid input");
-}
-```
-
-#### Default values
-```javascript
-const username = inputValue || "Guest";
-```
-
-#### Better default for `null` or `undefined`
-```javascript
-const username = inputValue ?? "Guest";
-```
-
----
-
-### Important: `||` vs `??`
-- `||` treats `false`, `0`, `""`, `NaN` as fallback cases
-- `??` only treats `null` and `undefined` as fallback cases
-
-```javascript
+// || vs ??
 0 || 10;   // 10
 0 ?? 10;   // 0
 ```
 
----
-
-## 2.14 Increment and Decrement on Non-Numeric Values
-
-`++` and `--` convert the value to a number first.
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-### Important: literals like `null++` are invalid
-This is because you cannot increment a literal directly.
+## <a id="s2-increment-decrement"></a>2.14 Increment and Decrement on Non-Numeric Values
 
 ```javascript
-// null++; // SyntaxError
-```
+let x = null; x++; console.log(x); // 1
+let a = "5";  a++; console.log(a); // 6
+let b = true; b++; console.log(b); // 2
+let c = undefined; c++; console.log(c); // NaN
 
-But if stored in a variable:
-
-```javascript
-let x = null;
-x++;
-console.log(x); // 1
-```
-
-### Why?
-Because:
-- `null` becomes `0`
-- then `0 + 1 = 1`
-
----
-
-### Conversion examples
-
-```javascript
-let a = "5";
-a++;
-console.log(a); // 6
-
-let b = true;
-b++;
-console.log(b); // 2
-
-let c = undefined;
-c++;
-console.log(c); // NaN
-
-let d = "hello";
-d++;
-console.log(d); // NaN
-```
-
----
-
-### More examples
-```javascript
-let e = [];
-e++;
-console.log(e); // 1
-
-let f = [1];
-f++;
-console.log(f); // 2
-```
-
----
-
-### Postfix vs prefix
-
-#### Postfix
-Returns old value first, then increments.
-
-```javascript
+// Postfix vs Prefix
 let n = 5;
-console.log(n++); // 5
+console.log(n++); // 5 (returns old, then increments)
 console.log(n);   // 6
-```
 
-#### Prefix
-Increments first, then returns new value.
-
-```javascript
 let m = 5;
-console.log(++m); // 6
-console.log(m);   // 6
+console.log(++m); // 6 (increments first, then returns)
 ```
 
----
-
-### Interview advice
-Do **not** use `++` or `--` on non-numeric values in real projects. It leads to confusing coercion bugs.
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 2.15 Array Indexing — Important Notes
-
-### Zero-based indexing
-First item is at index `0`.
+## <a id="s2-array-indexing-notes"></a>2.15 Array Indexing — Important Notes
 
 ```javascript
 const arr = ["a", "b", "c"];
-console.log(arr[0]); // "a"
-console.log(arr[2]); // "c"
-```
+console.log(arr[0]);    // "a"
+console.log(arr[100]);  // undefined
+console.log(arr[-1]);   // undefined
+console.log(arr.at(-1));// "c"
 
-### Updating by index
-```javascript
 arr[1] = "x";
 console.log(arr); // ["a", "x", "c"]
 ```
 
-### Reading out of range
-```javascript
-console.log(arr[100]); // undefined
-```
-
-### Negative index
-Not supported with standard bracket syntax:
-
-```javascript
-console.log(arr[-1]); // undefined
-```
-
-Use `.at(-1)` instead:
-
-```javascript
-console.log(arr.at(-1)); // "c"
-```
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 2.16 Array vs Object Quick Difference
+## <a id="s2-array-vs-object"></a>2.16 Array vs Object Quick Difference
 
 | Feature | Array | Object |
 |---|---|---|
 | Purpose | Ordered list | Key-value data |
 | Access | Index-based | Key-based |
-| Order | Yes | Usually insertion order, but not for all cases |
+| Order | Yes | Usually insertion order |
 | Example | `["a", "b"]` | `{ name: "Alex" }` |
+
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 2.17 Interview Cheat Sheet
+## <a id="s2-cheatsheet"></a>2.17 Interview Cheat Sheet
 
-### Variables
-- Prefer `const`
-- Use `let` when reassignment is needed
-- Avoid `var` in modern code
-
-### Hoisting
-- `var` → `undefined`
-- `let/const` → TDZ
-- function declarations are hoisted
-
-### Types
-- Primitives: number, string, boolean, null, undefined, bigint, symbol
-- Arrays are objects
-- `typeof null` is `"object"`
-
-### Arrays
-- Zero-based
-- `length` is a property
-- Use `Array.isArray()` to check arrays
-- Learn `push`, `pop`, `map`, `filter`, `reduce`, `slice`, `splice`
-
-### Operators
-- Use `===` instead of `==`
-- Use `&&`, `||`, `??` carefully
-- Be aware of type coercion
-
-### Increment/decrement
-- Works on variables holding numeric-like values
-- Avoid on strings/objects/non-numeric values
-
-# 🚀 JavaScript Deep Dive Notes - Section 2: JavaScript Basics
-## ✅ Fully Merged Final Version | 100% Interview Optimized
-
-> This document combines the best parts of both drafts, all duplicates removed, ordered by interview frequency.
->
-> Includes: official accepted answer ✅, runnable code example 🧪, output, gotchas ⚠️, and why interviewers ask this question.
->
-> 🎯 Study Hack: Cover the answer, predict output, then verify. Practice explaining every answer out loud in 30 seconds or less.
-
-| 🔥 Frequency Rating | Meaning |
+| Topic | Key Points |
 |---|---|
-| 🟢 99% | Asked at nearly every JavaScript interview |
-| 🟡 70% | Very common question |
+| Variables | Prefer `const`, use `let` for reassignment, avoid `var` |
+| Hoisting | `var`→`undefined`, `let/const`→TDZ, functions→fully hoisted |
+| Types | 7 primitives, arrays are objects, `typeof null` is `"object"` |
+| Arrays | Zero-based, `length` is property, use `Array.isArray()` |
+| Operators | Use `===`, use `??` not `||` for null checks |
+| Increment | Avoid on non-numeric values in production |
+
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
+
+---
+
+## <a id="s2-interview-optimized"></a>🚀 Section 2: 100% Interview Optimized Q&A
+
+> Includes: official accepted answer ✅, runnable code 🧪, gotchas ⚠️, and frequency ratings.
+> 🎯 Study Hack: Cover the answer, predict output, then verify.
+
+| 🔥 Rating | Meaning |
+|---|---|
+| 🟢 99% | Asked at nearly every JS interview |
+| 🟡 70% | Very common |
 | 🟠 40% | Moderately common |
 | 🔴 20% | Occasional trick question |
 
-
 ---
 
-## 📌 TOPIC 1: Variables & Declarations
-
-
----
+## <a id="s2-topic1"></a>📌 TOPIC 1: Variables & Declarations
 
 ### ❓ Question: Explain the difference between `var`, `let` and `const`
 🔥 Frequency: 🟢 99%
 
 ✅ Standard accepted answer:
+
 | Feature | `var` | `let` | `const` |
 |---|---|---|---|
-| Scope Rule | Function scoped only | Block scoped | Block scoped |
-| Hoisting behavior | Yes, initialized to `undefined` | Yes, stays in Temporal Dead Zone | Yes, stays in Temporal Dead Zone |
-| Can be redeclared in same scope | ✅ Yes | ❌ No | ❌ No |
-| Can be reassigned | ✅ Yes | ✅ Yes | ❌ No |
-| Attaches to global `window` object | ✅ Yes | ❌ No | ❌ No |
+| Scope Rule | Function scoped | Block scoped | Block scoped |
+| Hoisting | Yes, `undefined` | Yes, TDZ | Yes, TDZ |
+| Redeclaration | ✅ Yes | ❌ No | ❌ No |
+| Reassignment | ✅ Yes | ✅ Yes | ❌ No |
+| Attaches to `window` | ✅ Yes | ❌ No | ❌ No |
 
-> Additional note: `let` and `const` were added in ES6 specifically to fix the well known design flaws in `var`.
-
-✅ Industry Best Practice: Use `const` by default for all variables. Only use `let` when you explicitly need to reassign a value. Never use `var` in modern code.
-
-🧪 Code example:
+🧪 Code:
 ```javascript
 var g1 = 1; console.log(window.g1); // 1
 let g2 = 2; console.log(window.g2); // undefined
@@ -1476,12 +1055,10 @@ let g2 = 2; console.log(window.g2); // undefined
 
 ⚠️ Gotcha: `const` does NOT make values immutable, only prevents reassignment.
 
-
 ---
 
-### ❓ Question: Explain the famous loop timeout example. Why is the output different?
+### ❓ Question: Explain the famous loop timeout example
 🔥 Frequency: 🟢 99%
-> #1 most asked junior JavaScript question of all time.
 
 🧪 Code:
 ```javascript
@@ -1489,44 +1066,30 @@ for(var i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 0);
 }
 // Output: 3, 3, 3
-```
-```javascript
+
 for(let i = 0; i < 3; i++) {
   setTimeout(() => console.log(i), 0);
 }
 // Output: 0, 1, 2
 ```
 
-✅ Correct Answer:
-This is the classic demonstration of block scope vs function scope:
-- In the first case `var i` is function scoped. There is only one single `i` variable shared by all 3 callbacks. By the time the timeout runs, the loop has already finished and `i` is already 3.
-- In the second case `let i` is block scoped. A brand new separate `i` variable is created for every single iteration of the loop. Each callback gets its own private copy.
-
-Why asked: Tests understanding of scope, closures and the event loop.
-
+✅ Answer: `var` is function-scoped — one shared `i`. `let` is block-scoped — new `i` per iteration.
 
 ---
 
 ### ❓ Question: Does `const` make a value immutable?
 🔥 Frequency: 🟢 99%
-> ⚠️ 60% of candidates answer this incorrectly
 
-✅ Correct Answer:
-**No.** This is the single biggest misconception about const.
-`const` only creates an immutable binding. That means you cannot reassign the variable name to point to a different value.
-But if the value itself is mutable like an object or array, you can still freely modify its contents.
-
-🧪 Code example:
+🧪 Code:
 ```javascript
 const user = {name: "Alex"};
-user.name = "Bob"; // ✅ ALLOWED: This is mutation, NOT reassignment
-user = {};         // ❌ TYPE ERROR: This is reassignment
+user.name = "Bob"; // ✅ Mutation allowed
+user = {};         // ❌ TypeError: reassignment blocked
 
 const arr = [1];
-arr.push(2);       // ✅ [1, 2] Mutation allowed
-arr = [3];         // ❌ Error Reassignment blocked
+arr.push(2);       // ✅ [1, 2]
+arr = [3];         // ❌ Error
 ```
-
 
 ---
 
@@ -1536,92 +1099,58 @@ arr = [3];         // ❌ Error Reassignment blocked
 | Code | Output | Explanation |
 |---|---|---|
 | `var x=1; var x=2; console.log(x)` | `2` | var allows silent redeclaration |
-| `let x=1; let x=2;` | `SyntaxError` | let / const blocks redeclaration |
-| `for(const i=0;i<3;i++){}` | `TypeError` | Loop counter requires reassignment |
-| `switch` statement `var` | ✅ Leaks across all cases | var ignores block scope |
+| `let x=1; let x=2;` | `SyntaxError` | let blocks redeclaration |
+| `for(const i=0;i<3;i++){}` | `TypeError` | Loop counter needs reassignment |
 
-
----
-
-## 📌 TOPIC 2: Hoisting & Temporal Dead Zone
-
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
+
+## <a id="s2-topic2"></a>📌 TOPIC 2: Hoisting & Temporal Dead Zone
 
 ### ❓ Question: Are `let` and `const` hoisted?
 🔥 Frequency: 🟢 99%
-> ⚠️ #1 filter question. 75% of all candidates give the wrong answer here.
 
-❌ Wrong answer: No
-✅ Correct Answer:
-**Yes. All declarations in JavaScript are hoisted, including let and const.**
-The only difference is initialization behavior:
-- `var` is hoisted and immediately initialized to `undefined`
-- `let` and `const` are hoisted, but they are NOT initialized. They remain in the Temporal Dead Zone until execution reaches the line they are declared on. Any attempt to access them while in TDZ throws a ReferenceError.
+❌ Wrong answer: No  
+✅ Correct Answer: **Yes — all declarations are hoisted.** The difference is initialization:
+- `var` → hoisted + initialized as `undefined`
+- `let`/`const` → hoisted but stay in **TDZ** until declaration line
 
-🧪 Code demonstration:
+🧪 Code:
 ```javascript
 console.log(a); // undefined
 var a = 10;
 
-console.log(b); // ReferenceError: Cannot access 'b' before initialization
+console.log(b); // ReferenceError
 let b = 20;
 ```
 
-
 ---
 
-### ❓ Question: What is hoisting?
-🔥 Frequency: 🟢 99%
-
-✅ Standard accepted answer:
-Hoisting is a phase of JavaScript compilation where all declarations are registered at the top of their scope, before any line of code is executed. JavaScript always runs in two phases: Compile phase first, then Execution phase.
-
-Hoisting order priority:
-1. Function Declarations (fully hoisted)
-2. `var` declarations
-3. `let` / `const` declarations
-
-
----
-
-### ❓ Question: What is the difference between function declaration and function expression hoisting?
+### ❓ Question: Function declaration vs expression hoisting
 🔥 Frequency: 🟡 70%
 
-✅ Correct Answer:
 ```javascript
-// Function Declaration
-hello(); // ✅ Works perfectly
+hello(); // ✅ Works
 function hello() { console.log("hi") }
-```
-Function declarations are fully hoisted, including their actual value.
 
-```javascript
-// Function Expression
-greet(); // ❌ TypeError: greet is not a function
+greet(); // ❌ TypeError
 var greet = function() {}
 ```
-Only the variable part is hoisted, the function value itself is not.
 
-✅ Valid use case for hoisting: Call helper functions before their definition to improve code readability.
-
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 📌 TOPIC 3: Scope
+## <a id="s2-topic3"></a>📌 TOPIC 3: Scope
 
-
----
-
-### ❓ Question: What are the 4 types of scope in JavaScript?
-🔥 Frequency: 🟡 70%
-✅ Answer: Global Scope, Module Scope, Function Scope, Block Scope
+### ❓ Question: 4 types of scope?
+🔥 Frequency: 🟡 70%  
+✅ Answer: Global, Module, Function, Block
 
 ### ❓ Question: Explain lexical scope
 🔥 Frequency: 🟡 70%
-✅ Answer: Inner functions always have access to variables declared in outer scopes. This is the foundation of closures.
 
-🧪 Code example:
 ```javascript
 function outer(x){
   return function inner(){ return x; }
@@ -1630,270 +1159,148 @@ const fn = outer(10);
 fn(); // 10
 ```
 
-Common use cases: Private state, counters, callbacks.
-
-
----
-
-## 📌 TOPIC 4: Data Types
-
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-### ❓ Question: What is the difference between `null` and `undefined`?
+## <a id="s2-topic4"></a>📌 TOPIC 4: Data Types
+
+### ❓ Question: `null` vs `undefined`?
 🔥 Frequency: 🟢 99%
-> Asked in literally every JavaScript interview ever.
-
-✅ Correct Answer:
 
 | | `null` | `undefined` |
 |---|---|---|
-| Meaning | Intentionally empty value | Value was never assigned / does not exist |
-| Set by | Always explicitly set by developer | Always set automatically by JavaScript engine |
-| `typeof` result | `"object"` (famous 28 year old unfixed language bug) | `"undefined"` |
-
-> Best Practice: Use `null` when you want to intentionally clear or reset a value. Never intentionally assign `undefined` in your code.
-
+| Meaning | Intentionally empty | Never assigned |
+| Set by | Developer | JavaScript engine |
+| `typeof` | `"object"` (bug) | `"undefined"` |
 
 ---
 
-### ❓ Question: How do you properly check if a value is an array?
-🔥 Frequency: 🟢 99%
+### ❓ Question: How to properly check if value is an array?
+🔥 Frequency: 🟢 99%  
+✅ Answer: `Array.isArray(value)`  
+❌ Not `typeof value === 'object'` — also true for objects, dates, regex
 
-✅ Correct Answer: `Array.isArray(value)`
-
-❌ All common wrong answers:
-- `typeof value === 'object'` ❌ returns true for objects, dates, regex etc
-- `value instanceof Array` ❌ fails across iframe / realm boundaries
-
-> Important note: Arrays are a special subtype of object. That is why `typeof []` returns `"object"`. This is the most common mistake junior developers make.
-
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-### ❓ Question: Primitive vs Reference types
-🔥 Frequency: 🟡 70%
-✅ Answer:
-- Primitives: passed and copied by value, immutable
-- References: passed and copied by pointer, mutable
+## <a id="s2-topic5"></a>📌 TOPIC 5: Arrays
 
-Complete list of 7 primitive types:
-`number`, `string`, `boolean`, `null`, `undefined`, `bigint`, `symbol`
-
-
----
-
-## 📌 TOPIC 5: Arrays
-
-
----
-
-### ❓ Question: Which array methods mutate the original array, and which return a new array?
+### ❓ Question: Which methods mutate vs return new array?
 🔥 Frequency: 🟡 70%
 
-✅ Memorize this table:
-| ❌ Mutates original array | ✅ Returns new array |
+| ❌ Mutates | ✅ Returns new |
 |---|---|
-| `push()`, `pop()` | `slice()` |
-| `unshift()`, `shift()` | `map()` |
-| `splice()` | `filter()` |
-| `sort()` | `reduce()` |
-| `reverse()` | `concat()` |
-| `fill()` | `includes()`, `find()` |
+| `push`, `pop` | `slice` |
+| `unshift`, `shift` | `map` |
+| `splice` | `filter` |
+| `sort` | `reduce` |
+| `reverse` | `concat` |
+| `fill` | `includes`, `find` |
 
-> ⚠️ Interviewer Trap: Almost every candidate forgets that `sort()` and `reverse()` mutate the array. This is also the #1 cause of subtle production bugs.
-
-
----
-
-### ❓ Question: Explain common array indexing edge cases
-🔥 Frequency: 🟠 40%
-
-| Code | Output | Explanation |
-|---|---|---|
-| `[1,2,3][5]` | `undefined` | Out of bounds index never throws an error |
-| `[1,2,3][-1]` | `undefined` | Bracket syntax does NOT support negative indexing |
-| `[1,2,3].at(-1)` | `3` | `at()` added in ES2022 properly supports negative index |
-| `const arr = []; arr[10] = 5; arr.length` | `11` | Array length is always highest index + 1 |
-
+⚠️ Most candidates forget `sort()` and `reverse()` mutate!
 
 ---
 
-### Most common array method questions
-🔥 Frequency: 🟡 70%
-
-✅ Holy trinity of iteration:
+### Holy trinity of iteration
 ```javascript
 [1,2,3]
- .map(x => x * 2)                         // [2,4,6] Transform
- .filter(x => x > 3)                      // [4,6] Select
- .reduce((sum, n) => sum + n, 0);         // 10 Aggregate
+ .map(x => x * 2)            // [2,4,6]
+ .filter(x => x > 3)         // [4,6]
+ .reduce((sum, n) => sum + n, 0); // 10
 ```
 
 ⚠️ `sort()` pitfall:
 ```javascript
-[40, 100, 2].sort()                      // [100, 2, 40] ❌ Default string sort
-[40, 100, 2].sort((a,b) => a - b)        // [2, 40, 100] ✅ Correct numeric sort
+[40, 100, 2].sort()              // [100, 2, 40] ❌ string sort
+[40, 100, 2].sort((a,b) => a-b) // [2, 40, 100] ✅ numeric sort
 ```
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 📌 TOPIC 6: Operators
+## <a id="s2-topic6"></a>📌 TOPIC 6: Operators
 
+### ❓ Question: `==` vs `===`?
+🔥 Frequency: 🟢 99%  
+✅ `==` coerces types first. `===` checks value AND type. Always use `===`.
 
 ---
 
-### ❓ Question: What is the difference between `==` and `===` ?
+### ❓ Question: `||` vs `??`?
 🔥 Frequency: 🟢 99%
 
-✅ Standard accepted answer:
-- `==` loose equality: It will automatically convert both sides to the same type first, then compare only the value
-- `===` strict equality: It compares both value AND type. No automatic type conversion is performed.
-
-✅ Best Practice: Always use `===` in all code. The only widely accepted exception is `x == null` which conveniently checks for both null AND undefined in one operation.
-
-
----
-
-### ❓ Question: Famous trick question: What is the output and why?
-🔥 Frequency: 🟡 70%
-```javascript
-console.log([] == ![]);
-```
-
-🤯 Output: `true`
-
-✅ Correct Answer:
-This is the most famous demonstration of broken type coercion rules. This is exactly the reason we almost always avoid using `==`. The coercion rules produce completely unintuitive results that no reasonable developer would expect.
-
-
----
-
-### ❓ Question: What is the difference between `||` and `??` operators?
-🔥 Frequency: 🟢 99%
-> Most asked operator question added after ES2020
-
-✅ Correct Answer:
-- `||` OR operator falls back on ANY falsy value: `false`, `0`, `""`, `NaN`, `null`, `undefined`
-- `??` Nullish coalescing operator falls back ONLY on `null` and `undefined`
-
-Direct comparison:
-| Code | `||` result | `??` result |
+| Code | `\|\|` | `??` |
 |---|---|---|
-| `0 || 10` | `10` | `0` |
-| `"" || "default"` | `"default"` | `""` |
-| `false || true` | `true` | `false` |
-| `null || 10` | `10` | `10` |
-
-✅ Best Practice: Use `??` for default values. Use `||` only when you explicitly want to fallback on empty string, zero and false.
-
+| `0 \|\| 10` | `10` | `0` |
+| `"" \|\| "x"` | `"x"` | `""` |
+| `null \|\| 10` | `10` | `10` |
 
 ---
 
-### ❓ Question: Explain increment operator behavior on non numeric values
-🔥 Frequency: 🟡 70%
+### ❓ Question: `[] == ![]` output?
+🔥 Frequency: 🟡 70%  
+🤯 Output: `true` — most famous broken coercion example.
 
-✅ Rule: `++` and `--` always convert the value to number first. Also you can only increment variables, not literals.
-
-| Code | Output |
-|---|---|
-| ```let x = null; x++;``` | `1` |
-| ```let x = true; x++;``` | `2` |
-| ```let x = false; x++;``` | `1` |
-| ```let x = "5"; x++;``` | `6` |
-| ```let x = undefined; x++;``` | `NaN` |
-| ```null++``` | SyntaxError |
-
-✅ Best Practice: Never ever use the increment operator on non numeric values in real code. This feature exists only for interview trick questions.
-
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-### ❓ Question: What is the difference between prefix `++` and postfix `++` ?
-🔥 Frequency: 🟡 70%
-
-✅ Correct Answer:
-```javascript
-let a = 5;
-console.log(a++); // 5  -> Postfix: returns old value first, then increments
-console.log(a);   // 6
-
-let b = 5;
-console.log(++b); // 6  -> Prefix: increments first, then returns new value
-console.log(b);   // 6
-```
-
+## <a id="s2-topic7"></a>📌 TOPIC 7: Comments
+🔥 Frequency: 🟠 40%  
+✅ `//` single line, `/* */` multi-line, `/** */` JSDoc. Explain WHY not WHAT. No dead code.
 
 ---
 
-### ❓ Question: Explain short circuit behavior of logical operators
-🔥 Frequency: 🟡 70%
+## <a id="s2-topic8"></a>📌 TOPIC 8: JS Pros/Cons
+🔥 Frequency: 🟡 70%  
+✅ **Pros**: Everywhere/ecosystem/async. **Cons**: Typing(TS)/coerce(`===`)/thread(Workers).
 
-✅ Correct Answer:
-- `&&` stops evaluation immediately as soon as it finds the first falsy value
-- `||` stops evaluation immediately as soon as it finds the first truthy value
-
-Code example:
-```javascript
-false && console.log("This will never run");
-true || console.log("This will never run");
-```
-
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 📌 TOPIC 7: Comments
-### ❓ Question: Types and best practice?
-🔥 Frequency: 🟠 40%
-✅ **// /** /* */ /**JSDoc */**. WHY not WHAT. No dead code/JSDoc types.
+## <a id="s2-never-say"></a>❌ Answers You Should Never Give In An Interview
 
-## 📌 TOPIC 8: JS Pros/Cons
-### ❓ Question: Top pros/cons + fixes?
-🔥 Frequency: 🟡 70%
-✅ **Pros**: Everywhere/ecosystem/async. **Cons**: Typing(TS)/coerce(===)/thread(Workers).
-
----
-
-## ❌ Answers You Should Never Give In An Interview
-These are extremely common wrong answers that will immediately get you rejected:
 1. ❌ "let and const are not hoisted"
 2. ❌ "const makes objects immutable"
 3. ❌ "`==` is always evil and has zero valid use cases"
 4. ❌ "Arrays are not objects"
 5. ❌ "JavaScript is purely interpreted"
 
+<a href="#section-2-toc">⬅ Back to TOC</a> | <a href="#section-2-top">⬆ Back to Top</a>
 
 ---
 
-## 🔥 TOP 20 Interview Questions Mega-Cheat Sheet
-Drill these until you can answer them instantly:
+## <a id="s2-top20"></a>🔥 TOP 20 Interview Questions Mega-Cheat Sheet
 
-1. Hoisting `var/let` output? → `undefined` / ReferenceError
-2. Loop setTimeout fix? → use `let`
-3. const mutate objects? → Yes
-4. `typeof null`? → `"object"` ancient bug
-5. `[] == false`? → true
-6. Complete list of falsy values? → 6 items
-7. Correct numeric array sort? → `.sort((a,b) => a-b)`
-8. `let n=null; n++`? → 1
-9. Array check? → `Array.isArray()`
-10. `||` vs `??` on 0? → `??` preserves 0
-11. Global `let` on window? → No
-12. TDZ definition? → `let/const` pre-declaration zone
-13. `NaN === NaN`? → false
-14. `at(-1)` use? → Get last array element
-15. Which methods mutate array? → push / sort / reverse / splice
-16. `x == null` checks for? → both null AND undefined
-17. Closure counter pattern? → return inner function
-18. Variable shadowing? → inner blocks hide outer variables
-19. `var` scope rule? → function scope only
-20. Function expression vs declaration hoisting? → only declarations are fully hoisted
-
-
----
-
-> 🎯 Final Note:
-> If you can confidently answer every single question on this page, you will get 100% of the points for Section 2 topics in any JavaScript interview. There are no other common questions on these topics.
+| # | Question | Answer |
+|---|---|---|
+| 1 | Hoisting `var/let` output? | `undefined` / ReferenceError |
+| 2 | Loop setTimeout fix? | use `let` |
+| 3 | const mutate objects? | Yes |
+| 4 | `typeof null`? | `"object"` ancient bug |
+| 5 | `[] == false`? | true |
+| 6 | Complete falsy values list? | 6 items |
+| 7 | Correct numeric array sort? | `.sort((a,b) => a-b)` |
+| 8 | `let n=null; n++`? | 1 |
+| 9 | Array check? | `Array.isArray()` |
+| 10 | `\|\|` vs `??` on 0? | `??` preserves 0 |
+| 11 | Global `let` on window? | No |
+| 12 | TDZ definition? | `let/const` pre-declaration zone |
+| 13 | `NaN === NaN`? | false |
+| 14 | `at(-1)` use? | Get last element |
+| 15 | Which methods mutate array? | push/sort/reverse/splice |
+| 16 | `x == null` checks for? | both null AND undefined |
+| 17 | Closure counter pattern? | return inner function |
+| 18 | Variable shadowing? | inner blocks hide outer vars |
+| 19 | `var` scope rule? | function scope only |
+| 20 | Function expression vs declaration? | only declarations are fully hoisted |
 
 ---
+
+> 🎯 **Final Note**: Master every question on this page and you will score 100% on Section 2 topics in any JavaScript interview.
+
+<a href="#section-2-top">⬆ Back to Top</a> | <a href="#section-2-toc">⬅ Back to TOC</a>
