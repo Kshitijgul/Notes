@@ -1,13 +1,8 @@
+<a id="top"></a>
 
+# 📘 Section 5: Functions in JavaScript
 
-<a name="top"></a>
-
-# 📘 Section 5: Functions in JavaScript — The Complete Bible
-
-> **Complete Interview-Focused Guide with Examples, Diagrams, Programs & Real-World Use Cases**
-> **Akshay Saini Style | Deep Technical Analysis | Interview Mastery Edition**
-
-> ⚠️ **Disclaimer:** Functions are the **heart and soul** of JavaScript. If you don't understand functions deeply — execution context, closures, hoisting behavior, `this` binding — you will struggle with every advanced JS concept. This guide covers **everything** with **runnable programs**, **mermaid diagrams**, and **interview-ready explanations**.
+> **Complete Interview-Focused Guide with Examples, Diagrams & Use Cases**
 
 ---
 
@@ -15,68 +10,46 @@
 
 | #  | Topic |
 |----|-------|
-| 1  | [Function Invocation & Variable Environment](#1-function-invocation--variable-environment) |
-| 2  | [Function Declaration](#2-function-declaration) |
-| 3  | [Parameter Function (Function with Parameters)](#3-parameter-function) |
-| 4  | [Arrow Functions](#4-arrow-functions) |
-| 5  | [How Many Ways to Write a Function](#5-how-many-ways-to-write-a-function) |
-| 6  | [Higher Order Functions](#6-higher-order-functions) |
-| 7  | [Anonymous Functions](#7-anonymous-functions) |
-| 8  | [Function Callback Parameter](#8-function-callback-parameter) |
-| 9  | [Passing Function Inside Function as Parameter](#9-passing-function-inside-function-as-parameter) |
-| 10 | [Call by Value and Call by Reference](#10-call-by-value-and-call-by-reference) |
-| 11 | [Closures](#11-closures) |
-| 12 | [Pure Functions & Side Effects](#12-pure-functions--side-effects) |
-| 13 | [Recursion](#13-recursion) |
-| 14 | [The `this` Keyword in Functions (call, apply, bind)](#14-the-this-keyword-in-functions) |
-| 15 | [Function Currying & Partial Application](#15-function-currying--partial-application) |
-| 16 | [IIFE — Immediately Invoked Function Expressions](#16-iife) |
-| 17 | [Generators & Iterators](#17-generators--iterators) |
-| 18 | [Async Functions & Async Patterns](#18-async-functions--async-patterns) |
-| 19 | [Garbage Collection & Memory Leaks in Functions](#19-garbage-collection--memory-leaks) |
-| 20 | [Interview Questions Cheat Sheet](#20-interview-questions-cheat-sheet) |
+| 1  | <a href="#1">Function Invocation & Variable Environment</a> |
+| 2  | <a href="#2">Function Declaration</a> |
+| 3  | <a href="#3">Parameter Function (Function with Parameters)</a> |
+| 4  | <a href="#4">Arrow Functions</a> |
+| 5  | <a href="#5">How Many Ways to Write a Function</a> |
+| 6  | <a href="#6">Higher Order Functions</a> |
+| 7  | <a href="#7">Anonymous Functions</a> |
+| 8  | <a href="#8">Function Callback Parameter</a> |
+| 9  | <a href="#9">Passing Function Inside Function as Parameter</a> |
+| 10 | <a href="#10">Call by Value and Call by Reference</a> |
+| 11 | <a href="#11">Closures</a> |
+| 12 | <a href="#12">Pure Functions & Side Effects</a> |
+| 13 | <a href="#13">Recursion</a> |
+| 14 | <a href="#14">The this Keyword in Functions (call, apply, bind)</a> |
+| 15 | <a href="#15">Function Currying & Partial Application</a> |
+| 16 | <a href="#16">IIFE — Immediately Invoked Function Expressions</a> |
+| 17 | <a href="#17">Generators & Iterators</a> |
+| 18 | <a href="#18">Async Functions & Async Patterns</a> |
+| 19 | <a href="#19">Garbage Collection & Memory Leaks in Functions</a> |
+| 20 | <a href="#20">Interview Questions Cheat Sheet</a> |
 
 ---
 
-<a name="1-function-invocation--variable-environment"></a>
+<a id="1"></a>
 
 ## 1. 🚀 Function Invocation & Variable Environment
 
 ### What is Function Invocation?
 
-> **Definition:** Function Invocation (or function call) is the process of **executing** a function. When a function is invoked, JavaScript creates a brand new **Execution Context** for that function.
+**Function Invocation** (or function call) is the process of **executing** a function. When a function is invoked, JavaScript creates a brand new **Execution Context** for that function.
 
-> 💡 **Apni Bhasha Mein:** Jab bhi tum koi function call karte ho — `myFunc()` — toh JS engine ek nayi "duniya" banata hai sirf us function ke liye. Us duniya mein uski apni variables hoti hain, apna memory space hota hai. Jab function khatam hota hai, woh duniya destroy ho jaati hai.
+> 💡 **Interview Tip:** Every time a function is invoked in JavaScript, a new execution context is created and pushed onto the **Call Stack**.
 
 ### What is Variable Environment?
 
-> **Definition:** The **Variable Environment** is the local memory space of an execution context where **variables** and **function references** declared inside that function are stored.
-
-```
-╔══════════════════════════════════════════════════════════════╗
-║               EXECUTION CONTEXT STRUCTURE                    ║
-╠══════════════════════════════════════════════════════════════╣
-║                                                              ║
-║   ┌──────────────────────┐  ┌─────────────────────────────┐ ║
-║   │  MEMORY COMPONENT    │  │  CODE COMPONENT             │ ║
-║   │  (Variable Env.)     │  │  (Thread of Execution)      │ ║
-║   │                      │  │                             │ ║
-║   │  key : value pairs   │  │  Executes line by line      │ ║
-║   │  x : undefined → 10  │  │  ─────────────────         │ ║
-║   │  fn : {full body}    │  │  Line 1: var x = 10;       │ ║
-║   │                      │  │  Line 2: fn();             │ ║
-║   └──────────────────────┘  └─────────────────────────────┘ ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-```
+The **Variable Environment** is the local memory space of an execution context where **variables** and **function references** declared inside that function are stored.
 
 ### How It Works — Step by Step
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Function Invocation & Variable Environment
-// ═══════════════════════════════════════════════
-
 var x = 1;
 a();
 b();
@@ -106,63 +79,42 @@ function b() {
 
 ```mermaid
 flowchart TD
-    A["🟢 Global Execution Context Created"] --> B["Memory Phase Begins"]
-    B --> C["x → undefined"]
-    B --> D["a → entire function body stored"]
-    B --> E["b → entire function body stored"]
-    B --> F["Memory Phase Complete"]
-    
-    F --> G["Code Execution Phase Begins"]
-    G --> H["Line 1: x = 1 — replaces undefined with 1"]
-    H --> I["Line 2: a() called — NEW Execution Context pushed"]
-    I --> J["Inside a(): Memory Phase → x = undefined"]
-    J --> K["Inside a(): Code Phase → x = 10, console.log(10)"]
-    K --> L["a() EC destroyed and popped from Call Stack"]
-    L --> M["Line 3: b() called — NEW Execution Context pushed"]
-    M --> N["Inside b(): Memory Phase → x = undefined"]
-    N --> O["Inside b(): Code Phase → x = 100, console.log(100)"]
-    O --> P["b() EC destroyed and popped from Call Stack"]
-    P --> Q["Line 4: console.log(x) → prints 1 from Global EC"]
-    Q --> R["🔴 GEC destroyed, Call Stack empty"]
-    
+    A["🟢 Global Execution Context Created"] --> B["Memory Phase"]
+    B --> C["x : undefined"]
+    B --> D["a : whole function code"]
+    B --> E["b : whole function code"]
+
     style A fill:#4CAF50,color:white
-    style I fill:#E91E63,color:white
-    style M fill:#E91E63,color:white
-    style R fill:#f44336,color:white
+    style B fill:#2196F3,color:white
+    style C fill:#FF9800,color:white
+    style D fill:#FF9800,color:white
+    style E fill:#FF9800,color:white
 ```
 
-#### Memory Snapshot Table at Each Stage
+| Variable | Value in Memory |
+|----------|----------------|
+| `x`      | `undefined`     |
+| `a`      | `{...}` (entire function code) |
+| `b`      | `{...}` (entire function code) |
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  STAGE 1: After Memory Phase (before any code runs)         │
-├──────────────┬──────────────────────────────────────────────┤
-│  Variable    │  Value in Memory                             │
-├──────────────┼──────────────────────────────────────────────┤
-│  x           │  undefined                                   │
-│  a           │  function a() { var x = 10; console.log(x) } │
-│  b           │  function b() { var x = 100; console.log(x) }│
-└──────────────┴──────────────────────────────────────────────┘
+#### Phase 2: Code Execution Phase
 
-┌─────────────────────────────────────────────────────────────┐
-│  STAGE 2: After x = 1 executes                              │
-├──────────────┬──────────────────────────────────────────────┤
-│  x           │  1                                           │
-│  a           │  function a() { ... }                        │
-│  b           │  function b() { ... }                        │
-└──────────────┴──────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A["Code Execution Starts"] --> B["Line 1: x = 1"]
+    B --> C["Line 2: a invoked → New Execution Context"]
+    C --> D["Inside a: x = 10, console.log 10"]
+    D --> E["a EC destroyed, popped from Call Stack"]
+    E --> F["Line 3: b invoked → New Execution Context"]
+    F --> G["Inside b: x = 100, console.log 100"]
+    G --> H["b EC destroyed, popped from Call Stack"]
+    H --> I["Line 4: console.log x → prints 1 Global x"]
+    I --> J["GEC destroyed, popped from Call Stack"]
 
-┌─────────────────────────────────────────────────────────────┐
-│  STAGE 3: Inside a() — a()'s OWN Execution Context          │
-├──────────────┬──────────────────────────────────────────────┤
-│  x (local)   │  undefined → 10                              │
-└──────────────┴──────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────────────┐
-│  STAGE 4: Inside b() — b()'s OWN Execution Context          │
-├──────────────┬──────────────────────────────────────────────┤
-│  x (local)   │  undefined → 100                             │
-└──────────────┴──────────────────────────────────────────────┘
+    style A fill:#4CAF50,color:white
+    style C fill:#E91E63,color:white
+    style F fill:#E91E63,color:white
+    style J fill:#f44336,color:white
 ```
 
 ### 📦 Call Stack Visualization
@@ -173,146 +125,37 @@ flowchart TB
         direction TB
         S1["GEC"]
     end
-    
-    subgraph Step2["Step 2: a() called"]
+
+    subgraph Step2["Step 2: a called"]
         direction TB
-        S2A["a() EC ← TOP"]
+        S2A["a EC"]
         S2B["GEC"]
+        S2A --> S2B
     end
-    
-    subgraph Step3["Step 3: a() finishes"]
+
+    subgraph Step3["Step 3: a finishes"]
         direction TB
-        S3["GEC ← TOP"]
+        S3["GEC"]
     end
-    
-    subgraph Step4["Step 4: b() called"]
+
+    subgraph Step4["Step 4: b called"]
         direction TB
-        S4A["b() EC ← TOP"]
+        S4A["b EC"]
         S4B["GEC"]
+        S4A --> S4B
     end
-    
-    subgraph Step5["Step 5: b() finishes"]
+
+    subgraph Step5["Step 5: b finishes"]
         direction TB
-        S5["GEC ← TOP"]
+        S5["GEC"]
     end
-    
+
     subgraph Step6["Step 6: Program ends"]
         direction TB
         S6["Empty Stack"]
     end
-    
+
     Step1 ==> Step2 ==> Step3 ==> Step4 ==> Step5 ==> Step6
-```
-
-### Program: Nested Function Invocation
-
-```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Nested Function Calls — Deep Call Stack
-// ═══════════════════════════════════════════════
-
-var globalVar = "I am global";
-
-function first() {
-    var firstVar = "I am first";
-    console.log("1:", globalVar);   // "I am global"
-    console.log("2:", firstVar);    // "I am first"
-    second();
-}
-
-function second() {
-    var secondVar = "I am second";
-    console.log("3:", globalVar);   // "I am global"
-    // console.log(firstVar);       // ❌ ReferenceError — not in scope
-    console.log("4:", secondVar);   // "I am second"
-    third();
-}
-
-function third() {
-    var thirdVar = "I am third";
-    console.log("5:", globalVar);   // "I am global"
-    console.log("6:", thirdVar);    // "I am third"
-}
-
-first();
-console.log("7:", globalVar);      // "I am global"
-```
-
-**Output:**
-```
-1: I am global
-2: I am first
-3: I am global
-4: I am second
-5: I am global
-6: I am third
-7: I am global
-```
-
-**Call Stack at deepest point (when third() is running):**
-```
-┌─────────────────┐
-│   third() EC    │ ← TOP
-├─────────────────┤
-│   second() EC   │
-├─────────────────┤
-│   first() EC    │
-├─────────────────┤
-│   Global EC     │
-└─────────────────┘
-```
-
-### Program: Return Values & Execution Context
-
-```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: How Return Values Flow Through Call Stack
-// ═══════════════════════════════════════════════
-
-function square(num) {
-    var result = num * num;
-    return result;
-}
-
-function sumOfSquares(a, b) {
-    var sq1 = square(a);    // New EC created, returns 16
-    var sq2 = square(b);    // New EC created, returns 25
-    var total = sq1 + sq2;
-    return total;
-}
-
-var answer = sumOfSquares(4, 5);
-console.log("Sum of squares:", answer);  // 41
-```
-
-```mermaid
-sequenceDiagram
-    participant GEC as Global EC
-    participant SOS as sumOfSquares() EC
-    participant SQ1 as square(4) EC
-    participant SQ2 as square(5) EC
-    
-    GEC->>SOS: Call sumOfSquares(4, 5)
-    Note over SOS: a=4, b=5, sq1=undefined, sq2=undefined, total=undefined
-    
-    SOS->>SQ1: Call square(4)
-    Note over SQ1: num=4, result=undefined
-    Note over SQ1: result = 4*4 = 16
-    SQ1-->>SOS: return 16
-    Note over SOS: sq1 = 16
-    Note over SQ1: EC destroyed ❌
-    
-    SOS->>SQ2: Call square(5)
-    Note over SQ2: num=5, result=undefined
-    Note over SQ2: result = 5*5 = 25
-    SQ2-->>SOS: return 25
-    Note over SOS: sq2 = 25
-    Note over SQ2: EC destroyed ❌
-    
-    Note over SOS: total = 16 + 25 = 41
-    SOS-->>GEC: return 41
-    Note over GEC: answer = 41
-    Note over SOS: EC destroyed ❌
 ```
 
 ### 🔑 Key Concepts for Interviews
@@ -324,121 +167,53 @@ sequenceDiagram
 | **Thread of Execution** | The code component — JS executes one line at a time |
 | **Call Stack** | Manages the order of execution contexts (LIFO) |
 | **GEC** | Global Execution Context — created when program starts |
-| **Scope** | Each EC has its own scope — variables are local |
 
-### ❓ Interview Questions
+### ❓ Interview Question
 
-**Q1: What will be the output and why?**
+**Q: What will be the output and why?**
 
 ```javascript
 var x = 1;
 
 function a() {
-    console.log(x);
+    console.log(x); // What prints here?
     var x = 10;
 }
 
 a();
 ```
 
-<details>
-<summary>🔍 Click to see Answer</summary>
-
-**Answer:** `undefined`
-
-**Why?** Due to **hoisting**, `var x` inside `a()` is hoisted to the top of `a()`'s execution context. During the memory phase of `a()`'s EC, `x` is set to `undefined`. When `console.log(x)` runs, it finds `x` in its own local variable environment as `undefined` (it hasn't reached the assignment yet).
+**Answer:** `undefined`  
+**Why?** Due to **hoisting**, `var x` inside `a()` is hoisted to the top of `a()`'s execution context. During the memory phase of `a()`'s EC, `x` is set to `undefined`. When `console.log(x)` runs, it finds `x` in its own local variable environment as `undefined`.
 
 ```mermaid
 flowchart LR
-    A["a() EC Created"] --> B["Memory Phase: local x = undefined"]
-    B --> C["Code Phase: console.log(x) → undefined"]
-    C --> D["x = 10 — too late, already printed"]
-```
-
-The local `x` **shadows** the global `x = 1`. JS doesn't look at the global scope because it found an `x` in the local scope already.
-
-</details>
-
----
-
-**Q2: What is the output?**
-
-```javascript
-function outer() {
-    var a = 10;
-    inner();
-    
-    function inner() {
-        console.log(a);
-    }
-}
-
-outer();
-```
-
-<details>
-<summary>🔍 Click to see Answer</summary>
-
-**Answer:** `10`
-
-**Why?** `inner()` doesn't have its own `a`, so it looks up the **scope chain** to `outer()`'s variable environment and finds `a = 10`. This is the lexical scope in action.
-
-</details>
-
----
-
-**Q3: What happens to the Execution Context after a function returns?**
-
-<details>
-<summary>🔍 Click to see Answer</summary>
-
-**Answer:** When a function finishes execution (either reaches a `return` statement or the end of the function body), its Execution Context is **destroyed** (popped from the call stack). All local variables are eligible for **garbage collection** — UNLESS a closure still references them.
-
-</details>
-
----
-
-### Use Case: Understanding Variable Isolation
-
-```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Each function call gets its OWN variable
-// This is crucial for recursion, counters, etc.
-// ═══════════════════════════════════════════════
-
-function counter(label) {
-    var count = 0;
-    
-    function increment() {
-        count++;
-        console.log(`${label}: ${count}`);
-    }
-    
-    increment();
-    increment();
-    increment();
-}
-
-counter("First");   // First: 1, First: 2, First: 3
-counter("Second");  // Second: 1, Second: 2, Second: 3
-// Each call to counter() creates a FRESH 'count' variable
+    A["a EC Created"] --> B["Memory Phase: x = undefined"]
+    B --> C["Code Phase: console.log x → undefined"]
+    C --> D["x = 10 too late"]
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="2-function-declaration"></a>
+<a id="2"></a>
 
 ## 2. 📝 Function Declaration
 
 ### What is a Function Declaration?
 
-> **Definition:** A **Function Declaration** (also called **Function Statement**) is the most traditional way to define a function in JavaScript using the `function` keyword followed by a name.
+A **Function Declaration** (also called **Function Statement**) is the most traditional way to define a function in JavaScript using the `function` keyword.
 
-> **Apni Bhasha Mein:** Function declaration woh tarika hai jahan tum `function` keyword likhte ho, usse ek naam dete ho, aur uske andar code likhte ho. Iska sabse bada fayda yeh hai ki yeh **hoisted** hota hai — matlab tum isse define karne se PEHLE bhi call kar sakte ho.
+```javascript
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet("Rahul")); // Hello, Rahul!
+```
 
 ### Syntax
 
@@ -449,392 +224,142 @@ function functionName(parameter1, parameter2, ...) {
 }
 ```
 
-### Program: Function Declaration Basics
-
-```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Function Declaration — Complete Demo
-// ═══════════════════════════════════════════════
-
-// ── 1. Basic function declaration ──
-function greet(name) {
-    return `Hello, ${name}!`;
-}
-console.log(greet("Rahul")); // Hello, Rahul!
-
-// ── 2. Function without return (returns undefined) ──
-function logMessage(msg) {
-    console.log("LOG:", msg);
-    // no return statement
-}
-var result = logMessage("Testing");
-console.log("Return value:", result); // Return value: undefined
-
-// ── 3. Function with multiple returns ──
-function getGrade(score) {
-    if (score >= 90) return "A+";
-    if (score >= 80) return "A";
-    if (score >= 70) return "B";
-    if (score >= 60) return "C";
-    return "F";
-}
-console.log(getGrade(85)); // A
-console.log(getGrade(55)); // F
-
-// ── 4. Function that modifies nothing (pure) ──
-function add(a, b) {
-    return a + b;
-}
-
-// ── 5. Function that has side effects ──
-var total = 0;
-function addToTotal(amount) {
-    total += amount;  // Side effect: modifies external variable
-}
-addToTotal(10);
-addToTotal(20);
-console.log(total); // 30
-```
-
 ### 🔑 Key Characteristics
 
-```
-╔═══════════════════════════════════════════════════════════════╗
-║            FUNCTION DECLARATION CHARACTERISTICS               ║
-╠═══════════════════════════════════════════════════════════════╣
-║                                                               ║
-║  ✅ Hoisted          → Can be called BEFORE declaration       ║
-║  ✅ Named            → Always has a name                      ║
-║  ✅ Has own 'this'   → 'this' depends on how it's called     ║
-║  ✅ Has 'arguments'  → Array-like object of all arguments    ║
-║  ✅ Can be Constructor → Can use with 'new' keyword          ║
-║  ✅ Has 'prototype'  → Has a prototype property              ║
-║  ✅ Can be Generator  → Can use function* syntax             ║
-║                                                               ║
-╚═══════════════════════════════════════════════════════════════╝
-```
+| Feature | Description |
+|---------|-------------|
+| **Hoisted** | ✅ Yes — Can be called before declaration |
+| **Named** | ✅ Always has a name |
+| **`this` binding** | Has its own `this` |
+| **`arguments` object** | ✅ Available |
+| **Constructor** | ✅ Can be used with `new` |
 
-### Hoisting Behavior — Deep Dive
+### Hoisting Behavior
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Function Declaration Hoisting Proof
-// ═══════════════════════════════════════════════
-
-// ── Calling BEFORE declaration ──
-console.log(sayHello());       // ✅ "Hello!"
-console.log(multiply(4, 5));   // ✅ 20
-console.log(typeof sayHello);  // ✅ "function"
+// ✅ This works! Function declarations are hoisted
+sayHello(); // Output: "Hello!"
 
 function sayHello() {
-    return "Hello!";
+    console.log("Hello!");
 }
-
-function multiply(a, b) {
-    return a * b;
-}
-
-// WHY does this work?
-// During Phase 1 (Memory Creation), the JS engine:
-// 1. Finds "function sayHello" → stores ENTIRE function body in memory
-// 2. Finds "function multiply" → stores ENTIRE function body in memory
-// 3. Before Phase 2 even starts, these functions are ready to use
 ```
 
 ```mermaid
 flowchart TD
-    A["Phase 1: Memory Creation"] --> B["JS scans entire code"]
-    B --> C["Finds: function sayHello()"]
-    C --> D["Stores: sayHello → complete function body in memory"]
-    B --> E["Finds: function multiply()"]
-    E --> F["Stores: multiply → complete function body in memory"]
-    
-    G["Phase 2: Code Execution"] --> H["Line: sayHello() → Already in memory ✅"]
-    H --> I["Line: multiply(4,5) → Already in memory ✅"]
-    
-    style D fill:#4CAF50,color:white
-    style F fill:#4CAF50,color:white
-    style H fill:#2196F3,color:white
-    style I fill:#2196F3,color:white
+    A["Memory Creation Phase"] --> B["sayHello: stores entire function body"]
+    B --> C["Code Execution Phase"]
+    C --> D["sayHello → works because function is already in memory"]
+
+    style A fill:#4CAF50,color:white
+    style D fill:#2196F3,color:white
 ```
 
-### Function Declaration vs Function Expression — The Critical Difference
+### Real-World Use Case
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Declaration vs Expression — Head to Head
-// ═══════════════════════════════════════════════
-
-// ── Function Declaration ──
-console.log(foo()); // ✅ "foo called"
-
-function foo() {
-    return "foo called";
+function calculateTax(amount, taxRate) {
+    if (amount <= 0) return 0;
+    return amount * (taxRate / 100);
 }
 
-// ── Function Expression ──
-try {
-    console.log(bar()); // ❌ TypeError: bar is not a function
-} catch (e) {
-    console.log("Error:", e.message);
+function formatCurrency(amount) {
+    return `₹${amount.toFixed(2)}`;
 }
 
-var bar = function() {
-    return "bar called";
-};
-
-console.log(bar()); // ✅ "bar called" (now it works)
-```
-
-```mermaid
-flowchart TD
-    subgraph Declaration["Function Declaration"]
-        A1["Phase 1: foo → {entire function body}"] --> A2["Phase 2: foo() → ✅ Works!"]
-    end
-    
-    subgraph Expression["Function Expression"]
-        B1["Phase 1: bar → undefined"] --> B2["Phase 2: bar() → ❌ undefined is not a function"]
-        B2 --> B3["Later: bar = function(){...}"]
-        B3 --> B4["Now: bar() → ✅ Works!"]
-    end
-    
-    style A2 fill:#4CAF50,color:white
-    style B2 fill:#f44336,color:white
-    style B4 fill:#4CAF50,color:white
-```
-
-| Feature | Declaration | Expression |
-|---------|------------|------------|
-| Hoisting | Entire function hoisted | Only variable hoisted (as `undefined`) |
-| Can call before definition | ✅ Yes | ❌ No (TypeError) |
-| Name | Required | Optional (can be anonymous) |
-| Use in conditionals | ⚠️ Inconsistent across engines | ✅ Safe |
-
-### Real-World Use Case: Code Organization
-
-```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Top-Down Readable Code Using Hoisting
-// ═══════════════════════════════════════════════
-
-// === MAIN LOGIC (What the program does) ===
-function main() {
-    const users = getUsers();
-    const activeUsers = filterActiveUsers(users);
-    const emailList = extractEmails(activeUsers);
-    sendNewsletter(emailList);
-}
-
-main();  // Entry point at the top — easy to understand
-
-// === HELPER FUNCTIONS (Implementation details) ===
-// These are defined AFTER main() but work because of hoisting!
-
-function getUsers() {
-    return [
-        { name: "Rahul", email: "rahul@gmail.com", active: true },
-        { name: "Priya", email: "priya@gmail.com", active: false },
-        { name: "Amit", email: "amit@gmail.com", active: true },
-    ];
-}
-
-function filterActiveUsers(users) {
-    return users.filter(user => user.active);
-}
-
-function extractEmails(users) {
-    return users.map(user => user.email);
-}
-
-function sendNewsletter(emails) {
-    emails.forEach(email => {
-        console.log(`📧 Newsletter sent to: ${email}`);
-    });
-}
-```
-
-**Output:**
-```
-📧 Newsletter sent to: rahul@gmail.com
-📧 Newsletter sent to: amit@gmail.com
+const price = 1000;
+const tax = calculateTax(price, 18);
+console.log(formatCurrency(tax)); // ₹180.00
 ```
 
 ### ❓ Interview Question
 
-**Q: Can you use a function declaration inside an if block?**
+**Q: What is the difference between Function Declaration and Function Expression?**
 
 ```javascript
-// ═══════════════════════════════════════════════
-// INTERVIEW: Function Declaration in Conditional Block
-// ═══════════════════════════════════════════════
+// Function Declaration
+function add(a, b) { return a + b; }
 
-// ⚠️ BEHAVIOR IS INCONSISTENT ACROSS ENGINES
-// Avoid this pattern!
+// Function Expression
+var add = function(a, b) { return a + b; };
+```
 
-if (true) {
-    function conditionalFunc() {
-        return "I exist!";
-    }
-}
+| Feature | Declaration | Expression |
+|---------|------------|------------|
+| Hoisting | Entire function hoisted | Only variable hoisted as `undefined` |
+| Call before definition | ✅ Yes | ❌ No (TypeError) |
+| Name | Required | Optional |
 
-// In some engines: conditionalFunc() works
-// In others: conditionalFunc is not defined
-// In strict mode: function is block-scoped
+```javascript
+foo(); // ✅ "foo called"
+bar(); // ❌ TypeError: bar is not a function
 
-// ✅ SAFER ALTERNATIVE: Use function expression
-let safeFunc;
-if (true) {
-    safeFunc = function() {
-        return "I definitely exist!";
-    };
-}
-console.log(safeFunc()); // "I definitely exist!"
+function foo() { console.log("foo called"); }
+var bar = function() { console.log("bar called"); };
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="3-parameter-function"></a>
+<a id="3"></a>
 
 ## 3. 🎯 Parameter Function (Functions with Parameters)
 
 ### Parameters vs Arguments
 
-> 💡 **Interview Tip:** This is a common "gotcha" question. **Parameters** are the variable names in the function definition. **Arguments** are the actual values passed when the function is called.
+> 💡 **Parameters** are variable names in the definition. **Arguments** are actual values passed at call time.
 
 ```javascript
-//         parameter ↓       ↓ parameter
+//         parameters ↓   ↓
 function add(a, b) {
     return a + b;
 }
-
-//     argument ↓   ↓ argument
+//    arguments ↓  ↓
 add(5, 10);
 ```
 
-```mermaid
-flowchart LR
-    subgraph Definition["Function Definition"]
-        A["function greet(name, age)"]
-        B["name & age are PARAMETERS"]
-        C["Placeholders / Variables"]
-    end
-    
-    subgraph Call["Function Call"]
-        D["greet('Rahul', 25)"]
-        E["'Rahul' & 25 are ARGUMENTS"]
-        F["Actual Values"]
-    end
-    
-    Definition -.->|"When called, arguments fill parameters"| Call
-    
-    style B fill:#4CAF50,color:white
-    style E fill:#2196F3,color:white
-```
+### Types of Parameters
 
-### All Types of Parameters — Complete Program
+#### 1. Default Parameters (ES6+)
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: All Parameter Types in JavaScript
-// ═══════════════════════════════════════════════
-
-// ──────────────────────────────────────────
-// TYPE 1: Simple Parameters
-// ──────────────────────────────────────────
-function simpleAdd(a, b) {
-    return a + b;
-}
-console.log("Simple:", simpleAdd(3, 5)); // 8
-
-// ──────────────────────────────────────────
-// TYPE 2: Default Parameters (ES6+)
-// ──────────────────────────────────────────
 function greet(name = "Guest", greeting = "Hello") {
-    return `${greeting}, ${name}!`;
+    console.log(`${greeting}, ${name}!`);
 }
 
-console.log(greet());                      // Hello, Guest!
-console.log(greet("Rahul"));              // Hello, Rahul!
-console.log(greet("Rahul", "Namaste"));   // Namaste, Rahul!
-console.log(greet(undefined, "Hi"));      // Hi, Guest! (undefined triggers default)
-console.log(greet(null, "Hi"));           // Hi, null! (null does NOT trigger default)
+greet();                    // Hello, Guest!
+greet("Rahul");            // Hello, Rahul!
+greet("Rahul", "Namaste"); // Namaste, Rahul!
+greet(undefined, "Hi");    // Hi, Guest!
+```
 
-// ──────────────────────────────────────────
-// TYPE 3: Default Parameters Referencing Other Parameters
-// ──────────────────────────────────────────
-function createBox(width, height = width, depth = width * height) {
-    return { width, height, depth };
-}
+#### 2. Rest Parameters (`...args`)
 
-console.log(createBox(5));       // { width: 5, height: 5, depth: 25 }
-console.log(createBox(5, 10));   // { width: 5, height: 10, depth: 50 }
-console.log(createBox(5, 10, 3)); // { width: 5, height: 10, depth: 3 }
-
-// ──────────────────────────────────────────
-// TYPE 4: Rest Parameters (...args) — ES6+
-// ──────────────────────────────────────────
+```javascript
 function sum(...numbers) {
     return numbers.reduce((total, num) => total + num, 0);
 }
 
-console.log(sum(1, 2, 3));           // 6
-console.log(sum(1, 2, 3, 4, 5));     // 15
-console.log(sum());                   // 0
+console.log(sum(1, 2, 3));       // 6
+console.log(sum(1, 2, 3, 4, 5)); // 15
 
-// Rest parameter MUST be the LAST parameter
 function logInfo(name, age, ...hobbies) {
-    console.log(`Name: ${name}`);
-    console.log(`Age: ${age}`);
+    console.log(`Name: ${name}, Age: ${age}`);
     console.log(`Hobbies: ${hobbies.join(", ")}`);
-    console.log(`Number of hobbies: ${hobbies.length}`);
 }
 
 logInfo("Rahul", 25, "coding", "reading", "gaming");
-// Name: Rahul
-// Age: 25
+// Name: Rahul, Age: 25
 // Hobbies: coding, reading, gaming
-// Number of hobbies: 3
+```
 
-// ──────────────────────────────────────────
-// TYPE 5: Destructured Parameters
-// ──────────────────────────────────────────
+#### 3. `arguments` Object (Pre-ES6)
 
-// Object destructuring
-function displayUser({ name, age, city = "Unknown" }) {
-    console.log(`${name}, ${age} from ${city}`);
-}
-
-const user = { name: "Rahul", age: 25, city: "Delhi" };
-displayUser(user);                                  // Rahul, 25 from Delhi
-displayUser({ name: "Priya", age: 22 });           // Priya, 22 from Unknown
-
-// Array destructuring
-function getFirstAndLast([first, ...rest]) {
-    const last = rest[rest.length - 1];
-    return { first, last };
-}
-
-console.log(getFirstAndLast([10, 20, 30, 40])); // { first: 10, last: 40 }
-
-// Nested destructuring
-function processConfig({ server: { host, port }, database: { name: dbName } }) {
-    console.log(`Server: ${host}:${port}`);
-    console.log(`Database: ${dbName}`);
-}
-
-processConfig({
-    server: { host: "localhost", port: 3000 },
-    database: { name: "myapp_db" }
-});
-
-// ──────────────────────────────────────────
-// TYPE 6: arguments Object (Pre-ES6)
-// ──────────────────────────────────────────
-function oldStyleSum() {
+```javascript
+function oldSum() {
     let total = 0;
     for (let i = 0; i < arguments.length; i++) {
         total += arguments[i];
@@ -842,619 +367,206 @@ function oldStyleSum() {
     return total;
 }
 
-console.log(oldStyleSum(1, 2, 3, 4)); // 10
-
-// Converting arguments to real array
-function argsToArray() {
-    // Method 1: Array.from
-    const arr1 = Array.from(arguments);
-    // Method 2: Spread
-    const arr2 = [...arguments];
-    // Method 3: Array.prototype.slice
-    const arr3 = Array.prototype.slice.call(arguments);
-    
-    console.log(arr1); // [1, 2, 3]
-}
-argsToArray(1, 2, 3);
+console.log(oldSum(1, 2, 3, 4)); // 10
 ```
 
-### arguments vs Rest Parameters
+> ⚠️ `arguments` is NOT a real array. Arrow functions do NOT have `arguments`.
 
-```
-╔══════════════════════════════════════════════════════════╗
-║         arguments OBJECT vs REST PARAMETERS             ║
-╠════════════════════════╦═════════════════════════════════╣
-║    arguments           ║    ...rest                      ║
-╠════════════════════════╬═════════════════════════════════╣
-║  Array-LIKE object     ║  Real Array                     ║
-║  No array methods      ║  Has all array methods          ║
-║  Available in regular  ║  Available everywhere           ║
-║  functions only        ║                                 ║
-║  ❌ NOT in arrow funcs ║  ✅ Works in arrow functions    ║
-║  Contains ALL args     ║  Contains only "rest" args     ║
-║  Legacy (pre-ES6)      ║  Modern (ES6+)                 ║
-╚════════════════════════╩═════════════════════════════════╝
-```
+#### 4. Destructured Parameters
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: arguments vs rest — Side by Side
-// ═══════════════════════════════════════════════
-
-// Using arguments
-function oldWay() {
-    console.log(typeof arguments);          // "object"
-    console.log(Array.isArray(arguments));   // false
-    // arguments.map(x => x * 2);           // ❌ TypeError: not a function
-    
-    // Must convert to array first
-    var arr = Array.from(arguments);
-    console.log(arr.map(x => x * 2));       // [2, 4, 6]
+function displayUser({ name, age, city = "Unknown" }) {
+    console.log(`${name}, ${age} from ${city}`);
 }
-oldWay(1, 2, 3);
 
-// Using rest
-function newWay(...args) {
-    console.log(typeof args);              // "object"
-    console.log(Array.isArray(args));       // true
-    console.log(args.map(x => x * 2));     // [2, 4, 6] — works directly!
+displayUser({ name: "Rahul", age: 25, city: "Delhi" }); // Rahul, 25 from Delhi
+
+function getFirstTwo([first, second]) {
+    return { first, second };
 }
-newWay(1, 2, 3);
 
-// Arrow function — NO arguments
-const arrowFunc = () => {
-    // console.log(arguments);  // ❌ ReferenceError
-};
-
-// Arrow function — rest works fine
-const arrowWithRest = (...args) => {
-    console.log(args);  // ✅ [1, 2, 3]
-};
-arrowWithRest(1, 2, 3);
+console.log(getFirstTwo([10, 20, 30])); // { first: 10, second: 20 }
 ```
 
-### What Happens with Missing/Extra Arguments?
+### Parameter Passing — Tricky Interview Scenario
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Missing and Extra Arguments
-// ═══════════════════════════════════════════════
-
-function example(a, b, c) {
-    console.log("a:", a, "| b:", b, "| c:", c);
+function test(a, b = a * 2, c = a + b) {
+    console.log(a, b, c);
 }
 
-// Fewer arguments than parameters
-example(1);              // a: 1 | b: undefined | c: undefined
-example(1, 2);           // a: 1 | b: 2 | c: undefined
-
-// Exact match
-example(1, 2, 3);        // a: 1 | b: 2 | c: 3
-
-// More arguments than parameters
-example(1, 2, 3, 4, 5);  // a: 1 | b: 2 | c: 3 (4 and 5 are ignored)
-                          // But accessible via 'arguments' object
-
-// Using function.length to check expected parameter count
-console.log(example.length);  // 3
-
-// Detecting missing arguments
-function safeDivide(a, b) {
-    if (typeof a === 'undefined' || typeof b === 'undefined') {
-        return "Error: Both arguments required";
-    }
-    if (b === 0) return "Error: Division by zero";
-    return a / b;
-}
-
-console.log(safeDivide(10, 2));    // 5
-console.log(safeDivide(10));       // "Error: Both arguments required"
-console.log(safeDivide(10, 0));    // "Error: Division by zero"
-```
-
-### Use Case: Flexible API Function
-
-```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Function with Options Object Pattern
-// (Common in real libraries like jQuery, Express, etc.)
-// ═══════════════════════════════════════════════
-
-function createServer(options = {}) {
-    const {
-        host = "localhost",
-        port = 3000,
-        protocol = "http",
-        timeout = 5000,
-        maxConnections = 100,
-        logging = false
-    } = options;
-    
-    console.log(`🚀 Server starting...`);
-    console.log(`   Protocol: ${protocol}`);
-    console.log(`   Host: ${host}`);
-    console.log(`   Port: ${port}`);
-    console.log(`   Timeout: ${timeout}ms`);
-    console.log(`   Max Connections: ${maxConnections}`);
-    console.log(`   Logging: ${logging ? "Enabled" : "Disabled"}`);
-    
-    return { host, port, protocol, timeout, maxConnections, logging };
-}
-
-// All defaults
-createServer();
-
-// Partial override
-createServer({ port: 8080, logging: true });
-
-// Full custom
-createServer({
-    host: "0.0.0.0",
-    port: 9000,
-    protocol: "https",
-    timeout: 10000,
-    maxConnections: 500,
-    logging: true
-});
+test(2);        // 2 4 6
+test(2, 3);     // 2 3 5
+test(2, 3, 4);  // 2 3 4
 ```
 
 ### ❓ Interview Question
 
-**Q: What happens when default parameter expression has side effects?**
+**Q: What happens when you pass more or fewer arguments than parameters?**
 
 ```javascript
-let counter = 0;
-
-function getId(id = ++counter) {
-    return id;
+function example(a, b, c) {
+    console.log(a, b, c);
 }
 
-console.log(getId());    // 1 (default used, counter incremented)
-console.log(getId());    // 2 (default used again)
-console.log(getId(100)); // 100 (default NOT used, counter NOT incremented)
-console.log(getId());    // 3 (default used)
-console.log(counter);    // 3
+example(1, 2);           // 1 2 undefined
+example(1, 2, 3, 4, 5);  // 1 2 3
 ```
 
-> 💡 Default parameter expressions are evaluated **at call time**, NOT at definition time. They only evaluate when the parameter is `undefined`.
+---
+
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-[⬆️ Go to Top](#top)
-
----
-
-<a name="4-arrow-functions"></a>
+<a id="4"></a>
 
 ## 4. ➡️ Arrow Functions (ES6)
 
 ### What are Arrow Functions?
 
-> **Definition:** Arrow functions are a **shorter syntax** for writing functions, introduced in ES6. They are always **anonymous** (though they can be assigned to named variables) and have several key differences from regular functions.
+Arrow functions are a **shorter syntax** for writing functions, always **anonymous**, with some key behavioral differences.
 
-> **Apni Bhasha Mein:** Arrow functions ek shortcut hai functions likhne ka. Lekin yeh sirf shortcut nahi hai — iska behavior bhi alag hai, khaaskar `this` keyword ke saath. Regular functions apna khud ka `this` banate hain, lekin arrow functions **baap ka this use karte hain** (lexical this).
-
-### All Syntax Variations
+### Syntax Variations
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Arrow Function Syntax — All Variations
-// ═══════════════════════════════════════════════
+// Full syntax
+const add = (a, b) => { return a + b; };
 
-// 1. Full syntax (block body with explicit return)
-const add = (a, b) => {
-    const result = a + b;
-    return result;
-};
-console.log(add(3, 5)); // 8
-
-// 2. Implicit return (single expression — no curly braces)
+// Implicit return
 const addShort = (a, b) => a + b;
-console.log(addShort(3, 5)); // 8
 
-// 3. Single parameter — parentheses optional
+// Single parameter
 const double = x => x * 2;
-console.log(double(5)); // 10
 
-// 4. No parameters — parentheses required
+// No parameters
 const greet = () => "Hello!";
-console.log(greet()); // "Hello!"
 
-// 5. Returning an object literal — MUST wrap in parentheses
+// Returning object literal — wrap in parentheses
 const createUser = (name, age) => ({ name, age });
 console.log(createUser("Rahul", 25)); // { name: 'Rahul', age: 25 }
-
-// ⚠️ Without parentheses, JS thinks {} is a block, not an object
-const broken = (name) => { name };     // Returns undefined!
-const working = (name) => ({ name });  // Returns { name: "Rahul" }
-
-// 6. Multiline with implicit return using grouping operator
-const getUser = (name) => (
-    {
-        name,
-        timestamp: Date.now(),
-        greeting: `Hello, ${name}!`
-    }
-);
-console.log(getUser("Rahul"));
-
-// 7. Arrow function in array methods
-const numbers = [1, 2, 3, 4, 5];
-const squared = numbers.map(n => n ** 2);
-console.log(squared); // [1, 4, 9, 16, 25]
-
-// 8. Arrow function with destructuring
-const getFullName = ({ firstName, lastName }) => `${firstName} ${lastName}`;
-console.log(getFullName({ firstName: "Rahul", lastName: "Kumar" })); // "Rahul Kumar"
-
-// 9. Arrow function with default values
-const power = (base, exponent = 2) => base ** exponent;
-console.log(power(3));    // 9
-console.log(power(3, 3)); // 27
-
-// 10. Arrow IIFE
-const result = (() => {
-    const x = 10;
-    const y = 20;
-    return x + y;
-})();
-console.log(result); // 30
 ```
 
-### ⚠️ Key Differences from Regular Functions — Deep Dive
+### ⚠️ Key Differences from Regular Functions
 
 ```mermaid
 flowchart TD
-    A["Arrow Functions vs Regular Functions"] --> B["1. 🎯 No own 'this'<br>(Lexical binding)"]
-    A --> C["2. 📦 No 'arguments' object"]
-    A --> D["3. 🏗️ Cannot be used as constructor<br>(No 'new')"]
-    A --> E["4. 🔗 No 'prototype' property"]
-    A --> F["5. ⚡ Cannot be generators<br>(No 'yield')"]
-    A --> G["6. 📍 No 'super' binding<br>(inherits from parent)"]
-    A --> H["7. 🏷️ Cannot have<br>duplicate named params<br>in any mode"]
-    
+    A["Arrow Functions vs Regular Functions"] --> B["No own this — Lexical this"]
+    A --> C["No arguments object"]
+    A --> D["Cannot be used as constructor"]
+    A --> E["No prototype property"]
+    A --> F["Cannot be used as generator"]
+
     style A fill:#E91E63,color:white
-    style B fill:#FF9800,color:white
+    style B fill:#4CAF50,color:white
     style C fill:#FF9800,color:white
     style D fill:#FF9800,color:white
     style E fill:#FF9800,color:white
+    style F fill:#FF9800,color:white
 ```
 
-### Difference 1: The `this` Problem — MOST IMPORTANT
+### The `this` Problem — Most Important Difference
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: The 'this' Difference — Complete Analysis
-// ═══════════════════════════════════════════════
-
-// ── SCENARIO 1: Object Method ──
-const person = {
+// ❌ Regular function — 'this' is undefined in strict or window in non-strict
+const person1 = {
     name: "Rahul",
-    
-    // Regular function: 'this' = the object calling it
-    regularGreet: function() {
-        console.log("Regular:", this.name);  // "Rahul" ✅
-    },
-    
-    // Arrow function: 'this' = lexical (from where it was DEFINED)
-    arrowGreet: () => {
-        console.log("Arrow:", this.name);    // undefined ❌
-        // 'this' here is the global/window object
-        // because the arrow function was defined in the global scope
-    }
-};
-
-person.regularGreet();  // "Rahul"
-person.arrowGreet();    // undefined
-
-// ── SCENARIO 2: Callback Inside Method ──
-const team = {
-    name: "Avengers",
-    members: ["Iron Man", "Thor", "Hulk"],
-    
-    // ❌ Problem with regular function as callback
-    showMembersBad: function() {
-        this.members.forEach(function(member) {
-            // 'this' is NOT 'team' here! It's window/undefined
-            console.log(`${this.name}: ${member}`);
-            // Output: "undefined: Iron Man" (or error in strict mode)
-        });
-    },
-    
-    // ✅ Solution with arrow function as callback
-    showMembersGood: function() {
-        this.members.forEach((member) => {
-            // Arrow function inherits 'this' from showMembersGood
-            // which is 'team'
-            console.log(`${this.name}: ${member}`);
-            // Output: "Avengers: Iron Man"
+    hobbies: ["coding", "reading"],
+    showHobbies: function() {
+        this.hobbies.forEach(function(hobby) {
+            console.log(`${this.name} likes ${hobby}`); // ❌ undefined likes coding
         });
     }
 };
 
-console.log("=== BAD (regular callback) ===");
-team.showMembersBad();
+// ✅ Arrow function — 'this' is inherited from parent scope
+const person2 = {
+    name: "Rahul",
+    hobbies: ["coding", "reading"],
+    showHobbies: function() {
+        this.hobbies.forEach((hobby) => {
+            console.log(`${this.name} likes ${hobby}`); // ✅ Rahul likes coding
+        });
+    }
+};
 
-console.log("=== GOOD (arrow callback) ===");
-team.showMembersGood();
+person2.showHobbies();
 ```
 
-**Output:**
-```
-=== BAD (regular callback) ===
-undefined: Iron Man
-undefined: Thor
-undefined: Hulk
-=== GOOD (arrow callback) ===
-Avengers: Iron Man
-Avengers: Thor
-Avengers: Hulk
-```
-
-```mermaid
-flowchart TD
-    subgraph Regular["Regular Function as Callback"]
-        R1["forEach calls function()"]
-        R2["'this' is determined by HOW it's called"]
-        R3["forEach calls it as a standalone function"]
-        R4["'this' = window/undefined ❌"]
-        R1 --> R2 --> R3 --> R4
-    end
-    
-    subgraph Arrow["Arrow Function as Callback"]
-        A1["forEach calls () => {}"]
-        A2["Arrow function has NO own 'this'"]
-        A3["Looks UP to parent scope: showMembersGood()"]
-        A4["'this' = team object ✅"]
-        A1 --> A2 --> A3 --> A4
-    end
-    
-    style R4 fill:#f44336,color:white
-    style A4 fill:#4CAF50,color:white
-```
-
-### Difference 2: No `arguments` Object
+### `arguments` — Not Available in Arrow Functions
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: arguments in Arrow vs Regular Functions
-// ═══════════════════════════════════════════════
-
-// Regular function — has 'arguments'
 function regularFunc() {
-    console.log("arguments:", arguments);       // [1, 2, 3]
-    console.log("arguments[0]:", arguments[0]); // 1
-    console.log("length:", arguments.length);   // 3
+    console.log(arguments); // [Arguments] { '0': 1, '1': 2, '2': 3 }
 }
 regularFunc(1, 2, 3);
 
-// Arrow function — NO 'arguments'
-const arrowFunc = () => {
-    try {
-        console.log(arguments);
-    } catch (e) {
-        console.log("Arrow error:", e.message); // arguments is not defined
-    }
+const arrowFunc = (...args) => {
+    console.log(args); // [1, 2, 3]  ✅ use rest params instead
 };
 arrowFunc(1, 2, 3);
-
-// ✅ Fix: Use rest parameters with arrow functions
-const arrowWithRest = (...args) => {
-    console.log("Rest args:", args);           // [1, 2, 3]
-    console.log("Is array:", Array.isArray(args)); // true
-    console.log("Sum:", args.reduce((a, b) => a + b, 0)); // 6
-};
-arrowWithRest(1, 2, 3);
-
-// Interesting: Arrow function INSIDE a regular function
-// inherits the outer function's 'arguments'
-function outer() {
-    const inner = () => {
-        console.log("Inherited arguments:", arguments); // [10, 20, 30]
-    };
-    inner();
-}
-outer(10, 20, 30);
 ```
 
-### Difference 3: Cannot Be Constructor
+### Cannot be Used as Constructor
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Arrow Functions as Constructors — FAILS
-// ═══════════════════════════════════════════════
-
-// Regular function — CAN be constructor
-function RegularPerson(name) {
-    this.name = name;
-}
-const p1 = new RegularPerson("Rahul");
-console.log(p1); // RegularPerson { name: "Rahul" } ✅
-
-// Arrow function — CANNOT be constructor
-const ArrowPerson = (name) => {
-    this.name = name;
-};
-
-try {
-    const p2 = new ArrowPerson("Rahul");
-} catch (e) {
-    console.log("Error:", e.message);
-    // "ArrowPerson is not a constructor"
-}
-
-// Arrow function has no prototype
-console.log(RegularPerson.prototype); // {constructor: ƒ}
-console.log(ArrowPerson.prototype);   // undefined
+const Person = (name) => { this.name = name; };
+const p = new Person("Rahul"); // ❌ TypeError: Person is not a constructor
 ```
 
-### When to Use and When NOT to Use — Complete Guide
+### When to Use and When NOT to Use
+
+| ✅ Use Arrow Functions | ❌ Avoid Arrow Functions |
+|------------------------|-------------------------|
+| Callbacks (map, filter, forEach) | Object methods |
+| Short one-liners | Event handlers needing `this` |
+| Functional programming chains | Prototype methods |
+| Inside class methods | Constructors |
+| Promises / `.then()` chains | Functions needing `arguments` |
+
+### Real-World Examples
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: When to Use / Not Use Arrow Functions
-// ═══════════════════════════════════════════════
-
-// ✅ USE: Array method callbacks
 const numbers = [1, 2, 3, 4, 5];
-const evens = numbers.filter(n => n % 2 === 0);
-const doubled = numbers.map(n => n * 2);
-const sum = numbers.reduce((acc, n) => acc + n, 0);
 
-// ✅ USE: Promise chains
-// fetch('/api').then(res => res.json()).then(data => console.log(data));
+const doubled  = numbers.map(n => n * 2);            // [2, 4, 6, 8, 10]
+const evens    = numbers.filter(n => n % 2 === 0);   // [2, 4]
+const sum      = numbers.reduce((acc, n) => acc + n, 0); // 15
 
-// ✅ USE: Short one-liner functions
-const isEven = n => n % 2 === 0;
-const square = n => n ** 2;
-const greet = name => `Hello, ${name}!`;
-
-// ✅ USE: Inside class methods as callbacks
-class Timer {
-    constructor() {
-        this.seconds = 0;
-    }
-    
-    start() {
-        // Arrow function: 'this' = Timer instance ✅
-        setInterval(() => {
-            this.seconds++;
-            console.log(`Time: ${this.seconds}s`);
-        }, 1000);
-    }
-}
-
-// ❌ AVOID: Object methods
-const obj = {
-    name: "Bad",
-    greet: () => {
-        return this.name;  // undefined — 'this' is not 'obj'
-    }
-};
-
-// ❌ AVOID: Event handlers needing 'this'
-// button.addEventListener('click', () => {
-//     this.classList.add('active');  // 'this' is NOT the button
-// });
-
-// ❌ AVOID: Prototype methods
-function Dog(name) { this.name = name; }
-Dog.prototype.bark = () => {
-    return `${this.name} says Woof!`;  // 'this' is wrong!
-};
-
-// ❌ AVOID: Functions using 'arguments'
-// const bad = () => console.log(arguments);  // Error
+fetch('/api/users')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
 ```
 
-```
-╔════════════════════════════════════════════════════════════╗
-║              ARROW FUNCTIONS — DECISION MATRIX             ║
-╠════════════════════════════════════════════════════════════╣
-║                                                            ║
-║  ✅ Use Arrow Functions When:                               ║
-║  ────────────────────────────                               ║
-║  • Callbacks (map, filter, reduce, forEach)                ║
-║  • Promise .then() chains                                  ║
-║  • Short utility functions                                 ║
-║  • Inside class methods (setTimeout, setInterval)          ║
-║  • When you want lexical 'this'                           ║
-║  • Functional programming patterns                         ║
-║                                                            ║
-║  ❌ Avoid Arrow Functions When:                              ║
-║  ──────────────────────────────                              ║
-║  • Object methods (use regular function or shorthand)      ║
-║  • DOM event handlers needing 'this'                       ║
-║  • Prototype methods                                       ║
-║  • Functions that need 'arguments' object                  ║
-║  • Constructors (need 'new' keyword)                       ║
-║  • Generator functions (need 'yield')                      ║
-║                                                            ║
-╚════════════════════════════════════════════════════════════╝
-```
+### ❓ Interview Question
 
-### ❓ Interview Questions
-
-**Q1: What will be the output?**
+**Q: What will be the output?**
 
 ```javascript
 const obj = {
     value: 42,
-    getValue: () => {
-        return this.value;
-    },
-    getValueRegular: function() {
-        return this.value;
-    }
+    getValue: () => { return this.value; },
+    getValueRegular: function() { return this.value; }
 };
 
-console.log(obj.getValue());        // ?
-console.log(obj.getValueRegular()); // ?
+console.log(obj.getValue());        // undefined (arrow: 'this' = global/window)
+console.log(obj.getValueRegular()); // 42 (regular: 'this' = obj)
 ```
-
-<details>
-<summary>🔍 Click to see Answer</summary>
-
-```
-undefined    (arrow: 'this' = global/window, not obj)
-42           (regular: 'this' = obj)
-```
-
-**Why?** The arrow function `getValue` does NOT get its own `this`. It looks UP to where it was **defined** — in this case, the global scope (where `this.value` is undefined). The regular function `getValueRegular` gets its `this` set to `obj` because it's called as `obj.getValueRegular()`.
-
-</details>
-
-**Q2: What will be the output?**
-
-```javascript
-function Timer() {
-    this.seconds = 0;
-    
-    setInterval(function() {
-        this.seconds++;
-        console.log(this.seconds);
-    }, 1000);
-}
-
-const timer = new Timer();
-// What happens?
-```
-
-<details>
-<summary>🔍 Click to see Answer</summary>
-
-**Answer:** It prints `NaN` every second.
-
-**Why?** Inside the `setInterval` callback (a regular function), `this` is NOT the Timer instance. It's the global object (or `undefined` in strict mode). `this.seconds` is `undefined`, and `undefined + 1 = NaN`.
-
-**Fix with arrow function:**
-```javascript
-function Timer() {
-    this.seconds = 0;
-    setInterval(() => {
-        this.seconds++;        // 'this' is Timer instance ✅
-        console.log(this.seconds);
-    }, 1000);
-}
-```
-
-</details>
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="5-how-many-ways-to-write-a-function"></a>
+<a id="5"></a>
 
 ## 5. 🔢 How Many Ways to Write a Function
 
-JavaScript offers **many** ways to create functions. Here is **every single way**:
-
 ```mermaid
 flowchart TD
-    A["🔢 Ways to Write Functions in JS"] --> B["1. Function Declaration"]
+    A["Ways to Write Functions in JS"] --> B["1. Function Declaration"]
     A --> C["2. Function Expression"]
     A --> D["3. Named Function Expression"]
     A --> E["4. Arrow Function"]
@@ -1463,257 +575,171 @@ flowchart TD
     A --> H["7. Constructor Function"]
     A --> I["8. Method Shorthand"]
     A --> J["9. Async Function"]
-    A --> K["10. new Function()"]
-    A --> L["11. Class Methods"]
-    
+    A --> K["10. new Function Constructor"]
+
     style A fill:#9C27B0,color:white
 ```
 
-### Complete Program: All 11 Ways
+### 1️⃣ Function Declaration
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Every Way to Write a Function in JS
-// ═══════════════════════════════════════════════
+function add(a, b) { return a + b; }
+// ✅ Hoisted | Named | Has own 'this' | Can be constructor
+```
 
-// ────────────────────────────────
-// 1️⃣ Function Declaration (Function Statement)
-// ────────────────────────────────
-function declaration(a, b) {
-    return a + b;
-}
-console.log("1. Declaration:", declaration(3, 5)); // 8
-// ✅ Hoisted | Named | Has 'this' | Has 'arguments' | Can be constructor
+### 2️⃣ Function Expression
 
-// ────────────────────────────────
-// 2️⃣ Function Expression (Anonymous)
-// ────────────────────────────────
-const expression = function(a, b) {
-    return a + b;
-};
-console.log("2. Expression:", expression(3, 5)); // 8
-// ❌ NOT hoisted (variable hoisted as undefined) | Can be anonymous
+```javascript
+const add = function(a, b) { return a + b; };
+// ❌ Not hoisted | Can be anonymous | Can be constructor
+```
 
-// ────────────────────────────────
-// 3️⃣ Named Function Expression
-// ────────────────────────────────
-const namedExpr = function myAdd(a, b) {
-    // 'myAdd' is only accessible INSIDE this function
-    // Useful for recursion and debugging
-    if (a <= 0) return b;
-    return myAdd(a - 1, b + 1); // Recursive call using internal name
-};
-console.log("3. Named Expr:", namedExpr(3, 5)); // 8
-// console.log(typeof myAdd); // "undefined" — not accessible outside!
+### 3️⃣ Named Function Expression
 
-// ────────────────────────────────
-// 4️⃣ Arrow Function (ES6)
-// ────────────────────────────────
-const arrow = (a, b) => a + b;
-console.log("4. Arrow:", arrow(3, 5)); // 8
-// ❌ No 'this' | ❌ No 'arguments' | ❌ Not hoisted | ❌ Not constructor
-
-// ────────────────────────────────
-// 5️⃣ IIFE (Immediately Invoked Function Expression)
-// ────────────────────────────────
-const iifeResult = (function(a, b) {
-    return a + b;
-})(3, 5);
-console.log("5. IIFE:", iifeResult); // 8
-
-// Arrow IIFE
-const arrowIIFE = ((a, b) => a + b)(3, 5);
-console.log("5b. Arrow IIFE:", arrowIIFE); // 8
-
-// ────────────────────────────────
-// 6️⃣ Generator Function
-// ────────────────────────────────
-function* numberGen(start, end) {
-    for (let i = start; i <= end; i++) {
-        yield i;
-    }
-}
-const gen = numberGen(1, 5);
-console.log("6. Generator:", gen.next().value); // 1
-console.log("   Generator:", gen.next().value); // 2
-
-// Generator Expression
-const genExpr = function*(n) {
-    yield n;
-    yield n * 2;
+```javascript
+const factorial = function fact(n) {
+    if (n <= 1) return 1;
+    return n * fact(n - 1); // 'fact' accessible INSIDE only
 };
 
-// ────────────────────────────────
-// 7️⃣ Constructor Function
-// ────────────────────────────────
-function Calculator(initialValue) {
-    this.value = initialValue || 0;
-    this.add = function(n) {
-        this.value += n;
-        return this;  // For chaining
-    };
-    this.getResult = function() {
-        return this.value;
-    };
-}
-const calc = new Calculator(10);
-console.log("7. Constructor:", calc.add(5).add(3).getResult()); // 18
+console.log(factorial(5)); // 120
+// console.log(fact(5));   // ❌ ReferenceError
+```
 
-// ────────────────────────────────
-// 8️⃣ Method Shorthand (ES6 Object Method)
-// ────────────────────────────────
-const mathUtils = {
-    // Old way
-    addOld: function(a, b) { return a + b; },
-    
-    // ES6 shorthand — preferred ✅
+> 💡 The name is only visible inside the function — great for recursion and stack traces.
+
+### 4️⃣ Arrow Function
+
+```javascript
+const add = (a, b) => a + b;
+// ❌ No 'this' | ❌ No 'arguments' | ❌ Not constructor | ❌ Not hoisted
+```
+
+### 5️⃣ IIFE (Immediately Invoked Function Expression)
+
+```javascript
+(function() { console.log("Runs immediately!"); })();
+(() => { console.log("Arrow IIFE!"); })();
+(function(name) { console.log(`Hello, ${name}!`); })("Rahul");
+```
+
+### 6️⃣ Generator Function
+
+```javascript
+function* numberGenerator() {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+const gen = numberGenerator();
+console.log(gen.next()); // { value: 1, done: false }
+console.log(gen.next()); // { value: 2, done: false }
+console.log(gen.next()); // { value: 3, done: false }
+console.log(gen.next()); // { value: undefined, done: true }
+```
+
+### 7️⃣ Constructor Function
+
+```javascript
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const p = new Person("Rahul", 25);
+console.log(p.name); // Rahul
+```
+
+### 8️⃣ Method Shorthand (ES6)
+
+```javascript
+const calculator = {
     add(a, b) { return a + b; },
     subtract(a, b) { return a - b; }
 };
-console.log("8. Shorthand:", mathUtils.add(3, 5)); // 8
 
-// ────────────────────────────────
-// 9️⃣ Async Function
-// ────────────────────────────────
+console.log(calculator.add(5, 3)); // 8
+```
 
-// Async declaration
+### 9️⃣ Async Function
+
+```javascript
 async function fetchData() {
-    return "Data fetched";
-}
-fetchData().then(data => console.log("9a. Async:", data)); // "Data fetched"
-
-// Async expression
-const asyncExpr = async function() {
-    return "Async expression";
-};
-
-// Async arrow
-const asyncArrow = async () => {
-    return "Async arrow";
-};
-asyncArrow().then(data => console.log("9b. Async Arrow:", data));
-
-// Async method
-const api = {
-    async getData() {
-        return "API data";
-    }
-};
-
-// ────────────────────────────────
-// 🔟 new Function() Constructor (RARE)
-// ────────────────────────────────
-const dynamicAdd = new Function('a', 'b', 'return a + b');
-console.log("10. new Function:", dynamicAdd(3, 5)); // 8
-// ⚠️ Security risk | No closure access | Poor performance | Avoid!
-
-// ────────────────────────────────
-// 1️⃣1️⃣ Class Methods
-// ────────────────────────────────
-class MathHelper {
-    // Instance method
-    add(a, b) { return a + b; }
-    
-    // Static method
-    static multiply(a, b) { return a * b; }
-    
-    // Getter
-    get pi() { return 3.14159; }
-    
-    // Private method (ES2022)
-    #validate(n) { return typeof n === 'number'; }
+    const response = await fetch('/api/data');
+    return response.json();
 }
 
-const helper = new MathHelper();
-console.log("11a. Instance:", helper.add(3, 5));          // 8
-console.log("11b. Static:", MathHelper.multiply(3, 5));   // 15
-console.log("11c. Getter:", helper.pi);                    // 3.14159
+const fetchData2 = async () => {
+    const response = await fetch('/api/data');
+    return response.json();
+};
+```
+
+### 🔟 `new Function()` Constructor (Rare)
+
+```javascript
+const add = new Function('a', 'b', 'return a + b');
+console.log(add(2, 3)); // 5
+// ⚠️ Avoid: security risks, no closure, poor performance
 ```
 
 ### 📊 Complete Comparison Table
 
-```
-╔═══════════════════╦════════╦═══════╦═══════════╦═════════════╦════════════════════╗
-║ Way               ║ Hoisted║ this  ║ arguments ║ Constructor ║ Best Use Case      ║
-╠═══════════════════╬════════╬═══════╬═══════════╬═════════════╬════════════════════╣
-║ Declaration       ║ ✅ Yes ║ Own   ║ ✅ Yes    ║ ✅ Yes      ║ General purpose    ║
-║ Expression        ║ ❌ No  ║ Own   ║ ✅ Yes    ║ ✅ Yes      ║ Conditional funcs  ║
-║ Named Expression  ║ ❌ No  ║ Own   ║ ✅ Yes    ║ ✅ Yes      ║ Recursion/debug    ║
-║ Arrow             ║ ❌ No  ║ Lexic.║ ❌ No     ║ ❌ No       ║ Callbacks, short   ║
-║ IIFE              ║ N/A    ║ Own   ║ ✅ Yes    ║ N/A         ║ Module pattern     ║
-║ Generator         ║ ✅ Yes ║ Own   ║ ✅ Yes    ║ ❌ No       ║ Iterators, lazy    ║
-║ Constructor       ║ ✅ Yes ║ New   ║ ✅ Yes    ║ ✅ (IS one) ║ Object creation    ║
-║ Method Shorthand  ║ N/A    ║ Own   ║ ✅ Yes    ║ ❌ No       ║ Object methods     ║
-║ Async             ║ Varies ║ Varies║ Varies    ║ ❌ No       ║ Async operations   ║
-║ new Function()    ║ ❌ No  ║ Own   ║ ✅ Yes    ║ ✅ Yes      ║ Never (avoid)      ║
-║ Class Methods     ║ ❌ No  ║ Own   ║ ✅ Yes    ║ N/A         ║ OOP patterns       ║
-╚═══════════════════╩════════╩═══════╩═══════════╩═════════════╩════════════════════╝
-```
+| Way | Hoisted | `this` | `arguments` | Constructor | Use Case |
+|-----|---------|--------|-------------|-------------|----------|
+| Declaration | ✅ | Own | ✅ | ✅ | General purpose |
+| Expression | ❌ | Own | ✅ | ✅ | Conditional functions |
+| Named Expression | ❌ | Own | ✅ | ✅ | Recursion, debugging |
+| Arrow | ❌ | Lexical | ❌ | ❌ | Callbacks, short functions |
+| IIFE | N/A | Own | ✅ | N/A | Module pattern |
+| Generator | ✅ | Own | ✅ | ❌ | Iterators, lazy evaluation |
+| Constructor | ✅ | New object | ✅ | ✅ | Object creation |
+| Method | N/A | Own | ✅ | ❌ | Object methods |
+| Async | Same as base | Same | Same | ❌ | Async operations |
+| `new Function` | N/A | Global | ✅ | ✅ | Dynamic code (avoid!) |
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="6-higher-order-functions"></a>
+<a id="6"></a>
 
 ## 6. 🏗️ Higher Order Functions
 
 ### What is a Higher Order Function?
 
-> **Definition:** A **Higher Order Function** (HOF) is a function that either:
-> 1. **Takes one or more functions as arguments**, OR
-> 2. **Returns a function** as its result
-
-> **Apni Bhasha Mein:** Higher Order Function woh function hai jo doosre functions ko **kaam pe lagata hai** ya **nayi function factory ki tarah** kaam karta hai. `map`, `filter`, `reduce` — yeh sab higher order functions hain.
+A **Higher Order Function (HOF)** either:
+1. **Takes one or more functions as arguments**, OR
+2. **Returns a function** as its result
 
 ```mermaid
 flowchart TD
-    A["Higher Order Function<br>(Two Types)"] --> B["Type 1: Takes function as argument"]
-    A --> C["Type 2: Returns a function"]
-    
-    B --> D["Built-in: map, filter, reduce,<br>forEach, sort, find, every, some"]
-    B --> E["Custom: addEventListener,<br>setTimeout, custom utilities"]
-    
-    C --> F["Closures"]
-    C --> G["Currying"]
-    C --> H["Factory Functions"]
-    C --> I["Decorators/Wrappers"]
-    
+    A["Higher Order Function"] --> B["Takes function as argument"]
+    A --> C["Returns a function"]
+
+    B --> D["map, filter, reduce, forEach"]
+    C --> E["Closures, Currying, Factory Functions"]
+
     style A fill:#9C27B0,color:white
     style B fill:#4CAF50,color:white
     style C fill:#2196F3,color:white
 ```
 
-### Type 1: Function That Takes a Function as Argument
+### Type 1: Takes a Function as Argument
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: HOF Type 1 — Function as Argument
-// ═══════════════════════════════════════════════
-
-// The SIMPLEST higher order function
-function doOperation(a, b, operation) {
-    return operation(a, b);
-}
-
-// Passing different functions = different behaviors
-console.log(doOperation(10, 5, (a, b) => a + b));  // 15 (add)
-console.log(doOperation(10, 5, (a, b) => a - b));  // 5  (subtract)
-console.log(doOperation(10, 5, (a, b) => a * b));  // 50 (multiply)
-console.log(doOperation(10, 5, (a, b) => a / b));  // 2  (divide)
-console.log(doOperation(10, 5, (a, b) => a ** b)); // 100000 (power)
-console.log(doOperation(10, 5, Math.max));          // 10 (max)
+const numbers = [1, 2, 3, 4, 5];
+const double = (num) => num * 2;
+const doubled = numbers.map(double); // map is the HOF
+console.log(doubled); // [2, 4, 6, 8, 10]
 ```
 
-### Type 2: Function That Returns a Function
+### Type 2: Returns a Function
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: HOF Type 2 — Function Returning Function
-// ═══════════════════════════════════════════════
-
 function multiplier(factor) {
     return function(number) {
         return number * factor;
@@ -1722,148 +748,64 @@ function multiplier(factor) {
 
 const double = multiplier(2);
 const triple = multiplier(3);
-const tenTimes = multiplier(10);
 
-console.log(double(5));    // 10
-console.log(triple(5));    // 15
-console.log(tenTimes(5));  // 50
-
-// The beauty: 'factor' is remembered via closure!
-console.log(double(100));  // 200
-console.log(triple(100));  // 300
+console.log(double(5));  // 10
+console.log(triple(5));  // 15
 ```
 
-### All Built-in Higher Order Functions — Complete Program
+### Built-in Higher Order Functions
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Every Built-in HOF with Real Data
-// ═══════════════════════════════════════════════
-
 const students = [
-    { name: "Rahul", grade: 85, city: "Delhi", subjects: ["Math", "Science"] },
-    { name: "Priya", grade: 92, city: "Mumbai", subjects: ["Math", "English"] },
-    { name: "Amit", grade: 78, city: "Delhi", subjects: ["Science", "History"] },
-    { name: "Neha", grade: 95, city: "Bangalore", subjects: ["Math", "Science", "English"] },
-    { name: "Vikram", grade: 88, city: "Mumbai", subjects: ["History", "English"] },
-    { name: "Sara", grade: 60, city: "Delhi", subjects: ["Math"] }
+    { name: "Rahul", grade: 85 },
+    { name: "Priya", grade: 92 },
+    { name: "Amit",  grade: 78 },
+    { name: "Neha",  grade: 95 }
 ];
 
-// ── 1. map() — Transform each element ──
+// map — Transform
 const names = students.map(s => s.name);
-console.log("Names:", names);
-// ["Rahul", "Priya", "Amit", "Neha", "Vikram", "Sara"]
+// ["Rahul", "Priya", "Amit", "Neha"]
 
-const gradeReports = students.map(s => `${s.name}: ${s.grade}%`);
-console.log("Reports:", gradeReports);
-
-// ── 2. filter() — Keep elements passing a test ──
+// filter — Keep matching
 const toppers = students.filter(s => s.grade >= 90);
-console.log("Toppers:", toppers.map(s => s.name));
-// ["Priya", "Neha"]
+// [{ name: "Priya", ... }, { name: "Neha", ... }]
 
-const delhiStudents = students.filter(s => s.city === "Delhi");
-console.log("Delhi:", delhiStudents.map(s => s.name));
-// ["Rahul", "Amit", "Sara"]
+// reduce — Accumulate
+const total = students.reduce((sum, s) => sum + s.grade, 0);
+const average = total / students.length; // 87.5
 
-// ── 3. reduce() — Accumulate into single value ──
-const totalGrades = students.reduce((sum, s) => sum + s.grade, 0);
-const averageGrade = totalGrades / students.length;
-console.log("Average:", averageGrade.toFixed(1)); // 83.0
+// find — First match
+const found = students.find(s => s.name === "Priya");
+// { name: "Priya", grade: 92 }
 
-// Group by city using reduce
-const byCity = students.reduce((groups, s) => {
-    if (!groups[s.city]) groups[s.city] = [];
-    groups[s.city].push(s.name);
-    return groups;
-}, {});
-console.log("By City:", byCity);
-// { Delhi: ["Rahul", "Amit", "Sara"], Mumbai: ["Priya", "Vikram"], Bangalore: ["Neha"] }
-
-// ── 4. forEach() — Execute for each (no return) ──
-console.log("--- Student Report ---");
-students.forEach((s, index) => {
-    console.log(`${index + 1}. ${s.name} - ${s.grade}% - ${s.city}`);
-});
-
-// ── 5. find() — Find first matching ──
-const found = students.find(s => s.grade >= 90);
-console.log("First topper:", found.name); // "Priya"
-
-// ── 6. findIndex() — Find index of first match ──
-const index = students.findIndex(s => s.name === "Amit");
-console.log("Amit's index:", index); // 2
-
-// ── 7. some() — At least one passes? ──
-const anyTopper = students.some(s => s.grade >= 95);
-console.log("Any 95+?", anyTopper); // true
-
-// ── 8. every() — All pass? ──
-const allPassed = students.every(s => s.grade >= 40);
-console.log("All passed?", allPassed); // true
-
-const allToppers = students.every(s => s.grade >= 90);
-console.log("All toppers?", allToppers); // false
-
-// ── 9. sort() — Sort (MUTATES original!) ──
-const sorted = [...students].sort((a, b) => b.grade - a.grade);
-console.log("Top to Bottom:", sorted.map(s => `${s.name}(${s.grade})`));
-
-// ── 10. flatMap() — Map + Flatten ──
-const allSubjects = students.flatMap(s => s.subjects);
-console.log("All subjects:", allSubjects);
-
-const uniqueSubjects = [...new Set(allSubjects)];
-console.log("Unique subjects:", uniqueSubjects);
+// every / some
+const allPassed = students.every(s => s.grade >= 40); // true
+const anyTopper = students.some(s => s.grade >= 95);  // true
 ```
 
-### Chaining Higher Order Functions
+### Chaining HOFs
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Powerful HOF Chaining
-// ═══════════════════════════════════════════════
-
 const transactions = [
-    { id: 1, type: "credit", amount: 5000, date: "2024-01-15" },
-    { id: 2, type: "debit", amount: 2000, date: "2024-01-16" },
-    { id: 3, type: "credit", amount: 3000, date: "2024-01-17" },
-    { id: 4, type: "debit", amount: 1000, date: "2024-01-18" },
-    { id: 5, type: "credit", amount: 7000, date: "2024-01-19" },
-    { id: 6, type: "debit", amount: 500, date: "2024-01-20" },
-    { id: 7, type: "credit", amount: 2500, date: "2024-01-21" }
+    { type: "credit", amount: 5000 },
+    { type: "debit",  amount: 2000 },
+    { type: "credit", amount: 3000 },
+    { type: "debit",  amount: 1000 },
+    { type: "credit", amount: 7000 }
 ];
 
-// Chain: Get total credits above 2000
-const totalLargeCredits = transactions
-    .filter(t => t.type === "credit")       // Keep only credits
-    .filter(t => t.amount > 2000)           // Keep only large ones
-    .map(t => t.amount)                     // Extract amounts
-    .reduce((sum, amt) => sum + amt, 0);    // Sum up
+const totalCredits = transactions
+    .filter(t => t.type === "credit")
+    .map(t => t.amount)
+    .reduce((sum, amount) => sum + amount, 0);
 
-console.log("Total large credits:", totalLargeCredits); // 15000 (5000+3000+7000)
-
-// Chain: Get a summary report
-const report = transactions
-    .reduce((summary, t) => {
-        summary[t.type].count++;
-        summary[t.type].total += t.amount;
-        return summary;
-    }, { credit: { count: 0, total: 0 }, debit: { count: 0, total: 0 } });
-
-console.log("Report:", JSON.stringify(report, null, 2));
-// credit: { count: 4, total: 17500 }
-// debit: { count: 3, total: 3500 }
+console.log(totalCredits); // 15000
 ```
 
-### Creating Your Own Higher Order Functions
+### Creating Your Own HOF
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Building Custom HOFs
-// ═══════════════════════════════════════════════
-
-// ── Custom map ──
 function myMap(arr, transformFn) {
     const result = [];
     for (let i = 0; i < arr.length; i++) {
@@ -1872,1464 +814,827 @@ function myMap(arr, transformFn) {
     return result;
 }
 
-// ── Custom filter ──
+const squared = myMap([1, 2, 3, 4], n => n ** 2);
+console.log(squared); // [1, 4, 9, 16]
+
 function myFilter(arr, predicateFn) {
     const result = [];
     for (let i = 0; i < arr.length; i++) {
-        if (predicateFn(arr[i], i, arr)) {
-            result.push(arr[i]);
-        }
+        if (predicateFn(arr[i], i, arr)) result.push(arr[i]);
     }
     return result;
 }
 
-// ── Custom reduce ──
-function myReduce(arr, reducerFn, initialValue) {
-    let accumulator = initialValue;
-    let startIndex = 0;
-    
-    if (initialValue === undefined) {
-        accumulator = arr[0];
-        startIndex = 1;
-    }
-    
-    for (let i = startIndex; i < arr.length; i++) {
-        accumulator = reducerFn(accumulator, arr[i], i, arr);
-    }
-    
-    return accumulator;
-}
-
-// ── Testing ──
-const nums = [1, 2, 3, 4, 5];
-
-console.log(myMap(nums, n => n ** 2));           // [1, 4, 9, 16, 25]
-console.log(myFilter(nums, n => n % 2 === 0));   // [2, 4]
-console.log(myReduce(nums, (a, b) => a + b, 0)); // 15
+const evens = myFilter([1, 2, 3, 4], n => n % 2 === 0);
+console.log(evens); // [2, 4]
 ```
 
-### Use Case: Validation System Using HOFs
+### Real-World: Validation System
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Composable Validation with HOFs
-// ═══════════════════════════════════════════════
-
-// Individual validators (each returns a function)
-const required = (fieldName) => (value) => 
-    value !== undefined && value !== null && value !== ""
-        ? null 
-        : `${fieldName} is required`;
-
-const minLength = (fieldName, min) => (value) => 
-    value && value.length >= min
-        ? null 
-        : `${fieldName} must be at least ${min} characters`;
-
-const maxLength = (fieldName, max) => (value) => 
-    value && value.length <= max
-        ? null 
-        : `${fieldName} must be at most ${max} characters`;
-
-const isEmail = (fieldName) => (value) => 
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
-        ? null 
-        : `${fieldName} must be a valid email`;
-
-const isNumber = (fieldName) => (value) => 
-    typeof value === 'number' && !isNaN(value)
-        ? null 
-        : `${fieldName} must be a number`;
-
-const minValue = (fieldName, min) => (value) => 
-    value >= min
-        ? null 
-        : `${fieldName} must be at least ${min}`;
-
-// HOF: Compose validators for a single field
-function validateField(value, ...validators) {
-    return validators
-        .map(validator => validator(value))
-        .filter(error => error !== null);
-}
-
-// HOF: Create a form validator
-function createFormValidator(schema) {
+function createValidator(rules) {
     return function(data) {
-        const errors = {};
-        let isValid = true;
-        
-        for (const [field, validators] of Object.entries(schema)) {
-            const fieldErrors = validateField(data[field], ...validators);
-            if (fieldErrors.length > 0) {
-                errors[field] = fieldErrors;
-                isValid = false;
+        const errors = [];
+        for (const [field, rule] of Object.entries(rules)) {
+            if (!rule.validate(data[field])) {
+                errors.push({ field, message: rule.message });
             }
         }
-        
-        return { isValid, errors };
+        return { isValid: errors.length === 0, errors };
     };
 }
 
-// Define validation schema
-const validateUserForm = createFormValidator({
-    name: [required("Name"), minLength("Name", 2), maxLength("Name", 50)],
-    email: [required("Email"), isEmail("Email")],
-    age: [required("Age"), isNumber("Age"), minValue("Age", 18)]
+const validateUser = createValidator({
+    name: {
+        validate: (v) => v && v.length >= 2,
+        message: "Name must be at least 2 characters"
+    },
+    email: {
+        validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v),
+        message: "Invalid email format"
+    },
+    age: {
+        validate: (v) => v >= 18,
+        message: "Must be at least 18"
+    }
 });
 
-// Test with bad data
-console.log(validateUserForm({
-    name: "R",
-    email: "bad-email",
-    age: 15
-}));
-// {
-//   isValid: false,
-//   errors: {
-//     name: ["Name must be at least 2 characters"],
-//     email: ["Email must be a valid email"],
-//     age: ["Age must be at least 18"]
-//   }
-// }
+console.log(validateUser({ name: "R", email: "bad", age: 16 }));
+// { isValid: false, errors: [...] }
 
-// Test with good data
-console.log(validateUserForm({
-    name: "Rahul Kumar",
-    email: "rahul@gmail.com",
-    age: 25
-}));
-// { isValid: true, errors: {} }
+console.log(validateUser({ name: "Rahul", email: "r@gmail.com", age: 25 }));
+// { isValid: true, errors: [] }
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="7-anonymous-functions"></a>
+<a id="7"></a>
 
 ## 7. 👤 Anonymous Functions
 
 ### What is an Anonymous Function?
 
-> **Definition:** An **Anonymous Function** is a function that has **no name**. It cannot be called independently and is usually used as a **value** — assigned to a variable, passed as an argument, or used in an IIFE.
-
-> **Apni Bhasha Mein:** Anonymous function woh function hai jiska koi naam nahi hota. Agar tum isse akele likhoge toh error aayega. Isse humesha kisi variable mein store karo, ya kisi doosre function ke andar pass karo.
+A function that has **no name**. It must be used as a **value** — cannot stand alone as a statement.
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Anonymous Functions — All Use Cases
-// ═══════════════════════════════════════════════
+// ❌ SyntaxError — anonymous function cannot be a statement
+// function() { console.log("error"); }
 
-// ❌ Anonymous function CANNOT be a standalone statement
-// function() { console.log("error"); } // SyntaxError!
-
-// ✅ Use Case 1: Assigned to a variable (Function Expression)
-const greet = function() {
-    return "Hello!";
-};
-console.log(greet()); // "Hello!"
-
-// ✅ Use Case 2: As a callback argument
-const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map(function(num) {
-    return num * 2;
-});
-console.log("Doubled:", doubled); // [2, 4, 6, 8, 10]
-
-// ✅ Use Case 3: In setTimeout
-setTimeout(function() {
-    console.log("This runs after 1 second");
-}, 1000);
-
-// ✅ Use Case 4: As IIFE
-(function() {
-    const secret = "I'm private!";
-    console.log("IIFE ran:", secret);
-})();
-
-// ✅ Use Case 5: As object method
-const calculator = {
-    add: function(a, b) { return a + b; },
-    sub: function(a, b) { return a - b; }
-};
-
-// ✅ Use Case 6: Event handlers (browser)
-// document.getElementById("btn").addEventListener("click", function(event) {
-//     console.log("Clicked!", event.target);
-// });
-
-// ✅ Use Case 7: Immediately used in array
-const operations = [
-    function(a, b) { return a + b; },
-    function(a, b) { return a - b; },
-    function(a, b) { return a * b; }
-];
-
-console.log(operations[0](5, 3));  // 8 (add)
-console.log(operations[1](5, 3));  // 2 (subtract)
-console.log(operations[2](5, 3));  // 15 (multiply)
-```
-
-### Named vs Anonymous — Why It Matters for Debugging
-
-```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Named vs Anonymous — Stack Trace Difference
-// ═══════════════════════════════════════════════
-
-// ❌ Anonymous — poor stack trace
-const badFunc = function() {
-    throw new Error("Something broke in anonymous!");
-};
-
-// ✅ Named — better stack trace
-const goodFunc = function descriptiveName() {
-    throw new Error("Something broke in descriptiveName!");
-};
-
-try {
-    badFunc();
-} catch (e) {
-    console.log("Anonymous trace:", e.stack);
-    // "Error: Something broke in anonymous!
-    //     at Object.<anonymous> ..."
-}
-
-try {
-    goodFunc();
-} catch (e) {
-    console.log("Named trace:", e.stack);
-    // "Error: Something broke in descriptiveName!
-    //     at descriptiveName ..."
-}
+// ✅ Anonymous as a value
+const greet = function() { console.log("Hello!"); };
 ```
 
 ```mermaid
 flowchart TD
-    A["Anonymous vs Named Function Expressions"] --> B["Anonymous"]
-    A --> C["Named"]
-    
-    B --> B1["❌ Poor stack traces"]
-    B --> B2["❌ Cannot self-reference"]
-    B --> B3["✅ Shorter syntax"]
-    
-    C --> C1["✅ Clear stack traces"]
-    C --> C2["✅ Can self-reference for recursion"]
-    C --> C3["✅ Name only available inside"]
-    C --> C4["⚠️ Slightly more verbose"]
-    
-    style B fill:#f44336,color:white
-    style C fill:#4CAF50,color:white
+    A["Anonymous Functions"] --> B["Function Expression"]
+    A --> C["Callback Arguments"]
+    A --> D["IIFE"]
+    A --> E["Event Handlers"]
+    A --> F["Arrow Functions always anonymous"]
+
+    style A fill:#FF5722,color:white
 ```
 
-### Named Function Expression — Self-Reference
+### Where Anonymous Functions Are Used
+
+#### As Callbacks
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Named Function Expression — Recursion
-// ═══════════════════════════════════════════════
+setTimeout(function() {
+    console.log("Runs after 2 seconds");
+}, 2000);
 
-// The name 'fact' is ONLY accessible inside the function
-const factorial = function fact(n) {
-    if (n <= 1) return 1;
-    return n * fact(n - 1);  // Uses internal name 'fact'
-};
+[1, 2, 3].map(function(num) { return num * 2; }); // [2, 4, 6]
 
-console.log(factorial(5));    // 120
-// console.log(fact(5));      // ❌ ReferenceError: fact is not defined
-
-// Why is this useful? If the external variable is reassigned:
-let myFunc = function internalName() {
-    console.log("I am internalName");
-    return "done";
-};
-
-const backup = myFunc;
-myFunc = null;  // External reference is gone!
-
-console.log(backup());  // ✅ Still works! "I am internalName"
-// If it was anonymous and tried to call myFunc() inside, it would fail
+document.getElementById("btn").addEventListener("click", function() {
+    console.log("Clicked!");
+});
 ```
 
-> 💡 **Best Practice:** Always prefer named function expressions over anonymous ones for better debugging and self-referencing capabilities.
+#### As Object Methods
+
+```javascript
+const obj = {
+    greet: function() {
+        console.log("Hello from anonymous!");
+    }
+};
+```
+
+### Named vs Anonymous — Debugging
+
+```javascript
+// Anonymous — poor stack trace
+const badFunc = function() { throw new Error("Broke!"); };
+
+// Named — better stack trace
+const goodFunc = function descriptiveName() { throw new Error("Broke!"); };
+
+// Stack trace shows: "Error at descriptiveName" vs "Error at Object.<anonymous>"
+```
+
+### ❓ Interview Question
+
+**Q: Difference between anonymous function and named function expression?**
+
+```javascript
+const anon = function() {
+    console.log(typeof anon); // "function"
+    // Cannot call itself by name
+};
+
+const named = function myFunc() {
+    console.log(typeof myFunc); // "function" — accessible inside!
+};
+
+console.log(typeof myFunc); // "undefined" — NOT accessible outside!
+```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="8-function-callback-parameter"></a>
+<a id="8"></a>
 
 ## 8. 📞 Function Callback Parameter
 
 ### What is a Callback Function?
 
-> **Definition:** A **Callback Function** is a function that is **passed as an argument** to another function and is **executed later** — either synchronously or asynchronously.
-
-> **Apni Bhasha Mein:** Callback matlab "baad mein phone karna." Tum ek function ko doosre function ko dete ho aur bolte ho — "Jab tera kaam ho jaye, toh isse call kar dena." Woh doosra function apna kaam karta hai aur jab ready hota hai, tumhara function call kar deta hai.
+A **Callback** is a function passed as an argument to another function and executed later.
 
 ```mermaid
 flowchart LR
-    A["Your Code"] -->|"Hey, take this function"| B["Higher Order Function"]
-    B -->|"Does its work..."| C["..."]
-    C -->|"Done! Now calling your function"| D["Callback Executes"]
-    
+    A["Main Code"] -->|"passes callback fn"| B["Higher Order Function"]
+    B -->|"invokes callback when ready"| C["Callback Executes"]
+
     style A fill:#4CAF50,color:white
     style B fill:#2196F3,color:white
-    style D fill:#FF9800,color:white
+    style C fill:#FF9800,color:white
 ```
 
-### Synchronous vs Asynchronous Callbacks
+### Synchronous Callbacks
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Sync vs Async Callbacks — Complete Demo
-// ═══════════════════════════════════════════════
-
-// ── SYNCHRONOUS Callbacks ──
-// Execute IMMEDIATELY, blocking the next line
-
-console.log("=== SYNCHRONOUS ===");
-
-// Example 1: forEach
-console.log("Before forEach");
-[1, 2, 3].forEach(function(num) {
-    console.log("Processing:", num);
-});
-console.log("After forEach");
-// Output order: Before → Processing 1,2,3 → After (synchronous!)
-
-// Example 2: Custom sync callback
-function processData(data, callback) {
-    console.log("Processing...");
-    const result = data.map(x => x * 2);
-    callback(result);  // Called synchronously
-    console.log("Done processing");
+function greet(name, callback) {
+    console.log(`Hello, ${name}!`);
+    callback();
 }
 
-processData([1, 2, 3], function(result) {
-    console.log("Result:", result);
+greet("Rahul", function() {
+    console.log("Callback executed!");
 });
-// Processing... → Result: [2,4,6] → Done processing
+// Hello, Rahul!
+// Callback executed!
 
-// ── ASYNCHRONOUS Callbacks ──
-// Execute LATER, does NOT block the next line
+// Array methods use synchronous callbacks
+[1, 2, 3].forEach(function(num, index) {
+    console.log(`Index ${index}: ${num}`);
+});
+```
 
-console.log("\n=== ASYNCHRONOUS ===");
+### Asynchronous Callbacks
 
-// Example 1: setTimeout
-console.log("Before setTimeout");
+```javascript
+console.log("Start");
+
 setTimeout(function() {
-    console.log("Inside setTimeout (runs later)");
-}, 0);  // Even 0ms delay makes it async!
-console.log("After setTimeout");
-// Output order: Before → After → Inside setTimeout
+    console.log("Async callback after 2s");
+}, 2000);
 
-// Example 2: Custom async callback
-function fetchUser(userId, onSuccess, onError) {
-    console.log(`Fetching user ${userId}...`);
-    
+console.log("End");
+// Start → End → Async callback after 2s
+
+// Event listener
+document.getElementById("btn").addEventListener("click", function(event) {
+    console.log("Clicked!", event.target);
+});
+```
+
+### Real-World: API Pattern with Callbacks
+
+```javascript
+function fetchUserData(userId, onSuccess, onError) {
     setTimeout(function() {
         if (userId > 0) {
             onSuccess({ id: userId, name: "Rahul" });
         } else {
             onError("Invalid user ID");
         }
-    }, 1000);
-    
-    console.log("Request sent (not waiting)");
+    }, 1500);
 }
 
-fetchUser(
+fetchUserData(
     1,
-    function(user) { console.log("Got user:", user); },
-    function(err) { console.log("Error:", err); }
+    function(user)  { console.log("Success:", user); },
+    function(error) { console.log("Error:", error); }
 );
-// Fetching... → Request sent → (1 second later) → Got user: {...}
 ```
 
-```mermaid
-flowchart TD
-    subgraph Sync["Synchronous Callback"]
-        S1["Line 1: Do something"]
-        S2["Line 2: Call HOF with callback"]
-        S3["Line 2a: HOF executes"]
-        S4["Line 2b: Callback executes IMMEDIATELY"]
-        S5["Line 2c: HOF continues"]
-        S6["Line 3: Next line"]
-        S1 --> S2 --> S3 --> S4 --> S5 --> S6
-    end
-    
-    subgraph Async["Asynchronous Callback"]
-        A1["Line 1: Do something"]
-        A2["Line 2: Call HOF with callback"]
-        A3["Line 2a: HOF schedules callback for LATER"]
-        A4["Line 3: Next line executes IMMEDIATELY"]
-        A5["...later..."]
-        A6["Callback executes when ready"]
-        A1 --> A2 --> A3 --> A4 --> A5 --> A6
-    end
-    
-    style S4 fill:#4CAF50,color:white
-    style A3 fill:#FF9800,color:white
-    style A6 fill:#2196F3,color:white
-```
-
-### ⚠️ Callback Hell — The Problem & Solutions
+### ⚠️ Callback Hell
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Callback Hell (Pyramid of Doom)
-// ═══════════════════════════════════════════════
-
-// ❌ THE PROBLEM — Deeply nested callbacks
-function callbackHellDemo() {
-    getUser(1, function(user) {
-        console.log("Got user:", user.name);
-        getOrders(user.id, function(orders) {
-            console.log("Got orders:", orders.length);
-            getOrderDetails(orders[0].id, function(details) {
-                console.log("Got details:", details.product);
-                getShipping(details.shippingId, function(shipping) {
-                    console.log("Got shipping:", shipping.status);
-                    getTracking(shipping.trackingId, function(tracking) {
-                        console.log("Got tracking:", tracking.location);
-                        // 😱 How deep does this go?!
-                    }, handleError);
-                }, handleError);
+// ❌ Pyramid of Doom
+getUser(userId, function(user) {
+    getOrders(user.id, function(orders) {
+        getOrderDetails(orders[0].id, function(details) {
+            getShipping(details.shippingId, function(shipping) {
+                console.log(shipping); // 4 levels deep!
             }, handleError);
         }, handleError);
     }, handleError);
-}
-
-// Simulated async functions
-function getUser(id, success, error) {
-    setTimeout(() => success({ id, name: "Rahul" }), 100);
-}
-function getOrders(userId, success, error) {
-    setTimeout(() => success([{ id: 101, userId }]), 100);
-}
-function getOrderDetails(orderId, success, error) {
-    setTimeout(() => success({ id: orderId, product: "Laptop", shippingId: 201 }), 100);
-}
-function getShipping(id, success, error) {
-    setTimeout(() => success({ id, status: "Shipped", trackingId: 301 }), 100);
-}
-function getTracking(id, success, error) {
-    setTimeout(() => success({ id, location: "Delhi Hub" }), 100);
-}
-function handleError(err) { console.error("Error:", err); }
-
-callbackHellDemo();
-```
-
-### Solutions to Callback Hell
-
-```javascript
-// ═══════════════════════════════════════════════
-// SOLUTION 1: Named Functions (Flatten the Pyramid)
-// ═══════════════════════════════════════════════
-
-function handleTracking(tracking) {
-    console.log("Final tracking:", tracking.location);
-}
-
-function handleShipping(shipping) {
-    getTracking(shipping.trackingId, handleTracking, handleError);
-}
-
-function handleDetails(details) {
-    getShipping(details.shippingId, handleShipping, handleError);
-}
-
-function handleOrders(orders) {
-    getOrderDetails(orders[0].id, handleDetails, handleError);
-}
-
-function handleUser(user) {
-    getOrders(user.id, handleOrders, handleError);
-}
-
-// Clean entry point
-getUser(1, handleUser, handleError);
-
-// ═══════════════════════════════════════════════
-// SOLUTION 2: Promises (Will be covered in Async section)
-// ═══════════════════════════════════════════════
-
-function getUserPromise(id) {
-    return new Promise((resolve) => {
-        setTimeout(() => resolve({ id, name: "Rahul" }), 100);
-    });
-}
-
-// Much cleaner:
-// getUserPromise(1)
-//     .then(user => getOrdersPromise(user.id))
-//     .then(orders => getDetailsPromise(orders[0].id))
-//     .then(details => console.log(details))
-//     .catch(err => console.error(err));
-
-// ═══════════════════════════════════════════════
-// SOLUTION 3: Async/Await (Cleanest — covered later)
-// ═══════════════════════════════════════════════
-
-// async function processOrder() {
-//     const user = await getUserPromise(1);
-//     const orders = await getOrdersPromise(user.id);
-//     const details = await getDetailsPromise(orders[0].id);
-//     console.log(details);
-// }
+}, handleError);
 ```
 
 ```mermaid
 flowchart TD
-    A["Callback Hell Solutions"] --> B["1. Named Functions"]
-    A --> C["2. Promises"]
-    A --> D["3. Async/Await"]
-    A --> E["4. Event Emitters"]
-    
-    B --> B1["Flatten by extracting named functions"]
-    C --> C1[".then() chains — linear flow"]
-    D --> D1["Looks like synchronous code"]
-    E --> E1["Decouple with events"]
-    
-    style B fill:#FF9800,color:white
-    style C fill:#2196F3,color:white
-    style D fill:#4CAF50,color:white
-    style E fill:#9C27B0,color:white
+    A["Callback Hell Problems"] --> B["Hard to read"]
+    A --> C["Hard to debug"]
+    A --> D["Hard to maintain"]
+    A --> E["Messy error handling"]
+
+    F["Solutions"] --> G["Promises"]
+    F --> H["Async / Await"]
+    F --> I["Named functions to flatten"]
+
+    style A fill:#f44336,color:white
+    style F fill:#4CAF50,color:white
+```
+
+**Solution — Named Functions:**
+
+```javascript
+function handleShipping(shipping) { console.log(shipping); }
+function handleDetails(details)   { getShipping(details.shippingId, handleShipping, handleError); }
+function handleOrders(orders)     { getOrderDetails(orders[0].id, handleDetails, handleError); }
+function handleUser(user)         { getOrders(user.id, handleOrders, handleError); }
+
+getUser(userId, handleUser, handleError); // Flat!
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="9-passing-function-inside-function-as-parameter"></a>
+<a id="9"></a>
 
 ## 9. 🔄 Passing Function Inside Function as Parameter
 
-### Core Concept: Functions as First-Class Citizens
+### Core Concept — First-Class Functions
 
-> **Definition:** In JavaScript, **functions are first-class citizens**, meaning they can be:
-> - Assigned to variables
-> - Stored in data structures (arrays, objects)
-> - **Passed as arguments to other functions**
-> - Returned from other functions
+```mermaid
+flowchart TD
+    A["Functions as First-Class Citizens"] --> B["Assign to variable"]
+    A --> C["Pass as argument"]
+    A --> D["Return from function"]
+    A --> E["Store in array/object"]
 
-```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Functions as First-Class Citizens — Proof
-// ═══════════════════════════════════════════════
+    C --> F["Callbacks"]
+    C --> G["Strategy Pattern"]
+    C --> H["Pipeline / Middleware"]
+    C --> I["Event Systems"]
 
-// 1. Assign to variable
-const sayHi = function() { return "Hi!"; };
-
-// 2. Store in array
-const operations = [
-    (a, b) => a + b,
-    (a, b) => a - b,
-    (a, b) => a * b
-];
-
-// 3. Store in object
-const mathOps = {
-    add: (a, b) => a + b,
-    subtract: (a, b) => a - b
-};
-
-// 4. Pass as argument
-function executeOperation(a, b, operation) {
-    return operation(a, b);
-}
-console.log(executeOperation(10, 5, operations[0])); // 15
-console.log(executeOperation(10, 5, mathOps.subtract)); // 5
-
-// 5. Return from function
-function getOperation(type) {
-    const ops = {
-        "add": (a, b) => a + b,
-        "multiply": (a, b) => a * b
-    };
-    return ops[type] || ((a, b) => 0);
-}
-const adder = getOperation("add");
-console.log(adder(3, 7)); // 10
+    style A fill:#9C27B0,color:white
+    style C fill:#E91E63,color:white
 ```
 
-### Strategy Pattern — Interchangeable Behaviors
+### Basic Example
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Strategy Pattern — Pass Different Strategies
-// ═══════════════════════════════════════════════
+function applyOperation(a, b, operation) {
+    return operation(a, b);
+}
 
-// Sorting strategies
+function add(x, y)      { return x + y; }
+function subtract(x, y) { return x - y; }
+function multiply(x, y) { return x * y; }
+
+console.log(applyOperation(10, 5, add));                     // 15
+console.log(applyOperation(10, 5, subtract));                // 5
+console.log(applyOperation(10, 5, multiply));                // 50
+console.log(applyOperation(10, 5, (a, b) => a ** b));        // 100000
+```
+
+### Strategy Pattern
+
+```javascript
 function sortArray(arr, compareFn) {
     return [...arr].sort(compareFn);
 }
 
-const people = [
-    { name: "Zara", age: 22, salary: 50000 },
-    { name: "Amit", age: 30, salary: 80000 },
-    { name: "Neha", age: 25, salary: 60000 },
-    { name: "Rahul", age: 28, salary: 70000 }
-];
+const numbers = [5, 2, 8, 1, 9, 3];
 
-// Strategy 1: Sort by age ascending
-const byAge = sortArray(people, (a, b) => a.age - b.age);
-console.log("By Age:", byAge.map(p => `${p.name}(${p.age})`));
-// Zara(22), Neha(25), Rahul(28), Amit(30)
-
-// Strategy 2: Sort by name alphabetically
-const byName = sortArray(people, (a, b) => a.name.localeCompare(b.name));
-console.log("By Name:", byName.map(p => p.name));
-// Amit, Neha, Rahul, Zara
-
-// Strategy 3: Sort by salary descending
-const bySalary = sortArray(people, (a, b) => b.salary - a.salary);
-console.log("By Salary:", bySalary.map(p => `${p.name}(₹${p.salary})`));
-// Amit(₹80000), Rahul(₹70000), Neha(₹60000), Zara(₹50000)
+console.log(sortArray(numbers, (a, b) => a - b));              // [1,2,3,5,8,9]
+console.log(sortArray(numbers, (a, b) => b - a));              // [9,8,5,3,2,1]
+console.log(sortArray(numbers, (a, b) => (a % 2) - (b % 2))); // evens first
 ```
 
-### Pipeline / Middleware Pattern
+### Pipeline Pattern
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Pipeline — Chain of Functions
-// ═══════════════════════════════════════════════
-
-// Each function takes a value and returns a transformed value
 function pipeline(...functions) {
     return function(value) {
         return functions.reduce((acc, fn) => fn(acc), value);
     };
 }
 
-// Individual transformations
-const trim = str => str.trim();
-const toLowerCase = str => str.toLowerCase();
+const trim         = str => str.trim();
+const toLowerCase  = str => str.toLowerCase();
 const replaceSpaces = str => str.replace(/\s+/g, '-');
-const removeSpecialChars = str => str.replace(/[^a-z0-9-]/g, '');
-const addPrefix = str => `blog-${str}`;
+const addPrefix    = str => `url-${str}`;
 
-// Compose a URL slug creator
-const createSlug = pipeline(
-    trim,
-    toLowerCase,
-    replaceSpaces,
-    removeSpecialChars,
-    addPrefix
-);
+const createSlug = pipeline(trim, toLowerCase, replaceSpaces, addPrefix);
 
-console.log(createSlug("  Hello World!  "));
-// "blog-hello-world"
-
-console.log(createSlug("  JavaScript IS Awesome!! 🚀  "));
-// "blog-javascript-is-awesome-"
-
-// Another pipeline: Data processing
-const processNumber = pipeline(
-    n => n * 2,         // Double
-    n => n + 10,        // Add 10
-    n => Math.round(n), // Round
-    n => `Result: ${n}` // Format
-);
-
-console.log(processNumber(3.7));  // "Result: 17"
-// 3.7 → 7.4 → 17.4 → 17 → "Result: 17"
+console.log(createSlug("  Hello World  "));        // "url-hello-world"
+console.log(createSlug(" JavaScript IS Awesome ")); // "url-javascript-is-awesome"
 ```
 
-### Function Composition (Right-to-Left)
+### Function Composition
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Compose — Opposite of Pipeline
-// ═══════════════════════════════════════════════
-
+// compose: right to left (mathematical composition)
 function compose(...fns) {
     return function(x) {
         return fns.reduceRight((acc, fn) => fn(acc), x);
     };
 }
 
-const add10 = x => x + 10;
+const add10     = x => x + 10;
 const multiply2 = x => x * 2;
 const subtract5 = x => x - 5;
 
-// compose reads RIGHT to LEFT
+// Executes: add10(5)=15 → multiply2(15)=30 → subtract5(30)=25
 const compute = compose(subtract5, multiply2, add10);
-// Execution: add10(5) → 15 → multiply2(15) → 30 → subtract5(30) → 25
-
 console.log(compute(5)); // 25
 ```
 
-### Use Case: Event Emitter System
+### Real-World: Event System
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Custom Event System
-// ═══════════════════════════════════════════════
-
 class EventEmitter {
-    constructor() {
-        this.events = {};
-    }
-    
+    constructor() { this.events = {}; }
+
     on(eventName, callback) {
-        if (!this.events[eventName]) {
-            this.events[eventName] = [];
-        }
+        if (!this.events[eventName]) this.events[eventName] = [];
         this.events[eventName].push(callback);
-        
-        // Return unsubscribe function
-        return () => {
-            this.events[eventName] = this.events[eventName]
-                .filter(cb => cb !== callback);
-        };
     }
-    
+
     emit(eventName, ...args) {
-        const callbacks = this.events[eventName] || [];
-        callbacks.forEach(cb => cb(...args));
-    }
-    
-    once(eventName, callback) {
-        const unsubscribe = this.on(eventName, (...args) => {
-            callback(...args);
-            unsubscribe();
-        });
+        const callbacks = this.events[eventName];
+        if (callbacks) callbacks.forEach(cb => cb(...args));
     }
 }
 
-// Usage
 const emitter = new EventEmitter();
 
-// Subscribe with functions as parameters
-emitter.on("userLogin", user => console.log(`Welcome, ${user}!`));
-emitter.on("userLogin", user => console.log(`Loading ${user}'s data...`));
+emitter.on("login", function(user) { console.log(`${user} logged in`); });
+emitter.on("login", function(user) { console.log(`Sending welcome email to ${user}`); });
 
-const unsubNotify = emitter.on("userLogin", user => 
-    console.log(`Sending notification for ${user}`)
-);
-
-// One-time event
-emitter.once("appInit", () => console.log("App initialized (runs once)"));
-
-// Emit events
-emitter.emit("appInit");  // "App initialized (runs once)"
-emitter.emit("appInit");  // (nothing — once handler removed)
-
-emitter.emit("userLogin", "Rahul");
-// Welcome, Rahul!
-// Loading Rahul's data...
-// Sending notification for Rahul
-
-unsubNotify(); // Unsubscribe notification
-
-emitter.emit("userLogin", "Priya");
-// Welcome, Priya!
-// Loading Priya's data...
-// (no notification — unsubscribed)
+emitter.emit("login", "Rahul");
+// Rahul logged in
+// Sending welcome email to Rahul
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="10-call-by-value-and-call-by-reference"></a>
+<a id="10"></a>
 
 ## 10. 📦 Call by Value and Call by Reference
 
 ### Overview
 
-> **Definition:** How data is passed to functions depends on the **data type**:
-> - **Primitives** (number, string, boolean, null, undefined, symbol, bigint) → **Call by Value**
-> - **Objects** (objects, arrays, functions) → **Call by Sharing** (copy of reference)
-
 ```mermaid
 flowchart TD
-    A["Passing Data to Functions"] --> B["PRIMITIVES<br>(Call by Value)"]
-    A --> C["OBJECTS<br>(Call by Reference/Sharing)"]
-    
-    B --> D["number, string, boolean,<br>null, undefined, symbol, bigint"]
-    C --> E["object, array, function"]
-    
-    D --> F["✅ Copy of VALUE is passed<br>Original is SAFE"]
-    E --> G["⚠️ Copy of REFERENCE is passed<br>Original CAN be mutated"]
-    
+    A["Passing Data to Functions"] --> B["Call by Value"]
+    A --> C["Call by Reference"]
+
+    B --> D["Primitives: number, string, boolean,\nnull, undefined, symbol, bigint"]
+    C --> E["Non-Primitives: object, array, function"]
+
+    D --> F["Copy of VALUE passed"]
+    E --> G["Copy of REFERENCE address passed"]
+
+    F --> H["Original NOT affected"]
+    G --> I["Original CAN be mutated"]
+
     style B fill:#4CAF50,color:white
     style C fill:#f44336,color:white
-    style F fill:#4CAF50,color:white
-    style G fill:#f44336,color:white
 ```
 
-### Call by Value — Deep Dive
+### Call by Value (Primitives)
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Call by Value — All Primitive Types
-// ═══════════════════════════════════════════════
-
-function modifyPrimitives(num, str, bool, nul, undef) {
-    num = 999;
-    str = "CHANGED";
-    bool = false;
-    nul = "not null anymore";
-    undef = "defined now";
-    
-    console.log("Inside function:");
-    console.log("  num:", num);       // 999
-    console.log("  str:", str);       // "CHANGED"
-    console.log("  bool:", bool);     // false
-    console.log("  nul:", nul);       // "not null anymore"
-    console.log("  undef:", undef);   // "defined now"
+function changeValue(x) {
+    x = 100;
+    console.log("Inside:", x); // 100
 }
 
-let myNum = 42;
-let myStr = "Hello";
-let myBool = true;
-let myNull = null;
-let myUndef = undefined;
-
-modifyPrimitives(myNum, myStr, myBool, myNull, myUndef);
-
-console.log("\nOutside function (originals UNCHANGED):");
-console.log("  myNum:", myNum);       // 42
-console.log("  myStr:", myStr);       // "Hello"
-console.log("  myBool:", myBool);     // true
-console.log("  myNull:", myNull);     // null
-console.log("  myUndef:", myUndef);   // undefined
+let num = 10;
+changeValue(num);
+console.log("Outside:", num); // 10 — NOT changed!
 ```
 
 ```mermaid
 flowchart LR
-    subgraph Before["Before Function Call"]
-        A["myNum = 42<br>📍 Address: 0x001"]
+    subgraph Before["Before Call"]
+        A["num = 10 at 0x001"]
     end
-    
     subgraph During["Inside Function"]
-        B["num = 42 (COPY)<br>📍 Address: 0x002"] --> C["num = 999<br>📍 Address: 0x002"]
+        B["x = 10 COPY at 0x002"] --> C["x = 100 at 0x002"]
     end
-    
-    subgraph After["After Function Returns"]
-        D["myNum = 42<br>📍 Address: 0x001<br>✅ Unchanged!"]
+    subgraph After["After Call"]
+        D["num = 10 at 0x001 Unchanged!"]
     end
-    
     Before --> During --> After
-    
-    style A fill:#4CAF50,color:white
+
     style C fill:#FF9800,color:white
     style D fill:#4CAF50,color:white
 ```
 
-### Call by Reference — Deep Dive
+```javascript
+function testPrimitives(str, num, bool) {
+    str = "changed"; num = 999; bool = false;
+    console.log("Inside:", str, num, bool); // changed 999 false
+}
+
+let myStr = "hello", myNum = 42, myBool = true;
+testPrimitives(myStr, myNum, myBool);
+console.log("Outside:", myStr, myNum, myBool); // hello 42 true
+```
+
+### Call by Reference (Objects & Arrays)
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Call by Reference — Objects & Arrays
-// ═══════════════════════════════════════════════
-
-// ── Objects ──
-function modifyObject(obj) {
-    obj.name = "MODIFIED";       // ✅ Mutating — affects original
-    obj.newProp = "I'm new!";    // ✅ Adding property — affects original
-    console.log("Inside:", obj);
+function changeObject(obj) {
+    obj.name = "Modified";
 }
 
 let person = { name: "Rahul", age: 25 };
-modifyObject(person);
-console.log("Outside:", person);
-// { name: "MODIFIED", age: 25, newProp: "I'm new!" } — CHANGED!
-
-// ── Arrays ──
-function modifyArray(arr) {
-    arr.push(4);           // ✅ Mutating — affects original
-    arr[0] = 999;          // ✅ Modifying element — affects original
-    console.log("Inside:", arr);
-}
-
-let myArray = [1, 2, 3];
-modifyArray(myArray);
-console.log("Outside:", myArray);
-// [999, 2, 3, 4] — CHANGED!
+changeObject(person);
+console.log(person); // { name: "Modified", age: 25 } — CHANGED!
 ```
 
 ```mermaid
 flowchart LR
     subgraph Heap["Heap Memory"]
-        OBJ["{ name: 'Rahul', age: 25 }<br>📍 Address: 0xABC"]
+        OBJ["name: Rahul at 0xABC"]
     end
-    
-    subgraph Variables["Stack"]
-        A["person → 0xABC"]
-        B["obj → 0xABC<br>(SAME address!)"]
-    end
-    
-    A --> OBJ
-    B --> OBJ
-    
+    A["person → 0xABC"] --> OBJ
+    B["obj → 0xABC SAME!"] --> OBJ
+
     style OBJ fill:#f44336,color:white
+    style A fill:#4CAF50,color:white
+    style B fill:#FF9800,color:white
 ```
 
-### ⚠️ CRITICAL: Mutation vs Reassignment
+### ⚠️ Mutation vs Reassignment
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Mutation vs Reassignment — THE KEY DIFFERENCE
-// ═══════════════════════════════════════════════
-
-// ── MUTATION — affects original ✅ ──
-function mutateObject(obj) {
-    obj.name = "Changed";      // Modifying the SAME object in memory
-    obj.newKey = "Added";      // Adding to the SAME object
-    delete obj.age;            // Deleting from the SAME object
+// MUTATION — affects original ✅
+function mutate(obj) {
+    obj.name = "Changed"; // Modifies same object
 }
 
-let user1 = { name: "Original", age: 25 };
-mutateObject(user1);
-console.log("After mutate:", user1);
-// { name: "Changed", newKey: "Added" } — MODIFIED!
-
-// ── REASSIGNMENT — does NOT affect original ❌ ──
-function reassignObject(obj) {
-    obj = { name: "Completely New Object" };  // obj now points to NEW object
-    console.log("Inside (reassigned):", obj); // { name: "Completely New Object" }
+// REASSIGNMENT — does NOT affect original ❌
+function reassign(obj) {
+    obj = { name: "New Object" }; // Creates NEW object, local ref changes
+    console.log("Inside:", obj.name); // "New Object"
 }
 
-let user2 = { name: "Original", age: 25 };
-reassignObject(user2);
-console.log("After reassign:", user2);
-// { name: "Original", age: 25 } — UNCHANGED!
+let myObj = { name: "Original" };
+
+mutate(myObj);
+console.log(myObj.name); // "Changed"
+
+reassign(myObj);
+console.log(myObj.name); // "Changed" — NOT reassigned!
 ```
 
-```mermaid
-flowchart TD
-    subgraph Mutation["MUTATION (obj.name = 'X')"]
-        M1["person → 0xABC"] --> M2["{ name: 'Changed' }<br>0xABC"]
-        M3["obj → 0xABC"] --> M2
-        M4["Both point to SAME object ✅"]
-    end
-    
-    subgraph Reassignment["REASSIGNMENT (obj = { })"]
-        R1["person → 0xABC"] --> R2["{ name: 'Original' }<br>0xABC"]
-        R3["obj → 0xDEF"] --> R4["{ name: 'New' }<br>0xDEF"]
-        R5["Different objects! ❌"]
-    end
-    
-    style M2 fill:#f44336,color:white
-    style R2 fill:#4CAF50,color:white
-    style R4 fill:#FF9800,color:white
-```
-
-### How to Prevent Mutation — All Methods
+### Arrays — Also Passed by Reference
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Preventing Mutation — Every Technique
-// ═══════════════════════════════════════════════
-
-const original = {
-    name: "Rahul",
-    age: 25,
-    address: {
-        city: "Delhi",
-        pin: 110001
-    },
-    hobbies: ["coding", "reading"]
-};
-
-// ── Method 1: Spread Operator (Shallow Copy) ──
-function safeModifySpread(obj) {
-    const copy = { ...obj };
-    copy.name = "Modified";
-    return copy;
+function addElement(arr) {
+    arr.push(4); // Mutates original
 }
 
-const result1 = safeModifySpread(original);
-console.log("Original:", original.name);  // "Rahul" ✅
-console.log("Copy:", result1.name);       // "Modified"
+let myArray = [1, 2, 3];
+addElement(myArray);
+console.log(myArray); // [1, 2, 3, 4] — CHANGED!
 
-// ⚠️ BUT shallow copy — nested objects are STILL shared!
-function dangerousNested(obj) {
-    const copy = { ...obj };
-    copy.address.city = "Mumbai";  // Modifies ORIGINAL's nested object!
-    return copy;
+// ✅ Safe version
+function safeAdd(arr) {
+    return [...arr, 4]; // Return new array
 }
 
-const result2 = dangerousNested(original);
-console.log("Original city:", original.address.city); // "Mumbai" 😱
-
-// ── Method 2: Object.assign (Also Shallow) ──
-const shallowCopy = Object.assign({}, original);
-
-// ── Method 3: JSON (Deep Copy — with limitations) ──
-function safeDeepCopy(obj) {
-    const copy = JSON.parse(JSON.stringify(obj));
-    copy.address.city = "Bangalore";
-    return copy;
-}
-
-// Reset original
-original.address.city = "Delhi";
-
-const result3 = safeDeepCopy(original);
-console.log("Original city:", original.address.city); // "Delhi" ✅
-console.log("Copy city:", result3.address.city);       // "Bangalore"
-
-// ⚠️ JSON method LOSES: functions, undefined, symbols, Date objects, RegExp
-
-// ── Method 4: structuredClone (Modern — Best Deep Copy) ──
-const deepCopy = structuredClone(original);
-deepCopy.address.city = "Chennai";
-console.log("Original:", original.address.city);  // "Delhi" ✅
-console.log("Deep copy:", deepCopy.address.city); // "Chennai"
-
-// ── Method 5: Object.freeze (Prevent Mutation Entirely) ──
-const frozen = Object.freeze({
-    name: "Frozen",
-    config: { port: 3000 }  // ⚠️ Nested objects are NOT frozen!
-});
-
-frozen.name = "Changed";  // Silently fails (or TypeError in strict mode)
-console.log(frozen.name);  // "Frozen" ✅
-
-frozen.config.port = 9000; // This WORKS! (shallow freeze)
-console.log(frozen.config.port); // 9000 😱
-
-// Deep freeze helper
-function deepFreeze(obj) {
-    Object.freeze(obj);
-    Object.values(obj)
-        .filter(val => typeof val === 'object' && val !== null)
-        .forEach(deepFreeze);
-    return obj;
-}
-
-const deepFrozen = deepFreeze({ a: 1, b: { c: 2, d: { e: 3 } } });
+let original = [1, 2, 3];
+let modified = safeAdd(original);
+console.log(original); // [1, 2, 3]
+console.log(modified); // [1, 2, 3, 4]
 ```
 
-### 📊 Complete Comparison
-
-```
-╔═══════════════════╦═══════════════════╦════════════════════════╗
-║ Feature           ║ Call by Value     ║ Call by Reference      ║
-╠═══════════════════╬═══════════════════╬════════════════════════╣
-║ Data Types        ║ Primitives        ║ Objects, Arrays, Funcs ║
-║ What's Passed     ║ Copy of value     ║ Copy of reference      ║
-║ Original Affected ║ ❌ Never          ║ ✅ If mutated          ║
-║ Reassignment      ║ No effect         ║ No effect on original  ║
-║ Mutation          ║ N/A (immutable)   ║ Affects original       ║
-║ Memory            ║ New memory alloc. ║ Points to same memory  ║
-║ Performance       ║ Copies data       ║ Faster (no copy)       ║
-║ Safety            ║ Inherently safe   ║ Need to be careful     ║
-╚═══════════════════╩═══════════════════╩════════════════════════╝
-```
-
-### ❓ Interview Questions
-
-**Q1: What will be the output?**
+### How to Prevent Mutation
 
 ```javascript
-function swap(a, b) {
-    let temp = a;
-    a = b;
-    b = temp;
-    console.log("Inside:", a, b);
-}
+// Shallow copy — spread
+const copy1 = { ...obj };
 
-let x = 10, y = 20;
-swap(x, y);
-console.log("Outside:", x, y);
+// Shallow copy — Object.assign
+const copy2 = Object.assign({}, obj);
+
+// Deep copy — JSON (limitation: no functions, Date, undefined)
+const deep1 = JSON.parse(JSON.stringify(obj));
+
+// Deep copy — modern (recommended)
+const deep2 = structuredClone(obj);
+
+// Freeze — prevent mutation
+const frozen = Object.freeze({ name: "Rahul" });
+frozen.name = "Changed"; // Silent fail (TypeError in strict mode)
+console.log(frozen.name); // "Rahul"
 ```
 
-<details>
-<summary>🔍 Click to see Answer</summary>
-
-```
-Inside: 20 10
-Outside: 10 20  (NOT swapped! — primitives are pass by value)
-```
-
-To actually swap, you'd need to wrap them in an object or use array destructuring with a return.
-
-</details>
-
-**Q2: Tricky — Nested Objects with Shallow Copy**
+### ⚠️ Tricky: Shallow Copy Shares Nested References
 
 ```javascript
 function modify(obj) {
-    obj.a.b = 2;
+    obj.a.b = 2; // Mutates nested object
 }
 
 let data = { a: { b: 1 } };
-let copy = { ...data };   // Shallow copy
+let copy = { ...data }; // Shallow copy!
 
 modify(copy);
-console.log(data.a.b);    // ?
+console.log(data.a.b); // 2 — ALSO changed! Use structuredClone for deep copy
 ```
 
-<details>
-<summary>🔍 Click to see Answer</summary>
+### 📊 Comparison Table
 
-**Answer:** `2` — The nested object `data.a` and `copy.a` are the SAME reference. Spread operator only creates a shallow copy.
+| Feature | Call by Value | Call by Reference |
+|---------|-------------|------------------|
+| Data Type | Primitives | Objects, Arrays |
+| What's Passed | Copy of value | Copy of reference |
+| Original Affected | ❌ No | ✅ Yes (if mutated) |
+| Reassignment inside | No effect | No effect |
+| Memory | New allocation | Same memory location |
 
-</details>
+### ❓ Interview Questions
+
+```javascript
+// Q1
+function modify(obj, num) {
+    obj.value = 100;
+    num = 100;
+}
+let myObj = { value: 1 }, myNum = 1;
+modify(myObj, myNum);
+console.log(myObj.value); // 100
+console.log(myNum);       // 1
+
+// Q2
+function swap(a, b) {
+    let temp = a; a = b; b = temp;
+    console.log("Inside:", a, b); // 20 10
+}
+let x = 10, y = 20;
+swap(x, y);
+console.log("Outside:", x, y); // 10 20 — NOT swapped!
+```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="11-closures"></a>
+<a id="11"></a>
 
 ## 11. 🔐 Closures
 
 ### What is a Closure?
 
-> **Definition:** A **closure** is a function bundled together with its **lexical environment**. A closure gives a function access to variables from its **outer (enclosing) function's scope**, even after the outer function has returned and its execution context has been destroyed.
-
-> **Apni Bhasha Mein:** Closure matlab ek function ke paas ek **backpack** hota hai. Jab outer function khatam ho jaata hai aur uski memory destroy ho jaati hai, tab bhi inner function ke backpack mein outer function ke variables rahte hain. Woh variables kabhi nahi marte jab tak inner function zinda hai.
+> **A closure is a function bundled together with its lexical environment.** It gives a function access to variables from its outer scope even after the outer function has returned.
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: The Simplest Closure
-// ═══════════════════════════════════════════════
-
 function outer() {
-    let count = 0; // This variable is "closed over"
-    
+    let count = 0;
+
     function inner() {
         count++;
-        console.log("Count:", count);
+        console.log(count);
     }
-    
+
     return inner;
 }
 
-const counter = outer(); // outer() has finished executing!
-// outer()'s execution context is DESTROYED
-// But count lives on in inner's closure!
-
-counter(); // Count: 1
-counter(); // Count: 2
-counter(); // Count: 3
-
-// 'count' is NOT accessible from outside
-// console.log(count); // ReferenceError!
+const counter = outer();
+counter(); // 1
+counter(); // 2
+counter(); // 3
 ```
 
-### How Closures Work — Under the Hood
+### How Closures Work
 
 ```mermaid
 flowchart TD
-    A["1. outer() is called"] --> B["2. EC created for outer()"]
-    B --> C["3. count = 0 stored in outer's memory"]
-    B --> D["4. inner() function is created"]
-    D --> E["5. inner() forms a CLOSURE<br>— saves reference to outer's scope"]
-    E --> F["6. outer() returns inner"]
-    F --> G["7. outer()'s EC is popped from Call Stack"]
-    G --> H["8. outer()'s variables SHOULD be garbage collected..."]
-    H --> I["9. BUT count is NOT collected!<br>inner() still has a reference to it"]
-    I --> J["10. counter() calls inner() → accesses count via closure"]
-    
-    style G fill:#f44336,color:white
-    style I fill:#4CAF50,color:white
-    style J fill:#2196F3,color:white
+    A["outer called"] --> B["EC created: count = 0"]
+    B --> C["inner created with reference to outer scope"]
+    C --> D["outer returns inner"]
+    D --> E["outer EC popped from call stack"]
+    E --> F["count NOT garbage collected — inner still references it"]
+    F --> G["counter invokes inner → count++ → logs value"]
+
+    style E fill:#f44336,color:white
+    style F fill:#4CAF50,color:white
 ```
 
-```
-┌────────────────────────────────────────────────────────────┐
-│                    CLOSURE MENTAL MODEL                     │
-│                                                            │
-│   ┌──────────────────────────────────────────────────┐     │
-│   │  inner() Function                                │     │
-│   │  ┌──────────────────────────────────────────┐    │     │
-│   │  │  🎒 Closure Backpack                     │    │     │
-│   │  │                                          │    │     │
-│   │  │  Carries variables from outer scope:     │    │     │
-│   │  │    count: 0 → 1 → 2 → 3 → ...          │    │     │
-│   │  │                                          │    │     │
-│   │  │  These variables PERSIST even after      │    │     │
-│   │  │  outer() has returned!                   │    │     │
-│   │  └──────────────────────────────────────────┘    │     │
-│   │                                                  │     │
-│   │  function inner() {                              │     │
-│   │      count++;  // ← accesses backpack            │     │
-│   │      console.log(count);                         │     │
-│   │  }                                               │     │
-│   └──────────────────────────────────────────────────┘     │
-│                                                            │
-│   outer() is DEAD, but its variable lives in the backpack  │
-└────────────────────────────────────────────────────────────┘
-```
+### Closure Examples
 
-### Closure Examples — Simple to Complex
-
-#### Example 1: Function Factory
+#### Counter with Private State
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Function Factory Using Closures
-// ═══════════════════════════════════════════════
+function createCounter() {
+    let count = 0;
 
-function createGreeting(greeting) {
-    // 'greeting' is closed over
-    return function(name) {
-        return `${greeting}, ${name}!`;
+    return {
+        increment: function() { return ++count; },
+        decrement: function() { return --count; },
+        getCount:  function() { return count; },
+        reset:     function() { count = 0; return count; }
     };
 }
 
-const sayHello = createGreeting("Hello");
-const sayNamaste = createGreeting("Namaste");
-const sayHola = createGreeting("Hola");
-
-console.log(sayHello("Rahul"));    // "Hello, Rahul!"
-console.log(sayNamaste("Priya"));  // "Namaste, Priya!"
-console.log(sayHola("Carlos"));    // "Hola, Carlos!"
-
-// Each returned function has its OWN closure with its OWN 'greeting'
+const counter = createCounter();
+console.log(counter.increment()); // 1
+console.log(counter.increment()); // 2
+console.log(counter.decrement()); // 1
+console.log(counter.count);       // undefined (PRIVATE!)
 ```
 
-#### Example 2: Private Variables (Data Encapsulation)
+#### Classic Loop Problem
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Private Variables Using Closures
-// ═══════════════════════════════════════════════
-
-function createCounter(initialValue = 0) {
-    let count = initialValue;  // PRIVATE — can't be accessed directly
-    
-    return {
-        increment() { return ++count; },
-        decrement() { return --count; },
-        getCount() { return count; },
-        reset() { count = initialValue; return count; }
-    };
+// ❌ All print 3
+for (var i = 0; i < 3; i++) {
+    setTimeout(function() { console.log(i); }, 1000);
 }
+// 3, 3, 3
 
-const counter = createCounter(10);
-console.log(counter.increment());  // 11
-console.log(counter.increment());  // 12
-console.log(counter.decrement());  // 11
-console.log(counter.getCount());   // 11
-console.log(counter.reset());      // 10
+// ✅ Fix 1: IIFE creates new scope per iteration
+for (var i = 0; i < 3; i++) {
+    (function(j) {
+        setTimeout(function() { console.log(j); }, 1000);
+    })(i);
+}
+// 0, 1, 2
 
-// Cannot access 'count' directly
-console.log(counter.count);        // undefined
-// This is TRUE data privacy in JavaScript!
+// ✅ Fix 2: let creates new binding per iteration
+for (let i = 0; i < 3; i++) {
+    setTimeout(function() { console.log(i); }, 1000);
+}
+// 0, 1, 2
 ```
 
-#### Example 3: Bank Account — Real-World Use Case
+```mermaid
+flowchart TD
+    subgraph VarProblem["var — ONE shared variable"]
+        A["All 3 setTimeouts reference same i"]
+        B["Loop ends: i = 3"]
+        C["All print 3"]
+        A --> B --> C
+    end
+    subgraph LetFix["let — NEW binding per iteration"]
+        D["Timeout 0 → i0 = 0"]
+        E["Timeout 1 → i1 = 1"]
+        F["Timeout 2 → i2 = 2"]
+    end
+
+    style VarProblem fill:#FFEBEE
+    style LetFix fill:#E8F5E9
+```
+
+#### Private Bank Account
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Bank Account with Private Balance
-// ═══════════════════════════════════════════════
+function BankAccount(initialBalance) {
+    let balance = initialBalance;
+    const transactions = [];
 
-function BankAccount(owner, initialBalance) {
-    let balance = initialBalance;  // Private!
-    const transactions = [];        // Private!
-    
-    function recordTransaction(type, amount) {
-        transactions.push({
-            type,
-            amount,
-            balance,
-            date: new Date().toISOString()
-        });
-    }
-    
     return {
-        getOwner() {
-            return owner;
-        },
-        
         deposit(amount) {
-            if (amount <= 0) return "❌ Invalid amount";
-            balance += amount;
-            recordTransaction("deposit", amount);
-            return `✅ Deposited ₹${amount}. Balance: ₹${balance}`;
+            if (amount > 0) {
+                balance += amount;
+                transactions.push({ type: 'deposit', amount });
+                return `Deposited ₹${amount}. Balance: ₹${balance}`;
+            }
+            return "Invalid amount";
         },
-        
         withdraw(amount) {
-            if (amount <= 0) return "❌ Invalid amount";
-            if (amount > balance) return "❌ Insufficient funds";
-            balance -= amount;
-            recordTransaction("withdrawal", amount);
-            return `✅ Withdrew ₹${amount}. Balance: ₹${balance}`;
+            if (amount > 0 && amount <= balance) {
+                balance -= amount;
+                transactions.push({ type: 'withdraw', amount });
+                return `Withdrawn ₹${amount}. Balance: ₹${balance}`;
+            }
+            return "Insufficient funds";
         },
-        
-        getBalance() {
-            return `💰 Balance: ₹${balance}`;
-        },
-        
-        getStatement() {
-            return [...transactions]; // Return copy
-        }
+        getBalance()     { return `₹${balance}`; },
+        getTransactions(){ return [...transactions]; }
     };
 }
 
-const account = BankAccount("Rahul", 1000);
-console.log(account.deposit(500));    // ✅ Deposited ₹500. Balance: ₹1500
-console.log(account.withdraw(200));   // ✅ Withdrew ₹200. Balance: ₹1300
-console.log(account.getBalance());    // 💰 Balance: ₹1300
-console.log(account.withdraw(2000));  // ❌ Insufficient funds
-
-// Balance is COMPLETELY private
-console.log(account.balance);         // undefined
+const account = BankAccount(1000);
+console.log(account.deposit(500));   // Deposited ₹500. Balance: ₹1500
+console.log(account.withdraw(200));  // Withdrawn ₹200. Balance: ₹1300
+console.log(account.balance);        // undefined (PRIVATE!)
 ```
 
-#### Example 4: Memoization (Performance Optimization)
+#### Memoization
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Memoization Using Closures
-// ═══════════════════════════════════════════════
-
 function memoize(fn) {
-    const cache = {};  // Closure variable — persists across calls
-    let cacheHits = 0;
-    let cacheMisses = 0;
-    
-    function memoized(...args) {
+    const cache = {};
+
+    return function(...args) {
         const key = JSON.stringify(args);
-        
-        if (key in cache) {
-            cacheHits++;
+        if (cache[key] !== undefined) {
+            console.log("Cache hit!");
             return cache[key];
         }
-        
-        cacheMisses++;
-        const result = fn(...args);
-        cache[key] = result;
-        return result;
-    }
-    
-    memoized.getStats = () => ({
-        hits: cacheHits,
-        misses: cacheMisses,
-        cacheSize: Object.keys(cache).length
-    });
-    
-    memoized.clearCache = () => {
-        for (const key in cache) delete cache[key];
-        cacheHits = 0;
-        cacheMisses = 0;
+        console.log("Computing...");
+        cache[key] = fn(...args);
+        return cache[key];
     };
-    
-    return memoized;
 }
 
-// Expensive computation
-function fibonacci(n) {
-    if (n <= 1) return n;
-    return fibonacci(n - 1) + fibonacci(n - 2);
+function slowSquare(n) {
+    return n * n;
 }
 
-const memoFib = memoize(fibonacci);
-
-console.time("First call");
-console.log(memoFib(35));  // Computing...
-console.timeEnd("First call");
-
-console.time("Second call (cached)");
-console.log(memoFib(35));  // Instant!
-console.timeEnd("Second call (cached)");
-
-console.log(memoFib.getStats());
-// { hits: 1, misses: 1, cacheSize: 1 }
+const fastSquare = memoize(slowSquare);
+console.log(fastSquare(10)); // Computing... 100
+console.log(fastSquare(10)); // Cache hit!   100
 ```
 
-#### Example 5: Debounce Function
+#### Debounce (Uses Closure)
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Debounce — Wait until user stops typing
-// ═══════════════════════════════════════════════
-
 function debounce(fn, delay) {
-    let timeoutId;  // Closure variable — remembered across calls
-    
+    let timeoutId;
+
     return function(...args) {
-        // Clear previous timer
         clearTimeout(timeoutId);
-        
-        // Set new timer
         timeoutId = setTimeout(() => {
             fn.apply(this, args);
         }, delay);
     };
 }
 
-const searchAPI = debounce(function(query) {
-    console.log(`🔍 Searching for: "${query}"`);
+const search = debounce(function(query) {
+    console.log(`Searching: ${query}`);
 }, 300);
 
-// Simulating rapid typing
-searchAPI("J");          // Timer set
-searchAPI("Ja");         // Previous cleared, new timer
-searchAPI("Jav");        // Previous cleared, new timer
-searchAPI("Java");       // Previous cleared, new timer
-searchAPI("JavaScript"); // Previous cleared, new timer
-// Only "JavaScript" fires after 300ms! (saves 4 API calls)
+search("J");
+search("Ja");
+search("JavaScript"); // Only this fires after 300ms
 ```
 
-#### Example 6: Throttle Function
+#### Throttle (Uses Closure)
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Throttle — Limit execution rate
-// ═══════════════════════════════════════════════
-
 function throttle(fn, interval) {
-    let lastTime = 0;       // Closure variable
-    let timeoutId = null;   // Closure variable
-    
+    let lastTime = 0;
+
     return function(...args) {
         const now = Date.now();
-        const remaining = interval - (now - lastTime);
-        
-        if (remaining <= 0) {
+        if (now - lastTime >= interval) {
             lastTime = now;
             fn.apply(this, args);
-        } else if (!timeoutId) {
-            timeoutId = setTimeout(() => {
-                lastTime = Date.now();
-                timeoutId = null;
-                fn.apply(this, args);
-            }, remaining);
         }
     };
 }
 
 const handleScroll = throttle(function() {
-    console.log("📜 Scroll handled at:", new Date().toISOString());
+    console.log("Scroll handled at:", Date.now());
 }, 1000);
-
-// Even if called 100 times per second, only fires once per second
 ```
 
-#### Example 7: Once Function
+#### Once Function
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Function that runs ONLY ONCE
-// ═══════════════════════════════════════════════
-
 function once(fn) {
-    let called = false;   // Closure
-    let result;           // Closure
-    
+    let called = false;
+    let result;
+
     return function(...args) {
         if (!called) {
             called = true;
@@ -3339,668 +1644,919 @@ function once(fn) {
     };
 }
 
-const initialize = once(function(config) {
-    console.log("🚀 App initialized with:", config);
-    return "initialized";
+const initialize = once(() => {
+    console.log("Initialized!");
+    return "done";
 });
 
-console.log(initialize({ env: "production" }));
-// 🚀 App initialized with: { env: "production" }
-// "initialized"
-
-console.log(initialize({ env: "development" }));
-// "initialized" (function not re-executed, returns cached result)
-
-console.log(initialize());
-// "initialized" (still cached)
-```
-
-### Closure with Loops — THE Classic Interview Question
-
-```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Closure in Loops — The Infamous Problem
-// ═══════════════════════════════════════════════
-
-// ❌ THE BUG
-console.log("=== var (BUGGY) ===");
-for (var i = 0; i < 3; i++) {
-    setTimeout(function() {
-        console.log("var:", i);  // All print 3!
-    }, 100);
-}
-
-// ✅ FIX 1: Use let
-console.log("=== let (FIXED) ===");
-for (let i = 0; i < 3; i++) {
-    setTimeout(function() {
-        console.log("let:", i);  // 0, 1, 2 ✅
-    }, 200);
-}
-
-// ✅ FIX 2: IIFE (creates closure per iteration)
-console.log("=== IIFE (FIXED) ===");
-for (var i = 0; i < 3; i++) {
-    (function(j) {
-        setTimeout(function() {
-            console.log("IIFE:", j);  // 0, 1, 2 ✅
-        }, 300);
-    })(i);
-}
-
-// ✅ FIX 3: Separate function
-console.log("=== Function (FIXED) ===");
-function createTimer(i) {
-    setTimeout(function() {
-        console.log("Func:", i);  // 0, 1, 2 ✅
-    }, 400);
-}
-for (var i = 0; i < 3; i++) {
-    createTimer(i);
-}
-```
-
-```mermaid
-flowchart TD
-    subgraph VarProblem["var i — ONE shared variable"]
-        A["Iteration 0: closure → same i"]
-        B["Iteration 1: closure → same i"]
-        C["Iteration 2: closure → same i"]
-        D["Loop ends: i = 3"]
-        A --> D
-        B --> D
-        C --> D
-        D --> E["All print 3 ❌"]
-    end
-    
-    subgraph LetFix["let i — NEW variable per iteration"]
-        F["Iteration 0: closure → i₀ = 0"]
-        G["Iteration 1: closure → i₁ = 1"]
-        H["Iteration 2: closure → i₂ = 2"]
-        F --> I["Prints 0 ✅"]
-        G --> J["Prints 1 ✅"]
-        H --> K["Prints 2 ✅"]
-    end
-    
-    style VarProblem fill:#FFEBEE
-    style LetFix fill:#E8F5E9
+console.log(initialize()); // "Initialized!" → "done"
+console.log(initialize()); // "done" (no re-execution)
 ```
 
 ### Closure Scope Chain
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Closure Scope Chain — Multiple Levels
-// ═══════════════════════════════════════════════
-
 function grandparent() {
-    const a = "grandparent's value";
-    
+    let a = 10;
     function parent() {
-        const b = "parent's value";
-        
+        let b = 20;
         function child() {
-            const c = "child's value";
-            
-            // child can access ALL three scopes!
-            console.log("a:", a);  // From grandparent
-            console.log("b:", b);  // From parent
-            console.log("c:", c);  // Own scope
+            let c = 30;
+            console.log(a + b + c); // 60 — accesses all scopes!
         }
-        
         return child;
     }
-    
     return parent;
 }
 
-const parentFn = grandparent();
-const childFn = parentFn();
-childFn();
-// a: grandparent's value
-// b: parent's value
-// c: child's value
+const childFn = grandparent()();
+childFn(); // 60
 ```
 
 ```mermaid
 flowchart BT
-    A["child() Scope<br>c = 'child's value'"] --> B["parent() Scope<br>b = 'parent's value'"]
-    B --> C["grandparent() Scope<br>a = 'grandparent's value'"]
+    A["child Scope: c = 30"] --> B["parent Scope: b = 20"]
+    B --> C["grandparent Scope: a = 10"]
     C --> D["Global Scope"]
-    
-    E["child() has a closure backpack<br>containing variables from ALL parent scopes"]
-    
+
     style A fill:#4CAF50,color:white
     style B fill:#2196F3,color:white
     style C fill:#FF9800,color:white
     style D fill:#9E9E9E,color:white
-    style E fill:#E8EAF6
 ```
 
-### ⚠️ Closures and Memory Leaks
+### ⚠️ Memory Leak Warning
 
 ```javascript
-// ═══════════════════════════════════════════════
-// WARNING: Closures Can Cause Memory Leaks
-// ═══════════════════════════════════════════════
-
 function createHeavyClosure() {
-    const largeData = new Array(1000000).fill("🚀");  // ~8MB
-    
+    const largeArray = new Array(1000000).fill("data");
+
     return function() {
-        // This closure keeps largeData alive!
-        console.log("Data size:", largeData.length);
+        console.log(largeArray.length); // largeArray stays in memory!
     };
 }
 
 let heavyFn = createHeavyClosure();
-// largeData (8MB) is NOT garbage collected because heavyFn references it
-
 // To free memory:
-heavyFn = null;  // Now largeData CAN be garbage collected
-
-// ✅ Better pattern: only close over what you need
-function createLightClosure() {
-    const largeData = new Array(1000000).fill("🚀");
-    const dataLength = largeData.length;  // Extract only what's needed
-    // largeData can now be garbage collected
-    
-    return function() {
-        console.log("Data size:", dataLength);  // Only number is closed over
-    };
-}
+heavyFn = null; // Now largeArray can be garbage collected
 ```
 
 ### ❓ Closure Interview Questions
 
-**Q1: What will be the output?**
-
+**Q1:**
 ```javascript
 function a() {
     var x = 10;
-    function b() {
-        console.log(x);
-    }
+    function b() { console.log(x); }
     x = 20;
     return b;
 }
-
-var fn = a();
-fn();
+a()(); // 20 — closure captures REFERENCE, not value
 ```
 
-<details>
-<summary>🔍 Click to see Answer</summary>
-
-**Answer:** `20`
-
-**Why?** Closures capture the **reference** to the variable, NOT the **value** at the time of function creation. When `fn()` runs, it accesses `x` which is `20` (the value at the time of execution).
-
-</details>
-
-**Q2: Create a function that counts how many times it's been called**
-
+**Q2:**
 ```javascript
-function createCallCounter(fn) {
+for (var i = 1; i <= 5; i++) {
+    setTimeout(function() { console.log(i); }, i * 1000);
+}
+// 6 6 6 6 6
+```
+
+**Q3: Create a function callable only N times**
+```javascript
+function limitCalls(fn, maxCalls) {
     let count = 0;
     return function(...args) {
-        count++;
-        console.log(`Call #${count}`);
-        return fn(...args);
+        if (count < maxCalls) {
+            count++;
+            return fn.apply(this, args);
+        }
+        console.log(`Max ${maxCalls} calls reached`);
     };
 }
 
-const trackedLog = createCallCounter(console.log);
-trackedLog("Hello");  // Call #1, Hello
-trackedLog("World");  // Call #2, World
-trackedLog("!");      // Call #3, !
+const limited = limitCalls(console.log, 3);
+limited("call 1"); // call 1
+limited("call 2"); // call 2
+limited("call 3"); // call 3
+limited("call 4"); // Max 3 calls reached
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="12-pure-functions--side-effects"></a>
+<a id="12"></a>
 
-## 12. 🧪 Pure Functions & Side Effects
+## 12. 🧼 Pure Functions & Side Effects
 
 ### What is a Pure Function?
 
-> **Definition:** A **pure function** is a function that:
-> 1. **Always** returns the same output for the same input (deterministic)
-> 2. Has **no side effects** (doesn't modify external state)
+A **Pure Function** is a function that:
+1. **Always returns the same output** for the same input
+2. **Has no side effects** — does not modify anything outside its scope
 
 ```mermaid
 flowchart TD
-    A["Is This a Pure Function?"] --> B{"Same input → Same output?"}
-    B -->|YES| C{"No side effects?"}
-    B -->|NO| D["❌ IMPURE"]
-    C -->|YES| E["✅ PURE"]
-    C -->|NO| F["❌ IMPURE"]
-    
-    G["Side Effects Include:"] --> G1["Modifying external variables"]
-    G --> G2["Console.log / DOM manipulation"]
-    G --> G3["API calls / File I/O"]
-    G --> G4["Modifying arguments (objects/arrays)"]
-    G --> G5["Using Date.now() / Math.random()"]
-    
-    style E fill:#4CAF50,color:white
-    style D fill:#f44336,color:white
-    style F fill:#f44336,color:white
+    A["Pure Function"] --> B["Same input → Same output Deterministic"]
+    A --> C["No side effects"]
+
+    C --> D["No modifying external variables"]
+    C --> E["No API calls"]
+    C --> F["No DOM manipulation"]
+    C --> G["No logging"]
+    C --> H["No mutation of arguments"]
+
+    style A fill:#4CAF50,color:white
+    style C fill:#2196F3,color:white
 ```
 
-### Program: Pure vs Impure
+### Pure vs Impure Examples
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Pure vs Impure Functions
-// ═══════════════════════════════════════════════
-
-// ── PURE FUNCTIONS ──
-// Same input → ALWAYS same output, no side effects
-
+// ✅ PURE — same input always gives same output, no side effects
 function add(a, b) {
-    return a + b;  // Only depends on inputs
+    return a + b;
 }
 
-function double(n) {
-    return n * 2;
+function multiply(a, b) {
+    return a * b;
 }
 
-function getFullName(first, last) {
-    return `${first} ${last}`;
+function getFullName(firstName, lastName) {
+    return `${firstName} ${lastName}`;
 }
 
-function filterAdults(people) {
-    return people.filter(p => p.age >= 18);  // Returns NEW array
+// ❌ IMPURE — relies on external state
+let tax = 0.18;
+function calculatePrice(amount) {
+    return amount + amount * tax; // Depends on external 'tax'
 }
 
-console.log(add(2, 3));        // Always 5
-console.log(add(2, 3));        // Always 5
-console.log(double(10));       // Always 20
-
-// ── IMPURE FUNCTIONS ──
-// Same input → might give different output, or has side effects
-
-// Impure: Depends on external state
-let taxRate = 0.18;
-function calculateTax(amount) {
-    return amount * taxRate;  // Depends on external 'taxRate'
-}
-
-// Impure: Modifies external state
+// ❌ IMPURE — modifies external state
 let total = 0;
-function addToTotal(amount) {
-    total += amount;  // Side effect: modifies 'total'
+function addToTotal(num) {
+    total += num; // Side effect!
     return total;
 }
 
-// Impure: Uses randomness
-function getRandomGreeting(name) {
-    const greetings = ["Hi", "Hello", "Hey"];
-    const random = greetings[Math.floor(Math.random() * greetings.length)];
-    return `${random}, ${name}!`;  // Different output each time
+// ❌ IMPURE — different output each time
+function getCurrentTime() {
+    return new Date().toISOString(); // Non-deterministic
 }
 
-// Impure: Uses current time
-function logWithTimestamp(message) {
-    console.log(`[${new Date().toISOString()}] ${message}`);
-}
-
-// Impure: Modifies input object
-function addAge(person) {
-    person.age = 25;  // Mutates the original object!
-    return person;
+// ❌ IMPURE — API call (side effect)
+async function fetchUser(id) {
+    const res = await fetch(`/api/users/${id}`);
+    return res.json();
 }
 ```
 
-### Use Case: Making Impure Functions Pure
+### Side Effects — What They Are
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: Converting Impure to Pure
-// ═══════════════════════════════════════════════
+// Side effects include:
 
-// ❌ Impure: depends on external state
-let discount = 0.1;
-function getPrice_impure(price) {
-    return price * (1 - discount);
+// 1. Mutating arguments
+function impureDouble(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        arr[i] *= 2; // ❌ Mutates original!
+    }
+    return arr;
 }
 
-// ✅ Pure: pass everything as arguments
-function getPrice_pure(price, discount) {
-    return price * (1 - discount);
+// ✅ Pure version — returns new array
+function pureDouble(arr) {
+    return arr.map(n => n * 2);
 }
 
-// ❌ Impure: mutates input
-function addProperty_impure(obj) {
-    obj.timestamp = Date.now();
-    return obj;
+// 2. Modifying global state
+let counter = 0;
+function impureIncrement() {
+    counter++; // ❌ Side effect
 }
 
-// ✅ Pure: create new object
-function addProperty_pure(obj, timestamp) {
-    return { ...obj, timestamp };
+// ✅ Pure version
+function pureIncrement(count) {
+    return count + 1;
 }
 
-// ❌ Impure: console.log is a side effect
-function processData_impure(data) {
-    console.log("Processing:", data);
-    return data.map(x => x * 2);
-}
-
-// ✅ Pure: return result, let caller handle logging
-function processData_pure(data) {
-    return data.map(x => x * 2);
+// 3. Console.log IS a side effect (but acceptable)
+function pureWithLog(a, b) {
+    console.log("adding", a, b); // Technically impure
+    return a + b;
 }
 ```
 
-```
-╔═══════════════════════════════════════════════════════════╗
-║           WHY PURE FUNCTIONS MATTER                       ║
-╠═══════════════════════════════════════════════════════════╣
-║                                                           ║
-║  ✅ Testable     — Same input = same output = easy tests  ║
-║  ✅ Predictable  — No surprises from hidden dependencies  ║
-║  ✅ Cacheable    — Results can be memoized                ║
-║  ✅ Parallelizable — No shared state = safe concurrency   ║
-║  ✅ Debuggable   — Easy to trace and reason about         ║
-║  ✅ Composable   — Easy to combine into pipelines         ║
-║                                                           ║
-╚═══════════════════════════════════════════════════════════╝
-```
-
----
-
-[⬆️ Go to Top](#top)
-
----
-
-<a name="13-recursion"></a>
-
-## 13. 🔄 Recursion
-
-### What is Recursion?
-
-> **Definition:** **Recursion** is when a function **calls itself**. Every recursive function must have:
-> 1. **Base Case** — When to STOP (prevents infinite recursion)
-> 2. **Recursive Case** — The function calling itself with a smaller problem
+### Benefits of Pure Functions
 
 ```mermaid
 flowchart TD
-    A["Recursive Function Called"] --> B{"Base Case met?"}
-    B -->|YES| C["Return result ✅"]
-    B -->|NO| D["Call itself with smaller input"]
+    A["Benefits of Pure Functions"] --> B["Testable — Easy to unit test"]
+    A --> C["Predictable — No surprises"]
+    A --> D["Cacheable — Results can be memoized"]
+    A --> E["Composable — Build complex logic from simple pieces"]
+    A --> F["Parallelizable — Safe for concurrent execution"]
+    A --> G["Debuggable — Trace bugs easily"]
+
+    style A fill:#9C27B0,color:white
+```
+
+### Practical Example — Impure to Pure Refactor
+
+```javascript
+// ❌ IMPURE — hard to test, unpredictable
+const cart = { items: [], discount: 0 };
+
+function applyDiscount(code) {
+    if (code === "SAVE10") {
+        cart.discount = 10;
+    }
+    cart.items.forEach(item => {
+        item.price *= (1 - cart.discount / 100);
+    });
+}
+
+// ✅ PURE — predictable, testable
+function applyDiscountPure(cart, code) {
+    const discount = code === "SAVE10" ? 10 : 0;
+    return {
+        ...cart,
+        discount,
+        items: cart.items.map(item => ({
+            ...item,
+            price: item.price * (1 - discount / 100)
+        }))
+    };
+}
+
+const originalCart = {
+    items: [{ name: "Shirt", price: 500 }, { name: "Pants", price: 1000 }],
+    discount: 0
+};
+
+const updatedCart = applyDiscountPure(originalCart, "SAVE10");
+console.log(originalCart.items[0].price); // 500 (unchanged!)
+console.log(updatedCart.items[0].price);  // 450
+```
+
+### Pure Functions in Array Methods
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// ✅ These are pure — return new array, don't modify original
+const doubled  = numbers.map(n => n * 2);
+const evens    = numbers.filter(n => n % 2 === 0);
+const sum      = numbers.reduce((acc, n) => acc + n, 0);
+const sorted   = [...numbers].sort((a, b) => b - a);
+
+console.log(numbers); // [1,2,3,4,5] — original unchanged
+
+// ❌ These mutate original array (impure)
+numbers.push(6);     // Mutates!
+numbers.splice(0,1); // Mutates!
+numbers.sort();      // Mutates!
+```
+
+### Real-World: Pure Reducer (Redux Pattern)
+
+```javascript
+function cartReducer(state = { items: [], total: 0 }, action) {
+    switch (action.type) {
+        case "ADD_ITEM":
+            return {
+                ...state,
+                items: [...state.items, action.payload],
+                total: state.total + action.payload.price
+            };
+
+        case "REMOVE_ITEM":
+            const item = state.items.find(i => i.id === action.payload);
+            return {
+                ...state,
+                items: state.items.filter(i => i.id !== action.payload),
+                total: state.total - (item ? item.price : 0)
+            };
+
+        case "CLEAR_CART":
+            return { items: [], total: 0 };
+
+        default:
+            return state;
+    }
+}
+
+const state1 = cartReducer(undefined, {
+    type: "ADD_ITEM",
+    payload: { id: 1, name: "Shirt", price: 500 }
+});
+console.log(state1);
+// { items: [{ id:1, name:'Shirt', price:500 }], total: 500 }
+
+const state2 = cartReducer(state1, {
+    type: "ADD_ITEM",
+    payload: { id: 2, name: "Pants", price: 1000 }
+});
+console.log(state2.total); // 1500
+```
+
+### ❓ Interview Questions
+
+**Q1: Is this function pure?**
+```javascript
+function square(n) { return n * n; }
+// ✅ YES — same input → same output, no side effects
+```
+
+**Q2: What about this?**
+```javascript
+function greet() {
+    return `Hello, ${Math.random()}`;
+}
+// ❌ NO — Math.random() makes output non-deterministic
+```
+
+**Q3: How would you make this pure?**
+```javascript
+// Impure
+let multiplier = 3;
+function multiply(n) { return n * multiplier; }
+
+// Pure
+function multiplyPure(n, multiplier) { return n * multiplier; }
+```
+
+---
+
+<a href="#top">⬆️ Go to Top</a>
+
+---
+
+<a id="13"></a>
+
+## 13. 🔁 Recursion
+
+### What is Recursion?
+
+**Recursion** is when a function **calls itself** until it reaches a **base case** (stopping condition).
+
+> 💡 **Interview Definition:** "Recursion is a technique where a function solves a problem by breaking it into smaller instances of the same problem, calling itself with a modified input until it reaches a base case."
+
+```mermaid
+flowchart TD
+    A["Function Called"] --> B{"Base Case Reached?"}
+    B -->|"YES"| C["Return result — stop recursion"]
+    B -->|"NO"| D["Call itself with smaller input"]
     D --> A
-    
+
     style C fill:#4CAF50,color:white
     style D fill:#2196F3,color:white
 ```
 
-### Program: Classic Recursive Functions
+### Anatomy of a Recursive Function
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Recursion — All Classic Examples
-// ═══════════════════════════════════════════════
+function recursive(input) {
+    // 1. BASE CASE — Stop condition (MUST have this!)
+    if (input <= 0) return 0;
 
-// ── 1. Factorial ──
-function factorial(n) {
-    // Base case
-    if (n <= 1) return 1;
-    // Recursive case
-    return n * factorial(n - 1);
+    // 2. RECURSIVE CASE — Call itself with smaller input
+    return input + recursive(input - 1);
 }
-console.log("5! =", factorial(5)); // 120
-// 5 * 4 * 3 * 2 * 1 = 120
+```
 
-// ── 2. Fibonacci ──
+> ⚠️ **Without a base case → Stack Overflow (infinite recursion)!**
+
+### Classic Examples
+
+#### Factorial
+
+```javascript
+function factorial(n) {
+    if (n === 0 || n === 1) return 1; // Base case
+    return n * factorial(n - 1);      // Recursive case
+}
+
+console.log(factorial(5)); // 120
+// 5 * 4 * 3 * 2 * 1 = 120
+```
+
+```mermaid
+flowchart TD
+    A["factorial 5"] --> B["5 * factorial 4"]
+    B --> C["5 * 4 * factorial 3"]
+    C --> D["5 * 4 * 3 * factorial 2"]
+    D --> E["5 * 4 * 3 * 2 * factorial 1"]
+    E --> F["5 * 4 * 3 * 2 * 1 = 120"]
+
+    style F fill:#4CAF50,color:white
+```
+
+#### Fibonacci
+
+```javascript
+// Basic Fibonacci
 function fibonacci(n) {
-    if (n <= 0) return 0;
-    if (n === 1) return 1;
+    if (n <= 1) return n;
     return fibonacci(n - 1) + fibonacci(n - 2);
 }
-console.log("Fib(7) =", fibonacci(7)); // 13
 
-// ── 3. Sum of array ──
+console.log(fibonacci(0)); // 0
+console.log(fibonacci(1)); // 1
+console.log(fibonacci(6)); // 8 (0,1,1,2,3,5,8)
+
+// Optimized with Memoization
+function fibMemo(n, memo = {}) {
+    if (n in memo) return memo[n];
+    if (n <= 1) return n;
+    memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);
+    return memo[n];
+}
+
+console.log(fibMemo(40)); // Fast! No redundant calls
+```
+
+#### Sum of Array
+
+```javascript
 function sumArray(arr) {
     if (arr.length === 0) return 0;
     return arr[0] + sumArray(arr.slice(1));
 }
-console.log("Sum:", sumArray([1, 2, 3, 4, 5])); // 15
 
-// ── 4. Flatten nested array ──
-function flatten(arr) {
-    let result = [];
-    for (const item of arr) {
-        if (Array.isArray(item)) {
-            result = result.concat(flatten(item));
-        } else {
-            result.push(item);
-        }
-    }
-    return result;
-}
-console.log(flatten([1, [2, [3, [4]], 5], 6])); // [1, 2, 3, 4, 5, 6]
+console.log(sumArray([1, 2, 3, 4, 5])); // 15
+```
 
-// ── 5. Deep clone object ──
-function deepClone(obj) {
-    if (obj === null || typeof obj !== 'object') return obj;
-    
-    if (Array.isArray(obj)) {
-        return obj.map(item => deepClone(item));
-    }
-    
-    const clone = {};
-    for (const key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            clone[key] = deepClone(obj[key]);
-        }
-    }
-    return clone;
-}
+#### Power Function
 
-const original = { a: 1, b: { c: 2, d: [3, 4] } };
-const cloned = deepClone(original);
-cloned.b.c = 999;
-console.log("Original:", original.b.c); // 2 (unchanged!)
-console.log("Clone:", cloned.b.c);       // 999
-
-// ── 6. Countdown ──
-function countdown(n) {
-    if (n <= 0) {
-        console.log("🚀 Liftoff!");
-        return;
-    }
-    console.log(n);
-    countdown(n - 1);
-}
-countdown(5); // 5, 4, 3, 2, 1, 🚀 Liftoff!
-
-// ── 7. Power function ──
+```javascript
 function power(base, exp) {
     if (exp === 0) return 1;
-    if (exp < 0) return 1 / power(base, -exp);
     return base * power(base, exp - 1);
 }
-console.log("2^10 =", power(2, 10)); // 1024
+
+console.log(power(2, 10)); // 1024
+```
+
+#### Reverse a String
+
+```javascript
+function reverseString(str) {
+    if (str.length <= 1) return str;
+    return reverseString(str.slice(1)) + str[0];
+}
+
+console.log(reverseString("hello")); // "olleh"
 ```
 
 ### Recursion vs Iteration
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Same Problem — Recursive vs Iterative
-// ═══════════════════════════════════════════════
-
-// Factorial — Recursive
-function factorialRecursive(n) {
-    if (n <= 1) return 1;
-    return n * factorialRecursive(n - 1);
+// Sum 1 to N — Iterative
+function sumIterative(n) {
+    let sum = 0;
+    for (let i = 1; i <= n; i++) sum += i;
+    return sum;
 }
 
-// Factorial — Iterative
-function factorialIterative(n) {
-    let result = 1;
-    for (let i = 2; i <= n; i++) {
-        result *= i;
-    }
-    return result;
+// Sum 1 to N — Recursive
+function sumRecursive(n) {
+    if (n <= 0) return 0;
+    return n + sumRecursive(n - 1);
 }
 
-// Both give same result
-console.log(factorialRecursive(10)); // 3628800
-console.log(factorialIterative(10)); // 3628800
-
-// But iterative is usually faster and doesn't risk stack overflow
+console.log(sumIterative(100)); // 5050
+console.log(sumRecursive(100)); // 5050
 ```
 
+| Aspect | Iteration | Recursion |
+|--------|-----------|-----------|
+| Performance | ✅ Faster | ❌ Slower (call overhead) |
+| Memory | ✅ O(1) space | ❌ O(n) call stack space |
+| Readability | ❌ Sometimes verbose | ✅ Elegant for tree/graph problems |
+| Stack Overflow Risk | ❌ No | ✅ Yes (deep recursion) |
+| Use Case | Simple loops | Trees, graphs, divide & conquer |
+
+### Advanced: Tree Traversal (Real-World Recursion)
+
+```javascript
+const fileSystem = {
+    name: "root",
+    children: [
+        {
+            name: "src",
+            children: [
+                { name: "index.js", children: [] },
+                { name: "app.js",   children: [] }
+            ]
+        },
+        {
+            name: "public",
+            children: [
+                { name: "index.html", children: [] },
+                {
+                    name: "css",
+                    children: [
+                        { name: "style.css", children: [] }
+                    ]
+                }
+            ]
+        }
+    ]
+};
+
+function printFileTree(node, indent = "") {
+    console.log(`${indent}${node.name}`);
+    node.children.forEach(child => {
+        printFileTree(child, indent + "  ");
+    });
+}
+
+printFileTree(fileSystem);
+// root
+//   src
+//     index.js
+//     app.js
+//   public
+//     index.html
+//     css
+//       style.css
+
+// Flatten nested array
+function flattenArray(arr) {
+    return arr.reduce((flat, item) => {
+        return flat.concat(Array.isArray(item) ? flattenArray(item) : item);
+    }, []);
+}
+
+console.log(flattenArray([1, [2, [3, [4]], 5]])); // [1, 2, 3, 4, 5]
 ```
-╔═══════════════════╦══════════════════╦══════════════════╗
-║ Feature           ║ Recursion        ║ Iteration        ║
-╠═══════════════════╬══════════════════╬══════════════════╣
-║ Readability       ║ Often cleaner    ║ Can be verbose   ║
-║ Memory            ║ More (call stack)║ Less (single loop)║
-║ Stack Overflow    ║ ⚠️ Possible     ║ ❌ Not possible  ║
-║ Performance       ║ Usually slower   ║ Usually faster   ║
-║ Best for          ║ Trees, graphs    ║ Simple loops     ║
-╚═══════════════════╩══════════════════╩══════════════════╝
+
+### Tail Call Optimization (TCO)
+
+```javascript
+// Regular recursion — O(n) stack space
+function factorial(n) {
+    if (n === 0) return 1;
+    return n * factorial(n - 1); // Not tail call
+}
+
+// Tail-recursive version — can be optimized to O(1) space
+function factorialTail(n, accumulator = 1) {
+    if (n === 0) return accumulator;
+    return factorialTail(n - 1, n * accumulator); // Tail call
+}
+
+console.log(factorialTail(5)); // 120
+```
+
+### ❓ Interview Questions
+
+**Q1: What is the difference between recursion and iteration?**
+> Recursion uses function call stack; iteration uses loop variables. Recursion is elegant for hierarchical data; iteration is more memory-efficient.
+
+**Q2: What is a stack overflow in recursion?**
+```javascript
+function infinite() {
+    return infinite(); // No base case
+}
+// RangeError: Maximum call stack size exceeded
+```
+
+**Q3: Write a recursive function to count occurrences in an array**
+```javascript
+function countOccurrence(arr, target) {
+    if (arr.length === 0) return 0;
+    const found = arr[0] === target ? 1 : 0;
+    return found + countOccurrence(arr.slice(1), target);
+}
+
+console.log(countOccurrence([1, 2, 3, 2, 2, 4], 2)); // 3
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="14-the-this-keyword-in-functions"></a>
+<a id="14"></a>
 
 ## 14. 🎯 The `this` Keyword in Functions (call, apply, bind)
 
 ### What is `this`?
 
-> **Definition:** `this` is a special keyword that refers to the **object** that is currently executing the function. Its value depends on **how** the function is called, not where it's defined.
+`this` refers to the **object that is executing the current function**. Its value depends on **how** the function is called, not where it is defined (except for arrow functions).
 
 ```mermaid
 flowchart TD
-    A["How is the function called?"] --> B["Method call: obj.fn()"]
-    A --> C["Direct call: fn()"]
-    A --> D["new keyword: new Fn()"]
-    A --> E["call/apply/bind"]
-    A --> F["Arrow function"]
-    
-    B --> B1["this = obj"]
-    C --> C1["this = window (non-strict)<br>this = undefined (strict)"]
-    D --> D1["this = new empty object"]
-    E --> E1["this = whatever you pass"]
-    F --> F1["this = lexical (parent scope)"]
-    
-    style B1 fill:#4CAF50,color:white
-    style C1 fill:#FF9800,color:white
-    style D1 fill:#2196F3,color:white
-    style E1 fill:#9C27B0,color:white
-    style F1 fill:#E91E63,color:white
+    A["How this is determined"] --> B["Regular Function"]
+    A --> C["Arrow Function"]
+
+    B --> D["Depends on HOW it is called"]
+    C --> E["Lexical — inherits from surrounding scope"]
+
+    D --> F["Standalone call → global/undefined strict"]
+    D --> G["Method call → the object"]
+    D --> H["Constructor call → new object"]
+    D --> I["call/apply/bind → explicit object"]
+
+    style A fill:#9C27B0,color:white
+    style C fill:#4CAF50,color:white
+    style D fill:#2196F3,color:white
 ```
 
-### call, apply, bind — Function Borrowing
+### `this` in Different Contexts
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: call, apply, bind — Complete Guide
-// ═══════════════════════════════════════════════
+// 1. Global context
+console.log(this); // window (browser) / {} (Node.js module)
 
-const person1 = {
+// 2. Regular function (non-strict)
+function showThis() {
+    console.log(this); // window (browser)
+}
+showThis();
+
+// 3. Regular function (strict mode)
+"use strict";
+function showThisStrict() {
+    console.log(this); // undefined
+}
+showThisStrict();
+
+// 4. Method call
+const obj = {
     name: "Rahul",
-    greet: function(greeting, punctuation) {
-        return `${greeting}, I'm ${this.name}${punctuation}`;
+    greet: function() {
+        console.log(this.name); // "Rahul" — this = obj
+    }
+};
+obj.greet();
+
+// 5. Constructor
+function Person(name) {
+    this.name = name;
+    console.log(this);
+}
+const p = new Person("Rahul"); // { name: "Rahul" }
+
+// 6. Arrow function — lexical this
+const arrow = {
+    name: "Rahul",
+    greet: () => {
+        console.log(this.name); // undefined — inherits from global scope
+    }
+};
+```
+
+### The Losing `this` Problem
+
+```javascript
+const person = {
+    name: "Rahul",
+    greet: function() {
+        console.log(`Hello, I'm ${this.name}`);
     }
 };
 
-const person2 = { name: "Priya" };
-const person3 = { name: "Amit" };
+person.greet(); // ✅ Hello, I'm Rahul
 
-// ── call() — Invokes immediately, args passed individually ──
-console.log(person1.greet.call(person2, "Hello", "!"));
-// "Hello, I'm Priya!"
+// ❌ Losing 'this' when extracting the method
+const greetFn = person.greet;
+greetFn(); // ❌ Hello, I'm undefined (this = global)
 
-// ── apply() — Invokes immediately, args passed as array ──
-console.log(person1.greet.apply(person3, ["Namaste", "!!"]));
-// "Namaste, I'm Amit!!"
-
-// ── bind() — Returns NEW function with 'this' permanently set ──
-const priyaGreet = person1.greet.bind(person2);
-console.log(priyaGreet("Hey", "."));  // "Hey, I'm Priya."
-console.log(priyaGreet("Hi", "!"));   // "Hi, I'm Priya!"
-
-// bind with partial application
-const rahulHello = person1.greet.bind(person1, "Hello");
-console.log(rahulHello("!"));   // "Hello, I'm Rahul!"
-console.log(rahulHello("..."));  // "Hello, I'm Rahul..."
+// ✅ Fix using bind
+const boundGreet = person.greet.bind(person);
+boundGreet(); // ✅ Hello, I'm Rahul
 ```
 
-```
-╔════════════════╦════════════════════╦══════════════════════╦═══════════════╗
-║ Method         ║ Invokes?           ║ Arguments            ║ Returns       ║
-╠════════════════╬════════════════════╬══════════════════════╬═══════════════╣
-║ call()         ║ ✅ Immediately     ║ Individual: (a, b)   ║ Function result║
-║ apply()        ║ ✅ Immediately     ║ Array: ([a, b])      ║ Function result║
-║ bind()         ║ ❌ Returns new fn  ║ Individual: (a, b)   ║ New function  ║
-╚════════════════╩════════════════════╩══════════════════════╩═══════════════╝
-```
-
-### Polyfill: Implement Your Own bind
+### `call()` — Explicit `this` + Arguments One by One
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: bind() Polyfill — Common Interview Question
-// ═══════════════════════════════════════════════
-
-Function.prototype.myBind = function(context, ...boundArgs) {
-    const originalFn = this;  // The function being bound
-    
-    return function(...callArgs) {
-        return originalFn.apply(context, [...boundArgs, ...callArgs]);
-    };
-};
-
-// Test
-function greet(greeting, name) {
-    return `${greeting}, ${name}! I'm ${this.role}`;
+function introduce(greeting, city) {
+    console.log(`${greeting}! I'm ${this.name} from ${city}.`);
 }
 
-const admin = { role: "Admin" };
+const person1 = { name: "Rahul" };
+const person2 = { name: "Priya" };
 
-const adminGreet = greet.myBind(admin, "Hello");
-console.log(adminGreet("Rahul")); // "Hello, Rahul! I'm Admin"
+// call(thisArg, arg1, arg2, ...)
+introduce.call(person1, "Hello", "Delhi");    // Hello! I'm Rahul from Delhi.
+introduce.call(person2, "Namaste", "Mumbai"); // Namaste! I'm Priya from Mumbai.
 ```
 
+### `apply()` — Explicit `this` + Arguments as Array
+
+```javascript
+function introduce(greeting, city) {
+    console.log(`${greeting}! I'm ${this.name} from ${city}.`);
+}
+
+const person1 = { name: "Rahul" };
+
+// apply(thisArg, [arg1, arg2, ...])
+introduce.apply(person1, ["Hello", "Delhi"]);
+
+// Practical: Math.max with array
+const numbers = [3, 6, 1, 8, 2];
+console.log(Math.max(...numbers));          // ✅ ES6 spread
+console.log(Math.max.apply(null, numbers)); // ✅ apply equivalent
+```
+
+### `bind()` — Returns New Function with Bound `this`
+
+```javascript
+function introduce(greeting, city) {
+    console.log(`${greeting}! I'm ${this.name} from ${city}.`);
+}
+
+const person1 = { name: "Rahul" };
+
+// bind returns a NEW function — does NOT call immediately
+const boundIntroduce = introduce.bind(person1, "Hello");
+boundIntroduce("Delhi");  // Hello! I'm Rahul from Delhi.
+boundIntroduce("Mumbai"); // Hello! I'm Rahul from Mumbai.
+```
+
+### call vs apply vs bind — Quick Reference
+
+| Method | Invokes Immediately | Arguments | Returns |
+|--------|---------------------|-----------|---------|
+| `call` | ✅ Yes | Comma separated | Result of function |
+| `apply` | ✅ Yes | Array | Result of function |
+| `bind` | ❌ No | Comma separated (partial) | New bound function |
+
+```javascript
+// Memory trick:
+// call  → C for Comma separated
+// apply → A for Array
+// bind  → B for Binds (returns new function)
+
+function sum(a, b, c) { return a + b + c; }
+const obj = {};
+
+sum.call(obj, 1, 2, 3);     // 6
+sum.apply(obj, [1, 2, 3]);  // 6
+const bound = sum.bind(obj, 1, 2);
+bound(3);                    // 6
+```
+
+### Real-World Use Cases
+
+```javascript
+// 1. Method borrowing
+const student = { name: "Rahul", scores: [85, 92, 78, 90] };
+const teacher = { name: "Dr. Sharma" };
+
+function getAverage() {
+    const avg = this.scores.reduce((sum, s) => sum + s, 0) / this.scores.length;
+    return `${this.name}'s average: ${avg}`;
+}
+
+teacher.scores = [95, 88, 92];
+console.log(getAverage.call(student)); // Rahul's average: 86.25
+console.log(getAverage.call(teacher)); // Dr. Sharma's average: 91.67
+
+// 2. bind in event handlers
+class Timer {
+    constructor() {
+        this.seconds = 0;
+        this.tick = this.tick.bind(this);
+    }
+    tick() {
+        this.seconds++;
+        console.log(`Timer: ${this.seconds}s`);
+    }
+    start() { setInterval(this.tick, 1000); }
+}
+
+// 3. Partial application with bind
+function multiply(a, b) { return a * b; }
+
+const double = multiply.bind(null, 2);
+const triple = multiply.bind(null, 3);
+
+console.log(double(5));  // 10
+console.log(triple(5));  // 15
+
+// 4. Borrowing Array methods for array-like objects
+function listArguments() {
+    const argsArray = Array.prototype.slice.call(arguments);
+    console.log(argsArray);
+}
+listArguments(1, 2, 3); // [1, 2, 3]
+```
+
+### `this` in Classes
+
+```javascript
+class Counter {
+    constructor() {
+        this.count = 0;
+        this.increment = this.increment.bind(this); // ✅ Bind in constructor
+    }
+    increment() {
+        this.count++;
+        console.log(this.count);
+    }
+    // ✅ Arrow class field — automatically bound
+    decrement = () => {
+        this.count--;
+        console.log(this.count);
+    }
+}
+
+const counter = new Counter();
+
+const inc = counter.increment;
+inc(); // 1 ✅ (bound in constructor)
+
+const dec = counter.decrement;
+dec(); // 0 ✅ (arrow function — lexical this)
+```
+
+### ❓ Interview Questions
+
+**Q1: What will be the output?**
+```javascript
+const obj = {
+    name: "Rahul",
+    getName: function() { return this.name; }
+};
+const { getName } = obj;
+console.log(getName());     // undefined (this = global)
+console.log(obj.getName()); // "Rahul"
+```
+
+**Q2: Fix this code**
+```javascript
+// ❌ Problem
+function Timer() {
+    this.seconds = 0;
+    setInterval(function() {
+        this.seconds++; // 'this' is wrong!
+    }, 1000);
+}
+
+// ✅ Fix 1: Arrow function
+function Timer() {
+    this.seconds = 0;
+    setInterval(() => { this.seconds++; }, 1000);
+}
+
+// ✅ Fix 2: bind
+function Timer() {
+    this.seconds = 0;
+    setInterval(function() { this.seconds++; }.bind(this), 1000);
+}
+```
+
+**Q3: Difference between call and bind?**
+> `call` invokes immediately with specified `this`. `bind` returns a new function with `this` permanently bound.
+
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="15-function-currying--partial-application"></a>
+<a id="15"></a>
 
 ## 15. 🍛 Function Currying & Partial Application
 
 ### What is Currying?
 
-> **Definition:** **Currying** transforms a function with multiple arguments into a sequence of functions, each taking **one argument at a time**.
+**Currying** transforms a function with **multiple arguments** into a **sequence of functions**, each taking **one argument at a time**.
+
+```
+f(a, b, c)  →  f(a)(b)(c)
+```
+
+```mermaid
+flowchart LR
+    A["Normal: add 1 2 3 → 6"] --> B["Curried: add 1  then 2  then 3  → 6"]
+    B --> C["add 1 returns function"]
+    C --> D["that fn with 2 returns function"]
+    D --> E["that fn with 3 returns 6"]
+
+    style A fill:#f44336,color:white
+    style B fill:#4CAF50,color:white
+```
+
+### Basic Currying
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Currying — Complete Guide
-// ═══════════════════════════════════════════════
-
-// ── Normal function ──
-function normalAdd(a, b, c) {
+// Normal function
+function add(a, b, c) {
     return a + b + c;
 }
+console.log(add(1, 2, 3)); // 6
 
-// ── Curried version ──
+// Manually curried
 function curriedAdd(a) {
     return function(b) {
         return function(c) {
@@ -4009,589 +2565,1390 @@ function curriedAdd(a) {
     };
 }
 
-// Usage
-console.log(normalAdd(1, 2, 3));        // 6
-console.log(curriedAdd(1)(2)(3));        // 6
+console.log(curriedAdd(1)(2)(3)); // 6
 
-// Arrow function currying (shorter)
-const curriedMultiply = a => b => c => a * b * c;
-console.log(curriedMultiply(2)(3)(4));   // 24
+// With arrow functions — cleaner
+const curriedAddArrow = a => b => c => a + b + c;
+console.log(curriedAddArrow(1)(2)(3)); // 6
+```
 
-// Partial Application — Fill in arguments gradually
-const add5 = curriedAdd(5);       // Returns function waiting for b, c
-const add5and10 = add5(10);       // Returns function waiting for c
-console.log(add5and10(20));        // 35
+### Generic Curry Function
 
-// ── Generic Curry Function ──
+```javascript
 function curry(fn) {
     return function curried(...args) {
         if (args.length >= fn.length) {
             return fn.apply(this, args);
         }
-        return function(...nextArgs) {
-            return curried.apply(this, [...args, ...nextArgs]);
+        return function(...args2) {
+            return curried.apply(this, args.concat(args2));
         };
     };
 }
 
-function volume(length, width, height) {
-    return length * width * height;
-}
+function add(a, b, c) { return a + b + c; }
 
-const curriedVolume = curry(volume);
-console.log(curriedVolume(3)(4)(5));     // 60
-console.log(curriedVolume(3, 4)(5));     // 60
-console.log(curriedVolume(3)(4, 5));     // 60
-console.log(curriedVolume(3, 4, 5));     // 60
+const curriedAdd = curry(add);
+
+console.log(curriedAdd(1)(2)(3));    // 6  ✅
+console.log(curriedAdd(1, 2)(3));    // 6  ✅
+console.log(curriedAdd(1)(2, 3));    // 6  ✅
+console.log(curriedAdd(1, 2, 3));    // 6  ✅
 ```
 
-### Use Case: Reusable Utility Functions
+### Why Currying? — Real Use Cases
+
+#### Use Case 1: Reusable Specialized Functions
 
 ```javascript
-// ═══════════════════════════════════════════════
-// USE CASE: API URL Builder with Currying
-// ═══════════════════════════════════════════════
+const multiply = a => b => a * b;
 
-const buildURL = curry(function(baseURL, endpoint, id) {
-    return `${baseURL}/${endpoint}/${id}`;
-});
+const double = multiply(2);
+const triple = multiply(3);
+const tenX   = multiply(10);
 
-// Create specialized URL builders
-const apiURL = buildURL("https://api.example.com");
-const userURL = apiURL("users");
-const postURL = apiURL("posts");
+console.log(double(5));  // 10
+console.log(triple(5));  // 15
+console.log(tenX(5));    // 50
 
-console.log(userURL(123));    // https://api.example.com/users/123
-console.log(userURL(456));    // https://api.example.com/users/456
-console.log(postURL(789));    // https://api.example.com/posts/789
+const numbers = [1, 2, 3, 4, 5];
+console.log(numbers.map(double)); // [2, 4, 6, 8, 10]
+console.log(numbers.map(triple)); // [3, 6, 9, 12, 15]
+```
+
+#### Use Case 2: Configurable Logger
+
+```javascript
+const logger = level => module => message =>
+    console.log(`[${level.toUpperCase()}] [${module}] ${message}`);
+
+const info  = logger("info");
+const error = logger("error");
+const warn  = logger("warn");
+
+const authLogger = info("AUTH");
+const dbLogger   = info("DB");
+const errLogger  = error("SYSTEM");
+
+authLogger("User logged in");          // [INFO] [AUTH] User logged in
+dbLogger("Query executed in 45ms");    // [INFO] [DB] Query executed in 45ms
+errLogger("Connection timeout");       // [ERROR] [SYSTEM] Connection timeout
+```
+
+#### Use Case 3: API Request Builder
+
+```javascript
+const buildRequest = method => baseURL => endpoint => body =>
+    fetch(`${baseURL}${endpoint}`, {
+        method,
+        headers: { "Content-Type": "application/json" },
+        body: body ? JSON.stringify(body) : undefined
+    });
+
+const getRequest  = buildRequest("GET");
+const postRequest = buildRequest("POST");
+
+const apiGet  = getRequest("https://api.example.com");
+const apiPost = postRequest("https://api.example.com");
+
+// Usage:
+// apiGet("/users")(null);
+// apiPost("/users")({ name: "Rahul" });
+```
+
+#### Use Case 4: Filtering and Validation
+
+```javascript
+const isGreaterThan = min => num => num > min;
+const isLessThan    = max => num => num < max;
+const hasMinLength  = len => str => str.length >= len;
+
+const numbers = [1, 5, 10, 15, 20, 25];
+
+const greaterThan10 = isGreaterThan(10);
+const lessThan20    = isLessThan(20);
+
+const between10and20 = numbers.filter(n => greaterThan10(n) && lessThan20(n));
+console.log(between10and20); // [15]
+
+const validatePassword = hasMinLength(8);
+console.log(validatePassword("secret"));    // false (6 chars)
+console.log(validatePassword("mysecret1")); // true (9 chars)
+```
+
+### Partial Application
+
+**Partial Application** is pre-filling **some** (not necessarily one at a time) arguments of a function.
+
+```javascript
+// Partial Application using bind
+function add(a, b, c) { return a + b + c; }
+
+const add5 = add.bind(null, 5);
+const add5and3 = add.bind(null, 5, 3);
+
+console.log(add5(3, 2));    // 10
+console.log(add5and3(2));   // 10
+
+// Custom partial function
+function partial(fn, ...presetArgs) {
+    return function(...laterArgs) {
+        return fn(...presetArgs, ...laterArgs);
+    };
+}
+
+function greet(greeting, title, name) {
+    return `${greeting}, ${title} ${name}!`;
+}
+
+const sayHello    = partial(greet, "Hello");
+const sayHelloSir = partial(greet, "Hello", "Sir");
+
+console.log(sayHello("Mr.", "Rahul"));  // Hello, Mr. Rahul!
+console.log(sayHelloSir("Rahul"));      // Hello, Sir Rahul!
+```
+
+### Currying vs Partial Application
+
+| Aspect | Currying | Partial Application |
+|--------|----------|---------------------|
+| Arguments per call | One at a time | One or more at a time |
+| Always unary? | ✅ Yes | ❌ No |
+| Returns function? | Until all args collected | Once, with remaining params |
+| Use case | Function composition | Fixing specific arguments |
+
+```javascript
+// Currying: f(a)(b)(c)
+const curried = a => b => c => a + b + c;
+curried(1)(2)(3); // 6
+
+// Partial: fix some args, call rest later
+const partial1 = partial(add, 1);
+partial1(2, 3);   // 6
+```
+
+### Advanced: Curry with Placeholders
+
+```javascript
+const _ = Symbol("placeholder");
+
+function advancedCurry(fn) {
+    const arity = fn.length;
+
+    return function curried(...args) {
+        const cleanArgs = args.filter(a => a !== _);
+
+        if (cleanArgs.length >= arity) {
+            return fn(...cleanArgs.slice(0, arity));
+        }
+
+        return function(...newArgs) {
+            const merged = args.map(a => a === _ && newArgs.length ? newArgs.shift() : a);
+            return curried(...merged, ...newArgs);
+        };
+    };
+}
+
+const add = advancedCurry((a, b, c) => a + b + c);
+
+console.log(add(1)(2)(3));      // 6
+console.log(add(1, _, 3)(2));   // 6 (filling placeholder)
+```
+
+### ❓ Interview Questions
+
+**Q1: Convert to curried form**
+```javascript
+function volume(l, w, h) { return l * w * h; }
+
+const volumeCurried = l => w => h => l * w * h;
+console.log(volumeCurried(3)(4)(5)); // 60
+```
+
+**Q2: What is the output?**
+```javascript
+const multiply = a => b => a * b;
+const double   = multiply(2);
+const result   = [1, 2, 3, 4, 5].map(double);
+console.log(result); // [2, 4, 6, 8, 10]
+```
+
+**Q3: Implement curry from scratch**
+```javascript
+function curry(fn) {
+    return function curried(...args) {
+        if (args.length >= fn.length) return fn(...args);
+        return (...more) => curried(...args, ...more);
+    };
+}
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="16-iife"></a>
+<a id="16"></a>
 
-## 16. 🏃 IIFE — Immediately Invoked Function Expressions
+## 16. ⚡ IIFE — Immediately Invoked Function Expressions
 
 ### What is an IIFE?
 
-> **Definition:** An **IIFE** (pronounced "iffy") is a function that is **defined and executed immediately** in a single expression. It creates a private scope.
+An **IIFE** is a function that is **defined and executed immediately** — it runs as soon as it is created.
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: IIFE — All Variations
-// ═══════════════════════════════════════════════
+(function() {
+    // code runs immediately
+})();
+```
 
+### Why the Parentheses?
+
+```javascript
+// ❌ Without outer parens — SyntaxError
+// function() { ... }();
+
+// ✅ Outer parens convert it to an EXPRESSION
+(function() { ... })();
+
+// The outer () wraps the function as an expression
+// The inner () at the end invokes it
+```
+
+### Syntax Variations
+
+```javascript
 // 1. Classic IIFE
 (function() {
-    const secret = "private!";
-    console.log("Classic IIFE:", secret);
+    console.log("Classic IIFE");
 })();
 
-// 2. Arrow IIFE
+// 2. Crockford style
+(function() {
+    console.log("Crockford style");
+}());
+
+// 3. Arrow IIFE (ES6)
 (() => {
     console.log("Arrow IIFE");
 })();
 
-// 3. IIFE with parameters
-(function(name, version) {
-    console.log(`App: ${name} v${version}`);
-})("MyApp", "1.0.0");
-
-// 4. Named IIFE
-(function init() {
-    console.log("Named IIFE: init()");
-})();
+// 4. IIFE with parameters
+(function(name, age) {
+    console.log(`${name} is ${age}`);
+})("Rahul", 25);
 
 // 5. IIFE with return value
 const result = (function() {
     return 42;
 })();
-console.log("IIFE returned:", result); // 42
+console.log(result); // 42
 
-// 6. Module Pattern with IIFE
-const Calculator = (function() {
-    // Private
-    let memory = 0;
-    
-    function log(operation, value) {
-        console.log(`  [${operation}] ${value} → Memory: ${memory}`);
+// 6. Named IIFE
+(function init() {
+    console.log("Init IIFE");
+})();
+
+// 7. Async IIFE
+(async function() {
+    const data = await fetch("/api/data");
+    console.log(data);
+})();
+```
+
+### Why Use IIFEs?
+
+```mermaid
+flowchart TD
+    A["Why Use IIFEs?"] --> B["Create Private Scope"]
+    A --> C["Avoid Global Pollution"]
+    A --> D["Module Pattern"]
+    A --> E["Initialize Once"]
+    A --> F["Avoid Variable Conflicts"]
+
+    style A fill:#9C27B0,color:white
+```
+
+#### 1. Private Scope (Pre-ES6)
+
+```javascript
+// Without IIFE — pollutes global scope
+var counter = 0;
+var step = 5;
+
+// With IIFE — variables are private
+(function() {
+    var counter = 0;
+    var step = 5;
+    console.log(counter, step);
+})();
+
+console.log(typeof counter); // "undefined" — not in global scope
+```
+
+#### 2. Module Pattern
+
+```javascript
+const ShoppingCart = (function() {
+    let items = [];
+    let discount = 0;
+
+    function calculateTotal() {
+        return items.reduce((sum, item) => sum + item.price, 0);
     }
-    
-    // Public API
+
     return {
-        add(n)      { memory += n; log("ADD", n); return this; },
-        subtract(n) { memory -= n; log("SUB", n); return this; },
-        multiply(n) { memory *= n; log("MUL", n); return this; },
-        getResult() { return memory; },
-        reset()     { memory = 0; return this; }
+        addItem(item) {
+            items.push(item);
+            console.log(`${item.name} added`);
+        },
+        removeItem(id) {
+            items = items.filter(item => item.id !== id);
+        },
+        applyDiscount(pct) {
+            discount = pct;
+        },
+        getTotal() {
+            const total = calculateTotal();
+            return total - (total * discount / 100);
+        },
+        getItems() {
+            return [...items];
+        }
     };
 })();
 
-Calculator.reset().add(10).add(5).multiply(2).subtract(3);
-console.log("Result:", Calculator.getResult()); // 27
-console.log("Memory:", Calculator.memory);       // undefined (private!)
+ShoppingCart.addItem({ id: 1, name: "Shirt", price: 500 });
+ShoppingCart.addItem({ id: 2, name: "Pants", price: 1000 });
+ShoppingCart.applyDiscount(10);
+console.log(ShoppingCart.getTotal()); // 1350
+console.log(ShoppingCart.items);      // undefined — PRIVATE!
+```
+
+#### 3. Avoid Variable Name Conflicts
+
+```javascript
+(function() {
+    var app = { version: "1.0", name: "LibA" };
+    console.log(app.name); // LibA
+})();
+
+(function() {
+    var app = { version: "2.0", name: "LibB" };
+    console.log(app.name); // LibB
+})();
+// No conflict!
+```
+
+#### 4. Initialization Code
+
+```javascript
+(function init() {
+    document.addEventListener("DOMContentLoaded", function() {
+        console.log("DOM ready");
+    });
+
+    const config = { theme: "dark", language: "en" };
+
+    window.MyApp = { config, version: "1.0.0" };
+    console.log("App initialized");
+})();
+```
+
+#### 5. Solving the Classic Loop Problem
+
+```javascript
+// ❌ Problem with var
+for (var i = 0; i < 5; i++) {
+    setTimeout(function() { console.log(i); }, 1000); // 5 5 5 5 5
+}
+
+// ✅ IIFE creates new scope per iteration
+for (var i = 0; i < 5; i++) {
+    (function(j) {
+        setTimeout(function() { console.log(j); }, 1000); // 0 1 2 3 4
+    })(i);
+}
+
+// ✅ Modern: let
+for (let i = 0; i < 5; i++) {
+    setTimeout(() => console.log(i), 1000); // 0 1 2 3 4
+}
+```
+
+#### 6. Async IIFE
+
+```javascript
+(async () => {
+    try {
+        const response = await fetch("https://api.example.com/users");
+        const users = await response.json();
+        console.log(users);
+    } catch (error) {
+        console.error("Failed:", error);
+    }
+})();
+```
+
+### IIFE vs Block Scope (ES6)
+
+```javascript
+// Old way (IIFE)
+(function() { var privateVar = "private"; })();
+
+// Modern way (let/const with blocks)
+{ let privateVar = "private"; const alsoPrivate = "also private"; }
+
+// IIFE is still used for returning values, async init, and older environments
+```
+
+### ❓ Interview Questions
+
+**Q1: What is the output?**
+```javascript
+var x = 10;
+(function() { var x = 20; console.log(x); })();
+console.log(x);
+// 20 then 10
+```
+
+**Q2: How to pass jQuery as $ safely?**
+```javascript
+(function($) {
+    $(".btn").click(function() { console.log("clicked"); });
+})(jQuery);
+```
+
+**Q3: Return value from IIFE**
+```javascript
+const square = (function(n) { return n * n; })(5);
+console.log(square); // 25
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="17-generators--iterators"></a>
+<a id="17"></a>
 
-## 17. ⚡ Generators & Iterators
+## 17. ⚙️ Generators & Iterators
+
+### What is an Iterator?
+
+An **Iterator** implements the iterator protocol — it has a `next()` method returning `{ value, done }`.
+
+```javascript
+function createIterator(arr) {
+    let index = 0;
+    return {
+        next() {
+            if (index < arr.length) {
+                return { value: arr[index++], done: false };
+            }
+            return { value: undefined, done: true };
+        }
+    };
+}
+
+const iterator = createIterator([10, 20, 30]);
+console.log(iterator.next()); // { value: 10, done: false }
+console.log(iterator.next()); // { value: 20, done: false }
+console.log(iterator.next()); // { value: 30, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
 
 ### What is a Generator?
 
-> **Definition:** A **Generator** is a special function that can **pause** its execution and **resume** later. It uses the `function*` syntax and `yield` keyword.
+A **Generator** uses `function*` and can **pause** (`yield`) and **resume** execution.
+
+```mermaid
+flowchart TD
+    A["Generator function called"] --> B["Returns generator object paused"]
+    B --> C["gen.next called"]
+    C --> D["Runs until next yield"]
+    D --> E["Returns value done: false"]
+    E --> F["Execution PAUSED"]
+    F --> G["gen.next called again"]
+    G --> D
+    D -->|"Function ends"| H["Returns value: undefined done: true"]
+
+    style A fill:#9C27B0,color:white
+    style F fill:#FF9800,color:white
+    style H fill:#f44336,color:white
+```
+
+### Generator Syntax
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Generators — Complete Guide
-// ═══════════════════════════════════════════════
-
-// ── Basic Generator ──
-function* countUp() {
+function* simpleGenerator() {
+    console.log("Step 1");
     yield 1;
+
+    console.log("Step 2");
     yield 2;
+
+    console.log("Step 3");
     yield 3;
+
+    console.log("Done!");
 }
 
-const counter = countUp();
-console.log(counter.next()); // { value: 1, done: false }
-console.log(counter.next()); // { value: 2, done: false }
-console.log(counter.next()); // { value: 3, done: false }
-console.log(counter.next()); // { value: undefined, done: true }
+const gen = simpleGenerator();
 
-// ── Infinite Generator ──
+console.log(gen.next()); // Step 1 → { value: 1, done: false }
+console.log(gen.next()); // Step 2 → { value: 2, done: false }
+console.log(gen.next()); // Step 3 → { value: 3, done: false }
+console.log(gen.next()); // Done!  → { value: undefined, done: true }
+```
+
+### Key Generator Patterns
+
+#### Infinite Sequences
+
+```javascript
+function* infiniteNumbers(start = 0) {
+    let n = start;
+    while (true) {
+        yield n++;
+    }
+}
+
+const gen = infiniteNumbers(1);
+console.log(gen.next().value); // 1
+console.log(gen.next().value); // 2
+console.log(gen.next().value); // 3
+
+// ID generator
 function* idGenerator() {
     let id = 1;
     while (true) {
-        yield id++;
+        yield `ID_${id++}`;
     }
 }
 
 const getId = idGenerator();
-console.log(getId.next().value); // 1
-console.log(getId.next().value); // 2
-console.log(getId.next().value); // 3
-// Can go forever!
+console.log(getId.next().value); // ID_1
+console.log(getId.next().value); // ID_2
+```
 
-// ── Fibonacci Generator ──
-function* fibonacci() {
-    let a = 0, b = 1;
-    while (true) {
-        yield a;
-        [a, b] = [b, a + b];
-    }
-}
+#### Range Generator
 
-const fib = fibonacci();
-const first10 = Array.from({ length: 10 }, () => fib.next().value);
-console.log("Fibonacci:", first10);
-// [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
-
-// ── Generators are iterable ──
+```javascript
 function* range(start, end, step = 1) {
     for (let i = start; i < end; i += step) {
         yield i;
     }
 }
 
+// Use in for...of loop (generators are iterable!)
 for (const num of range(0, 10, 2)) {
-    process.stdout.write(num + " ");
-}
-console.log(); // 0 2 4 6 8
-
-// ── Two-way communication ──
-function* conversation() {
-    const name = yield "What is your name?";
-    const age = yield `Hello, ${name}! How old are you?`;
-    return `${name} is ${age} years old.`;
+    console.log(num); // 0, 2, 4, 6, 8
 }
 
-const chat = conversation();
-console.log(chat.next().value);          // "What is your name?"
-console.log(chat.next("Rahul").value);   // "Hello, Rahul! How old are you?"
-console.log(chat.next(25).value);        // "Rahul is 25 years old."
+// Spread into array
+console.log([...range(1, 6)]); // [1, 2, 3, 4, 5]
+```
+
+#### Two-Way Communication with `next(value)`
+
+```javascript
+function* calculator() {
+    let result = 0;
+
+    while (true) {
+        const input = yield result;
+        if (input === null) break;
+        result += input;
+    }
+
+    return result;
+}
+
+const calc = calculator();
+
+console.log(calc.next().value);    // 0 (initial)
+console.log(calc.next(10).value);  // 10
+console.log(calc.next(5).value);   // 15
+console.log(calc.next(20).value);  // 35
+console.log(calc.next(null));      // { value: 35, done: true }
+```
+
+#### Generator Delegation (`yield*`)
+
+```javascript
+function* inner() {
+    yield "a";
+    yield "b";
+}
+
+function* outer() {
+    yield 1;
+    yield* inner(); // Delegates to inner generator
+    yield 2;
+}
+
+console.log([...outer()]); // [1, "a", "b", 2]
+```
+
+### Real-World: Tree Traversal
+
+```javascript
+function* traverseTree(node) {
+    yield node.value;
+
+    for (const child of node.children || []) {
+        yield* traverseTree(child); // Recursive delegation
+    }
+}
+
+const tree = {
+    value: 1,
+    children: [
+        { value: 2, children: [{ value: 4, children: [] }, { value: 5, children: [] }] },
+        { value: 3, children: [{ value: 6, children: [] }] }
+    ]
+};
+
+console.log([...traverseTree(tree)]); // [1, 2, 4, 5, 3, 6]
+```
+
+### Generator vs Regular Function
+
+| Feature | Regular Function | Generator |
+|---------|-----------------|-----------|
+| Execution | Runs to completion | Can pause and resume |
+| Return | Single value | Multiple values via `yield` |
+| State | Stateless | Maintains state between calls |
+| Memory | All data at once | Lazy — one value at a time |
+| Infinite sequences | ❌ Not possible | ✅ Possible |
+
+### ❓ Interview Questions
+
+**Q1: What will be the output?**
+```javascript
+function* gen() {
+    yield 1;
+    yield 2;
+    return 3;
+    yield 4; // Never reached
+}
+
+const g = gen();
+console.log(g.next()); // { value: 1, done: false }
+console.log(g.next()); // { value: 2, done: false }
+console.log(g.next()); // { value: 3, done: true }
+console.log(g.next()); // { value: undefined, done: true }
+```
+
+**Q2: Implement take(n) using generators**
+```javascript
+function* take(n, iterable) {
+    let count = 0;
+    for (const item of iterable) {
+        if (count >= n) return;
+        yield item;
+        count++;
+    }
+}
+
+function* naturals() {
+    let n = 1;
+    while (true) yield n++;
+}
+
+console.log([...take(5, naturals())]); // [1, 2, 3, 4, 5]
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="18-async-functions--async-patterns"></a>
+<a id="18"></a>
 
-## 18. 🌐 Async Functions & Async Patterns
+## 18. ⏳ Async Functions & Async Patterns
 
-### What are Async Functions?
+### The Problem: JavaScript is Single-Threaded
 
-> **Definition:** Async functions are syntactic sugar over Promises. They allow you to write **asynchronous code that looks synchronous** using the `async` and `await` keywords.
+```mermaid
+flowchart TD
+    A["Async Patterns Evolution"] --> B["1. Callbacks Old"]
+    A --> C["2. Promises ES6"]
+    A --> D["3. Async/Await ES2017"]
+
+    B --> E["Simple but leads to callback hell"]
+    C --> F["Chainable, better error handling"]
+    D --> G["Synchronous-looking, cleanest syntax"]
+
+    style A fill:#9C27B0,color:white
+    style D fill:#4CAF50,color:white
+```
+
+### 1. Callbacks
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Async/Await — Complete Guide
-// ═══════════════════════════════════════════════
+setTimeout(function() {
+    console.log("Done after 1s");
+}, 1000);
+```
 
-// Simulated API calls
-function delay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+### 2. Promises
 
+```javascript
+const promise = new Promise((resolve, reject) => {
+    const success = true;
+    if (success) {
+        resolve("Data fetched!");
+    } else {
+        reject("Something failed");
+    }
+});
+
+promise
+    .then(data => console.log("✅", data))
+    .catch(err => console.log("❌", err))
+    .finally(() => console.log("Always runs"));
+```
+
+#### Promise Chaining
+
+```javascript
 function fetchUser(id) {
-    return delay(100).then(() => ({ id, name: "Rahul" }));
+    return new Promise((resolve) => {
+        setTimeout(() => resolve({ id, name: "Rahul" }), 500);
+    });
 }
 
 function fetchOrders(userId) {
-    return delay(100).then(() => [
-        { id: 101, product: "Laptop" },
-        { id: 102, product: "Mouse" }
-    ]);
+    return new Promise((resolve) => {
+        setTimeout(() => resolve([{ orderId: 1, item: "Shirt" }]), 500);
+    });
 }
 
-// ── Without async/await (Promise chains) ──
-function getUserOrdersPromise(userId) {
-    return fetchUser(userId)
-        .then(user => {
-            console.log("User:", user.name);
-            return fetchOrders(user.id);
-        })
-        .then(orders => {
-            console.log("Orders:", orders);
-            return orders;
-        })
-        .catch(err => console.error("Error:", err));
-}
-
-// ── With async/await (Clean and readable) ──
-async function getUserOrdersAsync(userId) {
-    try {
-        const user = await fetchUser(userId);
+fetchUser(1)
+    .then(user => {
         console.log("User:", user.name);
-        
-        const orders = await fetchOrders(user.id);
+        return fetchOrders(user.id);
+    })
+    .then(orders => {
         console.log("Orders:", orders);
-        
-        return orders;
-    } catch (err) {
-        console.error("Error:", err);
+    })
+    .catch(err => console.error("Error:", err));
+```
+
+#### Promise Combinators
+
+```javascript
+const p1 = new Promise(resolve => setTimeout(() => resolve("Result 1"), 1000));
+const p2 = new Promise(resolve => setTimeout(() => resolve("Result 2"), 500));
+const p3 = new Promise(resolve => setTimeout(() => resolve("Result 3"), 1500));
+const p4 = new Promise((_, reject) => setTimeout(() => reject("Error!"), 800));
+
+// Promise.all — fails if ANY rejects
+Promise.all([p1, p2, p3])
+    .then(results => console.log(results))
+    .catch(err => console.log("One failed:", err));
+
+// Promise.allSettled — waits for ALL regardless
+Promise.allSettled([p1, p2, p4])
+    .then(results => {
+        results.forEach(r => {
+            if (r.status === "fulfilled") console.log("✅", r.value);
+            else console.log("❌", r.reason);
+        });
+    });
+
+// Promise.race — first to settle wins
+Promise.race([p1, p2, p3])
+    .then(winner => console.log("Winner:", winner)); // "Result 2"
+
+// Promise.any — first to FULFILL wins
+Promise.any([p1, p4, p2])
+    .then(first => console.log("First success:", first));
+```
+
+### 3. Async/Await
+
+```javascript
+async function fetchUserData(userId) {
+    const response = await fetch(`/api/users/${userId}`);
+    const user = await response.json();
+    return user;
+}
+
+// Use it:
+fetchUserData(1).then(user => console.log(user));
+
+// Or inside another async function:
+async function main() {
+    const user = await fetchUserData(1);
+    console.log(user);
+}
+```
+
+#### Error Handling
+
+```javascript
+// Method 1: try/catch (recommended)
+async function fetchData(id) {
+    try {
+        const response = await fetch(`/api/data/${id}`);
+        if (!response.ok) {
+            throw new Error(`HTTP Error: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error("Failed:", error.message);
+        throw error;
+    } finally {
+        console.log("Fetch attempt complete");
     }
 }
 
-// ── Parallel execution ──
-async function fetchAllData() {
-    // Sequential (slow) — each waits for previous
-    // const user = await fetchUser(1);
-    // const orders = await fetchOrders(1);
-    
-    // Parallel (fast) — both start at same time
+// Method 2: .catch()
+fetchData(1).catch(err => console.error(err));
+```
+
+#### Sequential vs Parallel
+
+```javascript
+// ❌ Sequential — slow
+async function sequential() {
+    const user   = await fetchUser(1);   // Wait 1s
+    const orders = await fetchOrders(1); // Wait 1s more
+    // Total: ~2 seconds
+}
+
+// ✅ Parallel — fast
+async function parallel() {
     const [user, orders] = await Promise.all([
         fetchUser(1),
         fetchOrders(1)
     ]);
-    
-    console.log("Parallel results:", user, orders);
+    // Total: ~1 second
 }
-
-// Execute
-getUserOrdersAsync(1);
 ```
 
-### Async Function Types
+### Real-World: API Service Pattern
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: All Async Function Variations
-// ═══════════════════════════════════════════════
+class ApiService {
+    constructor(baseURL) {
+        this.baseURL = baseURL;
+    }
 
-// 1. Async function declaration
-async function asyncDeclaration() {
-    return "declaration";
+    async request(endpoint, options = {}) {
+        const url = `${this.baseURL}${endpoint}`;
+        const config = {
+            headers: { "Content-Type": "application/json", ...options.headers },
+            ...options
+        };
+
+        try {
+            const response = await fetch(url, config);
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                throw new Error(errorData.message || `HTTP ${response.status}`);
+            }
+            return await response.json();
+        } catch (error) {
+            console.error(`API Error [${endpoint}]:`, error.message);
+            throw error;
+        }
+    }
+
+    get(endpoint)        { return this.request(endpoint); }
+    post(endpoint, body) { return this.request(endpoint, { method: "POST", body: JSON.stringify(body) }); }
+    put(endpoint, body)  { return this.request(endpoint, { method: "PUT", body: JSON.stringify(body) }); }
+    delete(endpoint)     { return this.request(endpoint, { method: "DELETE" }); }
 }
 
-// 2. Async function expression
-const asyncExpression = async function() {
-    return "expression";
-};
+const api = new ApiService("https://api.example.com");
 
-// 3. Async arrow function
-const asyncArrow = async () => {
-    return "arrow";
-};
-
-// 4. Async method
-const obj = {
-    async getData() {
-        return "method";
-    }
-};
-
-// 5. Async class method
-class API {
-    async fetch(url) {
-        return `Fetched: ${url}`;
+async function loadDashboard(userId) {
+    try {
+        const [user, orders, notifications] = await Promise.all([
+            api.get(`/users/${userId}`),
+            api.get(`/orders?userId=${userId}`),
+            api.get(`/notifications?userId=${userId}`)
+        ]);
+        return { user, orders, notifications };
+    } catch (error) {
+        console.error("Dashboard failed:", error);
+        return null;
     }
 }
+```
 
-// All return Promises!
-asyncDeclaration().then(console.log);  // "declaration"
-asyncExpression().then(console.log);   // "expression"
-asyncArrow().then(console.log);        // "arrow"
+### Async Patterns Comparison
+
+```javascript
+// 1. Callback
+function getUser_CB(id, cb) {
+    setTimeout(() => cb(null, { id, name: "Rahul" }), 500);
+}
+getUser_CB(1, (err, user) => { if (!err) console.log(user); });
+
+// 2. Promise
+function getUser_P(id) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve({ id, name: "Rahul" }), 500);
+    });
+}
+getUser_P(1).then(user => console.log(user));
+
+// 3. Async/Await
+async function getUser_AA(id) {
+    return new Promise(resolve => {
+        setTimeout(() => resolve({ id, name: "Rahul" }), 500);
+    });
+}
+
+(async () => {
+    const user = await getUser_AA(1);
+    console.log(user);
+})();
+```
+
+### ❓ Interview Questions
+
+**Q1: What does async function always return?**
+> Always a Promise. Non-promise return values are wrapped in `Promise.resolve()`.
+
+```javascript
+async function greet() { return "Hello"; }
+greet().then(console.log); // "Hello"
+```
+
+**Q2: Difference between Promise.all and Promise.allSettled?**
+> `Promise.all` rejects if ANY fails. `Promise.allSettled` waits for ALL and gives each result.
+
+**Q3: What will be the output?**
+```javascript
+async function foo() {
+    console.log(1);
+    await Promise.resolve();
+    console.log(2);
+}
+
+console.log(3);
+foo();
+console.log(4);
+
+// Output: 3 → 1 → 4 → 2
 ```
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="19-garbage-collection--memory-leaks"></a>
+<a id="19"></a>
 
 ## 19. 🗑️ Garbage Collection & Memory Leaks in Functions
 
-### How Garbage Collection Works with Functions
+### What is Garbage Collection?
 
-> **Definition:** JavaScript uses **automatic garbage collection** with a **mark-and-sweep** algorithm. Any object that is no longer **reachable** from the root (global scope) is eligible for garbage collection.
+JavaScript uses **automatic garbage collection** — it frees memory that is no longer reachable.
+
+The primary algorithm is **Mark and Sweep**:
 
 ```mermaid
 flowchart TD
-    A["Variable/Object Created"] --> B["Is it REACHABLE from root?"]
-    B -->|YES| C["✅ Stays in memory"]
-    B -->|NO| D["🗑️ Garbage collected"]
-    
-    E["What makes something reachable?"] --> F["Referenced by global variable"]
-    E --> G["Referenced by closure"]
-    E --> H["Referenced in call stack"]
-    E --> I["Referenced by event listener"]
-    
-    style C fill:#4CAF50,color:white
+    A["Garbage Collector Runs"] --> B["Mark Phase: Start from roots global/stack"]
+    B --> C["Follow all references — mark reachable objects"]
+    C --> D["Sweep Phase: Remove all unmarked objects"]
+    D --> E["Memory freed for reuse"]
+
+    style A fill:#9C27B0,color:white
     style D fill:#f44336,color:white
+    style E fill:#4CAF50,color:white
 ```
 
-### Program: Memory Leak Patterns
+### How Memory Works with Functions
 
 ```javascript
-// ═══════════════════════════════════════════════
-// PROGRAM: Common Memory Leaks with Functions
-// ═══════════════════════════════════════════════
+function createUser() {
+    const name = "Rahul";
+    const scores = [85, 92, 78];
+    return name; // Only name value escapes
+}
 
-// ── Leak 1: Forgotten Closures ──
-function createLeak() {
-    const hugeData = new Array(1000000).fill("💧");
-    
+const user = createUser();
+// After createUser() finishes:
+// 'scores' array has no reference → garbage collected!
+```
+
+### Closures & Memory
+
+```javascript
+// ✅ Intentional — closure keeps count alive
+function createCounter() {
+    let count = 0;
+    return () => ++count;
+}
+
+const counter = createCounter(); // count stays in memory
+
+// ⚠️ Accidental leak — closure holds large data
+function setup() {
+    const bigData = new Array(1_000_000).fill("data"); // 8MB+
+
     return function() {
-        // Even if we never use hugeData, it's retained!
-        console.log("I exist, and so does hugeData");
+        console.log(bigData.length); // bigData never freed!
     };
 }
 
-let leakyFn = createLeak();
-// hugeData is stuck in memory
-// Fix: leakyFn = null;
+let fn = setup();
+// ✅ Fix: nullify when done
+fn = null; // Now bigData can be collected
+```
 
-// ── Leak 2: Unremoved Event Listeners ──
-// function setupHandler() {
-//     const data = getLargeDataSet();
-//     document.addEventListener('click', function handler() {
-//         console.log(data.length);
-//     });
-//     // 'handler' keeps 'data' alive even if setupHandler is long gone
-//     // Fix: removeEventListener when done
-// }
+### Common Memory Leaks
 
-// ── Leak 3: Timers ──
-function createLeakyTimer() {
-    const data = { /* large object */ };
-    
-    const intervalId = setInterval(() => {
-        console.log("Tick:", data);
+#### 1. Forgotten Timers
+
+```javascript
+// ❌ Timer runs forever
+function startBadTimer() {
+    const heavyData = new Array(100000).fill("data");
+    setInterval(function() {
+        console.log(heavyData.length); // heavyData never freed!
     }, 1000);
-    
-    // Fix: Return cleanup function
+}
+
+// ✅ Fix — clear when done
+function startGoodTimer() {
+    const heavyData = new Array(100000).fill("data");
+    let count = 0;
+    const timerId = setInterval(function() {
+        console.log(heavyData.length);
+        count++;
+        if (count >= 10) clearInterval(timerId);
+    }, 1000);
+    return timerId;
+}
+```
+
+#### 2. Forgotten Event Listeners
+
+```javascript
+// ❌ Listener never removed
+function addBadListener() {
+    const bigObject = { data: new Array(100000).fill("x") };
+    document.getElementById("btn").addEventListener("click", function() {
+        console.log(bigObject.data.length);
+    });
+}
+
+// ✅ Fix — remove when done
+function addGoodListener() {
+    const bigObject = { data: new Array(100000).fill("x") };
+    function handleClick() { console.log(bigObject.data.length); }
+
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", handleClick);
+
     return function cleanup() {
-        clearInterval(intervalId);
+        btn.removeEventListener("click", handleClick);
     };
 }
 
-const stopTimer = createLeakyTimer();
-// ... later ...
-// stopTimer(); // Clean up!
+const cleanup = addGoodListener();
+// Later: cleanup();
+```
 
-// ── Best Practice: Closure with minimal capture ──
-function createEfficientClosure() {
-    const hugeData = new Array(1000000).fill("📦");
-    const summary = hugeData.length; // Extract only what's needed
-    // hugeData can now be GC'd
-    
-    return function() {
-        console.log("Items:", summary); // Only 'summary' is in closure
+#### 3. Global Variable Accumulation
+
+```javascript
+// ❌ Cache grows forever
+const cache = {};
+function cacheData(key, value) { cache[key] = value; }
+
+// ✅ Bounded cache
+function createBoundedCache(maxSize = 100) {
+    const cache = new Map();
+    return {
+        set(key, value) {
+            if (cache.size >= maxSize) {
+                const firstKey = cache.keys().next().value;
+                cache.delete(firstKey);
+            }
+            cache.set(key, value);
+        },
+        get(key)  { return cache.get(key); },
+        has(key)  { return cache.has(key); },
+        clear()   { cache.clear(); },
+        size()    { return cache.size; }
     };
 }
 ```
 
+#### 4. Closures Holding Unnecessary References
+
+```javascript
+// ❌ Closure captures entire scope including large unused data
+function processUser(user) {
+    const fullProfile = fetchFullProfile(user.id); // Large object
+    const summary = extractSummary(fullProfile);
+
+    return function displaySummary() {
+        console.log(summary); // Only needs summary but fullProfile is also kept!
+    };
+}
+
+// ✅ Fix: Release what you don't need
+function processUserFixed(user) {
+    let fullProfile = fetchFullProfile(user.id);
+    const summary = extractSummary(fullProfile);
+    fullProfile = null; // Release large object
+
+    return function displaySummary() {
+        console.log(summary);
+    };
+}
+```
+
+#### 5. WeakMap and WeakRef
+
+```javascript
+// WeakMap — doesn't prevent GC of keys
+const cache = new WeakMap();
+
+function processElement(element) {
+    if (cache.has(element)) return cache.get(element);
+    const result = heavyComputation(element);
+    cache.set(element, result);
+    return result;
+}
+// When element is removed from DOM and has no other references,
+// WeakMap entry is automatically cleaned up
+
+// WeakRef — allows GC while keeping a reference
+function createWeakCache() {
+    const cache = new Map();
+    return {
+        set(key, value) { cache.set(key, new WeakRef(value)); },
+        get(key) {
+            const ref = cache.get(key);
+            return ref ? ref.deref() : undefined;
+        }
+    };
+}
+```
+
+### Memory Lifecycle
+
+```mermaid
+flowchart LR
+    A["Allocate Memory\nvariable created"] --> B["Use Memory\nread/write values"]
+    B --> C["Release Memory\nGC reclaims unreachable"]
+    C -->|"Next operation"| A
+
+    style A fill:#4CAF50,color:white
+    style B fill:#2196F3,color:white
+    style C fill:#FF9800,color:white
+```
+
+### Best Practices
+
+```javascript
+// 1. Clean up timers
+const id = setInterval(fn, 1000);
+clearInterval(id);
+
+// 2. Remove event listeners
+el.removeEventListener("click", handler);
+
+// 3. Nullify large objects when done
+let bigData = new Array(1_000_000).fill(0);
+bigData = null;
+
+// 4. Use WeakMap/WeakSet for object-keyed caches
+const cache = new WeakMap();
+
+// 5. Limit closure scope — only capture what you need
+function good() {
+    const needed = "small string";
+    return () => needed;
+}
+```
+
+### ❓ Interview Questions
+
+**Q1: What is a memory leak and how can closures cause them?**
+> When allocated memory is never released. Closures keep references to outer variables alive — if those variables hold large data, the data stays in memory as long as the closure exists.
+
+**Q2: Difference between WeakMap and Map for caching?**
+> `Map` holds strong references — objects only referenced by Map won't be GC'd. `WeakMap` holds weak references — if the key object has no other references, it's GC'd and the WeakMap entry is auto-removed.
+
+**Q3: How to detect a memory leak?**
+> Browser DevTools → Performance/Memory tab → Take heap snapshots. Look for growing heap size that doesn't reduce after GC.
+
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-<a name="20-interview-questions-cheat-sheet"></a>
+<a id="20"></a>
 
 ## 20. 📋 Interview Questions Cheat Sheet
 
 ### Quick-Fire Questions & Answers
 
-| # | Question | Short Answer |
-|---|----------|--------------|
-| 1 | What is a function declaration? | Function with `function` keyword + name. Fully hoisted. |
-| 2 | What is a function expression? | Function assigned to variable. Variable hoisted as `undefined`. |
-| 3 | What are arrow functions? | ES6 syntax. Lexical `this`, no `arguments`, no `new`. |
-| 4 | What is a higher order function? | Takes function as arg OR returns function. |
-| 5 | What is a callback function? | Function passed as arg, called later. |
-| 6 | What is a closure? | Function + lexical scope. Remembers outer variables. |
-| 7 | Call by value vs reference? | Primitives = value copy. Objects = reference copy. |
-| 8 | What is IIFE? | Immediately Invoked Function Expression. Private scope. |
-| 9 | What is `arguments`? | Array-like object of all args. Not in arrow functions. |
-| 10 | What is a pure function? | Same input → same output, no side effects. |
-| 11 | What is currying? | Transform `f(a,b,c)` into `f(a)(b)(c)`. |
-| 12 | What is `this` in arrow vs regular? | Arrow: lexical (parent). Regular: depends on call site. |
-| 13 | Difference: call vs apply vs bind? | call(individual args), apply(array args), bind(returns new fn). |
-| 14 | What is recursion? | Function calling itself. Needs base case. |
-| 15 | What is a generator? | Function that can pause (yield) and resume. |
+| # | Question | Answer |
+|---|----------|--------|
+| 1 | What is a function declaration? | Defined with `function` keyword + name. Fully hoisted. |
+| 2 | What is a function expression? | Function assigned to variable. Only variable hoisted as `undefined`. |
+| 3 | What are arrow functions? | ES6 short syntax. Lexical `this`, no `arguments`, no constructor. |
+| 4 | What is a higher order function? | Takes function as argument OR returns a function. |
+| 5 | What is a callback? | Function passed as argument, called later (sync or async). |
+| 6 | What is a closure? | Function + its lexical environment. Retains outer scope after outer function returns. |
+| 7 | Call by value vs reference? | Primitives = copy of value. Objects = copy of reference. |
+| 8 | What is an IIFE? | Function that runs immediately upon definition. Used for private scope. |
+| 9 | What is the `arguments` object? | Array-like with all passed args. Not in arrow functions. |
+| 10 | What are default parameters? | ES6 — values used when argument is `undefined`. |
+| 11 | What is currying? | `f(a,b,c)` → `f(a)(b)(c)`. Multi-arg → sequence of unary functions. |
+| 12 | What is partial application? | Pre-filling some arguments using `bind` or custom partial. |
+| 13 | What is the execution context? | Environment where code runs — memory (VE) and code (TE) components. |
+| 14 | What is the call stack? | LIFO structure managing execution contexts. |
+| 15 | What is a pure function? | Same input → same output. No side effects. |
+| 16 | What is a generator function? | Uses `function*` and `yield`. Can pause and resume execution. |
+| 17 | What is `async`/`await`? | Syntactic sugar over Promises. Makes async code look synchronous. |
+| 18 | What does `bind` do? | Returns new function with permanently bound `this`. |
+| 19 | Difference between `call` and `apply`? | `call` = comma args. `apply` = array args. Both invoke immediately. |
+| 20 | What is a memory leak in closures? | Closure holds reference to large data longer than needed, preventing GC. |
+| 21 | What is tail call optimization? | Last action is recursive call — can be optimized to O(1) stack. |
+| 22 | What is memoization? | Cache results by input. Returns cached result on repeated calls. |
+| 23 | What is debounce? | Delays execution until N ms of inactivity. |
+| 24 | What is throttle? | Runs at most once per N ms interval. |
 
-### Common Tricky Outputs
+### Tricky Output Questions
 
 ```javascript
-// ═══════════════════════════════════════════════
-// RAPID FIRE: Predict the Output
-// ═══════════════════════════════════════════════
-
 // 1. Hoisting
-console.log(foo()); // ✅ "foo"
-// console.log(bar()); // ❌ TypeError
+console.log(foo()); // "foo" ✅
+console.log(bar()); // TypeError ❌
+
 function foo() { return "foo"; }
 var bar = function() { return "bar"; };
 
-// 2. this in arrow vs regular
+// 2. Arrow vs Regular this
 const obj = {
     x: 10,
-    regular: function() { return this.x; },   // 10
-    arrow: () => { return this.x; }            // undefined
+    regular: function() { return this.x; }, // 10
+    arrow: () => { return this.x; }          // undefined
 };
 
-// 3. Closure
+// 3. Closure value capture
 function outer() {
     let x = 10;
-    return function() { return x; };
+    const fn = () => x;
+    x = 20;
+    return fn;
 }
-const fn = outer();
-console.log(fn()); // 10
+console.log(outer()()); // 20 (captures reference, not value)
 
-// 4. IIFE
-var result = (function() { return 42; })();
-console.log(result); // 42
-
-// 5. Closure in loop
+// 4. var in loop
 for (var i = 0; i < 3; i++) {
     setTimeout(() => console.log(i), 0);
 }
-// 3, 3, 3
+// 3 3 3
 
-// 6. Default parameters
-function test(a = 1, b = a + 1) { return a + b; }
-console.log(test());     // 3 (1 + 2)
-console.log(test(5));    // 11 (5 + 6)
-console.log(test(5, 10)); // 15 (5 + 10)
+// 5. let in loop
+for (let i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 0);
+}
+// 0 1 2
+
+// 6. IIFE scope
+var x = 1;
+(function() { var x = 2; console.log(x); })();
+console.log(x);
+// 2 then 1
+
+// 7. Async/await order
+async function foo() {
+    console.log("A");
+    await Promise.resolve();
+    console.log("B");
+}
+console.log("C");
+foo();
+console.log("D");
+// C A D B
+
+// 8. Currying
+const add = a => b => c => a + b + c;
+console.log(add(1)(2)(3)); // 6
+
+const add5 = add(5);
+console.log(add5(3)(2));   // 10
 ```
 
-### Master Flowchart
+### Summary Mind Map
 
 ```mermaid
 flowchart TD
-    A["🚀 JavaScript Functions<br>COMPLETE MAP"] --> B["📝 Creation"]
-    A --> C["⚡ Execution"]
-    A --> D["🧠 Advanced"]
-    A --> E["🔧 Patterns"]
-    
-    B --> B1["Declaration ✅ Hoisted"]
-    B --> B2["Expression ❌ Not Hoisted"]
-    B --> B3["Arrow → Lexical this"]
-    B --> B4["Generator → yield/pause"]
-    B --> B5["Async → await"]
-    
-    C --> C1["Execution Context"]
-    C --> C2["Call Stack (LIFO)"]
-    C --> C3["Variable Environment"]
-    C --> C4["Scope Chain"]
-    C --> C5["this Binding"]
-    
-    D --> D1["Closures → Memory + Privacy"]
-    D --> D2["HOFs → map/filter/reduce"]
-    D --> D3["Currying → Partial Application"]
-    D --> D4["Recursion → Base + Recursive Case"]
-    D --> D5["Pure Functions → No Side Effects"]
-    
-    E --> E1["IIFE → Module Pattern"]
-    E --> E2["Callback → Async Flow"]
-    E --> E3["Debounce/Throttle"]
-    E --> E4["Memoization"]
-    E --> E5["Pipeline/Compose"]
-    
+    A["JavaScript Functions"] --> B["Creation"]
+    A --> C["Invocation"]
+    A --> D["Advanced Patterns"]
+    A --> E["Memory & Performance"]
+
+    B --> B1["Declaration"]
+    B --> B2["Expression"]
+    B --> B3["Arrow"]
+    B --> B4["IIFE"]
+    B --> B5["Generator / Async"]
+
+    C --> C1["Call Stack"]
+    C --> C2["Execution Context"]
+    C --> C3["this — call/apply/bind"]
+    C --> C4["By Value / By Reference"]
+
+    D --> D1["Closures"]
+    D --> D2["HOF: map/filter/reduce"]
+    D --> D3["Callbacks"]
+    D --> D4["Currying & Partial Application"]
+    D --> D5["Pure Functions"]
+    D --> D6["Recursion"]
+
+    E --> E1["Debounce / Throttle"]
+    E --> E2["Memoization"]
+    E --> E3["Garbage Collection"]
+    E --> E4["Memory Leaks — WeakMap"]
+
     style A fill:#9C27B0,color:white
     style B fill:#4CAF50,color:white
     style C fill:#2196F3,color:white
     style D fill:#FF9800,color:white
-    style E fill:#E91E63,color:white
+    style E fill:#f44336,color:white
 ```
 
 ---
 
-## 🎯 Final Key Takeaways
-
-```
-╔══════════════════════════════════════════════════════════════════╗
-║                  FUNCTIONS — GOLDEN RULES                        ║
-╠══════════════════════════════════════════════════════════════════╣
-║                                                                  ║
-║  🥇 Functions are FIRST-CLASS CITIZENS in JavaScript             ║
-║     → Can be assigned, passed, returned, stored                  ║
-║                                                                  ║
-║  🥈 Every function call creates a NEW Execution Context          ║
-║     → Own memory, own scope, own 'this'                         ║
-║                                                                  ║
-║  🥉 Closures = Function + Lexical Environment                    ║
-║     → Variables persist in the "backpack"                        ║
-║                                                                  ║
-║  🏅 Arrow functions have NO own this, arguments, or prototype   ║
-║     → Use for callbacks, avoid for methods                       ║
-║                                                                  ║
-║  🏅 call/apply invoke immediately; bind returns new function     ║
-║                                                                  ║
-║  🏅 Pure functions are testable, predictable, cacheable          ║
-║                                                                  ║
-║  🏅 HOFs enable functional programming patterns                  ║
-║     → map, filter, reduce are your best friends                  ║
-║                                                                  ║
-║  🏅 Closures can cause memory leaks — nullify when done         ║
-║                                                                  ║
-║  🏅 const by default, let if reassign, NEVER var                ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
-```
+<a href="#top">⬆️ Go to Top</a>
 
 ---
 
-> 📝 **Notes compiled for deep understanding, not just memorization.**
-> 🎯 **Every concept has: Definition → Diagram → Program → Use Case → Interview Tip**
-> 🚀 **Master functions, master JavaScript.**
+> 📝 **Notes compiled for interview preparation**
+>
+> 🔑 **Key Takeaways:**
+> - Functions are **first-class citizens** — assign, pass, return, store like any value
+> - **Closures** power memoization, debounce, throttle, private state, and currying
+> - **`this`** depends on HOW a function is called (except arrow functions — lexical)
+> - **Pure functions** are predictable, testable, and composable — prefer them
+> - **Async/await** is syntactic sugar over Promises — always returns a Promise
+> - **Memory management** matters — clean up timers, listeners, and large closures
 
 ---
 
-[⬆️ Go to Top](#top)
+<a href="#top">⬆️ Go to Top</a>
+```
