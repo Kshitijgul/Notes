@@ -1,0 +1,23 @@
+Prompt : 
+Im Creating DSA Book Fully in md file .Must Important I want the things in Java and Javascript Both With Different diffrent Approaches from brute force to Optimal Approach  . I want this in detail with(Interview Focused ) their use cases with the examples . Programs hould be there .Dry Run Should be there this is the most IMpt and if needs diagram you must have to go with Mermaid or flowchart  . if you need diagrams then  you can used mermaid or flowchart because i want all this notes in md file . note that I want contents  links (with the anchor tag and ID so that they can work 100%) to the each topic and also when that topic is over there should be link for go to top like button . 
+
+Important points, Notes and tips Should like this
+
+[!NOTE]
+Note details go here.
+
+[!TIP]
+Tip details go here.
+
+[!IMPORTANT]
+Important details go here.
+Most imp points in the notes :
+ WHy ?
+Need ? How ? What Problem it solves ? Where mostly it should be used with example ? Applications ? Use Cases  ? One small  Project including all the concepts to understand clearly . THoda apni bhasha me so ki easy jaye samjhne me matlab jo main concept hota hai vahi example : sync javascript  - ek ke baad dusra hoga , jab tak ek task complete na ho dusra shuru nahi hoga 
+Most imp points in the notes 
+(Explain with the case sceneros )
+At last Give me one Practice Projects or Interview  Question relatable with the concept 
+
+
+
+NOte : Whenever a choose a id name for link it should be start with that 
