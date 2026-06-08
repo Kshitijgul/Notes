@@ -205,7 +205,9 @@ Built with discipline. Designed for clarity. Crafted for interviews.
 
 ---
 
-<a id="table-of-contents31"></a>
+<a id="chapter-index-table-1"></a>
+
+<!-- <a id="chapter-index-table-4"></a> -->
 
 ## Table of Contents
 
@@ -323,7 +325,7 @@ flowchart LR
 
 > Web 2.0 refers to the era of dynamic, interactive, user-generated web content (2004 onwards). React is a product of Web 2.0 thinking — it enables highly interactive Single Page Applications (SPAs) where users can interact without full page reloads, enabling the rich experiences seen on platforms like Facebook (which created React), Instagram, and YouTube.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -423,7 +425,7 @@ sequenceDiagram
 
 > A **reverse proxy** is a server that sits between the client and the application server. It receives all incoming requests and forwards them to the appropriate backend service. Benefits include load balancing, SSL termination, caching, and security. Nginx is commonly used as a reverse proxy for Next.js apps in production.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -648,7 +650,7 @@ flowchart TD
 
 > A CDN is a globally distributed network of servers that caches and delivers content from the location closest to the user, reducing latency. For Next.js: static assets (images, CSS, JS bundles) are automatically served from CDN edge nodes on Vercel. SSG pages (statically generated HTML) are also cached at the edge. next/image serves WebP-optimized images from the CDN. This can reduce Time to First Byte (TTFB) from ~200ms (origin) to <10ms (edge CDN).
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -807,7 +809,7 @@ flowchart LR
 
 > SSL (Secure Sockets Layer) was the original encryption protocol created by Netscape. TLS (Transport Layer Security) is the modernized, more secure successor to SSL. SSL 3.0 was deprecated in 2015 due to vulnerabilities (POODLE attack). Today, TLS 1.2 and TLS 1.3 are used. Technically, when people say "SSL certificate," they mean a TLS certificate — the term SSL is colloquially still used. TLS 1.3 (2018) significantly simplifies the handshake, requiring only 1 round trip (1-RTT) instead of 2.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -1046,7 +1048,7 @@ OPTIONS /api/products          → What methods are allowed? (CORS preflight)
 
 > Yes, DELETE is considered idempotent. After the first DELETE call, the resource is gone. After subsequent DELETE calls, the resource is still gone — the server state hasn't changed further. However, note that the **response code might differ** — the first DELETE might return 200 OK (resource deleted), while subsequent calls might return 404 Not Found (resource already gone). The **server state** is the same (no resource), so it is idempotent, even if the response code changes.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -1260,7 +1262,7 @@ Cache-Control: public, max-age=3600, s-maxage=86400, stale-while-revalidate=60
 
 > The `Authorization` header explicitly carries authentication credentials with each request — typically `Bearer <JWT>` for token-based auth or `Basic <base64(user:password)>` for basic auth. The client must explicitly include this header. The `Cookie` header is **automatically** sent by the browser with every request to a matching domain/path — the browser manages this. For security, `HttpOnly` cookies (not accessible via JavaScript) are often preferred for storing session tokens because they prevent XSS attacks from stealing the token.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -1485,7 +1487,7 @@ flowchart LR
 
 > This is a security consideration. Technically, since the user is not authenticated, 401 is correct. However, from a security perspective, returning 401 reveals that an admin section exists. Some security-conscious applications return **404 Not Found** to unauthenticated users on admin pages, pretending the page doesn't exist to prevent information disclosure. If the user IS authenticated but lacks admin rights, return **403 Forbidden**. The "right" answer depends on your security requirements — both approaches are valid in different contexts.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -1618,7 +1620,7 @@ export default function SearchPage({ searchParams }: {
 
 > **No.** The fragment (everything after `#`) is a **client-side only** concept. Browsers use it for in-page navigation (scrolling to an element with that ID) but **never include it in HTTP requests to the server**. The server never sees `#section`. This is why client-side routing in React SPAs uses hash routes (`/#/about`) or the History API (which changes the URL without server requests).
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -1797,7 +1799,7 @@ sequenceDiagram
 
 > This is a critical security question. **localStorage** is accessible via JavaScript, making JWTs stored there vulnerable to **XSS (Cross-Site Scripting)** attacks — if an attacker injects malicious JavaScript, they can steal the token. **HttpOnly cookies** cannot be accessed by JavaScript at all, preventing XSS theft. However, cookies are vulnerable to **CSRF (Cross-Site Request Forgery)** attacks (mitigated with SameSite cookie attribute and CSRF tokens). The recommended best practice is **HttpOnly, Secure, SameSite=Strict cookies** for storing authentication tokens.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -2038,7 +2040,7 @@ export async function GET(request: Request) {
 
 > When a cross-origin request needs to include **credentials** (cookies, HTTP authentication, TLS certificates), the request must include `credentials: 'include'` in the Fetch API call, AND the server must respond with `Access-Control-Allow-Credentials: true`. Critically, when credentials are included, `Access-Control-Allow-Origin` **cannot be `*`** — it must specify an exact origin. This prevents any website from making credentialed cross-origin requests.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -2241,7 +2243,7 @@ Signature:          HMACSHA256(base64(header) + "." + base64(payload), SECRET_KE
 
 > Access tokens have short lifetimes (15 min - 1 hour) to limit damage if compromised. But making users re-login every hour is bad UX. Refresh tokens solve this: they are long-lived tokens stored securely (HttpOnly cookie) and sent only to the `/token/refresh` endpoint to obtain new access tokens — never to regular API endpoints. When an access token expires, the client silently exchanges the refresh token for a new access token without user interaction. If the refresh token is also expired, the user must log in again.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -2405,7 +2407,7 @@ const laptops = await db.products
 
 > Use IndexedDB when: (1) You need to store **large amounts of data** (>5MB — localStorage's limit), (2) You need to store **structured/complex data** with querying capabilities (localStorage only stores strings), (3) You need to store **files or binary data** (Blobs, ArrayBuffers), (4) You're building an **offline-first PWA** that needs to sync data with a server when back online, (5) You need **transactional operations** (atomic reads/writes). Use localStorage for simple, small key-value preferences like theme, language, or small cached data.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -2660,7 +2662,7 @@ flowchart TD
 
 > The browser has a main thread that runs JavaScript AND handles rendering. The event loop processes tasks from the task queue (setTimeout, event handlers) one at a time. Between tasks, the browser gets a chance to re-render. If a JavaScript task takes too long (>16ms for 60fps), the browser can't render a new frame, causing jank. This is why long-running JS should be broken into smaller chunks using `setTimeout`, `requestAnimationFrame`, or `Web Workers`. React's Concurrent Mode (`useTransition`, `useDeferredValue`) helps by breaking rendering work into interruptible chunks, yielding back to the browser between chunks.
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -2988,7 +2990,7 @@ function StorageTable({ title, data, type, onDelete }: {
 | Cookies                | Server-set cookies via Route Handlers |
 | Request/Response cycle | Network tab in browser DevTools       |
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ---
 
@@ -3129,7 +3131,7 @@ Requirements:
 > 9. Reflow → Repaint → Composite — avoid reflow with transform/opacity animations
 > 10. Use `defer` for most scripts; `async` only for truly independent scripts
 
-[Back to Top 🔝](#table-of-contents1)
+[Back to Top 🔝](#chapter-index-table-1)
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -3154,7 +3156,7 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 > **Chapter:** 2 of 56
 
 ---
-
+<a id="chapter-index-table-2"></a>
 ## Chapter Index Table
 
 | Topic No. | Topic Name                                                                    | Subtopics                                                                                                                                                                                                                                                                        |
@@ -3169,7 +3171,7 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 ---
 
-## Table of Contents2
+## Table of Contents
 
 - [2.1 JavaScript Engine](#21-javascript-engine)
 - [2.2 JavaScript Runtime Environment](#22-javascript-runtime-environment)
@@ -3410,7 +3412,7 @@ add("hello", "world"); // DEOPTIMIZATION!
 
 > **Ignition** is V8's interpreter — it takes the AST and generates compact bytecode, then begins executing it immediately. This provides fast startup because no full compilation is needed. **TurboFan** is V8's optimizing JIT compiler — it takes hot bytecode (code that runs frequently, identified by the profiler) and compiles it to highly optimized machine code using techniques like inline caching, type specialization, loop unrolling, and dead code elimination. Together they form V8's two-tier execution system: Ignition for fast start, TurboFan for sustained performance.
 
-[Back to Top 🔝](#table-of-contents2)
+[Back to Top 🔝](#chapter-index-table-2)
 
 ---
 
@@ -3737,7 +3739,7 @@ The **Microtask Queue** holds callbacks from Promises and other high-priority as
 
 > The **Microtask Queue** (Promise queue) has **higher priority** than the **Callback Queue** (Macrotask queue). After every task (from Callback Queue) completes, AND after the Call Stack empties, the Event Loop **first drains the entire Microtask Queue before picking the next macrotask**. This means all pending Promise callbacks run before any `setTimeout` callback. If a microtask creates another microtask, that also runs before any macrotask — the microtask queue can potentially starve macrotasks if it never empties.
 
-[Back to Top 🔝](#table-of-contents2)
+[Back to Top 🔝](#chapter-index-table-2)
 
 ---
 
@@ -4271,7 +4273,7 @@ fs.readFile(__filename, () => {
 
 > **Explanation:** At the top level, the order of `setTimeout(0)` vs `setImmediate` is non-deterministic (depends on system timer resolution). Inside an I/O callback, `setImmediate` always runs first because the Event Loop is already in the "check" phase after I/O, which is where `setImmediate` callbacks are processed.
 
-[Back to Top 🔝](#table-of-contents2)
+[Back to Top 🔝](#chapter-index-table-2)
 
 ---
 
@@ -4858,7 +4860,7 @@ console.log(foo);
 > **Output:** [function: foo] → "bar" → "bar"
 > **Reason:** Function declarations take priority over var declarations during hoisting — `foo` is initialized as the function. Then `foo = "bar"` assigns the string. Both subsequent logs show "bar".
 
-[Back to Top 🔝](#table-of-contents2)
+[Back to Top 🔝](#chapter-index-table-2)
 
 ---
 
@@ -5211,7 +5213,7 @@ function ProductList() {
 
 > `var` has function scope — if you forget to declare a variable with `var` inside a function, it automatically becomes a global variable (in non-strict mode). `let` and `const` have block scope and are strictly scoped — accessing an undeclared `let` or trying to declare it without the `let` keyword throws a `ReferenceError`. Additionally, `let`/`const` don't attach to the `window` object even when declared globally, preventing namespace pollution. This makes `let`/`const` safer and helps catch bugs at development time rather than runtime.
 
-[Back to Top 🔝](#table-of-contents2)
+[Back to Top 🔝](#chapter-index-table-2)
 
 ---
 
@@ -5562,7 +5564,7 @@ export default function Home() {
 | Hoisting                 | Dedicated snippet showing hoisting behavior |
 | Scope Chain              | Variable lookup visualization               |
 
-[Back to Top 🔝](#table-of-contents2)
+[Back to Top 🔝](#chapter-index-table-2)
 
 ---
 
@@ -5828,7 +5830,7 @@ Requirements:
 > 9. Scope chain: looks from inner to outer, stops at first match or throws ReferenceError
 > 10. `var` ignores block scope; `let`/`const` are block-scoped
 
-[Back to Top 🔝](#table-of-contents2)
+[Back to Top 🔝](#chapter-index-table-2)
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -5842,7 +5844,7 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 <a id="3-javascript-fundamentals-you-must-know"></a>
 
-## Chapter 3: JavaScript Fundamentals You MUST Know
+
 
 # Chapter 3: JavaScript Fundamentals You MUST Know
 
@@ -5854,21 +5856,21 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 ## Chapter Index Table
 
-| Topic No. | Topic Name | Subtopics |
-|-----------|------------|-----------|
-| 3.1 | [Variables — var, let, const](#31-variables--var-let-const) | Scope differences<br>Hoisting behavior<br>Re-declaration & Re-assignment<br>const with objects/arrays<br>When to use what<br>10+ Tricky Interview Questions |
-| 3.2 | [Data Types — Primitive vs Reference](#32-data-types--primitive-vs-reference) | 7 Primitive Types (Stack — by value)<br>Reference Types (Heap — by reference)<br>typeof quirks<br>instanceof operator<br>Object.prototype.toString.call() |
-| 3.3 | [Type Coercion & Type Checking](#33-type-coercion--type-checking) | Implicit vs Explicit coercion<br>Truthy & Falsy values<br>== vs === vs Object.is()<br>20+ Coercion Output Questions |
-| 3.4 | [Strings — Template Literals & Methods](#34-strings--template-literals--methods) | Template literals & Tagged templates<br>All String methods with examples<br>String immutability |
-| 3.5 | [Numbers & Math](#35-numbers--math) | IEEE 754 float issues<br>0.1 + 0.2 !== 0.3 why<br>NaN, Infinity<br>Number & Math methods |
-| 3.6 | [Conditionals](#36-conditionals) | if/else, switch, ternary<br>Short-circuit &&/\|\|<br>Optional chaining (?.) <br>Nullish coalescing (??)<br>Logical assignment operators |
-| 3.7 | [Loops](#37-loops) | for, while, do...while<br>for...of vs for...in<br>forEach vs for...of<br>break, continue, labels |
-| 3.8 | [Functions — Four Types](#38-functions--four-types) | Function Declaration<br>Function Expression<br>Arrow Function<br>IIFE<br>When NOT to use arrow functions |
-| 3.9 | [Parameters & Arguments](#39-parameters--arguments) | Parameters vs Arguments<br>Default params<br>Rest params (...args)<br>arguments object<br>Spread in calls |
-| 3.10 | [Callback Functions](#310-callback-functions) | What is a callback<br>Sync vs Async callbacks<br>Callback Hell<br>Inversion of Control |
-| 3.11 | [Strict Mode](#311-strict-mode) | 'use strict' behavior<br>What it prevents<br>ES6 modules & strict mode |
-| — | [Mini Project](#-mini-project-javascript-fundamentals-playground) | JS Fundamentals Playground — Interactive Code Lab |
-| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding Problems |
+| Topic No. | Topic Name                                                                       | Subtopics                                                                                                                                                   |
+| --------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 3.1       | [Variables — var, let, const](#31-variables--var-let-const)                      | Scope differences<br>Hoisting behavior<br>Re-declaration & Re-assignment<br>const with objects/arrays<br>When to use what<br>10+ Tricky Interview Questions |
+| 3.2       | [Data Types — Primitive vs Reference](#32-data-types--primitive-vs-reference)    | 7 Primitive Types (Stack — by value)<br>Reference Types (Heap — by reference)<br>typeof quirks<br>instanceof operator<br>Object.prototype.toString.call()   |
+| 3.3       | [Type Coercion & Type Checking](#33-type-coercion--type-checking)                | Implicit vs Explicit coercion<br>Truthy & Falsy values<br>== vs === vs Object.is()<br>20+ Coercion Output Questions                                         |
+| 3.4       | [Strings — Template Literals & Methods](#34-strings--template-literals--methods) | Template literals & Tagged templates<br>All String methods with examples<br>String immutability                                                             |
+| 3.5       | [Numbers & Math](#35-numbers--math)                                              | IEEE 754 float issues<br>0.1 + 0.2 !== 0.3 why<br>NaN, Infinity<br>Number & Math methods                                                                    |
+| 3.6       | [Conditionals](#36-conditionals)                                                 | if/else, switch, ternary<br>Short-circuit &&/\|\|<br>Optional chaining (?.) <br>Nullish coalescing (??)<br>Logical assignment operators                     |
+| 3.7       | [Loops](#37-loops)                                                               | for, while, do...while<br>for...of vs for...in<br>forEach vs for...of<br>break, continue, labels                                                            |
+| 3.8       | [Functions — Four Types](#38-functions--four-types)                              | Function Declaration<br>Function Expression<br>Arrow Function<br>IIFE<br>When NOT to use arrow functions                                                    |
+| 3.9       | [Parameters & Arguments](#39-parameters--arguments)                              | Parameters vs Arguments<br>Default params<br>Rest params (...args)<br>arguments object<br>Spread in calls                                                   |
+| 3.10      | [Callback Functions](#310-callback-functions)                                    | What is a callback<br>Sync vs Async callbacks<br>Callback Hell<br>Inversion of Control                                                                      |
+| 3.11      | [Strict Mode](#311-strict-mode)                                                  | 'use strict' behavior<br>What it prevents<br>ES6 modules & strict mode                                                                                      |
+| —         | [Mini Project](#-mini-project-javascript-fundamentals-playground)                | JS Fundamentals Playground — Interactive Code Lab                                                                                                           |
+| —         | [Practice Section](#-practice-section)                                           | 5 Coding + 5 Theory + 2 Machine Coding Problems                                                                                                             |
 
 ---
 
@@ -5896,13 +5898,13 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| `var` | Function-scoped, hoisted as `undefined`, re-declarable, mutable |
-| `let` | Block-scoped, TDZ, not re-declarable, mutable |
-| `const` | Block-scoped, TDZ, must initialize, reference immutable |
-| `const` with Objects/Arrays | Why `.push()` works on a const array |
-| When to Use What | Modern best practice — prefer `const` → `let` → avoid `var` |
+| Subtopic                    | What You'll Learn                                               |
+| --------------------------- | --------------------------------------------------------------- |
+| `var`                       | Function-scoped, hoisted as `undefined`, re-declarable, mutable |
+| `let`                       | Block-scoped, TDZ, not re-declarable, mutable                   |
+| `const`                     | Block-scoped, TDZ, must initialize, reference immutable         |
+| `const` with Objects/Arrays | Why `.push()` works on a const array                            |
+| When to Use What            | Modern best practice — prefer `const` → `let` → avoid `var`     |
 
 ---
 
@@ -5916,17 +5918,17 @@ A **variable** is a named container that stores a value in memory. In JavaScript
 
 ### Complete Comparison Table
 
-| Feature | `var` | `let` | `const` |
-|---------|-------|-------|---------|
-| **Scope** | Function-scoped | Block-scoped | Block-scoped |
-| **Hoisting** | ✅ Hoisted as `undefined` | ✅ Hoisted to TDZ | ✅ Hoisted to TDZ |
-| **Before declaration** | Returns `undefined` | `ReferenceError` | `ReferenceError` |
-| **Re-declaration** | ✅ Allowed | ❌ Not allowed | ❌ Not allowed |
-| **Re-assignment** | ✅ Allowed | ✅ Allowed | ❌ Not allowed |
-| **Must initialize** | ❌ Optional | ❌ Optional | ✅ Required |
-| **Global object prop** | ✅ Yes (`window.x`) | ❌ No | ❌ No |
-| **Temporal Dead Zone** | ❌ No TDZ | ✅ Yes | ✅ Yes |
-| **Use in modern code** | ❌ Avoid | ✅ For mutable | ✅ Prefer always |
+| Feature                | `var`                     | `let`             | `const`           |
+| ---------------------- | ------------------------- | ----------------- | ----------------- |
+| **Scope**              | Function-scoped           | Block-scoped      | Block-scoped      |
+| **Hoisting**           | ✅ Hoisted as `undefined` | ✅ Hoisted to TDZ | ✅ Hoisted to TDZ |
+| **Before declaration** | Returns `undefined`       | `ReferenceError`  | `ReferenceError`  |
+| **Re-declaration**     | ✅ Allowed                | ❌ Not allowed    | ❌ Not allowed    |
+| **Re-assignment**      | ✅ Allowed                | ✅ Allowed        | ❌ Not allowed    |
+| **Must initialize**    | ❌ Optional               | ❌ Optional       | ✅ Required       |
+| **Global object prop** | ✅ Yes (`window.x`)       | ❌ No             | ❌ No             |
+| **Temporal Dead Zone** | ❌ No TDZ                 | ✅ Yes            | ✅ Yes            |
+| **Use in modern code** | ❌ Avoid                  | ✅ For mutable    | ✅ Prefer always  |
 
 ---
 
@@ -5936,28 +5938,28 @@ A **variable** is a named container that stores a value in memory. In JavaScript
 // 1. Function-scoped (not block-scoped)
 function varDemo() {
   if (true) {
-    var x = 10  // var ignores {} block scope
+    var x = 10; // var ignores {} block scope
   }
-  console.log(x)  // 10 ✅ — var leaked out of if block
+  console.log(x); // 10 ✅ — var leaked out of if block
 }
 
 // 2. Hoisted as undefined
-console.log(y)  // undefined (no error!)
-var y = 5
-console.log(y)  // 5
+console.log(y); // undefined (no error!)
+var y = 5;
+console.log(y); // 5
 
 // 3. Re-declarable (dangerous!)
-var name = "Rahul"
-var name = "Priya"  // ✅ No error — silently overwrites!
-console.log(name)   // "Priya"
+var name = "Rahul";
+var name = "Priya"; // ✅ No error — silently overwrites!
+console.log(name); // "Priya"
 
 // 4. Attaches to global window object (browser)
-var globalVar = "I'm on window"
-console.log(window.globalVar)  // "I'm on window" (browser only)
+var globalVar = "I'm on window";
+console.log(window.globalVar); // "I'm on window" (browser only)
 
 // 5. Classic closure bug with var in loops
 for (var i = 0; i < 3; i++) {
-  setTimeout(() => console.log(i), 0)
+  setTimeout(() => console.log(i), 0);
 }
 // Output: 3, 3, 3 (NOT 0, 1, 2)
 // Because var i is shared across all iterations
@@ -5974,29 +5976,29 @@ for (var i = 0; i < 3; i++) {
 // 1. Block-scoped
 function letDemo() {
   if (true) {
-    let x = 10   // Only exists inside this {} block
+    let x = 10; // Only exists inside this {} block
   }
-  console.log(x) // ❌ ReferenceError: x is not defined
+  console.log(x); // ❌ ReferenceError: x is not defined
 }
 
 // 2. Temporal Dead Zone (TDZ)
-console.log(age) // ❌ ReferenceError: Cannot access 'age' before initialization
-let age = 25
-console.log(age) // 25
+console.log(age); // ❌ ReferenceError: Cannot access 'age' before initialization
+let age = 25;
+console.log(age); // 25
 
 // 3. NOT re-declarable in same scope
-let city = "Mumbai"
-let city = "Delhi"  // ❌ SyntaxError: Identifier 'city' has already been declared
+let city = "Mumbai";
+let city = "Delhi"; // ❌ SyntaxError: Identifier 'city' has already been declared
 
 // 4. Re-assignable (mutable)
-let score = 0
-score = 10   // ✅ Allowed
-score++      // ✅ Allowed
-console.log(score) // 11
+let score = 0;
+score = 10; // ✅ Allowed
+score++; // ✅ Allowed
+console.log(score); // 11
 
 // 5. Loop fix — let creates new binding per iteration
 for (let i = 0; i < 3; i++) {
-  setTimeout(() => console.log(i), 0)
+  setTimeout(() => console.log(i), 0);
 }
 // Output: 0, 1, 2 ✅ Each iteration has its own i
 ```
@@ -6007,33 +6009,33 @@ for (let i = 0; i < 3; i++) {
 
 ```javascript
 // 1. Must be initialized at declaration
-const PI           // ❌ SyntaxError: Missing initializer in const declaration
-const PI = 3.14   // ✅ Correct
+const PI; // ❌ SyntaxError: Missing initializer in const declaration
+const PI = 3.14; // ✅ Correct
 
 // 2. Cannot re-assign
-const MAX_SIZE = 100
-MAX_SIZE = 200     // ❌ TypeError: Assignment to constant variable.
+const MAX_SIZE = 100;
+MAX_SIZE = 200; // ❌ TypeError: Assignment to constant variable.
 
 // 3. Block-scoped (same as let)
 {
-  const blockConst = "only here"
+  const blockConst = "only here";
 }
-console.log(blockConst)  // ❌ ReferenceError
+console.log(blockConst); // ❌ ReferenceError
 
 // 4. TDZ — same as let
-console.log(TAX)  // ❌ ReferenceError
-const TAX = 0.18
+console.log(TAX); // ❌ ReferenceError
+const TAX = 0.18;
 
 // 5. Does NOT mean immutable — only the BINDING is constant!
-const arr = [1, 2, 3]
-arr.push(4)           // ✅ Allowed — mutating content, not rebinding
-arr[0] = 99           // ✅ Allowed
-arr = [4, 5, 6]       // ❌ TypeError — rebinding is not allowed
+const arr = [1, 2, 3];
+arr.push(4); // ✅ Allowed — mutating content, not rebinding
+arr[0] = 99; // ✅ Allowed
+arr = [4, 5, 6]; // ❌ TypeError — rebinding is not allowed
 
-const obj = { name: "Rahul" }
-obj.name = "Priya"    // ✅ Allowed — mutating property
-obj.age = 25          // ✅ Allowed — adding property
-obj = { name: "X" }  // ❌ TypeError — rebinding not allowed
+const obj = { name: "Rahul" };
+obj.name = "Priya"; // ✅ Allowed — mutating property
+obj.age = 25; // ✅ Allowed — adding property
+obj = { name: "X" }; // ❌ TypeError — rebinding not allowed
 ```
 
 ---
@@ -6062,26 +6064,26 @@ flowchart LR
 const user = {
   name: "Rahul",
   address: {
-    city: "Mumbai"
-  }
-}
+    city: "Mumbai",
+  },
+};
 
 // Allowed — modifying existing properties:
-user.name = "Priya"            // ✅
-user.address.city = "Delhi"    // ✅ (nested object is also mutable)
-user.email = "p@example.com"   // ✅ (adding new property)
+user.name = "Priya"; // ✅
+user.address.city = "Delhi"; // ✅ (nested object is also mutable)
+user.email = "p@example.com"; // ✅ (adding new property)
 
 // NOT allowed — changing what user points to:
-user = { name: "Priya" }       // ❌ TypeError
+user = { name: "Priya" }; // ❌ TypeError
 
 // To truly freeze an object (prevent mutations):
-const frozen = Object.freeze({ value: 42 })
-frozen.value = 100    // Silently fails (strict mode: throws TypeError)
-console.log(frozen.value)  // 42 — unchanged
+const frozen = Object.freeze({ value: 42 });
+frozen.value = 100; // Silently fails (strict mode: throws TypeError)
+console.log(frozen.value); // 42 — unchanged
 
 // Note: Object.freeze() is SHALLOW — nested objects are NOT frozen
-const data = Object.freeze({ inner: { x: 1 } })
-data.inner.x = 99   // ✅ Still works! inner is not frozen
+const data = Object.freeze({ inner: { x: 1 } });
+data.inner.x = 99; // ✅ Still works! inner is not frozen
 ```
 
 ---
@@ -6108,16 +6110,16 @@ flowchart TD
 ```javascript
 // ✅ Modern React — const everywhere by default
 const App = () => {
-  const [count, setCount] = useState(0)    // const for state variable
-  const MAX_COUNT = 100                     // const for fixed value
-  const handleClick = () => setCount(c => c + 1) // const for function
+  const [count, setCount] = useState(0); // const for state variable
+  const MAX_COUNT = 100; // const for fixed value
+  const handleClick = () => setCount((c) => c + 1); // const for function
 
   // let only when truly needed:
-  let message = "Loading..."
-  if (count > 0) message = `Count: ${count}`
+  let message = "Loading...";
+  if (count > 0) message = `Count: ${count}`;
 
-  return <div onClick={handleClick}>{message}</div>
-}
+  return <div onClick={handleClick}>{message}</div>;
+};
 ```
 
 ---
@@ -6134,12 +6136,12 @@ const App = () => {
 
 ```javascript
 function test() {
-  console.log(a)   // ?
-  console.log(b)   // ?
-  var a = 1
-  let b = 2
+  console.log(a); // ?
+  console.log(b); // ?
+  var a = 1;
+  let b = 2;
 }
-test()
+test();
 ```
 
 > **Output:** `undefined` → `ReferenceError: Cannot access 'b' before initialization`
@@ -6150,16 +6152,16 @@ test()
 **Q3: What is the output?**
 
 ```javascript
-var x = 1
-let y = 1
+var x = 1;
+let y = 1;
 
 if (true) {
-  var x = 2   // same var x (function scoped)
-  let y = 2   // new y (block scoped)
-  console.log(x, y)  // ?
+  var x = 2; // same var x (function scoped)
+  let y = 2; // new y (block scoped)
+  console.log(x, y); // ?
 }
 
-console.log(x, y)  // ?
+console.log(x, y); // ?
 ```
 
 > **Output:** `2 2` → `2 1`
@@ -6177,11 +6179,11 @@ console.log(x, y)  // ?
 
 ```javascript
 for (var i = 0; i < 3; i++) {
-  setTimeout(() => console.log("var:", i), 0)
+  setTimeout(() => console.log("var:", i), 0);
 }
 
 for (let j = 0; j < 3; j++) {
-  setTimeout(() => console.log("let:", j), 0)
+  setTimeout(() => console.log("let:", j), 0);
 }
 ```
 
@@ -6193,10 +6195,10 @@ for (let j = 0; j < 3; j++) {
 **Q6: What is the output?**
 
 ```javascript
-const arr = [1, 2, 3]
-arr.push(4)
-console.log(arr)
-arr = [5, 6, 7]
+const arr = [1, 2, 3];
+arr.push(4);
+console.log(arr);
+arr = [5, 6, 7];
 ```
 
 > **Output:** `[1, 2, 3, 4]` is logged, then `TypeError: Assignment to constant variable.`
@@ -6207,11 +6209,11 @@ arr = [5, 6, 7]
 **Q7: Is there any difference between `let` in a for loop vs outside?**
 
 ```javascript
-let i = 0
+let i = 0;
 for (let i = 0; i < 3; i++) {
   // inner i
 }
-console.log(i) // ?
+console.log(i); // ?
 ```
 
 > **Output:** `0` — The `let i` inside the `for` loop creates a **new block-scoped** binding, completely separate from the outer `let i = 0`. The outer `i` is never modified by the loop.
@@ -6227,10 +6229,10 @@ console.log(i) // ?
 **Q9: What is the output?**
 
 ```javascript
-let x = 'outer'
+let x = "outer";
 {
-  console.log(x)  // ?
-  let x = 'inner'
+  console.log(x); // ?
+  let x = "inner";
 }
 ```
 
@@ -6248,11 +6250,11 @@ let x = 'outer'
 **Q11: What is the output?**
 
 ```javascript
-const obj = Object.freeze({ a: 1, b: { c: 2 } })
-obj.a = 100          // silently fails
-obj.b.c = 200        // succeeds! (shallow freeze)
-console.log(obj.a)   // ?
-console.log(obj.b.c) // ?
+const obj = Object.freeze({ a: 1, b: { c: 2 } });
+obj.a = 100; // silently fails
+obj.b.c = 200; // succeeds! (shallow freeze)
+console.log(obj.a); // ?
+console.log(obj.b.c); // ?
 ```
 
 > **Output:** `1` → `200`
@@ -6268,13 +6270,13 @@ console.log(obj.b.c) // ?
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Primitive Types | 7 types stored by value on Stack |
-| Reference Types | Objects stored by reference on Heap |
-| `typeof` Operator | All return values and historical quirks |
-| `instanceof` Operator | Prototype chain checking |
-| `Object.prototype.toString.call()` | Reliable type checking method |
+| Subtopic                           | What You'll Learn                       |
+| ---------------------------------- | --------------------------------------- |
+| Primitive Types                    | 7 types stored by value on Stack        |
+| Reference Types                    | Objects stored by reference on Heap     |
+| `typeof` Operator                  | All return values and historical quirks |
+| `instanceof` Operator              | Prototype chain checking                |
+| `Object.prototype.toString.call()` | Reliable type checking method           |
 
 ---
 
@@ -6316,21 +6318,21 @@ flowchart TD
 
 ```javascript
 // Pass by VALUE — copies are independent
-let a = 10
-let b = a   // b gets a COPY of 10
-b = 20
-console.log(a)  // 10 — unchanged
-console.log(b)  // 20 — independent copy
+let a = 10;
+let b = a; // b gets a COPY of 10
+b = 20;
+console.log(a); // 10 — unchanged
+console.log(b); // 20 — independent copy
 
 // String immutability:
-let str = "hello"
-str[0] = "H"    // silently fails — strings are immutable primitives
-console.log(str) // "hello" — unchanged
+let str = "hello";
+str[0] = "H"; // silently fails — strings are immutable primitives
+console.log(str); // "hello" — unchanged
 
 // String operations return NEW strings:
-let upper = str.toUpperCase()  // returns new string "HELLO"
-console.log(str)   // "hello" — original unchanged
-console.log(upper) // "HELLO" — new string
+let upper = str.toUpperCase(); // returns new string "HELLO"
+console.log(str); // "hello" — original unchanged
+console.log(upper); // "HELLO" — new string
 ```
 
 ---
@@ -6343,22 +6345,24 @@ console.log(upper) // "HELLO" — new string
 
 ```javascript
 // Pass by REFERENCE — shared reference
-let obj1 = { name: "Rahul", age: 25 }
-let obj2 = obj1   // obj2 gets the SAME reference (address)
+let obj1 = { name: "Rahul", age: 25 };
+let obj2 = obj1; // obj2 gets the SAME reference (address)
 
-obj2.name = "Priya"
-console.log(obj1.name)  // "Priya" — obj1 also changed! Same object in heap.
+obj2.name = "Priya";
+console.log(obj1.name); // "Priya" — obj1 also changed! Same object in heap.
 
 // Arrays — same behavior:
-let arr1 = [1, 2, 3]
-let arr2 = arr1
-arr2.push(4)
-console.log(arr1)  // [1, 2, 3, 4] — arr1 also changed!
+let arr1 = [1, 2, 3];
+let arr2 = arr1;
+arr2.push(4);
+console.log(arr1); // [1, 2, 3, 4] — arr1 also changed!
 
 // Functions — also reference types:
-function greet() { return "hi" }
-let fn = greet   // fn holds reference to same function object
-fn === greet     // true — same reference
+function greet() {
+  return "hi";
+}
+let fn = greet; // fn holds reference to same function object
+fn === greet; // true — same reference
 
 // Reference types in JavaScript:
 // object {}, array [], function(){}, Date, RegExp, Map, Set, WeakMap, WeakSet
@@ -6388,17 +6392,17 @@ flowchart LR
 
 ### Complete Type Reference Table
 
-| Type | Category | `typeof` result | Example | Truthy/Falsy |
-|------|----------|----------------|---------|--------------|
-| `string` | Primitive | `"string"` | `"hello"`, `""` | `""` → falsy, rest truthy |
-| `number` | Primitive | `"number"` | `42`, `NaN`, `Infinity` | `0`, `NaN` → falsy |
-| `bigint` | Primitive | `"bigint"` | `42n`, `9007199254740991n` | `0n` → falsy |
-| `boolean` | Primitive | `"boolean"` | `true`, `false` | `false` → falsy |
-| `undefined` | Primitive | `"undefined"` | `undefined` | Falsy |
-| `null` | Primitive | `"object"` ⚠️ | `null` | Falsy |
-| `symbol` | Primitive | `"symbol"` | `Symbol("id")` | Truthy |
-| `object` | Reference | `"object"` | `{}`, `[]`, `null` | `{}` truthy, `null` falsy |
-| `function` | Reference | `"function"` ⚠️ | `function(){}` | Truthy |
+| Type        | Category  | `typeof` result | Example                    | Truthy/Falsy              |
+| ----------- | --------- | --------------- | -------------------------- | ------------------------- |
+| `string`    | Primitive | `"string"`      | `"hello"`, `""`            | `""` → falsy, rest truthy |
+| `number`    | Primitive | `"number"`      | `42`, `NaN`, `Infinity`    | `0`, `NaN` → falsy        |
+| `bigint`    | Primitive | `"bigint"`      | `42n`, `9007199254740991n` | `0n` → falsy              |
+| `boolean`   | Primitive | `"boolean"`     | `true`, `false`            | `false` → falsy           |
+| `undefined` | Primitive | `"undefined"`   | `undefined`                | Falsy                     |
+| `null`      | Primitive | `"object"` ⚠️   | `null`                     | Falsy                     |
+| `symbol`    | Primitive | `"symbol"`      | `Symbol("id")`             | Truthy                    |
+| `object`    | Reference | `"object"`      | `{}`, `[]`, `null`         | `{}` truthy, `null` falsy |
+| `function`  | Reference | `"function"` ⚠️ | `function(){}`             | Truthy                    |
 
 ---
 
@@ -6408,35 +6412,35 @@ flowchart LR
 
 ```javascript
 // Normal results:
-typeof "hello"      // "string"
-typeof 42           // "number"
-typeof true         // "boolean"
-typeof undefined    // "undefined"
-typeof Symbol("x")  // "symbol"
-typeof 42n          // "bigint"
+typeof "hello"; // "string"
+typeof 42; // "number"
+typeof true; // "boolean"
+typeof undefined; // "undefined"
+typeof Symbol("x"); // "symbol"
+typeof 42n; // "bigint"
 
 // ⚠️ QUIRK 1: null returns "object" (historical bug in JS — cannot be fixed)
-typeof null         // "object" — NOT "null"!
+typeof null; // "object" — NOT "null"!
 // Checking for null: value === null (use strict equality)
 
 // ⚠️ QUIRK 2: Arrays return "object" (not "array")
-typeof []           // "object"
-typeof {}           // "object"
-typeof new Date()   // "object"
+typeof []; // "object"
+typeof {}; // "object"
+typeof new Date(); // "object"
 
 // ⚠️ QUIRK 3: Functions return "function" (special case)
-typeof function(){} // "function"
-typeof (() => {})   // "function"
-typeof class{}      // "function" (classes are special functions!)
+typeof function () {}; // "function"
+typeof (() => {}); // "function"
+typeof class {}; // "function" (classes are special functions!)
 
 // ⚠️ QUIRK 4: Undeclared variable — typeof is SAFE (no ReferenceError)
-typeof undeclaredVar  // "undefined" (safe!)
-undeclaredVar         // ❌ ReferenceError
+typeof undeclaredVar; // "undefined" (safe!)
+undeclaredVar; // ❌ ReferenceError
 
 // Correct ways to check types:
-Array.isArray([])         // true ✅
-value === null            // true for null ✅
-typeof value === "string" // for strings ✅
+Array.isArray([]); // true ✅
+value === null; // true for null ✅
+typeof value === "string"; // for strings ✅
 ```
 
 ---
@@ -6477,30 +6481,30 @@ For reliable type checking of ALL values (especially arrays, null, and built-in 
 > **Hinglish:** Yeh sabse reliable type checker hai — `typeof` ke quirks se bachne ke liye. Yeh exact type string return karta hai jaise `[object Array]`, `[object Null]`.
 
 ```javascript
-Object.prototype.toString.call("hello")     // "[object String]"
-Object.prototype.toString.call(42)          // "[object Number]"
-Object.prototype.toString.call(true)        // "[object Boolean]"
-Object.prototype.toString.call(null)        // "[object Null]" ✅ (not "object")
-Object.prototype.toString.call(undefined)   // "[object Undefined]"
-Object.prototype.toString.call([])          // "[object Array]" ✅ (not "object")
-Object.prototype.toString.call({})          // "[object Object]"
-Object.prototype.toString.call(function(){})// "[object Function]"
-Object.prototype.toString.call(new Date())  // "[object Date]"
-Object.prototype.toString.call(/regex/)     // "[object RegExp]"
-Object.prototype.toString.call(new Map())   // "[object Map]"
-Object.prototype.toString.call(new Set())   // "[object Set]"
-Object.prototype.toString.call(Symbol())    // "[object Symbol]"
+Object.prototype.toString.call("hello"); // "[object String]"
+Object.prototype.toString.call(42); // "[object Number]"
+Object.prototype.toString.call(true); // "[object Boolean]"
+Object.prototype.toString.call(null); // "[object Null]" ✅ (not "object")
+Object.prototype.toString.call(undefined); // "[object Undefined]"
+Object.prototype.toString.call([]); // "[object Array]" ✅ (not "object")
+Object.prototype.toString.call({}); // "[object Object]"
+Object.prototype.toString.call(function () {}); // "[object Function]"
+Object.prototype.toString.call(new Date()); // "[object Date]"
+Object.prototype.toString.call(/regex/); // "[object RegExp]"
+Object.prototype.toString.call(new Map()); // "[object Map]"
+Object.prototype.toString.call(new Set()); // "[object Set]"
+Object.prototype.toString.call(Symbol()); // "[object Symbol]"
 
 // Building a reliable type checker function:
 function getType(value) {
-  return Object.prototype.toString.call(value).slice(8, -1).toLowerCase()
+  return Object.prototype.toString.call(value).slice(8, -1).toLowerCase();
 }
 
-getType(null)        // "null"
-getType([])          // "array"
-getType({})          // "object"
-getType(new Date())  // "date"
-getType(undefined)   // "undefined"
+getType(null); // "null"
+getType([]); // "array"
+getType({}); // "object"
+getType(new Date()); // "date"
+getType(undefined); // "undefined"
 ```
 
 ---
@@ -6526,7 +6530,7 @@ getType(undefined)   // "undefined"
 **Q5 (Tricky): What is the output?**
 
 ```javascript
-console.log(typeof typeof 42)
+console.log(typeof typeof 42);
 ```
 
 > **Output:** `"string"`
@@ -6542,14 +6546,14 @@ console.log(typeof typeof 42)
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Implicit Coercion | Automatic type conversion by JS engine |
-| Explicit Conversion | Manual conversion using Number(), String(), Boolean() |
-| Truthy & Falsy Values | The 8 falsy values and everything else |
-| `==` vs `===` | Abstract equality vs strict equality |
-| `Object.is()` | Special cases: NaN and -0 |
-| 20+ Output Questions | Every coercion trap tested in interviews |
+| Subtopic              | What You'll Learn                                     |
+| --------------------- | ----------------------------------------------------- |
+| Implicit Coercion     | Automatic type conversion by JS engine                |
+| Explicit Conversion   | Manual conversion using Number(), String(), Boolean() |
+| Truthy & Falsy Values | The 8 falsy values and everything else                |
+| `==` vs `===`         | Abstract equality vs strict equality                  |
+| `Object.is()`         | Special cases: NaN and -0                             |
+| 20+ Output Questions  | Every coercion trap tested in interviews              |
 
 ---
 
@@ -6629,21 +6633,21 @@ flowchart TD
 
 ```javascript
 // Common truthy/falsy traps:
-Boolean([])          // true  ⚠️ empty array is TRUTHY!
-Boolean({})          // true  ⚠️ empty object is TRUTHY!
-Boolean("0")         // true  ⚠️ string "0" is TRUTHY!
-Boolean("false")     // true  ⚠️ string "false" is TRUTHY!
-Boolean(0)           // false
-Boolean(-0)          // false ⚠️ negative zero is FALSY!
-Boolean(0n)          // false ⚠️ BigInt zero is FALSY!
-Boolean(NaN)         // false
-Boolean(null)        // false
-Boolean(undefined)   // false
-Boolean("")          // false
+Boolean([]); // true  ⚠️ empty array is TRUTHY!
+Boolean({}); // true  ⚠️ empty object is TRUTHY!
+Boolean("0"); // true  ⚠️ string "0" is TRUTHY!
+Boolean("false"); // true  ⚠️ string "false" is TRUTHY!
+Boolean(0); // false
+Boolean(-0); // false ⚠️ negative zero is FALSY!
+Boolean(0n); // false ⚠️ BigInt zero is FALSY!
+Boolean(NaN); // false
+Boolean(null); // false
+Boolean(undefined); // false
+Boolean(""); // false
 
 // React rendering gotcha:
-const count = 0
-return <div>{count && <Component />}</div>
+const count = 0;
+return <div>{count && <Component />}</div>;
 // ⚠️ Renders "0"! because 0 is falsy but renders as text
 // Fix: return <div>{count > 0 && <Component />}</div>
 // OR: return <div>{Boolean(count) && <Component />}</div>
@@ -6658,45 +6662,54 @@ return <div>{count && <Component />}</div>
 
 ```javascript
 // To Number:
-Number("42")        // 42
-Number("3.14")      // 3.14
-Number("")          // 0
-Number("  ")        // 0 (whitespace only)
-Number(null)        // 0
-Number(undefined)   // NaN
-Number(true)        // 1
-Number(false)       // 0
-Number([])          // 0  ([] → "" → 0)
-Number([1])         // 1  ([1] → "1" → 1)
-Number([1,2])       // NaN ([1,2] → "1,2" → NaN)
-Number({})          // NaN ({} → "[object Object]" → NaN)
-Number("abc")       // NaN
+Number("42"); // 42
+Number("3.14"); // 3.14
+Number(""); // 0
+Number("  "); // 0 (whitespace only)
+Number(null); // 0
+Number(undefined); // NaN
+Number(true); // 1
+Number(false); // 0
+Number([]); // 0  ([] → "" → 0)
+Number([1]); // 1  ([1] → "1" → 1)
+Number([1, 2]); // NaN ([1,2] → "1,2" → NaN)
+Number({}); // NaN ({} → "[object Object]" → NaN)
+Number("abc"); // NaN
 
 // parseInt vs Number for strings:
-parseInt("42px")    // 42  (stops at non-numeric)
-Number("42px")      // NaN (fails completely)
-parseInt("0x1A")    // 26  (hex parsing)
-parseInt("010")     // 10  (octal in some environments)
+parseInt("42px"); // 42  (stops at non-numeric)
+Number("42px"); // NaN (fails completely)
+parseInt("0x1A"); // 26  (hex parsing)
+parseInt("010"); // 10  (octal in some environments)
 
 // To String:
-String(42)          // "42"
-String(null)        // "null"
-String(undefined)   // "undefined"
-String(true)        // "true"
-String([1,2,3])     // "1,2,3"
-String({})          // "[object Object]"
-(42).toString()     // "42"
-(255).toString(16)  // "ff" (hexadecimal)
-(8).toString(2)     // "1000" (binary)
+String(42); // "42"
+String(null); // "null"
+String(undefined); // "undefined"
+String(true); // "true"
+String([1, 2, 3]); // "1,2,3"
+String({})(
+  // "[object Object]"
+  42,
+)
+  .toString()(
+    // "42"
+    255,
+  )
+  .toString(16)(
+    // "ff" (hexadecimal)
+    8,
+  )
+  .toString(2); // "1000" (binary)
 
 // To Boolean:
-Boolean(42)         // true
-Boolean(0)          // false
-Boolean("hello")    // true
-Boolean("")         // false
-Boolean(null)       // false
-Boolean(undefined)  // false
-!!value             // Double negation — idiomatic boolean conversion
+Boolean(42); // true
+Boolean(0); // false
+Boolean("hello"); // true
+Boolean(""); // false
+Boolean(null); // false
+Boolean(undefined); // false
+!!value; // Double negation — idiomatic boolean conversion
 ```
 
 ---
@@ -6764,17 +6777,17 @@ null === undefined  // false
 
 ```javascript
 // Object.is() vs ===:
-NaN === NaN           // false (NaN is not equal to itself!)
-Object.is(NaN, NaN)  // true ✅
+NaN === NaN; // false (NaN is not equal to itself!)
+Object.is(NaN, NaN); // true ✅
 
-0 === -0              // true (=== doesn't distinguish)
-Object.is(0, -0)     // false ✅ (Object.is does distinguish)
+0 === -0; // true (=== doesn't distinguish)
+Object.is(0, -0); // false ✅ (Object.is does distinguish)
 
 // For all other cases, Object.is() behaves like ===:
-Object.is(1, 1)       // true
-Object.is(1, 2)       // false
-Object.is(null, null) // true
-Object.is("a", "a")  // true
+Object.is(1, 1); // true
+Object.is(1, 2); // false
+Object.is(null, null); // true
+Object.is("a", "a"); // true
 
 // Why does this matter?
 // React uses Object.is() internally for:
@@ -6791,84 +6804,108 @@ Object.is("a", "a")  // true
 ### 🎯 20+ Coercion Output Interview Questions
 
 **Q1:** `console.log(1 + "2" + 3)`
+
 > **Output:** `"123"` — `1 + "2"` = `"12"` (string concat), then `"12" + 3` = `"123"`
 
 **Q2:** `console.log(1 + 2 + "3")`
+
 > **Output:** `"33"` — `1 + 2` = `3` (numeric), then `3 + "3"` = `"33"` (string concat)
 
 **Q3:** `console.log("3" - 1)`
+
 > **Output:** `2` — `-` triggers numeric coercion: `"3"` → `3`, then `3 - 1 = 2`
 
 **Q4:** `console.log(true + true)`
+
 > **Output:** `2` — `true → 1`, `1 + 1 = 2`
 
 **Q5:** `console.log(null + 1)`
+
 > **Output:** `1` — `null → 0`, `0 + 1 = 1`
 
 **Q6:** `console.log(undefined + 1)`
+
 > **Output:** `NaN` — `undefined → NaN`, `NaN + 1 = NaN`
 
 **Q7:** `console.log([] + [])`
+
 > **Output:** `""` — both arrays → `""`, `"" + "" = ""`
 
 **Q8:** `console.log([] + {})`
+
 > **Output:** `"[object Object]"` — `[]` → `""`, `{}` → `"[object Object]"`, concat
 
 **Q9:** `console.log({} + [])`
+
 > **Output:** `0` OR `"[object Object]"` (context-dependent!)
 > As a statement: `{}` is parsed as an empty block, `+[]` = `+""` = `0`
 > In an expression: `{}` + `[]` = `"[object Object]"` + `""` = `"[object Object]"`
 
 **Q10:** `console.log(+"3")`
+
 > **Output:** `3` — unary `+` converts to number
 
 **Q11:** `console.log(+"")`
+
 > **Output:** `0` — empty string → 0
 
 **Q12:** `console.log(+null)`
+
 > **Output:** `0` — null → 0
 
 **Q13:** `console.log(+undefined)`
+
 > **Output:** `NaN`
 
 **Q14:** `console.log(+[])`
+
 > **Output:** `0` — `[]` → `""` → `0`
 
 **Q15:** `console.log(+{})`
+
 > **Output:** `NaN` — `{}` → `"[object Object]"` → `NaN`
 
 **Q16:** `console.log(false == "")`
+
 > **Output:** `true` — both coerce to `0`
 
 **Q17:** `console.log(null == undefined)`
+
 > **Output:** `true` — special rule in spec
 
 **Q18:** `console.log(null == false)`
+
 > **Output:** `false` — null only equals null/undefined
 
 **Q19:** `console.log(NaN == NaN)`
+
 > **Output:** `false` — NaN is never equal to anything, including itself
 
 **Q20:** `console.log(Object.is(NaN, NaN))`
+
 > **Output:** `true` — Object.is handles this correctly
 
 **Q21:** `console.log(0 == "0")`
+
 > **Output:** `true` — `"0"` → `0`
 
 **Q22:** `console.log(0 == [])`
+
 > **Output:** `true` — `[]` → `""` → `0`
 
 **Q23:** `console.log("0" == [])`
+
 > **Output:** `false` — `"0"` (string) vs `[]` (object), `[]` → `""`, `"0" !== ""`
 
 **Q24:** `console.log(!!null + !!undefined + !!NaN)`
+
 > **Output:** `0` — all three are falsy, `false + false + false` = `0 + 0 + 0 = 0`
 
 **Q25 (Tricky):**
 
 ```javascript
-console.log(1 < 2 < 3)   // ?
-console.log(3 > 2 > 1)   // ?
+console.log(1 < 2 < 3); // ?
+console.log(3 > 2 > 1); // ?
 ```
 
 > **Q25 Output:** `true` → `false`
@@ -6885,12 +6922,12 @@ console.log(3 > 2 > 1)   // ?
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Template Literals | Backtick syntax, interpolation, multiline |
-| Tagged Templates | Advanced use — styled-components, GraphQL, i18n |
-| String Immutability | Why strings can't be mutated |
-| String Methods | All 25+ important methods with examples |
+| Subtopic            | What You'll Learn                               |
+| ------------------- | ----------------------------------------------- |
+| Template Literals   | Backtick syntax, interpolation, multiline       |
+| Tagged Templates    | Advanced use — styled-components, GraphQL, i18n |
+| String Immutability | Why strings can't be mutated                    |
+| String Methods      | All 25+ important methods with examples         |
 
 ---
 
@@ -6898,20 +6935,20 @@ console.log(3 > 2 > 1)   // ?
 
 ```javascript
 // Basic interpolation:
-const name = "Rahul"
-const age = 25
+const name = "Rahul";
+const age = 25;
 
 // Old way (string concatenation):
-const old = "Hello, " + name + "! You are " + age + " years old."
+const old = "Hello, " + name + "! You are " + age + " years old.";
 
 // Template literal (modern, preferred):
-const modern = `Hello, ${name}! You are ${age} years old.`
+const modern = `Hello, ${name}! You are ${age} years old.`;
 
 // Expressions inside ${}:
-const result = `${2 + 3} is five`          // "5 is five"
-const check = `${age >= 18 ? 'Adult' : 'Minor'}` // "Adult"
-const fn = `${name.toUpperCase()}`          // "RAHUL"
-const obj = `User: ${JSON.stringify({name, age})}` // "User: {"name":"Rahul","age":25}"
+const result = `${2 + 3} is five`; // "5 is five"
+const check = `${age >= 18 ? "Adult" : "Minor"}`; // "Adult"
+const fn = `${name.toUpperCase()}`; // "RAHUL"
+const obj = `User: ${JSON.stringify({ name, age })}`; // "User: {"name":"Rahul","age":25}"
 
 // Multiline strings:
 const html = `
@@ -6919,12 +6956,12 @@ const html = `
     <h1>${name}</h1>
     <p>Age: ${age}</p>
   </div>
-`
+`;
 // Preserves whitespace and newlines exactly as written
 
 // Nested template literals:
-const items = ['React', 'Next.js', 'TypeScript']
-const list = `Skills:\n${items.map((item, i) => `  ${i + 1}. ${item}`).join('\n')}`
+const items = ["React", "Next.js", "TypeScript"];
+const list = `Skills:\n${items.map((item, i) => `  ${i + 1}. ${item}`).join("\n")}`;
 ```
 
 ---
@@ -6942,22 +6979,24 @@ function highlight(strings, ...values) {
   // values = array of interpolated values
 
   return strings.reduce((result, str, i) => {
-    const value = values[i - 1]
-    return result + (value !== undefined ? `<strong>${value}</strong>` : '') + str
-  })
+    const value = values[i - 1];
+    return (
+      result + (value !== undefined ? `<strong>${value}</strong>` : "") + str
+    );
+  });
 }
 
-const name = "React"
-const version = 18
-const tagged = highlight`Learning ${name} version ${version} today!`
+const name = "React";
+const version = 18;
+const tagged = highlight`Learning ${name} version ${version} today!`;
 // "Learning <strong>React</strong> version <strong>18</strong> today!"
 
 // Real-world usage — Styled Components:
 const Button = styled.button`
-  background: ${props => props.primary ? 'blue' : 'white'};
+  background: ${(props) => (props.primary ? "blue" : "white")};
   padding: 0.5em 1em;
   border-radius: 4px;
-`
+`;
 
 // Real-world usage — GraphQL queries:
 const query = gql`
@@ -6967,12 +7006,12 @@ const query = gql`
       email
     }
   }
-`
+`;
 
 // SQL (sql-template-strings library):
 const result = await db.query(sql`
   SELECT * FROM users WHERE id = ${userId} AND active = ${true}
-`)
+`);
 // Automatically handles SQL injection prevention!
 ```
 
@@ -6983,18 +7022,18 @@ const result = await db.query(sql`
 Strings in JavaScript are **immutable** — you cannot change individual characters.
 
 ```javascript
-let str = "hello"
-str[0] = "H"           // Silently fails (non-strict) / TypeError (strict)
-console.log(str)       // "hello" — unchanged!
+let str = "hello";
+str[0] = "H"; // Silently fails (non-strict) / TypeError (strict)
+console.log(str); // "hello" — unchanged!
 
 // String operations always return NEW strings:
-const upper = str.toUpperCase()    // "HELLO" (new string)
-const sliced = str.slice(0, 3)    // "hel" (new string)
-console.log(str)                   // "hello" — original unchanged
+const upper = str.toUpperCase(); // "HELLO" (new string)
+const sliced = str.slice(0, 3); // "hel" (new string)
+console.log(str); // "hello" — original unchanged
 
 // In React — this matters for state:
 // ✅ Correct: replace entire string
-setState(prevStr => prevStr + " world")
+setState((prevStr) => prevStr + " world");
 
 // String "mutations" just create new strings
 ```
@@ -7004,89 +7043,93 @@ setState(prevStr => prevStr + " world")
 ### Complete String Methods Reference
 
 ```javascript
-const str = "Hello, World! JavaScript is awesome"
-const arr = ["React", "Next.js", "TypeScript"]
+const str = "Hello, World! JavaScript is awesome";
+const arr = ["React", "Next.js", "TypeScript"];
 
 // ── LENGTH ──────────────────────────────────────────
-str.length                     // 35
+str.length; // 35
 
 // ── ACCESS ──────────────────────────────────────────
-str.charAt(0)                  // "H"
-str[0]                         // "H" (same as charAt)
-str.charCodeAt(0)              // 72 (Unicode code point)
-str.at(0)                      // "H" (supports negative index)
-str.at(-1)                     // "e" (last char) ✅ new in ES2022
+str.charAt(0); // "H"
+str[0]; // "H" (same as charAt)
+str.charCodeAt(0); // 72 (Unicode code point)
+str.at(0); // "H" (supports negative index)
+str.at(-1); // "e" (last char) ✅ new in ES2022
 
 // ── SEARCH ──────────────────────────────────────────
-str.indexOf("o")               // 4 (first occurrence)
-str.lastIndexOf("o")           // 20 (last occurrence)
-str.indexOf("xyz")             // -1 (not found)
-str.includes("World")          // true
-str.includes("world")          // false (case-sensitive!)
-str.startsWith("Hello")        // true
-str.startsWith("World", 7)     // true (start search at index 7)
-str.endsWith("awesome")        // true
-str.endsWith("Java", 21)       // true (check first 21 chars)
+str.indexOf("o"); // 4 (first occurrence)
+str.lastIndexOf("o"); // 20 (last occurrence)
+str.indexOf("xyz"); // -1 (not found)
+str.includes("World"); // true
+str.includes("world"); // false (case-sensitive!)
+str.startsWith("Hello"); // true
+str.startsWith("World", 7); // true (start search at index 7)
+str.endsWith("awesome"); // true
+str.endsWith("Java", 21); // true (check first 21 chars)
 
 // ── EXTRACT ──────────────────────────────────────────
-str.slice(0, 5)                // "Hello"
-str.slice(-7)                  // "awesome" (negative: from end)
-str.slice(7, 12)               // "World"
-str.substring(0, 5)            // "Hello" (like slice but no negatives)
+str.slice(0, 5); // "Hello"
+str.slice(-7); // "awesome" (negative: from end)
+str.slice(7, 12); // "World"
+str.substring(0, 5); // "Hello" (like slice but no negatives)
 // slice vs substring: slice supports negatives, substring doesn't
 
 // ── CASE ────────────────────────────────────────────
-str.toUpperCase()              // "HELLO, WORLD!..."
-str.toLowerCase()              // "hello, world!..."
+str.toUpperCase(); // "HELLO, WORLD!..."
+str.toLowerCase(); // "hello, world!..."
 
 // ── TRIM ────────────────────────────────────────────
-"  hello  ".trim()             // "hello"
-"  hello  ".trimStart()        // "hello  " (removes leading whitespace)
-"  hello  ".trimEnd()          // "  hello" (removes trailing whitespace)
+"  hello  ".trim(); // "hello"
+"  hello  ".trimStart(); // "hello  " (removes leading whitespace)
+"  hello  ".trimEnd(); // "  hello" (removes trailing whitespace)
 
 // ── SPLIT & JOIN ─────────────────────────────────────
-"a,b,c".split(",")             // ["a", "b", "c"]
-"hello".split("")              // ["h", "e", "l", "l", "o"]
-"hello".split("", 3)           // ["h", "e", "l"] (limit)
-arr.join(" | ")                // "React | Next.js | TypeScript"
+"a,b,c".split(","); // ["a", "b", "c"]
+"hello".split(""); // ["h", "e", "l", "l", "o"]
+"hello".split("", 3); // ["h", "e", "l"] (limit)
+arr.join(" | "); // "React | Next.js | TypeScript"
 
 // ── REPLACE ──────────────────────────────────────────
-str.replace("World", "React")  // "Hello, React! JavaScript..."
+str.replace("World", "React"); // "Hello, React! JavaScript..."
 // Only replaces FIRST occurrence:
-"aaa".replace("a", "b")        // "baa" ⚠️
-"aaa".replaceAll("a", "b")    // "bbb" ✅ ES2021
+"aaa".replace("a", "b"); // "baa" ⚠️
+"aaa".replaceAll("a", "b"); // "bbb" ✅ ES2021
 
 // With regex:
-str.replace(/javascript/i, "TypeScript")  // case-insensitive
-str.replace(/o/g, "0")         // replace all 'o' with '0'
+str.replace(/javascript/i, "TypeScript"); // case-insensitive
+str.replace(/o/g, "0"); // replace all 'o' with '0'
 
 // ── REPEAT & PAD ─────────────────────────────────────
-"ha".repeat(3)                 // "hahaha"
-"5".padStart(4, "0")           // "0005" (pad to length 4)
-"5".padEnd(4, "0")             // "5000"
-"42".padStart(6, " ")          // "    42" (right-align with spaces)
+"ha".repeat(3); // "hahaha"
+"5".padStart(4, "0"); // "0005" (pad to length 4)
+"5".padEnd(4, "0"); // "5000"
+"42".padStart(6, " "); // "    42" (right-align with spaces)
 
 // ── MATCH & REGEX ─────────────────────────────────────
-const email = "test@example.com"
-email.match(/@/)               // Match result object (first match)
-"aabbcc".match(/[a-z]/g)      // ["a","a","b","b","c","c"] (all matches)
-"test@example.com".matchAll(/[a-z]+/g)  // Iterator of all matches (ES2020)
+const email = "test@example.com";
+email.match(/@/); // Match result object (first match)
+"aabbcc".match(/[a-z]/g); // ["a","a","b","b","c","c"] (all matches)
+"test@example.com".matchAll(/[a-z]+/g); // Iterator of all matches (ES2020)
 
 // ── TEMPLATE PATTERNS ─────────────────────────────────
 // Combining methods for common tasks:
 
 // Truncate with ellipsis:
-const truncate = (str, n) => str.length > n ? str.slice(0, n) + '...' : str
-truncate("Hello World", 8)    // "Hello Wo..."
+const truncate = (str, n) => (str.length > n ? str.slice(0, n) + "..." : str);
+truncate("Hello World", 8); // "Hello Wo..."
 
 // Slugify a string:
-const slugify = str =>
-  str.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]/g, '')
-slugify("Hello World! React")  // "hello-world-react"
+const slugify = (str) =>
+  str
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "");
+slugify("Hello World! React"); // "hello-world-react"
 
 // Capitalize first letter:
-const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
-capitalize("hello")            // "Hello"
+const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+capitalize("hello"); // "Hello"
 ```
 
 ---
@@ -7100,8 +7143,8 @@ capitalize("hello")            // "Hello"
 **Q2: What is the output?**
 
 ```javascript
-console.log("hello".charAt(10))     // ?
-console.log("hello"[10])            // ?
+console.log("hello".charAt(10)); // ?
+console.log("hello"[10]); // ?
 ```
 
 > `charAt(10)` returns `""` (empty string) for out-of-bounds. `"hello"[10]` returns `undefined`. This is a subtle difference between `charAt()` and bracket notation.
@@ -7120,13 +7163,13 @@ console.log("hello"[10])            // ?
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| IEEE 754 Double-Precision | Why JS numbers are floats internally |
-| 0.1 + 0.2 !== 0.3 | The famous floating-point problem |
-| NaN & Infinity | Special numeric values and their behavior |
-| Number methods | toFixed, toPrecision, parseInt, parseFloat |
-| Math object | All important Math methods |
+| Subtopic                  | What You'll Learn                          |
+| ------------------------- | ------------------------------------------ |
+| IEEE 754 Double-Precision | Why JS numbers are floats internally       |
+| 0.1 + 0.2 !== 0.3         | The famous floating-point problem          |
+| NaN & Infinity            | Special numeric values and their behavior  |
+| Number methods            | toFixed, toPrecision, parseInt, parseFloat |
+| Math object               | All important Math methods                 |
 
 ---
 
@@ -7138,16 +7181,16 @@ JavaScript uses **IEEE 754 double-precision floating-point** format for ALL numb
 
 ```javascript
 // Safe integer range:
-Number.MAX_SAFE_INTEGER    // 9007199254740991 (2^53 - 1)
-Number.MIN_SAFE_INTEGER    // -9007199254740991
-Number.MAX_VALUE           // 1.7976931348623157e+308
-Number.MIN_VALUE           // 5e-324 (smallest positive number)
-Number.EPSILON             // 2.220446049250313e-16
+Number.MAX_SAFE_INTEGER; // 9007199254740991 (2^53 - 1)
+Number.MIN_SAFE_INTEGER; // -9007199254740991
+Number.MAX_VALUE; // 1.7976931348623157e+308
+Number.MIN_VALUE; // 5e-324 (smallest positive number)
+Number.EPSILON; // 2.220446049250313e-16
 
 // BigInt for numbers beyond safe range:
-9007199254740991 + 1       // 9007199254740992 ✅
-9007199254740991 + 2       // 9007199254740992 ⚠️ wrong! (precision lost)
-9007199254740991n + 2n     // 9007199254740993n ✅ BigInt is safe
+9007199254740991 + 1; // 9007199254740992 ✅
+9007199254740991 + 2; // 9007199254740992 ⚠️ wrong! (precision lost)
+9007199254740991n + 2n; // 9007199254740993n ✅ BigInt is safe
 ```
 
 ---
@@ -7155,29 +7198,33 @@ Number.EPSILON             // 2.220446049250313e-16
 ### 0.1 + 0.2 !== 0.3 — The Famous Bug
 
 ```javascript
-0.1 + 0.2                  // 0.30000000000000004
-0.1 + 0.2 === 0.3          // false ❌
+0.1 + 0.2; // 0.30000000000000004
+(0.1 + 0.2 ===
+  0.3(
+    // false ❌
 
-// Why? 0.1 in binary is 0.0001100110011... (repeating)
-// Cannot be represented exactly in IEEE 754 binary format
+    // Why? 0.1 in binary is 0.0001100110011... (repeating)
+    // Cannot be represented exactly in IEEE 754 binary format
 
-// Solutions:
-// 1. Round to fixed decimals:
-(0.1 + 0.2).toFixed(1) === (0.3).toFixed(1)  // true ✅
-parseFloat((0.1 + 0.2).toFixed(10)) === 0.3   // true ✅
+    // Solutions:
+    // 1. Round to fixed decimals:
+    0.1 + 0.2,
+  ).toFixed(1)) ===
+  (0.3).toFixed(1); // true ✅
+parseFloat((0.1 + 0.2).toFixed(10)) === 0.3; // true ✅
 
 // 2. Use Number.EPSILON comparison:
-Math.abs(0.1 + 0.2 - 0.3) < Number.EPSILON   // true ✅
+Math.abs(0.1 + 0.2 - 0.3) < Number.EPSILON; // true ✅
 
 // 3. For financial calculations — use integers (cents):
-const price = 0.10  // $0.10
-const tax = 0.20    // $0.20
+const price = 0.1; // $0.10
+const tax = 0.2; // $0.20
 // ❌ Don't: price + tax = 0.30000000000000004
 // ✅ Do: work in cents
-const priceCents = 10
-const taxCents = 20
-const totalCents = priceCents + taxCents   // 30 (exact!)
-const total = totalCents / 100             // $0.30
+const priceCents = 10;
+const taxCents = 20;
+const totalCents = priceCents + taxCents; // 30 (exact!)
+const total = totalCents / 100; // $0.30
 
 // 4. For production: use libraries like decimal.js or big.js
 ```
@@ -7188,35 +7235,35 @@ const total = totalCents / 100             // $0.30
 
 ```javascript
 // NaN — result of invalid numeric operations:
-0 / 0              // NaN
-parseInt("abc")    // NaN
-Math.sqrt(-1)      // NaN
-undefined + 1      // NaN
-"abc" - 1          // NaN
+0 / 0; // NaN
+parseInt("abc"); // NaN
+Math.sqrt(-1); // NaN
+undefined + 1; // NaN
+"abc" - 1; // NaN
 
 // NaN's unusual property: NOT equal to itself!
-NaN === NaN        // false ⚠️
-NaN == NaN         // false ⚠️
+NaN === NaN; // false ⚠️
+NaN == NaN; // false ⚠️
 
 // Checking for NaN:
-isNaN("hello")        // true  ⚠️ (converts to number first: isNaN(NaN) = true)
-isNaN(undefined)      // true  ⚠️ (converts undefined to NaN first)
-isNaN("123")          // false (converts "123" to 123 first)
-Number.isNaN("hello") // false ✅ (no coercion — only true NaN)
-Number.isNaN(NaN)     // true  ✅
-Number.isNaN(undefined) // false ✅ (undefined is not NaN)
+isNaN("hello"); // true  ⚠️ (converts to number first: isNaN(NaN) = true)
+isNaN(undefined); // true  ⚠️ (converts undefined to NaN first)
+isNaN("123"); // false (converts "123" to 123 first)
+Number.isNaN("hello"); // false ✅ (no coercion — only true NaN)
+Number.isNaN(NaN); // true  ✅
+Number.isNaN(undefined); // false ✅ (undefined is not NaN)
 
 // isNaN vs Number.isNaN:
 // isNaN: coerces value to number first, then checks
 // Number.isNaN: no coercion, only returns true for actual NaN value
 
 // NaN in operations always propagates:
-NaN + 1     // NaN
-NaN * 5     // NaN
-NaN === NaN // false — always
+NaN + 1; // NaN
+NaN * 5; // NaN
+NaN === NaN; // false — always
 
 // typeof NaN:
-typeof NaN  // "number" ⚠️ (NaN is technically a "number" type!)
+typeof NaN; // "number" ⚠️ (NaN is technically a "number" type!)
 ```
 
 ---
@@ -7224,40 +7271,44 @@ typeof NaN  // "number" ⚠️ (NaN is technically a "number" type!)
 ### Number Methods
 
 ```javascript
-const num = 3.14159
+const num = 3.14159;
 
 // toFixed — rounds to N decimal places (returns string):
-num.toFixed(2)        // "3.14"
-num.toFixed(0)        // "3"
-(1.005).toFixed(2)    // "1.00" ⚠️ (floating point rounding issue!)
+num.toFixed(2); // "3.14"
+num
+  .toFixed(0)(
+    // "3"
+    1.005,
+  )
+  .toFixed(2); // "1.00" ⚠️ (floating point rounding issue!)
 
 // toPrecision — significant digits (returns string):
-num.toPrecision(4)    // "3.142"
-num.toPrecision(2)    // "3.1"
+num.toPrecision(4); // "3.142"
+num.toPrecision(2); // "3.1"
 
 // parseInt — parse integer from string:
-parseInt("42")        // 42
-parseInt("42.9")      // 42 (truncates decimal)
-parseInt("42px")      // 42 (stops at first non-numeric)
-parseInt("abc")       // NaN
-parseInt("0xFF", 16)  // 255 (hex base 16)
-parseInt("111", 2)    // 7 (binary base 2)
-parseInt("077", 8)    // 63 (octal base 8)
+parseInt("42"); // 42
+parseInt("42.9"); // 42 (truncates decimal)
+parseInt("42px"); // 42 (stops at first non-numeric)
+parseInt("abc"); // NaN
+parseInt("0xFF", 16); // 255 (hex base 16)
+parseInt("111", 2); // 7 (binary base 2)
+parseInt("077", 8); // 63 (octal base 8)
 
 // parseFloat — parse decimal from string:
-parseFloat("3.14")    // 3.14
-parseFloat("3.14abc") // 3.14 (stops at first non-numeric)
-parseFloat("abc")     // NaN
+parseFloat("3.14"); // 3.14
+parseFloat("3.14abc"); // 3.14 (stops at first non-numeric)
+parseFloat("abc"); // NaN
 
 // Number.isInteger:
-Number.isInteger(42)   // true
-Number.isInteger(42.0) // true
-Number.isInteger(42.5) // false
+Number.isInteger(42); // true
+Number.isInteger(42.0); // true
+Number.isInteger(42.5); // false
 
 // Number.isFinite vs global isFinite:
-Number.isFinite(Infinity)  // false ✅ (no coercion)
-Number.isFinite("123")     // false ✅ (no coercion — string is not finite)
-isFinite("123")            // true ⚠️ (coerces "123" to 123 first)
+Number.isFinite(Infinity); // false ✅ (no coercion)
+Number.isFinite("123"); // false ✅ (no coercion — string is not finite)
+isFinite("123"); // true ⚠️ (coerces "123" to 123 first)
 ```
 
 ---
@@ -7266,55 +7317,55 @@ isFinite("123")            // true ⚠️ (coerces "123" to 123 first)
 
 ```javascript
 // Rounding:
-Math.round(3.5)        // 4 (rounds to nearest integer, 0.5 rounds up)
-Math.round(3.4)        // 3
-Math.floor(3.9)        // 3 (rounds DOWN)
-Math.ceil(3.1)         // 4 (rounds UP)
-Math.trunc(3.9)        // 3 (removes decimal part)
-Math.trunc(-3.9)       // -3 (Math.floor(-3.9) = -4, Math.trunc = -3)
+Math.round(3.5); // 4 (rounds to nearest integer, 0.5 rounds up)
+Math.round(3.4); // 3
+Math.floor(3.9); // 3 (rounds DOWN)
+Math.ceil(3.1); // 4 (rounds UP)
+Math.trunc(3.9); // 3 (removes decimal part)
+Math.trunc(-3.9); // -3 (Math.floor(-3.9) = -4, Math.trunc = -3)
 
 // Min/Max:
-Math.max(1, 5, 3, 9, 2)      // 9
-Math.min(1, 5, 3, 9, 2)      // 1
-Math.max(...[1, 5, 3, 9, 2]) // 9 (with spread for arrays)
-Math.max()                    // -Infinity (no args)
-Math.min()                    // Infinity (no args)
+Math.max(1, 5, 3, 9, 2); // 9
+Math.min(1, 5, 3, 9, 2); // 1
+Math.max(...[1, 5, 3, 9, 2]); // 9 (with spread for arrays)
+Math.max(); // -Infinity (no args)
+Math.min(); // Infinity (no args)
 
 // Powers & Roots:
-Math.pow(2, 10)        // 1024
-2 ** 10                // 1024 (ES2016 exponentiation operator)
-Math.sqrt(16)          // 4
-Math.cbrt(27)          // 3 (cube root)
-Math.abs(-42)          // 42
+Math.pow(2, 10); // 1024
+2 ** 10; // 1024 (ES2016 exponentiation operator)
+Math.sqrt(16); // 4
+Math.cbrt(27); // 3 (cube root)
+Math.abs(-42); // 42
 
 // Random:
-Math.random()          // 0 to <1 (never reaches 1)
-Math.floor(Math.random() * 10)     // 0-9 random integer
-Math.floor(Math.random() * 100)    // 0-99 random integer
+Math.random(); // 0 to <1 (never reaches 1)
+Math.floor(Math.random() * 10); // 0-9 random integer
+Math.floor(Math.random() * 100); // 0-99 random integer
 
 // Random integer between min and max (inclusive):
 const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1)) + min
+  Math.floor(Math.random() * (max - min + 1)) + min;
 
-randomInt(1, 6)   // dice roll: 1-6
+randomInt(1, 6); // dice roll: 1-6
 
 // Logarithms:
-Math.log(Math.E)   // 1 (natural log)
-Math.log2(8)       // 3
-Math.log10(1000)   // 3
+Math.log(Math.E); // 1 (natural log)
+Math.log2(8); // 3
+Math.log10(1000); // 3
 
 // Trigonometry (in radians):
-Math.PI            // 3.141592653589793
-Math.sin(Math.PI / 2)  // 1
-Math.cos(0)            // 1
+Math.PI; // 3.141592653589793
+Math.sin(Math.PI / 2); // 1
+Math.cos(0); // 1
 
 // Sign:
-Math.sign(42)      // 1 (positive)
-Math.sign(-42)     // -1 (negative)
-Math.sign(0)       // 0
+Math.sign(42); // 1 (positive)
+Math.sign(-42); // -1 (negative)
+Math.sign(0); // 0
 
 // Hypotenuse (Pythagorean theorem):
-Math.hypot(3, 4)   // 5 (sqrt(3² + 4²))
+Math.hypot(3, 4); // 5 (sqrt(3² + 4²))
 ```
 
 ---
@@ -7332,8 +7383,8 @@ Math.hypot(3, 4)   // 5 (sqrt(3² + 4²))
 **Q3: What is the output?**
 
 ```javascript
-console.log(0.1 + 0.2 == 0.3)
-console.log(Math.round(1.005 * 100) / 100)
+console.log(0.1 + 0.2 == 0.3);
+console.log(Math.round(1.005 * 100) / 100);
 ```
 
 > `false` (0.1 + 0.2 = 0.30000000000000004) → `1` (not 1.01!)
@@ -7349,14 +7400,14 @@ console.log(Math.round(1.005 * 100) / 100)
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| if/else, switch | Basic conditional flow and fall-through trap |
-| Ternary operator | Concise single-expression conditionals |
-| Short-circuit: `&&` `\|\|` | Lazy evaluation pattern |
-| Optional chaining `?.` | Safe property access |
-| Nullish coalescing `??` | Default values for null/undefined only |
-| Logical assignment `\|\|=` `&&=` `??=` | Combine assignment with logic |
+| Subtopic                               | What You'll Learn                            |
+| -------------------------------------- | -------------------------------------------- |
+| if/else, switch                        | Basic conditional flow and fall-through trap |
+| Ternary operator                       | Concise single-expression conditionals       |
+| Short-circuit: `&&` `\|\|`             | Lazy evaluation pattern                      |
+| Optional chaining `?.`                 | Safe property access                         |
+| Nullish coalescing `??`                | Default values for null/undefined only       |
+| Logical assignment `\|\|=` `&&=` `??=` | Combine assignment with logic                |
 
 ---
 
@@ -7364,30 +7415,31 @@ console.log(Math.round(1.005 * 100) / 100)
 
 ```javascript
 // Basic:
-const score = 75
+const score = 75;
 
 if (score >= 90) {
-  console.log("A grade")
+  console.log("A grade");
 } else if (score >= 80) {
-  console.log("B grade")
+  console.log("B grade");
 } else if (score >= 70) {
-  console.log("C grade")
+  console.log("C grade");
 } else {
-  console.log("Below C")
+  console.log("Below C");
 }
 
 // Truthy/falsy in conditions:
-const user = null
-if (user) {           // falsy check
-  console.log(user.name)
+const user = null;
+if (user) {
+  // falsy check
+  console.log(user.name);
 }
 
 // Guard clause pattern (preferred in modern code):
 function processUser(user) {
-  if (!user) return          // Early return for invalid input
-  if (!user.isActive) return // Guard against inactive users
+  if (!user) return; // Early return for invalid input
+  if (!user.isActive) return; // Guard against inactive users
   // Main logic here — no deep nesting
-  console.log(`Processing ${user.name}`)
+  console.log(`Processing ${user.name}`);
 }
 ```
 
@@ -7396,7 +7448,7 @@ function processUser(user) {
 ### switch Statement — Fall-Through Trap
 
 ```javascript
-const day = "Monday"
+const day = "Monday";
 
 switch (day) {
   case "Monday":
@@ -7404,40 +7456,40 @@ switch (day) {
   case "Wednesday":
   case "Thursday":
   case "Friday":
-    console.log("Weekday")
-    break                    // ← Must break! Without it, falls through
+    console.log("Weekday");
+    break; // ← Must break! Without it, falls through
   case "Saturday":
   case "Sunday":
-    console.log("Weekend")
-    break
+    console.log("Weekend");
+    break;
   default:
-    console.log("Invalid day")
+    console.log("Invalid day");
 }
 
 // ⚠️ Fall-through trap without break:
-const val = 1
+const val = 1;
 switch (val) {
   case 1:
-    console.log("one")   // prints
-    // NO break!
+    console.log("one"); // prints
+  // NO break!
   case 2:
-    console.log("two")   // also prints! (fall-through)
+    console.log("two"); // also prints! (fall-through)
   case 3:
-    console.log("three") // also prints!
-    break
+    console.log("three"); // also prints!
+    break;
   case 4:
-    console.log("four")  // doesn't print
+    console.log("four"); // doesn't print
 }
 // Output: "one", "two", "three" — all cases after case 1 run!
 
 // switch uses strict equality (===):
 switch ("1") {
   case 1:
-    console.log("number 1")   // Doesn't match ("1" !== 1)
-    break
+    console.log("number 1"); // Doesn't match ("1" !== 1)
+    break;
   case "1":
-    console.log("string '1'") // ✅ Matches
-    break
+    console.log("string '1'"); // ✅ Matches
+    break;
 }
 ```
 
@@ -7447,8 +7499,8 @@ switch ("1") {
 
 ```javascript
 // Syntax: condition ? valueIfTrue : valueIfFalse
-const age = 20
-const status = age >= 18 ? "Adult" : "Minor"  // "Adult"
+const age = 20;
+const status = age >= 18 ? "Adult" : "Minor"; // "Adult"
 
 // In JSX (React):
 return (
@@ -7456,12 +7508,10 @@ return (
     {isLoggedIn ? <Dashboard /> : <Login />}
     <span>{count > 0 ? `${count} items` : "Empty cart"}</span>
   </div>
-)
+);
 
 // Chained ternary (readable but use sparingly):
-const grade = score >= 90 ? "A" :
-              score >= 80 ? "B" :
-              score >= 70 ? "C" : "F"
+const grade = score >= 90 ? "A" : score >= 80 ? "B" : score >= 70 ? "C" : "F";
 
 // ⚠️ Avoid:
 // const result = a ? b ? c : d : e  // Hard to read — use if/else
@@ -7475,35 +7525,35 @@ const grade = score >= 90 ? "A" :
 
 ```javascript
 // && (AND): returns first FALSY value or last value if all truthy
-false && console.log("never")   // short-circuits, console.log never runs
-true && console.log("runs!")    // "runs!"
+false && console.log("never"); // short-circuits, console.log never runs
+true && console.log("runs!"); // "runs!"
 
-null && "hello"       // null    (returns first falsy)
-undefined && "hello"  // undefined
-0 && "hello"          // 0
-"" && "hello"         // ""
-1 && "hello"          // "hello" (all truthy, returns last)
-1 && 2 && 3           // 3       (all truthy, returns last)
+null && "hello"; // null    (returns first falsy)
+undefined && "hello"; // undefined
+0 && "hello"; // 0
+"" && "hello"; // ""
+1 && "hello"; // "hello" (all truthy, returns last)
+1 && 2 && 3; // 3       (all truthy, returns last)
 
 // || (OR): returns first TRUTHY value or last value if all falsy
-false || "default"     // "default" (returns first truthy)
-null || "fallback"     // "fallback"
-0 || 100              // 100
-"" || "empty string!" // "empty string!"
-"hello" || "world"    // "hello" (first truthy)
-false || 0 || null    // null  (all falsy, returns last)
+false || "default"; // "default" (returns first truthy)
+null || "fallback"; // "fallback"
+0 || 100; // 100
+"" || "empty string!"; // "empty string!"
+"hello" || "world"; // "hello" (first truthy)
+false || 0 || null; // null  (all falsy, returns last)
 
 // Practical patterns:
-const user = null
-const name = user && user.name     // null (safe access)
-const port = process.env.PORT || 3000  // default value
-const displayName = user.name || "Anonymous"
+const user = null;
+const name = user && user.name; // null (safe access)
+const port = process.env.PORT || 3000; // default value
+const displayName = user.name || "Anonymous";
 
 // ⚠️ || default value trap:
-const count = 0
-const display = count || "No items"  // "No items" ⚠️ (0 is falsy!)
+const count = 0;
+const display = count || "No items"; // "No items" ⚠️ (0 is falsy!)
 // Better: use ?? for null/undefined only:
-const display2 = count ?? "No items" // 0 ✅ (0 is not null/undefined)
+const display2 = count ?? "No items"; // 0 ✅ (0 is not null/undefined)
 ```
 
 ---
@@ -7519,30 +7569,30 @@ const user = {
   name: "Rahul",
   address: {
     city: "Mumbai",
-    pincode: "400001"
+    pincode: "400001",
   },
-  getAge: () => 25
-}
+  getAge: () => 25,
+};
 
 // Without optional chaining:
-const city1 = user && user.address && user.address.city  // "Mumbai"
+const city1 = user && user.address && user.address.city; // "Mumbai"
 
 // With optional chaining (cleaner):
-const city2 = user?.address?.city   // "Mumbai"
-const country = user?.address?.country  // undefined (not error!)
+const city2 = user?.address?.city; // "Mumbai"
+const country = user?.address?.country; // undefined (not error!)
 
 // Method calls:
-const age = user?.getAge?.()     // 25
-const fn = user?.nonExistentMethod?.()  // undefined (no error)
+const age = user?.getAge?.(); // 25
+const fn = user?.nonExistentMethod?.(); // undefined (no error)
 
 // Array access:
-const users = [{ name: "Rahul" }]
-users?.[0]?.name    // "Rahul"
-users?.[5]?.name    // undefined (no error)
+const users = [{ name: "Rahul" }];
+users?.[0]?.name; // "Rahul"
+users?.[5]?.name; // undefined (no error)
 
 // Dynamic property access:
-const key = "name"
-user?.[key]         // "Rahul"
+const key = "name";
+user?.[key]; // "Rahul"
 
 // Real-world React:
 function UserCard({ user }) {
@@ -7552,7 +7602,7 @@ function UserCard({ user }) {
       <p>{user?.address?.city ?? "Location unknown"}</p>
       <p>{user?.stats?.followers?.toLocaleString() ?? "0"} followers</p>
     </div>
-  )
+  );
 }
 ```
 
@@ -7566,27 +7616,27 @@ function UserCard({ user }) {
 
 ```javascript
 // ?? vs ||:
-null ?? "default"        // "default" (null → use default)
-undefined ?? "default"   // "default" (undefined → use default)
-0 ?? "default"           // 0 ✅ (0 is NOT null/undefined)
-"" ?? "default"          // "" ✅ (empty string is NOT null/undefined)
-false ?? "default"       // false ✅ (false is NOT null/undefined)
+null ?? "default"; // "default" (null → use default)
+undefined ?? "default"; // "default" (undefined → use default)
+0 ?? "default"; // 0 ✅ (0 is NOT null/undefined)
+"" ?? "default"; // "" ✅ (empty string is NOT null/undefined)
+false ?? "default"; // false ✅ (false is NOT null/undefined)
 
 // || comparison:
-0 || "default"           // "default" ⚠️ (0 is falsy)
-"" || "default"          // "default" ⚠️
-false || "default"       // "default" ⚠️
+0 || "default"; // "default" ⚠️ (0 is falsy)
+"" || "default"; // "default" ⚠️
+false || "default"; // "default" ⚠️
 
 // Real usage in React:
 function VideoPlayer({ volume }) {
   // volume could legitimately be 0 (muted)
-  const displayVolume = volume ?? 50  // Use 50 only if volume is null/undefined
+  const displayVolume = volume ?? 50; // Use 50 only if volume is null/undefined
   // NOT: volume || 50 — would show 50 when volume is 0!
 }
 
 // Combining with optional chaining:
-const productName = product?.details?.name ?? "Unknown Product"
-const price = product?.price?.amount ?? 0
+const productName = product?.details?.name ?? "Unknown Product";
+const price = product?.price?.amount ?? 0;
 ```
 
 ---
@@ -7595,29 +7645,29 @@ const price = product?.price?.amount ?? 0
 
 ```javascript
 // ||= (OR assignment): assign only if left side is FALSY
-let a = null
-a ||= "default"    // a = "default" (null is falsy)
-let b = "value"
-b ||= "default"    // b = "value" (already truthy, no assignment)
+let a = null;
+a ||= "default"; // a = "default" (null is falsy)
+let b = "value";
+b ||= "default"; // b = "value" (already truthy, no assignment)
 
 // &&= (AND assignment): assign only if left side is TRUTHY
-let user = { name: "Rahul" }
-user &&= { ...user, role: "admin" }  // assigns (user is truthy)
-let nothing = null
-nothing &&= { role: "admin" }        // nothing = null (stays null)
+let user = { name: "Rahul" };
+user &&= { ...user, role: "admin" }; // assigns (user is truthy)
+let nothing = null;
+nothing &&= { role: "admin" }; // nothing = null (stays null)
 
 // ??= (Nullish assignment): assign only if left side is NULL/UNDEFINED
-let config = null
-config ??= { theme: "dark" }  // config = { theme: "dark" }
-let count = 0
-count ??= 100                 // count = 0 ✅ (not null/undefined)
+let config = null;
+config ??= { theme: "dark" }; // config = { theme: "dark" }
+let count = 0;
+count ??= 100; // count = 0 ✅ (not null/undefined)
 
 // Practical: setting defaults
 function initUser(user) {
-  user.role ??= "guest"          // set role only if not already set
-  user.preferences ??= {}        // set preferences only if null/undefined
-  user.loginCount ||= 0          // set loginCount if falsy (0, null, undefined)
-  return user
+  user.role ??= "guest"; // set role only if not already set
+  user.preferences ??= {}; // set preferences only if null/undefined
+  user.loginCount ||= 0; // set loginCount if falsy (0, null, undefined)
+  return user;
 }
 ```
 
@@ -7636,10 +7686,10 @@ function initUser(user) {
 **Q3: What is the output?**
 
 ```javascript
-console.log(null ?? undefined ?? "first" ?? "second")
-console.log(null || undefined || "first" || "second")
-console.log(0 ?? "default")
-console.log(0 || "default")
+console.log(null ?? undefined ?? "first" ?? "second");
+console.log(null || undefined || "first" || "second");
+console.log(0 ?? "default");
+console.log(0 || "default");
 ```
 
 > `"first"` → `"first"` → `0` → `"default"`
@@ -7658,30 +7708,30 @@ console.log(0 || "default")
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| `for` loop | Classic counter-based iteration |
-| `while` loop | Condition-based iteration |
-| `do...while` | Runs at least once |
-| `for...of` | Iterating iterables (arrays, strings, Map, Set) |
-| `for...in` | Iterating object keys (with cautions) |
-| forEach vs for...of | Differences and when to use each |
-| break, continue, labels | Control flow inside loops |
+| Subtopic                | What You'll Learn                               |
+| ----------------------- | ----------------------------------------------- |
+| `for` loop              | Classic counter-based iteration                 |
+| `while` loop            | Condition-based iteration                       |
+| `do...while`            | Runs at least once                              |
+| `for...of`              | Iterating iterables (arrays, strings, Map, Set) |
+| `for...in`              | Iterating object keys (with cautions)           |
+| forEach vs for...of     | Differences and when to use each                |
+| break, continue, labels | Control flow inside loops                       |
 
 ---
 
 ### Loop Comparison Table
 
-| Loop | Use Case | Can Break? | Async Friendly? | Returns Value? |
-|------|----------|-----------|-----------------|----------------|
-| `for` | Known iteration count | ✅ | ✅ | ❌ |
-| `while` | Unknown count, condition-based | ✅ | ✅ | ❌ |
-| `do...while` | Run at least once | ✅ | ✅ | ❌ |
-| `for...of` | Iterables (array, string, Set, Map) | ✅ | ✅ | ❌ |
-| `for...in` | Object enumerable keys | ✅ | ✅ | ❌ |
-| `forEach` | Arrays only, no break | ❌ | ❌ (await doesn't work) | `undefined` |
-| `map` | Transform array | ❌ | ❌ | New array |
-| `filter` | Filter array | ❌ | ❌ | New array |
+| Loop         | Use Case                            | Can Break? | Async Friendly?         | Returns Value? |
+| ------------ | ----------------------------------- | ---------- | ----------------------- | -------------- |
+| `for`        | Known iteration count               | ✅         | ✅                      | ❌             |
+| `while`      | Unknown count, condition-based      | ✅         | ✅                      | ❌             |
+| `do...while` | Run at least once                   | ✅         | ✅                      | ❌             |
+| `for...of`   | Iterables (array, string, Set, Map) | ✅         | ✅                      | ❌             |
+| `for...in`   | Object enumerable keys              | ✅         | ✅                      | ❌             |
+| `forEach`    | Arrays only, no break               | ❌         | ❌ (await doesn't work) | `undefined`    |
+| `map`        | Transform array                     | ❌         | ❌                      | New array      |
+| `filter`     | Filter array                        | ❌         | ❌                      | New array      |
 
 ---
 
@@ -7690,23 +7740,23 @@ console.log(0 || "default")
 ```javascript
 // Classic for loop:
 for (let i = 0; i < 5; i++) {
-  console.log(i)  // 0, 1, 2, 3, 4
+  console.log(i); // 0, 1, 2, 3, 4
 }
 
 // Reverse iteration:
 for (let i = 4; i >= 0; i--) {
-  console.log(i)  // 4, 3, 2, 1, 0
+  console.log(i); // 4, 3, 2, 1, 0
 }
 
 // Skip by 2:
 for (let i = 0; i < 10; i += 2) {
-  console.log(i)  // 0, 2, 4, 6, 8
+  console.log(i); // 0, 2, 4, 6, 8
 }
 
 // Iterating array with index:
-const fruits = ["apple", "banana", "cherry"]
+const fruits = ["apple", "banana", "cherry"];
 for (let i = 0; i < fruits.length; i++) {
-  console.log(`${i}: ${fruits[i]}`)
+  console.log(`${i}: ${fruits[i]}`);
 }
 
 // ⚠️ Performance: cache array length if array is large
@@ -7725,37 +7775,40 @@ for (let i = 0, len = fruits.length; i < len; i++) {
 
 ```javascript
 // Arrays:
-const nums = [10, 20, 30]
+const nums = [10, 20, 30];
 for (const num of nums) {
-  console.log(num)  // 10, 20, 30
+  console.log(num); // 10, 20, 30
 }
 
 // With index (using entries()):
 for (const [index, value] of nums.entries()) {
-  console.log(`${index}: ${value}`)  // "0: 10", "1: 20", "2: 30"
+  console.log(`${index}: ${value}`); // "0: 10", "1: 20", "2: 30"
 }
 
 // Strings (iterates characters):
 for (const char of "hello") {
-  console.log(char)  // h, e, l, l, o
+  console.log(char); // h, e, l, l, o
 }
 
 // Map:
-const map = new Map([["a", 1], ["b", 2]])
+const map = new Map([
+  ["a", 1],
+  ["b", 2],
+]);
 for (const [key, value] of map) {
-  console.log(`${key} → ${value}`)  // "a → 1", "b → 2"
+  console.log(`${key} → ${value}`); // "a → 1", "b → 2"
 }
 
 // Set:
-const set = new Set([1, 2, 3, 2, 1])  // {1, 2, 3}
+const set = new Set([1, 2, 3, 2, 1]); // {1, 2, 3}
 for (const value of set) {
-  console.log(value)  // 1, 2, 3 (unique values only)
+  console.log(value); // 1, 2, 3 (unique values only)
 }
 
 // ✅ for...of supports await (async-friendly):
 async function processItems(items) {
   for (const item of items) {
-    await processItem(item)  // ✅ Works! Awaits each iteration
+    await processItem(item); // ✅ Works! Awaits each iteration
   }
 }
 ```
@@ -7765,35 +7818,38 @@ async function processItems(items) {
 ### `for...in` — Object Key Iteration (Use with Caution!)
 
 ```javascript
-const person = { name: "Rahul", age: 25, city: "Mumbai" }
+const person = { name: "Rahul", age: 25, city: "Mumbai" };
 
 for (const key in person) {
-  console.log(`${key}: ${person[key]}`)
+  console.log(`${key}: ${person[key]}`);
   // "name: Rahul", "age: 25", "city: Mumbai"
 }
 
 // ⚠️ DANGER: for...in iterates INHERITED properties too!
-function Animal(name) { this.name = name }
-Animal.prototype.sound = "generic"
+function Animal(name) {
+  this.name = name;
+}
+Animal.prototype.sound = "generic";
 
-const dog = new Animal("Rex")
-dog.breed = "Labrador"
+const dog = new Animal("Rex");
+dog.breed = "Labrador";
 
 for (const key in dog) {
-  console.log(key)  // "name", "breed", "sound" ⚠️ (inherited!)
+  console.log(key); // "name", "breed", "sound" ⚠️ (inherited!)
 }
 
 // Safe pattern — use hasOwnProperty:
 for (const key in dog) {
-  if (Object.hasOwn(dog, key)) {  // or dog.hasOwnProperty(key)
-    console.log(key)  // "name", "breed" (own properties only)
+  if (Object.hasOwn(dog, key)) {
+    // or dog.hasOwnProperty(key)
+    console.log(key); // "name", "breed" (own properties only)
   }
 }
 
 // ⚠️ Don't use for...in on arrays!
-const arr = [10, 20, 30]
+const arr = [10, 20, 30];
 for (const index in arr) {
-  console.log(index)  // "0", "1", "2" (strings! not numbers!)
+  console.log(index); // "0", "1", "2" (strings! not numbers!)
   // Also includes any enumerable properties added to Array.prototype
 }
 // Use for...of for arrays instead.
@@ -7810,35 +7866,35 @@ for (const index in arr) {
 ### `forEach` vs `for...of` — Key Differences
 
 ```javascript
-const arr = [1, 2, 3, 4, 5]
+const arr = [1, 2, 3, 4, 5];
 
 // forEach — cannot break, cannot use await properly:
-arr.forEach(num => {
-  if (num === 3) return  // ⚠️ This 'return' only exits the callback, NOT the loop!
-  console.log(num)       // 1, 2, 4, 5 (3 is skipped but loop continues)
-})
+arr.forEach((num) => {
+  if (num === 3) return; // ⚠️ This 'return' only exits the callback, NOT the loop!
+  console.log(num); // 1, 2, 4, 5 (3 is skipped but loop continues)
+});
 // There's NO way to break out of forEach early!
 
 // for...of — can break, await works:
 for (const num of arr) {
-  if (num === 3) break   // ✅ Actually breaks the loop
-  console.log(num)       // 1, 2 (stops at 3)
+  if (num === 3) break; // ✅ Actually breaks the loop
+  console.log(num); // 1, 2 (stops at 3)
 }
 
 // async with forEach (WRONG pattern!):
 async function wrongAsync(arr) {
   arr.forEach(async (item) => {
-    await fetchData(item)  // ⚠️ forEach doesn't wait! All run concurrently
-  })
-  console.log("done?")  // Prints BEFORE all fetches complete!
+    await fetchData(item); // ⚠️ forEach doesn't wait! All run concurrently
+  });
+  console.log("done?"); // Prints BEFORE all fetches complete!
 }
 
 // async with for...of (CORRECT):
 async function correctAsync(arr) {
   for (const item of arr) {
-    await fetchData(item)  // ✅ Waits for each fetch before continuing
+    await fetchData(item); // ✅ Waits for each fetch before continuing
   }
-  console.log("done!")   // Prints AFTER all fetches complete
+  console.log("done!"); // Prints AFTER all fetches complete
 }
 ```
 
@@ -7849,21 +7905,21 @@ async function correctAsync(arr) {
 ```javascript
 // break — exit loop immediately:
 for (let i = 0; i < 10; i++) {
-  if (i === 5) break
-  console.log(i)  // 0, 1, 2, 3, 4
+  if (i === 5) break;
+  console.log(i); // 0, 1, 2, 3, 4
 }
 
 // continue — skip current iteration:
 for (let i = 0; i < 10; i++) {
-  if (i % 2 === 0) continue  // skip even numbers
-  console.log(i)  // 1, 3, 5, 7, 9
+  if (i % 2 === 0) continue; // skip even numbers
+  console.log(i); // 1, 3, 5, 7, 9
 }
 
 // Labels — for breaking/continuing outer loops:
 outer: for (let i = 0; i < 3; i++) {
   inner: for (let j = 0; j < 3; j++) {
-    if (i === 1 && j === 1) break outer   // breaks both loops!
-    console.log(i, j)
+    if (i === 1 && j === 1) break outer; // breaks both loops!
+    console.log(i, j);
   }
 }
 // Output: 0,0  0,1  0,2  1,0  (stops when i=1, j=1)
@@ -7871,8 +7927,8 @@ outer: for (let i = 0; i < 3; i++) {
 // Labels with continue:
 outer: for (let i = 0; i < 3; i++) {
   for (let j = 0; j < 3; j++) {
-    if (j === 1) continue outer  // skips to next i iteration
-    console.log(i, j)
+    if (j === 1) continue outer; // skips to next i iteration
+    console.log(i, j);
   }
 }
 // Output: 0,0  1,0  2,0
@@ -7904,26 +7960,26 @@ outer: for (let i = 0; i < 3; i++) {
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Function Declaration | Syntax, full hoisting, own `this` |
-| Function Expression | Not hoisted, var/let/const binding |
-| Arrow Function | Lexical `this`, no `arguments`, concise body |
-| IIFE | Immediately invoked, private scope pattern |
+| Subtopic                        | What You'll Learn                                    |
+| ------------------------------- | ---------------------------------------------------- |
+| Function Declaration            | Syntax, full hoisting, own `this`                    |
+| Function Expression             | Not hoisted, var/let/const binding                   |
+| Arrow Function                  | Lexical `this`, no `arguments`, concise body         |
+| IIFE                            | Immediately invoked, private scope pattern           |
 | When NOT to use Arrow Functions | Methods, constructors, event handlers needing `this` |
 
 ---
 
 ### The Four Types — Quick Comparison
 
-| Feature | Declaration | Expression | Arrow | IIFE |
-|---------|------------|-----------|-------|------|
-| **Syntax** | `function f(){}` | `const f = function(){}` | `const f = () => {}` | `(function(){})()` |
-| **Hoisted?** | ✅ Fully | ❌ (var: undefined) | ❌ | ❌ |
-| **Own `this`?** | ✅ Yes | ✅ Yes | ❌ Lexical | ✅ Yes |
-| **`arguments` object?** | ✅ Yes | ✅ Yes | ❌ No | ✅ Yes |
-| **Can be constructor?** | ✅ Yes | ✅ Yes | ❌ No | ❌ No |
-| **Named in stack trace?** | ✅ Yes | If named | No (unless named) | No |
+| Feature                   | Declaration      | Expression               | Arrow                | IIFE               |
+| ------------------------- | ---------------- | ------------------------ | -------------------- | ------------------ |
+| **Syntax**                | `function f(){}` | `const f = function(){}` | `const f = () => {}` | `(function(){})()` |
+| **Hoisted?**              | ✅ Fully         | ❌ (var: undefined)      | ❌                   | ❌                 |
+| **Own `this`?**           | ✅ Yes           | ✅ Yes                   | ❌ Lexical           | ✅ Yes             |
+| **`arguments` object?**   | ✅ Yes           | ✅ Yes                   | ❌ No                | ✅ Yes             |
+| **Can be constructor?**   | ✅ Yes           | ✅ Yes                   | ❌ No                | ❌ No              |
+| **Named in stack trace?** | ✅ Yes           | If named                 | No (unless named)    | No                 |
 
 ---
 
@@ -7931,25 +7987,25 @@ outer: for (let i = 0; i < 3; i++) {
 
 ```javascript
 // Hoisted fully — can call BEFORE declaration:
-greet("Rahul")  // ✅ "Hello, Rahul!" (hoisting)
+greet("Rahul"); // ✅ "Hello, Rahul!" (hoisting)
 
 function greet(name) {
-  console.log(`Hello, ${name}!`)
-  return `Hello, ${name}!`
+  console.log(`Hello, ${name}!`);
+  return `Hello, ${name}!`;
 }
 
 // Has own 'this' — depends on call site:
 function showThis() {
-  console.log(this)
+  console.log(this);
 }
-showThis()               // window (browser) / global (Node) / undefined (strict)
-const obj = { showThis }
-obj.showThis()           // { showThis: [Function] } (obj is the caller)
+showThis(); // window (browser) / global (Node) / undefined (strict)
+const obj = { showThis };
+obj.showThis(); // { showThis: [Function] } (obj is the caller)
 
 // Recursive functions — can call themselves by name:
 function factorial(n) {
-  if (n <= 1) return 1
-  return n * factorial(n - 1)  // calls itself
+  if (n <= 1) return 1;
+  return n * factorial(n - 1); // calls itself
 }
 ```
 
@@ -7962,30 +8018,34 @@ function factorial(n) {
 // greetExpr("Rahul")  // ❌ TypeError: greetExpr is not a function (var)
 //                        ❌ ReferenceError (let/const)
 
-const greetExpr = function(name) {
-  return `Hello, ${name}!`
-}
+const greetExpr = function (name) {
+  return `Hello, ${name}!`;
+};
 
-greetExpr("Rahul")  // ✅ Works after declaration
+greetExpr("Rahul"); // ✅ Works after declaration
 
 // Named function expression (name only accessible inside):
 const factorial = function fact(n) {
-  if (n <= 1) return 1
-  return n * fact(n - 1)  // 'fact' accessible inside only
-}
-factorial(5)   // ✅
+  if (n <= 1) return 1;
+  return n * fact(n - 1); // 'fact' accessible inside only
+};
+factorial(5); // ✅
 // fact(5)     // ❌ ReferenceError outside
 
 // As callback:
-setTimeout(function() {
-  console.log("timeout")
-}, 1000)
+setTimeout(function () {
+  console.log("timeout");
+}, 1000);
 
 // Assigned to object property:
 const calculator = {
-  add: function(a, b) { return a + b },
-  subtract: function(a, b) { return a - b }
-}
+  add: function (a, b) {
+    return a + b;
+  },
+  subtract: function (a, b) {
+    return a - b;
+  },
+};
 ```
 
 ---
@@ -7994,13 +8054,13 @@ const calculator = {
 
 ```javascript
 // Arrow function syntax:
-const add = (a, b) => a + b           // Single expression — implicit return
-const square = x => x * x             // Single param — no parens needed
-const getObj = () => ({ key: "val" }) // Return object — wrap in parens!
+const add = (a, b) => a + b; // Single expression — implicit return
+const square = (x) => x * x; // Single param — no parens needed
+const getObj = () => ({ key: "val" }); // Return object — wrap in parens!
 const greet = () => {
-  const msg = "Hello!"
-  return msg                          // Multiple lines — need explicit return
-}
+  const msg = "Hello!";
+  return msg; // Multiple lines — need explicit return
+};
 
 // ⚡ KEY DIFFERENCE: Lexical 'this'
 // Arrow functions don't have their own 'this'
@@ -8009,37 +8069,37 @@ const greet = () => {
 // ❌ Regular function 'this' (dynamic binding):
 const timer1 = {
   seconds: 0,
-  start: function() {
-    setInterval(function() {
-      this.seconds++           // ❌ 'this' is undefined (or window in non-strict)
+  start: function () {
+    setInterval(function () {
+      this.seconds++; // ❌ 'this' is undefined (or window in non-strict)
       // 'this' inside setInterval callback refers to global/undefined
-    }, 1000)
-  }
-}
+    }, 1000);
+  },
+};
 
 // ✅ Arrow function 'this' (lexical binding):
 const timer2 = {
   seconds: 0,
-  start: function() {
+  start: function () {
     setInterval(() => {
-      this.seconds++  // ✅ 'this' refers to timer2 (inherited from start method)
-    }, 1000)
-  }
-}
+      this.seconds++; // ✅ 'this' refers to timer2 (inherited from start method)
+    }, 1000);
+  },
+};
 
 // Arrow functions have NO 'arguments' object:
 function regular() {
-  console.log(arguments)   // ✅ Arguments object
+  console.log(arguments); // ✅ Arguments object
 }
 
 const arrow = () => {
-  console.log(arguments)   // ❌ ReferenceError (or captures outer arguments)
-}
+  console.log(arguments); // ❌ ReferenceError (or captures outer arguments)
+};
 
 // Use rest params instead:
 const arrowWithRest = (...args) => {
-  console.log(args)        // ✅ Array of arguments
-}
+  console.log(args); // ✅ Array of arguments
+};
 ```
 
 ---
@@ -8053,59 +8113,61 @@ const arrowWithRest = (...args) => {
 const user = {
   name: "Rahul",
   greet: () => {
-    console.log(`Hello, ${this.name}`)  // ❌ 'this' is not user!
+    console.log(`Hello, ${this.name}`); // ❌ 'this' is not user!
     // 'this' is the enclosing scope (window or undefined)
-  }
-}
-user.greet()  // "Hello, undefined"
+  },
+};
+user.greet(); // "Hello, undefined"
 
 // ✅ Use regular function for object methods:
 const user2 = {
   name: "Rahul",
-  greet: function() {
-    console.log(`Hello, ${this.name}`)  // ✅ 'this' is user2
-  }
-}
+  greet: function () {
+    console.log(`Hello, ${this.name}`); // ✅ 'this' is user2
+  },
+};
 // Or method shorthand:
 const user3 = {
   name: "Rahul",
   greet() {
-    console.log(`Hello, ${this.name}`)  // ✅
-  }
-}
+    console.log(`Hello, ${this.name}`); // ✅
+  },
+};
 
 // ❌ 2. Constructor functions:
 const Person = (name) => {
-  this.name = name  // ❌ Arrow functions can't be constructors
-}
-new Person("Rahul")  // ❌ TypeError: Person is not a constructor
+  this.name = name; // ❌ Arrow functions can't be constructors
+};
+new Person("Rahul"); // ❌ TypeError: Person is not a constructor
 
 // ✅ Use regular function or class:
 function Person(name) {
-  this.name = name
+  this.name = name;
 }
-const p = new Person("Rahul")  // ✅
+const p = new Person("Rahul"); // ✅
 
 // ❌ 3. Event handlers needing 'this' to be the element:
 document.querySelector(".btn").addEventListener("click", () => {
-  this.classList.toggle("active")  // ❌ 'this' is not the button
-})
+  this.classList.toggle("active"); // ❌ 'this' is not the button
+});
 
 // ✅ Use regular function:
-document.querySelector(".btn").addEventListener("click", function() {
-  this.classList.toggle("active")  // ✅ 'this' is the button element
-})
+document.querySelector(".btn").addEventListener("click", function () {
+  this.classList.toggle("active"); // ✅ 'this' is the button element
+});
 
 // ❌ 4. prototype methods:
-function Animal(name) { this.name = name }
-Animal.prototype.speak = () => {
-  console.log(`${this.name} speaks`)  // ❌ 'this' is not the instance
+function Animal(name) {
+  this.name = name;
 }
+Animal.prototype.speak = () => {
+  console.log(`${this.name} speaks`); // ❌ 'this' is not the instance
+};
 
 // ✅ Regular function:
-Animal.prototype.speak = function() {
-  console.log(`${this.name} speaks`)  // ✅
-}
+Animal.prototype.speak = function () {
+  console.log(`${this.name} speaks`); // ✅
+};
 ```
 
 ---
@@ -8114,21 +8176,21 @@ Animal.prototype.speak = function() {
 
 ```javascript
 // IIFE pattern — runs immediately, creates private scope:
-(function() {
-  var privateVar = "I'm private"
-  console.log("IIFE executed!")
-  console.log(privateVar)
-})()
-
-// Arrow IIFE:
-(() => {
-  console.log("Arrow IIFE!")
-})()
-
-// With parameters:
-(function(name) {
-  console.log(`Hello, ${name}!`)
-})("Rahul")  // "Hello, Rahul!"
+(function () {
+  var privateVar = "I'm private";
+  console.log("IIFE executed!");
+  console.log(privateVar);
+})()(
+  // Arrow IIFE:
+  () => {
+    console.log("Arrow IIFE!");
+  },
+)()(
+  // With parameters:
+  function (name) {
+    console.log(`Hello, ${name}!`);
+  },
+)("Rahul"); // "Hello, Rahul!"
 
 // ✅ Use cases:
 // 1. Avoid polluting global scope (legacy pattern before modules)
@@ -8136,18 +8198,18 @@ Animal.prototype.speak = function() {
 // 3. Initialize code that runs once
 
 // Module pattern with IIFE:
-const Counter = (function() {
-  let count = 0           // Private — not accessible outside
+const Counter = (function () {
+  let count = 0; // Private — not accessible outside
   return {
     increment: () => ++count,
     decrement: () => --count,
-    getCount: () => count
-  }
-})()
+    getCount: () => count,
+  };
+})();
 
-Counter.increment()  // 1
-Counter.increment()  // 2
-Counter.getCount()   // 2
+Counter.increment(); // 1
+Counter.increment(); // 2
+Counter.getCount(); // 2
 // Counter.count     // ❌ undefined — count is private
 
 // Modern alternative: ES Modules (preferred over IIFE today)
@@ -8174,12 +8236,14 @@ Counter.getCount()   // 2
 ```javascript
 const obj = {
   x: 10,
-  regular: function() { return this.x },
-  arrow: () => this.x
-}
+  regular: function () {
+    return this.x;
+  },
+  arrow: () => this.x,
+};
 
-console.log(obj.regular())  // ?
-console.log(obj.arrow())    // ?
+console.log(obj.regular()); // ?
+console.log(obj.arrow()); // ?
 ```
 
 > `10` → `undefined` (in strict mode) or `window.x` (browser non-strict)
@@ -8195,13 +8259,13 @@ console.log(obj.arrow())    // ?
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Parameters vs Arguments | Definition-time vs Call-time values |
-| Default Parameters | ES6 default values, evaluation order |
-| Rest Parameters (`...args`) | Collect remaining args into array |
-| `arguments` Object | Legacy, only in regular functions |
-| Spread in Calls (`...arr`) | Expand array into individual arguments |
+| Subtopic                    | What You'll Learn                      |
+| --------------------------- | -------------------------------------- |
+| Parameters vs Arguments     | Definition-time vs Call-time values    |
+| Default Parameters          | ES6 default values, evaluation order   |
+| Rest Parameters (`...args`) | Collect remaining args into array      |
+| `arguments` Object          | Legacy, only in regular functions      |
+| Spread in Calls (`...arr`)  | Expand array into individual arguments |
 
 ---
 
@@ -8212,18 +8276,18 @@ console.log(obj.arrow())    // ?
 ```javascript
 // Parameters: a, b (definition time names):
 function add(a, b) {
-  return a + b
+  return a + b;
 }
 
 // Arguments: 5, 10 (call time values):
-add(5, 10)  // a=5, b=10
+add(5, 10); // a=5, b=10
 
 // More args than params — extras ignored:
-add(1, 2, 3, 4)  // a=1, b=2, 3 and 4 are ignored
+add(1, 2, 3, 4); // a=1, b=2, 3 and 4 are ignored
 
 // Fewer args than params — missing = undefined:
-add(5)       // a=5, b=undefined → 5 + undefined = NaN
-add()        // a=undefined, b=undefined → NaN
+add(5); // a=5, b=undefined → 5 + undefined = NaN
+add(); // a=undefined, b=undefined → NaN
 ```
 
 ---
@@ -8233,22 +8297,22 @@ add()        // a=undefined, b=undefined → NaN
 ```javascript
 // ES6 default parameters:
 function greet(name = "Guest", greeting = "Hello") {
-  return `${greeting}, ${name}!`
+  return `${greeting}, ${name}!`;
 }
-greet()                     // "Hello, Guest!" (both defaults)
-greet("Rahul")              // "Hello, Rahul!" (greeting defaults)
-greet("Rahul", "Namaste")   // "Namaste, Rahul!" (no defaults)
-greet(undefined, "Hi")      // "Hi, Guest!" (undefined triggers default)
-greet(null, "Hi")           // "Hi, null!" (null does NOT trigger default!)
+greet(); // "Hello, Guest!" (both defaults)
+greet("Rahul"); // "Hello, Rahul!" (greeting defaults)
+greet("Rahul", "Namaste"); // "Namaste, Rahul!" (no defaults)
+greet(undefined, "Hi"); // "Hi, Guest!" (undefined triggers default)
+greet(null, "Hi"); // "Hi, null!" (null does NOT trigger default!)
 
 // ⚠️ Only undefined triggers defaults, NOT null or false or 0:
 function test(x = 10) {
-  console.log(x)
+  console.log(x);
 }
-test(undefined)  // 10 (uses default)
-test(null)       // null (null overrides default!)
-test(false)      // false
-test(0)          // 0
+test(undefined); // 10 (uses default)
+test(null); // null (null overrides default!)
+test(false); // false
+test(0); // 0
 
 // Defaults can use previous parameters:
 function range(start, end = start, step = 1) {
@@ -8257,17 +8321,19 @@ function range(start, end = start, step = 1) {
 }
 
 // Defaults can be function calls (evaluated at call time!):
-function getDefault() { return Date.now() }
+function getDefault() {
+  return Date.now();
+}
 function stamp(ts = getDefault()) {
-  return ts  // Different value each call if ts not provided
+  return ts; // Different value each call if ts not provided
 }
 
 // Defaults can reference earlier params:
 function multiply(a, b = a * 2) {
-  return a + b
+  return a + b;
 }
-multiply(5)    // 5 + 10 = 15
-multiply(5, 3) // 5 + 3 = 8
+multiply(5); // 5 + 10 = 15
+multiply(5, 3); // 5 + 3 = 8
 ```
 
 ---
@@ -8343,33 +8409,33 @@ function modern(...args) {
 
 ```javascript
 // Spread expands array into individual arguments:
-const nums = [3, 1, 4, 1, 5, 9, 2, 6]
+const nums = [3, 1, 4, 1, 5, 9, 2, 6];
 
-Math.max(nums)        // NaN ❌ (Math.max doesn't accept an array)
-Math.max(...nums)     // 9 ✅ (spread expands: Math.max(3, 1, 4, 1, 5, 9, 2, 6))
-Math.min(...nums)     // 1 ✅
+Math.max(nums); // NaN ❌ (Math.max doesn't accept an array)
+Math.max(...nums); // 9 ✅ (spread expands: Math.max(3, 1, 4, 1, 5, 9, 2, 6))
+Math.min(...nums); // 1 ✅
 
 // Combining arrays:
-const arr1 = [1, 2, 3]
-const arr2 = [4, 5, 6]
-const combined = [...arr1, ...arr2]  // [1, 2, 3, 4, 5, 6]
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const combined = [...arr1, ...arr2]; // [1, 2, 3, 4, 5, 6]
 
 // Cloning (shallow copy):
-const original = [1, [2, 3], 4]
-const clone = [...original]   // [1, [2, 3], 4] (shallow!)
-clone[0] = 99
-clone[1][0] = 99
-console.log(original[0])     // 1 (not affected — primitive)
-console.log(original[1][0])  // 99 ⚠️ (affected — nested array reference!)
+const original = [1, [2, 3], 4];
+const clone = [...original]; // [1, [2, 3], 4] (shallow!)
+clone[0] = 99;
+clone[1][0] = 99;
+console.log(original[0]); // 1 (not affected — primitive)
+console.log(original[1][0]); // 99 ⚠️ (affected — nested array reference!)
 
 // Object spread:
-const obj1 = { a: 1, b: 2 }
-const obj2 = { b: 3, c: 4 }
-const merged = { ...obj1, ...obj2 }  // { a: 1, b: 3, c: 4 } (b overwritten)
+const obj1 = { a: 1, b: 2 };
+const obj2 = { b: 3, c: 4 };
+const merged = { ...obj1, ...obj2 }; // { a: 1, b: 3, c: 4 } (b overwritten)
 
 // Real-world React pattern:
 function updateState(prevState, updates) {
-  return { ...prevState, ...updates }  // Immutable update pattern
+  return { ...prevState, ...updates }; // Immutable update pattern
 }
 ```
 
@@ -8389,10 +8455,10 @@ function updateState(prevState, updates) {
 
 ```javascript
 function test(a, b = a * 2, c = a + b) {
-  return [a, b, c]
+  return [a, b, c];
 }
-console.log(test(3))
-console.log(test(3, 5))
+console.log(test(3));
+console.log(test(3, 5));
 ```
 
 > `[3, 6, 9]` → `[3, 5, 8]`
@@ -8408,13 +8474,13 @@ console.log(test(3, 5))
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| What is a Callback? | Definition and purpose |
-| Synchronous Callbacks | forEach, map, filter, sort |
-| Asynchronous Callbacks | setTimeout, event listeners, fs.readFile |
-| Callback Hell | Pyramid of doom problem |
-| Inversion of Control | Why callback hell exists deeper than nesting |
+| Subtopic               | What You'll Learn                            |
+| ---------------------- | -------------------------------------------- |
+| What is a Callback?    | Definition and purpose                       |
+| Synchronous Callbacks  | forEach, map, filter, sort                   |
+| Asynchronous Callbacks | setTimeout, event listeners, fs.readFile     |
+| Callback Hell          | Pyramid of doom problem                      |
+| Inversion of Control   | Why callback hell exists deeper than nesting |
 
 ---
 
@@ -8427,16 +8493,16 @@ A **callback function** is a function passed as an **argument** to another funct
 ```javascript
 // Basic callback pattern:
 function doSomething(value, callback) {
-  const result = value * 2
-  callback(result)    // calling the callback with result
+  const result = value * 2;
+  callback(result); // calling the callback with result
 }
 
-doSomething(5, function(result) {
-  console.log("Result:", result)  // "Result: 10"
-})
+doSomething(5, function (result) {
+  console.log("Result:", result); // "Result: 10"
+});
 
 // Arrow function callback:
-doSomething(5, result => console.log("Result:", result))
+doSomething(5, (result) => console.log("Result:", result));
 ```
 
 ---
@@ -8445,34 +8511,34 @@ doSomething(5, result => console.log("Result:", result))
 
 ```javascript
 // Array methods use synchronous callbacks:
-const numbers = [1, 2, 3, 4, 5]
+const numbers = [1, 2, 3, 4, 5];
 
 // forEach — callback called synchronously for each element:
-numbers.forEach(n => console.log(n * 2))
-console.log("after forEach")  // Prints AFTER forEach is done
+numbers.forEach((n) => console.log(n * 2));
+console.log("after forEach"); // Prints AFTER forEach is done
 
 // map — transform each element:
-const doubled = numbers.map(n => n * 2)  // [2, 4, 6, 8, 10]
+const doubled = numbers.map((n) => n * 2); // [2, 4, 6, 8, 10]
 
 // filter — keep elements where callback returns true:
-const evens = numbers.filter(n => n % 2 === 0)  // [2, 4]
+const evens = numbers.filter((n) => n % 2 === 0); // [2, 4]
 
 // sort — sort with comparison callback:
-const sorted = [3, 1, 4, 1, 5, 9].sort((a, b) => a - b)  // ascending
+const sorted = [3, 1, 4, 1, 5, 9].sort((a, b) => a - b); // ascending
 // a - b: negative = a first, 0 = equal, positive = b first
 
 // reduce — accumulate:
-const sum = numbers.reduce((acc, n) => acc + n, 0)  // 15
+const sum = numbers.reduce((acc, n) => acc + n, 0); // 15
 
 // Custom synchronous callback:
 function runWithLogging(fn, ...args) {
-  console.log("Before:", fn.name)
-  const result = fn(...args)
-  console.log("After:", fn.name)
-  return result
+  console.log("Before:", fn.name);
+  const result = fn(...args);
+  console.log("After:", fn.name);
+  return result;
 }
 
-runWithLogging(Math.max, 1, 5, 3)
+runWithLogging(Math.max, 1, 5, 3);
 // "Before: max" → "After: max" → 5
 ```
 
@@ -8482,26 +8548,26 @@ runWithLogging(Math.max, 1, 5, 3)
 
 ```javascript
 // setTimeout — callback runs after delay:
-setTimeout(function() {
-  console.log("2 seconds later")
-}, 2000)
-console.log("synchronous code")  // Runs first!
+setTimeout(function () {
+  console.log("2 seconds later");
+}, 2000);
+console.log("synchronous code"); // Runs first!
 
 // Event listeners:
-document.querySelector("#btn").addEventListener("click", function(event) {
-  console.log("Clicked!", event.target)  // Callback runs when clicked
-})
+document.querySelector("#btn").addEventListener("click", function (event) {
+  console.log("Clicked!", event.target); // Callback runs when clicked
+});
 
 // Node.js fs:
-const fs = require("fs")
-fs.readFile("./data.txt", "utf8", function(error, data) {
+const fs = require("fs");
+fs.readFile("./data.txt", "utf8", function (error, data) {
   if (error) {
-    console.error("Read failed:", error)
-    return
+    console.error("Read failed:", error);
+    return;
   }
-  console.log("File contents:", data)
-})
-console.log("Reading file...")  // Runs before callback
+  console.log("File contents:", data);
+});
+console.log("Reading file..."); // Runs before callback
 ```
 
 ---
@@ -8510,27 +8576,27 @@ console.log("Reading file...")  // Runs before callback
 
 ```javascript
 // ❌ Callback hell — deeply nested, hard to read and maintain:
-getUser(userId, function(error, user) {
-  if (error) return handleError(error)
+getUser(userId, function (error, user) {
+  if (error) return handleError(error);
 
-  getUserPosts(user.id, function(error, posts) {
-    if (error) return handleError(error)
+  getUserPosts(user.id, function (error, posts) {
+    if (error) return handleError(error);
 
-    getPostComments(posts[0].id, function(error, comments) {
-      if (error) return handleError(error)
+    getPostComments(posts[0].id, function (error, comments) {
+      if (error) return handleError(error);
 
-      getCommentLikes(comments[0].id, function(error, likes) {
-        if (error) return handleError(error)
+      getCommentLikes(comments[0].id, function (error, likes) {
+        if (error) return handleError(error);
 
-        getAuthorProfile(likes[0].userId, function(error, profile) {
-          if (error) return handleError(error)
+        getAuthorProfile(likes[0].userId, function (error, profile) {
+          if (error) return handleError(error);
           // 5 levels deep! "Pyramid of Doom"
-          console.log(profile)
-        })
-      })
-    })
-  })
-})
+          console.log(profile);
+        });
+      });
+    });
+  });
+});
 ```
 
 ```mermaid
@@ -8574,16 +8640,16 @@ function processPayment(amount, onSuccess) {
 
 // Solution 1: Promises (you control .then())
 processPayment(amount)
-  .then(result => handleSuccess(result))  // You decide what to do with result
-  .catch(err => handleError(err))
+  .then((result) => handleSuccess(result)) // You decide what to do with result
+  .catch((err) => handleError(err));
 
 // Solution 2: async/await (most readable):
 async function handlePayment(amount) {
   try {
-    const result = await processPayment(amount)
-    handleSuccess(result)
+    const result = await processPayment(amount);
+    handleSuccess(result);
   } catch (err) {
-    handleError(err)
+    handleError(err);
   }
 }
 ```
@@ -8614,13 +8680,13 @@ async function handlePayment(amount) {
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| What is Strict Mode? | Purpose and how to enable |
-| What It Prevents | All restrictions strict mode enforces |
-| `this` in Strict Mode | Global `this` is `undefined` |
-| ES6 Modules & Classes | Always strict mode |
-| React & Strict Mode | React.StrictMode component |
+| Subtopic              | What You'll Learn                     |
+| --------------------- | ------------------------------------- |
+| What is Strict Mode?  | Purpose and how to enable             |
+| What It Prevents      | All restrictions strict mode enforces |
+| `this` in Strict Mode | Global `this` is `undefined`          |
+| ES6 Modules & Classes | Always strict mode                    |
+| React & Strict Mode   | React.StrictMode component            |
 
 ---
 
@@ -8632,11 +8698,11 @@ async function handlePayment(amount) {
 
 ```javascript
 // Enable for entire file (top of file):
-"use strict"
+"use strict";
 
 // or enable for just one function:
 function strictFunction() {
-  "use strict"
+  "use strict";
   // strict mode only inside this function
 }
 
@@ -8649,57 +8715,58 @@ function strictFunction() {
 ### What Strict Mode Prevents — Complete List
 
 ```javascript
-"use strict"
+"use strict";
 
 // 1. Undeclared variables — creates global accidentally:
-x = 10              // ❌ ReferenceError: x is not defined
+x = 10; // ❌ ReferenceError: x is not defined
 // Without strict: creates window.x — pollutes global scope
 
 // 2. Duplicate parameter names:
-function test(a, a) {}  // ❌ SyntaxError: Duplicate parameter name not allowed
+function test(a, a) {} // ❌ SyntaxError: Duplicate parameter name not allowed
 // Without strict: silently works (second 'a' wins)
 
 // 3. Deleting undeletable properties:
-delete Object.prototype  // ❌ TypeError
+delete Object.prototype; // ❌ TypeError
 // Without strict: silently fails
 
 // 4. Writing to read-only properties:
-const obj = {}
-Object.defineProperty(obj, "fixed", { value: 42, writable: false })
-obj.fixed = 100     // ❌ TypeError: Cannot assign to read only property
+const obj = {};
+Object.defineProperty(obj, "fixed", { value: 42, writable: false });
+obj.fixed = 100; // ❌ TypeError: Cannot assign to read only property
 // Without strict: silently fails
 
 // 5. Using reserved future keywords:
-var let = 5         // ❌ SyntaxError (let is reserved)
-var static = true   // ❌ SyntaxError
+var let = 5; // ❌ SyntaxError (let is reserved)
+var static = true; // ❌ SyntaxError
 
 // 6. 'this' in global function calls = undefined (not window):
 function test() {
-  console.log(this)  // undefined in strict mode, window in non-strict
+  console.log(this); // undefined in strict mode, window in non-strict
 }
-test()
+test();
 
 // 7. with statement not allowed:
-with (Math) {        // ❌ SyntaxError: Strict mode code may not include a with statement
-  console.log(PI)    // 3.14...
+with (Math) {
+  // ❌ SyntaxError: Strict mode code may not include a with statement
+  console.log(PI); // 3.14...
 }
 
 // 8. arguments object doesn't track parameter changes:
 function test(a) {
-  "use strict"
-  a = 10
-  console.log(arguments[0])  // Still original value (not 10)
+  "use strict";
+  a = 10;
+  console.log(arguments[0]); // Still original value (not 10)
   // Without strict: arguments[0] changes when 'a' changes
 }
 
 // 9. eval has its own scope:
-eval("var sneaky = 1")
-console.log(sneaky)  // ❌ ReferenceError in strict mode
+eval("var sneaky = 1");
+console.log(sneaky); // ❌ ReferenceError in strict mode
 // Without strict: sneaky leaks to outer scope
 
 // 10. Octal literals not allowed:
-var oct = 0777     // ❌ SyntaxError
-var oct2 = 0o777   // ✅ ES6 octal syntax (allowed even in strict)
+var oct = 0777; // ❌ SyntaxError
+var oct2 = 0o777; // ✅ ES6 octal syntax (allowed even in strict)
 ```
 
 ---
@@ -8709,28 +8776,28 @@ var oct2 = 0o777   // ✅ ES6 octal syntax (allowed even in strict)
 ```javascript
 // Non-strict: global function this = window/global
 function noStrict() {
-  console.log(this === window)  // true (browser)
+  console.log(this === window); // true (browser)
 }
 
 // Strict: global function this = undefined
 function withStrict() {
-  "use strict"
-  console.log(this === undefined)  // true
+  "use strict";
+  console.log(this === undefined); // true
 }
 
 // This matters for class methods called without object context:
 class MyClass {
   // Classes are automatically in strict mode
   greet() {
-    console.log(this)  // undefined if called without context
+    console.log(this); // undefined if called without context
   }
 }
 
-const g = new MyClass()
-g.greet()  // MyClass instance (context: g)
+const g = new MyClass();
+g.greet(); // MyClass instance (context: g)
 
-const fn = g.greet
-fn()        // undefined ← strict mode! (not the global object)
+const fn = g.greet;
+fn(); // undefined ← strict mode! (not the global object)
 // Fix: fn.call(g) or fn.bind(g)
 ```
 
@@ -8741,13 +8808,13 @@ fn()        // undefined ← strict mode! (not the global object)
 ```javascript
 // ES6 Modules are ALWAYS in strict mode — no need to declare:
 // file: module.js (any ES6 module)
-export const value = 42
-x = 10  // ❌ ReferenceError — modules are strict by default
+export const value = 42;
+x = 10; // ❌ ReferenceError — modules are strict by default
 
 // Classes are ALWAYS strict mode:
 class Example {
   method() {
-    this.x = 10    // 'this' is undefined if called without context
+    this.x = 10; // 'this' is undefined if called without context
   }
 }
 
@@ -8775,12 +8842,14 @@ export default function RootLayout({ children }) {
   return (
     <html>
       <body>
-        <React.StrictMode>  {/* Development-only double-rendering */}
+        <React.StrictMode>
+          {" "}
+          {/* Development-only double-rendering */}
           {children}
         </React.StrictMode>
       </body>
     </html>
-  )
+  );
 }
 ```
 
@@ -8878,55 +8947,59 @@ js-playground/
 // app/api/type-check/route.ts
 // Safely analyze type of user-submitted values
 
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from "next/server";
 
 function getDetailedType(value: unknown): object {
   return {
     typeof: typeof value,
     isNull: value === null,
     isUndefined: value === undefined,
-    isNaN: typeof value === 'number' && isNaN(value as number),
+    isNaN: typeof value === "number" && isNaN(value as number),
     isArray: Array.isArray(value),
     isInteger: Number.isInteger(value),
     isFinite: Number.isFinite(value as number),
     isTruthy: Boolean(value),
     objectToStringType: Object.prototype.toString.call(value).slice(8, -1),
-    constructorName: value !== null && value !== undefined
-      ? (value as object).constructor?.name
-      : 'N/A'
-  }
+    constructorName:
+      value !== null && value !== undefined
+        ? (value as object).constructor?.name
+        : "N/A",
+  };
 }
 
 export async function POST(request: NextRequest) {
-  const { expression } = await request.json()
+  const { expression } = await request.json();
 
   // Safe evaluation using predefined values only
   const safeValues: Record<string, unknown> = {
-    'null': null,
-    'undefined': undefined,
-    'NaN': NaN,
-    'Infinity': Infinity,
-    '0': 0,
-    '-0': -0,
+    null: null,
+    undefined: undefined,
+    NaN: NaN,
+    Infinity: Infinity,
+    "0": 0,
+    "-0": -0,
     '""': "",
     '"hello"': "hello",
-    '[]': [],
-    '{}': {},
-    'true': true,
-    'false': false,
-    '0n': BigInt(0),
-    '42n': BigInt(42),
-  }
+    "[]": [],
+    "{}": {},
+    true: true,
+    false: false,
+    "0n": BigInt(0),
+    "42n": BigInt(42),
+  };
 
   if (expression in safeValues) {
-    const value = safeValues[expression]
+    const value = safeValues[expression];
     return NextResponse.json({
       input: expression,
-      result: getDetailedType(value)
-    })
+      result: getDetailedType(value),
+    });
   }
 
-  return NextResponse.json({ error: 'Unsupported expression' }, { status: 400 })
+  return NextResponse.json(
+    { error: "Unsupported expression" },
+    { status: 400 },
+  );
 }
 ```
 
@@ -8934,96 +9007,96 @@ export async function POST(request: NextRequest) {
 // lib/coercionExamples.ts — Quiz question bank
 
 export interface CoercionQuestion {
-  id: string
-  expression: string
-  output: string
-  explanation: string
-  difficulty: 'easy' | 'medium' | 'hard'
-  category: 'arithmetic' | 'comparison' | 'boolean' | 'typeof'
+  id: string;
+  expression: string;
+  output: string;
+  explanation: string;
+  difficulty: "easy" | "medium" | "hard";
+  category: "arithmetic" | "comparison" | "boolean" | "typeof";
 }
 
 export const coercionQuestions: CoercionQuestion[] = [
   {
-    id: 'q1',
+    id: "q1",
     expression: '1 + "2" + 3',
     output: '"123"',
     explanation: '1 + "2" = "12" (string concat), "12" + 3 = "123"',
-    difficulty: 'easy',
-    category: 'arithmetic'
+    difficulty: "easy",
+    category: "arithmetic",
   },
   {
-    id: 'q2',
+    id: "q2",
     expression: '1 + 2 + "3"',
     output: '"33"',
     explanation: '1 + 2 = 3 (numeric), 3 + "3" = "33" (string concat)',
-    difficulty: 'easy',
-    category: 'arithmetic'
+    difficulty: "easy",
+    category: "arithmetic",
   },
   {
-    id: 'q3',
-    expression: 'null + 1',
-    output: '1',
-    explanation: 'null coerces to 0, 0 + 1 = 1',
-    difficulty: 'medium',
-    category: 'arithmetic'
+    id: "q3",
+    expression: "null + 1",
+    output: "1",
+    explanation: "null coerces to 0, 0 + 1 = 1",
+    difficulty: "medium",
+    category: "arithmetic",
   },
   {
-    id: 'q4',
-    expression: '[] + []',
+    id: "q4",
+    expression: "[] + []",
     output: '""',
     explanation: 'Both arrays convert to "", "" + "" = ""',
-    difficulty: 'hard',
-    category: 'arithmetic'
+    difficulty: "hard",
+    category: "arithmetic",
   },
   {
-    id: 'q5',
-    expression: 'typeof null',
+    id: "q5",
+    expression: "typeof null",
     output: '"object"',
     explanation: 'Historical bug in JavaScript — null returns "object"',
-    difficulty: 'easy',
-    category: 'typeof'
+    difficulty: "easy",
+    category: "typeof",
   },
   {
-    id: 'q6',
-    expression: 'null == undefined',
-    output: 'true',
-    explanation: 'Special rule: null and undefined are equal with ==',
-    difficulty: 'medium',
-    category: 'comparison'
+    id: "q6",
+    expression: "null == undefined",
+    output: "true",
+    explanation: "Special rule: null and undefined are equal with ==",
+    difficulty: "medium",
+    category: "comparison",
   },
   {
-    id: 'q7',
+    id: "q7",
     expression: '"" == false',
-    output: 'true',
-    explanation: 'Both coerce to 0, 0 == 0 = true',
-    difficulty: 'medium',
-    category: 'comparison'
+    output: "true",
+    explanation: "Both coerce to 0, 0 == 0 = true",
+    difficulty: "medium",
+    category: "comparison",
   },
   {
-    id: 'q8',
-    expression: '1 < 2 < 3',
-    output: 'true',
-    explanation: '1<2=true, true<3 = 1<3 = true',
-    difficulty: 'medium',
-    category: 'comparison'
+    id: "q8",
+    expression: "1 < 2 < 3",
+    output: "true",
+    explanation: "1<2=true, true<3 = 1<3 = true",
+    difficulty: "medium",
+    category: "comparison",
   },
   {
-    id: 'q9',
-    expression: '3 > 2 > 1',
-    output: 'false',
-    explanation: '3>2=true, true>1 = 1>1 = false (trap!)',
-    difficulty: 'hard',
-    category: 'comparison'
+    id: "q9",
+    expression: "3 > 2 > 1",
+    output: "false",
+    explanation: "3>2=true, true>1 = 1>1 = false (trap!)",
+    difficulty: "hard",
+    category: "comparison",
   },
   {
-    id: 'q10',
-    expression: 'Boolean([])',
-    output: 'true',
-    explanation: 'Empty array is TRUTHY (not falsy!)',
-    difficulty: 'medium',
-    category: 'boolean'
-  }
-]
+    id: "q10",
+    expression: "Boolean([])",
+    output: "true",
+    explanation: "Empty array is TRUTHY (not falsy!)",
+    difficulty: "medium",
+    category: "boolean",
+  },
+];
 ```
 
 ```typescript
@@ -9140,15 +9213,15 @@ export default function CoercionQuiz({ questions }: CoercionQuizProps) {
 
 ### What This Project Demonstrates
 
-| Concept from Chapter | Demonstrated By |
-|---------------------|----------------|
-| `var`, `let`, `const` | Interactive scope visualizer |
-| Data types | Type Checker Tool |
-| Type coercion | Coercion Quiz with 20+ questions |
-| String methods | String Methods Lab — live results |
-| Functions | Side-by-side function type comparison |
-| Template literals | Live template rendering demo |
-| Strict mode | Before/After strict mode comparison |
+| Concept from Chapter  | Demonstrated By                       |
+| --------------------- | ------------------------------------- |
+| `var`, `let`, `const` | Interactive scope visualizer          |
+| Data types            | Type Checker Tool                     |
+| Type coercion         | Coercion Quiz with 20+ questions      |
+| String methods        | String Methods Lab — live results     |
+| Functions             | Side-by-side function type comparison |
+| Template literals     | Live template rendering demo          |
+| Strict mode           | Before/After strict mode comparison   |
 
 [Back to Top 🔝](#table-of-contents3)
 
@@ -9175,12 +9248,12 @@ const original = {
   date: new Date("2024-01-01"),
   hobbies: ["reading", "coding"],
   meta: new Map([["key", "value"]]),
-  nested: { deep: { value: 42 } }
-}
+  nested: { deep: { value: 42 } },
+};
 
-const cloned = deepClone(original)
-cloned.nested.deep.value = 99
-console.log(original.nested.deep.value)  // Should still be 42
+const cloned = deepClone(original);
+cloned.nested.deep.value = 99;
+console.log(original.nested.deep.value); // Should still be 42
 ```
 
 ---
@@ -9194,12 +9267,12 @@ function getType(value) {
   // "regexp", "function", "map", "set", "nan", "infinity"
 }
 
-getType(null)            // "null"
-getType(NaN)             // "nan"
-getType(Infinity)        // "infinity"
-getType([])              // "array"
-getType(new Date())      // "date"
-getType(new Map())       // "map"
+getType(null); // "null"
+getType(NaN); // "nan"
+getType(Infinity); // "infinity"
+getType([]); // "array"
+getType(new Date()); // "date"
+getType(new Map()); // "map"
 ```
 
 ---
@@ -9212,22 +9285,22 @@ getType(new Map())       // "map"
 
 const pipe = (...fns) => {
   // your implementation
-}
+};
 
 const compose = (...fns) => {
   // your implementation
-}
+};
 
 // Test:
-const double = x => x * 2
-const addOne = x => x + 1
-const square = x => x * x
+const double = (x) => x * 2;
+const addOne = (x) => x + 1;
+const square = (x) => x * x;
 
-const pipedFn = pipe(double, addOne, square)
-pipedFn(3)  // ((3 * 2) + 1)² = 7² = 49
+const pipedFn = pipe(double, addOne, square);
+pipedFn(3); // ((3 * 2) + 1)² = 7² = 49
 
-const composedFn = compose(square, addOne, double)
-composedFn(3)  // square(addOne(double(3))) = square(7) = 49
+const composedFn = compose(square, addOne, double);
+composedFn(3); // square(addOne(double(3))) = square(7) = 49
 ```
 
 ---
@@ -9241,10 +9314,10 @@ function formatIndianCurrency(amount) {
   // Example: 1234567.89 → "₹12,34,567.89"
 }
 
-formatIndianCurrency(1234567.89)  // "₹12,34,567.89"
-formatIndianCurrency(-500)         // "-₹500.00"
-formatIndianCurrency(0.1 + 0.2)   // "₹0.30" (handle float precision)
-formatIndianCurrency("abc")        // "Invalid amount"
+formatIndianCurrency(1234567.89); // "₹12,34,567.89"
+formatIndianCurrency(-500); // "-₹500.00"
+formatIndianCurrency(0.1 + 0.2); // "₹0.30" (handle float precision)
+formatIndianCurrency("abc"); // "Invalid amount"
 ```
 
 ---
@@ -9301,6 +9374,7 @@ const nested = {
 **MCP 1: Build a JavaScript Type & Coercion Explorer**
 
 Build a Next.js page that:
+
 - Has an input field where users can type any JavaScript expression
 - Shows the result of:
   - `typeof` the value
@@ -9312,6 +9386,7 @@ Build a Next.js page that:
 - Color-codes results (green = truthy, red = falsy)
 
 Requirements:
+
 - Next.js App Router + TypeScript
 - Server Component for static content, Client Component for interactive parts
 - Visually appealing design with Tailwind CSS
@@ -9322,17 +9397,19 @@ Requirements:
 **MCP 2: Build a String Methods Interactive Lab**
 
 Build a Next.js page that:
+
 - Shows all 25+ string methods organized in categories (Search, Extract, Transform, Check, Split)
 - Has a live input area where the user types a string
 - Each method card shows: method name, syntax, live result applied to the user's string, parameters
 - Allows users to customize parameters (like `slice(2, 5)` — sliders for start/end)
 - Includes a "String Challenge" section:
-  - Given: "  Hello World! This is JavaScript  "
+  - Given: " Hello World! This is JavaScript "
   - Tasks: trim it, capitalize each word, convert to URL slug, count vowels, reverse words
   - Users write the code and see live results
 - Shows before/after comparison for transformations
 
 Requirements:
+
 - Next.js App Router with Client Components for live interactivity
 - TypeScript with proper string method typing
 - All string methods must show real-time results as user types
@@ -9342,6 +9419,7 @@ Requirements:
 
 > [!NOTE]
 > **Chapter 3 Summary — Key Takeaways:**
+>
 > 1. Prefer `const` → `let` → never `var` in modern JavaScript
 > 2. `const` prevents rebinding, NOT mutation — objects/arrays can still be changed
 > 3. There are 8 falsy values: `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, `NaN` — everything else is truthy
@@ -9367,7 +9445,8 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 <a id="4-objects-arrays-deep-dive"></a>
 
-## Chapter 4: Objects & Arrays — Deep Dive
+
+
 # Chapter 4: Objects & Arrays — Deep Dive
 
 > **Book:** React + Next.js — From Zero to Interview Ready
@@ -9380,20 +9459,20 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 ## Chapter Index Table
 
-| Topic No. | Topic Name | Subtopics |
-|-----------|------------|-----------|
-| 4.1 | [Object Creation Patterns](#41-object-creation-patterns) | Object literal `{}`<br>Constructor function<br>Object.create(proto)<br>ES6 Class syntax<br>Factory functions |
-| 4.2 | [Property Access & Manipulation](#42-property-access--manipulation) | Dot vs Bracket notation<br>Computed property names<br>Property shorthand<br>Optional chaining<br>Property existence checks |
-| 4.3 | [Object Destructuring](#43-object-destructuring) | Basic destructuring<br>Renaming<br>Default values<br>Nested destructuring<br>Function parameter destructuring |
-| 4.4 | [Object Methods — Complete Reference](#44-object-methods--complete-reference) | Object.keys/values/entries<br>Object.assign<br>Object.freeze/seal<br>Object.create<br>Object.fromEntries<br>Object.defineProperty |
-| 4.5 | [Spread & Rest with Objects](#45-spread--rest-with-objects) | Spread to copy/merge<br>Rest to collect remaining<br>Shallow copy behavior |
-| 4.6 | [Shallow Copy vs Deep Copy](#46-shallow-copy-vs-deep-copy) | Shallow methods<br>Deep methods<br>JSON limitations<br>structuredClone<br>Lodash cloneDeep |
-| 4.7 | [Arrays — Creation & Core Methods](#47-arrays--creation--core-methods) | Array literal<br>Array.from()<br>Array.of()<br>Array.isArray() |
-| 4.8 | [Array Methods — Complete Deep Dive](#48-array-methods--complete-deep-dive) | Mutating methods (avoid in React)<br>Non-mutating methods (React-friendly)<br>Method chaining |
-| 4.9 | [Array Destructuring](#49-array-destructuring) | Basic<br>Skipping elements<br>Rest<br>Defaults<br>Swap variables |
-| 4.10 | [Polyfills for Array Methods](#410-polyfills-for-array-methods) | Custom map()<br>Custom filter()<br>Custom reduce()<br>Custom flat() |
-| — | [Mini Project](#-mini-project-data-pipeline-builder) | Data Pipeline Builder — Array + Object transformation tool |
-| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding Problems |
+| Topic No. | Topic Name                                                                    | Subtopics                                                                                                                         |
+| --------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| 4.1       | [Object Creation Patterns](#41-object-creation-patterns)                      | Object literal `{}`<br>Constructor function<br>Object.create(proto)<br>ES6 Class syntax<br>Factory functions                      |
+| 4.2       | [Property Access & Manipulation](#42-property-access--manipulation)           | Dot vs Bracket notation<br>Computed property names<br>Property shorthand<br>Optional chaining<br>Property existence checks        |
+| 4.3       | [Object Destructuring](#43-object-destructuring)                              | Basic destructuring<br>Renaming<br>Default values<br>Nested destructuring<br>Function parameter destructuring                     |
+| 4.4       | [Object Methods — Complete Reference](#44-object-methods--complete-reference) | Object.keys/values/entries<br>Object.assign<br>Object.freeze/seal<br>Object.create<br>Object.fromEntries<br>Object.defineProperty |
+| 4.5       | [Spread & Rest with Objects](#45-spread--rest-with-objects)                   | Spread to copy/merge<br>Rest to collect remaining<br>Shallow copy behavior                                                        |
+| 4.6       | [Shallow Copy vs Deep Copy](#46-shallow-copy-vs-deep-copy)                    | Shallow methods<br>Deep methods<br>JSON limitations<br>structuredClone<br>Lodash cloneDeep                                        |
+| 4.7       | [Arrays — Creation & Core Methods](#47-arrays--creation--core-methods)        | Array literal<br>Array.from()<br>Array.of()<br>Array.isArray()                                                                    |
+| 4.8       | [Array Methods — Complete Deep Dive](#48-array-methods--complete-deep-dive)   | Mutating methods (avoid in React)<br>Non-mutating methods (React-friendly)<br>Method chaining                                     |
+| 4.9       | [Array Destructuring](#49-array-destructuring)                                | Basic<br>Skipping elements<br>Rest<br>Defaults<br>Swap variables                                                                  |
+| 4.10      | [Polyfills for Array Methods](#410-polyfills-for-array-methods)               | Custom map()<br>Custom filter()<br>Custom reduce()<br>Custom flat()                                                               |
+| —         | [Mini Project](#-mini-project-data-pipeline-builder)                          | Data Pipeline Builder — Array + Object transformation tool                                                                        |
+| —         | [Practice Section](#-practice-section)                                        | 5 Coding + 5 Theory + 2 Machine Coding Problems                                                                                   |
 
 ---
 
@@ -9420,13 +9499,13 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Object Literal `{}` | Simplest way — inline key-value pairs |
-| Constructor Function | Blueprint pattern using `new` keyword |
-| `Object.create(proto)` | Explicit prototype chain control |
-| ES6 Class Syntax | Modern OOP — syntactic sugar over prototypes |
-| Factory Functions | Functions that return objects — no `new` needed |
+| Subtopic               | What You'll Learn                               |
+| ---------------------- | ----------------------------------------------- |
+| Object Literal `{}`    | Simplest way — inline key-value pairs           |
+| Constructor Function   | Blueprint pattern using `new` keyword           |
+| `Object.create(proto)` | Explicit prototype chain control                |
+| ES6 Class Syntax       | Modern OOP — syntactic sugar over prototypes    |
+| Factory Functions      | Functions that return objects — no `new` needed |
 
 ---
 
@@ -9451,21 +9530,21 @@ const user = {
 
   // Method shorthand (ES6):
   greet() {
-    return `Hello, I'm ${this.name}`
+    return `Hello, I'm ${this.name}`;
   },
 
   // Computed property names:
-  ['is_' + 'active']: true,
+  ["is_" + "active"]: true,
 
   // Getter:
   get fullInfo() {
-    return `${this.name}, ${this.age}`
-  }
-}
+    return `${this.name}, ${this.age}`;
+  },
+};
 
-console.log(user.greet())   // "Hello, I'm Rahul"
-console.log(user.fullInfo)  // "Rahul, 25"
-console.log(user.is_active) // true
+console.log(user.greet()); // "Hello, I'm Rahul"
+console.log(user.fullInfo); // "Rahul, 25"
+console.log(user.is_active); // true
 
 // ✅ When to use:
 // - Single-use objects (config, options, one-off data)
@@ -9489,38 +9568,38 @@ function Person(name, age) {
   // 3. Properties are added to 'this'
   // 4. The new object is returned automatically
 
-  this.name = name
-  this.age = age
+  this.name = name;
+  this.age = age;
 
   // ⚠️ Don't add methods here — wastes memory!
   // Each instance would get its own copy of the function
 }
 
 // Add shared methods to prototype (memory efficient):
-Person.prototype.greet = function() {
-  return `Hello, I'm ${this.name}, ${this.age} years old`
-}
+Person.prototype.greet = function () {
+  return `Hello, I'm ${this.name}, ${this.age} years old`;
+};
 
-Person.prototype.toString = function() {
-  return `Person(${this.name})`
-}
+Person.prototype.toString = function () {
+  return `Person(${this.name})`;
+};
 
 // Creating instances:
-const rahul = new Person("Rahul", 25)
-const priya = new Person("Priya", 22)
+const rahul = new Person("Rahul", 25);
+const priya = new Person("Priya", 22);
 
-console.log(rahul.greet())   // "Hello, I'm Rahul, 25 years old"
-console.log(priya.greet())   // "Hello, I'm Priya, 22 years old"
+console.log(rahul.greet()); // "Hello, I'm Rahul, 25 years old"
+console.log(priya.greet()); // "Hello, I'm Priya, 22 years old"
 
 // Both share the same greet function (memory efficient):
-console.log(rahul.greet === priya.greet)  // true ✅ (same prototype method)
+console.log(rahul.greet === priya.greet); // true ✅ (same prototype method)
 
 // instanceof works:
-console.log(rahul instanceof Person)  // true
+console.log(rahul instanceof Person); // true
 
 // ⚠️ What happens without 'new':
-const broken = Person("John", 30)  // 'this' = window/undefined in strict
-console.log(broken)                 // undefined (no return)
+const broken = Person("John", 30); // 'this' = window/undefined in strict
+console.log(broken); // undefined (no return)
 ```
 
 ---
@@ -9533,35 +9612,35 @@ Creates an object with a **specific prototype** — gives explicit control over 
 // Define prototype object:
 const animalProto = {
   breathe() {
-    return `${this.name} is breathing`
+    return `${this.name} is breathing`;
   },
   eat(food) {
-    return `${this.name} eats ${food}`
-  }
-}
+    return `${this.name} eats ${food}`;
+  },
+};
 
 // Create object with animalProto as prototype:
-const dog = Object.create(animalProto)
-dog.name = "Rex"
-dog.breed = "Labrador"
+const dog = Object.create(animalProto);
+dog.name = "Rex";
+dog.breed = "Labrador";
 
-console.log(dog.breathe())    // "Rex is breathing" (from prototype)
-console.log(dog.eat("bone"))  // "Rex eats bone" (from prototype)
+console.log(dog.breathe()); // "Rex is breathing" (from prototype)
+console.log(dog.eat("bone")); // "Rex eats bone" (from prototype)
 
 // Prototype chain verification:
-console.log(Object.getPrototypeOf(dog) === animalProto)  // true
+console.log(Object.getPrototypeOf(dog) === animalProto); // true
 
 // Create with null prototype (pure data object, no inherited methods):
-const pureData = Object.create(null)
-pureData.key = "value"
+const pureData = Object.create(null);
+pureData.key = "value";
 // pureData.toString()  // ❌ TypeError — no inherited methods!
 // Useful for: hash maps without prototype pollution
 
 // Create with initial properties descriptor:
 const cat = Object.create(animalProto, {
   name: { value: "Whiskers", writable: true, enumerable: true },
-  lives: { value: 9, writable: false, enumerable: true }
-})
+  lives: { value: 9, writable: false, enumerable: true },
+});
 ```
 
 ---
@@ -9575,62 +9654,62 @@ Modern syntax that is **syntactic sugar** over constructor functions and prototy
 ```javascript
 class Person {
   // Private fields (ES2022):
-  #password = null
+  #password = null;
 
   constructor(name, age) {
-    this.name = name        // Public property
-    this.age = age
+    this.name = name; // Public property
+    this.age = age;
   }
 
   // Instance method (on prototype):
   greet() {
-    return `Hello, I'm ${this.name}`
+    return `Hello, I'm ${this.name}`;
   }
 
   // Getter:
   get info() {
-    return `${this.name} (${this.age})`
+    return `${this.name} (${this.age})`;
   }
 
   // Setter:
   set info(str) {
-    [this.name, this.age] = str.split(",")
+    [this.name, this.age] = str.split(",");
   }
 
   // Static method (called on class, not instance):
   static create(name, age) {
-    return new Person(name, age)
+    return new Person(name, age);
   }
 
   // Private method:
   #validate() {
-    return this.age >= 0
+    return this.age >= 0;
   }
 }
 
 // Inheritance:
 class Employee extends Person {
   constructor(name, age, role) {
-    super(name, age)    // Must call super first!
-    this.role = role
+    super(name, age); // Must call super first!
+    this.role = role;
   }
 
   introduce() {
-    return `${this.greet()}, I work as ${this.role}`
+    return `${this.greet()}, I work as ${this.role}`;
   }
 }
 
-const e = new Employee("Rahul", 25, "Developer")
-console.log(e.introduce())      // "Hello, I'm Rahul, I work as Developer"
-console.log(e instanceof Person)    // true
-console.log(e instanceof Employee)  // true
+const e = new Employee("Rahul", 25, "Developer");
+console.log(e.introduce()); // "Hello, I'm Rahul, I work as Developer"
+console.log(e instanceof Person); // true
+console.log(e instanceof Employee); // true
 
 // Under the hood — proof classes are just prototypes:
-console.log(typeof Person)                        // "function"
-console.log(Employee.prototype instanceof Person) // true
+console.log(typeof Person); // "function"
+console.log(Employee.prototype instanceof Person); // true
 
 // Static usage:
-const p = Person.create("Priya", 22)
+const p = Person.create("Priya", 22);
 ```
 
 ---
@@ -9643,7 +9722,7 @@ A function that creates and returns an object — no `new` keyword, no `this`, n
 // Factory function — returns a new object each call:
 function createUser(name, age, role = "user") {
   // Private variable via closure:
-  let loginCount = 0
+  let loginCount = 0;
 
   return {
     name,
@@ -9651,25 +9730,25 @@ function createUser(name, age, role = "user") {
     role,
 
     login() {
-      loginCount++
-      return `${name} logged in (${loginCount} times)`
+      loginCount++;
+      return `${name} logged in (${loginCount} times)`;
     },
 
     getLoginCount() {
-      return loginCount  // Private — not directly accessible
+      return loginCount; // Private — not directly accessible
     },
 
     promote(newRole) {
-      return createUser(name, age, newRole)  // Returns new object
-    }
-  }
+      return createUser(name, age, newRole); // Returns new object
+    },
+  };
 }
 
-const rahul = createUser("Rahul", 25)
-console.log(rahul.login())          // "Rahul logged in (1 times)"
-console.log(rahul.login())          // "Rahul logged in (2 times)"
-console.log(rahul.loginCount)       // undefined — private via closure!
-console.log(rahul.getLoginCount())  // 2 ✅
+const rahul = createUser("Rahul", 25);
+console.log(rahul.login()); // "Rahul logged in (1 times)"
+console.log(rahul.login()); // "Rahul logged in (2 times)"
+console.log(rahul.loginCount); // undefined — private via closure!
+console.log(rahul.getLoginCount()); // 2 ✅
 
 // Comparison: Constructor vs Factory
 // Constructor: shares prototype methods (memory efficient for many instances)
@@ -9699,13 +9778,13 @@ flowchart TD
     style J fill:#ffccbc
 ```
 
-| Pattern | `new` needed? | Inheritance | Private State | Memory Efficiency | When to Use |
-|---------|--------------|-------------|---------------|-------------------|-------------|
-| Object Literal | ❌ | ❌ | ❌ | N/A | One-off objects, configs |
-| Constructor | ✅ | Via prototype | ❌ | ✅ Shared proto | Many instances, legacy code |
-| `Object.create` | ❌ | ✅ Explicit | ❌ | ✅ | Prototype chain control |
-| Class | ✅ | ✅ `extends` | ✅ `#field` | ✅ | Modern OOP, React components |
-| Factory | ❌ | ❌ (composition) | ✅ Closure | ❌ Each gets copy | Privacy, avoid `this` bugs |
+| Pattern         | `new` needed? | Inheritance      | Private State | Memory Efficiency | When to Use                  |
+| --------------- | ------------- | ---------------- | ------------- | ----------------- | ---------------------------- |
+| Object Literal  | ❌            | ❌               | ❌            | N/A               | One-off objects, configs     |
+| Constructor     | ✅            | Via prototype    | ❌            | ✅ Shared proto   | Many instances, legacy code  |
+| `Object.create` | ❌            | ✅ Explicit      | ❌            | ✅                | Prototype chain control      |
+| Class           | ✅            | ✅ `extends`     | ✅ `#field`   | ✅                | Modern OOP, React components |
+| Factory         | ❌            | ❌ (composition) | ✅ Closure    | ❌ Each gets copy | Privacy, avoid `this` bugs   |
 
 ---
 
@@ -9731,12 +9810,12 @@ flowchart TD
 
 ```javascript
 function Car(brand) {
-  this.brand = brand
-  return { brand: "Toyota" }  // Returns a different object!
+  this.brand = brand;
+  return { brand: "Toyota" }; // Returns a different object!
 }
 
-const myCar = new Car("Honda")
-console.log(myCar.brand)
+const myCar = new Car("Honda");
+console.log(myCar.brand);
 ```
 
 > **Output:** `"Toyota"`
@@ -9752,14 +9831,14 @@ console.log(myCar.brand)
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Dot Notation | `obj.key` — static, clean, most common |
-| Bracket Notation | `obj['key']` — dynamic keys, special characters |
-| Computed Property Names | `{ [key]: value }` — dynamic keys at creation |
-| Property Shorthand | `{ name, age }` instead of `{ name: name }` |
-| Optional Chaining | `?.` — safe nested access |
-| Property Existence Checks | `in` vs `hasOwnProperty` vs `?.` |
+| Subtopic                  | What You'll Learn                               |
+| ------------------------- | ----------------------------------------------- |
+| Dot Notation              | `obj.key` — static, clean, most common          |
+| Bracket Notation          | `obj['key']` — dynamic keys, special characters |
+| Computed Property Names   | `{ [key]: value }` — dynamic keys at creation   |
+| Property Shorthand        | `{ name, age }` instead of `{ name: name }`     |
+| Optional Chaining         | `?.` — safe nested access                       |
+| Property Existence Checks | `in` vs `hasOwnProperty` vs `?.`                |
 
 ---
 
@@ -9769,35 +9848,35 @@ console.log(myCar.brand)
 const user = {
   name: "Rahul",
   age: 25,
-  "first-name": "Rahul",  // Special character in key
-  "123abc": "special",     // Starts with number
-}
+  "first-name": "Rahul", // Special character in key
+  "123abc": "special", // Starts with number
+};
 
 // Dot notation — clean, static key (must be valid identifier):
-console.log(user.name)    // "Rahul"
-console.log(user.age)     // 25
+console.log(user.name); // "Rahul"
+console.log(user.age); // 25
 // user.first-name        // ❌ SyntaxError — '-' is subtraction operator
 
 // Bracket notation — dynamic or special keys:
-console.log(user["name"])        // "Rahul"
-console.log(user["first-name"])  // "Rahul" ✅ (bracket handles special chars)
-console.log(user["123abc"])      // "special" ✅
+console.log(user["name"]); // "Rahul"
+console.log(user["first-name"]); // "Rahul" ✅ (bracket handles special chars)
+console.log(user["123abc"]); // "special" ✅
 
 // Dynamic key access — must use bracket:
-const key = "name"
-console.log(user[key])    // "Rahul" ✅ (dot notation can't use variables)
+const key = "name";
+console.log(user[key]); // "Rahul" ✅ (dot notation can't use variables)
 // user.key               // undefined ❌ (looks for key named "key")
 
 // Practical: iterating with dynamic keys
-const settings = { theme: "dark", lang: "en", fontSize: 16 }
-const keyToGet = getUserPreference()  // returns "theme"
-console.log(settings[keyToGet])       // "dark"
+const settings = { theme: "dark", lang: "en", fontSize: 16 };
+const keyToGet = getUserPreference(); // returns "theme"
+console.log(settings[keyToGet]); // "dark"
 
 // Nested access:
-const data = { user: { address: { city: "Mumbai" } } }
-console.log(data.user.address.city)          // "Mumbai" (dot)
-console.log(data["user"]["address"]["city"]) // "Mumbai" (bracket)
-console.log(data.user?.address?.city)        // "Mumbai" (optional chaining)
+const data = { user: { address: { city: "Mumbai" } } };
+console.log(data.user.address.city); // "Mumbai" (dot)
+console.log(data["user"]["address"]["city"]); // "Mumbai" (bracket)
+console.log(data.user?.address?.city); // "Mumbai" (optional chaining)
 ```
 
 ---
@@ -9810,35 +9889,35 @@ Create object keys dynamically at definition time using `[]` syntax.
 
 ```javascript
 // Basic computed property:
-const prefix = "user"
+const prefix = "user";
 const obj = {
-  [`${prefix}Name`]: "Rahul",       // "userName": "Rahul"
-  [`${prefix}Age`]: 25,              // "userAge": 25
-  [`${prefix}City`]: "Mumbai",       // "userCity": "Mumbai"
-}
+  [`${prefix}Name`]: "Rahul", // "userName": "Rahul"
+  [`${prefix}Age`]: 25, // "userAge": 25
+  [`${prefix}City`]: "Mumbai", // "userCity": "Mumbai"
+};
 
-console.log(obj.userName)  // "Rahul"
+console.log(obj.userName); // "Rahul"
 
 // Dynamic enum-like keys:
-const FIELDS = { NAME: "name", AGE: "age", EMAIL: "email" }
+const FIELDS = { NAME: "name", AGE: "age", EMAIL: "email" };
 
 const formData = {
   [FIELDS.NAME]: "Rahul",
   [FIELDS.AGE]: 25,
-  [FIELDS.EMAIL]: "rahul@example.com"
-}
+  [FIELDS.EMAIL]: "rahul@example.com",
+};
 // Equivalent to: { name: "Rahul", age: 25, email: "rahul@example.com" }
 
 // Real-world React pattern — dynamic state updates:
 function updateField(fieldName, value) {
-  setState(prev => ({
+  setState((prev) => ({
     ...prev,
-    [fieldName]: value  // Computed key from parameter
-  }))
+    [fieldName]: value, // Computed key from parameter
+  }));
 }
 
-updateField("username", "rahul123")
-updateField("email", "rahul@example.com")
+updateField("username", "rahul123");
+updateField("email", "rahul@example.com");
 ```
 
 ---
@@ -9848,30 +9927,30 @@ updateField("email", "rahul@example.com")
 When variable name equals property name, use shorthand.
 
 ```javascript
-const name = "Rahul"
-const age = 25
-const city = "Mumbai"
+const name = "Rahul";
+const age = 25;
+const city = "Mumbai";
 
 // Old way:
-const user1 = { name: name, age: age, city: city }
+const user1 = { name: name, age: age, city: city };
 
 // Shorthand (ES6):
-const user2 = { name, age, city }  // Same result!
+const user2 = { name, age, city }; // Same result!
 
 // In functions returning objects:
 function createUser(name, age) {
   // Old way:
-  return { name: name, age: age }
+  return { name: name, age: age };
 
   // Shorthand:
-  return { name, age }
+  return { name, age };
 }
 
 // In destructuring + shorthand combo:
 function processUser({ name, age }) {
-  const processed = true
-  const timestamp = Date.now()
-  return { name, age, processed, timestamp }  // All shorthand
+  const processed = true;
+  const timestamp = Date.now();
+  return { name, age, processed, timestamp }; // All shorthand
 }
 ```
 
@@ -9884,42 +9963,42 @@ Three main ways to check if a property exists on an object:
 ```javascript
 const obj = {
   name: "Rahul",
-  age: 0,           // Falsy value
-  address: null,    // Null value
-}
+  age: 0, // Falsy value
+  address: null, // Null value
+};
 
 // ❌ Incorrect — doesn't work for falsy values:
-if (obj.age) console.log("has age")      // Skipped! 0 is falsy
-if (obj.address) console.log("has addr") // Skipped! null is falsy
+if (obj.age) console.log("has age"); // Skipped! 0 is falsy
+if (obj.address) console.log("has addr"); // Skipped! null is falsy
 
 // ✅ 1. 'in' operator — checks OWN + inherited properties:
-"name" in obj        // true (own property)
-"age" in obj         // true (own, even though value is 0)
-"toString" in obj    // true ⚠️ (inherited from Object.prototype!)
+"name" in obj; // true (own property)
+"age" in obj; // true (own, even though value is 0)
+"toString" in obj; // true ⚠️ (inherited from Object.prototype!)
 
 // ✅ 2. hasOwnProperty — checks ONLY own properties:
-obj.hasOwnProperty("name")      // true
-obj.hasOwnProperty("age")       // true
-obj.hasOwnProperty("toString")  // false ✅ (inherited, not own)
+obj.hasOwnProperty("name"); // true
+obj.hasOwnProperty("age"); // true
+obj.hasOwnProperty("toString"); // false ✅ (inherited, not own)
 
 // ✅ 3. Object.hasOwn() — modern, safer version (ES2022):
-Object.hasOwn(obj, "name")     // true
-Object.hasOwn(obj, "toString") // false
+Object.hasOwn(obj, "name"); // true
+Object.hasOwn(obj, "toString"); // false
 
 // ✅ 4. Optional chaining — returns undefined instead of throwing:
-obj?.name           // "Rahul"
-obj?.missing        // undefined (no error)
-obj?.missing?.deep  // undefined (no error)
+obj?.name; // "Rahul"
+obj?.missing; // undefined (no error)
+obj?.missing?.deep; // undefined (no error)
 
 // Comparison:
-const proto = { shared: "inherited" }
-const child = Object.create(proto)
-child.own = "mine"
+const proto = { shared: "inherited" };
+const child = Object.create(proto);
+child.own = "mine";
 
-"shared" in child                   // true (includes inherited)
-child.hasOwnProperty("shared")      // false (own only)
-child.hasOwnProperty("own")         // true
-Object.hasOwn(child, "shared")      // false
+"shared" in child; // true (includes inherited)
+child.hasOwnProperty("shared"); // false (own only)
+child.hasOwnProperty("own"); // true
+Object.hasOwn(child, "shared"); // false
 ```
 
 ---
@@ -9937,10 +10016,10 @@ Object.hasOwn(child, "shared")      // false
 **Q3: What is the output?**
 
 ```javascript
-const key = "length"
-const arr = [1, 2, 3]
-console.log(arr.key)
-console.log(arr[key])
+const key = "length";
+const arr = [1, 2, 3];
+console.log(arr.key);
+console.log(arr[key]);
 ```
 
 > `undefined` → `3`
@@ -9956,13 +10035,13 @@ console.log(arr[key])
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Basic Destructuring | Extract properties to variables |
-| Renaming | Assign to different variable names |
-| Default Values | Fallback when property is undefined |
-| Nested Destructuring | Extract deeply nested properties |
-| Function Parameters | Destructure directly in function signature |
+| Subtopic             | What You'll Learn                          |
+| -------------------- | ------------------------------------------ |
+| Basic Destructuring  | Extract properties to variables            |
+| Renaming             | Assign to different variable names         |
+| Default Values       | Fallback when property is undefined        |
+| Nested Destructuring | Extract deeply nested properties           |
+| Function Parameters  | Destructure directly in function signature |
 
 ---
 
@@ -9977,21 +10056,21 @@ const user = {
   name: "Rahul",
   age: 25,
   city: "Mumbai",
-  email: "rahul@example.com"
-}
+  email: "rahul@example.com",
+};
 
 // Without destructuring (verbose):
-const name1 = user.name
-const age1 = user.age
-const city1 = user.city
+const name1 = user.name;
+const age1 = user.age;
+const city1 = user.city;
 
 // With destructuring (concise):
-const { name, age, city } = user
-console.log(name, age, city)  // "Rahul" 25 "Mumbai"
+const { name, age, city } = user;
+console.log(name, age, city); // "Rahul" 25 "Mumbai"
 
 // Extract only what you need:
-const { email } = user         // Just email
-const { name: n, age: a } = user  // Renamed
+const { email } = user; // Just email
+const { name: n, age: a } = user; // Renamed
 ```
 
 ---
@@ -10008,44 +10087,52 @@ const product = {
     storage: "512GB",
     display: {
       size: "15.6 inch",
-      resolution: "1920x1080"
-    }
-  }
-}
+      resolution: "1920x1080",
+    },
+  },
+};
 
 // 1. RENAMING — extract with different variable name:
-const { title: productTitle, price: productPrice } = product
-console.log(productTitle)  // "Laptop"
+const { title: productTitle, price: productPrice } = product;
+console.log(productTitle); // "Laptop"
 // 'title' is NOT created as a variable; 'productTitle' is
 
 // 2. DEFAULT VALUES — fallback when property is undefined:
-const { color = "Black", warranty = "1 year", price = 0 } = product
-console.log(color)     // "Black" (not in object — uses default)
-console.log(warranty)  // "1 year" (not in object — uses default)
-console.log(price)     // 50000 (IS in object — default ignored)
+const { color = "Black", warranty = "1 year", price = 0 } = product;
+console.log(color); // "Black" (not in object — uses default)
+console.log(warranty); // "1 year" (not in object — uses default)
+console.log(price); // 50000 (IS in object — default ignored)
 // ⚠️ Default only triggers for UNDEFINED, NOT null:
-const { id = 999 } = { id: null }
-console.log(id)        // null (not 999! null doesn't trigger default)
+const { id = 999 } = { id: null };
+console.log(id); // null (not 999! null doesn't trigger default)
 
 // 3. RENAMING + DEFAULT combined:
-const { color: productColor = "Silver" } = product
-console.log(productColor)  // "Silver" (not in product, uses default)
+const { color: productColor = "Silver" } = product;
+console.log(productColor); // "Silver" (not in product, uses default)
 
 // 4. NESTED DESTRUCTURING:
-const { specs: { ram, storage } } = product
-console.log(ram)     // "16GB"
-console.log(storage) // "512GB"
+const {
+  specs: { ram, storage },
+} = product;
+console.log(ram); // "16GB"
+console.log(storage); // "512GB"
 // ⚠️ 'specs' is NOT a variable now — only ram and storage are
 
 // Deeply nested:
-const { specs: { display: { size, resolution } } } = product
-console.log(size)       // "15.6 inch"
-console.log(resolution) // "1920x1080"
+const {
+  specs: {
+    display: { size, resolution },
+  },
+} = product;
+console.log(size); // "15.6 inch"
+console.log(resolution); // "1920x1080"
 
 // Nested with renaming and defaults:
-const { specs: { ram: memory = "8GB", gpu = "Integrated" } } = product
-console.log(memory)  // "16GB" (from product)
-console.log(gpu)     // "Integrated" (not in product)
+const {
+  specs: { ram: memory = "8GB", gpu = "Integrated" },
+} = product;
+console.log(memory); // "16GB" (from product)
+console.log(gpu); // "Integrated" (not in product)
 ```
 
 ---
@@ -10099,36 +10186,39 @@ renderAddress({ address: { city: "Mumbai", state: "Maharashtra" } })
 
 ```javascript
 // Combined rest + destructure:
-const { name, age, ...otherDetails } = user
-console.log(otherDetails)  // { city: "Mumbai", email: "..." }
+const { name, age, ...otherDetails } = user;
+console.log(otherDetails); // { city: "Mumbai", email: "..." }
 
 // Destructuring arrays within objects:
 const config = {
   servers: ["server1", "server2", "server3"],
-  primary: "server1"
-}
+  primary: "server1",
+};
 
-const { servers: [firstServer, ...backupServers], primary } = config
-console.log(firstServer)    // "server1"
-console.log(backupServers)  // ["server2", "server3"]
+const {
+  servers: [firstServer, ...backupServers],
+  primary,
+} = config;
+console.log(firstServer); // "server1"
+console.log(backupServers); // ["server2", "server3"]
 
 // Destructuring in loops:
 const users = [
   { name: "Rahul", role: "admin" },
   { name: "Priya", role: "user" },
-]
+];
 
 for (const { name, role } of users) {
-  console.log(`${name}: ${role}`)
+  console.log(`${name}: ${role}`);
 }
 
 // Destructuring function return values:
 function getMinMax(arr) {
-  return { min: Math.min(...arr), max: Math.max(...arr) }
+  return { min: Math.min(...arr), max: Math.max(...arr) };
 }
 
-const { min, max } = getMinMax([3, 1, 4, 1, 5, 9])
-console.log(min, max)  // 1 9
+const { min, max } = getMinMax([3, 1, 4, 1, 5, 9]);
+console.log(min, max); // 1 9
 ```
 
 ---
@@ -10142,9 +10232,9 @@ console.log(min, max)  // 1 9
 **Q2: What is the output?**
 
 ```javascript
-const obj = { a: 1, b: undefined, c: null }
-const { a = 10, b = 20, c = 30 } = obj
-console.log(a, b, c)
+const obj = { a: 1, b: undefined, c: null };
+const { a = 10, b = 20, c = 30 } = obj;
+console.log(a, b, c);
 ```
 
 > **Output:** `1 20 null`
@@ -10164,18 +10254,18 @@ console.log(a, b, c)
 
 ### Subtopic Breakdown
 
-| Method | Purpose |
-|--------|---------|
-| `Object.keys(obj)` | Array of own enumerable keys |
-| `Object.values(obj)` | Array of own enumerable values |
-| `Object.entries(obj)` | Array of `[key, value]` pairs |
-| `Object.assign(target, ...sources)` | Shallow copy/merge |
-| `Object.freeze(obj)` | Prevent all modifications |
-| `Object.seal(obj)` | Prevent add/delete, allow modify |
-| `Object.create(proto)` | Create with specific prototype |
-| `Object.fromEntries(entries)` | Convert entries array to object |
-| `Object.getPrototypeOf(obj)` | Get prototype of object |
-| `Object.defineProperty(obj, key, desc)` | Fine-grained property control |
+| Method                                  | Purpose                          |
+| --------------------------------------- | -------------------------------- |
+| `Object.keys(obj)`                      | Array of own enumerable keys     |
+| `Object.values(obj)`                    | Array of own enumerable values   |
+| `Object.entries(obj)`                   | Array of `[key, value]` pairs    |
+| `Object.assign(target, ...sources)`     | Shallow copy/merge               |
+| `Object.freeze(obj)`                    | Prevent all modifications        |
+| `Object.seal(obj)`                      | Prevent add/delete, allow modify |
+| `Object.create(proto)`                  | Create with specific prototype   |
+| `Object.fromEntries(entries)`           | Convert entries array to object  |
+| `Object.getPrototypeOf(obj)`            | Get prototype of object          |
+| `Object.defineProperty(obj, key, desc)` | Fine-grained property control    |
 
 ---
 
@@ -10186,50 +10276,52 @@ const product = {
   id: 1,
   name: "Laptop",
   price: 50000,
-  inStock: true
-}
+  inStock: true,
+};
 
 // Object.keys — array of keys:
-Object.keys(product)   // ["id", "name", "price", "inStock"]
+Object.keys(product); // ["id", "name", "price", "inStock"]
 
 // Object.values — array of values:
-Object.values(product) // [1, "Laptop", 50000, true]
+Object.values(product); // [1, "Laptop", 50000, true]
 
 // Object.entries — array of [key, value] pairs:
-Object.entries(product)
+Object.entries(product);
 // [["id", 1], ["name", "Laptop"], ["price", 50000], ["inStock", true]]
 
 // Practical patterns:
 
 // 1. Iterate over object:
 Object.entries(product).forEach(([key, value]) => {
-  console.log(`${key}: ${value}`)
-})
+  console.log(`${key}: ${value}`);
+});
 
 // 2. Convert object to filtered object:
 const filtered = Object.fromEntries(
-  Object.entries(product).filter(([key, value]) => typeof value === "number")
-)
+  Object.entries(product).filter(([key, value]) => typeof value === "number"),
+);
 // { id: 1, price: 50000 }
 
 // 3. Transform object values:
 const discounted = Object.fromEntries(
-  Object.entries(product)
-    .map(([key, value]) => [key, typeof value === "number" ? value * 0.9 : value])
-)
+  Object.entries(product).map(([key, value]) => [
+    key,
+    typeof value === "number" ? value * 0.9 : value,
+  ]),
+);
 // { id: 0.9, name: "Laptop", price: 45000, inStock: true }
 
 // 4. Check object emptiness:
-Object.keys(product).length === 0  // false (not empty)
-Object.keys({}).length === 0       // true (empty)
+Object.keys(product).length === 0; // false (not empty)
+Object.keys({}).length === 0; // true (empty)
 
 // ⚠️ Only own enumerable properties:
-const proto = { inherited: "yes" }
-const child = Object.create(proto)
-child.own = "mine"
+const proto = { inherited: "yes" };
+const child = Object.create(proto);
+child.own = "mine";
 
-Object.keys(child)    // ["own"] — inherited not included
-"inherited" in child  // true — 'in' includes inherited
+Object.keys(child); // ["own"] — inherited not included
+"inherited" in child; // true — 'in' includes inherited
 ```
 
 ---
@@ -10242,32 +10334,32 @@ Object.keys(child)    // ["own"] — inherited not included
 // Returns the target object
 
 // 1. Copy object:
-const original = { a: 1, b: 2 }
-const copy = Object.assign({}, original)  // New empty object as target
-copy.a = 99
-console.log(original.a)  // 1 — unchanged (original not modified)
+const original = { a: 1, b: 2 };
+const copy = Object.assign({}, original); // New empty object as target
+copy.a = 99;
+console.log(original.a); // 1 — unchanged (original not modified)
 
 // 2. Merge multiple objects:
-const defaults = { theme: "light", lang: "en", fontSize: 16 }
-const userPrefs = { theme: "dark", fontSize: 18 }
-const finalConfig = Object.assign({}, defaults, userPrefs)
+const defaults = { theme: "light", lang: "en", fontSize: 16 };
+const userPrefs = { theme: "dark", fontSize: 18 };
+const finalConfig = Object.assign({}, defaults, userPrefs);
 // { theme: "dark", lang: "en", fontSize: 18 }
 // userPrefs properties override defaults
 
 // 3. Mutates target (be careful!):
-const target = { a: 1 }
-const result = Object.assign(target, { b: 2 }, { c: 3 })
-console.log(target)  // { a: 1, b: 2, c: 3 } ⚠️ target is mutated!
-console.log(target === result)  // true (same reference!)
+const target = { a: 1 };
+const result = Object.assign(target, { b: 2 }, { c: 3 });
+console.log(target); // { a: 1, b: 2, c: 3 } ⚠️ target is mutated!
+console.log(target === result); // true (same reference!)
 
 // 4. SHALLOW copy limitation:
-const obj = { level1: { level2: { value: 42 } } }
-const copied = Object.assign({}, obj)
-copied.level1.level2.value = 999
-console.log(obj.level1.level2.value)  // 999 ⚠️ (nested reference shared!)
+const obj = { level1: { level2: { value: 42 } } };
+const copied = Object.assign({}, obj);
+copied.level1.level2.value = 999;
+console.log(obj.level1.level2.value); // 999 ⚠️ (nested reference shared!)
 
 // Modern alternative: spread (same shallow behavior):
-const copy2 = { ...original }
+const copy2 = { ...original };
 
 // vs Object.assign — differences:
 // Spread creates literal, assign mutates target
@@ -10313,42 +10405,42 @@ flowchart TD
 const config = Object.freeze({
   API_URL: "https://api.example.com",
   TIMEOUT: 5000,
-  nested: { retries: 3 }  // ⚠️ nested is NOT frozen (shallow freeze)
-})
+  nested: { retries: 3 }, // ⚠️ nested is NOT frozen (shallow freeze)
+});
 
-config.API_URL = "https://hacker.com"  // Silently fails (strict: TypeError)
-config.NEW_PROP = "value"              // Silently fails
-delete config.TIMEOUT                  // Silently fails
-config.nested.retries = 999           // ✅ WORKS! Nested not frozen
+config.API_URL = "https://hacker.com"; // Silently fails (strict: TypeError)
+config.NEW_PROP = "value"; // Silently fails
+delete config.TIMEOUT; // Silently fails
+config.nested.retries = 999; // ✅ WORKS! Nested not frozen
 
-console.log(config.API_URL)           // "https://api.example.com" (unchanged)
-console.log(config.nested.retries)    // 999 (nested was mutated!)
+console.log(config.API_URL); // "https://api.example.com" (unchanged)
+console.log(config.nested.retries); // 999 (nested was mutated!)
 
-Object.isFrozen(config)               // true
-Object.isFrozen(config.nested)        // false ⚠️
+Object.isFrozen(config); // true
+Object.isFrozen(config.nested); // false ⚠️
 
 // Object.seal() — no add/delete, but can modify:
-const user = Object.seal({ name: "Rahul", age: 25 })
+const user = Object.seal({ name: "Rahul", age: 25 });
 
-user.name = "Priya"     // ✅ Modify existing — allowed
-user.email = "p@ex.com" // ❌ Add new — fails silently (strict: TypeError)
-delete user.age         // ❌ Delete — fails silently
+user.name = "Priya"; // ✅ Modify existing — allowed
+user.email = "p@ex.com"; // ❌ Add new — fails silently (strict: TypeError)
+delete user.age; // ❌ Delete — fails silently
 
-Object.isSealed(user)   // true
+Object.isSealed(user); // true
 
 // Deep freeze utility:
 function deepFreeze(obj) {
-  Object.getOwnPropertyNames(obj).forEach(name => {
-    const value = obj[name]
+  Object.getOwnPropertyNames(obj).forEach((name) => {
+    const value = obj[name];
     if (value && typeof value === "object") {
-      deepFreeze(value)  // Recursively freeze nested objects
+      deepFreeze(value); // Recursively freeze nested objects
     }
-  })
-  return Object.freeze(obj)
+  });
+  return Object.freeze(obj);
 }
 
-const deepFrozen = deepFreeze({ a: 1, b: { c: 2 } })
-deepFrozen.b.c = 999    // ❌ Now fails even on nested!
+const deepFrozen = deepFreeze({ a: 1, b: { c: 2 } });
+deepFrozen.b.c = 999; // ❌ Now fails even on nested!
 ```
 
 ---
@@ -10356,20 +10448,20 @@ deepFrozen.b.c = 999    // ❌ Now fails even on nested!
 ### `Object.defineProperty()` — Fine-Grained Control
 
 ```javascript
-const obj = {}
+const obj = {};
 
 Object.defineProperty(obj, "id", {
   value: 42,
-  writable: false,     // Cannot change value
-  enumerable: false,   // Won't appear in Object.keys/for...in
-  configurable: false  // Cannot delete or redefine this property
-})
+  writable: false, // Cannot change value
+  enumerable: false, // Won't appear in Object.keys/for...in
+  configurable: false, // Cannot delete or redefine this property
+});
 
-console.log(obj.id)      // 42
-obj.id = 100             // Silently fails (strict: TypeError)
-console.log(obj.id)      // 42 — unchanged
-Object.keys(obj)         // [] — id is not enumerable!
-"id" in obj              // true — 'in' still finds it
+console.log(obj.id); // 42
+obj.id = 100; // Silently fails (strict: TypeError)
+console.log(obj.id); // 42 — unchanged
+Object.keys(obj); // [] — id is not enumerable!
+"id" in obj; // true — 'in' still finds it
 
 // Use cases:
 // 1. Read-only constants on objects
@@ -10377,22 +10469,22 @@ Object.keys(obj)         // [] — id is not enumerable!
 // 3. Computed properties via getters/setters
 
 // Getter and Setter via defineProperty:
-const person = { firstName: "Rahul", lastName: "Sharma" }
+const person = { firstName: "Rahul", lastName: "Sharma" };
 
 Object.defineProperty(person, "fullName", {
   get() {
-    return `${this.firstName} ${this.lastName}`
+    return `${this.firstName} ${this.lastName}`;
   },
   set(name) {
-    [this.firstName, this.lastName] = name.split(" ")
+    [this.firstName, this.lastName] = name.split(" ");
   },
   enumerable: true,
-  configurable: true
-})
+  configurable: true,
+});
 
-console.log(person.fullName)   // "Rahul Sharma"
-person.fullName = "Priya Mehta"
-console.log(person.firstName)  // "Priya"
+console.log(person.fullName); // "Rahul Sharma"
+person.fullName = "Priya Mehta";
+console.log(person.firstName); // "Priya"
 ```
 
 ---
@@ -10401,34 +10493,42 @@ console.log(person.firstName)  // "Priya"
 
 ```javascript
 // Convert array of [key, value] pairs back to object:
-const entries = [["name", "Rahul"], ["age", 25], ["city", "Mumbai"]]
-const obj = Object.fromEntries(entries)
+const entries = [
+  ["name", "Rahul"],
+  ["age", 25],
+  ["city", "Mumbai"],
+];
+const obj = Object.fromEntries(entries);
 // { name: "Rahul", age: 25, city: "Mumbai" }
 
 // Convert Map to object:
-const map = new Map([["a", 1], ["b", 2], ["c", 3]])
-const fromMap = Object.fromEntries(map)
+const map = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
+const fromMap = Object.fromEntries(map);
 // { a: 1, b: 2, c: 3 }
 
 // ✅ Power pattern — transform object:
-const prices = { apple: 100, banana: 50, mango: 150 }
+const prices = { apple: 100, banana: 50, mango: 150 };
 
 // Apply 10% discount to all:
 const discounted = Object.fromEntries(
-  Object.entries(prices).map(([fruit, price]) => [fruit, price * 0.9])
-)
+  Object.entries(prices).map(([fruit, price]) => [fruit, price * 0.9]),
+);
 // { apple: 90, banana: 45, mango: 135 }
 
 // Filter object by value:
 const affordable = Object.fromEntries(
-  Object.entries(prices).filter(([, price]) => price < 120)
-)
+  Object.entries(prices).filter(([, price]) => price < 120),
+);
 // { apple: 100, banana: 50 }
 
 // Rename all keys (lowercase):
 const normalized = Object.fromEntries(
-  Object.entries(prices).map(([key, value]) => [key.toUpperCase(), value])
-)
+  Object.entries(prices).map(([key, value]) => [key.toUpperCase(), value]),
+);
 // { APPLE: 100, BANANA: 50, MANGO: 150 }
 ```
 
@@ -10447,10 +10547,10 @@ const normalized = Object.fromEntries(
 **Q3: What is the output?**
 
 ```javascript
-const a = { x: 1, y: 2 }
-const b = Object.assign(a, { y: 10, z: 3 })
-console.log(a === b)
-console.log(a.y)
+const a = { x: 1, y: 2 };
+const b = Object.assign(a, { y: 10, z: 3 });
+console.log(a === b);
+console.log(a.y);
 ```
 
 > `true` → `10`
@@ -10470,13 +10570,13 @@ console.log(a.y)
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Spread to Copy | `{ ...obj }` — shallow copy |
-| Spread to Merge | `{ ...obj1, ...obj2 }` — combine objects |
-| Spread Override | Later keys win |
-| Rest to Collect | `const { a, ...rest } = obj` |
-| Shallow Copy Limitation | Nested objects share references |
+| Subtopic                | What You'll Learn                        |
+| ----------------------- | ---------------------------------------- |
+| Spread to Copy          | `{ ...obj }` — shallow copy              |
+| Spread to Merge         | `{ ...obj1, ...obj2 }` — combine objects |
+| Spread Override         | Later keys win                           |
+| Rest to Collect         | `const { a, ...rest } = obj`             |
+| Shallow Copy Limitation | Nested objects share references          |
 
 ---
 
@@ -10484,48 +10584,48 @@ console.log(a.y)
 
 ```javascript
 // 1. COPY object (shallow):
-const user = { name: "Rahul", age: 25 }
-const userCopy = { ...user }
-userCopy.name = "Priya"
-console.log(user.name)    // "Rahul" — original unchanged ✅
+const user = { name: "Rahul", age: 25 };
+const userCopy = { ...user };
+userCopy.name = "Priya";
+console.log(user.name); // "Rahul" — original unchanged ✅
 
 // 2. MERGE objects:
-const defaults = { theme: "light", lang: "en", fontSize: 16 }
-const overrides = { theme: "dark", fontSize: 20 }
-const merged = { ...defaults, ...overrides }
+const defaults = { theme: "light", lang: "en", fontSize: 16 };
+const overrides = { theme: "dark", fontSize: 20 };
+const merged = { ...defaults, ...overrides };
 // { theme: "dark", lang: "en", fontSize: 20 }
 // ↑ overrides wins for duplicate keys
 
 // 3. Override specific property:
-const product = { id: 1, name: "Laptop", price: 50000, inStock: true }
-const updated = { ...product, price: 45000, discount: 10 }
+const product = { id: 1, name: "Laptop", price: 50000, inStock: true };
+const updated = { ...product, price: 45000, discount: 10 };
 // { id: 1, name: "Laptop", price: 45000, inStock: true, discount: 10 }
 
 // ⚠️ ORDER MATTERS — later spread wins:
-const a = { x: 1, y: 2 }
-const b = { y: 99, z: 3 }
-console.log({ ...a, ...b })  // { x: 1, y: 99, z: 3 } (b's y wins)
-console.log({ ...b, ...a })  // { y: 2, z: 3, x: 1 }  (a's y wins)
+const a = { x: 1, y: 2 };
+const b = { y: 99, z: 3 };
+console.log({ ...a, ...b }); // { x: 1, y: 99, z: 3 } (b's y wins)
+console.log({ ...b, ...a }); // { y: 2, z: 3, x: 1 }  (a's y wins)
 
 // 4. Add properties while copying:
 const enriched = {
   ...user,
   email: "rahul@example.com",
-  createdAt: new Date().toISOString()
-}
+  createdAt: new Date().toISOString(),
+};
 
 // 5. Shallow copy limitation ⚠️:
 const original = {
   name: "Rahul",
-  address: { city: "Mumbai", pin: "400001" }  // Nested object
-}
+  address: { city: "Mumbai", pin: "400001" }, // Nested object
+};
 
-const shallow = { ...original }
-shallow.name = "Priya"           // ✅ Doesn't affect original
-shallow.address.city = "Delhi"   // ⚠️ DOES affect original! (shared reference)
+const shallow = { ...original };
+shallow.name = "Priya"; // ✅ Doesn't affect original
+shallow.address.city = "Delhi"; // ⚠️ DOES affect original! (shared reference)
 
-console.log(original.name)          // "Rahul" — unchanged
-console.log(original.address.city)  // "Delhi" ⚠️ — changed!
+console.log(original.name); // "Rahul" — unchanged
+console.log(original.address.city); // "Delhi" ⚠️ — changed!
 ```
 
 ---
@@ -10534,43 +10634,47 @@ console.log(original.address.city)  // "Delhi" ⚠️ — changed!
 
 ```javascript
 // Extract specific properties, collect the rest:
-const { name, age, ...otherInfo } = user
-console.log(name)       // "Rahul"
-console.log(age)        // 25
-console.log(otherInfo)  // { city: "Mumbai", email: "..." }
+const { name, age, ...otherInfo } = user;
+console.log(name); // "Rahul"
+console.log(age); // 25
+console.log(otherInfo); // { city: "Mumbai", email: "..." }
 
 // ⚠️ Rest must be LAST in destructuring:
 // const { ...rest, name } = user  // ❌ SyntaxError
 
 // Practical — omit properties from an object:
 function omit(obj, ...keysToOmit) {
-  const { ...result } = obj
-  keysToOmit.forEach(key => delete result[key])
-  return result
+  const { ...result } = obj;
+  keysToOmit.forEach((key) => delete result[key]);
+  return result;
 }
 
 // Better — without mutation:
 function omit(obj, ...keysToOmit) {
   return Object.fromEntries(
-    Object.entries(obj).filter(([key]) => !keysToOmit.includes(key))
-  )
+    Object.entries(obj).filter(([key]) => !keysToOmit.includes(key)),
+  );
 }
 
-omit(user, "password", "token")  // Returns user without sensitive fields
+omit(user, "password", "token"); // Returns user without sensitive fields
 
 // Pick specific properties:
 function pick(obj, ...keysToPick) {
   return Object.fromEntries(
-    Object.entries(obj).filter(([key]) => keysToPick.includes(key))
-  )
+    Object.entries(obj).filter(([key]) => keysToPick.includes(key)),
+  );
 }
 
-pick(user, "name", "email")  // { name: "Rahul", email: "..." }
+pick(user, "name", "email"); // { name: "Rahul", email: "..." }
 
 // React pattern — pass remaining props:
 function Button({ onClick, children, ...htmlProps }) {
   // onClick and children extracted, rest passed to <button>
-  return <button onClick={onClick} {...htmlProps}>{children}</button>
+  return (
+    <button onClick={onClick} {...htmlProps}>
+      {children}
+    </button>
+  );
 }
 ```
 
@@ -10585,24 +10689,24 @@ function Button({ onClick, children, ...htmlProps }) {
 **Q2: How do you correctly update a nested property using spread?**
 
 ```javascript
-const state = { user: { name: "Rahul", address: { city: "Mumbai" } } }
+const state = { user: { name: "Rahul", address: { city: "Mumbai" } } };
 
 // ❌ Wrong — shallow spread doesn't deep-copy:
-const wrong = { ...state, user: { ...state.user, name: "Priya" } }
+const wrong = { ...state, user: { ...state.user, name: "Priya" } };
 // This correctly updates name but what about address?
 
 // ✅ Correct — spread at each level:
 const correct = {
   ...state,
   user: {
-    ...state.user,       // Copy all user properties
-    name: "Priya",       // Override name
+    ...state.user, // Copy all user properties
+    name: "Priya", // Override name
     address: {
-      ...state.user.address,  // Copy address
-      city: "Delhi"           // Override city
-    }
-  }
-}
+      ...state.user.address, // Copy address
+      city: "Delhi", // Override city
+    },
+  },
+};
 ```
 
 > For deeply nested objects, each level must be individually spread. For complex state, consider Immer (used in Redux Toolkit) which allows "mutating" syntax that produces immutable copies internally.
@@ -10617,14 +10721,14 @@ const correct = {
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| What is Shallow Copy? | Copy reference, nested objects shared |
-| What is Deep Copy? | Fully independent copy at all levels |
-| Shallow Methods | `Object.assign`, spread, `Array.slice`, `Array.concat` |
-| Deep Methods | `JSON.parse(JSON.stringify)`, `structuredClone`, Lodash |
-| JSON limitations | What types JSON cannot handle |
-| `structuredClone` | Modern browser/Node API |
+| Subtopic              | What You'll Learn                                       |
+| --------------------- | ------------------------------------------------------- |
+| What is Shallow Copy? | Copy reference, nested objects shared                   |
+| What is Deep Copy?    | Fully independent copy at all levels                    |
+| Shallow Methods       | `Object.assign`, spread, `Array.slice`, `Array.concat`  |
+| Deep Methods          | `JSON.parse(JSON.stringify)`, `structuredClone`, Lodash |
+| JSON limitations      | What types JSON cannot handle                           |
+| `structuredClone`     | Modern browser/Node API                                 |
 
 ---
 
@@ -10664,30 +10768,30 @@ flowchart LR
 const original = {
   name: "Rahul",
   scores: [95, 87, 92],
-  address: { city: "Mumbai" }
-}
+  address: { city: "Mumbai" },
+};
 
 // Method 1: Spread operator
-const copy1 = { ...original }
+const copy1 = { ...original };
 
 // Method 2: Object.assign
-const copy2 = Object.assign({}, original)
+const copy2 = Object.assign({}, original);
 
 // Both behave the SAME — shallow copy:
-copy1.name = "Priya"             // ✅ Independent — original.name unchanged
-copy1.scores.push(100)           // ⚠️ Shared reference — original.scores also changes!
-copy1.address.city = "Delhi"     // ⚠️ Shared reference — original.address.city changes!
+copy1.name = "Priya"; // ✅ Independent — original.name unchanged
+copy1.scores.push(100); // ⚠️ Shared reference — original.scores also changes!
+copy1.address.city = "Delhi"; // ⚠️ Shared reference — original.address.city changes!
 
-console.log(original.name)          // "Rahul" ✅
-console.log(original.scores)        // [95, 87, 92, 100] ⚠️
-console.log(original.address.city)  // "Delhi" ⚠️
+console.log(original.name); // "Rahul" ✅
+console.log(original.scores); // [95, 87, 92, 100] ⚠️
+console.log(original.address.city); // "Delhi" ⚠️
 
 // Array shallow copy:
-const arr = [1, [2, 3], { a: 4 }]
-const arrCopy = [...arr]        // or arr.slice()
-arrCopy[0] = 99                 // ✅ Independent
-arrCopy[1].push(99)             // ⚠️ Nested array shared
-arrCopy[2].a = 999              // ⚠️ Nested object shared
+const arr = [1, [2, 3], { a: 4 }];
+const arrCopy = [...arr]; // or arr.slice()
+arrCopy[0] = 99; // ✅ Independent
+arrCopy[1].push(99); // ⚠️ Nested array shared
+arrCopy[2].a = 999; // ⚠️ Nested object shared
 ```
 
 ---
@@ -10698,15 +10802,17 @@ arrCopy[2].a = 999              // ⚠️ Nested object shared
 const complex = {
   name: "Rahul",
   birthday: new Date("1999-01-15"),
-  greet() { return "Hello!" },
+  greet() {
+    return "Hello!";
+  },
   score: undefined,
   tags: new Set(["react", "next"]),
   meta: new Map([["key", "value"]]),
-  nested: { deep: { value: 42 } }
-}
+  nested: { deep: { value: 42 } },
+};
 
 // ─── METHOD 1: JSON.parse(JSON.stringify()) ───────────────────
-const jsonCopy = JSON.parse(JSON.stringify(complex))
+const jsonCopy = JSON.parse(JSON.stringify(complex));
 
 // Limitations:
 // ❌ Functions are DROPPED silently
@@ -10716,14 +10822,14 @@ const jsonCopy = JSON.parse(JSON.stringify(complex))
 // ❌ Symbols → DROPPED
 // ❌ Circular references → throws TypeError
 
-jsonCopy.nested.deep.value = 999
-console.log(complex.nested.deep.value)  // 42 ✅ (independent)
-console.log(jsonCopy.birthday)          // "1999-01-15T..." ❌ (string, not Date)
-console.log(jsonCopy.greet)             // undefined ❌ (function dropped)
-console.log(jsonCopy.score)             // undefined but the key is GONE ❌
+jsonCopy.nested.deep.value = 999;
+console.log(complex.nested.deep.value); // 42 ✅ (independent)
+console.log(jsonCopy.birthday); // "1999-01-15T..." ❌ (string, not Date)
+console.log(jsonCopy.greet); // undefined ❌ (function dropped)
+console.log(jsonCopy.score); // undefined but the key is GONE ❌
 
 // ─── METHOD 2: structuredClone() — MODERN STANDARD ────────────
-const structCopy = structuredClone(complex)
+const structCopy = structuredClone(complex);
 // ✅ Available: Node.js 17+, Chrome 98+, Firefox 94+
 
 // What structuredClone SUPPORTS:
@@ -10741,13 +10847,13 @@ const structCopy = structuredClone(complex)
 // ❌ DOM nodes (throws DataCloneError)
 // ❌ Class instances lose their prototype (become plain objects)
 
-structCopy.nested.deep.value = 999
-console.log(complex.nested.deep.value)  // 42 ✅
-console.log(structCopy.birthday instanceof Date)  // true ✅
+structCopy.nested.deep.value = 999;
+console.log(complex.nested.deep.value); // 42 ✅
+console.log(structCopy.birthday instanceof Date); // true ✅
 
 // ─── METHOD 3: Lodash _.cloneDeep() ──────────────────────────
-import _ from 'lodash'
-const lodashCopy = _.cloneDeep(complex)
+import _ from "lodash";
+const lodashCopy = _.cloneDeep(complex);
 
 // ✅ Handles most types including class instances
 // ✅ Best for complex objects in production
@@ -10759,19 +10865,19 @@ const lodashCopy = _.cloneDeep(complex)
 
 ### Complete Comparison Table
 
-| Feature | Shallow (`...`) | JSON round-trip | `structuredClone` | Lodash `cloneDeep` |
-|---------|----------------|-----------------|-------------------|-------------------|
-| **Nested objects** | ❌ Shared | ✅ Deep | ✅ Deep | ✅ Deep |
-| **Date** | ❌ Shared | ❌ → string | ✅ Preserved | ✅ Preserved |
-| **Functions** | ❌ Shared | ❌ Dropped | ❌ Throws | ⚠️ Excluded |
-| **undefined** | ❌ Shared | ❌ Dropped | ✅ Preserved | ✅ Preserved |
-| **Map/Set** | ❌ Shared | ❌ → `{}` | ✅ Preserved | ✅ Preserved |
-| **RegExp** | ❌ Shared | ❌ → `{}` | ✅ Preserved | ✅ Preserved |
-| **Circular refs** | ❌ Shared | ❌ Throws | ✅ Handles | ✅ Handles |
-| **Class instances** | ❌ Shared | ❌ Loses class | ❌ Loses class | ✅ Best |
-| **Performance** | ⚡ Fastest | 🐌 Slow (2 parse) | ✅ Fast | ⚠️ Slowest |
-| **Browser support** | ✅ Universal | ✅ Universal | ✅ Modern | ✅ Universal |
-| **Bundle cost** | Zero | Zero | Zero | ~5KB |
+| Feature             | Shallow (`...`) | JSON round-trip   | `structuredClone` | Lodash `cloneDeep` |
+| ------------------- | --------------- | ----------------- | ----------------- | ------------------ |
+| **Nested objects**  | ❌ Shared       | ✅ Deep           | ✅ Deep           | ✅ Deep            |
+| **Date**            | ❌ Shared       | ❌ → string       | ✅ Preserved      | ✅ Preserved       |
+| **Functions**       | ❌ Shared       | ❌ Dropped        | ❌ Throws         | ⚠️ Excluded        |
+| **undefined**       | ❌ Shared       | ❌ Dropped        | ✅ Preserved      | ✅ Preserved       |
+| **Map/Set**         | ❌ Shared       | ❌ → `{}`         | ✅ Preserved      | ✅ Preserved       |
+| **RegExp**          | ❌ Shared       | ❌ → `{}`         | ✅ Preserved      | ✅ Preserved       |
+| **Circular refs**   | ❌ Shared       | ❌ Throws         | ✅ Handles        | ✅ Handles         |
+| **Class instances** | ❌ Shared       | ❌ Loses class    | ❌ Loses class    | ✅ Best            |
+| **Performance**     | ⚡ Fastest      | 🐌 Slow (2 parse) | ✅ Fast           | ⚠️ Slowest         |
+| **Browser support** | ✅ Universal    | ✅ Universal      | ✅ Modern         | ✅ Universal       |
+| **Bundle cost**     | Zero            | Zero              | Zero              | ~5KB               |
 
 ---
 
@@ -10779,23 +10885,23 @@ const lodashCopy = _.cloneDeep(complex)
 
 ```javascript
 // ✅ Shallow copy — for React state updates (when only top level changes):
-setState(prev => ({ ...prev, name: "Priya" }))
+setState((prev) => ({ ...prev, name: "Priya" }));
 
 // ✅ JSON round-trip — for simple JSON-serializable objects (no Date/Functions):
-const saved = JSON.parse(JSON.stringify(config))  // quick deep copy for simple data
+const saved = JSON.parse(JSON.stringify(config)); // quick deep copy for simple data
 
 // ✅ structuredClone — for general deep copy in modern environments:
-const snapshot = structuredClone(complexState)  // best modern option
+const snapshot = structuredClone(complexState); // best modern option
 
 // ✅ Lodash cloneDeep — for complex objects with class instances:
-import cloneDeep from 'lodash/cloneDeep'
-const backup = cloneDeep(userWithMethods)
+import cloneDeep from "lodash/cloneDeep";
+const backup = cloneDeep(userWithMethods);
 
 // ✅ Immer — for React state (allows mutation syntax, produces immutable result):
-import produce from 'immer'
-const newState = produce(state, draft => {
-  draft.user.address.city = "Delhi"  // Looks like mutation but isn't!
-})
+import produce from "immer";
+const newState = produce(state, (draft) => {
+  draft.user.address.city = "Delhi"; // Looks like mutation but isn't!
+});
 ```
 
 ---
@@ -10824,11 +10930,11 @@ const newState = produce(state, draft => {
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Array Literal | `[]` — most common way |
-| `Array.from()` | Convert iterables to arrays |
-| `Array.of()` | Create arrays from arguments |
+| Subtopic          | What You'll Learn                |
+| ----------------- | -------------------------------- |
+| Array Literal     | `[]` — most common way           |
+| `Array.from()`    | Convert iterables to arrays      |
+| `Array.of()`      | Create arrays from arguments     |
 | `Array.isArray()` | Reliably check if value is array |
 
 ---
@@ -10899,11 +11005,11 @@ typeof []                      // "object" ❌ (not useful for checking arrays)
 
 ### Subtopic Breakdown
 
-| Category | Methods |
-|----------|---------|
-| **Mutating** (modify in place — avoid in React) | push, pop, shift, unshift, splice, sort, reverse, fill |
+| Category                                             | Methods                                                                                                               |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| **Mutating** (modify in place — avoid in React)      | push, pop, shift, unshift, splice, sort, reverse, fill                                                                |
 | **Non-Mutating** (return new array — React-friendly) | map, filter, reduce, find, findIndex, some, every, includes, indexOf, slice, concat, flat, flatMap, forEach, join, at |
-| **Method Chaining** | Combining multiple methods |
+| **Method Chaining**                                  | Combining multiple methods                                                                                            |
 
 ---
 
@@ -10929,60 +11035,64 @@ flowchart TD
 ### Mutating Methods — Use with Caution
 
 ```javascript
-const arr = [1, 2, 3, 4, 5]
+const arr = [1, 2, 3, 4, 5];
 
 // push() — add to END, returns NEW LENGTH:
-arr.push(6)      // returns 6 (new length)
-arr.push(7, 8)   // add multiple; returns 8
+arr.push(6); // returns 6 (new length)
+arr.push(7, 8); // add multiple; returns 8
 // arr = [1, 2, 3, 4, 5, 6, 7, 8]
 
 // pop() — remove from END, returns REMOVED ELEMENT:
-const last = arr.pop()   // returns 8
+const last = arr.pop(); // returns 8
 // arr = [1, 2, 3, 4, 5, 6, 7]
 
 // shift() — remove from START, returns removed:
-const first = arr.shift()  // returns 1
+const first = arr.shift(); // returns 1
 // arr = [2, 3, 4, 5, 6, 7]
 
 // unshift() — add to START, returns new length:
-arr.unshift(0, 1)  // returns 9
+arr.unshift(0, 1); // returns 9
 // arr = [0, 1, 2, 3, 4, 5, 6, 7]
 
 // splice(start, deleteCount, ...items):
-const nums = [1, 2, 3, 4, 5]
-nums.splice(1, 2)           // Removes 2 elements at index 1 → returns [2, 3]
+const nums = [1, 2, 3, 4, 5];
+nums.splice(1, 2); // Removes 2 elements at index 1 → returns [2, 3]
 // nums = [1, 4, 5]
-nums.splice(1, 0, 10, 20)   // Insert without deleting (deleteCount=0)
+nums.splice(1, 0, 10, 20); // Insert without deleting (deleteCount=0)
 // nums = [1, 10, 20, 4, 5]
-nums.splice(1, 1, 99)       // Replace: remove 1 at index 1, insert 99
+nums.splice(1, 1, 99); // Replace: remove 1 at index 1, insert 99
 // nums = [1, 99, 20, 4, 5]
 
 // sort() — MUTATES, sorts in place:
-const names = ["Charlie", "Alice", "Bob"]
-names.sort()  // ["Alice", "Bob", "Charlie"] (alphabetical default)
+const names = ["Charlie", "Alice", "Bob"];
+names.sort(); // ["Alice", "Bob", "Charlie"] (alphabetical default)
 
 // ⚠️ GOTCHA — default sort converts to strings:
-const numbers = [10, 9, 2, 1, 20]
-numbers.sort()   // [1, 10, 2, 20, 9] ❌ (alphabetical, not numeric!)
-numbers.sort((a, b) => a - b)   // [1, 2, 9, 10, 20] ✅ (numeric ascending)
-numbers.sort((a, b) => b - a)   // [20, 10, 9, 2, 1] ✅ (numeric descending)
+const numbers = [10, 9, 2, 1, 20];
+numbers.sort(); // [1, 10, 2, 20, 9] ❌ (alphabetical, not numeric!)
+numbers.sort((a, b) => a - b); // [1, 2, 9, 10, 20] ✅ (numeric ascending)
+numbers.sort((a, b) => b - a); // [20, 10, 9, 2, 1] ✅ (numeric descending)
 
 // Sorting objects:
 const people = [
   { name: "Charlie", age: 30 },
   { name: "Alice", age: 25 },
-  { name: "Bob", age: 28 }
-]
-people.sort((a, b) => a.age - b.age)     // Sort by age ascending
-people.sort((a, b) => a.name.localeCompare(b.name))  // Sort by name
+  { name: "Bob", age: 28 },
+];
+people.sort((a, b) => a.age - b.age); // Sort by age ascending
+people
+  .sort((a, b) => a.name.localeCompare(b.name)) // Sort by name
 
-// reverse() — reverses IN PLACE:
-[1, 2, 3].reverse()  // [3, 2, 1] — mutates!
+  [
+    // reverse() — reverses IN PLACE:
+    (1, 2, 3)
+  ].reverse(); // [3, 2, 1] — mutates!
 // Non-mutating: [...arr].reverse() or arr.toReversed() (ES2023)
 
 // fill(value, start, end) — fill section with value:
-new Array(5).fill(0)           // [0, 0, 0, 0, 0]
-[1, 2, 3, 4, 5].fill(0, 2, 4) // [1, 2, 0, 0, 5] (indices 2,3 filled with 0)
+new Array(5)
+  .fill(0) // [0, 0, 0, 0, 0]
+  [(1, 2, 3, 4, 5)].fill(0, 2, 4); // [1, 2, 0, 0, 5] (indices 2,3 filled with 0)
 ```
 
 ---
@@ -11154,34 +11264,35 @@ const orders = [
   { id: 3, userId: 101, amount: 3000, status: "delivered", date: "2024-01-17" },
   { id: 4, userId: 103, amount: 200, status: "cancelled", date: "2024-01-18" },
   { id: 5, userId: 102, amount: 2500, status: "delivered", date: "2024-01-19" },
-]
+];
 
 // Business logic: Find total revenue from delivered orders by user 101
 const user101Revenue = orders
-  .filter(order => order.userId === 101)         // Only user 101's orders
-  .filter(order => order.status === "delivered") // Only delivered
-  .map(order => order.amount)                    // Extract amounts
-  .reduce((sum, amount) => sum + amount, 0)      // Sum them
+  .filter((order) => order.userId === 101) // Only user 101's orders
+  .filter((order) => order.status === "delivered") // Only delivered
+  .map((order) => order.amount) // Extract amounts
+  .reduce((sum, amount) => sum + amount, 0); // Sum them
 // Result: 1500 + 3000 = 4500
 
 // Get top 3 most expensive delivered orders:
 const top3 = orders
-  .filter(order => order.status === "delivered")
-  .sort((a, b) => b.amount - a.amount)   // Descending by amount
-  .slice(0, 3)                            // Take first 3
-  .map(order => ({                        // Format output
+  .filter((order) => order.status === "delivered")
+  .sort((a, b) => b.amount - a.amount) // Descending by amount
+  .slice(0, 3) // Take first 3
+  .map((order) => ({
+    // Format output
     orderId: order.id,
-    revenue: `₹${order.amount.toLocaleString()}`
-  }))
+    revenue: `₹${order.amount.toLocaleString()}`,
+  }));
 
 // Get summary by status:
 const summary = orders.reduce((acc, order) => {
-  const status = order.status
-  if (!acc[status]) acc[status] = { count: 0, total: 0 }
-  acc[status].count++
-  acc[status].total += order.amount
-  return acc
-}, {})
+  const status = order.status;
+  if (!acc[status]) acc[status] = { count: 0, total: 0 };
+  acc[status].count++;
+  acc[status].total += order.amount;
+  return acc;
+}, {});
 // {
 //   delivered: { count: 3, total: 7000 },
 //   pending: { count: 1, total: 500 },
@@ -11195,23 +11306,23 @@ const summary = orders.reduce((acc, order) => {
 
 ```javascript
 // ES2023 adds non-mutating versions of mutating methods:
-const arr = [3, 1, 4, 1, 5]
+const arr = [3, 1, 4, 1, 5];
 
 // toSorted() — non-mutating sort:
-const sorted = arr.toSorted((a, b) => a - b)  // [1, 1, 3, 4, 5]
-console.log(arr)  // [3, 1, 4, 1, 5] — unchanged!
+const sorted = arr.toSorted((a, b) => a - b); // [1, 1, 3, 4, 5]
+console.log(arr); // [3, 1, 4, 1, 5] — unchanged!
 
 // toReversed() — non-mutating reverse:
-const reversed = arr.toReversed()  // [5, 1, 4, 1, 3]
-console.log(arr)  // [3, 1, 4, 1, 5] — unchanged!
+const reversed = arr.toReversed(); // [5, 1, 4, 1, 3]
+console.log(arr); // [3, 1, 4, 1, 5] — unchanged!
 
 // toSpliced() — non-mutating splice:
-const spliced = arr.toSpliced(1, 2, 99)  // [3, 99, 1, 5]
-console.log(arr)  // [3, 1, 4, 1, 5] — unchanged!
+const spliced = arr.toSpliced(1, 2, 99); // [3, 99, 1, 5]
+console.log(arr); // [3, 1, 4, 1, 5] — unchanged!
 
 // with() — non-mutating index assignment:
-const replaced = arr.with(2, 99)  // [3, 1, 99, 1, 5]
-console.log(arr)  // [3, 1, 4, 1, 5] — unchanged!
+const replaced = arr.with(2, 99); // [3, 1, 99, 1, 5]
+console.log(arr); // [3, 1, 4, 1, 5] — unchanged!
 ```
 
 > [!TIP]
@@ -11232,12 +11343,12 @@ console.log(arr)  // [3, 1, 4, 1, 5] — unchanged!
 **Q3: What is the output?**
 
 ```javascript
-const arr = [1, 2, 3, 4, 5]
+const arr = [1, 2, 3, 4, 5];
 const result = arr
-  .filter(x => x % 2 === 0)
-  .map(x => x * 3)
-  .reduce((sum, x) => sum + x, 0)
-console.log(result)
+  .filter((x) => x % 2 === 0)
+  .map((x) => x * 3)
+  .reduce((sum, x) => sum + x, 0);
+console.log(result);
 ```
 
 > **Output:** `18`
@@ -11261,13 +11372,13 @@ console.log(result)
 
 ### Subtopic Breakdown
 
-| Subtopic | What You'll Learn |
-|----------|-------------------|
-| Basic Destructuring | Extract by position |
-| Skip Elements | Leave gaps with commas |
-| Rest in Arrays | Collect remaining |
-| Default Values | Fallback for undefined |
-| Swap Variables | Classic pattern |
+| Subtopic                   | What You'll Learn          |
+| -------------------------- | -------------------------- |
+| Basic Destructuring        | Extract by position        |
+| Skip Elements              | Leave gaps with commas     |
+| Rest in Arrays             | Collect remaining          |
+| Default Values             | Fallback for undefined     |
+| Swap Variables             | Classic pattern            |
 | Nested Array Destructuring | Extract from nested arrays |
 
 ---
@@ -11275,56 +11386,64 @@ console.log(result)
 ### Array Destructuring Patterns
 
 ```javascript
-const colors = ["red", "green", "blue", "yellow", "purple"]
+const colors = ["red", "green", "blue", "yellow", "purple"];
 
 // ─── BASIC — extract by position ─────────────────────────────────
-const [first, second, third] = colors
-console.log(first, second, third)  // "red" "green" "blue"
+const [first, second, third] = colors;
+console.log(first, second, third); // "red" "green" "blue"
 
 // ─── SKIP ELEMENTS — use commas as placeholders ───────────────────
-const [primary, , accent] = colors  // Skip "green"
-console.log(primary, accent)         // "red" "blue"
+const [primary, , accent] = colors; // Skip "green"
+console.log(primary, accent); // "red" "blue"
 
-const [, , , fourth] = colors        // Skip first 3
-console.log(fourth)                  // "yellow"
+const [, , , fourth] = colors; // Skip first 3
+console.log(fourth); // "yellow"
 
 // ─── REST — collect remaining into array ─────────────────────────
-const [head, ...tail] = colors
-console.log(head)  // "red"
-console.log(tail)  // ["green", "blue", "yellow", "purple"]
+const [head, ...tail] = colors;
+console.log(head); // "red"
+console.log(tail); // ["green", "blue", "yellow", "purple"]
 
 // ─── DEFAULT VALUES ───────────────────────────────────────────────
-const [a = "default_a", b = "default_b"] = ["alpha"]
-console.log(a)  // "alpha" (provided)
-console.log(b)  // "default_b" (undefined → uses default)
+const [a = "default_a", b = "default_b"] = ["alpha"];
+console.log(a); // "alpha" (provided)
+console.log(b); // "default_b" (undefined → uses default)
 
 // ─── SWAP VARIABLES (elegant pattern!) ───────────────────────────
-let x = 1, y = 2
+let x = 1,
+  y = ((2)[
+    // Old way (needs temp variable):
+    // let temp = x; x = y; y = temp
 
-// Old way (needs temp variable):
-// let temp = x; x = y; y = temp
-
-// With destructuring (no temp needed):
-[x, y] = [y, x]
-console.log(x, y)  // 2, 1
+    // With destructuring (no temp needed):
+    (x, y)
+  ] = [y, x]);
+console.log(x, y); // 2, 1
 
 // ─── NESTED ARRAY DESTRUCTURING ──────────────────────────────────
-const matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+const matrix = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+];
 
-const [[r1c1, r1c2], [r2c1]] = matrix
-console.log(r1c1, r1c2)  // 1, 2
-console.log(r2c1)         // 4
+const [[r1c1, r1c2], [r2c1]] = matrix;
+console.log(r1c1, r1c2); // 1, 2
+console.log(r2c1); // 4
 
 // ─── MIXED OBJECT + ARRAY DESTRUCTURING ──────────────────────────
 const user = {
   name: "Rahul",
-  scores: [95, 87, 92, 78]
-}
+  scores: [95, 87, 92, 78],
+};
 
-const { name, scores: [topScore, ...otherScores] } = user
-console.log(name)        // "Rahul"
-console.log(topScore)    // 95
-console.log(otherScores) // [87, 92, 78]
+const {
+  name,
+  scores: [topScore, ...otherScores],
+} = user;
+console.log(name); // "Rahul"
+console.log(topScore); // 95
+console.log(otherScores); // [87, 92, 78]
 
 // ─── REAL WORLD — useState (React uses array destructuring):
 // const [count, setCount] = useState(0)
@@ -11332,16 +11451,16 @@ console.log(otherScores) // [87, 92, 78]
 
 // ─── FUNCTION RETURNING ARRAY:
 function getRange(min, max) {
-  return [min, max, max - min]
+  return [min, max, max - min];
 }
 
-const [minimum, maximum, range] = getRange(5, 20)
-console.log(minimum, maximum, range)  // 5, 20, 15
+const [minimum, maximum, range] = getRange(5, 20);
+console.log(minimum, maximum, range); // 5, 20, 15
 
 // ─── ITERATING WITH ENTRIES + DESTRUCTURING:
-const fruits = ["apple", "banana", "cherry"]
+const fruits = ["apple", "banana", "cherry"];
 for (const [index, fruit] of fruits.entries()) {
-  console.log(`${index}: ${fruit}`)
+  console.log(`${index}: ${fruit}`);
 }
 // "0: apple", "1: banana", "2: cherry"
 ```
@@ -11361,10 +11480,10 @@ for (const [index, fruit] of fruits.entries()) {
 **Q3: What is the output?**
 
 ```javascript
-const [a, b, ...c] = [1, 2, 3, 4, 5]
-const [x = 10, y = 20, z = 30] = [undefined, null, 0]
-console.log(a, b, c)
-console.log(x, y, z)
+const [a, b, ...c] = [1, 2, 3, 4, 5];
+const [x = 10, y = 20, z = 30] = [undefined, null, 0];
+console.log(a, b, c);
+console.log(x, y, z);
 ```
 
 > `1 2 [3, 4, 5]` → `10 null 0`
@@ -11381,12 +11500,12 @@ console.log(x, y, z)
 
 ### Subtopic Breakdown
 
-| Polyfill | What It Tests |
-|----------|---------------|
-| `Array.prototype.myMap` | Callback, new array, same length |
-| `Array.prototype.myFilter` | Conditional, new array, shorter length |
+| Polyfill                   | What It Tests                               |
+| -------------------------- | ------------------------------------------- |
+| `Array.prototype.myMap`    | Callback, new array, same length            |
+| `Array.prototype.myFilter` | Conditional, new array, shorter length      |
 | `Array.prototype.myReduce` | Accumulator, initial value, no-initial case |
-| `Array.prototype.myFlat` | Recursion, depth parameter |
+| `Array.prototype.myFlat`   | Recursion, depth parameter                  |
 
 > [!IMPORTANT]
 > **Interview Signal:** Implementing polyfills shows you understand what the method does internally — its contract, edge cases, and behavior. This is one of the most commonly asked JavaScript coding questions in interviews at top companies.
@@ -11404,44 +11523,44 @@ console.log(x, y, z)
 // - Passes: (element, index, array) to callback
 // - Skips holes in sparse arrays
 
-Array.prototype.myMap = function(callback, thisArg) {
+Array.prototype.myMap = function (callback, thisArg) {
   // Validate callback:
   if (typeof callback !== "function") {
-    throw new TypeError(`${callback} is not a function`)
+    throw new TypeError(`${callback} is not a function`);
   }
 
-  const result = []                    // New array to return
-  const arr = this                     // 'this' is the array being mapped
+  const result = []; // New array to return
+  const arr = this; // 'this' is the array being mapped
 
   for (let i = 0; i < arr.length; i++) {
     // Check if index exists (skip holes in sparse arrays):
     if (i in arr) {
       // Call callback with: element, index, original array
       // thisArg sets 'this' inside callback
-      result[i] = callback.call(thisArg, arr[i], i, arr)
+      result[i] = callback.call(thisArg, arr[i], i, arr);
     }
   }
 
-  return result
-}
+  return result;
+};
 
 // Test:
-const nums = [1, 2, 3, 4, 5]
-const doubled = nums.myMap(n => n * 2)
-console.log(doubled)    // [2, 4, 6, 8, 10]
-console.log(nums)       // [1, 2, 3, 4, 5] — unchanged
+const nums = [1, 2, 3, 4, 5];
+const doubled = nums.myMap((n) => n * 2);
+console.log(doubled); // [2, 4, 6, 8, 10]
+console.log(nums); // [1, 2, 3, 4, 5] — unchanged
 
 // With index:
-const withIndex = nums.myMap((n, i) => `${i}:${n}`)
+const withIndex = nums.myMap((n, i) => `${i}:${n}`);
 // ["0:1", "1:2", "2:3", "3:4", "4:5"]
 
 // Error case:
 // nums.myMap("not a function")  // TypeError ✅
 
 // Verify behavior matches native:
-const a = [1, 2, 3].map(x => x * 2)
-const b = [1, 2, 3].myMap(x => x * 2)
-console.log(JSON.stringify(a) === JSON.stringify(b))  // true
+const a = [1, 2, 3].map((x) => x * 2);
+const b = [1, 2, 3].myMap((x) => x * 2);
+console.log(JSON.stringify(a) === JSON.stringify(b)); // true
 ```
 
 ---
@@ -11456,44 +11575,44 @@ console.log(JSON.stringify(a) === JSON.stringify(b))  // true
 // - Doesn't mutate original
 // - Passes: (element, index, array) to callback
 
-Array.prototype.myFilter = function(callback, thisArg) {
+Array.prototype.myFilter = function (callback, thisArg) {
   if (typeof callback !== "function") {
-    throw new TypeError(`${callback} is not a function`)
+    throw new TypeError(`${callback} is not a function`);
   }
 
-  const result = []
-  const arr = this
+  const result = [];
+  const arr = this;
 
   for (let i = 0; i < arr.length; i++) {
     if (i in arr) {
       // If callback returns truthy — include the element:
       if (callback.call(thisArg, arr[i], i, arr)) {
-        result.push(arr[i])
+        result.push(arr[i]);
       }
     }
   }
 
-  return result
-}
+  return result;
+};
 
 // Test:
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
-const evens = numbers.myFilter(n => n % 2 === 0)
-console.log(evens)  // [2, 4, 6, 8, 10]
+const evens = numbers.myFilter((n) => n % 2 === 0);
+console.log(evens); // [2, 4, 6, 8, 10]
 
-const bigOdds = numbers.myFilter(n => n % 2 !== 0 && n > 5)
-console.log(bigOdds)  // [7, 9]
+const bigOdds = numbers.myFilter((n) => n % 2 !== 0 && n > 5);
+console.log(bigOdds); // [7, 9]
 
 // Object array filtering:
 const users = [
   { name: "Rahul", active: true },
   { name: "Priya", active: false },
-  { name: "Amit", active: true }
-]
+  { name: "Amit", active: true },
+];
 
-const activeUsers = users.myFilter(u => u.active)
-console.log(activeUsers.map(u => u.name))  // ["Rahul", "Amit"]
+const activeUsers = users.myFilter((u) => u.active);
+console.log(activeUsers.map((u) => u.name)); // ["Rahul", "Amit"]
 ```
 
 ---
@@ -11508,77 +11627,77 @@ console.log(activeUsers.map(u => u.name))  // ["Rahul", "Amit"]
 // - If no initialValue and empty array → TypeError
 // - If no initialValue → first element is accumulator, iteration starts at index 1
 
-Array.prototype.myReduce = function(callback, initialValue) {
+Array.prototype.myReduce = function (callback, initialValue) {
   if (typeof callback !== "function") {
-    throw new TypeError(`${callback} is not a function`)
+    throw new TypeError(`${callback} is not a function`);
   }
 
-  const arr = this
-  const len = arr.length
+  const arr = this;
+  const len = arr.length;
 
   // Edge case: empty array with no initial value:
   if (len === 0 && arguments.length < 2) {
-    throw new TypeError("Reduce of empty array with no initial value")
+    throw new TypeError("Reduce of empty array with no initial value");
   }
 
-  let accumulator
-  let startIndex
+  let accumulator;
+  let startIndex;
 
   if (arguments.length >= 2) {
     // initialValue provided:
-    accumulator = initialValue
-    startIndex = 0
+    accumulator = initialValue;
+    startIndex = 0;
   } else {
     // No initialValue — use first element, start from index 1:
     // Find first existing index (handle sparse arrays):
-    let firstIndex = -1
+    let firstIndex = -1;
     for (let i = 0; i < len; i++) {
       if (i in arr) {
-        firstIndex = i
-        break
+        firstIndex = i;
+        break;
       }
     }
 
     if (firstIndex === -1) {
-      throw new TypeError("Reduce of empty array with no initial value")
+      throw new TypeError("Reduce of empty array with no initial value");
     }
 
-    accumulator = arr[firstIndex]
-    startIndex = firstIndex + 1
+    accumulator = arr[firstIndex];
+    startIndex = firstIndex + 1;
   }
 
   // Main reduction loop:
   for (let i = startIndex; i < len; i++) {
     if (i in arr) {
-      accumulator = callback(accumulator, arr[i], i, arr)
+      accumulator = callback(accumulator, arr[i], i, arr);
     }
   }
 
-  return accumulator
-}
+  return accumulator;
+};
 
 // Tests:
-const nums = [1, 2, 3, 4, 5]
+const nums = [1, 2, 3, 4, 5];
 
 // Sum with initial value:
-const sum = nums.myReduce((acc, n) => acc + n, 0)
-console.log(sum)  // 15
+const sum = nums.myReduce((acc, n) => acc + n, 0);
+console.log(sum); // 15
 
 // Sum without initial value (first element = initial):
-const sum2 = nums.myReduce((acc, n) => acc + n)
-console.log(sum2)  // 15
+const sum2 = nums.myReduce((acc, n) => acc + n);
+console.log(sum2); // 15
 
 // Product:
-const product = nums.myReduce((acc, n) => acc * n, 1)
-console.log(product)  // 120
+const product = nums.myReduce((acc, n) => acc * n, 1);
+console.log(product); // 120
 
 // Build object:
-const data = ["a", "b", "c", "a", "b", "a"]
+const data = ["a", "b", "c", "a", "b", "a"];
 const frequency = data.myReduce((acc, char) => {
-  acc[char] = (acc[char] || 0) + 1
-  return acc
-}, {})
-console.log(frequency)  // { a: 3, b: 2, c: 1 }
+  acc[char] = (acc[char] || 0) + 1;
+  return acc;
+}, {});
+console.log(frequency); // { a: 3, b: 2, c: 1 }
 
 // Error cases:
 // [].myReduce((a, b) => a + b)  // TypeError ✅
@@ -11597,46 +11716,48 @@ console.log(frequency)  // { a: 3, b: 2, c: 1 }
 // - Doesn't mutate original
 // - Skips empty slots (sparse arrays)
 
-Array.prototype.myFlat = function(depth = 1) {
-  const result = []
+Array.prototype.myFlat = function (depth = 1) {
+  const result = [];
 
   function flatten(arr, currentDepth) {
     for (let i = 0; i < arr.length; i++) {
       if (i in arr) {
-        const item = arr[i]
+        const item = arr[i];
 
         // If item is array AND we haven't reached depth limit:
         if (Array.isArray(item) && currentDepth > 0) {
-          flatten(item, currentDepth - 1)  // Recurse with reduced depth
+          flatten(item, currentDepth - 1); // Recurse with reduced depth
         } else {
-          result.push(item)
+          result.push(item);
         }
       }
     }
   }
 
-  flatten(this, depth)
-  return result
-}
+  flatten(this, depth);
+  return result;
+};
 
 // Tests:
-const nested = [1, [2, 3], [4, [5, 6]], [[7, [8]]]]
+const nested = [1, [2, 3], [4, [5, 6]], [[7, [8]]]];
 
-console.log(nested.myFlat())       // [1, 2, 3, 4, [5, 6], [7, [8]]] (depth 1)
-console.log(nested.myFlat(2))      // [1, 2, 3, 4, 5, 6, [7, [8]]]  (depth 2)
-console.log(nested.myFlat(Infinity)) // [1, 2, 3, 4, 5, 6, 7, 8]    (full flatten)
+console.log(nested.myFlat()); // [1, 2, 3, 4, [5, 6], [7, [8]]] (depth 1)
+console.log(nested.myFlat(2)); // [1, 2, 3, 4, 5, 6, [7, [8]]]  (depth 2)
+console.log(nested.myFlat(Infinity)); // [1, 2, 3, 4, 5, 6, 7, 8]    (full flatten)
 
 // Verify against native:
-console.log(JSON.stringify(nested.flat(2)) === JSON.stringify(nested.myFlat(2)))  // true
+console.log(
+  JSON.stringify(nested.flat(2)) === JSON.stringify(nested.myFlat(2)),
+); // true
 
 // Alternative iterative approach using reduce:
 function flatIterative(arr, depth = 1) {
   return arr.reduce((flat, item) => {
     if (Array.isArray(item) && depth > 0) {
-      return flat.concat(flatIterative(item, depth - 1))
+      return flat.concat(flatIterative(item, depth - 1));
     }
-    return flat.concat(item)
-  }, [])
+    return flat.concat(item);
+  }, []);
 }
 ```
 
@@ -11646,53 +11767,53 @@ function flatIterative(arr, depth = 1) {
 
 ```javascript
 // Implement forEach:
-Array.prototype.myForEach = function(callback, thisArg) {
+Array.prototype.myForEach = function (callback, thisArg) {
   if (typeof callback !== "function") {
-    throw new TypeError(`${callback} is not a function`)
+    throw new TypeError(`${callback} is not a function`);
   }
 
-  const arr = this
+  const arr = this;
   for (let i = 0; i < arr.length; i++) {
     if (i in arr) {
-      callback.call(thisArg, arr[i], i, arr)
+      callback.call(thisArg, arr[i], i, arr);
     }
   }
   // forEach always returns undefined!
-}
+};
 
 // Implement find:
-Array.prototype.myFind = function(callback, thisArg) {
+Array.prototype.myFind = function (callback, thisArg) {
   if (typeof callback !== "function") {
-    throw new TypeError(`${callback} is not a function`)
+    throw new TypeError(`${callback} is not a function`);
   }
 
-  const arr = this
+  const arr = this;
   for (let i = 0; i < arr.length; i++) {
     if (i in arr) {
       if (callback.call(thisArg, arr[i], i, arr)) {
-        return arr[i]  // Return first matching element
+        return arr[i]; // Return first matching element
       }
     }
   }
-  return undefined  // Not found
-}
+  return undefined; // Not found
+};
 
 // Implement findIndex:
-Array.prototype.myFindIndex = function(callback, thisArg) {
+Array.prototype.myFindIndex = function (callback, thisArg) {
   if (typeof callback !== "function") {
-    throw new TypeError(`${callback} is not a function`)
+    throw new TypeError(`${callback} is not a function`);
   }
 
-  const arr = this
+  const arr = this;
   for (let i = 0; i < arr.length; i++) {
     if (i in arr) {
       if (callback.call(thisArg, arr[i], i, arr)) {
-        return i  // Return first matching index
+        return i; // Return first matching index
       }
     }
   }
-  return -1  // Not found
-}
+  return -1; // Not found
+};
 ```
 
 ---
@@ -11791,267 +11912,308 @@ data-pipeline/
 // lib/pipeline/operations.ts
 // All operations use immutable array methods (no mutation)
 
-export type FilterOperator = "equals" | "contains" | "greaterThan" | "lessThan" | "exists"
-export type SortOrder = "asc" | "desc"
+export type FilterOperator =
+  | "equals"
+  | "contains"
+  | "greaterThan"
+  | "lessThan"
+  | "exists";
+export type SortOrder = "asc" | "desc";
 
 export interface FilterConfig {
-  field: string
-  operator: FilterOperator
-  value: string | number | boolean
+  field: string;
+  operator: FilterOperator;
+  value: string | number | boolean;
 }
 
 export interface MapConfig {
-  operation: "pick" | "compute" | "rename" | "add"
-  fields?: string[]
-  computations?: Array<{ newField: string; expression: string }>
+  operation: "pick" | "compute" | "rename" | "add";
+  fields?: string[];
+  computations?: Array<{ newField: string; expression: string }>;
 }
 
 export interface SortConfig {
-  field: string
-  order: SortOrder
+  field: string;
+  order: SortOrder;
 }
 
 export interface ReduceConfig {
-  operation: "sum" | "count" | "average" | "groupBy" | "min" | "max"
-  field?: string
-  groupByField?: string
+  operation: "sum" | "count" | "average" | "groupBy" | "min" | "max";
+  field?: string;
+  groupByField?: string;
 }
 
 export type PipelineStep =
   | { type: "filter"; config: FilterConfig }
   | { type: "map"; config: MapConfig }
   | { type: "sort"; config: SortConfig }
-  | { type: "reduce"; config: ReduceConfig }
+  | { type: "reduce"; config: ReduceConfig };
 
 // Apply a filter step:
-export function applyFilter(data: Record<string, unknown>[], config: FilterConfig): Record<string, unknown>[] {
-  return data.filter(item => {
-    const fieldValue = getNestedValue(item, config.field)
+export function applyFilter(
+  data: Record<string, unknown>[],
+  config: FilterConfig,
+): Record<string, unknown>[] {
+  return data.filter((item) => {
+    const fieldValue = getNestedValue(item, config.field);
 
     switch (config.operator) {
       case "equals":
-        return fieldValue == config.value
+        return fieldValue == config.value;
       case "contains":
-        return String(fieldValue).toLowerCase().includes(String(config.value).toLowerCase())
+        return String(fieldValue)
+          .toLowerCase()
+          .includes(String(config.value).toLowerCase());
       case "greaterThan":
-        return Number(fieldValue) > Number(config.value)
+        return Number(fieldValue) > Number(config.value);
       case "lessThan":
-        return Number(fieldValue) < Number(config.value)
+        return Number(fieldValue) < Number(config.value);
       case "exists":
-        return fieldValue !== undefined && fieldValue !== null
+        return fieldValue !== undefined && fieldValue !== null;
       default:
-        return true
+        return true;
     }
-  })
+  });
 }
 
 // Apply a map/transform step:
-export function applyMap(data: Record<string, unknown>[], config: MapConfig): Record<string, unknown>[] {
+export function applyMap(
+  data: Record<string, unknown>[],
+  config: MapConfig,
+): Record<string, unknown>[] {
   switch (config.operation) {
     case "pick":
       // Keep only specified fields:
-      return data.map(item =>
+      return data.map((item) =>
         Object.fromEntries(
-          (config.fields ?? []).map(field => [field, item[field]])
-        )
-      )
+          (config.fields ?? []).map((field) => [field, item[field]]),
+        ),
+      );
 
     case "rename":
       // Rename fields:
-      return data.map(item => {
-        const renamed = { ...item }
+      return data.map((item) => {
+        const renamed = { ...item };
         config.computations?.forEach(({ newField, expression }) => {
           if (item[expression] !== undefined) {
-            renamed[newField] = item[expression]
-            delete renamed[expression]
+            renamed[newField] = item[expression];
+            delete renamed[expression];
           }
-        })
-        return renamed
-      })
+        });
+        return renamed;
+      });
 
     case "compute":
       // Add computed fields:
-      return data.map(item => ({
+      return data.map((item) => ({
         ...item,
         ...Object.fromEntries(
           (config.computations ?? []).map(({ newField, expression }) => [
             newField,
-            evaluateSafeExpression(expression, item)
-          ])
-        )
-      }))
+            evaluateSafeExpression(expression, item),
+          ]),
+        ),
+      }));
 
     default:
-      return data
+      return data;
   }
 }
 
 // Apply a sort step:
-export function applySort(data: Record<string, unknown>[], config: SortConfig): Record<string, unknown>[] {
+export function applySort(
+  data: Record<string, unknown>[],
+  config: SortConfig,
+): Record<string, unknown>[] {
   return [...data].sort((a, b) => {
-    const aVal = getNestedValue(a, config.field)
-    const bVal = getNestedValue(b, config.field)
+    const aVal = getNestedValue(a, config.field);
+    const bVal = getNestedValue(b, config.field);
 
-    let comparison = 0
+    let comparison = 0;
     if (typeof aVal === "number" && typeof bVal === "number") {
-      comparison = aVal - bVal
+      comparison = aVal - bVal;
     } else {
-      comparison = String(aVal).localeCompare(String(bVal))
+      comparison = String(aVal).localeCompare(String(bVal));
     }
 
-    return config.order === "desc" ? -comparison : comparison
-  })
+    return config.order === "desc" ? -comparison : comparison;
+  });
 }
 
 // Apply a reduce/aggregate step:
-export function applyReduce(data: Record<string, unknown>[], config: ReduceConfig): unknown {
+export function applyReduce(
+  data: Record<string, unknown>[],
+  config: ReduceConfig,
+): unknown {
   switch (config.operation) {
     case "count":
-      return { count: data.length }
+      return { count: data.length };
 
     case "sum":
       return {
         sum: data.reduce((acc, item) => {
-          const val = Number(getNestedValue(item, config.field ?? ""))
-          return acc + (isNaN(val) ? 0 : val)
-        }, 0)
-      }
+          const val = Number(getNestedValue(item, config.field ?? ""));
+          return acc + (isNaN(val) ? 0 : val);
+        }, 0),
+      };
 
     case "average": {
-      const sum = data.reduce((acc, item) =>
-        acc + Number(getNestedValue(item, config.field ?? "")), 0)
-      return { average: data.length ? sum / data.length : 0 }
+      const sum = data.reduce(
+        (acc, item) => acc + Number(getNestedValue(item, config.field ?? "")),
+        0,
+      );
+      return { average: data.length ? sum / data.length : 0 };
     }
 
     case "min":
       return {
-        min: Math.min(...data.map(item => Number(getNestedValue(item, config.field ?? ""))))
-      }
+        min: Math.min(
+          ...data.map((item) =>
+            Number(getNestedValue(item, config.field ?? "")),
+          ),
+        ),
+      };
 
     case "max":
       return {
-        max: Math.max(...data.map(item => Number(getNestedValue(item, config.field ?? ""))))
-      }
+        max: Math.max(
+          ...data.map((item) =>
+            Number(getNestedValue(item, config.field ?? "")),
+          ),
+        ),
+      };
 
     case "groupBy":
       return data.reduce((groups: Record<string, unknown[]>, item) => {
-        const key = String(getNestedValue(item, config.groupByField ?? ""))
+        const key = String(getNestedValue(item, config.groupByField ?? ""));
         return {
           ...groups,
-          [key]: [...(groups[key] as unknown[] ?? []), item]
-        }
-      }, {})
+          [key]: [...((groups[key] as unknown[]) ?? []), item],
+        };
+      }, {});
 
     default:
-      return data
+      return data;
   }
 }
 
 // Execute entire pipeline:
 export function executePipeline(
   data: Record<string, unknown>[],
-  steps: PipelineStep[]
+  steps: PipelineStep[],
 ): { result: unknown; stepResults: unknown[]; executionTime: number } {
-  const start = Date.now()
-  const stepResults: unknown[] = []
+  const start = Date.now();
+  const stepResults: unknown[] = [];
 
-  let current: unknown = data
+  let current: unknown = data;
 
   for (const step of steps) {
-    const stepStart = Date.now()
+    const stepStart = Date.now();
 
-    if (!Array.isArray(current)) break  // Reduce output can't be piped further
+    if (!Array.isArray(current)) break; // Reduce output can't be piped further
 
     switch (step.type) {
       case "filter":
-        current = applyFilter(current, step.config)
-        break
+        current = applyFilter(current, step.config);
+        break;
       case "map":
-        current = applyMap(current, step.config)
-        break
+        current = applyMap(current, step.config);
+        break;
       case "sort":
-        current = applySort(current, step.config)
-        break
+        current = applySort(current, step.config);
+        break;
       case "reduce":
-        current = applyReduce(current, step.config)
-        break
+        current = applyReduce(current, step.config);
+        break;
     }
 
     stepResults.push({
       step: step.type,
       outputLength: Array.isArray(current) ? current.length : 1,
-      executionMs: Date.now() - stepStart
-    })
+      executionMs: Date.now() - stepStart,
+    });
   }
 
   return {
     result: current,
     stepResults,
-    executionTime: Date.now() - start
-  }
+    executionTime: Date.now() - start,
+  };
 }
 
 // Helper: safely get nested property value:
 function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
   return path.split(".").reduce((acc: unknown, key) => {
     if (acc && typeof acc === "object" && !Array.isArray(acc)) {
-      return (acc as Record<string, unknown>)[key]
+      return (acc as Record<string, unknown>)[key];
     }
-    return undefined
-  }, obj)
+    return undefined;
+  }, obj);
 }
 
 // Safe expression evaluator (limited to math operations):
-function evaluateSafeExpression(expr: string, item: Record<string, unknown>): unknown {
+function evaluateSafeExpression(
+  expr: string,
+  item: Record<string, unknown>,
+): unknown {
   // Replace field references with their values
   const resolved = expr.replace(/\b([a-zA-Z_][a-zA-Z0-9_.]*)\b/g, (match) => {
-    const val = getNestedValue(item, match)
-    return val !== undefined ? String(val) : "0"
-  })
+    const val = getNestedValue(item, match);
+    return val !== undefined ? String(val) : "0";
+  });
 
   // Only allow safe math expressions:
   if (/^[\d+\-*/().\s]+$/.test(resolved)) {
     try {
-      return Function(`"use strict"; return (${resolved})`)()
+      return Function(`"use strict"; return (${resolved})`)();
     } catch {
-      return null
+      return null;
     }
   }
 
-  return null
+  return null;
 }
 ```
 
 ```typescript
 // app/api/pipeline/execute/route.ts
 
-import { NextRequest, NextResponse } from 'next/server'
-import { executePipeline, PipelineStep } from '@/lib/pipeline/operations'
+import { NextRequest, NextResponse } from "next/server";
+import { executePipeline, PipelineStep } from "@/lib/pipeline/operations";
 
 export async function POST(request: NextRequest) {
   try {
-    const { data, steps }: {
-      data: Record<string, unknown>[]
-      steps: PipelineStep[]
-    } = await request.json()
+    const {
+      data,
+      steps,
+    }: {
+      data: Record<string, unknown>[];
+      steps: PipelineStep[];
+    } = await request.json();
 
     // Validate input:
     if (!Array.isArray(data)) {
-      return NextResponse.json({ error: "Data must be an array" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Data must be an array" },
+        { status: 400 },
+      );
     }
 
     if (!Array.isArray(steps)) {
-      return NextResponse.json({ error: "Steps must be an array" }, { status: 400 })
+      return NextResponse.json(
+        { error: "Steps must be an array" },
+        { status: 400 },
+      );
     }
 
     if (data.length > 10000) {
       return NextResponse.json(
         { error: "Dataset too large. Maximum 10,000 records." },
-        { status: 413 }
-      )
+        { status: 413 },
+      );
     }
 
-    const output = executePipeline(data, steps)
+    const output = executePipeline(data, steps);
 
     return NextResponse.json({
       success: true,
@@ -12061,15 +12223,17 @@ export async function POST(request: NextRequest) {
         outputCount: Array.isArray(output.result) ? output.result.length : 1,
         stepsExecuted: steps.length,
         executionMs: output.executionTime,
-        stepBreakdown: output.stepResults
-      }
-    })
-
+        stepBreakdown: output.stepResults,
+      },
+    });
   } catch (error) {
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : "Pipeline execution failed" },
-      { status: 500 }
-    )
+      {
+        error:
+          error instanceof Error ? error.message : "Pipeline execution failed",
+      },
+      { status: 500 },
+    );
   }
 }
 ```
@@ -12088,7 +12252,7 @@ export const sampleProducts = [
     reviewCount: 2341,
     inStock: true,
     seller: { name: "Apple Official", rating: 4.9 },
-    tags: ["flagship", "5G", "camera"]
+    tags: ["flagship", "5G", "camera"],
   },
   {
     id: "B002",
@@ -12100,7 +12264,7 @@ export const sampleProducts = [
     reviewCount: 1876,
     inStock: true,
     seller: { name: "Samsung India", rating: 4.7 },
-    tags: ["android", "5G", "AI"]
+    tags: ["android", "5G", "AI"],
   },
   {
     id: "B003",
@@ -12112,7 +12276,7 @@ export const sampleProducts = [
     reviewCount: 987,
     inStock: false,
     seller: { name: "Apple Official", rating: 4.9 },
-    tags: ["laptop", "M3", "professional"]
+    tags: ["laptop", "M3", "professional"],
   },
   {
     id: "B004",
@@ -12124,10 +12288,10 @@ export const sampleProducts = [
     reviewCount: 5432,
     inStock: true,
     seller: { name: "BookStore India", rating: 4.5 },
-    tags: ["programming", "best-practices"]
+    tags: ["programming", "best-practices"],
   },
   // ... 20+ more products
-]
+];
 
 // Pre-built pipeline examples for users to explore:
 export const examplePipelines = [
@@ -12135,42 +12299,66 @@ export const examplePipelines = [
     name: "Find affordable in-stock electronics",
     description: "Filter electronics under ₹50,000 that are in stock",
     steps: [
-      { type: "filter", config: { field: "category", operator: "equals", value: "electronics" } },
-      { type: "filter", config: { field: "inStock", operator: "equals", value: true } },
-      { type: "filter", config: { field: "price", operator: "lessThan", value: 50000 } },
+      {
+        type: "filter",
+        config: { field: "category", operator: "equals", value: "electronics" },
+      },
+      {
+        type: "filter",
+        config: { field: "inStock", operator: "equals", value: true },
+      },
+      {
+        type: "filter",
+        config: { field: "price", operator: "lessThan", value: 50000 },
+      },
       { type: "sort", config: { field: "rating", order: "desc" } },
-      { type: "map", config: { operation: "pick", fields: ["id", "name", "price", "rating"] } }
-    ]
+      {
+        type: "map",
+        config: {
+          operation: "pick",
+          fields: ["id", "name", "price", "rating"],
+        },
+      },
+    ],
   },
   {
     name: "Revenue by category",
     description: "Group and sum revenue by product category",
     steps: [
-      { type: "map", config: { operation: "compute", computations: [
-        { newField: "revenue", expression: "price * reviewCount" }
-      ]}},
-      { type: "reduce", config: { operation: "groupBy", groupByField: "category" } }
-    ]
-  }
-]
+      {
+        type: "map",
+        config: {
+          operation: "compute",
+          computations: [
+            { newField: "revenue", expression: "price * reviewCount" },
+          ],
+        },
+      },
+      {
+        type: "reduce",
+        config: { operation: "groupBy", groupByField: "category" },
+      },
+    ],
+  },
+];
 ```
 
 ### What This Project Demonstrates
 
-| Concept from Chapter | Demonstrated By |
-|---------------------|----------------|
-| Object creation patterns | Product objects with nested structure |
-| Property access | `getNestedValue()` — dot-path traversal |
-| Object destructuring | Step config destructuring |
-| `Object.entries/fromEntries` | Object transformation in applyMap |
-| Spread operator | Immutable updates `{ ...item, newField }` |
-| Deep/shallow copy | `[...data]` before sorting |
-| `Array.filter` | `applyFilter()` implementation |
-| `Array.map` | `applyMap()` transformation |
-| `Array.reduce` | `applyReduce()` aggregations |
-| `Array.sort` | `applySort()` with comparator |
-| Method chaining | Pipeline execution |
-| Object.fromEntries | Building objects from entries |
+| Concept from Chapter         | Demonstrated By                           |
+| ---------------------------- | ----------------------------------------- |
+| Object creation patterns     | Product objects with nested structure     |
+| Property access              | `getNestedValue()` — dot-path traversal   |
+| Object destructuring         | Step config destructuring                 |
+| `Object.entries/fromEntries` | Object transformation in applyMap         |
+| Spread operator              | Immutable updates `{ ...item, newField }` |
+| Deep/shallow copy            | `[...data]` before sorting                |
+| `Array.filter`               | `applyFilter()` implementation            |
+| `Array.map`                  | `applyMap()` transformation               |
+| `Array.reduce`               | `applyReduce()` aggregations              |
+| `Array.sort`                 | `applySort()` with comparator             |
+| Method chaining              | Pipeline execution                        |
+| Object.fromEntries           | Building objects from entries             |
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
@@ -12196,15 +12384,15 @@ function deepMerge(target, source) {
 // Test:
 const obj1 = {
   user: { name: "Rahul", address: { city: "Mumbai" }, hobbies: ["reading"] },
-  theme: "dark"
-}
+  theme: "dark",
+};
 
 const obj2 = {
   user: { age: 25, address: { pincode: "400001" }, hobbies: ["coding"] },
-  lang: "en"
-}
+  lang: "en",
+};
 
-const merged = deepMerge(obj1, obj2)
+const merged = deepMerge(obj1, obj2);
 // Expected: {
 //   user: {
 //     name: "Rahul",
@@ -12233,9 +12421,9 @@ const orders = [
   { id: 3, status: "delivered", amount: 1500 },
   { id: 4, status: "cancelled", amount: 300 },
   { id: 5, status: "pending", amount: 800 },
-]
+];
 
-groupBy(orders, "status")
+groupBy(orders, "status");
 // {
 //   delivered: [order1, order3],
 //   pending: [order2, order5],
@@ -12260,7 +12448,7 @@ const flatData = [
   { id: 4, name: "MacBook", parentId: 2 },
   { id: 5, name: "Dell XPS", parentId: 2 },
   { id: 6, name: "iPhone", parentId: 3 },
-]
+];
 
 // Expected tree:
 // [{ id: 1, name: "Electronics", children: [
@@ -12280,8 +12468,8 @@ function myReduceRecursive(arr, callback, initialValue) {
 }
 
 // Test:
-myReduceRecursive([1, 2, 3, 4, 5], (acc, n) => acc + n, 0)  // 15
-myReduceRecursive(["a", "b", "c"], (acc, s) => acc + s, "")   // "abc"
+myReduceRecursive([1, 2, 3, 4, 5], (acc, n) => acc + n, 0); // 15
+myReduceRecursive(["a", "b", "c"], (acc, s) => acc + s, ""); // "abc"
 ```
 
 ---
@@ -12294,16 +12482,16 @@ function chunk(arr, size) {
   // Your implementation
 }
 
-chunk([1, 2, 3, 4, 5, 6, 7], 3)
+chunk([1, 2, 3, 4, 5, 6, 7], 3);
 // [[1, 2, 3], [4, 5, 6], [7]]
 
-chunk([1, 2, 3, 4], 2)
+chunk([1, 2, 3, 4], 2);
 // [[1, 2], [3, 4]]
 
-chunk([], 3)
+chunk([], 3);
 // []
 
-chunk([1, 2, 3], 0)
+chunk([1, 2, 3], 0);
 // Throw Error or return original? (handle edge case)
 ```
 
@@ -12328,6 +12516,7 @@ chunk([1, 2, 3], 0)
 **MCP 1: Build an Immutable State Manager**
 
 Build a lightweight React-like state manager class that:
+
 - Stores state as an object
 - Provides `setState(updates)` — performs deep merge (not shallow)
 - Provides `getState()` — returns a frozen (immutable) snapshot
@@ -12351,14 +12540,14 @@ class ImmutableStateManager<T extends object> {
 const store = new ImmutableStateManager({
   user: { name: "Rahul", age: 25 },
   items: [1, 2, 3],
-  count: 0
-})
+  count: 0,
+});
 
-store.subscribe(state => console.log("State changed:", state))
-store.setState({ count: 1 })
-store.setState({ user: { name: "Priya", age: 22 } })
-store.undo()  // Go back to count: 1 state
-store.redo()  // Reapply user change
+store.subscribe((state) => console.log("State changed:", state));
+store.setState({ count: 1 });
+store.setState({ user: { name: "Priya", age: 22 } });
+store.undo(); // Go back to count: 1 state
+store.redo(); // Reapply user change
 ```
 
 ---
@@ -12366,6 +12555,7 @@ store.redo()  // Reapply user change
 **MCP 2: Build a Data Transformation CLI-style Tool**
 
 Build a Next.js server-side data transformation tool where:
+
 - Users paste a JSON array of objects
 - They configure a multi-step pipeline using UI controls:
   - **Filter:** field name + operator + value
@@ -12378,6 +12568,7 @@ Build a Next.js server-side data transformation tool where:
 - Server Components fetch and validate input; Client Components handle the pipeline builder UI
 
 Requirements:
+
 - Next.js App Router (TypeScript)
 - Server Component for initial data validation and schema detection
 - Client Component with real-time pipeline preview (debounced — don't recalculate on every keystroke)
@@ -12389,6 +12580,7 @@ Requirements:
 
 > [!NOTE]
 > **Chapter 4 Summary — Key Takeaways:**
+>
 > 1. Choose the right object creation pattern: literal for one-offs, class for OOP inheritance, factory for private state
 > 2. `const` prevents rebinding but NOT mutation — `const arr = []; arr.push(1)` is allowed
 > 3. Object destructuring extracts by property name; array destructuring extracts by position
@@ -12413,7 +12605,3524 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 <a id="5-functions-advanced-patterns"></a>
 
-## Chapter 5: Functions — Advanced Patterns
+
+# Chapter 5: Functions — Deep Dive & Advanced Patterns
+
+> **Book:** React + Next.js — From Zero to Interview Ready
+> **Part:** A — JavaScript & Web Fundamentals (Pre-React)
+> **Chapter:** 5 of 56
+
+---
+
+<a id="chapter-index-table-5"></a>
+
+## Chapter Index Table
+
+| Topic No. | Topic Name | Subtopics |
+|-----------|------------|-----------|
+| 5.1 | [Pure Functions vs Impure Functions](#51-pure-functions-vs-impure-functions) | Definition of pure/impure<br>Side effects<br>Why React requires pure components<br>Identifying impurities |
+| 5.2 | [First-Class & Higher-Order Functions](#52-first-class--higher-order-functions) | Functions as values<br>Assign, pass, return functions<br>HOF definition<br>Real examples: map, filter, reduce |
+| 5.3 | [Closures — Complete Guide](#53-closures--complete-guide) | What is a closure<br>Lexical environment<br>Data privacy<br>Function factories<br>Module pattern<br>Memoization<br>Partial application<br>var vs let in loops<br>Memory leaks<br>15+ interview questions |
+| 5.4 | ['this' Keyword — Complete Rules](#54-this-keyword--complete-rules) | Default binding<br>Implicit binding<br>Explicit binding<br>new binding<br>Arrow function binding<br>Class binding<br>Event handler binding<br>Priority order<br>20+ interview questions |
+| 5.5 | [call(), apply(), bind()](#55-call-apply-bind) | Syntax & usage<br>Differences<br>Practical use cases<br>Polyfill implementations |
+| 5.6 | [Currying & Partial Application](#56-currying--partial-application) | What is currying<br>What is partial application<br>React use cases<br>Generic curry implementation |
+| 5.7 | [Function Composition & Pipe](#57-function-composition--pipe) | compose() right-to-left<br>pipe() left-to-right<br>Functional programming<br>Implementations |
+| 5.8 | [Memoization](#58-memoization) | What is memoization<br>Implementation<br>Map vs Object cache<br>Trade-offs<br>React useMemo |
+| 5.9 | [Debouncing & Throttling](#59-debouncing--throttling) | Debounce definition & implementation<br>Throttle definition & implementation<br>Differences<br>Real-world use cases |
+| — | [Mini Project](#-mini-project-functional-utilities-library) | Functional Utilities Library — Production-grade util toolkit |
+| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding Problems |
+
+---
+
+## Table of Contents
+
+- [5.1 Pure Functions vs Impure Functions](#51-pure-functions-vs-impure-functions)
+- [5.2 First-Class & Higher-Order Functions](#52-first-class--higher-order-functions)
+- [5.3 Closures — Complete Guide](#53-closures--complete-guide)
+- [5.4 'this' Keyword — Complete Rules](#54-this-keyword--complete-rules)
+- [5.5 call(), apply(), bind()](#55-call-apply-bind)
+- [5.6 Currying & Partial Application](#56-currying--partial-application)
+- [5.7 Function Composition & Pipe](#57-function-composition--pipe)
+- [5.8 Memoization](#58-memoization)
+- [5.9 Debouncing & Throttling](#59-debouncing--throttling)
+- [🧪 Mini Project: Functional Utilities Library](#-mini-project-functional-utilities-library)
+- [📝 Practice Section](#-practice-section)
+
+---
+
+## 5.1 Pure Functions vs Impure Functions
+
+<a id="51-pure-functions-vs-impure-functions"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Pure Function | Definition, same input → same output, no side effects |
+| Impure Function | External dependencies, observable side effects |
+| Side Effects | What counts as a side effect |
+| React & Purity | Why React mandates pure render functions |
+| Identifying Impurities | How to spot and fix impure code |
+
+---
+
+### What is a Pure Function?
+
+A **pure function** satisfies two strict conditions:
+1. **Deterministic:** Given the same input, always returns the same output — no matter when or how many times it's called.
+2. **No side effects:** Does not modify anything outside its own scope — no mutation of external state, no I/O, no logging.
+
+> **Hinglish:** Pure function ek honest function hai — jo kuch bhi bahar ka nahi chhuta, na hi bahar ki koi cheez use karta hai. Same sawaal → same jawab, hamesha. Jaise calculator — `2 + 3` hamesha `5` dega.
+
+```javascript
+// ✅ PURE FUNCTIONS:
+
+// 1. Simple math operation:
+function add(a, b) {
+  return a + b   // Same input → same output, always
+}
+add(2, 3)  // Always 5
+
+// 2. String transformation:
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+// 3. Array transformation (returns new array, doesn't mutate):
+function doubleAll(arr) {
+  return arr.map(x => x * 2)  // New array — original untouched
+}
+
+// 4. Object transformation:
+function applyDiscount(product, discountPercent) {
+  return {
+    ...product,                                    // New object
+    price: product.price * (1 - discountPercent / 100)
+  }
+}
+
+// All these are pure:
+// - No external variables read
+// - No external variables modified
+// - No API calls
+// - No console.log (even this is a side effect!)
+// - No Math.random() or Date.now()
+```
+
+---
+
+### What is an Impure Function?
+
+An **impure function** either:
+- Reads from or writes to **external state** (global variables, DOM, database, files)
+- Produces **side effects** (network calls, logging, mutating arguments)
+- Returns **different values** for the same input (uses random, time, external state)
+
+```javascript
+// ❌ IMPURE FUNCTIONS:
+
+// 1. Reads external state → non-deterministic:
+let taxRate = 0.18
+function calculatePrice(price) {
+  return price * (1 + taxRate)  // ❌ Depends on external 'taxRate'
+}
+// If taxRate changes, same price → different output!
+
+// 2. Mutates input argument:
+function addItem(cart, item) {
+  cart.push(item)  // ❌ Mutates the original 'cart' array!
+  return cart      // Returns same reference — caller's cart is modified!
+}
+
+// 3. Side effect — console.log:
+function addNumbers(a, b) {
+  console.log(`Adding ${a} and ${b}`)  // ❌ Side effect!
+  return a + b
+}
+
+// 4. Non-deterministic output:
+function getRandomId() {
+  return Math.random()  // ❌ Different output each time
+}
+
+function getCurrentUser() {
+  return localStorage.getItem("user")  // ❌ Reads external state
+}
+
+// 5. Modifies DOM:
+function updateTitle(title) {
+  document.title = title  // ❌ Side effect — modifies DOM
+}
+
+// 6. API call (side effect):
+async function fetchUser(id) {
+  const res = await fetch(`/api/users/${id}`)  // ❌ Network request
+  return res.json()
+}
+```
+
+---
+
+### What Counts as a Side Effect?
+
+```mermaid
+flowchart TD
+    SE["Side Effects — Anything observable outside the function"] --> A
+    SE --> B
+    SE --> C
+    SE --> D
+    SE --> E
+    SE --> F
+
+    A["🌐 Network requests\nfetch, axios, XMLHttpRequest"]
+    B["💾 Storage access\nlocalStorage, sessionStorage, cookies, DB"]
+    C["📄 DOM manipulation\ndocument.title, element.style, innerHTML"]
+    D["🖨️ Logging\nconsole.log, console.error"]
+    E["⏱️ Timers\nsetTimeout, setInterval, Date.now()"]
+    F["🎲 Randomness\nMath.random(), UUID generation"]
+
+    style SE fill:#ffcdd2
+    style A fill:#fff3e0
+    style B fill:#fff3e0
+    style C fill:#fff3e0
+    style D fill:#fff3e0
+    style E fill:#fff3e0
+    style F fill:#fff3e0
+```
+
+---
+
+### Why React Requires Pure Render Functions
+
+> **Hinglish:** React ka rendering engine assume karta hai ki component function ko kitni bhi baar call karo — same props → same JSX. Agar component impure hai, React galat output de sakta hai ya bugs create ho sakte hain.
+
+```mermaid
+flowchart LR
+    subgraph PURE["✅ Pure Component (React loves this)"]
+        PP["Same props in"] --> PR["Same JSX out"]
+        PR --> PB["React can:\n• Skip re-renders (optimization)\n• Concurrent render safely\n• Strict Mode double-invoke\n• Server-side render"]
+    end
+
+    subgraph IMPURE["❌ Impure Component (React hates this)"]
+        IP["Same props in"] --> IR["Different JSX each call!"]
+        IR --> IB["React cannot:\n• Optimize safely\n• Cache results\n• Render concurrently\n• Predict output"]
+    end
+
+    style PURE fill:#c8e6c9
+    style IMPURE fill:#ffcdd2
+```
+
+```jsx
+// ❌ IMPURE React component — anti-pattern:
+let renderCount = 0
+
+function BadCounter({ name }) {
+  renderCount++  // ❌ Modifies external variable during render!
+  return <div>Hello {name} (rendered {renderCount} times)</div>
+}
+// React Strict Mode double-invokes renders → renderCount gets wrong value!
+
+// ✅ PURE React component:
+function GoodCounter({ name, count }) {
+  return <div>Hello {name} (rendered {count} times)</div>
+}
+// count is passed as prop — same props = same output, always
+
+// ❌ IMPURE — reads external mutable state:
+function ProductPrice({ id }) {
+  const discount = window.currentDiscount  // ❌ External mutable state
+  return <span>{prices[id] * (1 - discount)}</span>
+}
+
+// ✅ PURE — all dependencies are props:
+function ProductPrice({ id, price, discount }) {
+  return <span>{price * (1 - discount)}</span>
+}
+
+// Side effects belong in useEffect, NOT in the render:
+// ✅ Correct pattern — side effects in useEffect:
+function UserProfile({ userId }) {
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    // ✅ Side effect (API call) isolated here
+    fetch(`/api/users/${userId}`)
+      .then(r => r.json())
+      .then(setUser)
+  }, [userId])
+
+  // Render is pure — only uses state/props:
+  return user ? <div>{user.name}</div> : <div>Loading...</div>
+}
+```
+
+---
+
+### Refactoring Impure to Pure
+
+```javascript
+// ❌ IMPURE version:
+let users = []
+let nextId = 1
+
+function addUser(name, email) {
+  const user = { id: nextId++, name, email }  // ❌ External state
+  users.push(user)                             // ❌ Mutation
+  console.log("User added:", user)             // ❌ Side effect
+  return user
+}
+
+// ✅ PURE version (all data passed in, new data returned out):
+function createUser(existingUsers, nextId, name, email) {
+  const newUser = { id: nextId, name, email }  // ✅ No external state
+  return {
+    user: newUser,
+    updatedUsers: [...existingUsers, newUser],  // ✅ New array (no mutation)
+    nextId: nextId + 1                           // ✅ Return new id
+  }
+}
+
+// Side effects happen OUTSIDE the pure function:
+const result = createUser(users, nextId, "Rahul", "r@ex.com")
+users = result.updatedUsers   // ← Side effect happens here, in controlled place
+nextId = result.nextId
+console.log("Created:", result.user)  // ← Logging here, not inside
+```
+
+---
+
+### 🎯 Interview Questions — Section 5.1
+
+**Q1: What is a pure function? Why do they matter in JavaScript?**
+
+> A pure function has two properties: (1) **Determinism** — given the same inputs, it always returns the same output. (2) **No side effects** — it doesn't modify anything outside its own scope. They matter because: (a) **Testability** — easy to unit test (no mocking needed, just assert input/output). (b) **Predictability** — behavior is completely documented by its signature. (c) **Composability** — pure functions can be safely composed, chained, and reused. (d) **Memoization** — results can be safely cached. (e) **React compatibility** — React's rendering model assumes pure render functions.
+
+**Q2: Why does React's strict mode double-invoke render functions?**
+
+> React Strict Mode (in development) intentionally calls render functions **twice** to help detect **side effects in the render phase**. If your component is pure, two invocations produce the same result — no problem. If your component has side effects (external mutations, network calls during render), the double invocation will reveal bugs. For example, if you increment an external counter during render, strict mode shows you it gets incremented twice — alerting you to the bug. This only happens in development, never in production.
+
+**Q3: Is a function that reads from `localStorage` pure?**
+
+> No — reading from `localStorage` makes a function **impure** for two reasons: (1) It reads **external state** — the function's output depends on data outside its parameters, making it non-deterministic. Two calls with the same arguments can return different results if `localStorage` changes between calls. (2) `localStorage` access is a side effect. To make it pure, pass the stored value as a parameter rather than reading it inside the function.
+
+**Q4: Can `console.log` inside a function make it impure?**
+
+> Yes — even `console.log` is technically a side effect because it produces an observable change outside the function (writes to the console/stdout). However, in practice, `console.log` is often accepted as a benign side effect during development since it doesn't affect program state. The philosophical distinction matters for functional programming purists and for understanding what "pure" truly means, but `console.log` alone won't cause React bugs. The **harmful** side effects in React are those that change external state, making renders non-deterministic.
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.2 First-Class & Higher-Order Functions
+
+<a id="52-first-class--higher-order-functions"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| First-Class Functions | Functions as values — assign, store, pass |
+| Higher-Order Functions | Takes or returns a function |
+| Built-in HOFs | map, filter, reduce, sort, forEach |
+| Custom HOFs | Building your own |
+| React HOF patterns | HOC, event handlers, render props |
+
+---
+
+### What Are First-Class Functions?
+
+In JavaScript, functions are **first-class citizens** — they can be treated exactly like any other value: assigned to variables, passed as arguments, returned from other functions, stored in data structures.
+
+> **Hinglish:** JavaScript mein functions sirf code nahi hain — woh values bhi hain. Jaise aap ek number ko variable mein rakh sakte ho, waise function bhi variable mein rakh sakte ho, kisi ko pass kar sakte ho, return kar sakte ho.
+
+```javascript
+// 1. Assign function to variable:
+const greet = function(name) { return `Hello, ${name}!` }
+const sayHi = greet  // Both greet and sayHi point to same function
+
+// 2. Store in data structure:
+const operations = {
+  add: (a, b) => a + b,
+  subtract: (a, b) => a - b,
+  multiply: (a, b) => a * b,
+  divide: (a, b) => a / b,
+}
+operations.add(3, 4)         // 7
+operations["multiply"](3, 4) // 12
+
+// 3. Store in array:
+const validators = [
+  str => str.length >= 3,
+  str => /[A-Z]/.test(str),
+  str => /[0-9]/.test(str),
+]
+validators.every(v => v("Rahul123"))  // true (passes all validators)
+
+// 4. Pass as argument (callback):
+[1, 2, 3].map(x => x * 2)   // Function passed to map
+
+// 5. Return from function:
+function multiplier(factor) {
+  return (number) => number * factor  // Returns a function!
+}
+const double = multiplier(2)
+const triple = multiplier(3)
+double(5)  // 10
+triple(5)  // 15
+
+// 6. Functions have properties (they're objects!):
+function greetFn(name) { return `Hi ${name}` }
+greetFn.length    // 1 (number of parameters)
+greetFn.name      // "greetFn" (function name)
+greetFn.myProp = "custom"  // Can add properties!
+```
+
+---
+
+### Higher-Order Functions (HOF)
+
+A **Higher-Order Function** is a function that either:
+- Takes one or more functions as arguments, OR
+- Returns a function as its result (or both)
+
+> **Hinglish:** Higher-Order Function ek "super-function" hai jo doosre functions ke saath kaam karta hai — ya toh unhe input mein leta hai ya output mein deta hai.
+
+```javascript
+// HOF Type 1: Takes a function as argument
+function applyOperation(arr, operation) {
+  return arr.map(operation)  // operation is a function argument
+}
+
+applyOperation([1, 2, 3], x => x * 2)       // [2, 4, 6]
+applyOperation([1, 2, 3], x => x.toString()) // ["1", "2", "3"]
+applyOperation([1, 2, 3], Math.sqrt)          // [1, 1.414, 1.732]
+
+// HOF Type 2: Returns a function
+function makeAdder(x) {
+  return function(y) {  // Returns a new function
+    return x + y
+  }
+}
+const add5 = makeAdder(5)
+const add10 = makeAdder(10)
+add5(3)   // 8
+add10(3)  // 13
+
+// HOF Type 3: Both takes AND returns a function
+function once(fn) {
+  // Accepts fn as argument
+  let called = false
+  let result
+  return function(...args) {  // Returns new function
+    if (!called) {
+      called = true
+      result = fn(...args)
+    }
+    return result
+  }
+}
+
+const initializeApp = once(() => {
+  console.log("App initialized!")
+  return { initialized: true }
+})
+
+initializeApp()  // "App initialized!" — runs
+initializeApp()  // Returns cached result — doesn't run again
+initializeApp()  // Returns cached result — doesn't run again
+```
+
+---
+
+### Built-in HOFs — How They Enable Functional Programming
+
+```javascript
+const products = [
+  { id: 1, name: "Laptop", price: 50000, category: "electronics", rating: 4.8 },
+  { id: 2, name: "Book", price: 500, category: "education", rating: 4.5 },
+  { id: 3, name: "Phone", price: 30000, category: "electronics", rating: 4.6 },
+  { id: 4, name: "Pen", price: 50, category: "education", rating: 3.9 },
+]
+
+// map — HOF: takes transformation fn:
+const names = products.map(p => p.name)
+// ["Laptop", "Book", "Phone", "Pen"]
+
+// filter — HOF: takes predicate fn:
+const electronics = products.filter(p => p.category === "electronics")
+// [Laptop, Phone]
+
+// reduce — HOF: takes accumulator fn:
+const totalValue = products.reduce((sum, p) => sum + p.price, 0)
+// 80550
+
+// sort — HOF: takes comparator fn:
+const sorted = [...products].sort((a, b) => a.price - b.price)
+// [Pen, Book, Phone, Laptop]
+
+// forEach — HOF: takes callback fn:
+products.forEach(p => console.log(p.name))
+
+// Chaining HOFs — functional pipeline:
+const result = products
+  .filter(p => p.rating >= 4.5)           // HOF with predicate
+  .sort((a, b) => b.rating - a.rating)   // HOF with comparator
+  .map(p => `${p.name} (${p.rating}★)`) // HOF with transform
+// ["Laptop (4.8★)", "Phone (4.6★)", "Book (4.5★)"]
+```
+
+---
+
+### Building Custom HOFs
+
+```javascript
+// withLogging — HOF that wraps any function with logging:
+function withLogging(fn, label = fn.name) {
+  return function(...args) {
+    console.log(`[${label}] Called with:`, args)
+    const result = fn(...args)
+    console.log(`[${label}] Returned:`, result)
+    return result
+  }
+}
+
+const loggedAdd = withLogging((a, b) => a + b, "add")
+loggedAdd(3, 4)
+// [add] Called with: [3, 4]
+// [add] Returned: 7
+
+// withTiming — HOF that measures execution time:
+function withTiming(fn) {
+  return function(...args) {
+    const start = performance.now()
+    const result = fn(...args)
+    const end = performance.now()
+    console.log(`${fn.name} took ${(end - start).toFixed(2)}ms`)
+    return result
+  }
+}
+
+// withRetry — HOF for retry logic:
+function withRetry(fn, maxRetries = 3, delay = 1000) {
+  return async function(...args) {
+    let lastError
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        return await fn(...args)
+      } catch (error) {
+        lastError = error
+        if (attempt < maxRetries) {
+          await new Promise(resolve => setTimeout(resolve, delay * attempt))
+        }
+      }
+    }
+    throw lastError
+  }
+}
+
+// HOC in React (Higher-Order Component — same HOF concept):
+function withAuth(Component) {
+  return function AuthenticatedComponent(props) {
+    const { isLoggedIn } = useAuth()
+    if (!isLoggedIn) return <Login />
+    return <Component {...props} />
+  }
+}
+
+const ProtectedDashboard = withAuth(Dashboard)
+```
+
+---
+
+### 🎯 Interview Questions — Section 5.2
+
+**Q1: What does "functions are first-class citizens" mean in JavaScript?**
+
+> It means functions are treated as values — they can be: (1) Assigned to variables and constants. (2) Stored in arrays and objects. (3) Passed as arguments to other functions. (4) Returned from other functions. (5) Have properties assigned to them (since functions are objects). This first-class treatment enables functional programming patterns: callbacks, closures, higher-order functions, currying, and composition — all fundamental to React development.
+
+**Q2: What is a Higher-Order Function? Give three real examples.**
+
+> An HOF either takes a function as an argument or returns a function (or both). Real examples: (1) `Array.prototype.map` — takes a transformation function. (2) `setTimeout` — takes a callback function. (3) `Array.prototype.sort` — takes a comparator function. Custom examples: `withAuth(Component)` HOC in React, `once(fn)` that ensures a function runs only once, `withRetry(fn, 3)` that adds retry logic to any async function.
+
+**Q3: What is the difference between a callback and a higher-order function?**
+
+> These terms describe two sides of the same relationship. A **callback** is a function that is **passed as an argument** to another function. A **higher-order function** is the function that **receives** (or returns) a function. When you write `array.map(callback)`, `map` is the higher-order function and `callback` is the callback. HOF describes the receiving function's property; callback describes the passed function's role.
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.3 Closures — Complete Guide
+
+<a id="53-closures--complete-guide"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is a Closure? | Function + its lexical environment |
+| Lexical Environment | How scope is captured |
+| Data Privacy | Private variables via closure |
+| Function Factories | Creating specialized functions |
+| Module Pattern | IIFE + closure for encapsulation |
+| Memoization | Caching with closures |
+| Partial Application | Pre-filling arguments |
+| Loop Closure Bug | var vs let classic problem |
+| Memory Leaks | How closures can cause leaks |
+| 15+ Interview Questions | Output-based + conceptual |
+
+---
+
+### What is a Closure?
+
+A **closure** is a function that **remembers and has access to variables from its outer (enclosing) scope** even after that outer function has finished executing.
+
+> **Hinglish:** Closure ek function hai jo apne "janam ki jagah" ke variables ko yaad rakhta hai — chahe outer function khatam ho jaaye. Jaise ek insan jo apne childhood ki yadein lekar chal raha hai, chahe ghar se door ho jaaye.
+
+```mermaid
+flowchart TD
+    subgraph OUTER["outer() — Execution Context (CLOSED)"]
+        OV["count = 0\n(variable in memory)"]
+        subgraph INNER["inner() — Closure Function"]
+            IC["References 'count'\nfrom outer scope"]
+            BACK["Has [[Environment]]\npointing to outer scope"]
+        end
+    end
+
+    RETURNED["inner() returned\nand assigned to 'increment'"] -->|"Still has access to"| OV
+
+    style OUTER fill:#e3f2fd
+    style INNER fill:#c8e6c9
+    style RETURNED fill:#fff9c4
+```
+
+```javascript
+// Basic closure example:
+function outer() {
+  let count = 0      // Variable in outer scope
+
+  function inner() {
+    count++           // Inner function CLOSES OVER 'count'
+    return count
+  }
+
+  return inner        // Return the inner function
+}
+
+const increment = outer()  // outer() runs, returns inner()
+// outer()'s execution context is "done" — but 'count' lives on!
+
+console.log(increment())  // 1
+console.log(increment())  // 2
+console.log(increment())  // 3
+// 'count' persists between calls because of the closure!
+
+// Each call to outer() creates a NEW closure (new 'count'):
+const counter1 = outer()
+const counter2 = outer()
+counter1()  // 1
+counter1()  // 2
+counter2()  // 1 — separate 'count' for counter2!
+```
+
+---
+
+### Practical Closure Use Case 1 — Data Privacy & Encapsulation
+
+```javascript
+// Create private state that cannot be accessed directly:
+function createBankAccount(initialBalance) {
+  let balance = initialBalance  // PRIVATE — not accessible outside
+
+  return {
+    deposit(amount) {
+      if (amount <= 0) throw new Error("Amount must be positive")
+      balance += amount
+      return balance
+    },
+
+    withdraw(amount) {
+      if (amount <= 0) throw new Error("Amount must be positive")
+      if (amount > balance) throw new Error("Insufficient funds")
+      balance -= amount
+      return balance
+    },
+
+    getBalance() {
+      return balance  // Read-only access to private balance
+    }
+  }
+}
+
+const account = createBankAccount(1000)
+account.deposit(500)    // 1500
+account.withdraw(200)   // 1300
+account.getBalance()    // 1300
+
+// balance is TRULY private:
+console.log(account.balance)  // undefined — cannot access!
+account.balance = 999999      // No effect — external property, not the closure's balance
+account.getBalance()           // Still 1300
+```
+
+---
+
+### Practical Closure Use Case 2 — Function Factories
+
+```javascript
+// Factory that creates specialized functions:
+function createMultiplier(factor) {
+  // 'factor' is closed over:
+  return (number) => number * factor
+}
+
+const double = createMultiplier(2)
+const triple = createMultiplier(3)
+const tenX = createMultiplier(10)
+
+double(5)   // 10
+triple(5)   // 15
+tenX(5)     // 50
+
+// Tax calculator factory:
+function createTaxCalculator(taxRate) {
+  return function(amount) {
+    const tax = amount * taxRate
+    return {
+      subtotal: amount,
+      tax: Math.round(tax * 100) / 100,
+      total: Math.round((amount + tax) * 100) / 100
+    }
+  }
+}
+
+const calculateGST = createTaxCalculator(0.18)
+const calculateLuxuryTax = createTaxCalculator(0.28)
+
+calculateGST(1000)
+// { subtotal: 1000, tax: 180, total: 1180 }
+
+calculateLuxuryTax(1000)
+// { subtotal: 1000, tax: 280, total: 1280 }
+
+// React event handler factory:
+function createClickHandler(userId) {
+  return function(event) {
+    event.preventDefault()
+    console.log(`Handling click for user: ${userId}`)
+    // userId is closed over — no need to pass it each time
+  }
+}
+```
+
+---
+
+### Practical Closure Use Case 3 — Module Pattern
+
+```javascript
+// IIFE + closure = Module pattern (encapsulation):
+const CartModule = (function() {
+  // PRIVATE state:
+  let items = []
+  let nextId = 1
+  const TAX_RATE = 0.18
+
+  // PRIVATE helpers:
+  function calculateSubtotal() {
+    return items.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  }
+
+  // PUBLIC interface:
+  return {
+    addItem(name, price, quantity = 1) {
+      const existing = items.find(i => i.name === name)
+      if (existing) {
+        existing.quantity += quantity
+      } else {
+        items.push({ id: nextId++, name, price, quantity })
+      }
+    },
+
+    removeItem(id) {
+      items = items.filter(i => i.id !== id)
+    },
+
+    getTotal() {
+      const subtotal = calculateSubtotal()
+      return {
+        subtotal,
+        tax: subtotal * TAX_RATE,
+        total: subtotal * (1 + TAX_RATE)
+      }
+    },
+
+    getItemCount() {
+      return items.reduce((sum, i) => sum + i.quantity, 0)
+    },
+
+    clear() {
+      items = []
+    }
+  }
+})()  // Immediately invoked!
+
+CartModule.addItem("Laptop", 50000)
+CartModule.addItem("Mouse", 1500, 2)
+CartModule.getItemCount()  // 3
+CartModule.getTotal()
+// { subtotal: 53000, tax: 9540, total: 62540 }
+
+CartModule.items        // undefined — PRIVATE!
+CartModule.TAX_RATE     // undefined — PRIVATE!
+CartModule.calculateSubtotal  // undefined — PRIVATE!
+```
+
+---
+
+### Practical Closure Use Case 4 — Partial Application
+
+```javascript
+// Partial application: pre-fill some arguments:
+function partial(fn, ...presetArgs) {
+  return function(...laterArgs) {
+    return fn(...presetArgs, ...laterArgs)  // presetArgs closed over
+  }
+}
+
+function add(a, b, c) { return a + b + c }
+
+const add5 = partial(add, 5)        // Pre-fill first arg as 5
+const add5and10 = partial(add, 5, 10)  // Pre-fill first two args
+
+add5(3, 2)       // 5 + 3 + 2 = 10
+add5and10(7)     // 5 + 10 + 7 = 22
+
+// Real-world: React event handler with preset data:
+function handleAction(type, id, event) {
+  event.preventDefault()
+  console.log(`Action: ${type}, ID: ${id}`)
+}
+
+// Create specialized handlers with closed-over data:
+const handleDelete = partial(handleAction, "delete", userId)
+const handleEdit = partial(handleAction, "edit", userId)
+
+<button onClick={handleDelete}>Delete</button>
+<button onClick={handleEdit}>Edit</button>
+```
+
+---
+
+### Practical Closure Use Case 5 — Memoization via Closure
+
+```javascript
+// Memoize using closure to persist cache:
+function memoize(fn) {
+  const cache = new Map()  // CLOSED OVER — persists between calls!
+
+  return function(...args) {
+    const key = JSON.stringify(args)
+
+    if (cache.has(key)) {
+      console.log(`Cache hit for: ${key}`)
+      return cache.get(key)
+    }
+
+    console.log(`Computing for: ${key}`)
+    const result = fn(...args)
+    cache.set(key, result)
+    return result
+  }
+}
+
+function expensiveFib(n) {
+  if (n <= 1) return n
+  return expensiveFib(n - 1) + expensiveFib(n - 2)
+}
+
+const fastFib = memoize(expensiveFib)
+fastFib(10)  // Computing... (first time)
+fastFib(10)  // Cache hit! (returns immediately)
+fastFib(10)  // Cache hit!
+```
+
+---
+
+### Classic Interview Problem — var vs let in Loops
+
+> [!IMPORTANT]
+> **This is one of the most frequently asked closure interview questions.** Understanding why `var` causes the problem and how closures interact with `var` vs `let` is essential.
+
+```javascript
+// ❌ THE BUG — var in loop:
+for (var i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), 1000)
+}
+// Prints: 5, 5, 5, 5, 5 (NOT 0, 1, 2, 3, 4!)
+
+// WHY? var is function-scoped — there's ONE 'i' shared by ALL closures.
+// After loop runs, i = 5. All 5 callbacks close over the SAME 'i' = 5.
+
+// ✅ FIX 1 — Use let (block-scoped — new 'i' per iteration):
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), 1000)
+}
+// Prints: 0, 1, 2, 3, 4 ✅
+// Each iteration creates a NEW block-scoped 'i' — each closure captures its own 'i'
+
+// ✅ FIX 2 — IIFE to create new scope per iteration:
+for (var i = 0; i < 5; i++) {
+  (function(j) {         // IIFE creates new scope, 'j' is captured
+    setTimeout(() => console.log(j), 1000)
+  })(i)                  // 'i' is passed as argument to IIFE, becomes 'j'
+}
+// Prints: 0, 1, 2, 3, 4 ✅
+
+// ✅ FIX 3 — bind to capture current value:
+for (var i = 0; i < 5; i++) {
+  setTimeout(console.log.bind(null, i), 1000)
+}
+
+// ✅ FIX 4 — Separate function (creates new scope):
+function createTimer(value) {
+  return () => console.log(value)
+}
+for (var i = 0; i < 5; i++) {
+  setTimeout(createTimer(i), 1000)
+}
+```
+
+---
+
+### Closures and Memory Leaks
+
+```javascript
+// ⚠️ Memory leak — closure holding large object:
+function setupHandler() {
+  const HUGE_DATA = new Array(1000000).fill({ data: "big" })  // 1M objects!
+
+  document.getElementById("btn").addEventListener("click", function() {
+    // This callback closes over HUGE_DATA
+    // Even if we only need one property, ALL of HUGE_DATA stays in memory
+    console.log("Clicked!")
+    // HUGE_DATA is kept alive as long as this event listener exists!
+  })
+}
+
+// ✅ Fix — extract only what you need:
+function setupHandlerFixed() {
+  const HUGE_DATA = new Array(1000000).fill({ data: "big" })
+  const neededData = HUGE_DATA.length  // Extract only what's needed
+
+  // HUGE_DATA can now be garbage collected after this function ends
+  // neededData is a small number — safe to keep in closure
+
+  document.getElementById("btn").addEventListener("click", function() {
+    console.log("Count:", neededData)  // Only small value in closure
+  })
+}
+
+// ⚠️ React memory leak — event listener without cleanup:
+function Component() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const handler = () => setCount(c => c + 1)  // Closes over setCount
+    window.addEventListener("resize", handler)
+
+    // ✅ Cleanup — removes listener when component unmounts:
+    return () => window.removeEventListener("resize", handler)
+  }, [])
+}
+```
+
+---
+
+### 🎯 15+ Closure Interview Questions
+
+**Q1: What is the output?**
+
+```javascript
+function outer() {
+  let x = 10
+  function inner() {
+    console.log(x)
+  }
+  x = 20
+  return inner
+}
+outer()()
+```
+
+> **Output:** `20`
+> The closure captures a **reference** to `x`, not its value at creation time. When `inner` is executed, it reads the current value of `x`, which is `20` (modified after `inner` was defined).
+
+---
+
+**Q2: What is the output?**
+
+```javascript
+function makeCounter() {
+  let count = 0
+  return {
+    increment: () => ++count,
+    decrement: () => --count,
+    getCount: () => count
+  }
+}
+
+const c1 = makeCounter()
+const c2 = makeCounter()
+c1.increment()
+c1.increment()
+c2.increment()
+console.log(c1.getCount())
+console.log(c2.getCount())
+```
+
+> **Output:** `2` → `1`
+> Each call to `makeCounter()` creates a **new independent closure** with its own `count` variable. `c1` and `c2` have separate `count` variables.
+
+---
+
+**Q3: What is the output?**
+
+```javascript
+for (var i = 0; i < 3; i++) {
+  setTimeout(function() { console.log(i) }, 0)
+}
+console.log("after loop:", i)
+```
+
+> **Output:** `after loop: 3` → then `3, 3, 3`
+> `var i` is function-scoped. After the loop, `i = 3`. All three closures reference the same `i`. The synchronous `console.log("after loop:", i)` runs first (before any setTimeout callbacks). Then all three callbacks print `3`.
+
+---
+
+**Q4: What is the output?**
+
+```javascript
+function createFunctions() {
+  const funcs = []
+  for (var i = 0; i < 3; i++) {
+    funcs.push(function() { return i })
+  }
+  return funcs
+}
+
+const fns = createFunctions()
+console.log(fns[0]())
+console.log(fns[1]())
+console.log(fns[2]())
+```
+
+> **Output:** `3, 3, 3`
+> All three functions close over the **same** `var i`. After the loop, `i = 3`. Fix: use `let` in the for loop header.
+
+---
+
+**Q5: What is the output?**
+
+```javascript
+function outer() {
+  let x = 1
+  function middle() {
+    let y = 2
+    function inner() {
+      let z = 3
+      console.log(x + y + z)
+    }
+    inner()
+  }
+  middle()
+}
+outer()
+```
+
+> **Output:** `6`
+> `inner` has access to its own `z=3`, closes over `middle`'s `y=2`, and closes over `outer`'s `x=1`. Scope chain: inner → middle → outer → global.
+
+---
+
+**Q6: What is the output?**
+
+```javascript
+const add = (function() {
+  let total = 0
+  return function(n) {
+    total += n
+    return total
+  }
+})()
+
+console.log(add(10))
+console.log(add(20))
+console.log(add(5))
+```
+
+> **Output:** `10` → `30` → `35`
+> IIFE immediately executes and returns the inner function, which closes over `total`. Each call to `add()` modifies and returns the accumulated `total`.
+
+---
+
+**Q7: What is the output?**
+
+```javascript
+function a() {
+  let x = "a"
+  return function() {
+    console.log(x)
+  }
+}
+
+const fn = a()
+let x = "global"
+fn()
+```
+
+> **Output:** `"a"`
+> Closures capture the lexical scope — the scope where the function was **defined**, not where it's called from. The inner function was defined inside `a()`, so `x` refers to `a`'s `x = "a"`, not the global `x = "global"`.
+
+---
+
+**Q8: Implement a `counter` with increment, decrement, and reset using closures**
+
+```javascript
+function createCounter(start = 0) {
+  let count = start
+  const initial = start
+
+  return {
+    increment: (by = 1) => (count += by),
+    decrement: (by = 1) => (count -= by),
+    reset: () => (count = initial),
+    value: () => count
+  }
+}
+
+const counter = createCounter(10)
+counter.increment()     // 11
+counter.increment(5)    // 16
+counter.decrement(3)    // 13
+counter.reset()         // 10
+counter.value()         // 10
+```
+
+---
+
+**Q9: What is the output?**
+
+```javascript
+let obj = {
+  msg: "Hello",
+  greet: function() {
+    return function() {
+      return this.msg
+    }
+  }
+}
+
+const fn = obj.greet()
+console.log(fn())
+```
+
+> **Output:** `undefined` (or TypeError in strict mode)
+> `obj.greet()` returns an inner function. When that inner function is called as `fn()` (no object context), `this` is `undefined` (strict mode) or `window` (non-strict). Neither has a `msg` property. Closures capture variables, not `this` — `this` is determined by call site, not definition site (for regular functions).
+
+---
+
+**Q10: What is the output?**
+
+```javascript
+function makeAdder(x) {
+  return function(y) {
+    return x + y
+  }
+}
+
+const add5 = makeAdder(5)
+const add10 = makeAdder(10)
+
+console.log(add5(3))
+console.log(add10(3))
+console.log(add5 === add10)
+```
+
+> **Output:** `8` → `13` → `false`
+> `add5` and `add10` are different function instances, each with their own closure over different `x` values. They are not equal (different references).
+
+---
+
+**Q11: What is the output? (Tricky)**
+
+```javascript
+function outer() {
+  let n = 1
+
+  function inner() {
+    let n = 2
+    return n
+  }
+
+  n = 3
+  return inner()
+}
+
+console.log(outer())
+```
+
+> **Output:** `2`
+> `inner()` has its own `n = 2` via `let` declaration — it shadows outer's `n`. It returns its local `n = 2`, not outer's `n = 3`.
+
+---
+
+**Q12: Fix the async closure bug**
+
+```javascript
+// Bug: all log "5" (var-closure issue)
+for (var i = 1; i <= 5; i++) {
+  setTimeout(() => console.log(`Step ${i}`), i * 100)
+}
+
+// Fix:
+for (let i = 1; i <= 5; i++) {
+  setTimeout(() => console.log(`Step ${i}`), i * 100)
+}
+// Output: Step 1, Step 2, Step 3, Step 4, Step 5 (in order, timed correctly)
+```
+
+---
+
+**Q13: What is the output?**
+
+```javascript
+const funcs = Array.from({ length: 3 }, (_, i) => () => i)
+funcs.forEach(f => console.log(f()))
+```
+
+> **Output:** `0, 1, 2`
+> `Array.from` with a mapping function — each arrow function `() => i` closes over its own `i` value from the mapping callback's second parameter. Since `i` is a function parameter (new binding per call), not a shared variable, each closure captures a unique value.
+
+---
+
+**Q14: What is the output?**
+
+```javascript
+let x = 1
+
+function foo() {
+  console.log(x)
+}
+
+function bar() {
+  let x = 2
+  foo()
+}
+
+bar()
+```
+
+> **Output:** `1`
+> JavaScript uses **lexical scoping** — scope is determined where the function is **defined**, not where it's **called**. `foo` is defined at the global level, so it sees global `x = 1`, not `bar`'s `x = 2`.
+
+---
+
+**Q15: Implement `once()` — function that runs only once**
+
+```javascript
+function once(fn) {
+  let called = false
+  let result
+
+  return function(...args) {
+    if (!called) {
+      called = true               // Closure: 'called' is remembered
+      result = fn.apply(this, args)  // Closure: 'result' is remembered
+    }
+    return result
+  }
+}
+
+const init = once(() => {
+  console.log("Initializing...")
+  return { ready: true }
+})
+
+console.log(init())  // "Initializing..." { ready: true }
+console.log(init())  // { ready: true } (no log)
+console.log(init())  // { ready: true } (no log)
+```
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.4 'this' Keyword — Complete Rules
+
+<a id="54-this-keyword--complete-rules"></a>
+
+### Subtopic Breakdown
+
+| Rule | Binding Type | `this` refers to |
+|------|-------------|------------------|
+| Rule 1 | Default binding | `window` (non-strict) / `undefined` (strict) |
+| Rule 2 | Implicit binding | Object before the dot |
+| Rule 3 | Explicit binding | Specified via `call`/`apply`/`bind` |
+| Rule 4 | `new` binding | Newly created object |
+| Rule 5 | Arrow function | Lexical — enclosing scope's `this` |
+| Rule 6 | Class | The class instance |
+| Rule 7 | Event handler | The DOM element (if regular fn) |
+
+---
+
+### The Core Concept
+
+`this` is a **special keyword** that refers to the execution context — who "owns" the currently running function. Unlike variables, `this` is not captured by closures — it's determined at **call time** (for regular functions) or **definition time** (for arrow functions).
+
+> **Hinglish:** `this` matlab "yeh kaun hai" — function call karne wale ka reference. Jaise "mera ghar" mein "mera" alag-alag logon ke liye alag hota hai, `this` bhi call context ke hisaab se badalta hai.
+
+---
+
+### Priority Order of `this` Rules
+
+```mermaid
+flowchart TD
+    A["How is the function called?"] --> B{"Is it an\narrow function?"}
+    B -->|"YES"| C["Rule 5: Arrow\nLexical 'this' from\nenclosing scope"]
+    B -->|"NO"| D{"Called with 'new'?"}
+    D -->|"YES"| E["Rule 4: new binding\n'this' = new object"]
+    D -->|"NO"| F{"Called with\ncall/apply/bind?"}
+    F -->|"YES"| G["Rule 3: Explicit\n'this' = specified object"]
+    F -->|"NO"| H{"Called on\nan object? obj.fn()"}
+    H -->|"YES"| I["Rule 2: Implicit\n'this' = that object"]
+    H -->|"NO"| J{"Strict mode?"}
+    J -->|"YES"| K["Rule 1: 'this' = undefined"]
+    J -->|"NO"| L["Rule 1: 'this' = window/global"]
+
+    style C fill:#e8f5e9
+    style E fill:#bbdefb
+    style G fill:#f3e5f5
+    style I fill:#fff9c4
+    style K fill:#ffcdd2
+    style L fill:#ffcdd2
+```
+
+---
+
+### Rule 1: Default Binding
+
+When a function is called as a **standalone function** (not on an object):
+
+```javascript
+// Non-strict mode: this = window (browser) / global (Node)
+function showThis() {
+  console.log(this)
+}
+showThis()  // window (browser) / global (Node)
+
+// Strict mode: this = undefined
+"use strict"
+function showThisStrict() {
+  console.log(this)  // undefined
+}
+showThisStrict()
+
+// Gotcha — inner function loses 'this':
+const obj = {
+  name: "Rahul",
+  outer() {
+    console.log(this.name)  // "Rahul" ✅ (implicit binding)
+
+    function inner() {
+      console.log(this.name)  // undefined ❌ (default binding — standalone call!)
+    }
+    inner()  // Called as standalone, not as obj.inner()
+  }
+}
+obj.outer()
+```
+
+---
+
+### Rule 2: Implicit Binding
+
+When a function is called **on an object** (with a dot before it):
+
+```javascript
+const person = {
+  name: "Rahul",
+  greet() {
+    return `Hello, I'm ${this.name}`  // 'this' = person (object before dot)
+  }
+}
+
+person.greet()  // "Hello, I'm Rahul" ✅
+
+// ⚠️ IMPLICIT BINDING LOST — extracting method:
+const fn = person.greet
+fn()  // "Hello, I'm undefined" ❌ (now it's a standalone call — default binding)
+
+// ⚠️ IMPLICIT BINDING LOST — passing as callback:
+setTimeout(person.greet, 1000)
+// "Hello, I'm undefined" ❌ (setTimeout calls it as standalone)
+
+// Fix: use bind:
+setTimeout(person.greet.bind(person), 1000)  // ✅
+
+// ⚠️ GOTCHA — method assigned to another object:
+const anotherObj = {
+  name: "Priya",
+  greet: person.greet   // Same function reference
+}
+anotherObj.greet()  // "Hello, I'm Priya" ← 'this' = anotherObj (new owner)
+```
+
+---
+
+### Rule 3: Explicit Binding — call, apply, bind
+
+```javascript
+function introduce(greeting, punctuation) {
+  return `${greeting}, I'm ${this.name}${punctuation}`
+}
+
+const user = { name: "Rahul" }
+
+// call — invoke immediately, args as comma-separated:
+introduce.call(user, "Hello", "!")    // "Hello, I'm Rahul!"
+
+// apply — invoke immediately, args as array:
+introduce.apply(user, ["Namaste", "."])  // "Namaste, I'm Rahul."
+
+// bind — return new function (don't invoke):
+const boundFn = introduce.bind(user, "Hi")  // Pre-fills greeting="Hi"
+boundFn("?")   // "Hi, I'm Rahul?"
+boundFn("!")   // "Hi, I'm Rahul!"
+```
+
+---
+
+### Rule 4: `new` Binding
+
+When a function is called with `new`:
+
+```javascript
+function Person(name, age) {
+  // 'this' is the newly created empty object
+  this.name = name
+  this.age = age
+  // 'this' is implicitly returned
+}
+
+const rahul = new Person("Rahul", 25)
+// 'this' inside Person = newly created { name: "Rahul", age: 25 }
+
+console.log(rahul.name)  // "Rahul"
+console.log(rahul instanceof Person)  // true
+```
+
+---
+
+### Rule 5: Arrow Functions — Lexical `this`
+
+Arrow functions **do not have their own `this`** — they inherit `this` from the enclosing lexical scope at definition time.
+
+```javascript
+const obj = {
+  name: "Rahul",
+
+  // Regular method:
+  regularGreet: function() {
+    console.log(this.name)  // "Rahul" (obj is 'this')
+
+    function inner() {
+      console.log(this.name)  // undefined ❌ (default binding)
+    }
+
+    const arrowInner = () => {
+      console.log(this.name)  // "Rahul" ✅ (inherits obj's 'this')
+    }
+
+    inner()
+    arrowInner()
+  },
+
+  // Arrow method (ANTI-PATTERN):
+  arrowGreet: () => {
+    console.log(this.name)  // undefined ❌ ('this' = global, not obj)
+    // Arrow functions defined at object literal level capture GLOBAL 'this'
+  }
+}
+
+obj.regularGreet()
+obj.arrowGreet()
+
+// ✅ Best use of arrow functions — preserving 'this' in callbacks:
+class Timer {
+  constructor() {
+    this.seconds = 0
+  }
+
+  start() {
+    setInterval(() => {
+      this.seconds++  // ✅ Arrow inherits 'this' from start() = Timer instance
+      console.log(this.seconds)
+    }, 1000)
+  }
+}
+
+const t = new Timer()
+t.start()  // 1, 2, 3... correctly increments
+```
+
+---
+
+### Rule 6: `this` in Classes
+
+```javascript
+class Counter {
+  constructor() {
+    this.count = 0
+    // Bind in constructor (solution for passing methods as callbacks):
+    this.increment = this.increment.bind(this)
+  }
+
+  increment() {
+    this.count++
+    return this.count
+  }
+
+  // Class field arrow function — auto-bound:
+  decrement = () => {
+    this.count--
+    return this.count
+  }
+}
+
+const c = new Counter()
+c.increment()  // 1 (called on instance — works)
+
+// When passed as callback:
+const inc = c.increment   // Extracted
+inc()                      // ✅ Works (bound in constructor)
+
+const dec = c.decrement   // Arrow function field
+dec()                      // ✅ Works (arrow captures 'this' at definition)
+```
+
+---
+
+### 🎯 20+ `this` Interview Output Questions
+
+**Q1: What is the output?**
+
+```javascript
+const obj = {
+  value: 42,
+  getValue: function() { return this.value }
+}
+const fn = obj.getValue
+console.log(fn())
+```
+
+> **Output:** `undefined` (strict) or `window.value` (non-strict)
+> Extracting `getValue` from `obj` loses implicit binding. `fn()` is a standalone call.
+
+---
+
+**Q2: What is the output?**
+
+```javascript
+function Person(name) {
+  this.name = name
+}
+
+const p1 = new Person("Rahul")
+const p2 = Person("Priya")  // Called WITHOUT new
+
+console.log(p1.name)
+console.log(typeof p2)
+console.log(window.name) // browser
+```
+
+> **Output:** `"Rahul"` → `undefined` → `"Priya"`
+> `p1 = new Person("Rahul")` → creates object, `this.name = "Rahul"` on new object.
+> `p2 = Person("Priya")` → no `new` → default binding → `this = window` → `window.name = "Priya"` → function returns `undefined`.
+
+---
+
+**Q3: What is the output?**
+
+```javascript
+const obj = {
+  x: 10,
+  getX: function() {
+    return () => this.x
+  }
+}
+
+const arrow = obj.getX()
+console.log(arrow())
+```
+
+> **Output:** `10`
+> `obj.getX()` — implicit binding, `this = obj` inside `getX`. The returned arrow function closes over `this = obj`. When `arrow()` is called, it still uses `obj.x = 10`.
+
+---
+
+**Q4: What is the output?**
+
+```javascript
+const a = {
+  val: 1,
+  foo() {
+    return this.val
+  }
+}
+
+const b = {
+  val: 2,
+  foo: a.foo
+}
+
+console.log(a.foo())
+console.log(b.foo())
+
+const c = b.foo
+console.log(c())
+```
+
+> **Output:** `1` → `2` → `undefined`
+> `a.foo()` → `this = a` → `1`. `b.foo()` → `this = b` → `2`. `c()` → standalone → `this = undefined` (strict) or `window` → `undefined`.
+
+---
+
+**Q5: What is the output?**
+
+```javascript
+function foo() {
+  "use strict"
+  console.log(this)
+}
+
+foo()
+foo.call(null)
+foo.call(undefined)
+foo.call(42)
+```
+
+> **Output:** `undefined` → `null` → `undefined` → `Number{42}` (boxed)
+> In strict mode: standalone call → `this = undefined`. `call(null)` → `this = null`. `call(undefined)` → `this = undefined`. `call(42)` → in strict mode, `this = 42` (not boxed). In non-strict: primitives get boxed.
+
+---
+
+**Q6: What is the output?**
+
+```javascript
+class Dog {
+  constructor(name) {
+    this.name = name
+  }
+  bark() {
+    return `${this.name} says Woof!`
+  }
+}
+
+const dog = new Dog("Rex")
+const bark = dog.bark
+console.log(bark())
+```
+
+> **Output:** `TypeError: Cannot read property 'name' of undefined`
+> Classes are always in strict mode. `bark()` called as standalone → `this = undefined` → `undefined.name` → TypeError. Fix: `bark.bind(dog)` or arrow class field.
+
+---
+
+**Q7: What is the output?**
+
+```javascript
+const obj = {
+  count: 0,
+  inc: function() {
+    this.count++
+  }
+}
+
+[1, 2, 3].forEach(obj.inc)
+console.log(obj.count)
+```
+
+> **Output:** `0`
+> `obj.inc` is passed as a reference to `forEach` without binding. Inside `forEach`, it's called as a standalone function → default binding → `this = window/undefined`. `window.count` (or undefined) gets incremented, not `obj.count`. Fix: `forEach(obj.inc.bind(obj))` or `forEach(() => obj.inc())`.
+
+---
+
+**Q8: What is the output?**
+
+```javascript
+function Timer() {
+  this.seconds = 0
+}
+
+Timer.prototype.start = function() {
+  setTimeout(function() {
+    this.seconds++
+    console.log(this.seconds)
+  }, 1000)
+}
+
+const t = new Timer()
+t.start()
+```
+
+> **Output:** `NaN` (or `1` if window.seconds exists)
+> Inside `setTimeout`'s callback (regular function), `this = window`. `window.seconds` is `undefined`. `undefined++ = NaN`. Fix: use arrow function or `const self = this` pattern.
+
+---
+
+**Q9: What is the output?**
+
+```javascript
+const obj = {
+  value: "outer",
+  method: function() {
+    const inner = {
+      value: "inner",
+      fn: () => {
+        return this.value
+      }
+    }
+    return inner.fn()
+  }
+}
+
+console.log(obj.method())
+```
+
+> **Output:** `"outer"`
+> The arrow function `fn` is defined inside `method`. When `method()` is called on `obj`, `this = obj` inside `method`. The arrow `fn` lexically captures this `this = obj`. So `this.value = "outer"`, not `"inner"` (even though `fn` is inside `inner` object).
+
+---
+
+**Q10: What is the output?**
+
+```javascript
+function greet() {
+  return `Hello, ${this.name}`
+}
+
+const user1 = { name: "Rahul" }
+const user2 = { name: "Priya" }
+
+const boundToUser1 = greet.bind(user1)
+const doubleBound = boundToUser1.bind(user2)  // Try to re-bind
+
+console.log(boundToUser1())
+console.log(doubleBound())
+```
+
+> **Output:** `"Hello, Rahul"` → `"Hello, Rahul"`
+> **`bind` cannot be overridden!** Once a function is bound, its `this` is permanently set. `doubleBound` is still bound to `user1`. The second `bind` has no effect on `this` (though it can add partial arguments).
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.5 call(), apply(), bind()
+
+<a id="55-call-apply-bind"></a>
+
+### Subtopic Breakdown
+
+| Method | Invokes? | Args format | Returns |
+|--------|---------|-------------|---------|
+| `call(thisArg, a, b, c)` | ✅ Yes | Comma-separated | Function result |
+| `apply(thisArg, [a, b, c])` | ✅ Yes | Array | Function result |
+| `bind(thisArg, a, b)` | ❌ No | Comma-separated (partial) | New function |
+
+---
+
+### Syntax & Usage
+
+```javascript
+function introduce(greeting, city) {
+  return `${greeting}! I'm ${this.name} from ${city}.`
+}
+
+const user = { name: "Rahul" }
+
+// call — immediate execution, args as list:
+introduce.call(user, "Hello", "Mumbai")
+// "Hello! I'm Rahul from Mumbai."
+
+// apply — immediate execution, args as array:
+introduce.apply(user, ["Namaste", "Delhi"])
+// "Namaste! I'm Rahul from Delhi."
+
+// bind — returns new bound function (no invocation):
+const boundIntroduce = introduce.bind(user, "Hi")  // Pre-fills greeting="Hi"
+boundIntroduce("Bangalore")  // "Hi! I'm Rahul from Bangalore."
+boundIntroduce("Chennai")    // "Hi! I'm Rahul from Chennai."
+```
+
+---
+
+### Practical Use Cases
+
+```javascript
+// 1. Borrowing methods from Array.prototype:
+function sum() {
+  // 'arguments' is array-like, not a real array
+  // Borrow Array's reduce method:
+  return Array.prototype.reduce.call(
+    arguments,
+    (acc, n) => acc + n,
+    0
+  )
+}
+sum(1, 2, 3, 4, 5)  // 15
+
+// 2. Borrowing slice to convert NodeList to array:
+const nodeList = document.querySelectorAll(".items")
+const array = Array.prototype.slice.call(nodeList)  // Now a real array
+
+// 3. Object.prototype.toString for type checking:
+function getType(value) {
+  return Object.prototype.toString.call(value).slice(8, -1)
+}
+getType([])          // "Array"
+getType(new Date())  // "Date"
+getType(null)        // "Null"
+
+// 4. apply for spreading array as arguments:
+const nums = [3, 1, 4, 1, 5, 9]
+Math.max.apply(null, nums)  // 9 (before spread syntax)
+Math.max(...nums)            // 9 (modern equivalent)
+
+// 5. bind for event handlers in React (class components):
+class Button extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)  // bind in constructor
+  }
+
+  handleClick() {
+    console.log("Clicked!", this.props.label)
+  }
+
+  render() {
+    return <button onClick={this.handleClick}>{this.props.label}</button>
+  }
+}
+
+// 6. Partial application with bind:
+function multiply(a, b) { return a * b }
+const double = multiply.bind(null, 2)   // Pre-fill 'a' as 2
+const triple = multiply.bind(null, 3)   // Pre-fill 'a' as 3
+double(5)  // 10
+triple(5)  // 15
+```
+
+---
+
+### Polyfill Implementations
+
+> [!IMPORTANT]
+> **Implementing `call`, `apply`, and `bind` from scratch is one of the most commonly asked interview questions at product-based companies.** Understand the mechanism, not just the syntax.
+
+```javascript
+// ─── IMPLEMENT call() ────────────────────────────────────────────
+
+Function.prototype.myCall = function(thisArg, ...args) {
+  // 'this' here is the function that myCall is called ON
+  // e.g., introduce.myCall(user, "Hello") — 'this' = introduce
+
+  // Handle null/undefined thisArg:
+  const context = thisArg ?? globalThis
+
+  // Create unique key to avoid overwriting existing properties:
+  const uniqueKey = Symbol("__fn__")
+
+  // Temporarily assign the function as a method of context:
+  context[uniqueKey] = this  // context.__fn__ = introduce
+
+  // Call it as a method — this gives implicit binding!
+  const result = context[uniqueKey](...args)
+
+  // Clean up — remove temporary property:
+  delete context[uniqueKey]
+
+  return result
+}
+
+// Test:
+function greet(greeting) {
+  return `${greeting}, ${this.name}!`
+}
+
+greet.myCall({ name: "Rahul" }, "Hello")  // "Hello, Rahul!"
+
+// ─── IMPLEMENT apply() ───────────────────────────────────────────
+
+Function.prototype.myApply = function(thisArg, argsArray = []) {
+  // Validate argsArray:
+  if (!Array.isArray(argsArray) && argsArray !== null && argsArray !== undefined) {
+    throw new TypeError("CreateListFromArrayLike called on non-object")
+  }
+
+  const context = thisArg ?? globalThis
+  const uniqueKey = Symbol("__fn__")
+  context[uniqueKey] = this
+
+  const result = context[uniqueKey](...(argsArray || []))
+  delete context[uniqueKey]
+
+  return result
+}
+
+// Test:
+greet.myApply({ name: "Priya" }, ["Namaste"])  // "Namaste, Priya!"
+
+// ─── IMPLEMENT bind() ────────────────────────────────────────────
+
+Function.prototype.myBind = function(thisArg, ...presetArgs) {
+  const originalFn = this  // Save reference to the original function
+
+  // Return a new function:
+  function boundFn(...laterArgs) {
+    // Handle 'new' keyword:
+    // If called with 'new', 'this' inside should be the new object, not thisArg
+    if (this instanceof boundFn) {
+      return new originalFn(...presetArgs, ...laterArgs)
+    }
+
+    // Normal call: use myCall with thisArg and merged args:
+    return originalFn.myCall(thisArg, ...presetArgs, ...laterArgs)
+  }
+
+  // Preserve prototype chain for 'new' usage:
+  if (originalFn.prototype) {
+    boundFn.prototype = Object.create(originalFn.prototype)
+  }
+
+  // Preserve function length (formal parameter count):
+  Object.defineProperty(boundFn, "length", {
+    value: Math.max(0, originalFn.length - presetArgs.length)
+  })
+
+  return boundFn
+}
+
+// Test:
+function multiply(a, b, c) { return `${this.label}: ${a * b * c}` }
+
+const obj = { label: "Result" }
+const bound = multiply.myBind(obj, 2)  // Pre-fill 'a' as 2
+bound(3, 4)  // "Result: 24"
+bound(5, 6)  // "Result: 60"
+
+// Verify bind can't be re-bound:
+const reBound = bound.myBind({ label: "Different" })
+reBound(3, 4)  // "Result: 24" — still uses original obj
+```
+
+---
+
+### 🎯 Interview Questions — Section 5.5
+
+**Q1: What is the difference between call, apply, and bind?**
+
+> All three allow you to explicitly set `this`. **`call(thisArg, arg1, arg2)`** invokes the function immediately with arguments as a comma-separated list. **`apply(thisArg, [arg1, arg2])`** also invokes immediately but takes arguments as an array. **`bind(thisArg, arg1)`** does NOT invoke immediately — it returns a **new permanently bound function** with `this` set. Use `call`/`apply` when you need immediate invocation with a specific context. Use `bind` when you need a reusable bound function (event handlers, callbacks, partial application).
+
+**Q2: Implement `Function.prototype.bind` from scratch.**
+
+> (Full implementation provided in code section above — key points to mention in interview): (1) Returns a new function (doesn't invoke). (2) Pre-set arguments (partial application). (3) Handles `new` keyword — if bound function is called with `new`, the `new` object should be `this`, not the bound `thisArg`. (4) Preserves `prototype` for inheritance. (5) Cannot be re-bound — once bound, `this` is permanent.
+
+**Q3: When would you use `apply` over `call`?**
+
+> Use `apply` when your arguments are already in an **array** (or array-like structure). Common cases: (1) `Math.max.apply(null, arrayOfNums)` — before spread syntax. (2) When writing generic function wrappers that receive `arguments` as an array-like. (3) When dynamically building an argument list at runtime. With ES6+ spread syntax (`Math.max(...arr)`), `apply` is less commonly needed but still appears in legacy code and certain low-level programming scenarios.
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.6 Currying & Partial Application
+
+<a id="56-currying--partial-application"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is Currying? | Transform f(a,b,c) → f(a)(b)(c) |
+| What is Partial Application? | Pre-fill some arguments |
+| Difference | Currying fixes arity; partial is flexible |
+| React Use Cases | Event handlers, reusable configurations |
+| Generic Curry Implementation | Handle any function |
+
+---
+
+### What is Currying?
+
+**Currying** transforms a function that takes multiple arguments into a sequence of functions, each taking a single argument.
+
+> **Hinglish:** Currying matlab ek function jo ek saath saare arguments leti hai, use aise banana ki woh ek-ek argument lene wale functions ki chain ban jaaye. `add(1, 2, 3)` → `add(1)(2)(3)`.
+
+```javascript
+// Non-curried (normal):
+function add(a, b, c) {
+  return a + b + c
+}
+add(1, 2, 3)  // 6
+
+// Curried version (manual):
+function curriedAdd(a) {
+  return function(b) {
+    return function(c) {
+      return a + b + c
+    }
+  }
+}
+// Or with arrow functions:
+const curriedAdd = a => b => c => a + b + c
+
+curriedAdd(1)(2)(3)   // 6
+const add1 = curriedAdd(1)       // Returns b => c => 1 + b + c
+const add1and2 = add1(2)         // Returns c => 1 + 2 + c
+add1and2(3)                       // 6
+
+// Practical currying:
+const multiply = a => b => a * b
+const double = multiply(2)       // b => 2 * b
+const triple = multiply(3)       // b => 3 * b
+double(5)   // 10
+triple(5)   // 15
+
+// URL builder:
+const buildUrl = baseUrl => endpoint => id =>
+  `${baseUrl}${endpoint}/${id}`
+
+const apiUrl = buildUrl("https://api.example.com")
+const usersUrl = apiUrl("/users")
+const productsUrl = apiUrl("/products")
+
+usersUrl(123)     // "https://api.example.com/users/123"
+productsUrl(456)  // "https://api.example.com/products/456"
+```
+
+---
+
+### Partial Application
+
+**Partial application** pre-fills some arguments of a function, creating a specialized version.
+
+```javascript
+// Key difference from currying:
+// Currying: always one argument at a time, fixed transformation
+// Partial: can pre-fill any number of arguments at once
+
+function log(level, timestamp, message) {
+  return `[${level}] ${timestamp}: ${message}`
+}
+
+// Partial application — manually:
+function logError(timestamp, message) {
+  return log("ERROR", timestamp, message)
+}
+
+// Using bind for partial application:
+const logInfo = log.bind(null, "INFO")     // Pre-fills level="INFO"
+const logWarn = log.bind(null, "WARN")     // Pre-fills level="WARN"
+
+logInfo("10:30", "Server started")  // "[INFO] 10:30: Server started"
+logWarn("10:35", "High memory")     // "[WARN] 10:35: High memory"
+
+// Generic partial function:
+function partial(fn, ...preArgs) {
+  return (...laterArgs) => fn(...preArgs, ...laterArgs)
+}
+
+const logError2 = partial(log, "ERROR")
+logError2("10:40", "Connection failed")  // "[ERROR] 10:40: Connection failed"
+```
+
+---
+
+### Generic Curry Implementation
+
+```javascript
+// Automatic curry — works for any function:
+function curry(fn) {
+  // fn.length = number of formal parameters
+  return function curried(...args) {
+    if (args.length >= fn.length) {
+      // Have enough args — call the original function:
+      return fn(...args)
+    }
+    // Need more args — return function to collect more:
+    return function(...moreArgs) {
+      return curried(...args, ...moreArgs)
+    }
+  }
+}
+
+// Test with a 3-argument function:
+function add(a, b, c) { return a + b + c }
+const curriedAdd = curry(add)
+
+// All these work:
+curriedAdd(1, 2, 3)     // 6 (all args at once)
+curriedAdd(1)(2)(3)     // 6 (one at a time)
+curriedAdd(1, 2)(3)     // 6 (two then one)
+curriedAdd(1)(2, 3)     // 6 (one then two)
+
+// Create reusable specialized functions:
+const add1 = curriedAdd(1)
+const add1and2 = curriedAdd(1, 2)
+
+add1(5)       // 6
+add1(10)      // 11
+add1and2(3)   // 6
+add1and2(9)   // 12
+
+// Currying in React — event handlers:
+const handleChange = curry((field, event) => {
+  setState(prev => ({ ...prev, [field]: event.target.value }))
+})
+
+<input onChange={handleChange("name")} />
+<input onChange={handleChange("email")} />
+// Each returns a function waiting for 'event'
+
+// Currying for validation:
+const validate = curry((minLength, maxLength, value) =>
+  value.length >= minLength && value.length <= maxLength
+)
+
+const validatePassword = validate(8, 20)
+const validateUsername = validate(3, 15)
+
+validatePassword("secret123")   // true (9 chars — between 8-20)
+validatePassword("hi")          // false (2 chars — below 8)
+validateUsername("rahul")       // true (5 chars — between 3-15)
+```
+
+---
+
+### 🎯 Interview Questions — Section 5.6
+
+**Q1: What is currying and what problem does it solve?**
+
+> Currying transforms a function `f(a, b, c)` into `f(a)(b)(c)` — each call takes one argument and returns a function waiting for the next. Problems it solves: (1) **Reusability** — create specialized functions from general ones without repeating common arguments. (2) **Composition** — curried functions (single-argument) compose more easily. (3) **Partial application** — create partially applied functions. (4) **Point-free style** — write cleaner functional code. Common in FP libraries like Ramda and in React for event handlers.
+
+**Q2: What is the difference between currying and partial application?**
+
+> **Currying** is a transformation — converting a multi-argument function into a series of unary (single-argument) functions. It's a property of the function's form. **Partial application** is a technique — calling a function with some of its arguments and getting back a function waiting for the remaining arguments. You can partially apply any number of arguments at once. All curried functions support partial application, but not all partial application is currying. With `curry(fn)(1)`, you're doing both: currying the function and partially applying the first argument.
+
+**Q3: Write a curry function that also handles placeholder arguments.**
+
+```javascript
+const _ = Symbol("placeholder")
+
+function curryWithPlaceholder(fn) {
+  const arity = fn.length
+  return function curried(...args) {
+    const realArgs = args.filter(a => a !== _)
+    if (realArgs.length >= arity) return fn(...args)
+
+    return function(...newArgs) {
+      const merged = args.map(a => (a === _ && newArgs.length ? newArgs.shift() : a))
+      return curried(...merged, ...newArgs)
+    }
+  }
+}
+
+// Usage:
+const add = curry((a, b, c) => a + b + c)
+add(_, 2, _)(1, 3)  // 6 — fills placeholders in order
+```
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.7 Function Composition & Pipe
+
+<a id="57-function-composition--pipe"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| `compose` | Right-to-left function application |
+| `pipe` | Left-to-right function application |
+| Mathematical basis | f(g(x)) notation |
+| Real-world usage | Data transformation pipelines |
+| Implementations | From scratch |
+
+---
+
+### What is Function Composition?
+
+**Composition** is combining simple functions into more complex ones. The output of one function becomes the input of the next.
+
+> **Hinglish:** Composition matlab functions ki chain banana — ek ka output doosre ka input. Jaise assembly line: ek machine bolt daali, doosre ne paint kiya, teesre ne pack kiya. `compose(paint, addBolt)(rawProduct)`.
+
+```javascript
+// Mathematical: compose(f, g)(x) = f(g(x))
+// Read right-to-left: g runs first, then f
+
+// Without composition:
+function transform(data) {
+  const trimmed = data.trim()
+  const lowered = trimmed.toLowerCase()
+  const slug = lowered.replace(/\s+/g, '-')
+  return slug
+}
+
+// With composition:
+const trim = str => str.trim()
+const lowercase = str => str.toLowerCase()
+const slugify = str => str.replace(/\s+/g, '-')
+const removeSpecial = str => str.replace(/[^a-z0-9-]/g, '')
+
+// compose — RIGHT to LEFT (mathematical order):
+// compose(f, g, h)(x) = f(g(h(x)))
+const compose = (...fns) => x => fns.reduceRight((acc, fn) => fn(acc), x)
+
+const createSlug = compose(removeSpecial, slugify, lowercase, trim)
+createSlug("  Hello World! React & Next.js  ")
+// Step 1 (trim): "Hello World! React & Next.js"
+// Step 2 (lowercase): "hello world! react & next.js"
+// Step 3 (slugify): "hello-world!-react-&-next.js"
+// Step 4 (removeSpecial): "hello-world-react-nextjs"
+```
+
+---
+
+### `pipe` — Left to Right
+
+```javascript
+// pipe — LEFT to RIGHT (more readable/natural order):
+// pipe(f, g, h)(x) = h(g(f(x)))
+const pipe = (...fns) => x => fns.reduce((acc, fn) => fn(acc), x)
+
+// Same functions, more intuitive order:
+const createSlugPipe = pipe(trim, lowercase, slugify, removeSpecial)
+createSlugPipe("  Hello World! React & Next.js  ")
+// Reads naturally: first trim, then lowercase, then slugify, then removeSpecial
+
+// Multi-argument pipe step (use partial application):
+const addTax = rate => price => price * (1 + rate)
+const formatCurrency = currency => amount => `${currency}${amount.toFixed(2)}`
+
+const processPrice = pipe(
+  addTax(0.18),          // Add 18% GST
+  Math.round,            // Round to nearest integer
+  formatCurrency("₹")    // Format as currency
+)
+
+processPrice(1000)  // "₹1180"
+processPrice(500)   // "₹590"
+
+// Real-world: request processing pipeline:
+const processRequest = pipe(
+  validateBody,
+  sanitizeInput,
+  checkPermissions,
+  handleBusiness,
+  formatResponse
+)
+```
+
+---
+
+### Compose vs Pipe
+
+```javascript
+const double = x => x * 2
+const addOne = x => x + 1
+const square = x => x * x
+
+// compose — right to left (math notation):
+const composed = compose(square, addOne, double)
+// For input 3:
+// double(3) = 6
+// addOne(6) = 7
+// square(7) = 49
+composed(3)  // 49
+
+// pipe — left to right (natural reading):
+const piped = pipe(double, addOne, square)
+// For input 3:
+// double(3) = 6
+// addOne(6) = 7
+// square(7) = 49
+piped(3)    // 49 (same result, different mental model)
+
+// ⚠️ Reverse order means reverse result if fn order differs:
+compose(double, square)(3)  // square(3)=9, double(9)=18
+pipe(double, square)(3)     // double(3)=6, square(6)=36
+
+// Key: pipe reads like a recipe (step 1, step 2...)
+//       compose reads like math (outermost fn written first)
+```
+
+---
+
+### 🎯 Interview Questions — Section 5.7
+
+**Q1: What is the difference between `compose` and `pipe`?**
+
+> Both combine multiple functions into a pipeline where each function's output is the next function's input. **`compose(f, g, h)(x)`** applies functions **right-to-left**: `f(g(h(x)))` — `h` runs first. This matches mathematical function composition notation. **`pipe(f, g, h)(x)`** applies functions **left-to-right**: `f` runs first, then `g`, then `h`. Pipe is more intuitive for developers (reads like a recipe). Use compose when you think mathematically; use pipe when you think procedurally.
+
+**Q2: Implement `pipe` and `compose` using `reduce` and `reduceRight`.**
+
+```javascript
+const pipe = (...fns) => x => fns.reduce((v, f) => f(v), x)
+const compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x)
+```
+
+> `pipe` uses `reduce` (left-to-right traversal). `compose` uses `reduceRight` (right-to-left). Both start with the initial value `x` and thread it through each function.
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.8 Memoization
+
+<a id="58-memoization"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is Memoization? | Cache results, avoid recomputation |
+| How it Works | Input → cache lookup → compute if miss |
+| Map vs Object cache | Pros/cons of each |
+| Trade-offs | Memory vs speed |
+| Advanced memoize | TTL, size limit, weak references |
+| React useMemo | How it relates |
+
+---
+
+### What is Memoization?
+
+**Memoization** is an optimization technique that caches the return values of expensive function calls and returns the cached result when the same inputs are provided again.
+
+> **Hinglish:** Memoization ek "yaad rakhne" ka technique hai — pehli baar kaam karo, result yaad rakh lo. Dobaara same sawaal aaye toh seedha yaad se jawab do, kaam mat karo phir se. Jaise exam mein pehle solve kiya hua question ka answer yaad karna.
+
+```javascript
+// ─── BASIC MEMOIZE — Object cache ────────────────────────────────
+function memoize(fn) {
+  const cache = {}  // Simple object cache
+
+  return function(...args) {
+    const key = JSON.stringify(args)  // Serialize args as cache key
+
+    if (key in cache) {
+      return cache[key]               // Cache hit!
+    }
+
+    const result = fn.apply(this, args)
+    cache[key] = result               // Store result
+    return result
+  }
+}
+
+// ─── BETTER MEMOIZE — Map cache (faster lookups, any key type) ────
+function memoizeMap(fn) {
+  const cache = new Map()
+
+  return function(...args) {
+    const key = JSON.stringify(args)
+
+    if (cache.has(key)) {
+      return cache.get(key)
+    }
+
+    const result = fn.apply(this, args)
+    cache.set(key, result)
+    return result
+  }
+}
+
+// Test with Fibonacci:
+function fib(n) {
+  if (n <= 1) return n
+  return fib(n - 1) + fib(n - 2)
+}
+
+// Without memoization — exponential time O(2^n):
+console.time("slow")
+fib(40)    // ~1 second!
+console.timeEnd("slow")
+
+// With memoization:
+const memoFib = memoize(function fib(n) {
+  if (n <= 1) return n
+  return memoFib(n - 1) + memoFib(n - 2)  // Use memoized version!
+})
+
+console.time("fast")
+memoFib(40)   // <1ms
+console.timeEnd("fast")
+```
+
+---
+
+### Advanced Memoize — With TTL, Size Limit
+
+```javascript
+// Production-grade memoize with options:
+function advancedMemoize(fn, options = {}) {
+  const {
+    maxSize = 100,    // Max cache entries
+    ttl = null,       // Time-to-live in ms (null = never expire)
+    serializer = JSON.stringify,  // Key serializer
+  } = options
+
+  const cache = new Map()  // { key → { value, timestamp } }
+
+  function isExpired(entry) {
+    if (!ttl) return false
+    return Date.now() - entry.timestamp > ttl
+  }
+
+  function evictOldest() {
+    const oldestKey = cache.keys().next().value  // First key (Map is ordered)
+    cache.delete(oldestKey)
+  }
+
+  const memoized = function(...args) {
+    const key = serializer(args)
+
+    // Check cache:
+    if (cache.has(key)) {
+      const entry = cache.get(key)
+      if (!isExpired(entry)) {
+        // Move to end (LRU — most recently used):
+        cache.delete(key)
+        cache.set(key, entry)
+        return entry.value
+      }
+      cache.delete(key)  // Expired — remove
+    }
+
+    // Compute:
+    const value = fn.apply(this, args)
+
+    // Evict if at capacity:
+    if (cache.size >= maxSize) {
+      evictOldest()
+    }
+
+    cache.set(key, { value, timestamp: Date.now() })
+    return value
+  }
+
+  // Utility methods:
+  memoized.clear = () => cache.clear()
+  memoized.size = () => cache.size
+  memoized.has = (...args) => {
+    const key = serializer(args)
+    if (!cache.has(key)) return false
+    const entry = cache.get(key)
+    return !isExpired(entry)
+  }
+
+  return memoized
+}
+
+// Usage:
+const fetchUserData = advancedMemoize(
+  async (userId) => {
+    const res = await fetch(`/api/users/${userId}`)
+    return res.json()
+  },
+  { ttl: 60000, maxSize: 50 }  // Cache for 60 seconds, max 50 users
+)
+```
+
+---
+
+### React's `useMemo` — Memoization in Practice
+
+```jsx
+import { useMemo, useState } from 'react'
+
+function ProductList({ products, filters }) {
+  const [sortOrder, setSortOrder] = useState("asc")
+
+  // ✅ useMemo — only recompute when products, filters, or sortOrder changes:
+  const processedProducts = useMemo(() => {
+    console.log("Computing filtered/sorted products...")
+
+    return products
+      .filter(p => {
+        if (filters.category && p.category !== filters.category) return false
+        if (filters.minPrice && p.price < filters.minPrice) return false
+        if (filters.inStock && !p.inStock) return false
+        return true
+      })
+      .sort((a, b) => sortOrder === "asc" ? a.price - b.price : b.price - a.price)
+  }, [products, filters, sortOrder])  // Dependencies
+
+  // processedProducts is memoized — won't recompute on unrelated re-renders
+  return (
+    <div>
+      {processedProducts.map(p => <ProductCard key={p.id} product={p} />)}
+    </div>
+  )
+}
+
+// When NOT to use useMemo:
+// ❌ Simple calculations (more overhead than benefit):
+const double = useMemo(() => count * 2, [count])  // Overkill!
+// ✅ Just do:
+const double = count * 2  // No memoization needed
+
+// ✅ Use useMemo for:
+// - Expensive calculations (filtering/sorting large arrays)
+// - Creating stable object/array references to prevent child re-renders
+// - When computation takes > 1ms on average
+```
+
+---
+
+### 🎯 Interview Questions — Section 5.8
+
+**Q1: What is memoization and when should you use it?**
+
+> Memoization is an optimization technique where the results of expensive function calls are cached based on their inputs. On subsequent calls with the same arguments, the cached result is returned immediately without recomputation. Use it when: (1) The function is **pure** (same inputs always give same output). (2) The function is **computationally expensive** (recursion, complex calculations, data processing). (3) The function is called **repeatedly** with the same arguments. Don't use for: simple operations (overhead exceeds benefit), functions with side effects, when memory is constrained.
+
+**Q2: What is the difference between `useMemo` and `useCallback` in React?**
+
+> `useMemo` memoizes a **computed value** — it caches the result of a function call. `useCallback` memoizes a **function reference** — it returns the same function reference across renders when dependencies don't change. Internally, `useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`. Use `useMemo` for expensive calculations; use `useCallback` when you need a stable function reference (like a callback passed to child components wrapped in `React.memo`).
+
+**Q3: Implement memoize with a maximum cache size (LRU eviction).**
+
+> (Full implementation provided above with `advancedMemoize`)
+> Key implementation points: Use a `Map` (maintains insertion order). When at capacity, evict the oldest entry (first in Map). On cache hit, delete and re-insert the entry to mark it as recently used (LRU pattern). This ensures the least recently used entries are evicted first.
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 5.9 Debouncing & Throttling
+
+<a id="59-debouncing--throttling"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Debounce | Wait until calls stop, then execute once |
+| Throttle | Execute at most once per interval |
+| Visual difference | Side-by-side comparison |
+| Implementations | Full from-scratch code |
+| Real-world use cases | Search, scroll, resize, API rate limiting |
+| React usage | With hooks |
+
+---
+
+### What is Debouncing?
+
+**Debouncing** delays the execution of a function until after a specified time has elapsed since the **last call**. If the function is called again before the delay expires, the timer resets.
+
+> **Hinglish:** Debounce matlab "ruko, abhi call ho sakti hai — 300ms baad bhi nahi aayi call, tab chalao." Jaise search bar mein type karte waqt — jab tak type hoti rehti hai, search nahi hota. Ruk gaye type karna? 300ms baad search hoga.
+
+```mermaid
+sequenceDiagram
+    participant User as 👤 User Typing
+    participant DB as Debounce Timer (300ms)
+    participant API as 🌐 API Call
+
+    User->>DB: "r" typed → start 300ms timer
+    User->>DB: "re" typed → RESET timer (300ms again)
+    User->>DB: "rea" typed → RESET timer
+    User->>DB: "reac" typed → RESET timer
+    User->>DB: "react" typed → RESET timer
+    Note over User,DB: User stops typing
+    DB->>API: 300ms passes → Execute! Search for "react"
+```
+
+---
+
+### What is Throttling?
+
+**Throttling** ensures a function executes at most **once per specified interval**, regardless of how many times it's called during that interval.
+
+> **Hinglish:** Throttle matlab "ek baar execute karo, phir X ms tak koi nahi." Jaise scroll event — har pixel par function mat chalao, sirf har 200ms mein ek baar chalo. Speed limit ki tarah — chahe kitni bhi calls aayen.
+
+```mermaid
+sequenceDiagram
+    participant User as 👤 User Scrolling
+    participant TH as Throttle (200ms)
+    participant Handler as 🖥️ Handler
+
+    User->>TH: scroll event at 0ms
+    TH->>Handler: ✅ Execute (first call)
+    User->>TH: scroll event at 50ms
+    Note over TH: ⏳ Throttled — within 200ms window
+    User->>TH: scroll event at 100ms
+    Note over TH: ⏳ Throttled
+    User->>TH: scroll event at 200ms
+    TH->>Handler: ✅ Execute (200ms passed)
+    User->>TH: scroll event at 250ms
+    Note over TH: ⏳ Throttled
+```
+
+---
+
+### Debounce vs Throttle — Visual Comparison
+
+```mermaid
+flowchart LR
+    subgraph INPUT["User Events (rapid-fire)"]
+        E1["call@0ms"]
+        E2["call@50ms"]
+        E3["call@100ms"]
+        E4["call@150ms"]
+        E5["call@200ms"]
+        E6["call@400ms"]
+        E7["call@450ms"]
+    end
+
+    subgraph DEBOUNCE["Debounce (wait=200ms)"]
+        D["Execute ONCE\nat 600ms\n(200ms after last call)"]
+    end
+
+    subgraph THROTTLE["Throttle (limit=200ms)"]
+        T1["Execute at 0ms"]
+        T2["Execute at 200ms"]
+        T3["Execute at 400ms"]
+    end
+
+    INPUT -->|"Debounce waits\nfor silence"| DEBOUNCE
+    INPUT -->|"Throttle limits\nrate"| THROTTLE
+
+    style DEBOUNCE fill:#c8e6c9
+    style THROTTLE fill:#bbdefb
+```
+
+---
+
+### Complete Debounce Implementation
+
+```javascript
+function debounce(fn, delay, options = {}) {
+  const {
+    leading = false,   // Execute on the LEADING edge (first call)
+    trailing = true,   // Execute on the TRAILING edge (after silence)
+    maxWait = null,    // Maximum wait time (forces execution)
+  } = options
+
+  let timerId = null
+  let lastCallTime = 0
+  let lastInvokeTime = 0
+  let lastArgs = null
+  let lastThis = null
+  let result
+
+  function invoke() {
+    result = fn.apply(lastThis, lastArgs)
+    lastInvokeTime = Date.now()
+    lastArgs = lastThis = null
+    return result
+  }
+
+  function debounced(...args) {
+    const now = Date.now()
+    lastCallTime = now
+    lastArgs = args
+    lastThis = this
+
+    const isLeadingEdge = leading && timerId === null
+
+    // Clear existing timer:
+    clearTimeout(timerId)
+
+    // Handle maxWait:
+    if (maxWait !== null) {
+      const timeSinceLastInvoke = now - lastInvokeTime
+      if (timeSinceLastInvoke >= maxWait) {
+        invoke()
+        return result
+      }
+    }
+
+    // Execute on leading edge:
+    if (isLeadingEdge) {
+      invoke()
+    }
+
+    // Set timer for trailing edge:
+    if (trailing) {
+      timerId = setTimeout(() => {
+        timerId = null
+        if (trailing && lastArgs) {
+          invoke()
+        }
+      }, delay)
+    }
+
+    return result
+  }
+
+  // Cancel pending execution:
+  debounced.cancel = () => {
+    clearTimeout(timerId)
+    timerId = lastArgs = lastThis = null
+    lastCallTime = lastInvokeTime = 0
+  }
+
+  // Flush immediately:
+  debounced.flush = () => {
+    if (timerId) {
+      clearTimeout(timerId)
+      invoke()
+    }
+    return result
+  }
+
+  return debounced
+}
+
+// ── SIMPLE VERSION (most commonly asked in interviews): ──────────
+
+function simpleDebounce(fn, delay) {
+  let timerId = null
+
+  return function(...args) {
+    clearTimeout(timerId)         // Clear any existing timer
+    timerId = setTimeout(() => {  // Set new timer
+      fn.apply(this, args)
+    }, delay)
+  }
+}
+
+// Usage:
+const searchAPI = (query) => fetch(`/api/search?q=${query}`)
+
+const debouncedSearch = simpleDebounce(searchAPI, 300)
+
+// As user types:
+debouncedSearch("r")      // Timer set: 300ms
+debouncedSearch("re")     // Timer RESET: 300ms
+debouncedSearch("react")  // Timer RESET: 300ms
+// After 300ms of silence → API called once with "react"
+
+// In React hook:
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedValue(value), delay)
+    return () => clearTimeout(timer)  // Cleanup on each value change
+  }, [value, delay])
+
+  return debouncedValue
+}
+
+// Usage in component:
+function SearchInput() {
+  const [query, setQuery] = useState("")
+  const debouncedQuery = useDebounce(query, 300)
+
+  useEffect(() => {
+    if (debouncedQuery) {
+      searchAPI(debouncedQuery)  // Only called 300ms after user stops typing
+    }
+  }, [debouncedQuery])
+
+  return <input value={query} onChange={e => setQuery(e.target.value)} />
+}
+```
+
+---
+
+### Complete Throttle Implementation
+
+```javascript
+// ── SIMPLE THROTTLE (most commonly asked): ──────────────────────
+
+function simpleThrottle(fn, limit) {
+  let lastCallTime = 0
+
+  return function(...args) {
+    const now = Date.now()
+
+    if (now - lastCallTime >= limit) {
+      lastCallTime = now
+      return fn.apply(this, args)
+    }
+    // Else: ignore this call (throttled)
+  }
+}
+
+// ── THROTTLE WITH TRAILING CALL: ────────────────────────────────
+
+function throttle(fn, limit) {
+  let lastCallTime = 0
+  let trailingTimer = null
+
+  return function(...args) {
+    const now = Date.now()
+    const timeSinceLastCall = now - lastCallTime
+
+    if (timeSinceLastCall >= limit) {
+      // Enough time has passed — execute immediately:
+      lastCallTime = now
+      clearTimeout(trailingTimer)
+      return fn.apply(this, args)
+    }
+
+    // Schedule trailing call (execute once at end of throttle window):
+    clearTimeout(trailingTimer)
+    trailingTimer = setTimeout(() => {
+      lastCallTime = Date.now()
+      fn.apply(this, args)
+    }, limit - timeSinceLastCall)
+  }
+}
+
+// ── THROTTLE USING FLAGS: ────────────────────────────────────────
+
+function throttleFlag(fn, limit) {
+  let isThrottled = false
+
+  return function(...args) {
+    if (isThrottled) return  // Skip if within throttle period
+
+    isThrottled = true
+    fn.apply(this, args)
+
+    setTimeout(() => {
+      isThrottled = false  // Allow next call after limit ms
+    }, limit)
+  }
+}
+
+// Real-world usage:
+
+// Scroll handler — throttled:
+const throttledScroll = simpleThrottle(() => {
+  const scrollY = window.scrollY
+  console.log("Scroll position:", scrollY)
+  // Update navbar visibility, progress bar, etc.
+}, 100)  // At most once every 100ms
+
+window.addEventListener("scroll", throttledScroll)
+
+// Resize handler — debounced (only care about final size):
+const debouncedResize = simpleDebounce(() => {
+  console.log("Window size:", window.innerWidth, window.innerHeight)
+  // Recalculate layout
+}, 200)  // 200ms after last resize event
+
+window.addEventListener("resize", debouncedResize)
+
+// In React hook:
+function useThrottle(fn, limit) {
+  const fnRef = useRef(fn)
+  fnRef.current = fn  // Keep ref fresh
+
+  const throttledFn = useRef(
+    throttle((...args) => fnRef.current(...args), limit)
+  )
+
+  return throttledFn.current
+}
+```
+
+---
+
+### When to Use Which?
+
+| Scenario | Use | Reason |
+|---------|-----|--------|
+| Search input | Debounce (300ms) | Wait until user finishes typing |
+| Window resize | Debounce (200ms) | Only care about final size |
+| Form auto-save | Debounce (1000ms) | Save after user stops editing |
+| Scroll handler | Throttle (100ms) | Need regular updates, not just final |
+| Mouse tracking | Throttle (50ms) | Need frequent but limited updates |
+| Button click | Debounce | Prevent double-clicks |
+| API rate limiting | Throttle | Respect rate limits (N requests/second) |
+| Infinite scroll trigger | Throttle (200ms) | Check position frequently but not too often |
+
+---
+
+### 🎯 Interview Questions — Section 5.9
+
+**Q1: What is the difference between debouncing and throttling?**
+
+> **Debouncing** delays function execution until after a specified time has elapsed since the **last invocation**. If called repeatedly, it only executes once after the calls stop. Good for: search input (wait until typing stops), resize (wait until resizing stops), form auto-save. **Throttling** guarantees function executes at most **once per time interval** regardless of how many times it's called. It ensures regular, rate-limited execution. Good for: scroll handlers, mouse move tracking, API rate limiting.
+
+**Q2: Implement debounce from scratch.**
+
+```javascript
+function debounce(fn, delay) {
+  let timerId = null
+  return function(...args) {
+    clearTimeout(timerId)
+    timerId = setTimeout(() => fn.apply(this, args), delay)
+  }
+}
+```
+
+> Key points: Clear existing timer on each call. Set a new timer. When the timer fires without interruption, execute the function. `this` and `args` must be preserved for correct behavior when used as event handlers.
+
+**Q3: Implement throttle from scratch.**
+
+```javascript
+function throttle(fn, limit) {
+  let lastCallTime = 0
+  return function(...args) {
+    const now = Date.now()
+    if (now - lastCallTime >= limit) {
+      lastCallTime = now
+      return fn.apply(this, args)
+    }
+  }
+}
+```
+
+**Q4: Can you implement a search input that shows suggestions as the user types, debounced at 300ms, and cancels in-flight API calls?**
+
+```javascript
+function useSearch(query) {
+  const [results, setResults] = useState([])
+  const abortRef = useRef(null)
+
+  const search = useMemo(
+    () => debounce(async (q) => {
+      if (abortRef.current) abortRef.current.abort()  // Cancel previous
+      abortRef.current = new AbortController()
+
+      try {
+        const res = await fetch(`/api/search?q=${q}`, {
+          signal: abortRef.current.signal
+        })
+        setResults(await res.json())
+      } catch (err) {
+        if (err.name !== "AbortError") console.error(err)
+      }
+    }, 300),
+    []
+  )
+
+  useEffect(() => {
+    if (query) search(query)
+    return () => search.cancel?.()
+  }, [query, search])
+
+  return results
+}
+```
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 🧪 Mini Project: Functional Utilities Library
+
+<a id="-mini-project-functional-utilities-library"></a>
+
+### Problem Statement
+
+Build **FuncUtils** — a production-grade functional utilities library (inspired by Lodash/Ramda) implemented as a Next.js package with full TypeScript support, documentation, and an interactive playground. This demonstrates mastery of all Chapter 5 concepts.
+
+### Architecture
+
+```mermaid
+flowchart TD
+    subgraph LIB["FuncUtils Library"]
+        CORE["Core Functions\n• curry\n• compose\n• pipe\n• partial"]
+        PERF["Performance\n• memoize (with TTL)\n• debounce\n• throttle\n• once"]
+        FP["Functional\n• pure helpers\n• tap\n• identity\n• constantly"]
+        TYPES["TypeScript Types\n• Generic types\n• Function types\n• Utility types"]
+    end
+
+    subgraph PLAYGROUND["Next.js Interactive Playground"]
+        DEMO["Demo Page\nShow each utility in action"]
+        BENCH["Benchmark\nPerformance comparison"]
+        DOCS["Auto-generated docs\nJSDoc → markdown"]
+    end
+
+    LIB --> PLAYGROUND
+
+    style LIB fill:#e3f2fd
+    style PLAYGROUND fill:#e8f5e9
+```
+
+### File Structure
+
+```
+func-utils/
+├── lib/
+│   ├── index.ts                     # Main exports
+│   ├── core/
+│   │   ├── curry.ts                 # Generic curry with types
+│   │   ├── compose.ts               # compose and pipe
+│   │   ├── partial.ts               # Partial application
+│   │   └── identity.ts              # Identity, constantly, tap
+│   ├── performance/
+│   │   ├── memoize.ts               # Advanced memoize with TTL/LRU
+│   │   ├── debounce.ts              # Debounce with leading/trailing
+│   │   ├── throttle.ts              # Throttle with trailing
+│   │   └── once.ts                  # Execute once
+│   └── types/
+│       └── function.types.ts        # TypeScript utility types
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                     # Playground home
+│   ├── playground/
+│   │   ├── curry/page.tsx           # Curry demo
+│   │   ├── memoize/page.tsx         # Memoize with perf comparison
+│   │   ├── debounce/page.tsx        # Live debounce demo
+│   │   └── throttle/page.tsx        # Live throttle demo
+│   └── api/
+│       └── benchmark/route.ts       # Performance benchmarks
+├── __tests__/
+│   ├── curry.test.ts
+│   ├── memoize.test.ts
+│   ├── debounce.test.ts
+│   └── throttle.test.ts
+└── package.json
+```
+
+### Core Implementation
+
+```typescript
+// lib/core/curry.ts
+type AnyFunction = (...args: unknown[]) => unknown
+type Curried<F extends AnyFunction> = F extends (...args: infer A) => infer R
+  ? A extends [infer First, ...infer Rest]
+    ? (arg: First) => Curried<(...args: Rest) => R>
+    : R
+  : never
+
+export function curry<F extends AnyFunction>(fn: F): Curried<F> {
+  const arity = fn.length
+
+  function curried(this: unknown, ...args: unknown[]): unknown {
+    if (args.length >= arity) {
+      return fn.apply(this, args)
+    }
+    return function(this: unknown, ...moreArgs: unknown[]) {
+      return curried.apply(this, [...args, ...moreArgs])
+    }
+  }
+
+  Object.defineProperty(curried, "name", { value: `curried_${fn.name}` })
+  Object.defineProperty(curried, "length", { value: arity })
+
+  return curried as Curried<F>
+}
+
+// lib/performance/memoize.ts
+interface MemoizeOptions {
+  maxSize?: number
+  ttl?: number
+  serializer?: (...args: unknown[]) => string
+}
+
+interface MemoizedFunction<T extends AnyFunction> {
+  (...args: Parameters<T>): ReturnType<T>
+  clear: () => void
+  size: () => number
+  has: (...args: Parameters<T>) => boolean
+  stats: () => { hits: number; misses: number; hitRate: string }
+}
+
+export function memoize<T extends AnyFunction>(
+  fn: T,
+  options: MemoizeOptions = {}
+): MemoizedFunction<T> {
+  const {
+    maxSize = 100,
+    ttl = null,
+    serializer = (...args) => JSON.stringify(args)
+  } = options
+
+  const cache = new Map<string, { value: ReturnType<T>; timestamp: number }>()
+  let hits = 0
+  let misses = 0
+
+  const memoized = function(this: unknown, ...args: Parameters<T>): ReturnType<T> {
+    const key = serializer(...args)
+
+    if (cache.has(key)) {
+      const entry = cache.get(key)!
+      const isExpired = ttl !== null && Date.now() - entry.timestamp > ttl
+
+      if (!isExpired) {
+        hits++
+        // LRU: move to end
+        cache.delete(key)
+        cache.set(key, entry)
+        return entry.value
+      }
+      cache.delete(key)
+    }
+
+    misses++
+    const value = fn.apply(this, args) as ReturnType<T>
+
+    if (cache.size >= maxSize) {
+      // Evict oldest (first) entry
+      const firstKey = cache.keys().next().value
+      cache.delete(firstKey)
+    }
+
+    cache.set(key, { value, timestamp: Date.now() })
+    return value
+  } as MemoizedFunction<T>
+
+  memoized.clear = () => cache.clear()
+  memoized.size = () => cache.size
+  memoized.has = (...args: Parameters<T>) => {
+    const key = serializer(...args)
+    if (!cache.has(key)) return false
+    const entry = cache.get(key)!
+    return ttl === null || Date.now() - entry.timestamp <= ttl
+  }
+  memoized.stats = () => ({
+    hits,
+    misses,
+    hitRate: `${((hits / (hits + misses)) * 100).toFixed(1)}%`
+  })
+
+  return memoized
+}
+
+// lib/performance/debounce.ts
+interface DebounceOptions {
+  leading?: boolean
+  trailing?: boolean
+  maxWait?: number
+}
+
+interface DebouncedFunction<T extends AnyFunction> {
+  (...args: Parameters<T>): void
+  cancel: () => void
+  flush: () => void
+  isPending: () => boolean
+}
+
+export function debounce<T extends AnyFunction>(
+  fn: T,
+  delay: number,
+  options: DebounceOptions = {}
+): DebouncedFunction<T> {
+  const { leading = false, trailing = true } = options
+
+  let timerId: ReturnType<typeof setTimeout> | null = null
+  let lastArgs: Parameters<T> | null = null
+  let lastThis: unknown = null
+  let leadingInvoked = false
+
+  function invoke(): void {
+    if (lastArgs !== null) {
+      fn.apply(lastThis, lastArgs)
+      lastArgs = lastThis = null
+    }
+  }
+
+  const debounced = function(this: unknown, ...args: Parameters<T>): void {
+    lastArgs = args
+    lastThis = this
+
+    if (leading && !timerId) {
+      // Leading edge: invoke immediately
+      fn.apply(this, args)
+      leadingInvoked = true
+    }
+
+    clearTimeout(timerId!)
+    timerId = setTimeout(() => {
+      timerId = null
+      leadingInvoked = false
+      if (trailing) invoke()
+    }, delay)
+  } as DebouncedFunction<T>
+
+  debounced.cancel = () => {
+    clearTimeout(timerId!)
+    timerId = lastArgs = lastThis = null
+    leadingInvoked = false
+  }
+
+  debounced.flush = () => {
+    if (timerId) {
+      clearTimeout(timerId)
+      timerId = null
+      invoke()
+    }
+  }
+
+  debounced.isPending = () => timerId !== null
+
+  return debounced
+}
+```
+
+```typescript
+// app/playground/debounce/page.tsx
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import { debounce } from '@/lib/performance/debounce'
+
+export default function DebouncePage() {
+  const [query, setQuery] = useState('')
+  const [callLog, setCallLog] = useState<Array<{ time: string; type: 'input' | 'api'; value: string }>>([])
+  const [apiCallCount, setApiCallCount] = useState(0)
+  const [inputCallCount, setInputCallCount] = useState(0)
+
+  const debouncedSearch = useRef(
+    debounce((value: string) => {
+      setApiCallCount(c => c + 1)
+      setCallLog(prev => [...prev, {
+        time: new Date().toLocaleTimeString('en', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+        type: 'api',
+        value: `API called: "${value}"`
+      }])
+    }, 500)
+  ).current
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setQuery(value)
+    setInputCallCount(c => c + 1)
+    setCallLog(prev => [...prev.slice(-20), {
+      time: new Date().toLocaleTimeString('en', { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      type: 'input',
+      value: `Keystroke: "${value}"`
+    }])
+    debouncedSearch(value)
+  }
+
+  return (
+    <div className="max-w-3xl mx-auto p-6">
+      <h1 className="text-2xl font-bold mb-2">🎯 Debounce Playground</h1>
+      <p className="text-gray-600 mb-6">
+        Type in the search box. Notice how keystrokes fire immediately,
+        but the API call only fires 500ms after you stop typing.
+      </p>
+
+      <input
+        type="text"
+        value={query}
+        onChange={handleChange}
+        placeholder="Type to search..."
+        className="w-full border-2 border-gray-300 rounded-lg p-3 text-lg mb-6"
+      />
+
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
+          <div className="text-3xl font-bold text-orange-600">{inputCallCount}</div>
+          <div className="text-sm text-orange-700">Keystrokes (all input events)</div>
+        </div>
+        <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+          <div className="text-3xl font-bold text-green-600">{apiCallCount}</div>
+          <div className="text-sm text-green-700">API Calls (debounced)</div>
+        </div>
+      </div>
+
+      <div className="border rounded-lg overflow-hidden">
+        <div className="bg-gray-800 text-white px-4 py-2 text-sm font-mono">
+          Event Log
+        </div>
+        <div className="bg-gray-900 p-4 h-64 overflow-y-auto font-mono text-sm">
+          {callLog.length === 0 ? (
+            <span className="text-gray-500">Start typing to see events...</span>
+          ) : (
+            callLog.map((log, i) => (
+              <div key={i} className={`mb-1 ${log.type === 'api' ? 'text-green-400' : 'text-gray-400'}`}>
+                <span className="text-gray-600">{log.time} </span>
+                {log.type === 'api' ? '✅ ' : '⌨️  '}
+                {log.value}
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+
+      <button
+        onClick={() => { setCallLog([]); setApiCallCount(0); setInputCallCount(0) }}
+        className="mt-4 bg-gray-200 px-4 py-2 rounded-lg text-sm"
+      >
+        Clear Log
+      </button>
+    </div>
+  )
+}
+```
+
+### What This Project Demonstrates
+
+| Concept from Chapter | Demonstrated By |
+|---------------------|----------------|
+| Pure functions | All lib functions are pure (testable) |
+| First-class functions | Functions as arguments/return values throughout |
+| Higher-order functions | `memoize`, `debounce`, `curry` all return functions |
+| Closures | Cache (memoize), timer (debounce), `lastCallTime` (throttle) |
+| `this` binding | `fn.apply(this, args)` in all implementations |
+| `call`/`apply`/`bind` | Used in polyfill implementations |
+| Currying | Full TypeScript generic curry |
+| Composition | `compose` and `pipe` with type inference |
+| Memoization | LRU cache with TTL and stats |
+| Debouncing | Leading/trailing with cancel/flush |
+| Throttling | Time-based with trailing call |
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
+
+---
+
+## 📝 Practice Section
+
+<a id="-practice-section"></a>
+
+### 5 Coding Questions
+
+**C1: Implement a generic `pipe` function that works with async functions**
+
+```javascript
+// asyncPipe should:
+// - Work like pipe but handle Promises
+// - Each function can be async or sync
+// - Errors propagate correctly
+
+async function asyncPipe(...fns) {
+  // Your implementation
+}
+
+// Test:
+const processUser = asyncPipe(
+  (id) => fetch(`/api/users/${id}`).then(r => r.json()),
+  (user) => ({ ...user, displayName: `${user.first} ${user.last}` }),
+  async (user) => {
+    const perms = await fetch(`/api/permissions/${user.id}`).then(r => r.json())
+    return { ...user, permissions: perms }
+  }
+)
+
+processUser(123).then(console.log)
+```
+
+---
+
+**C2: Implement a `createEventEmitter` using closures**
+
+```javascript
+// EventEmitter with: on, off, emit, once
+function createEventEmitter() {
+  // Your implementation using closures for private state
+}
+
+const emitter = createEventEmitter()
+emitter.on("data", (val) => console.log("Got:", val))
+emitter.once("connect", () => console.log("Connected!"))  // Only fires once
+
+emitter.emit("data", 42)     // "Got: 42"
+emitter.emit("data", 100)    // "Got: 100"
+emitter.emit("connect")      // "Connected!"
+emitter.emit("connect")      // (nothing — once already fired)
+```
+
+---
+
+**C3: Implement a `compose` that handles async functions**
+
+```javascript
+// Regular compose works left-to-right synchronously
+// asyncCompose should handle functions that return Promises
+
+const asyncCompose = (...fns) => {
+  // Your implementation
+}
+
+// Test:
+const processData = asyncCompose(
+  async (x) => x * 2,
+  async (x) => x + 1,
+  (x) => x  // sync function mixed in
+)
+
+processData(5).then(console.log)  // (5+1)*2 = 12... or right-to-left: 5*2+1 = 11?
+// Depends on your compose direction — document and test it
+```
+
+---
+
+**C4: Implement `trampoline` — eliminate stack overflow for deep recursion**
+
+```javascript
+// Trampoline turns recursive functions into iterative via closures
+// Instead of calling directly, return a thunk (function to call)
+
+function trampoline(fn) {
+  // Your implementation
+}
+
+// Test with factorial:
+const factorial = trampoline(function fact(n, acc = 1) {
+  if (n <= 1) return acc
+  return () => fact(n - 1, n * acc)  // Returns thunk instead of recursing!
+})
+
+factorial(100000)  // Won't stack overflow!
+```
+
+---
+
+**C5: Build a `rateLimit` HOF with a sliding window**
+
+```javascript
+// rateLimit(fn, maxCalls, windowMs)
+// Allow at most maxCalls in the last windowMs milliseconds
+// Sliding window: not fixed intervals
+
+function rateLimit(fn, maxCalls, windowMs) {
+  // Your implementation using closures
+}
+
+const rateLimitedAPI = rateLimit(fetchData, 5, 10000)
+// At most 5 calls per 10 seconds
+
+// Test:
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => {
+    try {
+      rateLimitedAPI(i)
+      console.log(`Call ${i}: Success`)
+    } catch (e) {
+      console.log(`Call ${i}: Rate limited`)
+    }
+  }, i * 500)
+}
+```
+
+---
+
+### 5 Theory Questions
+
+**T1: Explain closures in depth. What is a lexical environment? How do closures relate to memory management? When can they cause memory leaks and how do you prevent them in React?**
+
+**T2: Explain all seven rules of `this` binding with examples. What is the priority order when multiple rules could apply? How do arrow functions change the rules? Provide a complex scenario where you need to trace `this` through multiple function calls.**
+
+**T3: Compare currying and partial application — how are they similar, how do they differ, and when would you choose one over the other? Explain how currying enables function composition and point-free style programming.**
+
+**T4: Explain memoization from first principles. What makes a function safe to memoize? What are the tradeoffs between using an object vs a Map for the cache? When would you use `WeakMap` for memoization?**
+
+**T5: Explain debounce and throttle from an event loop perspective — how do they interact with the JavaScript event loop, microtask queue, and macrotask queue? Why might a debounced function behave differently in tests vs production?**
+
+---
+
+### 2 Machine Coding Problems
+
+**MCP 1: Build a Functional State Machine**
+
+Implement a functional state machine using closures and pure functions:
+
+```typescript
+// The state machine should:
+// - Have defined states and transitions
+// - Use closures for private state (currentState, history)
+// - Support: getState(), transition(action), canTransition(action)
+// - Support: onEnter/onExit hooks per state
+// - Support: history tracking and undo
+// - Be composable (combine multiple machines)
+
+interface StateMachine<State extends string, Action extends string> {
+  getState: () => State
+  transition: (action: Action) => State
+  canTransition: (action: Action) => boolean
+  getHistory: () => State[]
+  undo: () => State
+  subscribe: (listener: (state: State, action: Action) => void) => () => void
+}
+
+function createStateMachine<State extends string, Action extends string>(config: {
+  initial: State
+  transitions: Record<State, Partial<Record<Action, State>>>
+  onEnter?: Partial<Record<State, () => void>>
+  onExit?: Partial<Record<State, () => void>>
+}): StateMachine<State, Action>
+
+// Usage:
+const trafficLight = createStateMachine({
+  initial: "red",
+  transitions: {
+    red: { NEXT: "green" },
+    green: { NEXT: "yellow" },
+    yellow: { NEXT: "red" }
+  },
+  onEnter: {
+    red: () => console.log("🔴 Stop"),
+    green: () => console.log("🟢 Go"),
+    yellow: () => console.log("🟡 Slow")
+  }
+})
+
+trafficLight.transition("NEXT")  // green
+trafficLight.transition("NEXT")  // yellow
+trafficLight.transition("NEXT")  // red
+trafficLight.undo()               // yellow again
+```
+
+Requirements: TypeScript, pure functions where possible, closures for private state, HOFs for hooks, full test coverage.
+
+---
+
+**MCP 2: Build a Reactive Data Store**
+
+Build a lightweight reactive state store (like Zustand/Redux) using functional programming:
+
+```typescript
+// Requirements:
+// - createStore(reducer, initialState) → store
+// - store.getState() — returns current state (frozen)
+// - store.dispatch(action) — updates state via pure reducer
+// - store.subscribe(listener) — calls listener on state change
+// - store.select(selector) — memoized derived state (like Reselect)
+// - Middleware support: applyMiddleware(logger, thunk)(createStore)
+// - Time travel: store.getHistory() → array of past states
+// - store.dispatch supports both objects AND functions (thunk middleware)
+
+// Next.js page that uses the store:
+// - Shows a product list
+// - Add/remove products
+// - Undo/redo actions
+// - Display action history
+// - Live state viewer (JSON display)
+
+// Implement:
+// 1. createStore() — core store
+// 2. thunkMiddleware — allows dispatch(fn)
+// 3. loggerMiddleware — logs actions
+// 4. createSelector() — memoized selectors
+// 5. React binding — useStore() and useSelector() hooks
+```
+
+---
+
+> [!NOTE]
+> **Chapter 5 Summary — Key Takeaways:**
+> 1. Pure functions: same input → same output, no side effects — required for React renders
+> 2. Functions are first-class: can be stored, passed, returned — enables HOFs and callbacks
+> 3. Closures: inner functions remember their outer scope — enables private state, factories, memoization
+> 4. `this` is dynamic (determined at call time) for regular functions; lexical for arrow functions
+> 5. Priority: arrow (lexical) > `new` > explicit (`call`/`apply`/`bind`) > implicit (obj.fn) > default
+> 6. `bind` permanently sets `this` — cannot be overridden with another `bind`
+> 7. Currying: `f(a,b,c)` → `f(a)(b)(c)` — enables composition and reusability
+> 8. `compose` applies right-to-left; `pipe` applies left-to-right — both use `reduce`
+> 9. Memoization: cache results of pure expensive functions — React's `useMemo` uses this
+> 10. Debounce: wait until silence; Throttle: rate-limit — both essential for performance
+
+<a href="#chapter-index-table-5">Go to Top 🔝</a>
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -12427,7 +16136,2684 @@ Built by Kshitij GULADHE | 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) 
 
 <a id="6-prototypes-classes-oop"></a>
 
-## Chapter 6: Prototypes, Classes & OOP
+
+
+# Chapter 6: Prototypes, Classes & OOP in JavaScript
+
+> **Book:** React + Next.js — From Zero to Interview Ready
+> **Part:** A — JavaScript & Web Fundamentals (Pre-React)
+> **Chapter:** 6 of 56
+
+---
+
+<a id="chapter-index-table-6"></a>
+
+## Chapter Index Table
+
+| Topic No. | Topic Name | Subtopics |
+|-----------|------------|-----------|
+| 6.1 | [Prototypes & Prototypal Inheritance](#61-prototypes--prototypal-inheritance) | What is a prototype<br>`__proto__` vs `prototype`<br>Prototype chain lookup<br>`Object.prototype` (top of chain)<br>`null` at end of chain<br>Shared methods via prototype |
+| 6.2 | [Constructor Functions](#62-constructor-functions) | Creating objects with `new`<br>What `new` does internally (4 steps)<br>Prototype assignment<br>Implementing `new` from scratch |
+| 6.3 | [Object.create()](#63-objectcreate) | Creating with specific prototype<br>Null-prototype objects<br>Prototypal inheritance without classes<br>Implementing `Object.create` from scratch |
+| 6.4 | [ES6 Classes](#64-es6-classes) | Class declaration & expression<br>constructor()<br>Instance & static methods<br>Public & private fields (`#`)<br>Getters & setters<br>`extends` & `super()`<br>Method overriding<br>`instanceof`<br>Classes as syntactic sugar |
+| 6.5 | [OOP Principles in JavaScript](#65-oop-principles-in-javascript) | Encapsulation (private fields)<br>Inheritance (`extends`)<br>Polymorphism (method overriding)<br>Abstraction |
+| — | [Mini Project](#-mini-project-oop-design-system-component-library) | OOP Design System — Component Library with class hierarchy |
+| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding Problems |
+
+---
+
+## Table of Contents
+
+- [6.1 Prototypes & Prototypal Inheritance](#61-prototypes--prototypal-inheritance)
+- [6.2 Constructor Functions](#62-constructor-functions)
+- [6.3 Object.create()](#63-objectcreate)
+- [6.4 ES6 Classes](#64-es6-classes)
+- [6.5 OOP Principles in JavaScript](#65-oop-principles-in-javascript)
+- [🧪 Mini Project: OOP Design System Component Library](#-mini-project-oop-design-system-component-library)
+- [📝 Practice Section](#-practice-section)
+
+---
+
+## 6.1 Prototypes & Prototypal Inheritance
+
+<a id="61-prototypes--prototypal-inheritance"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is a Prototype? | The hidden link every object has |
+| `__proto__` vs `prototype` | The two different prototype references |
+| Prototype Chain Lookup | How JS searches up the chain |
+| `Object.prototype` | The root of all chains |
+| `null` at end of chain | Where lookup terminates |
+| Shared Methods | Memory-efficient method sharing |
+
+---
+
+### What is a Prototype?
+
+In JavaScript, **every object has a hidden internal link to another object called its prototype**. When you try to access a property on an object and it doesn't exist there, JavaScript automatically looks at its prototype — and its prototype's prototype — until it finds it or reaches `null`.
+
+> **Hinglish:** Prototype ek family tree ki tarah hai. Jab ek object mein koi cheez nahi milti, toh JS uske "parent" (prototype) mein dhundhta hai. Phir dada ke paas, phir pardada ke paas — jab tak `null` na aa jaaye.
+
+```mermaid
+flowchart TD
+    subgraph CHAIN["Prototype Chain"]
+        DOG["dog object\n{ name: 'Rex', breed: 'Lab' }"]
+        ANIMAL_PROTO["Animal.prototype\n{ speak: fn, eat: fn }"]
+        OBJ_PROTO["Object.prototype\n{ toString: fn, hasOwnProperty: fn, ... }"]
+        NULL["null\n(End of chain)"]
+    end
+
+    DOG -->|"dog.__proto__"| ANIMAL_PROTO
+    ANIMAL_PROTO -->|"Animal.prototype.__proto__"| OBJ_PROTO
+    OBJ_PROTO -->|"Object.prototype.__proto__"| NULL
+
+    LOOKUP["dog.speak() ?\n1. Check dog → ❌ not found\n2. Check Animal.prototype → ✅ found!\n3. Execute speak()"]
+
+    style DOG fill:#fff9c4
+    style ANIMAL_PROTO fill:#e3f2fd
+    style OBJ_PROTO fill:#e8f5e9
+    style NULL fill:#ffcdd2
+```
+
+---
+
+### `__proto__` vs `prototype` — The Most Confused Concepts
+
+> [!IMPORTANT]
+> **This is one of the most asked and most confused JavaScript interview topics.** Understanding the difference between `__proto__` and `prototype` is critical.
+
+```javascript
+// ─── prototype ──────────────────────────────────────────────────
+// 'prototype' is a property on CONSTRUCTOR FUNCTIONS (not regular objects)
+// It is the object that will become the __proto__ of instances created with 'new'
+
+function Animal(name) {
+  this.name = name
+}
+
+Animal.prototype.speak = function() {
+  return `${this.name} makes a sound`
+}
+
+console.log(typeof Animal.prototype)  // "object"
+console.log(Animal.prototype)         // { speak: [Function], constructor: [Function] }
+
+// ─── __proto__ ──────────────────────────────────────────────────
+// '__proto__' is a property on EVERY OBJECT INSTANCE
+// It points to the actual prototype object (up the chain)
+
+const dog = new Animal("Rex")
+
+console.log(dog.__proto__)            // { speak: [Function], constructor: [Function] }
+console.log(dog.__proto__ === Animal.prototype)  // true ✅
+
+// ─── The relationship diagram ────────────────────────────────────
+//
+//   Animal (constructor function)
+//     .prototype → { speak: fn, constructor: Animal }
+//                        ↑
+//   dog (instance)       │
+//     .__proto__  ────────┘
+//     .name = "Rex"   (own property)
+
+// Modern way to access prototype (instead of __proto__):
+Object.getPrototypeOf(dog) === Animal.prototype  // true ✅
+Object.setPrototypeOf(dog, newProto)             // Set (avoid in practice)
+
+// ─── Every function has a prototype ──────────────────────────────
+function greet() {}
+console.log(greet.prototype)  // { constructor: greet }
+
+// Arrow functions do NOT have prototype:
+const arrowFn = () => {}
+console.log(arrowFn.prototype)  // undefined
+```
+
+---
+
+### Prototype Chain — Step-by-Step Lookup
+
+```javascript
+function Animal(name, sound) {
+  this.name = name   // OWN property
+  this.sound = sound // OWN property
+}
+
+// Methods on prototype (shared by all instances):
+Animal.prototype.speak = function() {
+  return `${this.name} says ${this.sound}`
+}
+
+Animal.prototype.describe = function() {
+  return `I am ${this.name}`
+}
+
+function Dog(name) {
+  Animal.call(this, name, "Woof")  // Call parent constructor
+  this.tricks = []                  // Own property
+}
+
+// Set up inheritance:
+Dog.prototype = Object.create(Animal.prototype)
+Dog.prototype.constructor = Dog    // Fix constructor reference
+
+Dog.prototype.fetch = function() {
+  return `${this.name} fetches!`
+}
+
+Dog.prototype.speak = function() { // Override parent speak
+  return `${this.name} barks: WOOF WOOF!`
+}
+
+const rex = new Dog("Rex")
+rex.tricks.push("sit")
+
+// Property lookup order:
+rex.name          // "Rex" — OWN property ✅
+rex.tricks        // ["sit"] — OWN property ✅
+rex.speak()       // Dog.prototype.speak — one level up ✅ (overridden)
+rex.describe()    // Animal.prototype.describe — two levels up ✅ (inherited)
+rex.toString()    // Object.prototype.toString — three levels up ✅ (built-in)
+rex.missing       // undefined — reached null end of chain
+
+// Chain visualization:
+// rex
+//  └── rex.__proto__ = Dog.prototype     { fetch, speak, constructor }
+//       └── Dog.prototype.__proto__ = Animal.prototype    { speak, describe }
+//            └── Animal.prototype.__proto__ = Object.prototype   { toString, ... }
+//                 └── Object.prototype.__proto__ = null  (END)
+```
+
+---
+
+### `Object.prototype` — Top of Every Chain
+
+```javascript
+// Object.prototype is the ROOT of ALL prototype chains
+// Every object ultimately inherits from it
+
+const obj = {}
+const arr = []
+const fn = function() {}
+const str = new String("hello")
+
+// All have Object.prototype at the top:
+Object.getPrototypeOf(Object.getPrototypeOf(arr)) === Object.prototype  // true
+Object.getPrototypeOf(Object.getPrototypeOf(fn)) === Object.prototype   // true
+
+// Methods inherited from Object.prototype:
+obj.toString()         // "[object Object]"
+obj.hasOwnProperty    // function — from Object.prototype
+obj.valueOf()          // {} — from Object.prototype
+obj.isPrototypeOf      // function — from Object.prototype
+
+// Object.prototype's prototype is null:
+Object.getPrototypeOf(Object.prototype)  // null — end of chain
+
+// Checking properties at each level:
+const dog = new Dog("Rex")
+
+// hasOwnProperty — is it ON the object (not inherited)?
+dog.hasOwnProperty("name")    // true  (own)
+dog.hasOwnProperty("tricks")  // true  (own)
+dog.hasOwnProperty("speak")   // false (inherited from prototype)
+dog.hasOwnProperty("fetch")   // false (inherited from Dog.prototype)
+
+// 'in' operator — checks entire chain:
+"name" in dog       // true  (own)
+"speak" in dog      // true  (prototype)
+"toString" in dog   // true  (Object.prototype)
+"missing" in dog    // false (not found anywhere)
+```
+
+---
+
+### How Methods Are Shared via Prototype (Memory Efficiency)
+
+```javascript
+// ❌ INEFFICIENT — function created per instance:
+function BadDog(name) {
+  this.name = name
+  this.speak = function() {    // New function object created for EACH instance!
+    return `${this.name}: Woof!`
+  }
+}
+
+const d1 = new BadDog("Rex")
+const d2 = new BadDog("Buddy")
+d1.speak === d2.speak  // false — different function objects! Wastes memory.
+
+// ✅ EFFICIENT — function on prototype, shared by all:
+function GoodDog(name) {
+  this.name = name             // Own data (unique per instance)
+}
+
+GoodDog.prototype.speak = function() {  // ONE function shared by ALL instances
+  return `${this.name}: Woof!`
+}
+
+const d3 = new GoodDog("Rex")
+const d4 = new GoodDog("Buddy")
+d3.speak === d4.speak  // true — SAME function reference! Memory efficient!
+```
+
+---
+
+### 🎯 Interview Questions — Section 6.1
+
+**Q1: What is a prototype in JavaScript?**
+
+> A prototype is an object that serves as a fallback source for property lookups. Every JavaScript object has an internal `[[Prototype]]` link (accessible via `__proto__` or `Object.getPrototypeOf()`) pointing to another object. When you access a property on an object, JavaScript first checks the object itself, then its prototype, then the prototype's prototype — up the chain until it finds the property or reaches `null`. This is called the **prototype chain**.
+
+**Q2: What is the difference between `__proto__` and `prototype`?**
+
+> `prototype` is a property on **constructor functions** (and classes) — it's the object that becomes the `__proto__` of instances created with `new`. `__proto__` is a property on **every object instance** — it points to the actual prototype object that property lookups traverse. Relationship: `instance.__proto__ === Constructor.prototype`. `__proto__` is the actual link; `prototype` is the template for that link. Modern code uses `Object.getPrototypeOf(obj)` instead of `obj.__proto__`.
+
+**Q3: What is the output?**
+
+```javascript
+function Foo() {}
+const f = new Foo()
+
+console.log(f.__proto__ === Foo.prototype)
+console.log(Foo.prototype.__proto__ === Object.prototype)
+console.log(Object.prototype.__proto__)
+```
+
+> `true` → `true` → `null`
+> Instance's `__proto__` = its constructor's `prototype`. `Foo.prototype` is a plain object, so its `__proto__` = `Object.prototype`. `Object.prototype.__proto__` = `null` (end of chain).
+
+**Q4: What is the difference between `in` operator and `hasOwnProperty()`?**
+
+> `hasOwnProperty(key)` returns `true` only if the property is a **direct own property** of the object (not inherited). The `in` operator returns `true` if the property exists **anywhere in the prototype chain** — own or inherited. Example: `"toString" in {}` is `true` (inherited from `Object.prototype`), but `{}.hasOwnProperty("toString")` is `false`. Use `hasOwnProperty` (or modern `Object.hasOwn()`) when you want to exclude inherited properties.
+
+**Q5: Why are methods placed on the prototype instead of inside the constructor?**
+
+> Placing methods inside the constructor creates a new function object for each instance — 1000 instances = 1000 copies of the same function in memory. Placing methods on the prototype creates them **once** and all instances share the same reference via the prototype chain. This is dramatically more memory efficient. Own properties (data unique per instance) go in the constructor; shared behavior (methods) goes on the prototype.
+
+<a href="#chapter-index-table-6">Go to Top 🔝</a>
+
+---
+
+## 6.2 Constructor Functions
+
+<a id="62-constructor-functions"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Constructor Function Syntax | Naming, `this`, convention |
+| The `new` Keyword (4 Steps) | What happens internally |
+| Prototype Chain Setup | How `new` sets `__proto__` |
+| Return Value Behavior | What `new` returns |
+| Implement `new` from Scratch | Core interview question |
+
+---
+
+### Constructor Function — Full Example
+
+```javascript
+// By convention, constructor functions use PascalCase:
+function Person(firstName, lastName, age) {
+  // 'this' = newly created empty object (step 3 of 'new')
+  this.firstName = firstName
+  this.lastName = lastName
+  this.age = age
+
+  // ⚠️ Don't put methods here — wastes memory:
+  // this.greet = function() { ... }  ← Bad practice
+}
+
+// Methods on prototype — shared by all instances:
+Person.prototype.greet = function() {
+  return `Hi, I'm ${this.firstName} ${this.lastName}`
+}
+
+Person.prototype.getAge = function() {
+  return `${this.firstName} is ${this.age} years old`
+}
+
+Object.defineProperty(Person.prototype, "fullName", {
+  get() {
+    return `${this.firstName} ${this.lastName}`
+  },
+  enumerable: true
+})
+
+// Creating instances:
+const rahul = new Person("Rahul", "Sharma", 25)
+const priya = new Person("Priya", "Mehta", 22)
+
+console.log(rahul.greet())    // "Hi, I'm Rahul Sharma"
+console.log(priya.greet())    // "Hi, I'm Priya Mehta"
+console.log(rahul.fullName)   // "Rahul Sharma" (getter on prototype)
+
+// Prototype chain check:
+console.log(rahul instanceof Person)  // true
+console.log(rahul instanceof Object)  // true (Object.prototype in chain)
+```
+
+---
+
+### What `new` Does Internally — 4 Steps
+
+> **Hinglish:** `new` keyword ek magic hai jo 4 kaam karta hai behind the scenes. Interview mein yeh 4 steps yaad karein — isko "new keyword ke 4 steps" kehte hain.
+
+```mermaid
+flowchart TD
+    A["new Person('Rahul', 25)"] --> B
+    B["Step 1: Create empty object\n{}\n(in heap memory)"] --> C
+    C["Step 2: Set __proto__\nnewObj.__proto__ = Person.prototype\n(connects to prototype chain)"] --> D
+    D["Step 3: Bind 'this'\nthis = newObj\n(run constructor with this = newObj)"] --> E
+    E{"Step 4: Return?\nDid constructor\nexplicitly return\nan object?"} --> F
+    E -->|"YES — returned an object"| G["Return that object\n(ignores newObj)"]
+    E -->|"NO — returned nothing\nor a primitive"| F
+    F["Return newObj\n(the created instance)"]
+
+    style B fill:#fff9c4
+    style C fill:#e3f2fd
+    style D fill:#e8f5e9
+    style F fill:#c8e6c9
+    style G fill:#ffcdd2
+```
+
+```javascript
+// Manual simulation of what 'new' does:
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+Person.prototype.greet = function() { return `Hi ${this.name}` }
+
+// What 'new Person("Rahul", 25)' does internally:
+// Step 1: Create empty object
+const obj = {}
+
+// Step 2: Set __proto__ to Constructor.prototype
+Object.setPrototypeOf(obj, Person.prototype)
+// OR: obj.__proto__ = Person.prototype
+
+// Step 3: Bind 'this' and run constructor
+Person.call(obj, "Rahul", 25)
+// Now obj = { name: "Rahul", age: 25 }
+
+// Step 4: Return obj (constructor returned nothing, so return obj)
+const rahul = obj
+
+// Result is identical to:
+const rahul2 = new Person("Rahul", 25)
+```
+
+---
+
+### Return Value Edge Cases
+
+```javascript
+// Normal — constructor returns nothing → 'new' returns the created object:
+function Normal(name) {
+  this.name = name
+  // Implicit: return this (the new object)
+}
+const n = new Normal("Rahul")
+console.log(n.name)  // "Rahul" ✅
+
+// Returns a PRIMITIVE → ignored, 'new' still returns created object:
+function WithPrimitive(name) {
+  this.name = name
+  return 42        // Primitive return IGNORED
+}
+const wp = new WithPrimitive("Rahul")
+console.log(wp.name)  // "Rahul" ✅ (42 was ignored)
+
+// Returns an OBJECT → 'new' returns THAT object (not 'this'):
+function WithObject(name) {
+  this.name = name
+  return { brand: "Toyota" }  // Object return USED
+}
+const wo = new WithObject("Rahul")
+console.log(wo.name)   // undefined ❌ (different object!)
+console.log(wo.brand)  // "Toyota" (the returned object)
+
+// Called WITHOUT 'new' — 'this' = global/undefined (bug!):
+function Danger(name) {
+  this.name = name
+}
+// Danger("Rahul")        // 'this' = window → window.name = "Rahul" ← bug!
+
+// Guard against forgetting 'new':
+function SafeConstructor(name) {
+  if (!(this instanceof SafeConstructor)) {
+    return new SafeConstructor(name)  // Auto-fix: return new instance
+  }
+  this.name = name
+}
+
+SafeConstructor("Rahul")   // ✅ Works even without 'new'
+new SafeConstructor("Priya")  // ✅ Works with 'new'
+```
+
+---
+
+### Implement `new` from Scratch
+
+> [!IMPORTANT]
+> **Implementing `new` from scratch is a top-tier interview question** at companies like Google, Microsoft, and Flipkart. The implementation tests understanding of prototypes, `this` binding, and constructor return value behavior.
+
+```javascript
+function myNew(Constructor, ...args) {
+  // Step 1: Create a new empty object
+  const obj = {}
+
+  // Step 2: Set the object's prototype to Constructor.prototype
+  Object.setPrototypeOf(obj, Constructor.prototype)
+  // Equivalent: obj.__proto__ = Constructor.prototype
+
+  // Step 3: Call the constructor with 'this' bound to obj
+  const returnValue = Constructor.apply(obj, args)
+
+  // Step 4: If constructor returned an object, return it
+  // Otherwise, return the newly created obj
+  if (returnValue !== null && typeof returnValue === "object") {
+    return returnValue
+  }
+
+  return obj
+}
+
+// ─── TEST SUITE ──────────────────────────────────────────────────
+
+function Person(name, age) {
+  this.name = name
+  this.age = age
+}
+Person.prototype.greet = function() {
+  return `Hello, I'm ${this.name}`
+}
+
+// Test 1: Basic usage
+const rahul = myNew(Person, "Rahul", 25)
+console.log(rahul.name)       // "Rahul" ✅
+console.log(rahul.greet())    // "Hello, I'm Rahul" ✅
+
+// Test 2: instanceof
+console.log(rahul instanceof Person)  // true ✅
+console.log(rahul instanceof Object)  // true ✅
+
+// Test 3: prototype chain
+console.log(Object.getPrototypeOf(rahul) === Person.prototype)  // true ✅
+
+// Test 4: Constructor returning object (should use that object)
+function WithReturn(name) {
+  this.name = name
+  return { special: "returned" }
+}
+const wr = myNew(WithReturn, "Test")
+console.log(wr.special)   // "returned" ✅
+console.log(wr.name)      // undefined ✅ (own obj was discarded)
+
+// Test 5: Constructor returning primitive (should use 'this')
+function WithPrim(name) {
+  this.name = name
+  return 42  // primitive
+}
+const wp = myNew(WithPrim, "Test")
+console.log(wp.name)  // "Test" ✅ (primitive ignored)
+
+// Test 6: Works with Array constructor
+const arr = myNew(Array, 1, 2, 3)
+console.log(arr)          // [1, 2, 3] ✅
+console.log(Array.isArray(arr))  // true ✅
+```
+
+---
+
+### Inheritance with Constructor Functions
+
+```javascript
+// Parent constructor:
+function Animal(name, sound) {
+  this.name = name
+  this.sound = sound
+}
+
+Animal.prototype.speak = function() {
+  return `${this.name} says ${this.sound}`
+}
+
+Animal.prototype.describe = function() {
+  return `I am ${this.name}, a ${this.constructor.name}`
+}
+
+// Child constructor:
+function Dog(name) {
+  Animal.call(this, name, "Woof")  // ← Call parent to initialize
+  this.tricks = []
+}
+
+// Set up prototype chain (inheritance):
+Dog.prototype = Object.create(Animal.prototype)
+Dog.prototype.constructor = Dog  // Fix constructor reference!
+
+// Child-specific methods:
+Dog.prototype.learn = function(trick) {
+  this.tricks.push(trick)
+  return `${this.name} learned ${trick}!`
+}
+
+Dog.prototype.speak = function() {  // Override parent method
+  return `${this.name} barks: WOOF WOOF WOOF!`
+}
+
+const rex = new Dog("Rex")
+rex.learn("sit")    // "Rex learned sit!"
+rex.speak()         // "Rex barks: WOOF WOOF WOOF!" (overridden)
+rex.describe()      // "I am Rex, a Dog" (from Animal.prototype)
+
+rex instanceof Dog     // true
+rex instanceof Animal  // true
+rex instanceof Object  // true
+
+// ⚠️ Without fixing constructor:
+// Dog.prototype = Object.create(Animal.prototype)
+// rex.constructor  // → Animal (WRONG!)
+// WITH fix:
+// Dog.prototype.constructor = Dog
+// rex.constructor  // → Dog (CORRECT!)
+```
+
+---
+
+### 🎯 Interview Questions — Section 6.2
+
+**Q1: What are the four steps the `new` keyword performs?**
+
+> (1) **Creates a new empty object** `{}`. (2) **Sets the object's `[[Prototype]]`** to the constructor's `.prototype` property — linking it to the prototype chain. (3) **Executes the constructor function** with `this` bound to the new object — adding own properties. (4) **Returns the result** — if the constructor explicitly returned a non-null object, returns that; otherwise returns the newly created object.
+
+**Q2: What happens if you forget to use `new` with a constructor function?**
+
+> Without `new`, the constructor runs as a regular function. `this` follows default binding rules — in non-strict mode, `this` = `window` (browser) / `global` (Node.js); in strict mode, `this` = `undefined` (throws TypeError on first `this.property` assignment). This pollutes the global scope (non-strict) or throws errors (strict). The guard pattern `if (!(this instanceof Constructor)) return new Constructor(...args)` auto-corrects this. ES6 classes solve this entirely — calling a class without `new` always throws a TypeError.
+
+**Q3: Why do we need to set `Dog.prototype.constructor = Dog` after inheritance?**
+
+> When we do `Dog.prototype = Object.create(Animal.prototype)`, we replace the entire `Dog.prototype` object. The original `Dog.prototype` had `{ constructor: Dog }` — but the new one inherited from `Animal.prototype` which has `{ constructor: Animal }`. So `rex.constructor` would incorrectly point to `Animal`. Setting `Dog.prototype.constructor = Dog` restores the correct constructor reference, which matters for: `instanceof` reliability in some patterns, introspection, and creating new instances from an existing instance via `new instance.constructor(...)`.
+
+**Q4: Implement the `new` keyword from scratch.**
+
+> (Full implementation provided in code section above)
+> Key points: Use `Object.setPrototypeOf(obj, Constructor.prototype)` to set the chain. Use `Constructor.apply(obj, args)` to run constructor with correct `this`. Check if return value is a non-null object — if so, use it; otherwise use `obj`.
+
+<a href="#chapter-index-table-6">Go to Top 🔝</a>
+
+---
+
+## 6.3 Object.create()
+
+<a id="63-objectcreate"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Basic Usage | Create object with specific prototype |
+| Null Prototype | Pure hash maps |
+| Prototypal Inheritance | Without `new` or classes |
+| `Object.create` Polyfill | Implement from scratch |
+
+---
+
+### `Object.create()` — Deep Dive
+
+```javascript
+// Signature: Object.create(proto, propertiesObject?)
+
+// ─── Basic usage ─────────────────────────────────────────────────
+const animalProto = {
+  speak() {
+    return `${this.name} makes a sound`
+  },
+  eat(food) {
+    return `${this.name} eats ${food}`
+  },
+  toString() {
+    return `[${this.constructor?.name ?? "Animal"}: ${this.name}]`
+  }
+}
+
+// Create object WITH animalProto as its prototype:
+const cat = Object.create(animalProto)
+cat.name = "Whiskers"
+cat.type = "domestic"
+
+console.log(cat.speak())          // "Whiskers makes a sound" ✅ (from proto)
+console.log(cat.eat("fish"))      // "Whiskers eats fish" ✅ (from proto)
+console.log(cat.name)             // "Whiskers" (own property)
+console.log(Object.getPrototypeOf(cat) === animalProto)  // true
+
+// ─── With property descriptors ────────────────────────────────────
+const dog = Object.create(animalProto, {
+  name: {
+    value: "Rex",
+    writable: true,
+    enumerable: true,
+    configurable: true
+  },
+  breed: {
+    value: "Labrador",
+    writable: false,     // Can't change breed
+    enumerable: true,
+    configurable: false
+  }
+})
+
+dog.breed = "Poodle"    // Silently fails (writable: false)
+console.log(dog.breed)  // "Labrador"
+```
+
+---
+
+### Null Prototype — Pure Dictionary Objects
+
+```javascript
+// Object.create(null) — no prototype chain at all:
+const dict = Object.create(null)
+dict.hello = "world"
+dict.key = "value"
+
+// No inherited methods:
+// dict.toString()      // ❌ TypeError — no toString!
+// dict.hasOwnProperty  // undefined — not available!
+// "hello" in dict      // ❌ Can't even use 'in' reliably? Actually 'in' works
+
+// ✅ Safe to iterate — no prototype pollution:
+for (const key in dict) {
+  console.log(key)  // Only "hello", "key" — no inherited props
+}
+
+// Use cases:
+// 1. Safe key-value stores (no reserved key conflicts):
+const safeMap = Object.create(null)
+safeMap["constructor"] = "my value"    // ✅ Safe — no conflict!
+safeMap["toString"] = "overridden"     // ✅ Safe — no conflict!
+safeMap["__proto__"] = "just a key"    // ✅ Safe!
+
+// 2. High-performance lookup tables:
+const keywords = Object.create(null)
+keywords["if"] = true
+keywords["else"] = true
+keywords["for"] = true
+// No hasOwnProperty needed — all keys are own:
+keywords["if"]   // true
+keywords["toString"]  // undefined (not inherited!)
+
+// 3. Memoization cache without prototype risk:
+function memoizeSafe(fn) {
+  const cache = Object.create(null)  // Pure hash map
+  return (...args) => {
+    const key = args.join(",")
+    return key in cache ? cache[key] : (cache[key] = fn(...args))
+  }
+}
+```
+
+---
+
+### Prototypal Inheritance Without Classes
+
+```javascript
+// Pure prototypal inheritance using Object.create:
+
+// Level 1 — Base prototype:
+const vehicleProto = {
+  init(make, model, year) {
+    this.make = make
+    this.model = model
+    this.year = year
+    this.isRunning = false
+    return this  // Enable chaining
+  },
+  start() {
+    this.isRunning = true
+    return `${this.make} ${this.model} started`
+  },
+  stop() {
+    this.isRunning = false
+    return `${this.make} ${this.model} stopped`
+  },
+  getInfo() {
+    return `${this.year} ${this.make} ${this.model}`
+  }
+}
+
+// Level 2 — Car inherits from vehicle:
+const carProto = Object.create(vehicleProto)
+carProto.honk = function() {
+  return `${this.make} says: Beep beep!`
+}
+carProto.initCar = function(make, model, year, doors) {
+  this.init(make, model, year)  // Call "parent" init
+  this.doors = doors
+  return this
+}
+
+// Level 3 — ElectricCar inherits from car:
+const electricCarProto = Object.create(carProto)
+electricCarProto.charge = function() {
+  return `${this.make} ${this.model} is charging...`
+}
+electricCarProto.initElectric = function(make, model, year, doors, range) {
+  this.initCar(make, model, year, doors)  // Call "parent" init
+  this.range = range
+  this.batteryLevel = 100
+  return this
+}
+
+// Create instances:
+const myCar = Object.create(carProto).initCar("Toyota", "Camry", 2023, 4)
+const myEV = Object.create(electricCarProto).initElectric("Tesla", "Model 3", 2024, 4, 500)
+
+console.log(myCar.start())    // "Toyota Camry started"
+console.log(myCar.honk())     // "Toyota says: Beep beep!"
+console.log(myEV.charge())    // "Tesla Model 3 is charging..."
+console.log(myEV.honk())      // "Tesla says: Beep beep!" (inherited from carProto)
+console.log(myEV.start())     // "Tesla Model 3 started" (inherited from vehicleProto)
+
+// Prototype chain:
+// myEV → electricCarProto → carProto → vehicleProto → Object.prototype → null
+```
+
+---
+
+### Implement `Object.create` from Scratch
+
+```javascript
+// Polyfill for Object.create:
+function myObjectCreate(proto, propertiesObject) {
+  // Validate proto argument:
+  if (proto !== null && typeof proto !== "object" && typeof proto !== "function") {
+    throw new TypeError("Object prototype may only be an Object or null")
+  }
+
+  // Create a temporary constructor function:
+  function TempConstructor() {}
+
+  // Set its prototype to the desired proto:
+  TempConstructor.prototype = proto
+
+  // Create instance (which will have proto as __proto__):
+  const obj = new TempConstructor()
+
+  // Handle null prototype case:
+  // (In old environments, can't truly create null proto, but modern way:)
+  if (proto === null) {
+    // Modern browsers support this:
+    Object.setPrototypeOf(obj, null)
+  }
+
+  // Apply property descriptors if provided:
+  if (propertiesObject !== undefined && propertiesObject !== null) {
+    Object.defineProperties(obj, propertiesObject)
+  }
+
+  return obj
+}
+
+// Tests:
+const proto = { greet() { return `Hello, I'm ${this.name}` } }
+
+const obj1 = myObjectCreate(proto)
+obj1.name = "Rahul"
+console.log(obj1.greet())  // "Hello, I'm Rahul" ✅
+console.log(Object.getPrototypeOf(obj1) === proto)  // true ✅
+
+// Null prototype:
+const obj2 = myObjectCreate(null)
+console.log(Object.getPrototypeOf(obj2))  // null ✅
+
+// With property descriptors:
+const obj3 = myObjectCreate(proto, {
+  name: { value: "Priya", writable: true, enumerable: true, configurable: true }
+})
+console.log(obj3.greet())  // "Hello, I'm Priya" ✅
+```
+
+---
+
+### 🎯 Interview Questions — Section 6.3
+
+**Q1: What is the difference between `Object.create()` and using `new`?**
+
+> `new Constructor()` creates an object linked to `Constructor.prototype` AND runs the constructor function to initialize properties. `Object.create(proto)` creates an object linked to `proto` WITHOUT running any initialization code. `Object.create` gives more direct control over the prototype chain. `Object.create(null)` creates a truly prototype-free object — impossible with `new`. In practice: use `new`/classes for typical OOP; use `Object.create` for explicit prototype composition or creating pure hash maps.
+
+**Q2: When would you use `Object.create(null)`?**
+
+> When you need a pure hash/dictionary with no inherited properties — no `toString`, `hasOwnProperty`, `constructor`, etc. This prevents: (1) Prototype pollution attacks (malicious `__proto__` keys). (2) Key conflicts with built-in methods. (3) Unnecessary prototype lookup overhead for large key-value stores. Used in: parsers (for keyword tables), memoization caches, high-performance lookup tables, secure data stores where string keys should be treated as pure data.
+
+**Q3: Implement `Object.create` from scratch.**
+
+> (Full implementation provided in code section above)
+> Key insight: Use a temporary constructor function, set its `prototype` to the desired proto, then `new` it. The returned instance will have the correct `__proto__`. This is the classic polyfill approach before `Object.setPrototypeOf` was available.
+
+<a href="#chapter-index-table-6">Go to Top 🔝</a>
+
+---
+
+## 6.4 ES6 Classes
+
+<a id="64-es6-classes"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Class Declaration | Syntax, constructor, methods |
+| Class Expression | Named/anonymous class as value |
+| Static Members | Class-level methods and properties |
+| Private Fields `#` | True encapsulation |
+| Getters & Setters | Computed property access |
+| `extends` & `super()` | Inheritance setup |
+| `super.method()` | Calling parent methods |
+| Method Overriding | Polymorphic behavior |
+| `instanceof` | Runtime type checking |
+| Classes as Sugar | Proof it's prototypal underneath |
+
+---
+
+### Class Declaration — Full Anatomy
+
+```javascript
+class Person {
+  // ─── CLASS FIELDS (ES2022) ─────────────────────────────────────
+  // Public instance field (initialized before constructor):
+  role = "user"
+
+  // Private instance field (# prefix — truly private):
+  #password = null
+  #loginCount = 0
+
+  // Static class field (belongs to class, not instances):
+  static count = 0
+  static #instances = []
+
+  // ─── CONSTRUCTOR ──────────────────────────────────────────────
+  constructor(name, email, password) {
+    this.name = name          // Public own property
+    this.email = email        // Public own property
+    this.#password = password // Private field assignment
+    Person.count++
+    Person.#instances.push(this)
+  }
+
+  // ─── INSTANCE METHODS (on prototype) ──────────────────────────
+  greet() {
+    return `Hi, I'm ${this.name} (${this.email})`
+  }
+
+  login(password) {
+    if (password === this.#password) {
+      this.#loginCount++
+      return `Welcome back, ${this.name}! (login #${this.#loginCount})`
+    }
+    return "Invalid password"
+  }
+
+  // Private method:
+  #validateEmail() {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)
+  }
+
+  // ─── GETTERS & SETTERS ────────────────────────────────────────
+  get displayName() {
+    return `${this.name} <${this.email}>`
+  }
+
+  get isValidEmail() {
+    return this.#validateEmail()
+  }
+
+  set password(newPassword) {
+    if (newPassword.length < 8) {
+      throw new Error("Password must be at least 8 characters")
+    }
+    this.#password = newPassword
+  }
+
+  // ─── STATIC METHODS ───────────────────────────────────────────
+  static getCount() {
+    return Person.count
+  }
+
+  static getAllInstances() {
+    return [...Person.#instances]  // Return copy (don't expose internal)
+  }
+
+  static create(name, email, password) {
+    return new Person(name, email, password)
+  }
+
+  // toString for readable output:
+  toString() {
+    return `Person(${this.name}, ${this.email})`
+  }
+}
+
+// ─── USAGE ───────────────────────────────────────────────────────
+const rahul = new Person("Rahul Sharma", "rahul@example.com", "secret123")
+const priya = Person.create("Priya Mehta", "priya@example.com", "myPassword")
+
+console.log(rahul.greet())          // "Hi, I'm Rahul Sharma (rahul@example.com)"
+console.log(rahul.displayName)      // "Rahul Sharma <rahul@example.com>" (getter)
+console.log(rahul.isValidEmail)     // true (private method via getter)
+console.log(rahul.login("secret123"))  // "Welcome back, Rahul Sharma! (login #1)"
+
+// Private fields are truly private:
+console.log(rahul.#password)        // ❌ SyntaxError — cannot access
+console.log(rahul["#password"])     // undefined — not accessible via brackets
+rahul.#loginCount = 999             // ❌ SyntaxError
+
+// Static members:
+console.log(Person.count)           // 2 (rahul + priya)
+console.log(Person.getCount())      // 2
+
+// instanceof:
+console.log(rahul instanceof Person)  // true
+console.log(rahul instanceof Object)  // true
+
+// Classes are NOT hoisted (unlike function declarations):
+// const p = new MyClass()  // ❌ ReferenceError if before class declaration
+// class MyClass {}
+```
+
+---
+
+### Class Expression
+
+```javascript
+// Named class expression (name only accessible inside the class):
+const Vehicle = class VehicleClass {
+  constructor(make) {
+    this.make = make
+    console.log(VehicleClass.name)  // "VehicleClass" — accessible inside
+  }
+}
+
+console.log(Vehicle.name)      // "VehicleClass" (accessible from outside too)
+// console.log(VehicleClass)   // ❌ ReferenceError — not accessible outside
+
+// Anonymous class expression:
+const Animal = class {
+  constructor(name) { this.name = name }
+  speak() { return `${this.name} makes a sound` }
+}
+
+// Useful for: factory functions, computed class creation:
+function makeClass(greeting) {
+  return class {
+    greet(name) {
+      return `${greeting}, ${name}!`
+    }
+  }
+}
+
+const EnglishGreeter = makeClass("Hello")
+const HindiGreeter = makeClass("Namaste")
+
+new EnglishGreeter().greet("Rahul")  // "Hello, Rahul!"
+new HindiGreeter().greet("Priya")    // "Namaste, Priya!"
+```
+
+---
+
+### Inheritance — `extends` & `super`
+
+```javascript
+class Animal {
+  #sound
+
+  constructor(name, sound) {
+    this.name = name
+    this.#sound = sound
+    this.energy = 100
+  }
+
+  speak() {
+    return `${this.name} says: ${this.#sound}!`
+  }
+
+  eat(food) {
+    this.energy += 20
+    return `${this.name} eats ${food}. Energy: ${this.energy}`
+  }
+
+  sleep() {
+    this.energy += 50
+    return `${this.name} sleeps. Energy: ${this.energy}`
+  }
+
+  toString() {
+    return `[${this.constructor.name}: ${this.name}]`
+  }
+}
+
+class Dog extends Animal {
+  #tricks = []
+
+  constructor(name, breed) {
+    super(name, "Woof")  // ← MUST call super() before using 'this'!
+    this.breed = breed
+  }
+
+  // Override parent method:
+  speak() {
+    const parentSpeak = super.speak()  // Call parent version
+    return `${parentSpeak} (${this.breed} barking)`
+  }
+
+  // New method unique to Dog:
+  learn(trick) {
+    this.#tricks.push(trick)
+    this.energy -= 10
+    return `${this.name} learned: ${trick}. Energy: ${this.energy}`
+  }
+
+  showTricks() {
+    return this.#tricks.length > 0
+      ? `${this.name} knows: ${this.#tricks.join(", ")}`
+      : `${this.name} knows no tricks yet`
+  }
+}
+
+class GuideDog extends Dog {
+  #owner
+
+  constructor(name, breed, ownerName) {
+    super(name, breed)   // ← Calls Dog's constructor, which calls Animal's
+    this.#owner = ownerName
+    this.isGuide = true
+  }
+
+  guide() {
+    return `${this.name} guides ${this.#owner} safely`
+  }
+
+  speak() {
+    // Override again, call grandparent speak via super chain:
+    return `[Guide] ${super.speak()}`
+  }
+}
+
+// Usage:
+const rex = new Dog("Rex", "Labrador")
+console.log(rex.speak())       // "Rex says: Woof! (Labrador barking)"
+console.log(rex.eat("bone"))   // "Rex eats bone. Energy: 120"
+console.log(rex.learn("sit"))  // "Rex learned: sit. Energy: 110"
+console.log(rex.learn("shake"))
+console.log(rex.showTricks())  // "Rex knows: sit, shake"
+
+const buddy = new GuideDog("Buddy", "Golden Retriever", "Rahul")
+console.log(buddy.speak())   // "[Guide] Buddy says: Woof! (Golden Retriever barking)"
+console.log(buddy.guide())   // "Buddy guides Rahul safely"
+console.log(buddy.eat("kibble"))  // Inherited from Animal!
+
+// instanceof works through chain:
+console.log(buddy instanceof GuideDog)  // true
+console.log(buddy instanceof Dog)       // true
+console.log(buddy instanceof Animal)    // true
+console.log(buddy instanceof Object)    // true
+```
+
+---
+
+### Why Classes Are Syntactic Sugar — Proof
+
+```javascript
+// ES6 Class:
+class PersonClass {
+  constructor(name) { this.name = name }
+  greet() { return `Hi, I'm ${this.name}` }
+  static create(name) { return new PersonClass(name) }
+}
+
+// Equivalent Constructor Function + Prototype:
+function PersonConstructor(name) { this.name = name }
+PersonConstructor.prototype.greet = function() { return `Hi, I'm ${this.name}` }
+PersonConstructor.create = function(name) { return new PersonConstructor(name) }
+
+// PROOF they're equivalent:
+console.log(typeof PersonClass)  // "function" — not a new type!
+console.log(typeof PersonConstructor)  // "function"
+
+const p1 = new PersonClass("Rahul")
+const p2 = new PersonConstructor("Rahul")
+
+// Both have identical prototype structure:
+console.log(Object.getPrototypeOf(p1) === PersonClass.prototype)  // true
+console.log(Object.getPrototypeOf(p2) === PersonConstructor.prototype)  // true
+
+// Methods on prototype in both cases:
+console.log(PersonClass.prototype.greet === p1.greet)  // true
+console.log(PersonConstructor.prototype.greet === p2.greet)  // true
+
+// Key DIFFERENCES (classes add features over constructor functions):
+// 1. Classes CANNOT be called without 'new' (throws TypeError)
+// 2. Classes are NOT hoisted to usable state (TDZ)
+// 3. Classes are always in strict mode
+// 4. Private fields (#) — no direct equivalent in constructor functions
+// 5. 'extends' handles super prototype chain automatically
+// 6. 'super' keyword works differently
+```
+
+---
+
+### Getters & Setters
+
+```javascript
+class Temperature {
+  #celsius
+
+  constructor(celsius) {
+    this.#celsius = celsius
+  }
+
+  // Getter — accessed like a property (no parentheses):
+  get fahrenheit() {
+    return this.#celsius * 9/5 + 32
+  }
+
+  get kelvin() {
+    return this.#celsius + 273.15
+  }
+
+  get celsius() {
+    return this.#celsius
+  }
+
+  // Setter — triggers when assigned:
+  set celsius(value) {
+    if (value < -273.15) {
+      throw new RangeError("Temperature below absolute zero!")
+    }
+    this.#celsius = value
+  }
+
+  set fahrenheit(value) {
+    this.celsius = (value - 32) * 5/9  // Uses celsius setter (validates)
+  }
+
+  toString() {
+    return `${this.#celsius}°C / ${this.fahrenheit.toFixed(1)}°F / ${this.kelvin.toFixed(2)}K`
+  }
+}
+
+const temp = new Temperature(100)
+console.log(temp.celsius)      // 100 (getter)
+console.log(temp.fahrenheit)   // 212 (getter — computed)
+console.log(temp.kelvin)       // 373.15 (getter — computed)
+console.log(`${temp}`)         // "100°C / 212.0°F / 373.15K"
+
+temp.celsius = 0               // Setter
+console.log(temp.fahrenheit)   // 32 (recomputed)
+
+temp.fahrenheit = 98.6         // Setter for fahrenheit
+console.log(temp.celsius)      // ~37 (converted and stored)
+
+temp.celsius = -300            // ❌ RangeError: Temperature below absolute zero!
+```
+
+---
+
+### Static Members — Class-Level Properties and Methods
+
+```javascript
+class MathHelper {
+  // Static properties:
+  static PI = 3.14159265358979
+  static E = 2.71828182845905
+  static #instanceCount = 0  // Private static
+
+  constructor() {
+    MathHelper.#instanceCount++
+  }
+
+  // Static methods (called on class, not instance):
+  static add(...nums) {
+    return nums.reduce((sum, n) => sum + n, 0)
+  }
+
+  static multiply(...nums) {
+    return nums.reduce((product, n) => product * n, 1)
+  }
+
+  static clamp(value, min, max) {
+    return Math.min(Math.max(value, min), max)
+  }
+
+  static randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+  }
+
+  static getInstanceCount() {
+    return MathHelper.#instanceCount
+  }
+
+  // Non-static for comparison (needs instance):
+  instanceMethod() {
+    return "I need an instance to call this"
+  }
+}
+
+// Static members — called on CLASS:
+MathHelper.add(1, 2, 3, 4, 5)    // 15
+MathHelper.PI                      // 3.14159...
+MathHelper.clamp(150, 0, 100)      // 100
+
+// Instance members — called on INSTANCE:
+const helper = new MathHelper()
+helper.instanceMethod()            // "I need an instance to call this"
+
+// ❌ Wrong way:
+helper.add(1, 2)          // TypeError — add is static, not on instance
+MathHelper.instanceMethod() // TypeError — not a static method
+
+// Real-world: static factory methods:
+class User {
+  constructor(name, email, role) {
+    this.name = name
+    this.email = email
+    this.role = role
+    this.createdAt = new Date()
+  }
+
+  static createAdmin(name, email) {
+    return new User(name, email, "admin")
+  }
+
+  static createGuest(name) {
+    return new User(name, `guest_${Date.now()}@temp.com`, "guest")
+  }
+
+  static fromJSON(json) {
+    const data = typeof json === "string" ? JSON.parse(json) : json
+    return new User(data.name, data.email, data.role)
+  }
+}
+
+const admin = User.createAdmin("Super Admin", "admin@example.com")
+const guest = User.createGuest("Anonymous")
+```
+
+---
+
+### 🎯 Interview Questions — Section 6.4
+
+**Q1: What is the difference between ES6 classes and constructor functions?**
+
+> Classes are syntactic sugar over constructor functions — JavaScript remains prototype-based. Differences: (1) **`new` enforcement** — calling a class without `new` throws `TypeError`; constructor functions don't. (2) **Hoisting** — class declarations enter TDZ (can't use before declaration); function declarations are fully hoisted. (3) **Strict mode** — class bodies are always strict mode; constructor functions aren't unless you add `"use strict"`. (4) **Private fields** (`#`) — true private fields, no constructor function equivalent. (5) **`super`** — cleaner parent method calling. (6) **Inheritance** — `extends` handles the prototype chain automatically; constructor functions require manual `Object.create` + `call`.
+
+**Q2: What does `super()` do in a derived class?**
+
+> In a derived class (`extends`), `super()` calls the **parent class constructor** with the given arguments. It's required in the derived constructor — if you use `extends`, you MUST call `super()` before accessing `this` (throws `ReferenceError` if you don't). This is because the parent constructor is responsible for initializing `this`. `super.method()` calls a specific parent class method (not the constructor).
+
+**Q3: What is the difference between `super()` and `super.method()`?**
+
+> `super()` — used in the **constructor** of a derived class to call the parent class's constructor. Must be called before `this`. Can only be used in constructors. `super.method()` — used in any method to call the parent class's method of the same or different name. Useful for method overriding where you want to extend (not replace) parent behavior. Example: `super.speak()` in a Dog's `speak()` method calls `Animal`'s `speak()` and adds to it.
+
+**Q4: Are class instances truly private with `#` fields?**
+
+> Yes — private fields with `#` provide true encapsulation. They are: (1) **Inaccessible** from outside the class — not via dot notation, bracket notation, `Object.keys()`, `JSON.stringify()`, or `Object.getOwnPropertyNames()`. (2) **Inaccessible** even to subclasses. (3) **Enforced by the JavaScript engine** (not just naming convention like `_private`). (4) **Separate namespace** — `obj.password` and `obj.#password` are completely different properties. However, they can be accessed via `WeakRef` tricks or by the class itself (if you share access through methods).
+
+**Q5: What is the output?**
+
+```javascript
+class A {
+  constructor() {
+    this.x = 1
+    console.log("A constructor")
+  }
+}
+
+class B extends A {
+  constructor() {
+    super()
+    this.y = 2
+    console.log("B constructor")
+  }
+}
+
+class C extends B {
+  constructor() {
+    super()
+    this.z = 3
+    console.log("C constructor")
+  }
+}
+
+const c = new C()
+console.log(c.x, c.y, c.z)
+```
+
+> **Output:**
+> ```
+> A constructor
+> B constructor
+> C constructor
+> 1 2 3
+> ```
+> `super()` chains up — C calls B's constructor (which calls A's). A runs first (innermost), then B, then C. All three properties are set on the final `c` instance.
+
+<a href="#chapter-index-table-6">Go to Top 🔝</a>
+
+---
+
+## 6.5 OOP Principles in JavaScript
+
+<a id="65-oop-principles-in-javascript"></a>
+
+### Subtopic Breakdown
+
+| Principle | JavaScript Implementation |
+|-----------|--------------------------|
+| Encapsulation | Private fields `#`, closures, getters/setters |
+| Inheritance | `extends`, prototype chain |
+| Polymorphism | Method overriding, duck typing |
+| Abstraction | Abstract-like classes, interfaces via convention |
+
+---
+
+### Principle 1: Encapsulation
+
+**Encapsulation** means bundling data and methods that operate on that data together, and restricting direct access to internal details.
+
+> **Hinglish:** Encapsulation matlab "andar ki cheezein bahar se chhupana" — jaise car ka engine: aap accelerator dabate ho (interface), engine ka kaam aap ko nahi pata (implementation hidden). Private fields (`#`) yahi karte hain.
+
+```javascript
+class BankAccount {
+  // Private — truly inaccessible from outside:
+  #balance
+  #pin
+  #transactionHistory = []
+  #ownerName
+
+  constructor(ownerName, initialBalance, pin) {
+    this.#ownerName = ownerName
+    this.#balance = initialBalance
+    this.#pin = pin
+  }
+
+  // Public interface (what the world sees):
+  deposit(amount) {
+    this.#validateAmount(amount)
+    this.#balance += amount
+    this.#recordTransaction("deposit", amount)
+    return `Deposited ₹${amount}. New balance: ₹${this.#balance}`
+  }
+
+  withdraw(amount, pin) {
+    this.#validatePin(pin)
+    this.#validateAmount(amount)
+    if (amount > this.#balance) throw new Error("Insufficient funds")
+    this.#balance -= amount
+    this.#recordTransaction("withdrawal", amount)
+    return `Withdrew ₹${amount}. New balance: ₹${this.#balance}`
+  }
+
+  getBalance(pin) {
+    this.#validatePin(pin)
+    return `Balance: ₹${this.#balance}`
+  }
+
+  getStatement(pin) {
+    this.#validatePin(pin)
+    return [...this.#transactionHistory]  // Return copy — don't expose internal
+  }
+
+  // Read-only public info (no pin needed):
+  get ownerName() { return this.#ownerName }
+
+  // Private implementation details:
+  #validateAmount(amount) {
+    if (amount <= 0) throw new Error("Amount must be positive")
+    if (!Number.isFinite(amount)) throw new Error("Invalid amount")
+  }
+
+  #validatePin(pin) {
+    if (pin !== this.#pin) throw new Error("Invalid PIN")
+  }
+
+  #recordTransaction(type, amount) {
+    this.#transactionHistory.push({
+      type,
+      amount,
+      balance: this.#balance,
+      timestamp: new Date().toISOString()
+    })
+  }
+}
+
+const account = new BankAccount("Rahul Sharma", 10000, "1234")
+account.deposit(5000)              // ✅ "Deposited ₹5000. New balance: ₹15000"
+account.withdraw(2000, "1234")     // ✅ "Withdrew ₹2000. New balance: ₹13000"
+account.withdraw(1000, "wrong")    // ❌ Error: Invalid PIN
+
+// Encapsulation prevents:
+account.#balance = 999999          // ❌ SyntaxError
+account.#pin = "0000"              // ❌ SyntaxError
+account.#transactionHistory = []   // ❌ SyntaxError
+```
+
+---
+
+### Principle 2: Inheritance
+
+**Inheritance** allows a class to acquire properties and methods of another class, promoting code reuse.
+
+> **Hinglish:** Inheritance matlab "maa-baap se properties mile" — jaise `Dog extends Animal`. Dog ko Animal ke saare kaam (eat, sleep) milte hain, plus Dog ke apne kaam (fetch, bark).
+
+```javascript
+// Base class (parent):
+class Shape {
+  constructor(color = "black") {
+    this.color = color
+  }
+
+  getColor() {
+    return `Color: ${this.color}`
+  }
+
+  // "Abstract" method — meant to be overridden:
+  area() {
+    throw new Error(`${this.constructor.name} must implement area()`)
+  }
+
+  perimeter() {
+    throw new Error(`${this.constructor.name} must implement perimeter()`)
+  }
+
+  describe() {
+    return `${this.constructor.name} — Area: ${this.area().toFixed(2)}, Perimeter: ${this.perimeter().toFixed(2)}`
+  }
+}
+
+// Derived classes:
+class Circle extends Shape {
+  constructor(radius, color) {
+    super(color)          // Set color via parent
+    this.radius = radius
+  }
+
+  area() {
+    return Math.PI * this.radius ** 2
+  }
+
+  perimeter() {
+    return 2 * Math.PI * this.radius
+  }
+}
+
+class Rectangle extends Shape {
+  constructor(width, height, color) {
+    super(color)
+    this.width = width
+    this.height = height
+  }
+
+  area() {
+    return this.width * this.height
+  }
+
+  perimeter() {
+    return 2 * (this.width + this.height)
+  }
+}
+
+class Square extends Rectangle {
+  constructor(side, color) {
+    super(side, side, color)  // Square is rectangle with equal sides
+  }
+
+  // Inherits area() and perimeter() from Rectangle!
+}
+
+const shapes = [
+  new Circle(5, "red"),
+  new Rectangle(4, 6, "blue"),
+  new Square(4, "green")
+]
+
+shapes.forEach(s => console.log(s.describe()))
+// Circle — Area: 78.54, Perimeter: 31.42
+// Rectangle — Area: 24.00, Perimeter: 20.00
+// Square — Area: 16.00, Perimeter: 16.00
+```
+
+---
+
+### Principle 3: Polymorphism
+
+**Polymorphism** means the same interface (method name) can work differently for different types — achieved through method overriding.
+
+> **Hinglish:** Polymorphism matlab "ek naam, alag kaam." `speak()` method Animal, Dog, Cat sab ke paas hai — lekin call karte waqt har ek apna kaam karta hai. Same interface, alag implementation.
+
+```javascript
+class Animal {
+  constructor(name) { this.name = name }
+  speak() { return `${this.name} makes a generic sound` }
+  move() { return `${this.name} moves somehow` }
+}
+
+class Dog extends Animal {
+  speak() { return `${this.name}: Woof! Woof!` }         // Override
+  move() { return `${this.name} runs on 4 legs` }        // Override
+  fetch() { return `${this.name} fetches the ball!` }     // New method
+}
+
+class Cat extends Animal {
+  speak() { return `${this.name}: Meow~ Meow~` }         // Override
+  move() { return `${this.name} pounces gracefully` }    // Override
+  purr() { return `${this.name} purrs...` }               // New method
+}
+
+class Bird extends Animal {
+  speak() { return `${this.name}: Tweet! Tweet!` }        // Override
+  move() { return `${this.name} flies through the air` } // Override
+  sing() { return `${this.name} sings a melody` }        // New method
+}
+
+class Duck extends Bird {
+  speak() { return `${this.name}: QUACK!` }               // Override again
+  // Inherits move() from Bird
+}
+
+// ✅ POLYMORPHISM — same method call, different behavior:
+const animals = [
+  new Dog("Rex"),
+  new Cat("Whiskers"),
+  new Bird("Tweety"),
+  new Duck("Donald"),
+  new Animal("Unknown") // Falls back to base
+]
+
+// makeAllSpeak — works with ANY Animal:
+function makeAllSpeak(animals) {
+  animals.forEach(animal => {
+    console.log(animal.speak())  // Calls the RIGHT version for each type
+  })
+}
+
+makeAllSpeak(animals)
+// "Rex: Woof! Woof!"
+// "Whiskers: Meow~ Meow~"
+// "Tweety: Tweet! Tweet!"
+// "Donald: QUACK!"
+// "Unknown makes a generic sound"
+
+// Duck typing — if it has the interface, it works:
+const robot = {
+  name: "R2D2",
+  speak() { return `${this.name}: Beep boop!` }
+}
+
+// This works even though robot is NOT an Animal instance:
+makeAllSpeak([...animals, robot])
+
+// ─── Polymorphism with Strategy Pattern: ─────────────────────────
+class DataExporter {
+  constructor(strategy) {
+    this.strategy = strategy  // Any object with export() method
+  }
+
+  export(data) {
+    return this.strategy.export(data)  // Delegates to strategy
+  }
+}
+
+class JSONStrategy {
+  export(data) { return JSON.stringify(data, null, 2) }
+}
+
+class CSVStrategy {
+  export(data) {
+    const headers = Object.keys(data[0]).join(",")
+    const rows = data.map(row => Object.values(row).join(","))
+    return [headers, ...rows].join("\n")
+  }
+}
+
+class XMLStrategy {
+  export(data) {
+    return `<data>\n${data.map(item =>
+      `  <item>${Object.entries(item).map(([k,v]) => `<${k}>${v}</${k}>`).join("")}</item>`
+    ).join("\n")}\n</data>`
+  }
+}
+
+const exporter = new DataExporter(new JSONStrategy())
+exporter.export([{ name: "Rahul", age: 25 }])
+
+// Switch strategy at runtime:
+exporter.strategy = new CSVStrategy()
+exporter.export([{ name: "Rahul", age: 25 }])
+```
+
+---
+
+### Principle 4: Abstraction
+
+**Abstraction** means exposing only relevant details and hiding complex implementation — defining what something does, not how it does it.
+
+> **Hinglish:** Abstraction matlab "kya karta hai dikhao, kaise karta hai chhupao." Jaise ATM machine: aap buttons dabate ho (interface), andar ka circuit kya karta hai nahi pata (implementation hidden). High-level interface, low-level implementation hidden.
+
+```javascript
+// Simulating abstract class in JavaScript:
+class AbstractPaymentProcessor {
+  constructor(currency = "INR") {
+    // Prevent direct instantiation:
+    if (new.target === AbstractPaymentProcessor) {
+      throw new Error("Cannot instantiate abstract class AbstractPaymentProcessor")
+    }
+    this.currency = currency
+    this.#transactionLog = []
+  }
+
+  #transactionLog = []
+
+  // Template method — defines the algorithm skeleton:
+  async processPayment(amount, details) {
+    this.#validateAmount(amount)
+    const fee = this.calculateFee(amount)  // Polymorphic call
+    const total = amount + fee
+
+    const transaction = {
+      id: `TXN_${Date.now()}`,
+      amount,
+      fee,
+      total,
+      currency: this.currency,
+      details,
+      timestamp: new Date().toISOString()
+    }
+
+    // Abstract steps (subclasses must implement):
+    const result = await this.executePayment(transaction)
+
+    transaction.status = result.success ? "success" : "failed"
+    transaction.reference = result.reference
+    this.#transactionLog.push(transaction)
+
+    return transaction
+  }
+
+  // Abstract methods (must be overridden):
+  calculateFee(amount) {
+    throw new Error("calculateFee() must be implemented")
+  }
+
+  async executePayment(transaction) {
+    throw new Error("executePayment() must be implemented")
+  }
+
+  // Concrete method (shared by all):
+  getTransactionHistory() {
+    return [...this.#transactionLog]
+  }
+
+  #validateAmount(amount) {
+    if (!Number.isFinite(amount) || amount <= 0) {
+      throw new Error("Invalid payment amount")
+    }
+  }
+}
+
+// Concrete implementations:
+class StripeProcessor extends AbstractPaymentProcessor {
+  #apiKey
+
+  constructor(apiKey) {
+    super("USD")
+    this.#apiKey = apiKey
+  }
+
+  calculateFee(amount) {
+    return amount * 0.029 + 0.30  // 2.9% + $0.30
+  }
+
+  async executePayment(transaction) {
+    // Actual Stripe API call would go here
+    console.log(`Processing via Stripe: $${transaction.total.toFixed(2)}`)
+    return { success: true, reference: `stripe_${transaction.id}` }
+  }
+}
+
+class RazorpayProcessor extends AbstractPaymentProcessor {
+  constructor() { super("INR") }
+
+  calculateFee(amount) {
+    return amount * 0.02  // 2% Razorpay fee
+  }
+
+  async executePayment(transaction) {
+    console.log(`Processing via Razorpay: ₹${transaction.total.toFixed(2)}`)
+    return { success: true, reference: `rzp_${transaction.id}` }
+  }
+}
+
+// Usage:
+const stripe = new StripeProcessor("sk_test_...")
+const razorpay = new RazorpayProcessor()
+
+// Same interface, different implementations:
+stripe.processPayment(100, { card: "4242..." })
+razorpay.processPayment(5000, { upi: "rahul@upi" })
+
+// Abstract class protection:
+// new AbstractPaymentProcessor()  // ❌ Error: Cannot instantiate abstract class
+```
+
+---
+
+### OOP in React — Practical Connections
+
+```javascript
+// React class components were the original pattern:
+class Counter extends React.Component {
+  // Encapsulation — state is private to component:
+  state = { count: 0 }
+
+  // Abstraction — render() defines WHAT to show:
+  render() {
+    return (
+      <div>
+        <p>{this.state.count}</p>
+        <button onClick={() => this.setState(prev => ({ count: prev.count + 1 }))}>
+          +1
+        </button>
+      </div>
+    )
+  }
+}
+
+// Inheritance in class components:
+class AnimatedCounter extends Counter {
+  // Inherits state, render, etc.
+  // Override render for animation:
+  render() {
+    return (
+      <div className="animated">
+        {super.render()}   {/* Call parent render */}
+      </div>
+    )
+  }
+}
+
+// Modern React uses composition over inheritance:
+// The same OOP principles apply but via hooks and component composition:
+
+// Encapsulation → useState (hides implementation)
+// Polymorphism → component props (different behavior, same interface)
+// Abstraction → custom hooks (hide complexity)
+// Inheritance → composition (recommended over class inheritance in React)
+```
+
+---
+
+### 🎯 Interview Questions — Section 6.5
+
+**Q1: Explain the four pillars of OOP with JavaScript examples.**
+
+> (1) **Encapsulation:** Bundling data and methods, restricting access. In JS: private fields `#`, closures, getters/setters. Example: `BankAccount` with `#balance` only accessible via `deposit()`/`withdraw()`. (2) **Inheritance:** Child class acquires parent's properties/methods. In JS: `extends` and `super()`. Example: `Dog extends Animal` gets `eat()`, `sleep()` for free. (3) **Polymorphism:** Same interface, different implementations. In JS: method overriding, duck typing. Example: `animal.speak()` calls different logic for Dog vs Cat. (4) **Abstraction:** Exposing interface, hiding complexity. In JS: private fields, abstract-like base classes, custom hooks. Example: `processPayment()` template method hides Stripe/Razorpay differences.
+
+**Q2: What is the difference between inheritance and composition? Which does React prefer?**
+
+> **Inheritance** creates "is-a" relationships via class hierarchies — a Dog IS an Animal. Good for: shared behavior, extending base functionality, classic OOP modeling. **Composition** creates "has-a" relationships — a Dog HAS a `CanBark` ability. Good for: mixing behaviors, avoiding fragile class hierarchies, more flexible code. React's documentation explicitly recommends **composition over inheritance** for component reuse. Instead of `class SpecialButton extends Button`, compose: `<Button><Icon />{children}</Button>`. Custom hooks enable composition of stateful logic. The HOC pattern was the inheritance-style approach; hooks are the composition approach.
+
+**Q3: How does JavaScript simulate abstract classes?**
+
+> JavaScript has no native `abstract` keyword. Simulation approaches: (1) **Throw in constructor** using `new.target`: `if (new.target === AbstractClass) throw new Error("Cannot instantiate")`. (2) **Throw in abstract methods**: methods that subclasses must override throw errors if called on base class. (3) **TypeScript interfaces** — true interface enforcement with compile-time checking. (4) The **Template Method pattern** — base class defines algorithm structure, abstract steps throw errors if not overridden by concrete subclasses.
+
+**Q4: What is duck typing in JavaScript?**
+
+> Duck typing is a programming concept from "If it walks like a duck and quacks like a duck, it's a duck." In JavaScript, type compatibility is determined by **the presence of required methods/properties**, not by actual inheritance or `instanceof`. A function that calls `obj.speak()` works with ANY object that has a `speak` method — regardless of whether it's an Animal, Robot, or plain object. This is JavaScript's default — it's prototype-based but also structurally typed at runtime. TypeScript formalizes this with structural typing for compile-time safety.
+
+<a href="#chapter-index-table-6">Go to Top 🔝</a>
+
+---
+
+## 🧪 Mini Project: OOP Design System Component Library
+
+<a id="-mini-project-oop-design-system-component-library"></a>
+
+### Problem Statement
+
+Build **UIKit** — an OOP-based design system component library using JavaScript classes and OOP principles, then consume it in a Next.js app. This demonstrates all Chapter 6 concepts in a real-world architecture.
+
+### Architecture
+
+```mermaid
+flowchart TD
+    subgraph UIKIT["UIKit — Class Hierarchy"]
+        BASE["UIComponent (Abstract Base)\n• id, className, attributes\n• render() — abstract\n• mount(), unmount()\n• on(), off(), emit()"]
+
+        INTERACTIVE["InteractiveComponent\nextends UIComponent\n• disabled state\n• focus(), blur()"]
+
+        FORM["FormField\nextends InteractiveComponent\n• value, validators\n• validate()\n• onChange handler"]
+
+        INPUT["InputField\nextends FormField\n• type (text/email/password)\n• placeholder\n• #renderInput()"]
+
+        SELECT["SelectField\nextends FormField\n• options[]\n• multiple\n• #renderOptions()"]
+
+        BUTTON["Button\nextends InteractiveComponent\n• variant (primary/secondary)\n• loading state\n• #renderSpinner()"]
+
+        CARD["Card\nextends UIComponent\n• title, subtitle\n• header, body, footer slots"]
+    end
+
+    subgraph NEXTJS["Next.js App"]
+        PAGE["React Page\nConsumes UIKit classes"]
+        API["API Route\nServer-side validation"]
+    end
+
+    BASE --> INTERACTIVE
+    BASE --> CARD
+    INTERACTIVE --> FORM
+    INTERACTIVE --> BUTTON
+    FORM --> INPUT
+    FORM --> SELECT
+
+    UIKIT --> NEXTJS
+
+    style BASE fill:#ffcdd2
+    style INTERACTIVE fill:#fff9c4
+    style FORM fill:#e3f2fd
+    style NEXTJS fill:#e8f5e9
+```
+
+### File Structure
+
+```
+uikit-project/
+├── lib/
+│   └── uikit/
+│       ├── core/
+│       │   ├── UIComponent.ts          # Abstract base
+│       │   ├── InteractiveComponent.ts # Interactive base
+│       │   └── EventEmitter.ts         # Mixin for events
+│       ├── form/
+│       │   ├── FormField.ts            # Abstract form field
+│       │   ├── InputField.ts           # Text/email/password input
+│       │   └── SelectField.ts          # Select/dropdown
+│       ├── layout/
+│       │   └── Card.ts                 # Card component
+│       ├── Button.ts                   # Button component
+│       └── index.ts                    # Public API
+├── app/
+│   ├── page.tsx                        # Demo page
+│   └── api/
+│       └── validate/route.ts           # Server-side validation
+└── types/
+    └── uikit.types.ts                  # TypeScript types
+```
+
+### Core Implementation
+
+```typescript
+// lib/uikit/core/UIComponent.ts
+
+export type ComponentProps = {
+  id?: string
+  className?: string
+  'data-testid'?: string
+  [key: string]: unknown
+}
+
+export abstract class UIComponent {
+  protected id: string
+  protected className: string
+  protected attributes: Record<string, unknown>
+  #isMounted = false
+  #eventListeners = new Map<string, Set<Function>>()
+
+  // Counter for unique IDs:
+  static #instanceCounter = 0
+
+  constructor(props: ComponentProps = {}) {
+    const { id, className = '', ...rest } = props
+    this.id = id ?? `uikit-${UIComponent.#nextId()}`
+    this.className = className
+    this.attributes = rest
+  }
+
+  static #nextId(): string {
+    return `component-${++UIComponent.#instanceCounter}`
+  }
+
+  // Abstract method — subclasses MUST implement:
+  abstract render(): string
+
+  // Template method — defines mount lifecycle:
+  mount(container: HTMLElement): void {
+    if (this.#isMounted) return
+    container.innerHTML = this.render()
+    this.#attachEventListeners(container)
+    this.onMount()
+    this.#isMounted = true
+  }
+
+  unmount(): void {
+    this.emit('unmount')
+    this.onUnmount()
+    this.#isMounted = false
+  }
+
+  // Lifecycle hooks (can be overridden):
+  protected onMount(): void {}
+  protected onUnmount(): void {}
+
+  // Event system:
+  on(event: string, handler: Function): () => void {
+    if (!this.#eventListeners.has(event)) {
+      this.#eventListeners.set(event, new Set())
+    }
+    this.#eventListeners.get(event)!.add(handler)
+    return () => this.off(event, handler)  // Return unsubscribe function
+  }
+
+  off(event: string, handler: Function): void {
+    this.#eventListeners.get(event)?.delete(handler)
+  }
+
+  emit(event: string, data?: unknown): void {
+    this.#eventListeners.get(event)?.forEach(handler => handler(data))
+  }
+
+  #attachEventListeners(container: HTMLElement): void {
+    this.emit('mount', container)
+  }
+
+  get isMounted(): boolean { return this.#isMounted }
+
+  // Utility:
+  protected buildAttributes(): string {
+    return Object.entries(this.attributes)
+      .filter(([, v]) => v !== undefined && v !== false)
+      .map(([k, v]) => v === true ? k : `${k}="${v}"`)
+      .join(' ')
+  }
+}
+```
+
+```typescript
+// lib/uikit/form/FormField.ts
+
+import { UIComponent, ComponentProps } from '../core/UIComponent'
+
+export type Validator = (value: string) => string | null  // null = valid
+
+export type FormFieldProps = ComponentProps & {
+  name: string
+  label?: string
+  required?: boolean
+  validators?: Validator[]
+  value?: string
+  helpText?: string
+}
+
+export abstract class FormField extends UIComponent {
+  protected name: string
+  protected label: string
+  protected required: boolean
+  #validators: Validator[]
+  #value: string
+  #errors: string[] = []
+  protected helpText: string
+
+  constructor(props: FormFieldProps) {
+    super(props)
+    this.name = props.name
+    this.label = props.label ?? props.name
+    this.required = props.required ?? false
+    this.#validators = props.validators ?? []
+    this.#value = props.value ?? ''
+    this.helpText = props.helpText ?? ''
+
+    if (this.required) {
+      // Auto-add required validator:
+      this.#validators.unshift(
+        (val) => val.trim() ? null : `${this.label} is required`
+      )
+    }
+  }
+
+  get value(): string { return this.#value }
+
+  set value(newValue: string) {
+    this.#value = newValue
+    this.validate()
+    this.emit('change', { name: this.name, value: newValue, valid: this.isValid })
+  }
+
+  get isValid(): boolean {
+    return this.#errors.length === 0
+  }
+
+  get errors(): string[] { return [...this.#errors] }
+
+  validate(): boolean {
+    this.#errors = this.#validators
+      .map(v => v(this.#value))
+      .filter((error): error is string => error !== null)
+    this.emit('validate', { valid: this.isValid, errors: this.#errors })
+    return this.isValid
+  }
+
+  addValidator(validator: Validator): this {
+    this.#validators.push(validator)
+    return this  // Chainable
+  }
+
+  // Template method:
+  render(): string {
+    return `
+      <div class="form-field ${this.#errors.length ? 'has-error' : ''}" id="${this.id}">
+        ${this.label ? `<label for="${this.id}-input">${this.label}${this.required ? ' *' : ''}</label>` : ''}
+        ${this.renderInput()}
+        ${this.helpText ? `<p class="help-text">${this.helpText}</p>` : ''}
+        ${this.#errors.map(e => `<span class="error">${e}</span>`).join('')}
+      </div>
+    `
+  }
+
+  // Abstract — subclasses implement specific input HTML:
+  protected abstract renderInput(): string
+}
+```
+
+```typescript
+// lib/uikit/form/InputField.ts
+
+import { FormField, FormFieldProps } from './FormField'
+
+export type InputType = 'text' | 'email' | 'password' | 'number' | 'tel' | 'url'
+
+export type InputFieldProps = FormFieldProps & {
+  type?: InputType
+  placeholder?: string
+  minLength?: number
+  maxLength?: number
+  pattern?: string
+}
+
+export class InputField extends FormField {
+  #type: InputType
+  #placeholder: string
+
+  constructor(props: InputFieldProps) {
+    super(props)
+    this.#type = props.type ?? 'text'
+    this.#placeholder = props.placeholder ?? ''
+
+    // Auto-validators based on type:
+    if (props.type === 'email') {
+      this.addValidator(val =>
+        !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)
+          ? null
+          : 'Please enter a valid email address'
+      )
+    }
+
+    if (props.minLength) {
+      const min = props.minLength
+      this.addValidator(val =>
+        val.length >= min ? null : `Must be at least ${min} characters`
+      )
+    }
+
+    if (props.maxLength) {
+      const max = props.maxLength
+      this.addValidator(val =>
+        val.length <= max ? null : `Must be no more than ${max} characters`
+      )
+    }
+  }
+
+  protected renderInput(): string {
+    return `
+      <input
+        id="${this.id}-input"
+        type="${this.#type}"
+        name="${this.name}"
+        value="${this.value}"
+        placeholder="${this.#placeholder}"
+        ${this.required ? 'required' : ''}
+        ${this.buildAttributes()}
+      />
+    `
+  }
+}
+```
+
+```typescript
+// lib/uikit/Button.ts
+
+import { UIComponent, ComponentProps } from './core/UIComponent'
+
+export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost'
+export type ButtonSize = 'sm' | 'md' | 'lg'
+
+export type ButtonProps = ComponentProps & {
+  label: string
+  variant?: ButtonVariant
+  size?: ButtonSize
+  disabled?: boolean
+  loading?: boolean
+  onClick?: () => void
+}
+
+export class Button extends UIComponent {
+  #label: string
+  #variant: ButtonVariant
+  #size: ButtonSize
+  #disabled: boolean
+  #loading: boolean
+  #onClick?: () => void
+
+  constructor(props: ButtonProps) {
+    super(props)
+    this.#label = props.label
+    this.#variant = props.variant ?? 'primary'
+    this.#size = props.size ?? 'md'
+    this.#disabled = props.disabled ?? false
+    this.#loading = props.loading ?? false
+    this.#onClick = props.onClick
+  }
+
+  setLoading(loading: boolean): this {
+    this.#loading = loading
+    this.#disabled = loading
+    return this
+  }
+
+  render(): string {
+    const classes = [
+      'btn',
+      `btn-${this.#variant}`,
+      `btn-${this.#size}`,
+      this.#loading ? 'btn-loading' : '',
+      this.className
+    ].filter(Boolean).join(' ')
+
+    return `
+      <button
+        id="${this.id}"
+        class="${classes}"
+        ${this.#disabled || this.#loading ? 'disabled' : ''}
+        ${this.buildAttributes()}
+      >
+        ${this.#loading ? '<span class="spinner"></span>' : ''}
+        ${this.#label}
+      </button>
+    `
+  }
+
+  protected onMount(): void {
+    const el = document.getElementById(this.id)
+    el?.addEventListener('click', () => {
+      if (!this.#disabled && !this.#loading) {
+        this.emit('click')
+        this.#onClick?.()
+      }
+    })
+  }
+}
+```
+
+```typescript
+// Using UIKit in Next.js — app/page.tsx
+
+'use client'
+
+import { useEffect, useRef } from 'react'
+import { InputField, Button, FormField } from '@/lib/uikit'
+
+export default function UIKitDemo() {
+  const formRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!formRef.current) return
+
+    // Create UIKit components using OOP:
+    const nameInput = new InputField({
+      name: 'name',
+      label: 'Full Name',
+      required: true,
+      placeholder: 'Enter your name',
+      minLength: 2,
+      maxLength: 50
+    })
+
+    const emailInput = new InputField({
+      name: 'email',
+      label: 'Email Address',
+      type: 'email',
+      required: true,
+      placeholder: 'you@example.com'
+    })
+
+    const submitBtn = new Button({
+      label: 'Create Account',
+      variant: 'primary',
+      size: 'lg'
+    })
+
+    // Event handling with the OOP system:
+    nameInput.on('change', ({ value }) => {
+      console.log('Name changed:', value)
+    })
+
+    submitBtn.on('click', () => {
+      const isNameValid = nameInput.validate()
+      const isEmailValid = emailInput.validate()
+
+      if (isNameValid && isEmailValid) {
+        submitBtn.setLoading(true)
+        // Simulate API call:
+        setTimeout(() => {
+          submitBtn.setLoading(false)
+          console.log('Form submitted:', {
+            name: nameInput.value,
+            email: emailInput.value
+          })
+        }, 2000)
+      }
+    })
+
+    // Mount all components:
+    const container = formRef.current
+    const nameContainer = document.createElement('div')
+    const emailContainer = document.createElement('div')
+    const btnContainer = document.createElement('div')
+
+    container.appendChild(nameContainer)
+    container.appendChild(emailContainer)
+    container.appendChild(btnContainer)
+
+    nameInput.mount(nameContainer)
+    emailInput.mount(emailContainer)
+    submitBtn.mount(btnContainer)
+
+    // Cleanup on unmount:
+    return () => {
+      nameInput.unmount()
+      emailInput.unmount()
+      submitBtn.unmount()
+    }
+  }, [])
+
+  return (
+    <div className="max-w-md mx-auto p-8">
+      <h1 className="text-2xl font-bold mb-6">UIKit OOP Demo</h1>
+      <div ref={formRef} className="space-y-4" />
+    </div>
+  )
+}
+```
+
+### What This Project Demonstrates
+
+| OOP Concept | Demonstrated By |
+|-------------|----------------|
+| Classes | `UIComponent`, `Button`, `InputField` — all ES6 classes |
+| Abstraction | `UIComponent.render()` — abstract method enforced |
+| Encapsulation | `#value`, `#errors`, `#eventListeners` — private fields |
+| Inheritance | `InputField → FormField → UIComponent` chain |
+| Polymorphism | Each component implements `render()` differently |
+| Static members | `UIComponent.#instanceCounter`, `#nextId()` |
+| Getters/Setters | `value` setter triggers validation |
+| Prototype chain | All instances share prototype methods |
+| `super()` | Every `extends` class calls `super(props)` |
+| `instanceof` | Type checking in event handlers |
+
+<a href="#chapter-index-table-6">Go to Top 🔝</a>
+
+---
+
+## 📝 Practice Section
+
+<a id="-practice-section"></a>
+
+### 5 Coding Questions
+
+**C1: Implement a `LinkedList` class with full OOP**
+
+```javascript
+// Implement a doubly linked list using classes:
+class Node {
+  // Your implementation
+}
+
+class LinkedList {
+  // Must implement:
+  // append(value)
+  // prepend(value)
+  // remove(value)
+  // find(value) → Node | null
+  // toArray() → value[]
+  // size() → number
+  // [Symbol.iterator]() → makes it iterable
+}
+
+const list = new LinkedList()
+list.append(1).append(2).append(3)
+list.prepend(0)
+list.remove(2)
+console.log(list.toArray())  // [0, 1, 3]
+console.log(list.size())     // 3
+
+for (const val of list) {
+  console.log(val)  // 0, 1, 3
+}
+```
+
+---
+
+**C2: Implement `instanceof` from scratch**
+
+```javascript
+// myInstanceOf(obj, Constructor) should behave like 'obj instanceof Constructor'
+// It must traverse the prototype chain
+
+function myInstanceOf(obj, Constructor) {
+  // Your implementation
+  // Hint: walk up __proto__ chain checking against Constructor.prototype
+}
+
+// Tests:
+class A {}
+class B extends A {}
+class C extends B {}
+
+const c = new C()
+myInstanceOf(c, C)       // true
+myInstanceOf(c, B)       // true
+myInstanceOf(c, A)       // true
+myInstanceOf(c, Object)  // true
+myInstanceOf(c, Array)   // false
+myInstanceOf([], Array)  // true
+```
+
+---
+
+**C3: Implement a `Mixin` system for class composition**
+
+```javascript
+// Mixins: add behavior to classes without inheritance
+// JavaScript doesn't have multiple inheritance — mixins solve this
+
+const Serializable = (Base) => class extends Base {
+  serialize() {
+    return JSON.stringify(this)
+  }
+
+  static deserialize(json) {
+    return Object.assign(new this(), JSON.parse(json))
+  }
+}
+
+const Validatable = (Base) => class extends Base {
+  // Your implementation — add:
+  // validate() → boolean
+  // getErrors() → string[]
+  // addRule(field, fn, message) → this
+}
+
+const Timestampable = (Base) => class extends Base {
+  // Add createdAt, updatedAt, touch() method
+}
+
+// Compose:
+class User extends Timestampable(Validatable(Serializable(class {}))) {
+  constructor(name, email) {
+    super()
+    this.name = name
+    this.email = email
+  }
+}
+
+const user = new User("Rahul", "rahul@example.com")
+user.addRule("email", v => v.includes("@"), "Invalid email")
+user.validate()             // true
+const json = user.serialize()
+console.log(user.createdAt) // Date object
+```
+
+---
+
+**C4: Implement a `Observable` class (Observer Pattern)**
+
+```javascript
+// Observer pattern using classes:
+class Observable {
+  // Subjects can have multiple observers
+  // Observers are notified on state changes
+
+  subscribe(observer) { ... }
+  unsubscribe(observer) { ... }
+  notify(data) { ... }
+}
+
+class Store extends Observable {
+  #state
+
+  constructor(initialState) {
+    super()
+    this.#state = initialState
+  }
+
+  setState(updates) {
+    this.#state = { ...this.#state, ...updates }
+    this.notify(this.#state)
+  }
+
+  getState() { return { ...this.#state } }
+}
+
+// Usage:
+const store = new Store({ count: 0, theme: "light" })
+
+const logger = { update: (state) => console.log("State:", state) }
+const renderer = { update: (state) => console.log("Rendering:", state.count) }
+
+store.subscribe(logger)
+store.subscribe(renderer)
+store.setState({ count: 1 })    // Both notified
+store.unsubscribe(logger)
+store.setState({ count: 2 })    // Only renderer notified
+```
+
+---
+
+**C5: Implement a full `EventEmitter` class**
+
+```javascript
+class EventEmitter {
+  // Implement:
+  // on(event, listener) — subscribe
+  // once(event, listener) — subscribe for one call only
+  // off(event, listener) — unsubscribe
+  // emit(event, ...args) — notify all listeners
+  // removeAllListeners(event?) — clear listeners
+  // listenerCount(event) — count listeners
+  // eventNames() — list all events with listeners
+}
+
+const emitter = new EventEmitter()
+
+emitter.on("data", (val) => console.log("Received:", val))
+emitter.once("connect", () => console.log("Connected!"))
+emitter.on("data", (val) => console.log("Also got:", val))
+
+emitter.emit("data", 42)        // "Received: 42" "Also got: 42"
+emitter.emit("connect")         // "Connected!"
+emitter.emit("connect")         // (nothing — once removed after first)
+emitter.listenerCount("data")   // 2
+```
+
+---
+
+### 5 Theory Questions
+
+**T1: Explain prototypal inheritance in JavaScript from the ground up. How does the prototype chain work? How does it differ from classical (class-based) inheritance? Why is understanding prototypes important even when using ES6 classes?**
+
+**T2: Explain what the `new` keyword does internally in 4 steps. What happens when a constructor explicitly returns an object? What happens when it returns a primitive? How would you protect a constructor from being called without `new`?**
+
+**T3: Compare ES6 classes vs constructor functions vs factory functions — for each, discuss: (a) `this` binding, (b) prototype chain, (c) inheritance, (d) private state, (e) memory efficiency, (f) when you'd choose each. In what scenarios would you prefer factory functions over classes?**
+
+**T4: Explain all four OOP principles (ENCAPSULATION, INHERITANCE, POLYMORPHISM, ABSTRACTION) and demonstrate how each is implemented in JavaScript with examples. How has ES2022's private fields (`#`) changed encapsulation compared to the convention-based `_private` approach?**
+
+**T5: Explain the difference between `__proto__`, `prototype`, and `Object.getPrototypeOf()`. Why is `__proto__` considered deprecated? What is the `constructor` property and why might it become wrong after setting up inheritance? How do ES6 classes handle all of this automatically?**
+
+---
+
+### 2 Machine Coding Problems
+
+**MCP 1: Build a Plugin System using OOP**
+
+Design and implement a plugin architecture for a markdown editor:
+
+```typescript
+// Requirements:
+// - EditorCore: base class with plugin system
+// - Plugins extend PluginBase and add features
+// - Plugins can: transform content, add toolbar buttons, handle events
+// - Plugin registration and lifecycle management
+// - Dependency injection (plugins can use other plugins)
+
+abstract class PluginBase {
+  abstract name: string
+  abstract version: string
+
+  abstract init(editor: EditorCore): void
+  destroy(): void {}
+}
+
+class EditorCore {
+  #plugins = new Map<string, PluginBase>()
+  #content = ''
+
+  use(plugin: PluginBase): this {
+    // Register plugin
+  }
+
+  getPlugin<T extends PluginBase>(name: string): T | undefined {
+    // Get registered plugin by name
+  }
+}
+
+// Build these plugins:
+class WordCountPlugin extends PluginBase {
+  name = 'word-count'
+  // Count words, update toolbar in real-time
+}
+
+class AutoSavePlugin extends PluginBase {
+  name = 'auto-save'
+  // Debounced auto-save to localStorage
+}
+
+class SyntaxHighlightPlugin extends PluginBase {
+  name = 'syntax-highlight'
+  // Highlight code blocks
+}
+
+// Usage:
+const editor = new EditorCore()
+  .use(new WordCountPlugin())
+  .use(new AutoSavePlugin({ interval: 3000 }))
+  .use(new SyntaxHighlightPlugin())
+```
+
+Next.js page that:
+- Renders the markdown editor
+- Shows plugin status (active plugins, word count, last saved)
+- Allows plugins to be added/removed at runtime
+- Uses TypeScript throughout
+
+---
+
+**MCP 2: Build an ORM-like Data Modeling System**
+
+Implement a lightweight ORM (Object-Relational Mapper) using classes:
+
+```typescript
+// Requirements:
+// - Model base class with CRUD operations
+// - Field validation via decorators or fluent API
+// - Relationships: hasMany, belongsTo
+// - Hooks: beforeSave, afterSave, beforeDelete
+// - Query builder: where, orderBy, limit, offset
+
+class Model {
+  static #store = new Map<string, Map<string, unknown>>()
+
+  static find(id: string): Promise<this | null> { }
+  static findAll(query?: QueryOptions): Promise<this[]> { }
+  static create(data: Record<string, unknown>): Promise<this> { }
+
+  save(): Promise<this> { }
+  delete(): Promise<void> { }
+  validate(): string[]  // Returns errors
+}
+
+class User extends Model {
+  static tableName = 'users'
+
+  schema = {
+    name: { type: 'string', required: true, minLength: 2 },
+    email: { type: 'string', required: true, pattern: /email regex/ },
+    age: { type: 'number', min: 0, max: 120 }
+  }
+
+  // Relationships:
+  posts() { return this.hasMany(Post, 'userId') }
+
+  // Hooks:
+  beforeSave() {
+    this.updatedAt = new Date()
+  }
+}
+
+class Post extends Model {
+  static tableName = 'posts'
+  user() { return this.belongsTo(User, 'userId') }
+}
+
+// Usage:
+const user = await User.create({ name: 'Rahul', email: 'r@ex.com', age: 25 })
+const allUsers = await User.findAll({ where: { age: { gte: 18 } }, limit: 10 })
+const posts = await user.posts()
+await user.save()
+await user.delete()
+```
+
+Build a Next.js API using this ORM with route handlers for full CRUD operations on users and posts.
+
+---
+
+> [!NOTE]
+> **Chapter 6 Summary — Key Takeaways:**
+> 1. Every object has a `[[Prototype]]` — property lookups traverse the chain until `null`
+> 2. `__proto__` is on instances (the actual link); `prototype` is on constructor functions (the template)
+> 3. `new` does 4 things: create `{}`, set `__proto__`, run constructor with `this`, return result
+> 4. `Object.create(proto)` creates an object linked to `proto` without running a constructor
+> 5. `Object.create(null)` creates a prototype-free pure hash map
+> 6. ES6 classes are syntactic sugar — `typeof MyClass === "function"` proves it
+> 7. Classes must use `super()` before `this` in derived constructors
+> 8. Private fields (`#`) are truly private — not accessible even via bracket notation
+> 9. Static members belong to the CLASS, not instances — called as `ClassName.method()`
+> 10. OOP in JS: Encapsulation via `#`, Inheritance via `extends`, Polymorphism via override, Abstraction via `throw` in base class
+
+<a href="#chapter-index-table-6">Go to Top 🔝</a>
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -12441,7 +18827,3181 @@ Built by Kshitij GULADHE | 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) 
 
 <a id="7-asynchronous-javascript"></a>
 
-## Chapter 7: Asynchronous JavaScript
+
+
+# Chapter 7: Asynchronous JavaScript — Complete Guide
+
+> **Book:** React + Next.js — From Zero to Interview Ready
+> **Part:** A — JavaScript & Web Fundamentals (Pre-React)
+> **Chapter:** 7 of 56
+
+---
+
+<a id="chapter-index-table-7"></a>
+
+## Chapter Index Table
+
+| Topic No. | Topic Name | Subtopics |
+|-----------|------------|-----------|
+| 7.1 | [Sync vs Async JavaScript](#71-sync-vs-async-javascript) | Why async (non-blocking I/O)<br>Blocking vs non-blocking<br>Single-threaded JS<br>Real-world analogies |
+| 7.2 | [Callbacks — The Old Way](#72-callbacks--the-old-way) | What is a callback<br>Callback hell<br>Inversion of control<br>Why callbacks fail at scale |
+| 7.3 | [Promises — The Modern Way](#73-promises--the-modern-way) | Promise states<br>Creating promises<br>`.then()` `.catch()` `.finally()`<br>Promise chaining<br>Error propagation<br>Return values |
+| 7.4 | [Promise Combinators — All Four](#74-promise-combinators--all-four) | `Promise.all` (fail-fast)<br>`Promise.allSettled` (all results)<br>`Promise.race` (fastest)<br>`Promise.any` (first fulfilled)<br>Polyfill implementations |
+| 7.5 | [async/await — Syntactic Sugar](#75-asyncawait--syntactic-sugar-over-promises) | async returns Promise<br>await pauses execution<br>try/catch<br>Sequential vs Parallel<br>Top-level await<br>async IIFE<br>`for await...of`<br>20+ output questions |
+| 7.6 | [Fetch API](#76-fetch-api) | fetch() syntax<br>Response object<br>GET/POST patterns<br>Error handling quirks<br>AbortController<br>Fetch vs Axios |
+| 7.7 | [Closures + Async — Interview Traps](#77-closures--async--interview-traps) | setTimeout + var loop<br>setTimeout + let (fix)<br>Stale closure in useEffect<br>Classic tricky questions |
+| 7.8 | [Error Handling in Async Code](#78-error-handling-in-async-code) | try/catch with async/await<br>`.catch()` chains<br>Unhandled rejections<br>Global handlers<br>Custom error classes |
+| — | [Mini Project](#-mini-project-async-data-dashboard) | Async Data Dashboard — multi-source parallel fetching |
+| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding Problems |
+
+---
+
+## Table of Contents
+
+- [7.1 Sync vs Async JavaScript](#71-sync-vs-async-javascript)
+- [7.2 Callbacks — The Old Way](#72-callbacks--the-old-way)
+- [7.3 Promises — The Modern Way](#73-promises--the-modern-way)
+- [7.4 Promise Combinators — All Four](#74-promise-combinators--all-four)
+- [7.5 async/await — Syntactic Sugar Over Promises](#75-asyncawait--syntactic-sugar-over-promises)
+- [7.6 Fetch API](#76-fetch-api)
+- [7.7 Closures + Async — Interview Traps](#77-closures--async--interview-traps)
+- [7.8 Error Handling in Async Code](#78-error-handling-in-async-code)
+- [🧪 Mini Project: Async Data Dashboard](#-mini-project-async-data-dashboard)
+- [📝 Practice Section](#-practice-section)
+
+---
+
+## 7.1 Sync vs Async JavaScript
+
+<a id="71-sync-vs-async-javascript"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Synchronous Execution | One task at a time, blocking |
+| Asynchronous Execution | Non-blocking, concurrent-looking |
+| Why JS Is Single-Threaded | One call stack, event loop solves it |
+| Real-World Analogy | Restaurant kitchen metaphor |
+| Problem Async Solves | Network, file I/O without freezing |
+
+---
+
+### What is Synchronous JavaScript?
+
+**Synchronous** code executes **line by line, in order**. Each operation must complete before the next one begins. If a task is slow, everything waits.
+
+> **Hinglish:** Synchronous matlab "ek kaam complete hone ke baad hi doosra start hota hai" — jaise ek cashier line mein ek ek customer serve karta hai. Ek customer lamba time lega, toh sab wait karenge.
+
+```javascript
+// ─── SYNCHRONOUS — Blocking ───────────────────────────────────────
+console.log("1: Start")
+
+// Simulate slow synchronous work:
+function heavyCalculation() {
+  let result = 0
+  for (let i = 0; i < 1_000_000_000; i++) result += i  // 1 billion iterations!
+  return result
+}
+
+const result = heavyCalculation()  // BLOCKS everything for ~1-2 seconds!
+console.log("2: Calculation done:", result)
+console.log("3: End")
+
+// ⚠️ During heavyCalculation(), the browser UI is FROZEN:
+// - Buttons don't respond
+// - Animations stop
+// - Nothing renders
+
+// Order: 1 → (wait) → 2 → 3
+```
+
+---
+
+### What is Asynchronous JavaScript?
+
+**Asynchronous** code allows operations that take time (network requests, file I/O, timers) to run **in the background** — the main thread continues executing other code while waiting.
+
+> **Hinglish:** Asynchronous matlab "kaam background mein ho raha hai, aap aage badhte raho." Jaise restaurant mein waiter order de ke kitchen ko bhej deta hai, phir doosre customers serve karta hai. Khaana ready hone par woh wapas aata hai.
+
+```javascript
+// ─── ASYNCHRONOUS — Non-blocking ─────────────────────────────────
+console.log("1: Start")
+
+// setTimeout is async — callback runs after delay, doesn't block:
+setTimeout(() => {
+  console.log("3: Timeout fired after 2 seconds")
+}, 2000)
+
+// fetch is async — runs in background:
+fetch("https://api.github.com/users/octocat")
+  .then(res => res.json())
+  .then(user => console.log("4: User fetched:", user.login))
+
+console.log("2: End of sync code")
+
+// Order: 1 → 2 → (async things happen) → 3 → 4
+// JS continues to "2" IMMEDIATELY without waiting for setTimeout or fetch!
+```
+
+---
+
+### JavaScript is Single-Threaded — The Core Concept
+
+```mermaid
+flowchart TD
+    subgraph SINGLE["JavaScript — Single Thread"]
+        CS["📚 Call Stack\n(One operation at a time)"]
+    end
+
+    subgraph WEB["Browser / Node.js (Multi-threaded host)"]
+        W1["🌐 Network Thread\n(fetch, XHR)"]
+        W2["⏱️ Timer Thread\n(setTimeout, setInterval)"]
+        W3["📁 File System Thread\n(Node.js fs module)"]
+        W4["🎨 Rendering Thread\n(browser paint)"]
+    end
+
+    subgraph QUEUES["Task Queues"]
+        MQ["⚡ Microtask Queue\n(Promises, queueMicrotask)"]
+        CQ["📋 Callback Queue\n(setTimeout, I/O)"]
+    end
+
+    EL["🔄 Event Loop\nBridges threads to JS"]
+
+    CS <-->|"Delegates async work"| WEB
+    WEB -->|"Work done → callback"| QUEUES
+    QUEUES -->|"Stack empty → move callback"| EL
+    EL -->|"Executes callback"| CS
+
+    style SINGLE fill:#fff9c4
+    style WEB fill:#e3f2fd
+    style QUEUES fill:#e8f5e9
+    style EL fill:#fce4ec
+```
+
+> **Hinglish:** JS ka ek hi thread hai — ek highway ki ek lane. Lekin browser ke paas kai workers hain jo background mein kaam karte hain. Jab unka kaam hota hai, woh callback queue mein daaldete hain. Event loop dekhta rehta hai — jab single lane khaali ho, tab queue se kaam utha ke chalata hai.
+
+---
+
+### Why Async? — Real-World Problems It Solves
+
+```javascript
+// ❌ PROBLEM: Synchronous network request would freeze the browser
+// (There's no sync fetch — this is pseudo-code showing the problem)
+function getUser(id) {
+  // If this was synchronous:
+  const user = syncFetch(`/api/users/${id}`)  // FREEZES browser for 500ms!
+  return user
+}
+
+// ✅ SOLUTION: Async network request — browser stays responsive
+async function getUser(id) {
+  const user = await fetch(`/api/users/${id}`)  // Non-blocking!
+    .then(r => r.json())
+  return user
+}
+
+// Real impact on user experience:
+// Sync: User clicks button → page freezes → user thinks it crashed
+// Async: User clicks button → loading spinner shows → data appears
+```
+
+---
+
+### 🎯 Interview Questions — Section 7.1
+
+**Q1: Why is JavaScript single-threaded? Doesn't that make async impossible?**
+
+> JavaScript is single-threaded because it was originally designed for simple browser interactions — a single thread eliminates concurrency complexities like race conditions and deadlocks. Async is possible because **the host environment** (browser or Node.js) is multi-threaded. When JS delegates async work (network fetch, setTimeout), the host handles it in separate threads. The **Event Loop** then bridges results back to the single JS thread when the call stack is empty. So JS itself runs one thing at a time, but it can delegate work to multiple background threads through the host environment's APIs.
+
+**Q2: What is the difference between blocking and non-blocking code?**
+
+> **Blocking code** stops further execution until the current operation completes — the main thread waits. Any `synchronous` operation that takes time (heavy loops, sync file reads in Node.js) is blocking. **Non-blocking code** initiates an operation and immediately continues to the next line — the operation completes "in the background" and a callback/promise handles the result later. Async I/O (fetch, setTimeout, fs.readFile with callback) is non-blocking. In the browser, long-running synchronous code blocks the UI thread — preventing renders, clicks, and animations.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 7.2 Callbacks — The Old Way
+
+<a id="72-callbacks--the-old-way"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is a Callback? | Function passed to handle async result |
+| Error-First Convention | Node.js `(err, data)` pattern |
+| Callback Hell | Deep nesting problem |
+| Pyramid of Doom | Visual structure |
+| Inversion of Control | Loss of control over execution |
+
+---
+
+### Callbacks — The Foundation
+
+```javascript
+// Basic callback pattern:
+function loadData(url, onSuccess, onError) {
+  // Simulate async work (XMLHttpRequest, in real code):
+  setTimeout(() => {
+    if (url.includes("bad")) {
+      onError(new Error("Failed to load: " + url))
+    } else {
+      onSuccess({ data: "some data from " + url })
+    }
+  }, 1000)
+}
+
+// Usage:
+loadData(
+  "https://api.example.com/users",
+  (result) => console.log("Success:", result),
+  (error)  => console.log("Error:", error.message)
+)
+
+// Node.js convention — error-FIRST callbacks:
+// First argument is always the error (null if none), second is result
+const fs = require("fs")
+
+fs.readFile("./data.txt", "utf8", function(err, data) {
+  if (err) {
+    console.error("File read failed:", err.message)
+    return
+  }
+  console.log("File contents:", data)
+})
+
+// Why error-first? Forces you to handle errors at every step.
+// You CAN'T ignore the error parameter without being explicit about it.
+```
+
+---
+
+### Callback Hell — The Problem
+
+```javascript
+// Real scenario: Get user → Get their orders → Get order details → Get product info
+// ❌ CALLBACK HELL — 5 levels deep:
+
+getUser(userId, function(err, user) {
+  if (err) return handleError(err)
+
+  getOrders(user.id, function(err, orders) {
+    if (err) return handleError(err)
+
+    getOrderDetails(orders[0].id, function(err, orderDetail) {
+      if (err) return handleError(err)
+
+      getProduct(orderDetail.productId, function(err, product) {
+        if (err) return handleError(err)
+
+        getProductReviews(product.id, function(err, reviews) {
+          if (err) return handleError(err)
+
+          // ← Finally! Actual work done here — INDENTED 5 levels!
+          console.log(`
+            User: ${user.name}
+            Order: ${orderDetail.id}
+            Product: ${product.name}
+            Reviews: ${reviews.length}
+          `)
+        })
+      })
+    })
+  })
+})
+```
+
+```mermaid
+flowchart LR
+    A["getUser()\n  ↓"] --> B["  getOrders()\n    ↓"]
+    B --> C["    getOrderDetails()\n      ↓"]
+    C --> D["      getProduct()\n        ↓"]
+    D --> E["        getProductReviews()\n          ← ACTUAL WORK"]
+
+    style A fill:#ffcdd2
+    style B fill:#ffcdd2
+    style C fill:#ffcdd2
+    style D fill:#ffcdd2
+    style E fill:#c8e6c9
+```
+
+---
+
+### Problems With Callbacks
+
+```javascript
+// ─── PROBLEM 1: INVERSION OF CONTROL ────────────────────────────
+// When you pass a callback, you TRUST the receiving function to:
+// ✗ Call it exactly once (what if it calls twice? double charge!)
+// ✗ Call it at the right time
+// ✗ Call it with correct arguments
+// ✗ Handle errors properly
+// ✗ Not swallow errors silently
+
+thirdPartyPayment(amount, function onSuccess() {
+  chargeCard()  // What if thirdPartyPayment calls this TWICE??
+})
+
+// ─── PROBLEM 2: ERROR HANDLING IS REPETITIVE ─────────────────────
+getUser(id, function(err, user) {
+  if (err) return handleError(err)  // ← repeated!
+  getOrders(user.id, function(err, orders) {
+    if (err) return handleError(err)  // ← repeated!
+    getDetails(orders[0], function(err, detail) {
+      if (err) return handleError(err)  // ← repeated!
+      // ... error handling at EVERY LEVEL
+    })
+  })
+})
+
+// ─── PROBLEM 3: SHARED STATE ─────────────────────────────────────
+let userResult, ordersResult  // Shared mutable state — race conditions!
+
+getUser(id, function(err, user) {
+  userResult = user
+  checkDone()
+})
+
+getOrders(id, function(err, orders) {
+  ordersResult = orders
+  checkDone()
+})
+
+function checkDone() {
+  if (userResult && ordersResult) {
+    // Hope they both completed... but what if one errored?
+    process(userResult, ordersResult)
+  }
+}
+```
+
+---
+
+### 🎯 Interview Questions — Section 7.2
+
+**Q1: What is callback hell and what problems does it cause?**
+
+> Callback hell (pyramid of doom) is deeply nested callback code where each async operation's result is needed by the next, creating indentation that grows rightward. Problems: (1) **Readability** — hard to follow the logic flow. (2) **Maintainability** — difficult to add error handling or modify steps. (3) **Error handling repetition** — `if (err) return handleError(err)` at every level. (4) **Inversion of Control** — you lose control over when/how/how many times your callback is called. (5) **No return values** — can't use callbacks with `return` for composition.
+
+**Q2: What is the "Inversion of Control" problem with callbacks?**
+
+> Inversion of Control (IoC) occurs when you pass your callback to a third-party function and lose control over its execution. The third-party decides: when to call it, how many times to call it, with what arguments, and whether to handle errors before calling. If the third-party has a bug and calls your callback twice (e.g., charging a card twice), you have no defense. Promises solve IoC because: `.then()` callbacks are governed by the Promise specification, guaranteed to be called once, called asynchronously, and only after the promise resolves/rejects.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 7.3 Promises — The Modern Way
+
+<a id="73-promises--the-modern-way"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is a Promise? | Object representing eventual value |
+| Promise States | pending → fulfilled / rejected |
+| Creating Promises | `new Promise((resolve, reject) => {})` |
+| Consuming Promises | `.then()`, `.catch()`, `.finally()` |
+| Promise Chaining | Sequential async operations cleanly |
+| Error Propagation | How errors travel down chains |
+| Return Values in `.then()` | What each value does |
+
+---
+
+### What is a Promise?
+
+A **Promise** is an object that represents the **eventual completion or failure** of an asynchronous operation. It acts as a placeholder for a value that isn't available yet.
+
+> **Hinglish:** Promise ek guarantee ki tarah hai — jaise restaurant mein number token lena. "Tumhara khaana ready hoga, hum batayenge (resolve) ya koi problem hogi toh woh bhi batayenge (reject)." Promise states: waiting (pending), done (fulfilled), failed (rejected).
+
+```mermaid
+stateDiagram-v2
+    [*] --> Pending: new Promise()
+
+    Pending --> Fulfilled: resolve(value)
+    Pending --> Rejected: reject(reason)
+
+    Fulfilled --> [*]: .then(onFulfilled)
+    Rejected --> [*]: .catch(onRejected)
+
+    note right of Pending
+        Still waiting...
+        Cannot be changed to
+        another pending state
+    end note
+
+    note right of Fulfilled
+        Value available ✅
+        Immutable — cannot
+        become rejected
+    end note
+
+    note right of Rejected
+        Error occurred ❌
+        Immutable — cannot
+        become fulfilled
+    end note
+```
+
+---
+
+### Creating Promises
+
+```javascript
+// Basic Promise creation:
+const myPromise = new Promise((resolve, reject) => {
+  // Executor function runs SYNCHRONOUSLY!
+  console.log("Executor runs immediately")
+
+  // Simulate async work:
+  setTimeout(() => {
+    const success = Math.random() > 0.5
+
+    if (success) {
+      resolve("Data fetched successfully!")  // Fulfilled
+    } else {
+      reject(new Error("Network failed"))    // Rejected
+    }
+  }, 1000)
+})
+
+// ─── Promise wrapping an API call: ─────────────────────────────────
+function fetchUser(userId) {
+  return new Promise((resolve, reject) => {
+    // Simulate fetch:
+    setTimeout(() => {
+      if (typeof userId !== "number") {
+        reject(new TypeError("userId must be a number"))
+        return
+      }
+      resolve({ id: userId, name: "Rahul Sharma", email: "rahul@example.com" })
+    }, 500)
+  })
+}
+
+// ─── Creating instantly settled Promises: ─────────────────────────
+const alreadyResolved = Promise.resolve("immediate value")
+const alreadyRejected = Promise.reject(new Error("immediate error"))
+
+// Wrapping a callback-based function:
+function readFilePromise(filename) {
+  return new Promise((resolve, reject) => {
+    fs.readFile(filename, "utf8", (err, data) => {
+      if (err) reject(err)
+      else resolve(data)
+    })
+  })
+}
+```
+
+---
+
+### Consuming Promises — `.then()`, `.catch()`, `.finally()`
+
+```javascript
+// ─── .then(onFulfilled, onRejected) ──────────────────────────────
+fetchUser(123)
+  .then(
+    (user) => console.log("Success:", user.name),  // onFulfilled
+    (err)  => console.log("Error:", err.message)    // onRejected (optional)
+  )
+
+// Better pattern — separate .catch():
+fetchUser(123)
+  .then((user) => {
+    console.log("Success:", user.name)
+    return user  // Return value passed to next .then()
+  })
+  .catch((err) => {
+    console.error("Error:", err.message)
+    // Can recover here by returning a value
+    return { name: "Guest" }  // Caught — chain continues with this
+  })
+  .finally(() => {
+    console.log("Always runs — cleanup here")
+    // Doesn't receive value, doesn't affect chain result
+  })
+
+// ─── Promise states are immutable ────────────────────────────────
+const p = new Promise((resolve, reject) => {
+  resolve("first")   // ← This wins!
+  resolve("second")  // Ignored — promise already settled
+  reject("error")    // Ignored — promise already settled
+})
+
+p.then(val => console.log(val))  // "first"
+```
+
+---
+
+### Promise Chaining — The Key Insight
+
+> [!IMPORTANT]
+> **Every `.then()` returns a NEW Promise.** This is what makes chaining possible. The new promise resolves with whatever value the `.then()` callback returns.
+
+```javascript
+// ─── CHAINING PATTERN ────────────────────────────────────────────
+fetchUser(123)
+  .then(user => {
+    console.log("Got user:", user.name)
+    return fetchOrders(user.id)    // Returns a Promise → chain waits!
+  })
+  .then(orders => {
+    console.log("Got orders:", orders.length)
+    return fetchOrderDetails(orders[0].id)  // Returns a Promise → chain waits!
+  })
+  .then(details => {
+    console.log("Got details:", details)
+    return details.productId        // Returns a value → next .then gets it directly
+  })
+  .then(productId => {
+    console.log("Product ID:", productId)
+  })
+  .catch(err => {
+    // ONE .catch() handles ALL errors from any step above!
+    console.error("Somewhere it failed:", err.message)
+  })
+  .finally(() => {
+    console.log("Chain complete")
+  })
+```
+
+---
+
+### What `.then()` Can Return — All Cases
+
+```javascript
+// What you return from .then() affects the next .then():
+
+Promise.resolve("start")
+
+  // Case 1: Return a plain value → next .then() gets it immediately
+  .then(val => {
+    return "plain value"  // → next .then() gets "plain value"
+  })
+
+  // Case 2: Return a Promise → chain waits for it to resolve
+  .then(val => {
+    return fetch("/api/data")  // → chain pauses until fetch resolves
+      .then(r => r.json())
+  })
+
+  // Case 3: Return nothing (undefined)
+  .then(val => {
+    console.log(val)
+    // No return → next .then() gets undefined
+  })
+
+  // Case 4: Throw an error → jumps to .catch()
+  .then(val => {
+    throw new Error("Something went wrong!")
+    // → Skips all remaining .then() → goes to .catch()
+  })
+
+  // Case 5: Return Promise.reject() → same as throwing
+  .then(val => {
+    return Promise.reject(new Error("Explicit rejection"))
+    // → Goes to .catch()
+  })
+
+  .catch(err => {
+    console.log("Caught:", err.message)
+    return "recovered!"  // .catch() also returns a new promise!
+  })
+
+  .then(val => {
+    console.log(val)  // "recovered!" — chain continues after .catch()
+  })
+```
+
+---
+
+### Error Propagation in Promise Chains
+
+```javascript
+function step1() { return Promise.resolve("step1 result") }
+function step2() { return Promise.reject(new Error("step2 failed")) }
+function step3() { return Promise.resolve("step3 result") }
+function step4() { return Promise.resolve("step4 result") }
+
+step1()
+  .then(val => {
+    console.log("step1:", val)  // ✅ Executes
+    return step2()
+  })
+  .then(val => {
+    console.log("step2:", val)  // ❌ SKIPPED — step2 rejected!
+    return step3()
+  })
+  .then(val => {
+    console.log("step3:", val)  // ❌ SKIPPED — still in error state
+    return step4()
+  })
+  .catch(err => {
+    console.log("Error caught:", err.message)  // ✅ "step2 failed"
+    // Returning from .catch() RECOVERS the chain:
+    return "recovered value"
+  })
+  .then(val => {
+    console.log("After catch:", val)  // ✅ "recovered value"
+  })
+```
+
+---
+
+### 🎯 Interview Questions — Section 7.3
+
+**Q1: What are the three states of a Promise?**
+
+> (1) **Pending** — initial state, operation is in progress. The promise can still transition. (2) **Fulfilled** — operation completed successfully. `resolve(value)` was called. `.then(onFulfilled)` callbacks are invoked. (3) **Rejected** — operation failed. `reject(reason)` was called. `.catch(onRejected)` callbacks are invoked. Promises are **immutable once settled** — a fulfilled promise cannot become rejected and vice versa. Only the first call to `resolve` or `reject` matters; subsequent calls are silently ignored.
+
+**Q2: What does `.then()` return?**
+
+> `.then()` always returns a **new Promise**. The new promise resolves with whatever value the `.then()` callback returns: (1) A plain value → new promise resolves with that value. (2) A Promise → new promise "follows" that returned promise (waits for it). (3) Nothing/undefined → new promise resolves with undefined. (4) Thrown error → new promise rejects with that error. This return-a-new-promise behavior is what enables promise chaining.
+
+**Q3: What is the difference between `.then(onFulfilled, onRejected)` and `.then().catch()`?**
+
+> `.then(onFulfilled, onRejected)` — the `onRejected` handler only catches errors from the original promise. If `onFulfilled` throws an error, `onRejected` will NOT catch it — you'd need another handler. `.then(onFulfilled).catch(onRejected)` — the `.catch()` catches errors from BOTH the original promise AND from `onFulfilled`. This is the safer, more common pattern and is equivalent to `.then(onFulfilled, null).catch(onRejected)`.
+
+**Q4: What is the output?**
+
+```javascript
+Promise.resolve(1)
+  .then(x => x + 1)
+  .then(x => { throw new Error("oops") })
+  .catch(err => "caught: " + err.message)
+  .then(x => console.log(x))
+```
+
+> **Output:** `"caught: oops"`
+> Chain: `1` → `2` (x+1) → error thrown → `.catch()` catches it → returns `"caught: oops"` → final `.then()` logs it.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 7.4 Promise Combinators — All Four
+
+<a id="74-promise-combinators--all-four"></a>
+
+### Subtopic Breakdown
+
+| Combinator | Behavior | Fails On | Returns |
+|------------|----------|----------|---------|
+| `Promise.all` | Wait for ALL | First rejection | Array of results |
+| `Promise.allSettled` | Wait for ALL | Never fails | Array of `{status, value/reason}` |
+| `Promise.race` | First to settle | First rejection (if it's first) | Single value |
+| `Promise.any` | First to fulfill | ALL reject (`AggregateError`) | Single value |
+
+---
+
+### Visual Comparison
+
+```mermaid
+gantt
+    title Promise Combinators — Timeline Visualization
+    dateFormat X
+    axisFormat %Ls
+
+    section Promise.all
+    P1 (1s)         :0, 1000
+    P2 (2s)         :0, 2000
+    P3 (500ms)      :0, 500
+    Result (2s)     :milestone, 2000, 0
+
+    section Promise.race
+    P1 (1s)         :0, 1000
+    P2 (2s)         :0, 2000
+    P3 (500ms)      :0, 500
+    Result (500ms)  :milestone, 500, 0
+
+    section Promise.any
+    P1 (1s)         :0, 1000
+    P2 FAIL (500ms) :crit, 0, 500
+    P3 (800ms)      :0, 800
+    Result (800ms)  :milestone, 800, 0
+
+    section Promise.allSettled
+    P1 (1s)         :0, 1000
+    P2 FAIL (500ms) :crit, 0, 500
+    P3 (2s)         :0, 2000
+    Result (2s)     :milestone, 2000, 0
+```
+
+---
+
+### `Promise.all` — All Must Succeed
+
+```javascript
+// Waits for ALL to resolve. If ANY rejects → entire Promise.all rejects.
+
+// ─── USE CASE: Parallel independent API calls ─────────────────────
+const [user, products, cart] = await Promise.all([
+  fetchUser(userId),
+  fetchProducts(),
+  fetchCart(userId)
+])
+// All three fetch simultaneously — total time = SLOWEST request (not sum!)
+
+// ─── FAIL-FAST behavior: ──────────────────────────────────────────
+const p1 = new Promise(resolve => setTimeout(() => resolve("p1 done"), 3000))
+const p2 = new Promise((_, reject) => setTimeout(() => reject(new Error("p2 failed")), 1000))
+const p3 = new Promise(resolve => setTimeout(() => resolve("p3 done"), 2000))
+
+try {
+  const results = await Promise.all([p1, p2, p3])
+} catch (err) {
+  console.log(err.message)  // "p2 failed" — after 1s (not 3s!)
+  // p1 and p3 are still running but results are IGNORED
+}
+
+// ─── Empty array resolves immediately: ────────────────────────────
+const result = await Promise.all([])  // [] immediately
+
+// ─── Non-promise values are accepted: ─────────────────────────────
+const [a, b, c] = await Promise.all([1, "hello", Promise.resolve(true)])
+// [1, "hello", true]
+```
+
+---
+
+### `Promise.allSettled` — Wait for All, No Matter What
+
+```javascript
+// Waits for ALL to settle (resolve OR reject). NEVER rejects itself.
+// Returns array of {status: "fulfilled"|"rejected", value/reason}
+
+// ─── USE CASE: Send notifications, don't fail if some fail ───────
+const results = await Promise.allSettled([
+  sendEmail(user.email),
+  sendSMS(user.phone),
+  sendPushNotification(user.deviceId)
+])
+
+results.forEach((result, index) => {
+  if (result.status === "fulfilled") {
+    console.log(`Notification ${index} sent:`, result.value)
+  } else {
+    console.log(`Notification ${index} failed:`, result.reason.message)
+    // Log but don't crash — other notifications still sent
+  }
+})
+
+// ─── Real example: ────────────────────────────────────────────────
+const apiCalls = [
+  fetch("/api/users"),
+  fetch("/api/products"),
+  fetch("/api/invalid-endpoint")   // This will fail
+]
+
+const settled = await Promise.allSettled(apiCalls)
+// settled = [
+//   { status: "fulfilled", value: Response },
+//   { status: "fulfilled", value: Response },
+//   { status: "rejected",  reason: TypeError: Failed to fetch }
+// ]
+
+const successful = settled
+  .filter(r => r.status === "fulfilled")
+  .map(r => r.value)
+// Only the successful responses!
+```
+
+---
+
+### `Promise.race` — First to Settle Wins
+
+```javascript
+// Resolves/rejects with the FIRST promise to settle (either way)
+
+// ─── USE CASE 1: Timeout pattern ──────────────────────────────────
+function withTimeout(promise, timeoutMs) {
+  const timeout = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error(`Timeout after ${timeoutMs}ms`)), timeoutMs)
+  )
+  return Promise.race([promise, timeout])
+}
+
+try {
+  const user = await withTimeout(
+    fetch("/api/slow-endpoint"),  // This takes 5 seconds
+    3000                          // Timeout after 3 seconds
+  )
+} catch (err) {
+  console.log(err.message)  // "Timeout after 3000ms"
+}
+
+// ─── USE CASE 2: Cache vs Fresh data ─────────────────────────────
+const cachePromise = getFromCache(key)           // Fast (local)
+const networkPromise = fetchFromAPI(endpoint)    // Slow (network)
+
+// Use whichever comes first:
+const data = await Promise.race([cachePromise, networkPromise])
+// If cache responds in 10ms, use that!
+// If network responds first (cache miss), use that
+
+// ─── GOTCHA: Race resolves/rejects with FIRST settler ────────────
+const fast = new Promise(resolve => setTimeout(() => resolve("fast"), 100))
+const slow = new Promise(resolve => setTimeout(() => resolve("slow"), 1000))
+const failFast = new Promise((_, reject) => setTimeout(() => reject("fail!"), 50))
+
+await Promise.race([fast, slow])     // "fast" (resolves after 100ms)
+await Promise.race([failFast, fast]) // Rejects with "fail!" after 50ms
+```
+
+---
+
+### `Promise.any` — First to Fulfill
+
+```javascript
+// Resolves with the FIRST promise to FULFILL (ignores rejections).
+// Only rejects if ALL promises reject → AggregateError
+
+// ─── USE CASE: Try multiple sources, use fastest successful ──────
+async function fetchWithFallback(urls) {
+  return Promise.any(
+    urls.map(url => fetch(url).then(r => r.json()))
+  )
+}
+
+// Try multiple CDN mirrors — use fastest that responds:
+const data = await fetchWithFallback([
+  "https://cdn1.example.com/data.json",
+  "https://cdn2.example.com/data.json",
+  "https://cdn3.example.com/data.json",
+])
+
+// ─── AggregateError when ALL fail: ───────────────────────────────
+try {
+  const result = await Promise.any([
+    Promise.reject(new Error("server 1 down")),
+    Promise.reject(new Error("server 2 down")),
+    Promise.reject(new Error("server 3 down")),
+  ])
+} catch (err) {
+  console.log(err instanceof AggregateError)  // true
+  console.log(err.errors)  // [Error: server 1 down, Error: server 2 down, Error: server 3 down]
+  console.log(err.message) // "All promises were rejected"
+}
+
+// ─── Comparison with Promise.race: ───────────────────────────────
+// race: first to SETTLE (resolve OR reject)
+// any:  first to FULFILL (resolve only — ignores rejections)
+
+const reject1st = Promise.reject("rejected")
+const resolve2nd = new Promise(res => setTimeout(() => res("resolved"), 100))
+
+Promise.race([reject1st, resolve2nd])   // Rejects! (reject1st settles first)
+Promise.any([reject1st, resolve2nd])    // "resolved"! (ignores rejection, waits for fulfill)
+```
+
+---
+
+### All Four — Quick Comparison Table
+
+```javascript
+const p1 = Promise.resolve("A")              // Resolves: "A"
+const p2 = Promise.reject(new Error("B"))   // Rejects: Error("B")
+const p3 = Promise.resolve("C")              // Resolves: "C"
+
+// Promise.all:
+Promise.all([p1, p2, p3])
+// → Rejects with Error("B") — fails on first rejection
+
+// Promise.allSettled:
+Promise.allSettled([p1, p2, p3])
+// → [
+//     { status: "fulfilled", value: "A" },
+//     { status: "rejected", reason: Error("B") },
+//     { status: "fulfilled", value: "C" }
+//   ]
+
+// Promise.race:
+Promise.race([p1, p2, p3])
+// → "A" (first to settle — p1 is immediately resolved)
+
+// Promise.any:
+Promise.any([p1, p2, p3])
+// → "A" (first to FULFILL — p1 fulfills immediately, p2 rejection ignored)
+
+// What if ALL reject?
+Promise.any([p2, Promise.reject("X")])
+// → AggregateError: All promises were rejected
+```
+
+---
+
+### Implementing Promise Combinators from Scratch
+
+> [!IMPORTANT]
+> **Implementing Promise.all and Promise.allSettled from scratch is frequently asked in senior-level JavaScript interviews** at companies like Google, Amazon, and Flipkart.
+
+```javascript
+// ─── IMPLEMENT Promise.all ────────────────────────────────────────
+function myPromiseAll(promises) {
+  return new Promise((resolve, reject) => {
+    // Handle empty array:
+    if (promises.length === 0) {
+      resolve([])
+      return
+    }
+
+    const results = new Array(promises.length)
+    let resolvedCount = 0
+
+    promises.forEach((promise, index) => {
+      // Wrap in Promise.resolve to handle non-promise values:
+      Promise.resolve(promise)
+        .then(value => {
+          results[index] = value       // Store at correct index (preserve order!)
+          resolvedCount++
+
+          if (resolvedCount === promises.length) {
+            resolve(results)           // All resolved → resolve with array
+          }
+        })
+        .catch(reject)                 // ANY rejection → reject immediately
+    })
+  })
+}
+
+// Tests:
+myPromiseAll([
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3)
+]).then(console.log)  // [1, 2, 3] ✅
+
+myPromiseAll([
+  Promise.resolve(1),
+  Promise.reject(new Error("oops")),
+  Promise.resolve(3)
+]).catch(e => console.log(e.message))  // "oops" ✅
+
+myPromiseAll([1, "hello", true]).then(console.log)  // [1, "hello", true] ✅
+myPromiseAll([]).then(console.log)                   // [] ✅
+
+// ─── IMPLEMENT Promise.allSettled ────────────────────────────────
+function myPromiseAllSettled(promises) {
+  return new Promise(resolve => {
+    if (promises.length === 0) {
+      resolve([])
+      return
+    }
+
+    const results = new Array(promises.length)
+    let settledCount = 0
+
+    promises.forEach((promise, index) => {
+      Promise.resolve(promise)
+        .then(value => {
+          results[index] = { status: "fulfilled", value }
+        })
+        .catch(reason => {
+          results[index] = { status: "rejected", reason }
+        })
+        .finally(() => {
+          settledCount++
+          if (settledCount === promises.length) {
+            resolve(results)   // ALWAYS resolves — never rejects
+          }
+        })
+    })
+  })
+}
+
+// ─── IMPLEMENT Promise.race ───────────────────────────────────────
+function myPromiseRace(promises) {
+  return new Promise((resolve, reject) => {
+    // First to settle wins — just forward to outer promise:
+    promises.forEach(promise => {
+      Promise.resolve(promise)
+        .then(resolve)   // First resolve wins (subsequent calls ignored)
+        .catch(reject)   // First reject wins (if it's first to settle)
+    })
+  })
+}
+
+// ─── IMPLEMENT Promise.any ────────────────────────────────────────
+function myPromiseAny(promises) {
+  return new Promise((resolve, reject) => {
+    if (promises.length === 0) {
+      reject(new AggregateError([], "All promises were rejected"))
+      return
+    }
+
+    const errors = new Array(promises.length)
+    let rejectedCount = 0
+
+    promises.forEach((promise, index) => {
+      Promise.resolve(promise)
+        .then(resolve)   // First to FULFILL wins!
+        .catch(reason => {
+          errors[index] = reason
+          rejectedCount++
+          if (rejectedCount === promises.length) {
+            // ALL rejected → AggregateError
+            reject(new AggregateError(errors, "All promises were rejected"))
+          }
+        })
+    })
+  })
+}
+```
+
+---
+
+### 🎯 Interview Questions — Section 7.4
+
+**Q1: What is the difference between `Promise.all` and `Promise.allSettled`?**
+
+> `Promise.all` **fails fast** — if any promise rejects, the entire `Promise.all` rejects immediately with that reason, ignoring other pending promises. `Promise.allSettled` **always resolves** — it waits for every promise to settle (either fulfill or reject) and returns an array of result objects with `status: "fulfilled"/"rejected"` and `value/reason`. Use `Promise.all` when all promises MUST succeed. Use `Promise.allSettled` when you want all results regardless of individual failures (e.g., sending notifications to multiple channels where partial success is acceptable).
+
+**Q2: What is the difference between `Promise.race` and `Promise.any`?**
+
+> `Promise.race` resolves/rejects with **whichever promise settles first** — whether it fulfills OR rejects. If the first to settle is a rejection, `Promise.race` rejects. `Promise.any` resolves with **whichever promise fulfills first** — it ignores rejections until all have rejected. Only when every promise rejects does `Promise.any` reject with an `AggregateError`. Use `Promise.race` for timeout patterns (where a timeout rejection should win). Use `Promise.any` for trying multiple sources where you want the first successful result (even if some fail).
+
+**Q3: Implement `Promise.all` from scratch.**
+
+> (Full implementation provided in code section above)
+> Key points: (1) Return a new Promise. (2) Track results by index to preserve order — don't just push to array. (3) Use a counter to know when all resolved. (4) Wrap each in `Promise.resolve()` to handle non-Promise values. (5) Forward any `.catch()` to the outer `reject` immediately.
+
+**Q4: What happens with `Promise.all([])` (empty array)?**
+
+> `Promise.all([])` resolves immediately with an empty array `[]`. This is by specification — there are "all zero" promises fulfilled, so the condition is vacuously satisfied. Similarly, `Promise.race([])` returns a permanently pending promise (never resolves or rejects since there's nothing to race). `Promise.any([])` rejects immediately with `AggregateError` since there are no promises to fulfill.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 7.5 async/await — Syntactic Sugar Over Promises
+
+<a id="75-asyncawait--syntactic-sugar-over-promises"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| `async` keyword | Always returns a Promise |
+| `await` keyword | Pause until Promise settles |
+| Error handling | `try/catch` blocks |
+| Sequential vs Parallel | When to use which |
+| Top-level `await` | ES2022 in modules |
+| `async` IIFE | Wrap async in self-executing function |
+| `for await...of` | Async iteration |
+| 20+ Output Questions | All the interview traps |
+
+---
+
+### `async` Functions — Always Return a Promise
+
+```javascript
+// Every async function ALWAYS returns a Promise:
+
+async function returnsValue() {
+  return 42                    // Promise.resolve(42)
+}
+
+async function returnsUndefined() {
+  // No return statement       // Promise.resolve(undefined)
+}
+
+async function throwsError() {
+  throw new Error("oops")     // Promise.reject(Error("oops"))
+}
+
+async function returnsPromise() {
+  return Promise.resolve(99)  // Promise.resolve(99) — not double-wrapped!
+}
+
+// Usage:
+returnsValue().then(console.log)     // 42
+returnsUndefined().then(console.log) // undefined
+throwsError().catch(console.log)     // Error: oops
+returnsPromise().then(console.log)   // 99
+
+// Proof:
+const result = returnsValue()
+console.log(result instanceof Promise)  // true
+```
+
+---
+
+### `await` — Pause Until Resolved
+
+```javascript
+// await can ONLY be used inside async functions (or top-level in ES modules)
+
+async function fetchUserProfile(userId) {
+  // Without await, this would just get a Promise:
+  // const user = fetchUser(userId)  // ← Promise object, not user!
+
+  // WITH await — pauses here until fetchUser resolves:
+  const user = await fetchUser(userId)          // user = actual user object
+  const orders = await fetchOrders(user.id)     // orders = actual orders array
+  const profile = await buildProfile(user, orders)
+
+  return profile  // async fn returns Promise.resolve(profile)
+}
+
+// await works with any Promise:
+const num = await Promise.resolve(42)     // 42
+const str = await new Promise(res => setTimeout(() => res("hello"), 1000))  // "hello"
+const val = await "not a promise"         // "not a promise" (non-promises wrap in resolve)
+
+// Under the hood — async/await is just Promise syntax sugar:
+// async function fn() {
+//   const a = await step1()
+//   const b = await step2(a)
+//   return b
+// }
+// IS EQUIVALENT TO:
+// function fn() {
+//   return step1()
+//     .then(a => step2(a))
+//     .then(b => b)
+// }
+```
+
+---
+
+### Error Handling with `try/catch`
+
+```javascript
+// ─── BASIC TRY/CATCH ─────────────────────────────────────────────
+async function getUserSafe(id) {
+  try {
+    const user = await fetchUser(id)
+    const orders = await fetchOrders(user.id)
+    return { user, orders }
+  } catch (err) {
+    // Catches errors from BOTH awaits:
+    console.error("Failed:", err.message)
+    return null   // Return fallback
+  } finally {
+    console.log("Always runs")
+  }
+}
+
+// ─── GRANULAR ERROR HANDLING ──────────────────────────────────────
+async function processOrder(orderId) {
+  let order
+
+  // Handle specific step failures:
+  try {
+    order = await fetchOrder(orderId)
+  } catch (err) {
+    throw new Error(`Failed to fetch order: ${err.message}`)
+  }
+
+  let payment
+  try {
+    payment = await processPayment(order.total)
+  } catch (err) {
+    // Can recover — try alternate payment method:
+    payment = await processAlternatePayment(order.total)
+  }
+
+  return { order, payment }
+}
+
+// ─── ASYNC ERROR WITHOUT TRY/CATCH ───────────────────────────────
+// If you don't use try/catch, the async function returns a rejected Promise:
+async function dangerous() {
+  const data = await fetch("/invalid-url").then(r => r.json())
+  return data
+}
+
+dangerous()
+  .then(console.log)
+  .catch(err => console.log("Caught in .catch():", err.message))
+// ✅ Can mix async/await AND .then()/.catch()!
+```
+
+---
+
+### Sequential vs Parallel Execution
+
+> **Hinglish:** Sequential matlab "ek ke baad ek" — pehla complete ho, phir doosra start. Parallel matlab "sab ek saath" — teeno simultaneously chalen. Parallel hamesha faster hota hai jab koi ek doosre par depend nahi karta.
+
+```javascript
+// ─── SEQUENTIAL (WATERFALL) — each waits for previous ────────────
+async function sequentialFetch() {
+  const start = Date.now()
+
+  const user = await fetchUser(1)       // 500ms — waits here
+  const orders = await fetchOrders(2)   // 500ms — then waits here
+  const products = await fetchProducts()  // 500ms — then waits here
+
+  console.log(`Sequential: ${Date.now() - start}ms`)  // ~1500ms (500+500+500)
+  return { user, orders, products }
+}
+
+// ─── PARALLEL — all start simultaneously ─────────────────────────
+async function parallelFetch() {
+  const start = Date.now()
+
+  const [user, orders, products] = await Promise.all([
+    fetchUser(1),       // All three start at the same time!
+    fetchOrders(2),
+    fetchProducts()
+  ])
+
+  console.log(`Parallel: ${Date.now() - start}ms`)  // ~500ms (slowest one)
+  return { user, orders, products }
+}
+
+// ─── COMMON MISTAKE — SEQUENTIAL WHEN YOU MEANT PARALLEL ─────────
+async function mistakelySequential() {
+  // These look parallel but are sequential because of await!
+  const userPromise = fetchUser(1)       // Started
+  const ordersPromise = fetchOrders(2)   // Started (before await — good!)
+
+  const user = await userPromise         // Wait for user
+  const orders = await ordersPromise     // THEN wait for orders
+
+  // ✅ This is actually parallel (promises started before awaiting)
+  // But it's confusing — just use Promise.all for clarity
+}
+
+// ─── WHEN TO USE SEQUENTIAL ───────────────────────────────────────
+// Use sequential when the next call DEPENDS on the previous result:
+async function dependentCalls() {
+  const user = await fetchUser(1)              // Must have user first
+  const orders = await fetchOrders(user.id)   // Need user.id!
+  return { user, orders }
+}
+
+// ─── WHEN TO USE PARALLEL ─────────────────────────────────────────
+// Use parallel when calls are INDEPENDENT:
+async function independentCalls() {
+  const [user, stats, notifications] = await Promise.all([
+    fetchUser(1),          // Doesn't need others
+    fetchGlobalStats(),    // Doesn't need others
+    fetchNotifications(1)  // Can start without user (if we know ID already)
+  ])
+  return { user, stats, notifications }
+}
+```
+
+---
+
+### Top-Level `await` and async IIFE
+
+```javascript
+// ─── TOP-LEVEL AWAIT (ES2022 in modules) ─────────────────────────
+// Works in ES modules (.mjs files or <script type="module">):
+
+// In a .mjs file or module:
+const config = await fetch("/config.json").then(r => r.json())
+console.log(config)  // ✅ Works at top level in modules!
+
+// ─── ASYNC IIFE — for environments without top-level await ────────
+;(async function() {
+  const data = await fetchData()
+  console.log(data)
+})()
+
+// Arrow async IIFE:
+;(async () => {
+  try {
+    const result = await doSomethingAsync()
+    console.log(result)
+  } catch (err) {
+    console.error(err)
+  }
+})()
+
+// ─── for await...of — Async Iteration ────────────────────────────
+async function processStream() {
+  const urls = [
+    "https://api.example.com/1",
+    "https://api.example.com/2",
+    "https://api.example.com/3"
+  ]
+
+  // Process sequentially (each waits for previous):
+  for await (const data of fetchPages(urls)) {
+    console.log("Processing:", data)
+  }
+}
+
+// Async generator (works with for await...of):
+async function* fetchPages(urls) {
+  for (const url of urls) {
+    const response = await fetch(url)
+    const data = await response.json()
+    yield data  // Yields one at a time
+  }
+}
+```
+
+---
+
+### 🎯 20+ async/await Output Questions
+
+**Q1: What is the output?**
+
+```javascript
+async function a() { return 1 }
+async function b() { return Promise.resolve(2) }
+async function c() { throw new Error("oops") }
+
+console.log(a())
+a().then(console.log)
+b().then(console.log)
+c().catch(e => console.log(e.message))
+```
+
+> **Output:**
+> ```
+> Promise { <pending> }
+> 1
+> 2
+> oops
+> ```
+> `a()` immediately logs the Promise object. `.then()` callbacks run as microtasks after sync code.
+
+---
+
+**Q2: What is the output?**
+
+```javascript
+async function fetchData() {
+  console.log("1: start")
+  const data = await Promise.resolve("data")
+  console.log("3: got", data)
+  return data
+}
+
+console.log("A: before")
+fetchData()
+console.log("B: after")
+```
+
+> **Output:** `A: before` → `1: start` → `B: after` → `3: got data`
+> `fetchData()` starts synchronously (logs "1: start"), then `await` suspends the function and control returns to the caller (logs "B: after"). The continuation runs as a microtask.
+
+---
+
+**Q3: What is the output?**
+
+```javascript
+async function fn() {
+  console.log(1)
+  await null
+  console.log(2)
+  await null
+  console.log(3)
+}
+
+fn()
+console.log(4)
+```
+
+> **Output:** `1` → `4` → `2` → `3`
+> `1`: sync. `await null` suspends fn, returns to caller. `4`: sync (after fn call). Then microtasks run: `2`, then `3`.
+
+---
+
+**Q4: What is the output?**
+
+```javascript
+async function main() {
+  const result = await new Promise((resolve) => {
+    setTimeout(() => resolve(42), 0)
+  })
+  console.log("Result:", result)
+}
+
+main()
+console.log("After main()")
+```
+
+> **Output:** `After main()` → `Result: 42`
+> `main()` starts, hits `await`, suspends. `After main()` logs sync. setTimeout fires (macrotask), resolves promise → continuation runs → `Result: 42`.
+
+---
+
+**Q5: What is the output?**
+
+```javascript
+console.log("start")
+
+async function asyncFunc() {
+  console.log("inside async")
+  const res = await "resolved"
+  console.log("after await:", res)
+}
+
+asyncFunc()
+Promise.resolve().then(() => console.log("promise then"))
+console.log("end")
+```
+
+> **Output:** `start` → `inside async` → `end` → `after await: resolved` → `promise then`
+>
+> Wait — this is TRICKY! Let me trace:
+> 1. `start` (sync)
+> 2. `asyncFunc()` called: `inside async` (sync inside async — runs before await)
+> 3. `await "resolved"` → suspends asyncFunc, queues continuation as microtask
+> 4. `Promise.resolve().then(...)` → queues as microtask
+> 5. `end` (sync)
+> 6. Microtask 1: `after await: resolved` (asyncFunc continuation)
+> 7. Microtask 2: `promise then`
+>
+> **Actual output:** `start` → `inside async` → `end` → `after await: resolved` → `promise then`
+
+---
+
+**Q6: What is the output?**
+
+```javascript
+async function getData() {
+  return await Promise.resolve("data")
+}
+
+async function main() {
+  const result = await getData()
+  console.log(result)
+}
+
+main()
+```
+
+> **Output:** `data`
+> `getData()` awaits `Promise.resolve("data")` → returns "data". `main` awaits `getData()` → gets "data" → logs "data". Note: `return await promise` inside async creates an extra microtask tick vs `return promise` directly, but the result is the same.
+
+---
+
+**Q7: Can `useEffect` callback be `async`? What's the pattern?**
+
+```javascript
+// ❌ WRONG — async directly on useEffect:
+useEffect(async () => {
+  const data = await fetchData()  // Works, but...
+  setData(data)
+  // PROBLEM: async function returns a Promise
+  // useEffect expects: return void OR return cleanup function
+  // Returning a Promise (async fn) → React sees it as a "cleanup fn"
+  // → React calls Promise.then() expecting it to be a cleanup fn → Bug!
+}, [])
+
+// ✅ CORRECT — define async function inside:
+useEffect(() => {
+  async function loadData() {
+    const data = await fetchData()
+    setData(data)
+  }
+  loadData()
+  // OR: loadData().catch(console.error)
+  // Returns void (not a Promise) → React is happy
+
+  return () => {
+    // Actual cleanup
+  }
+}, [])
+
+// ✅ ALSO CORRECT — IIFE pattern:
+useEffect(() => {
+  ;(async () => {
+    const data = await fetchData()
+    setData(data)
+  })()
+}, [])
+```
+
+---
+
+**Q8: What is the output?**
+
+```javascript
+async function run() {
+  try {
+    const result = await Promise.reject(new Error("rejected!"))
+    console.log("success:", result)
+  } catch (err) {
+    console.log("caught:", err.message)
+  }
+}
+
+run()
+```
+
+> **Output:** `caught: rejected!`
+> `await Promise.reject(...)` throws the rejection inside the async function, which try/catch captures.
+
+---
+
+**Q9: What is the output?**
+
+```javascript
+const p = new Promise(resolve => {
+  console.log("executor")
+  resolve("value")
+})
+
+async function fn() {
+  console.log("before await")
+  const val = await p
+  console.log("after await:", val)
+}
+
+fn()
+console.log("after fn()")
+```
+
+> **Output:** `executor` → `before await` → `after fn()` → `after await: value`
+> Promise executor runs synchronously. `fn()` runs: logs "before await", then `await p` suspends. "after fn()" logs sync. Microtask: "after await: value".
+
+---
+
+**Q10: What is the output?**
+
+```javascript
+async function sequential() {
+  const a = await new Promise(r => setTimeout(() => r("A"), 1000))
+  const b = await new Promise(r => setTimeout(() => r("B"), 1000))
+  return [a, b]
+}
+
+async function parallel() {
+  const [a, b] = await Promise.all([
+    new Promise(r => setTimeout(() => r("A"), 1000)),
+    new Promise(r => setTimeout(() => r("B"), 1000))
+  ])
+  return [a, b]
+}
+
+console.time("seq")
+await sequential()
+console.timeEnd("seq")   // ~2000ms
+
+console.time("par")
+await parallel()
+console.timeEnd("par")   // ~1000ms
+```
+
+> Sequential takes ~2000ms (waits A then B). Parallel takes ~1000ms (A and B run simultaneously).
+
+---
+
+**Q11: What is the output?**
+
+```javascript
+async function func() {
+  return await 1
+}
+
+async function func2() {
+  return 1
+}
+
+func().then(x => console.log(x))
+func2().then(x => console.log(x))
+```
+
+> **Output:** `1` then `1` (both)
+> `return await 1` — `await 1` wraps in `Promise.resolve(1)` and awaits it, creating an extra microtask tick. `return 1` — directly resolves. The result is the same (`1`) but `func2` resolves one microtask tick sooner. In practice, `return await value` inside async is redundant UNLESS in a try/catch (where it matters for error catching).
+
+---
+
+**Q12: What is the output?**
+
+```javascript
+async function throwInAsync() {
+  throw new Error("async error")
+}
+
+async function callThrow() {
+  const result = await throwInAsync()
+  console.log("never reached")
+  return result
+}
+
+callThrow()
+  .then(() => console.log("success"))
+  .catch(e => console.log("caught:", e.message))
+```
+
+> **Output:** `caught: async error`
+> `throwInAsync()` throws → callThrow's `await` converts to rejection → `.catch()` handles it.
+
+---
+
+**Q13: Fix this — make it actually parallel**
+
+```javascript
+// ❌ This is sequential despite looking parallel:
+async function getMutiple() {
+  const p1 = fetchA()  // Promise started
+  const p2 = fetchB()  // Promise started
+
+  const a = await p1   // Awaits p1
+  const b = await p2   // Awaits p2 (but p2 may already be done!)
+  return [a, b]
+}
+
+// ✅ This IS parallel AND cleaner:
+async function getMultiple() {
+  const [a, b] = await Promise.all([fetchA(), fetchB()])
+  return [a, b]
+}
+```
+
+> The first IS actually parallel (both promises start before any await), but it's confusing. `Promise.all` is the idiomatic parallel pattern and handles errors properly.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 7.6 Fetch API
+
+<a id="76-fetch-api"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| `fetch()` syntax | URL, options object |
+| Response object | `.json()`, `.text()`, `.blob()`, `.ok`, `.status` |
+| GET request | Basic data fetching |
+| POST with JSON | Sending data |
+| Headers | Auth tokens, content type |
+| Error handling | Why fetch doesn't throw on 4xx |
+| AbortController | Cancelling in-flight requests |
+| Fetch vs Axios | Comparison and when to use each |
+
+---
+
+### The `fetch()` API — Complete Guide
+
+```javascript
+// Basic signature:
+fetch(url, options?)
+// Returns: Promise<Response>
+
+// ─── GET REQUEST ─────────────────────────────────────────────────
+async function getUser(id) {
+  const response = await fetch(`https://api.example.com/users/${id}`)
+
+  // ⚠️ CRITICAL: fetch does NOT throw on 4xx/5xx!
+  // You must check response.ok manually:
+  if (!response.ok) {
+    throw new Error(`HTTP Error! Status: ${response.status} ${response.statusText}`)
+  }
+
+  const user = await response.json()  // Parse JSON body (also returns Promise!)
+  return user
+}
+
+// ─── RESPONSE OBJECT ─────────────────────────────────────────────
+const response = await fetch("/api/data")
+
+response.ok          // true if status 200-299
+response.status      // HTTP status code (200, 404, 500...)
+response.statusText  // "OK", "Not Found", "Internal Server Error"
+response.headers     // Headers object (iterable)
+response.url         // Final URL (after redirects)
+response.redirected  // Was there a redirect?
+response.type        // "basic", "cors", "opaque"
+
+// Body parsing methods (each returns a Promise, CONSUME ONLY ONCE):
+response.json()    // Parse as JSON
+response.text()    // Parse as string
+response.blob()    // Parse as Blob (binary data, images, files)
+response.arrayBuffer()  // Parse as ArrayBuffer
+response.formData()     // Parse as FormData
+```
+
+---
+
+### POST, PUT, DELETE Requests
+
+```javascript
+// ─── POST — Create resource ───────────────────────────────────────
+async function createUser(userData) {
+  const response = await fetch("https://api.example.com/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",      // Tell server it's JSON
+      "Authorization": `Bearer ${getToken()}`, // Auth token
+      "Accept": "application/json",            // Tell server what we want back
+    },
+    body: JSON.stringify(userData)             // Serialize to JSON string
+  })
+
+  if (!response.ok) {
+    const errorBody = await response.json()    // Server may return error details
+    throw new Error(errorBody.message ?? `Status ${response.status}`)
+  }
+
+  return response.json()
+}
+
+// Usage:
+const newUser = await createUser({
+  name: "Rahul Sharma",
+  email: "rahul@example.com",
+  age: 25
+})
+
+// ─── PUT — Replace resource ───────────────────────────────────────
+async function updateUser(id, userData) {
+  const response = await fetch(`https://api.example.com/users/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userData)
+  })
+  if (!response.ok) throw new Error(`Failed: ${response.status}`)
+  return response.json()
+}
+
+// ─── DELETE — Remove resource ─────────────────────────────────────
+async function deleteUser(id) {
+  const response = await fetch(`https://api.example.com/users/${id}`, {
+    method: "DELETE",
+    headers: { "Authorization": `Bearer ${getToken()}` }
+  })
+  if (!response.ok) throw new Error(`Delete failed: ${response.status}`)
+  // 204 No Content — no body to parse
+  if (response.status === 204) return null
+  return response.json()
+}
+
+// ─── QUERY PARAMETERS ─────────────────────────────────────────────
+async function searchUsers(query, page = 1, limit = 10) {
+  const params = new URLSearchParams({
+    q: query,
+    page: page.toString(),
+    limit: limit.toString()
+  })
+
+  const response = await fetch(`/api/users?${params}`)
+  // URL: /api/users?q=rahul&page=1&limit=10
+  return response.json()
+}
+```
+
+---
+
+### Why Fetch Doesn't Throw on 4xx/5xx
+
+> [!IMPORTANT]
+> **This is a very common interview gotcha.** `fetch()` only throws a `TypeError` for **network errors** (DNS failure, no internet connection). HTTP error responses (404, 500, etc.) resolve successfully — you must check `response.ok` manually.
+
+```javascript
+// ❌ COMMON MISTAKE — treating all HTTP errors as fetch errors:
+async function badFetch() {
+  try {
+    const data = await fetch("/api/nonexistent").then(r => r.json())
+    // If endpoint returns 404, data will be the 404 error body — not an error!
+    console.log(data)  // Might be { error: "Not Found" } — no exception thrown!
+  } catch (err) {
+    // This only catches NETWORK ERRORS (no internet, DNS fail)
+    // NOT 404, 500 responses!
+  }
+}
+
+// ✅ CORRECT pattern — always check response.ok:
+async function goodFetch(url) {
+  let response
+  try {
+    response = await fetch(url)
+  } catch (networkError) {
+    throw new Error(`Network error: ${networkError.message}`)
+  }
+
+  if (!response.ok) {
+    const body = await response.text()  // Try to get error details
+    throw new Error(`HTTP ${response.status}: ${body}`)
+  }
+
+  return response.json()
+}
+
+// ─── Reusable fetch wrapper: ──────────────────────────────────────
+async function apiFetch(url, options = {}) {
+  const defaultOptions = {
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    }
+  }
+
+  const mergedOptions = {
+    ...defaultOptions,
+    ...options,
+    headers: {
+      ...defaultOptions.headers,
+      ...options.headers,
+    }
+  }
+
+  const response = await fetch(url, mergedOptions)
+
+  if (!response.ok) {
+    const contentType = response.headers.get("Content-Type") ?? ""
+    const errorData = contentType.includes("json")
+      ? await response.json()
+      : await response.text()
+
+    const error = new Error(
+      typeof errorData === "object"
+        ? errorData.message ?? JSON.stringify(errorData)
+        : errorData
+    )
+    error.status = response.status
+    error.data = errorData
+    throw error
+  }
+
+  if (response.status === 204) return null  // No Content
+  return response.json()
+}
+```
+
+---
+
+### AbortController — Cancelling Requests
+
+```javascript
+// ─── Basic cancellation ───────────────────────────────────────────
+const controller = new AbortController()
+const signal = controller.signal
+
+const fetchPromise = fetch("/api/large-data", { signal })
+
+// Cancel after 5 seconds:
+const timeout = setTimeout(() => controller.abort(), 5000)
+
+try {
+  const data = await fetchPromise
+  clearTimeout(timeout)  // Cancel the timeout if fetch succeeded
+  return data.json()
+} catch (err) {
+  if (err.name === "AbortError") {
+    console.log("Fetch was cancelled")
+    return null
+  }
+  throw err  // Re-throw actual errors
+}
+
+// ─── React pattern — cancel on component unmount: ────────────────
+function useUserData(userId) {
+  const [data, setData] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+    setLoading(true)
+
+    fetch(`/api/users/${userId}`, { signal: controller.signal })
+      .then(r => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`)
+        return r.json()
+      })
+      .then(userData => {
+        setData(userData)
+        setError(null)
+      })
+      .catch(err => {
+        if (err.name !== "AbortError") {  // Don't show error for cancelled requests
+          setError(err.message)
+        }
+      })
+      .finally(() => setLoading(false))
+
+    return () => controller.abort()  // ← Cancel on cleanup!
+  }, [userId])
+
+  return { data, loading, error }
+}
+
+// ─── Search with debounce + AbortController: ─────────────────────
+function SearchComponent() {
+  const controllerRef = useRef(null)
+
+  const search = useMemo(
+    () => debounce(async (query) => {
+      controllerRef.current?.abort()  // Cancel previous request
+      controllerRef.current = new AbortController()
+
+      try {
+        const res = await fetch(`/api/search?q=${query}`, {
+          signal: controllerRef.current.signal
+        })
+        const results = await res.json()
+        setResults(results)
+      } catch (err) {
+        if (err.name !== "AbortError") setError(err.message)
+      }
+    }, 300),
+    []
+  )
+}
+```
+
+---
+
+### Fetch vs Axios — Comparison
+
+| Feature | `fetch` (built-in) | `axios` (library) |
+|---------|--------------------|--------------------|
+| **Available** | Built-in (all modern browsers, Node 18+) | Needs `npm install axios` |
+| **Throws on 4xx/5xx** | ❌ No — must check `response.ok` | ✅ Yes — automatic |
+| **JSON auto-parse** | ❌ Must call `response.json()` | ✅ Automatic |
+| **Request interceptors** | ❌ No native support | ✅ Built-in |
+| **Response interceptors** | ❌ No native support | ✅ Built-in |
+| **Progress tracking** | ❌ Not built-in | ✅ `onUploadProgress`, `onDownloadProgress` |
+| **Timeout** | Via AbortController | Built-in `timeout` option |
+| **Cancellation** | AbortController | `CancelToken` (deprecated) or AbortController |
+| **CSRF protection** | Manual | Automatic (with `xsrfCookieName`) |
+| **Node.js** | Node 18+ | Yes (all versions via `node` adapter) |
+| **Bundle size** | Zero | ~14KB |
+
+---
+
+### 🎯 Interview Questions — Section 7.6
+
+**Q1: Why doesn't `fetch` throw an error for 404 or 500 responses?**
+
+> `fetch()` only rejects with a `TypeError` when there's a **network-level failure** — DNS resolution failure, no internet connection, CORS block, etc. A 404 or 500 response is a valid HTTP response — the server communicated something successfully. `fetch()` treats this as a successful network operation. You must check `response.ok` (true for status 200-299) or `response.status` to handle HTTP-level errors.
+
+**Q2: What is `AbortController` and why is it important in React?**
+
+> `AbortController` allows you to cancel in-flight `fetch()` requests. You create a controller, pass its `signal` to `fetch`, and call `controller.abort()` to cancel. In React, this is crucial for preventing "state update on unmounted component" errors — when a component unmounts before its fetch completes, you abort the request in `useEffect`'s cleanup function. Without this, the fetch completes after unmounting, tries to call `setState`, and either logs a warning (React 16/17) or causes bugs (React 18+).
+
+**Q3: When would you choose Axios over the native Fetch API?**
+
+> Choose Axios when: (1) You need **automatic error throwing** for 4xx/5xx without manual `response.ok` checks. (2) You need **request/response interceptors** for cross-cutting concerns like adding auth headers, logging, or retrying. (3) You need **upload progress tracking**. (4) You need to support **older Node.js** versions (before 18). (5) You want **automatic JSON serialization** (no `JSON.stringify` for body). Choose `fetch` when: bundle size matters (zero-cost), you only need basic requests, or you're in a Next.js Server Component where `fetch` has special caching behavior that Axios doesn't.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 7.7 Closures + Async — Interview Traps
+
+<a id="77-closures--async--interview-traps"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| `var` in async loops | Classic closure + async trap |
+| `let` fixes the loop | Why block scope helps |
+| Stale closures in React | `useEffect` capture issues |
+| `useRef` solution | How to keep fresh values |
+| 10+ Output Questions | All the tricky variants |
+
+---
+
+### The Classic `var` + setTimeout Trap
+
+```javascript
+// ─── THE INFAMOUS BUG ─────────────────────────────────────────────
+for (var i = 0; i < 5; i++) {
+  setTimeout(() => {
+    console.log(i)  // What prints?
+  }, i * 100)
+}
+
+// Output: 5, 5, 5, 5, 5 — NOT 0, 1, 2, 3, 4!
+
+// WHY?
+// 1. var i is function-scoped → ONE 'i' shared by ALL iterations
+// 2. Loop finishes (i becomes 5) BEFORE any setTimeout fires
+// 3. All 5 callbacks close over the SAME 'i' = 5
+// 4. When callbacks execute, they all read i = 5
+```
+
+```mermaid
+flowchart TD
+    LOOP["for loop runs\ni goes 0→1→2→3→4→5\n(synchronously)"] --> DONE["Loop done\ni = 5"]
+    DONE --> EL["Event Loop:\nExecute setTimeout callbacks"]
+    EL --> CB1["Callback 1:\nconsole.log(i) → 5"]
+    EL --> CB2["Callback 2:\nconsole.log(i) → 5"]
+    EL --> CB3["Callback 3:\nconsole.log(i) → 5"]
+    EL --> CB4["Callback 4:\nconsole.log(i) → 5"]
+    EL --> CB5["Callback 5:\nconsole.log(i) → 5"]
+
+    VAR_I["var i (shared reference)\ni = 5"] --> CB1 & CB2 & CB3 & CB4 & CB5
+
+    style VAR_I fill:#ffcdd2
+```
+
+---
+
+### Fixes for the Loop Closure Bug
+
+```javascript
+// ─── FIX 1: Use 'let' — creates new binding per iteration ────────
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => console.log(i), i * 100)
+}
+// Output: 0, 1, 2, 3, 4 ✅
+// 'let' creates a NEW 'i' for each block iteration — each closure captures its own copy
+
+// ─── FIX 2: IIFE — create new scope per iteration ────────────────
+for (var i = 0; i < 5; i++) {
+  ;(function(j) {       // IIFE creates new scope, 'j' = current i
+    setTimeout(() => console.log(j), j * 100)
+  })(i)                 // Pass i as argument — captured as 'j'
+}
+// Output: 0, 1, 2, 3, 4 ✅
+
+// ─── FIX 3: bind — pass value via binding ────────────────────────
+for (var i = 0; i < 5; i++) {
+  setTimeout(console.log.bind(null, i), i * 100)
+}
+// Output: 0, 1, 2, 3, 4 ✅
+
+// ─── FIX 4: Extract to named function ────────────────────────────
+function logAfterDelay(value) {
+  setTimeout(() => console.log(value), value * 100)
+}
+
+for (var i = 0; i < 5; i++) {
+  logAfterDelay(i)    // 'i' passed as argument — new scope created
+}
+// Output: 0, 1, 2, 3, 4 ✅
+```
+
+---
+
+### Stale Closures in React `useEffect`
+
+```javascript
+// ─── STALE CLOSURE PROBLEM ────────────────────────────────────────
+function Counter() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      // ⚠️ STALE CLOSURE: 'count' is captured from first render (always 0)
+      setCount(count + 1)   // Always adds 1 to the STALE 0 → always sets to 1!
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])    // ← Empty deps — count captured at 0 and never updates
+
+  return <div>Count: {count}</div>
+}
+// Counter shows: 0, then stuck at 1, 1, 1, 1...
+
+// ─── FIX 1: Functional update (doesn't need closed-over value) ────
+function FixedCounter() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount(prev => prev + 1)  // ✅ prev = CURRENT state value, always fresh!
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])    // ← No need for count in deps
+
+  return <div>Count: {count}</div>
+}
+// Counter shows: 0, 1, 2, 3, 4, 5... ✅
+
+// ─── FIX 2: useRef for fresh value ───────────────────────────────
+function CounterWithRef() {
+  const [count, setCount] = useState(0)
+  const countRef = useRef(count)
+  countRef.current = count  // Always up to date
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      // countRef.current is ALWAYS the latest value (not stale closure)
+      console.log("Current count:", countRef.current)
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [])    // ← Still no deps needed
+}
+
+// ─── FIX 3: Add count to deps (re-creates effect on every change) ─
+function CounterWithDeps() {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCount(count + 1)  // Now 'count' is fresh because effect re-runs
+    }, 1000)
+    return () => clearInterval(timer)
+  }, [count])    // ← count in deps → effect re-creates on each count change
+  // ⚠️ This causes timer to reset on every count change
+}
+```
+
+---
+
+### More Async + Closure Traps
+
+```javascript
+// ─── TRAP 1: async in forEach (doesn't wait) ─────────────────────
+async function processItems(items) {
+  items.forEach(async (item) => {
+    const result = await processItem(item)  // ← async callback!
+    console.log(result)
+  })
+  console.log("Done!")  // ← Prints BEFORE any item is processed!
+}
+
+// Fix: use for...of
+async function processItemsFixed(items) {
+  for (const item of items) {
+    const result = await processItem(item)  // Waits for each
+    console.log(result)
+  }
+  console.log("Done!")  // Prints AFTER all items
+}
+
+// ─── TRAP 2: Floating promises ────────────────────────────────────
+async function dangerouslyFloating() {
+  someAsyncOperation()  // No await! Fires and forgets!
+  // Errors from this will be UNHANDLED
+  return "returned before operation completes!"
+}
+
+// Fix: always await or explicitly handle:
+async function safe() {
+  await someAsyncOperation()    // Await it
+  // OR:
+  someAsyncOperation().catch(console.error)  // Explicitly handle
+}
+
+// ─── TRAP 3: Promise constructor anti-pattern ──────────────────────
+// ❌ Wrapping async functions in Promise constructor:
+async function antiPattern() {
+  return new Promise(async (resolve, reject) => {
+    const data = await fetchData()  // ← If this throws, the outer Promise
+    resolve(data)                    // may never resolve or reject!
+    // Unhandled rejections inside Promise constructors are problematic
+  })
+}
+
+// ✅ Just use async/await directly:
+async function correct() {
+  const data = await fetchData()
+  return data
+}
+```
+
+---
+
+### 🎯 Interview Questions — Section 7.7
+
+**Q1: What is a stale closure in React and how do you fix it?**
+
+> A stale closure occurs when a React callback (in `useEffect`, event handlers, etc.) captures an old value of state or props from a previous render, even though the component has re-rendered with new values. Common example: `setInterval` capturing `count = 0` in its closure and never updating. Fixes: (1) **Functional state updates** — `setCount(prev => prev + 1)` uses current state without needing the closed-over value. (2) **`useRef`** — store the latest value in a ref, access `ref.current` inside callbacks. (3) **Dependency array** — add the stale value to `useEffect`'s deps array so the effect re-runs when it changes.
+
+**Q2: Why does `var` cause issues in async callbacks inside loops?**
+
+> `var` is function-scoped — all loop iterations share ONE variable. Async callbacks (setTimeout, fetch) capture a reference to that shared variable, not its current value. By the time callbacks execute (after the event loop processes them), the loop has already finished and the variable has its final value. `let` creates a new block-scoped binding for each iteration, so each callback captures an independent copy.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 7.8 Error Handling in Async Code
+
+<a id="78-error-handling-in-async-code"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| `try/catch` with async/await | Structured error handling |
+| `.catch()` with Promises | Chaining error handlers |
+| Unhandled rejections | What happens without handling |
+| Global error handlers | `unhandledrejection` event |
+| Custom Error Classes | Typed errors for better handling |
+| Error Wrapping | Adding context to errors |
+
+---
+
+### `try/catch` Patterns with async/await
+
+```javascript
+// ─── BASIC PATTERN ────────────────────────────────────────────────
+async function fetchUserData(userId) {
+  try {
+    const response = await fetch(`/api/users/${userId}`)
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+    }
+
+    return await response.json()
+  } catch (err) {
+    console.error("Failed to fetch user:", err.message)
+    throw err  // Re-throw for caller to handle
+  }
+}
+
+// ─── GRANULAR PATTERN — catch at different levels ─────────────────
+async function complexOperation() {
+  // Level 1: Fetch user
+  let user
+  try {
+    user = await fetchUser()
+  } catch (err) {
+    // Can't continue without user:
+    throw new NetworkError("Failed to fetch user", { cause: err })
+  }
+
+  // Level 2: Send notification (non-critical, can continue on failure)
+  try {
+    await sendNotification(user.email)
+  } catch (err) {
+    console.warn("Notification failed (non-critical):", err.message)
+    // Don't re-throw — continue execution
+  }
+
+  return user
+}
+
+// ─── UTILITY PATTERN — catch wrapper for cleaner async code ───────
+// Instead of try/catch everywhere, use a helper:
+async function tryCatch(promise) {
+  try {
+    const data = await promise
+    return [null, data]   // [error, data]
+  } catch (err) {
+    return [err, null]    // [error, data]
+  }
+}
+
+// Usage (Go-lang inspired error handling):
+const [userErr, user] = await tryCatch(fetchUser(id))
+if (userErr) {
+  console.error("User fetch failed:", userErr.message)
+  return
+}
+
+const [ordersErr, orders] = await tryCatch(fetchOrders(user.id))
+if (ordersErr) {
+  console.error("Orders fetch failed:", ordersErr.message)
+  return
+}
+
+console.log(user, orders)
+```
+
+---
+
+### Custom Error Classes
+
+```javascript
+// ─── BASE CUSTOM ERROR ────────────────────────────────────────────
+class AppError extends Error {
+  constructor(message, options = {}) {
+    super(message)
+    this.name = this.constructor.name  // "AppError", "NetworkError", etc.
+    this.code = options.code
+    this.statusCode = options.statusCode
+    this.cause = options.cause         // ES2022 — original error
+    this.context = options.context     // Extra debugging info
+    this.timestamp = new Date().toISOString()
+
+    // Fix prototype chain (needed when extending built-ins):
+    Object.setPrototypeOf(this, new.target.prototype)
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      code: this.code,
+      statusCode: this.statusCode,
+      timestamp: this.timestamp
+    }
+  }
+}
+
+// ─── SPECIFIC ERROR TYPES ─────────────────────────────────────────
+class NetworkError extends AppError {
+  constructor(message, options = {}) {
+    super(message, { ...options, code: options.code ?? "NETWORK_ERROR" })
+    this.isRetryable = options.isRetryable ?? true
+  }
+}
+
+class ValidationError extends AppError {
+  constructor(message, fieldErrors = {}) {
+    super(message, { code: "VALIDATION_ERROR", statusCode: 422 })
+    this.fieldErrors = fieldErrors  // { email: "Invalid email", name: "Too short" }
+  }
+}
+
+class AuthError extends AppError {
+  constructor(message, options = {}) {
+    super(message, { ...options, code: "AUTH_ERROR", statusCode: 401 })
+    this.redirectTo = options.redirectTo ?? "/login"
+  }
+}
+
+class NotFoundError extends AppError {
+  constructor(resource, id) {
+    super(`${resource} with id '${id}' not found`)
+    this.code = "NOT_FOUND"
+    this.statusCode = 404
+    this.resource = resource
+  }
+}
+
+// ─── USAGE ────────────────────────────────────────────────────────
+async function fetchUser(id) {
+  const response = await fetch(`/api/users/${id}`)
+
+  if (response.status === 404) {
+    throw new NotFoundError("User", id)
+  }
+
+  if (response.status === 401) {
+    throw new AuthError("Session expired. Please log in again.")
+  }
+
+  if (!response.ok) {
+    throw new NetworkError(
+      `Failed to fetch user: HTTP ${response.status}`,
+      { statusCode: response.status, isRetryable: response.status >= 500 }
+    )
+  }
+
+  return response.json()
+}
+
+// ─── TYPE-SPECIFIC ERROR HANDLING ────────────────────────────────
+async function handleUserFetch(id) {
+  try {
+    const user = await fetchUser(id)
+    return user
+  } catch (err) {
+    if (err instanceof NotFoundError) {
+      return null    // User doesn't exist — return null (not an error to caller)
+    }
+
+    if (err instanceof AuthError) {
+      window.location.href = err.redirectTo  // Redirect to login
+      return
+    }
+
+    if (err instanceof NetworkError && err.isRetryable) {
+      // Retry once:
+      await new Promise(r => setTimeout(r, 1000))
+      return fetchUser(id)  // Try again
+    }
+
+    throw err  // Unknown error — propagate up
+  }
+}
+```
+
+---
+
+### Unhandled Promise Rejections
+
+```javascript
+// ─── WHAT HAPPENS WITHOUT HANDLING ───────────────────────────────
+// Node.js < 15: Warning logged, process continues
+// Node.js >= 15: Process EXITS with non-zero code!
+// Browser: Error logged to console, unhandledrejection event fires
+
+// ❌ Unhandled rejection — promise rejects with no .catch():
+async function badCode() {
+  const p = fetchData()  // Promise rejected — nothing handles it!
+  // Forgot to await or .catch()
+}
+
+// ─── GLOBAL UNHANDLED REJECTION HANDLERS ─────────────────────────
+// Browser:
+window.addEventListener("unhandledrejection", (event) => {
+  console.error("Unhandled promise rejection:", event.reason)
+  event.preventDefault()  // Prevents default browser logging (optional)
+
+  // Log to error tracking service:
+  Sentry.captureException(event.reason)
+})
+
+// Node.js:
+process.on("unhandledRejection", (reason, promise) => {
+  console.error("Unhandled Rejection at:", promise)
+  console.error("Reason:", reason)
+
+  // In production: gracefully shut down
+  process.exit(1)
+})
+
+// ─── PROMISE REJECTION TRACKING ───────────────────────────────────
+// Browser — catches rejections BEFORE they're handled:
+window.addEventListener("rejectionhandled", (event) => {
+  console.log("Promise rejection was handled late:", event.promise)
+})
+
+// ─── COMMON PATTERNS TO AVOID UNHANDLED REJECTIONS ───────────────
+// Always add .catch() to fire-and-forget promises:
+fetch("/api/log").catch(console.error)
+
+// In React useEffect:
+useEffect(() => {
+  fetchData()
+    .then(setData)
+    .catch(setError)  // Always handle!
+}, [])
+
+// async IIFE — always add .catch():
+;(async () => {
+  const data = await fetchData()
+  process(data)
+})().catch(console.error)
+```
+
+---
+
+### Complete Error Handling Strategy
+
+```javascript
+// ─── PRODUCTION-READY API CALL WITH FULL ERROR HANDLING ──────────
+async function apiRequest(url, options = {}) {
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort(), 10000)  // 10s timeout
+
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${getAuthToken()}`,
+        ...options.headers
+      }
+    })
+
+    clearTimeout(timeoutId)
+
+    // Handle specific HTTP errors:
+    if (response.status === 401) {
+      await refreshToken()                  // Try token refresh
+      throw new AuthError("Session expired")
+    }
+
+    if (response.status === 429) {          // Rate limited
+      const retryAfter = response.headers.get("Retry-After") ?? "60"
+      throw new NetworkError(
+        `Rate limited. Retry after ${retryAfter}s`,
+        { code: "RATE_LIMIT", isRetryable: true, retryAfter: parseInt(retryAfter) }
+      )
+    }
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}))
+      throw new NetworkError(
+        errorData.message ?? `HTTP ${response.status}`,
+        { statusCode: response.status, isRetryable: response.status >= 500 }
+      )
+    }
+
+    if (response.status === 204) return null
+    return await response.json()
+
+  } catch (err) {
+    clearTimeout(timeoutId)
+
+    if (err.name === "AbortError") {
+      throw new NetworkError("Request timed out", { code: "TIMEOUT", isRetryable: true })
+    }
+
+    if (err instanceof AppError) throw err  // Known errors — propagate as-is
+
+    // Unknown error — wrap with context:
+    throw new NetworkError(
+      `Network request failed: ${err.message}`,
+      { cause: err, context: { url, method: options.method ?? "GET" } }
+    )
+  }
+}
+```
+
+---
+
+### 🎯 Interview Questions — Section 7.8
+
+**Q1: How do you handle errors in async/await code?**
+
+> Use `try/catch` blocks around `await` expressions. The `try` block catches: (1) Network-level failures, (2) HTTP errors (if you throw based on `response.ok`), (3) JSON parse errors, (4) Any exception thrown inside the `try` block including from `await`ed functions. `catch` receives the error object. `finally` always runs — useful for cleanup (hiding spinners, releasing locks). You can have multiple nested `try/catch` blocks for granular handling, or one outer catch for catch-all handling.
+
+**Q2: What are unhandled promise rejections and why are they dangerous?**
+
+> An unhandled rejection occurs when a Promise rejects but no `.catch()` or `try/catch` handles the rejection. They're dangerous because: (1) In Node.js 15+, they crash the process with exit code 1 (can take down servers). (2) In browsers, they cause silent failures — users see broken functionality with no error messages. (3) Errors get swallowed and are hard to debug. Prevention: always add `.catch()` to any Promise that isn't `await`ed, use global `unhandledrejection` handlers for safety nets, and use error monitoring tools like Sentry.
+
+**Q3: Why should you create custom error classes?**
+
+> Custom error classes (extending `Error`) enable: (1) **Type-based handling** — `instanceof AuthError` lets you handle different errors differently. (2) **Structured data** — attach `statusCode`, `fieldErrors`, `isRetryable`, etc. to errors. (3) **Better debugging** — `error.name` shows the specific error type, not just "Error". (4) **Consistent API** — all errors follow the same shape throughout your application. (5) **Type safety** — TypeScript can type-check which errors functions throw. Example: `if (err instanceof ValidationError) showFieldErrors(err.fieldErrors)`.
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 🧪 Mini Project: Async Data Dashboard
+
+<a id="-mini-project-async-data-dashboard"></a>
+
+### Problem Statement
+
+Build an **Async Data Dashboard** — a Next.js application that fetches data from multiple sources in parallel, handles various async patterns, demonstrates all Promise combinators, implements proper error handling with custom error classes, supports request cancellation, and shows real-time loading states.
+
+### Architecture
+
+```mermaid
+flowchart TD
+    subgraph CLIENT["Next.js Client"]
+        DASH["Dashboard Page\n(Client Component)"]
+        WIDGETS["Data Widgets\n• UserStats\n• RecentOrders\n• Analytics\n• Notifications"]
+        HOOKS["Custom Async Hooks\n• useAsyncData\n• useParallelFetch\n• useWithAbort"]
+    end
+
+    subgraph SERVER["Next.js Server"]
+        API1["GET /api/stats\n(aggregated data)"]
+        API2["GET /api/users\n(user list)"]
+        API3["GET /api/orders\n(recent orders)"]
+        API4["GET /api/analytics\n(charts data)"]
+    end
+
+    subgraph EXTERNAL["External APIs"]
+        EXT1["GitHub API"]
+        EXT2["Weather API"]
+        EXT3["JSONPlaceholder\n(Mock data)"]
+    end
+
+    DASH --> WIDGETS
+    DASH --> HOOKS
+    HOOKS -->|"AbortController\nParallel fetching\nError boundaries"| API1 & API2 & API3 & API4
+    API1 & API2 & API3 & API4 --> EXTERNAL
+
+    style CLIENT fill:#e3f2fd
+    style SERVER fill:#e8f5e9
+    style EXTERNAL fill:#fff9c4
+```
+
+### File Structure
+
+```
+async-dashboard/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                          # Server Component (initial SSR)
+│   ├── dashboard/
+│   │   └── page.tsx                      # Dashboard page (Client Component)
+│   └── api/
+│       ├── stats/route.ts                # Aggregated stats
+│       ├── users/route.ts                # User data
+│       ├── orders/route.ts               # Order data
+│       └── analytics/route.ts           # Analytics data
+├── components/
+│   ├── Dashboard/
+│   │   ├── DashboardLayout.tsx
+│   │   ├── WidgetGrid.tsx
+│   │   └── RefreshButton.tsx
+│   ├── Widgets/
+│   │   ├── StatsWidget.tsx
+│   │   ├── OrdersWidget.tsx
+│   │   ├── AnalyticsWidget.tsx
+│   │   └── NotificationsWidget.tsx
+│   └── ui/
+│       ├── Skeleton.tsx                  # Loading skeleton
+│       ├── ErrorFallback.tsx             # Error display
+│       └── PromiseCombinatorDemo.tsx    # Interactive demo
+├── hooks/
+│   ├── useAsyncData.ts                   # Generic async hook
+│   ├── useParallelFetch.ts               # Promise.all hook
+│   └── useAbortableFetch.ts             # With AbortController
+├── lib/
+│   ├── errors.ts                         # Custom error classes
+│   ├── apiClient.ts                      # Fetch wrapper
+│   └── promiseUtils.ts                   # withTimeout, retry, etc.
+└── types/
+    └── api.types.ts
+```
+
+### Core Implementation
+
+```typescript
+// lib/errors.ts — Custom Error Hierarchy
+
+export class AppError extends Error {
+  readonly name: string
+  readonly code: string
+  readonly statusCode: number
+  readonly isOperational: boolean
+  readonly timestamp: string
+  readonly cause?: Error
+
+  constructor(message: string, options: {
+    code?: string
+    statusCode?: number
+    isOperational?: boolean
+    cause?: Error
+  } = {}) {
+    super(message)
+    this.name = this.constructor.name
+    this.code = options.code ?? "APP_ERROR"
+    this.statusCode = options.statusCode ?? 500
+    this.isOperational = options.isOperational ?? true
+    this.cause = options.cause
+    this.timestamp = new Date().toISOString()
+    Object.setPrototypeOf(this, new.target.prototype)
+  }
+}
+
+export class NetworkError extends AppError {
+  readonly isRetryable: boolean
+  readonly retryAfter?: number
+
+  constructor(message: string, options: {
+    statusCode?: number
+    isRetryable?: boolean
+    retryAfter?: number
+    cause?: Error
+  } = {}) {
+    super(message, { code: "NETWORK_ERROR", statusCode: options.statusCode ?? 503, ...options })
+    this.isRetryable = options.isRetryable ?? false
+    this.retryAfter = options.retryAfter
+  }
+}
+
+export class TimeoutError extends NetworkError {
+  constructor(url: string, timeoutMs: number) {
+    super(`Request to ${url} timed out after ${timeoutMs}ms`, {
+      code: "TIMEOUT",
+      isRetryable: true,
+      statusCode: 408
+    })
+  }
+}
+
+export class ApiError extends AppError {
+  constructor(message: string, statusCode: number, public readonly data?: unknown) {
+    super(message, { code: `HTTP_${statusCode}`, statusCode })
+  }
+}
+```
+
+```typescript
+// lib/apiClient.ts — Production-grade fetch wrapper
+
+import { ApiError, NetworkError, TimeoutError } from "./errors"
+
+export interface FetchOptions extends RequestInit {
+  timeout?: number
+  retries?: number
+  retryDelay?: number
+}
+
+export async function apiFetch<T = unknown>(
+  url: string,
+  options: FetchOptions = {}
+): Promise<T> {
+  const {
+    timeout = 10000,
+    retries = 0,
+    retryDelay = 1000,
+    ...fetchOptions
+  } = options
+
+  const controller = new AbortController()
+  const timeoutId = setTimeout(() => controller.abort("timeout"), timeout)
+
+  async function attempt(retriesLeft: number): Promise<T> {
+    try {
+      const response = await fetch(url, {
+        ...fetchOptions,
+        signal: controller.signal,
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+          ...fetchOptions.headers,
+        },
+      })
+
+      clearTimeout(timeoutId)
+
+      if (!response.ok) {
+        let errorData: unknown
+        try {
+          errorData = await response.json()
+        } catch {
+          errorData = { message: response.statusText }
+        }
+
+        const message = (errorData as { message?: string })?.message ?? `HTTP ${response.status}`
+        throw new ApiError(message, response.status, errorData)
+      }
+
+      if (response.status === 204) return null as T
+
+      return response.json() as Promise<T>
+
+    } catch (err) {
+      if (err instanceof Error && err.message === "timeout") {
+        throw new TimeoutError(url, timeout)
+      }
+
+      if (err instanceof ApiError || err instanceof TimeoutError) {
+        if (retriesLeft > 0 && shouldRetry(err)) {
+          await sleep(retryDelay * (retries - retriesLeft + 1))
+          return attempt(retriesLeft - 1)
+        }
+        throw err
+      }
+
+      throw new NetworkError(
+        `Network request failed: ${(err as Error).message}`,
+        { cause: err as Error }
+      )
+    }
+  }
+
+  return attempt(retries)
+}
+
+function shouldRetry(err: ApiError | TimeoutError): boolean {
+  if (err instanceof TimeoutError) return true
+  if (err instanceof ApiError) return err.statusCode >= 500
+  return false
+}
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+```
+
+```typescript
+// hooks/useParallelFetch.ts
+
+import { useState, useEffect, useRef } from "react"
+import { AppError } from "@/lib/errors"
+
+type FetchConfig<T> = {
+  key: string
+  fetcher: () => Promise<T>
+}
+
+type FetchResult<T> = {
+  data: T | null
+  error: AppError | null
+  loading: boolean
+}
+
+type ParallelFetchResult<T extends Record<string, unknown>> = {
+  [K in keyof T]: FetchResult<T[K]>
+} & {
+  anyLoading: boolean
+  allErrors: Record<string, AppError | null>
+  refetch: () => void
+}
+
+export function useParallelFetch<T extends Record<string, unknown>>(
+  configs: { [K in keyof T]: FetchConfig<T[K]> }
+): ParallelFetchResult<T> {
+  const [results, setResults] = useState<{ [K in keyof T]: FetchResult<T[K]> }>(
+    () => Object.fromEntries(
+      Object.keys(configs).map(key => [key, { data: null, error: null, loading: true }])
+    ) as { [K in keyof T]: FetchResult<T[K]> }
+  )
+
+  const controllerRef = useRef<AbortController | null>(null)
+  const [refreshKey, setRefreshKey] = useState(0)
+
+  useEffect(() => {
+    controllerRef.current?.abort()
+    controllerRef.current = new AbortController()
+
+    // Set all to loading:
+    setResults(prev =>
+      Object.fromEntries(
+        Object.keys(configs).map(key => [key, { ...prev[key as keyof T], loading: true }])
+      ) as { [K in keyof T]: FetchResult<T[K]> }
+    )
+
+    // Use Promise.allSettled — don't let one failure stop others:
+    const fetchPromises = Object.entries(configs).map(([key, config]) =>
+      (config as FetchConfig<unknown>).fetcher()
+        .then(data => ({ key, data, error: null }))
+        .catch(error => ({ key, data: null, error: error instanceof AppError ? error : new AppError(String(error)) }))
+    )
+
+    Promise.allSettled(fetchPromises).then(settledResults => {
+      if (controllerRef.current?.signal.aborted) return
+
+      const newResults = settledResults.reduce((acc, result) => {
+        if (result.status === "fulfilled") {
+          const { key, data, error } = result.value
+          acc[key as keyof T] = { data, error, loading: false } as FetchResult<T[keyof T]>
+        }
+        return acc
+      }, {} as { [K in keyof T]: FetchResult<T[K]> })
+
+      setResults(newResults)
+    })
+
+    return () => controllerRef.current?.abort()
+  }, [refreshKey])
+
+  const anyLoading = Object.values(results).some(r => (r as FetchResult<unknown>).loading)
+  const allErrors = Object.fromEntries(
+    Object.entries(results).map(([k, r]) => [k, (r as FetchResult<unknown>).error])
+  )
+
+  return {
+    ...results,
+    anyLoading,
+    allErrors,
+    refetch: () => setRefreshKey(k => k + 1)
+  } as ParallelFetchResult<T>
+}
+```
+
+```typescript
+// app/dashboard/page.tsx — Main Dashboard
+
+'use client'
+
+import { useParallelFetch } from "@/hooks/useParallelFetch"
+import { apiFetch } from "@/lib/apiClient"
+import { StatsWidget } from "@/components/Widgets/StatsWidget"
+import { OrdersWidget } from "@/components/Widgets/OrdersWidget"
+import { Skeleton } from "@/components/ui/Skeleton"
+
+type DashboardData = {
+  stats: { users: number; revenue: number; orders: number }
+  orders: Array<{ id: string; amount: number; status: string }>
+  analytics: { daily: number[]; labels: string[] }
+}
+
+export default function DashboardPage() {
+  const { stats, orders, analytics, anyLoading, refetch } =
+    useParallelFetch<DashboardData>({
+      stats: {
+        key: "stats",
+        fetcher: () => apiFetch<DashboardData["stats"]>("/api/stats")
+      },
+      orders: {
+        key: "orders",
+        fetcher: () => apiFetch<DashboardData["orders"]>("/api/orders?limit=5")
+      },
+      analytics: {
+        key: "analytics",
+        fetcher: () => apiFetch<DashboardData["analytics"]>("/api/analytics")
+      }
+    })
+
+  return (
+    <div className="p-6 max-w-7xl mx-auto">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <button
+          onClick={refetch}
+          disabled={anyLoading}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-50"
+        >
+          {anyLoading ? "Loading..." : "Refresh"}
+        </button>
+      </div>
+
+      {/* Stats section */}
+      {stats.loading ? (
+        <div className="grid grid-cols-3 gap-4 mb-6">
+          {[1, 2, 3].map(i => <Skeleton key={i} className="h-24" />)}
+        </div>
+      ) : stats.error ? (
+        <div className="text-red-500 mb-6">Stats failed: {stats.error.message}</div>
+      ) : (
+        <StatsWidget data={stats.data!} />
+      )}
+
+      {/* Orders section */}
+      {orders.loading ? (
+        <Skeleton className="h-64 mb-6" />
+      ) : (
+        <OrdersWidget
+          data={orders.data}
+          error={orders.error?.message}
+        />
+      )}
+    </div>
+  )
+}
+```
+
+### What This Project Demonstrates
+
+| Async Concept | Demonstrated By |
+|---------------|----------------|
+| `Promise.allSettled` | `useParallelFetch` — fetch all, handle each independently |
+| `AbortController` | Cleanup in `useEffect` |
+| Custom error classes | `AppError`, `NetworkError`, `TimeoutError` |
+| Retry logic | `apiFetch` with `retries` option |
+| Error boundaries | Per-widget error display |
+| Loading states | Skeleton components |
+| Sequential vs Parallel | Dashboard demo shows time comparison |
+| `async/await` | Throughout all fetching code |
+| `try/catch` | `apiFetch` centralized error handling |
+| Race condition prevention | AbortController aborts stale requests |
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
+
+---
+
+## 📝 Practice Section
+
+<a id="-practice-section"></a>
+
+### 5 Coding Questions
+
+**C1: Implement a `retry` utility with exponential backoff**
+
+```javascript
+// retry(fn, options) — retries fn up to maxRetries times
+// Uses exponential backoff: delay doubles each retry
+// Should support: maxRetries, initialDelay, shouldRetry predicate
+
+async function retry(fn, options = {}) {
+  // Your implementation
+}
+
+// Test:
+const flakeyAPI = (() => {
+  let calls = 0
+  return async () => {
+    calls++
+    if (calls < 3) throw new Error(`Failed (attempt ${calls})`)
+    return "Success on attempt " + calls
+  }
+})()
+
+const result = await retry(flakeyAPI, {
+  maxRetries: 5,
+  initialDelay: 100,  // ms
+  shouldRetry: (err) => err.message.includes("Failed")
+})
+console.log(result)  // "Success on attempt 3"
+```
+
+---
+
+**C2: Implement `Promise.all` with concurrency limit**
+
+```javascript
+// promiseAllWithLimit(tasks, limit)
+// tasks: array of functions that return Promises
+// limit: max concurrent promises at a time
+
+async function promiseAllWithLimit(tasks, limit) {
+  // Your implementation
+  // Process tasks in batches of 'limit'
+  // Return results in the same order as tasks
+}
+
+// Test (max 2 concurrent):
+const tasks = [1, 2, 3, 4, 5].map(n => async () => {
+  await new Promise(r => setTimeout(r, Math.random() * 1000))
+  return n * 2
+})
+
+const results = await promiseAllWithLimit(tasks, 2)
+console.log(results)  // [2, 4, 6, 8, 10] (in order)
+```
+
+---
+
+**C3: Implement a `createAsyncQueue` — serialize async operations**
+
+```javascript
+// Queue ensures async operations run one at a time, in order
+function createAsyncQueue() {
+  // Your implementation using closures
+}
+
+const queue = createAsyncQueue()
+
+// These will execute one at a time, in order:
+queue.enqueue(async () => {
+  await delay(500)
+  return "first"
+})
+
+queue.enqueue(async () => {
+  await delay(100)
+  return "second"
+})
+
+// Results always come back in enqueue order
+```
+
+---
+
+**C4: Implement `withTimeout` and `withRetry` composable utilities**
+
+```javascript
+// withTimeout(promise, ms) — rejects if promise takes longer than ms
+// withRetry(fn, n) — retries fn up to n times on failure
+// These should be composable:
+
+const result = await withRetry(
+  () => withTimeout(fetch("/api/slow"), 3000),
+  3  // Retry up to 3 times if timeout or error
+)
+```
+
+---
+
+**C5: Build a `createAbortableRequest` that handles cancellation chain**
+
+```javascript
+// When parent request is cancelled, all child requests are also cancelled
+function createAbortableRequest(parentSignal) {
+  // Returns: { signal, fetch, abort }
+  // When parentSignal aborts OR abort() called → cancel all requests
+}
+
+const parent = new AbortController()
+const request = createAbortableRequest(parent.signal)
+
+// These all get cancelled if either parent.abort() or request.abort() is called:
+const p1 = request.fetch("/api/users")
+const p2 = request.fetch("/api/orders")
+
+parent.abort()  // Cancels both p1 and p2
+```
+
+---
+
+### 5 Theory Questions
+
+**T1: Explain the difference between microtasks and macrotasks in the JavaScript event loop. Which category do Promises fall into? Provide an example with specific output order and explain WHY that order occurs.**
+
+**T2: Explain all four Promise combinator methods (`all`, `allSettled`, `race`, `any`) with their exact behavior, failure modes, and when to use each in production. Implement `Promise.all` from scratch.**
+
+**T3: What is async/await syntactic sugar over? Prove it by rewriting an async/await function as equivalent Promise chains. Explain what happens when you `await` a non-Promise value. What is `return await value` vs `return value` inside an async function?**
+
+**T4: Explain the stale closure problem in React's `useEffect`. Why does it happen? What are the three different strategies to fix it (functional updates, useRef, dependency array)? When would you choose each strategy?**
+
+**T5: Why doesn't `fetch()` throw on HTTP 4xx/5xx responses? Explain the complete fetch error handling strategy needed for production use, including network errors, HTTP errors, timeout handling, and request cancellation with `AbortController`.**
+
+---
+
+### 2 Machine Coding Problems
+
+**MCP 1: Build a Rate-Limited API Client**
+
+Implement a production-ready API client with:
+- Rate limiting (max N requests per time window)
+- Request queue (excess requests wait in queue)
+- Automatic retry with exponential backoff
+- Request deduplication (same URL + method in flight → share Promise)
+- Request/response interceptors
+- Timeout per request
+- AbortController support
+- TypeScript
+
+```typescript
+const client = createApiClient({
+  baseUrl: "https://api.example.com",
+  rateLimit: { requests: 10, windowMs: 1000 },
+  defaultTimeout: 5000,
+  retries: 3,
+})
+
+client.interceptors.request.use(config => {
+  config.headers.Authorization = `Bearer ${getToken()}`
+  return config
+})
+
+client.interceptors.response.use(
+  response => response,
+  error => {
+    if (error.status === 401) refreshToken()
+    throw error
+  }
+)
+
+const user = await client.get<User>("/users/123")
+const newUser = await client.post<User>("/users", { name: "Rahul" })
+```
+
+---
+
+**MCP 2: Build a Real-Time Data Polling System**
+
+Build a Next.js dashboard that:
+- Polls multiple endpoints at different intervals
+- Supports SSE (Server-Sent Events) for real-time data
+- Falls back to polling if SSE not supported
+- Shows live data updates without full re-renders
+- Handles connection drops and auto-reconnects
+- Cancels all polling on component unmount
+- Shows connection status indicator
+
+```typescript
+// Custom hook:
+function useRealtimeData<T>(config: {
+  endpoint: string
+  type: "sse" | "polling"
+  interval?: number  // For polling
+  onData: (data: T) => void
+  onError?: (err: Error) => void
+}): {
+  status: "connecting" | "connected" | "disconnected" | "error"
+  lastUpdated: Date | null
+  disconnect: () => void
+  reconnect: () => void
+}
+
+// SSE Route Handler:
+// app/api/live/route.ts
+export async function GET() {
+  const stream = new ReadableStream({
+    start(controller) {
+      const interval = setInterval(async () => {
+        const data = await fetchLatestData()
+        const event = `data: ${JSON.stringify(data)}\n\n`
+        controller.enqueue(new TextEncoder().encode(event))
+      }, 1000)
+
+      return () => clearInterval(interval)
+    }
+  })
+
+  return new Response(stream, {
+    headers: {
+      "Content-Type": "text/event-stream",
+      "Cache-Control": "no-cache",
+      "Connection": "keep-alive",
+    }
+  })
+}
+```
+
+---
+
+> [!NOTE]
+> **Chapter 7 Summary — Key Takeaways:**
+> 1. JS is single-threaded but async via Event Loop — host environment handles background work
+> 2. Promises have three states: pending → fulfilled OR rejected (immutable once settled)
+> 3. Every `.then()` returns a NEW Promise — enabling chaining
+> 4. `Promise.all` → fail-fast; `Promise.allSettled` → wait all; `Promise.race` → first settler; `Promise.any` → first fulfiller
+> 5. `async` functions ALWAYS return a Promise; `await` pauses execution until Promise settles
+> 6. `for await...of` loops work with async iterables and generators
+> 7. `fetch()` does NOT throw on 4xx/5xx — always check `response.ok`
+> 8. Use `AbortController` in React `useEffect` to cancel requests on unmount
+> 9. Stale closures in `useEffect` → fix with functional updates or `useRef`
+> 10. Custom error classes enable type-based error handling and structured error data
+
+<a href="#chapter-index-table-7">Go to Top 🔝</a>
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -12455,7 +22015,2688 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 <a id="8-es6-modern-features"></a>
 
-## Chapter 8: ES6+ Modern Features
+
+
+# Chapter 8: ES6+ Modern Features
+
+> **Book:** React + Next.js — From Zero to Interview Ready
+> **Part:** A — JavaScript & Web Fundamentals (Pre-React)
+> **Chapter:** 8 of 56
+
+---
+
+<a id="chapter-index-table-8"></a>
+
+## Chapter Index Table
+
+| Topic No. | Topic Name | Subtopics |
+|-----------|------------|-----------|
+| 8.1 | [Destructuring Assignment](#81-destructuring-assignment) | Object & array destructuring<br>Function parameter destructuring<br>Nested + default values combined<br>Real-world patterns |
+| 8.2 | [Spread & Rest Operators](#82-spread--rest-operators) | Spread in arrays<br>Spread in objects<br>Spread in function calls<br>Rest in params<br>Rest in destructuring |
+| 8.3 | [Modules — ES Modules (ESM)](#83-modules--es-modules-esm) | Named & default exports/imports<br>Namespace imports<br>Re-exports<br>Dynamic imports<br>CommonJS vs ESM<br>Tree shaking<br>Barrel files |
+| 8.4 | [Important Modern Additions](#84-important-modern-additions) | Optional chaining<br>Nullish coalescing<br>Logical assignment<br>`structuredClone`<br>`Array.at()`<br>`Object.fromEntries`<br>`BigInt`<br>`globalThis`<br>`WeakRef` |
+| 8.5 | [Map, Set, WeakMap, WeakSet](#85-map-set-weakmap-weakset) | Map vs Object<br>Set vs Array<br>WeakMap (private data, caching)<br>WeakSet |
+| 8.6 | [Symbol](#86-symbol) | Unique primitive values<br>`Symbol.for()`<br>Well-known Symbols<br>Use cases |
+| 8.7 | [Generators & Iterators](#87-generators--iterators) | Iterator protocol<br>Generator functions<br>`yield` keyword<br>`for...of`<br>Lazy evaluation |
+| — | [Mini Project](#-mini-project-modern-js-feature-showcase) | Modern JS Feature Showcase — interactive Next.js demo |
+| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding Problems |
+
+---
+
+## Table of Contents
+
+- [8.1 Destructuring Assignment](#81-destructuring-assignment)
+- [8.2 Spread & Rest Operators](#82-spread--rest-operators)
+- [8.3 Modules — ES Modules (ESM)](#83-modules--es-modules-esm)
+- [8.4 Important Modern Additions](#84-important-modern-additions)
+- [8.5 Map, Set, WeakMap, WeakSet](#85-map-set-weakmap-weakset)
+- [8.6 Symbol](#86-symbol)
+- [8.7 Generators & Iterators](#87-generators--iterators)
+- [🧪 Mini Project: Modern JS Feature Showcase](#-mini-project-modern-js-feature-showcase)
+- [📝 Practice Section](#-practice-section)
+
+---
+
+## 8.1 Destructuring Assignment
+
+<a id="81-destructuring-assignment"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Object Destructuring | Extract named properties |
+| Array Destructuring | Extract by position |
+| Function Parameter Destructuring | Destructure directly in signature |
+| Nested + Defaults Combined | Complex real-world patterns |
+
+---
+
+### What is Destructuring?
+
+**Destructuring assignment** is a JavaScript expression that makes it possible to **unpack values from arrays or properties from objects** into distinct variables — in a single, concise statement.
+
+> **Hinglish:** Destructuring matlab "todi-tori" karna — ek dabba (object/array) se cheezein nikalna aur alag-alag variables mein rakhna. Purane tarike mein ek ek line likhte the, ab ek hi line mein sab ho jaata hai.
+
+---
+
+### Object Destructuring — All Patterns
+
+```javascript
+const user = {
+  id: 101,
+  name: "Rahul Sharma",
+  age: 25,
+  email: "rahul@example.com",
+  address: {
+    city: "Mumbai",
+    state: "Maharashtra",
+    pincode: "400001"
+  },
+  skills: ["React", "Next.js", "TypeScript"]
+}
+
+// ─── BASIC ────────────────────────────────────────────────────────
+const { name, age, email } = user
+console.log(name, age)  // "Rahul Sharma" 25
+
+// ─── RENAMING ─────────────────────────────────────────────────────
+const { name: userName, age: userAge } = user
+console.log(userName)   // "Rahul Sharma"
+// 'name' variable is NOT created — only 'userName'
+
+// ─── DEFAULT VALUES ───────────────────────────────────────────────
+const { role = "user", country = "India" } = user
+console.log(role)     // "user"    (not in user, uses default)
+console.log(country)  // "India"   (not in user, uses default)
+
+// ⚠️ Default only triggers for UNDEFINED, not null:
+const { nickname = "friend" } = { nickname: null }
+console.log(nickname)  // null (default NOT used — null is not undefined)
+
+// ─── RENAMING + DEFAULT COMBINED ──────────────────────────────────
+const { name: displayName = "Anonymous", role: userRole = "guest" } = user
+// displayName = "Rahul Sharma" (exists in user)
+// userRole = "guest" (not in user, uses default)
+
+// ─── NESTED DESTRUCTURING ─────────────────────────────────────────
+const { address: { city, state, pincode = "000000" } } = user
+console.log(city, state)  // "Mumbai" "Maharashtra"
+// ⚠️ 'address' is NOT a variable — only city, state, pincode are
+
+// ─── REST IN OBJECT DESTRUCTURING ────────────────────────────────
+const { name: n, email: e, ...rest } = user
+console.log(rest)  // { id: 101, age: 25, address: {...}, skills: [...] }
+// rest collects everything NOT explicitly destructured
+
+// ─── SKIP PROPERTIES ──────────────────────────────────────────────
+// Just don't mention them — only extract what you need:
+const { id, address } = user  // Ignore name, age, email, etc.
+```
+
+---
+
+### Array Destructuring — All Patterns
+
+```javascript
+const scores = [95, 87, 92, 78, 83]
+const [first, second, third] = scores
+console.log(first, second, third)  // 95, 87, 92
+
+// ─── SKIPPING ELEMENTS ────────────────────────────────────────────
+const [top, , third_score, , last] = scores
+console.log(top, third_score, last)  // 95, 92, 83
+
+// ─── REST IN ARRAY DESTRUCTURING ─────────────────────────────────
+const [highest, ...remaining] = scores
+console.log(highest)    // 95
+console.log(remaining)  // [87, 92, 78, 83]
+
+// ─── DEFAULT VALUES IN ARRAY ──────────────────────────────────────
+const [a = 0, b = 0, c = 0] = [10, 20]
+console.log(a, b, c)  // 10, 20, 0
+
+// ─── SWAP VARIABLES ───────────────────────────────────────────────
+let x = 1, y = 2
+;[x, y] = [y, x]   // No temp variable needed!
+console.log(x, y)  // 2, 1
+
+// ─── NESTED ARRAY DESTRUCTURING ───────────────────────────────────
+const matrix = [[1, 2], [3, 4], [5, 6]]
+const [[r1c1, r1c2], [r2c1]] = matrix
+console.log(r1c1, r2c1)  // 1, 3
+
+// ─── MIXED OBJECT + ARRAY ─────────────────────────────────────────
+const student = {
+  name: "Priya",
+  grades: [90, 85, 92]
+}
+const { name: studentName, grades: [math, science, english] } = student
+console.log(studentName, math, science)  // "Priya" 90 85
+```
+
+---
+
+### Function Parameter Destructuring
+
+```javascript
+// ─── OLD WAY (verbose): ───────────────────────────────────────────
+function displayUser(user) {
+  console.log(user.name, user.age, user.email)
+}
+
+// ─── MODERN WAY (destructure in params): ─────────────────────────
+function displayUser({ name, age, email, role = "user" }) {
+  console.log(name, age, email, role)
+}
+
+displayUser({ name: "Rahul", age: 25, email: "r@ex.com" })
+// "Rahul" 25 "r@ex.com" "user"
+
+// ─── NESTED PARAMETER DESTRUCTURING ─────────────────────────────
+function renderCard({ title, content, author: { name: authorName, avatar = "/default.png" } }) {
+  return `
+    <div class="card">
+      <h2>${title}</h2>
+      <img src="${avatar}" alt="${authorName}" />
+      <p>${content}</p>
+      <span>by ${authorName}</span>
+    </div>
+  `
+}
+
+renderCard({
+  title: "React Hooks",
+  content: "Learn about hooks...",
+  author: { name: "Rahul", avatar: "/rahul.jpg" }
+})
+
+// ─── REACT COMPONENT PATTERN ──────────────────────────────────────
+// With TypeScript:
+interface ButtonProps {
+  label: string
+  onClick: () => void
+  variant?: "primary" | "secondary"
+  disabled?: boolean
+  size?: "sm" | "md" | "lg"
+}
+
+function Button({ label, onClick, variant = "primary", disabled = false, size = "md" }: ButtonProps) {
+  // All props are immediately available as individual variables
+  return (
+    <button
+      className={`btn btn-${variant} btn-${size}`}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {label}
+    </button>
+  )
+}
+
+// ─── ARRAY PARAM DESTRUCTURING ────────────────────────────────────
+function sumFirst3([first = 0, second = 0, third = 0]) {
+  return first + second + third
+}
+sumFirst3([10, 20, 30, 40])  // 60 (ignores 40)
+sumFirst3([10, 20])           // 30 (third defaults to 0)
+```
+
+---
+
+### Complex Nested Destructuring — Real World
+
+```javascript
+// API response with complex nested structure:
+const apiResponse = {
+  status: 200,
+  data: {
+    users: [
+      { id: 1, profile: { name: "Rahul", scores: [95, 87] } },
+      { id: 2, profile: { name: "Priya", scores: [92, 88] } }
+    ],
+    pagination: {
+      page: 1,
+      total: 100,
+      hasNext: true
+    }
+  },
+  meta: {
+    requestId: "abc-123",
+    timestamp: "2024-01-15"
+  }
+}
+
+// Extract multiple levels:
+const {
+  status,
+  data: {
+    users: [
+      { profile: { name: firstUser, scores: [firstScore] } },
+      { profile: { name: secondUser } }
+    ],
+    pagination: { page, hasNext }
+  },
+  meta: { requestId }
+} = apiResponse
+
+console.log(firstUser, firstScore, secondUser, page, requestId)
+// "Rahul" 95 "Priya" 1 "abc-123"
+```
+
+---
+
+### 🎯 Interview Questions — Section 8.1
+
+**Q1: What is the difference between destructuring renaming and creating a new variable?**
+
+> `const { name: userName } = obj` creates a variable called `userName` (not `name`). The property `name` is read from `obj`, but the receiving variable is named `userName`. No variable named `name` is created. This is purely an extraction alias.
+
+**Q2: What is the output?**
+
+```javascript
+const obj = { a: 1, b: undefined, c: null, d: 0 }
+const { a = 10, b = 20, c = 30, d = 40, e = 50 } = obj
+console.log(a, b, c, d, e)
+```
+
+> **Output:** `1 20 null 0 50`
+> `a=1` (exists). `b=20` (undefined triggers default). `c=null` (null doesn't trigger default). `d=0` (falsy but not undefined — no default). `e=50` (missing → undefined → default).
+
+**Q3: How does destructuring help in React component development?**
+
+> (1) **Props:** `function Button({ label, onClick, disabled = false })` — no `props.` everywhere. (2) **useState:** `const [count, setCount] = useState(0)` — array destructuring. (3) **Context:** `const { user, logout } = useContext(AuthContext)`. (4) **Event handlers:** `const { target: { name, value } } = event` inside `onChange`. (5) **API responses:** `const { data, error, loading } = useQuery(QUERY)`.
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 8.2 Spread & Rest Operators
+
+<a id="82-spread--rest-operators"></a>
+
+### Subtopic Breakdown
+
+| Operator | Context | Behavior |
+|----------|---------|---------|
+| `...` spread | Array literal | Expands iterable into elements |
+| `...` spread | Object literal | Copies enumerable own properties |
+| `...` spread | Function call | Expands array into arguments |
+| `...` rest | Function params | Collects remaining args into array |
+| `...` rest | Destructuring | Collects remaining properties/elements |
+
+---
+
+### Spread Operator — Arrays
+
+```javascript
+// ─── ARRAY SPREAD ─────────────────────────────────────────────────
+const arr1 = [1, 2, 3]
+const arr2 = [4, 5, 6]
+
+// Merge arrays:
+const merged = [...arr1, ...arr2]           // [1, 2, 3, 4, 5, 6]
+const withMiddle = [...arr1, 10, ...arr2]   // [1, 2, 3, 10, 4, 5, 6]
+
+// Shallow copy:
+const copy = [...arr1]
+copy.push(99)
+console.log(arr1)  // [1, 2, 3] — original unchanged
+
+// Clone + add (React state pattern):
+const addItem = (cart, item) => [...cart, item]           // Add to end
+const removeItem = (cart, id) => cart.filter(i => i.id !== id)  // Remove
+
+// Convert iterables to arrays:
+const str = "hello"
+const chars = [...str]   // ["h", "e", "l", "l", "o"]
+
+const set = new Set([1, 2, 3, 2, 1])
+const unique = [...set]  // [1, 2, 3] — deduped!
+
+const map = new Map([["a", 1], ["b", 2]])
+const entries = [...map]  // [["a", 1], ["b", 2]]
+
+// Function arguments:
+const nums = [3, 1, 4, 1, 5, 9, 2, 6]
+Math.max(...nums)   // 9 (spread as individual args)
+Math.min(...nums)   // 1
+
+// Gotcha — shallow copy only:
+const nested = [1, [2, 3], { a: 4 }]
+const shallowCopy = [...nested]
+shallowCopy[1].push(99)    // Modifies original! (shared reference)
+shallowCopy[2].a = 999     // Modifies original! (shared reference)
+shallowCopy[0] = 100       // Does NOT modify original (primitive)
+```
+
+---
+
+### Spread Operator — Objects
+
+```javascript
+// ─── OBJECT SPREAD ────────────────────────────────────────────────
+const defaults = { theme: "light", lang: "en", fontSize: 16 }
+const userPrefs = { theme: "dark", fontSize: 18 }
+
+// Merge (later properties win):
+const config = { ...defaults, ...userPrefs }
+// { theme: "dark", lang: "en", fontSize: 18 }
+// userPrefs.theme overrides defaults.theme!
+
+// Shallow copy:
+const userCopy = { ...user }
+
+// Add properties while copying:
+const enriched = { ...user, role: "admin", lastLogin: new Date() }
+
+// Override specific property:
+const updated = { ...product, price: 45000, updatedAt: new Date() }
+
+// ─── ORDER MATTERS! ────────────────────────────────────────────────
+const a = { x: 1, y: 2 }
+const b = { y: 99, z: 3 }
+
+console.log({ ...a, ...b })  // { x: 1, y: 99, z: 3 } (b.y wins)
+console.log({ ...b, ...a })  // { y: 2, z: 3, x: 1 }  (a.y wins)
+
+// ─── REACT STATE PATTERN ──────────────────────────────────────────
+// Updating nested object in React state:
+setState(prev => ({
+  ...prev,                    // Copy all top-level props
+  user: {
+    ...prev.user,             // Copy all user props
+    address: {
+      ...prev.user.address,   // Copy all address props
+      city: "Delhi"           // Override city only
+    }
+  }
+}))
+```
+
+---
+
+### Rest Parameters vs `arguments` Object
+
+```javascript
+// ─── REST PARAMETERS ─────────────────────────────────────────────
+function sum(...numbers) {
+  // numbers is a REAL Array — array methods work!
+  return numbers.reduce((acc, n) => acc + n, 0)
+}
+
+sum(1, 2, 3, 4, 5)  // 15
+
+// Mix with regular params — rest MUST be last:
+function log(level, timestamp, ...messages) {
+  console.log(`[${level}] ${timestamp}:`, messages.join(" "))
+}
+
+log("INFO", "10:00", "Server", "started", "on port 3000")
+// [INFO] 10:00: Server started on port 3000
+
+// ─── REST vs arguments OBJECT ─────────────────────────────────────
+function withRest(...args) {
+  console.log(Array.isArray(args))   // ✅ true — real array
+  return args.map(x => x * 2)       // ✅ array methods work
+}
+
+function withArguments() {
+  console.log(Array.isArray(arguments))   // ❌ false — array-like object
+  // return arguments.map(x => x * 2)     // ❌ TypeError!
+  return Array.from(arguments).map(x => x * 2)  // Must convert first
+}
+
+// Arrow functions have NO arguments object:
+const arrow = () => {
+  // arguments  // ❌ ReferenceError (or captures outer scope's arguments)
+}
+
+// ─── REST IN DESTRUCTURING ────────────────────────────────────────
+// Object rest:
+const { id, name, ...otherProps } = product
+console.log(otherProps)  // All props except id and name
+
+// Array rest:
+const [first, second, ...remaining] = [1, 2, 3, 4, 5]
+console.log(remaining)  // [3, 4, 5]
+
+// In function params — common React pattern:
+function Button({ onClick, children, className, ...htmlProps }) {
+  // onClick, children, className extracted
+  // htmlProps catches everything else (disabled, type, aria-*, data-*, etc.)
+  return (
+    <button
+      className={`btn ${className}`}
+      onClick={onClick}
+      {...htmlProps}          // Spread remaining props onto element
+    >
+      {children}
+    </button>
+  )
+}
+
+<Button onClick={fn} className="primary" disabled aria-label="Submit">
+  Submit
+</Button>
+```
+
+---
+
+### 🎯 Interview Questions — Section 8.2
+
+**Q1: What is the difference between spread and rest?**
+
+> They use the same `...` syntax but in opposite contexts. **Spread** — used in array literals, object literals, or function calls — **expands** an iterable/object into individual elements. **Rest** — used in function parameter lists or destructuring — **collects** multiple individual elements into a single array/object. Memory trick: spread = one-to-many (expand), rest = many-to-one (collect).
+
+**Q2: What is the difference between `[...arr]` (spread copy) and `arr.slice()` for copying arrays?**
+
+> Both create a **shallow copy** of the array. Functionally equivalent for simple arrays. Differences: (1) Spread works with any **iterable** (strings, Sets, Maps), while `slice()` only works on arrays. (2) Spread syntax is more readable and idiomatic in modern code. (3) `slice()` has existed longer and works in older environments. (4) For adding to the copy simultaneously: `[...arr, newItem]` is cleaner than `arr.slice().concat(newItem)`.
+
+**Q3: What is the output?**
+
+```javascript
+function test(a, b, ...c) {
+  console.log(a, b, c)
+}
+test(1, 2, 3, 4, 5)
+```
+
+> **Output:** `1 2 [3, 4, 5]`
+> `a=1`, `b=2`, rest `...c` collects remaining `[3, 4, 5]` as a real Array.
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 8.3 Modules — ES Modules (ESM)
+
+<a id="83-modules--es-modules-esm"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Named Exports | Multiple exports per file |
+| Default Exports | One default export per file |
+| Named Imports | `import { x }` |
+| Default Imports | `import X` |
+| Namespace Imports | `import * as` |
+| Re-exports | Forward exports |
+| Dynamic Imports | Lazy loading |
+| CommonJS vs ESM | `require` vs `import` |
+| Tree Shaking | Dead code elimination |
+| Barrel Files | `index.js` pattern |
+
+---
+
+### Named vs Default Exports
+
+```javascript
+// ─── NAMED EXPORTS ────────────────────────────────────────────────
+// File: utils.js
+
+export const PI = 3.14159
+export const E = 2.71828
+
+export function add(a, b) { return a + b }
+export function subtract(a, b) { return a - b }
+
+// Export list (alternative syntax):
+const multiply = (a, b) => a * b
+const divide = (a, b) => a / b
+export { multiply, divide }
+
+// Export with renaming:
+const internal = "internal name"
+export { internal as publicName }
+
+// ─── DEFAULT EXPORT ───────────────────────────────────────────────
+// File: Calculator.js
+
+class Calculator {
+  add(a, b) { return a + b }
+  subtract(a, b) { return a - b }
+}
+
+export default Calculator  // ONE default per file
+
+// Can mix named and default:
+export default Calculator         // default
+export const version = "1.0.0"   // named
+```
+
+```javascript
+// ─── NAMED IMPORTS ────────────────────────────────────────────────
+import { add, subtract, PI } from "./utils.js"
+import { add as sum, PI as pi } from "./utils.js"  // Rename on import
+
+// ─── DEFAULT IMPORT ───────────────────────────────────────────────
+import Calculator from "./Calculator.js"        // Any name works!
+import MyCalculator from "./Calculator.js"      // Also valid
+import Calc from "./Calculator.js"              // Also valid
+
+// ─── MIXED IMPORT ─────────────────────────────────────────────────
+import Calculator, { version } from "./Calculator.js"
+
+// ─── NAMESPACE IMPORT ─────────────────────────────────────────────
+import * as MathUtils from "./utils.js"
+MathUtils.add(1, 2)   // 3
+MathUtils.PI          // 3.14159
+MathUtils.default     // undefined (no default in utils.js)
+```
+
+---
+
+### Re-exports — Forwarding
+
+```javascript
+// ─── RE-EXPORTING ─────────────────────────────────────────────────
+// File: components/index.js — barrel file
+
+// Re-export named exports from sub-modules:
+export { Button } from "./Button.js"
+export { Input } from "./Input.js"
+export { Card } from "./Card.js"
+
+// Re-export with rename:
+export { default as Modal } from "./Modal.js"
+
+// Re-export all named exports:
+export * from "./helpers.js"
+
+// Re-export default and named:
+export { default, version } from "./Calculator.js"
+
+// ─── USAGE ────────────────────────────────────────────────────────
+// Consumer can import from one place:
+import { Button, Input, Card, Modal } from "./components"
+// Instead of:
+// import { Button } from "./components/Button"
+// import { Input } from "./components/Input"
+// etc.
+```
+
+---
+
+### Dynamic Imports — Lazy Loading
+
+```javascript
+// ─── STATIC IMPORT (always loaded): ──────────────────────────────
+import HeavyChart from "./HeavyChart.js"  // Loaded immediately on page load
+
+// ─── DYNAMIC IMPORT (loaded on demand): ──────────────────────────
+// Returns a Promise!
+const module = await import("./HeavyChart.js")
+const HeavyChart = module.default   // Default export
+const { helperFn } = module         // Named export
+
+// ─── CONDITIONAL LOADING ──────────────────────────────────────────
+async function loadFeature(featureName) {
+  if (featureName === "chart") {
+    const { Chart } = await import("./Chart.js")
+    return new Chart()
+  }
+  if (featureName === "editor") {
+    const { Editor } = await import("./Editor.js")
+    return new Editor()
+  }
+}
+
+// ─── IN REACT (Next.js) ───────────────────────────────────────────
+import dynamic from "next/dynamic"
+
+// Code-splits this component into a separate JS chunk:
+const HeavyMap = dynamic(() => import("./HeavyMap"), {
+  loading: () => <p>Loading map...</p>,
+  ssr: false  // Don't render on server (window-dependent)
+})
+
+// React.lazy (plain React):
+const Chart = React.lazy(() => import("./Chart"))
+
+// Usage requires Suspense:
+<Suspense fallback={<Spinner />}>
+  <Chart data={data} />
+</Suspense>
+```
+
+---
+
+### CommonJS vs ES Modules
+
+```mermaid
+flowchart TD
+    subgraph CJS["CommonJS (Node.js traditional)"]
+        C1["require() — synchronous"]
+        C2["module.exports = value"]
+        C3["Loaded at runtime"]
+        C4["Can be dynamic\nrequire(condition ? 'a' : 'b')"]
+        C5["Circular deps: partial objects"]
+    end
+
+    subgraph ESM["ES Modules (modern standard)"]
+        E1["import — declarative"]
+        E2["export keyword"]
+        E3["Analyzed at parse time"]
+        E4["Static (must be top-level)"]
+        E5["Dynamic: import() returns Promise"]
+        E6["Live bindings (exports update)"]
+        E7["Supports tree shaking"]
+    end
+
+    style CJS fill:#fff3e0
+    style ESM fill:#e8f5e9
+```
+
+```javascript
+// ─── COMMONJS (Node.js traditional) ──────────────────────────────
+// File: math.cjs
+const PI = 3.14159
+function add(a, b) { return a + b }
+module.exports = { PI, add }      // Export
+module.exports.default = add      // "Default" (convention only)
+
+// File: consumer.cjs
+const { PI, add } = require("./math.cjs")    // Synchronous!
+const math = require("./math.cjs")            // Whole object
+
+// Dynamic (possible in CJS):
+const moduleName = condition ? "./a" : "./b"
+const mod = require(moduleName)   // ✅ Works!
+
+// ─── ES MODULES ───────────────────────────────────────────────────
+// File: math.mjs
+export const PI = 3.14159
+export function add(a, b) { return a + b }
+export default add
+
+// File: consumer.mjs
+import { PI, add } from "./math.mjs"   // Must be top-level, static!
+import add from "./math.mjs"           // Default
+
+// Dynamic (ES Modules style):
+const { add } = await import("./math.mjs")  // Always async!
+
+// ─── KEY DIFFERENCES ──────────────────────────────────────────────
+// | Feature         | CommonJS     | ES Modules         |
+// |-----------------|--------------|---------------------|
+// | Syntax          | require/exp  | import/export       |
+// | Load time       | Runtime      | Parse time (static) |
+// | Synchronous     | ✅ Yes       | ❌ No (async only)  |
+// | Default export  | Convention   | Built-in keyword    |
+// | Tree shaking    | ❌           | ✅                  |
+// | Circular deps   | Partial obj  | Live bindings       |
+// | In browsers     | ❌           | ✅ native           |
+// | In Node.js      | ✅ default   | ✅ with .mjs/.type  |
+```
+
+---
+
+### Tree Shaking — Dead Code Elimination
+
+> **Hinglish:** Tree shaking matlab "poode ko hilao, jo patte girte hain woh dead code hai." Bundler analyze karta hai ki aapne kya import kiya hai — jo nahi kiya woh bundle mein nahi aata. Isse bundle size chota hota hai.
+
+```javascript
+// ─── utils.js (large utility file with many exports) ──────────────
+export function add(a, b) { return a + b }           // → Used ✅
+export function subtract(a, b) { return a - b }      // → Used ✅
+export function multiply(a, b) { return a * b }      // → NOT imported ❌
+export function divide(a, b) { return a / b }        // → NOT imported ❌
+export function complexCalculation() { /* ... */ }   // → NOT imported ❌
+
+// ─── app.js ───────────────────────────────────────────────────────
+import { add, subtract } from "./utils.js"
+// Only 'add' and 'subtract' are included in bundle!
+// multiply, divide, complexCalculation are TREE SHAKEN away
+
+// ─── WHY ESM enables tree shaking (CJS can't): ───────────────────
+// ESM: import/export are STATIC — known at parse time (before runtime)
+// Bundlers (Webpack, Vite, Rollup) can analyze exactly what's used
+
+// CJS: require() is DYNAMIC — could import anything at runtime
+// Bundler can't know what require() might need → must include everything
+
+// ─── TREE SHAKING IN PRACTICE ────────────────────────────────────
+// ❌ This prevents tree shaking:
+import * as _ from "lodash"        // CJS module — whole lodash imported!
+_.map(arr, fn)
+
+// ✅ This enables tree shaking:
+import { map } from "lodash-es"    // ESM version — only 'map' imported
+map(arr, fn)
+
+// ✅ Better — lodash modular:
+import map from "lodash/map"       // Direct path import
+```
+
+---
+
+### Barrel Files — Index Pattern
+
+```javascript
+// ─── BARREL FILE: components/index.ts ────────────────────────────
+// Aggregates all component exports in one place
+
+export { Button } from "./Button"
+export { Input } from "./Input"
+export { Card } from "./Card"
+export { Modal } from "./Modal"
+export { Spinner } from "./Spinner"
+export type { ButtonProps } from "./Button"  // TypeScript types
+
+// ─── CONSUMER: ───────────────────────────────────────────────────
+// ✅ Clean — imports from one place:
+import { Button, Input, Card } from "@/components"
+
+// vs ❌ Without barrel:
+import { Button } from "@/components/Button"
+import { Input } from "@/components/Input"
+import { Card } from "@/components/Card"
+
+// ─── PROS & CONS OF BARREL FILES ────────────────────────────────
+// ✅ PROS:
+// - Cleaner import paths
+// - Easy to refactor internal structure without changing consumers
+// - Works like a public API for the module
+
+// ❌ CONS (The "Barrel File Problem"):
+// - Can break tree shaking if not configured correctly
+//   (bundler may import the whole barrel even if you just need one thing)
+// - Circular dependency risk (A barrel imports B which imports from A's barrel)
+// - Slower cold start in some tooling (parse all barrel files)
+
+// ✅ NEXT.JS RECOMMENDATION:
+// Use barrel files for component libraries
+// But NOT for server-side code (functions, utilities) — use direct imports
+// next.config.js has optimizePackageImports to handle barrel file tree-shaking
+```
+
+---
+
+### 🎯 Interview Questions — Section 8.3
+
+**Q1: What is the difference between named exports and default exports?**
+
+> **Named exports:** A file can have **multiple** named exports. Imported with curly braces: `import { add, subtract }`. The import name must match (or be aliased with `as`). **Default exports:** A file can have **only one** default export. Imported without curly braces: `import Calculator`. Any name can be used for import. When to use each: Default for the primary thing a module exports (a component, a class, a main function). Named for utilities, constants, multiple exports from one file.
+
+**Q2: What is tree shaking and why does it require ES Modules?**
+
+> Tree shaking is the process of removing unused code (dead code) from the final bundle. It requires ES Modules because ESM `import`/`export` statements are **static** — they appear at the top level of files and are analyzed before code runs. This allows bundlers (Webpack, Vite, Rollup) to build a complete dependency graph at build time and determine exactly which exports are used. CommonJS `require()` is **dynamic** (can be called conditionally, inside functions) — bundlers can't statically analyze what will be needed, so they must include everything.
+
+**Q3: What are the downsides of barrel files (index.js)?**
+
+> (1) **Broken tree shaking** — if a barrel file is not properly marked as side-effect-free (`sideEffects: false` in package.json), bundlers may import the entire barrel when you only need one export. (2) **Circular dependencies** — barrels can create subtle circular import cycles. (3) **Slower dev tooling** — in large projects, resolving barrel files can slow down TypeScript and bundler cold starts. (4) **Hidden coupling** — makes it harder to see the true dependency graph. Next.js 13.2+ handles this with `optimizePackageImports` in `next.config.js`.
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 8.4 Important Modern Additions
+
+<a id="84-important-modern-additions"></a>
+
+### Subtopic Breakdown
+
+| Feature | ES Version | Purpose |
+|---------|-----------|---------|
+| Optional chaining `?.` | ES2020 | Safe property access |
+| Nullish coalescing `??` | ES2020 | Null/undefined fallback |
+| Logical assignment `||=` `&&=` `??=` | ES2021 | Combined assign + logic |
+| `structuredClone()` | ES2021 (browsers) | Native deep copy |
+| `Array.at()` | ES2022 | Negative indexing |
+| `Object.fromEntries()` | ES2019 | Entries → object |
+| `String.replaceAll()` | ES2021 | Replace all occurrences |
+| `BigInt` | ES2020 | Large integer support |
+| `globalThis` | ES2020 | Universal global object |
+| `WeakRef` | ES2021 | Weak reference |
+
+---
+
+### Optional Chaining `?.` — Safe Navigation
+
+```javascript
+// ─── WITHOUT OPTIONAL CHAINING (verbose, error-prone) ────────────
+const city = user && user.address && user.address.city
+const len = data && data.users && data.users.length
+
+// ─── WITH OPTIONAL CHAINING ───────────────────────────────────────
+const city2 = user?.address?.city        // undefined if any step is nullish
+const len2 = data?.users?.length         // undefined (not an error)
+
+// ─── ALL FORMS OF OPTIONAL CHAINING ─────────────────────────────
+const obj = {
+  name: "Rahul",
+  greet() { return `Hello, ${this.name}!` },
+  data: { scores: [95, 87, 92] }
+}
+
+// Property access:
+obj?.name            // "Rahul"
+obj?.missing         // undefined (no error)
+obj?.missing?.deep   // undefined (no error — short circuits)
+
+// Method call:
+obj?.greet()             // "Hello, Rahul!"
+obj?.nonExistent?.()     // undefined (doesn't try to call)
+obj?.greet?.()           // "Hello, Rahul!" — safe method call
+
+// Computed property:
+const key = "name"
+obj?.[key]           // "Rahul"
+obj?.["missing"]     // undefined
+
+// Array index:
+obj?.data?.scores?.[0]   // 95
+obj?.data?.scores?.[99]  // undefined (no error)
+
+// Function call:
+const maybeNull = null
+maybeNull?.()        // undefined (doesn't throw TypeError)
+
+// ─── REAL-WORLD REACT ─────────────────────────────────────────────
+function UserProfile({ user }) {
+  return (
+    <div>
+      <h1>{user?.profile?.displayName ?? "Anonymous"}</h1>
+      <p>{user?.address?.city ?? "Location unknown"}</p>
+      <p>{user?.stats?.followers?.toLocaleString() ?? "0"} followers</p>
+      <button onClick={user?.onLogout}>Logout</button>
+    </div>
+  )
+}
+```
+
+---
+
+### Nullish Coalescing `??` vs Logical OR `||`
+
+```javascript
+// ─── THE CRITICAL DIFFERENCE ──────────────────────────────────────
+// ?? — returns right side ONLY for null/undefined
+// || — returns right side for ANY falsy value (false, 0, "", NaN, null, undefined)
+
+const volume = 0
+const displayVolume = volume ?? 50    // 0  ✅ (0 is not null/undefined)
+const badVolume = volume || 50        // 50 ⚠️ (0 is falsy — unwanted behavior!)
+
+const count = 0
+count ?? "No items"   // 0 ✅
+count || "No items"   // "No items" ❌
+
+const name = ""
+name ?? "Anonymous"   // "" ✅ (empty string is valid)
+name || "Anonymous"   // "Anonymous" ❌
+
+// null and undefined both trigger ??: 
+null ?? "default"       // "default" ✅
+undefined ?? "default"  // "default" ✅
+false ?? "default"      // false ✅
+0 ?? "default"          // 0 ✅
+"" ?? "default"         // "" ✅
+
+// ─── CHAINING ?? ─────────────────────────────────────────────────
+const result = a ?? b ?? c ?? "final default"
+// Returns first non-null/undefined value in chain
+
+// ─── WITH OPTIONAL CHAINING ──────────────────────────────────────
+const profilePic = user?.profile?.avatar ?? "/default-avatar.png"
+const greeting = settings?.greeting ?? config?.greeting ?? "Hello!"
+```
+
+---
+
+### Logical Assignment Operators
+
+```javascript
+// ES2021 — combine assignment with logical operation
+
+// ─── ||= (OR assignment) ──────────────────────────────────────────
+// Assign RIGHT side only if LEFT side is FALSY
+let a = null
+a ||= "default"      // a = "default" (null is falsy)
+let b = "existing"
+b ||= "default"      // b = "existing" (already truthy — no assignment)
+let c = 0
+c ||= 100            // c = 100 (0 is falsy)
+
+// ─── &&= (AND assignment) ─────────────────────────────────────────
+// Assign RIGHT side only if LEFT side is TRUTHY
+let user = { name: "Rahul" }
+user &&= { ...user, role: "admin" }  // assigns (user is truthy)
+let nothing = null
+nothing &&= { role: "admin" }        // nothing = null (stays null — no assignment)
+
+// ─── ??= (Nullish assignment) ─────────────────────────────────────
+// Assign RIGHT side only if LEFT side is NULL or UNDEFINED
+let config = null
+config ??= { theme: "dark" }    // assigns { theme: "dark" }
+let count = 0
+count ??= 100                   // count = 0 ✅ (0 is NOT null/undefined — no assign)
+let str = ""
+str ??= "fallback"              // str = "" ✅ (empty string not null/undefined)
+
+// ─── PRACTICAL PATTERNS ───────────────────────────────────────────
+function initializeOptions(options) {
+  options.timeout ??= 5000           // Set only if missing
+  options.retries ??= 3
+  options.debug ||= process.env.NODE_ENV === "development"  // Set if falsy
+  options.cache &&= validateCache(options.cache)            // Transform if exists
+  return options
+}
+```
+
+---
+
+### `structuredClone()` — Native Deep Copy
+
+```javascript
+// ES2021 / Node.js 17+ — built-in deep clone!
+
+const original = {
+  name: "Rahul",
+  birthday: new Date("1999-01-15"),   // Preserved as Date ✅
+  scores: [95, 87, 92],               // Deep copied ✅
+  meta: new Map([["key", "value"]]),   // Preserved as Map ✅
+  tags: new Set(["react", "next"]),    // Preserved as Set ✅
+  nested: { deep: { value: 42 } }     // Deep copied ✅
+}
+
+const cloned = structuredClone(original)
+
+// Proof it's deep:
+cloned.nested.deep.value = 999
+console.log(original.nested.deep.value)  // 42 ✅ (independent!)
+
+cloned.scores.push(100)
+console.log(original.scores)   // [95, 87, 92] ✅ (independent!)
+
+// Types are preserved:
+console.log(cloned.birthday instanceof Date)  // true ✅
+console.log(cloned.meta instanceof Map)       // true ✅
+console.log(cloned.tags instanceof Set)       // true ✅
+
+// What structuredClone CANNOT clone:
+// ❌ Functions — throws DataCloneError
+// ❌ DOM nodes — throws DataCloneError
+// ❌ Class instances lose their prototype (become plain objects)
+
+// Comparison:
+// JSON.parse(JSON.stringify(obj)) — lossy: drops functions, undefined, Dates → strings
+// structuredClone — accurate: handles Date, Map, Set, circular refs, ArrayBuffer
+// Lodash cloneDeep — most complete: handles class instances with prototypes
+```
+
+---
+
+### `Array.at()` — Negative Indexing
+
+```javascript
+// ES2022 — access elements from the end with negative indices
+
+const arr = [10, 20, 30, 40, 50]
+
+// Old way to get last element:
+arr[arr.length - 1]   // 50 ← verbose
+
+// New way:
+arr.at(-1)    // 50 ✅ — last element
+arr.at(-2)    // 40 — second to last
+arr.at(0)     // 10 — first element (same as arr[0])
+arr.at(-5)    // 10 — 5th from end = first element
+
+// Works on strings too:
+"Hello".at(-1)   // "o" — last character
+
+// Works on TypedArrays:
+const int8 = new Int8Array([1, 2, 3])
+int8.at(-1)   // 3
+
+// React use case — latest item in list:
+const messages = [...]
+const latestMessage = messages.at(-1)
+const previousMessage = messages.at(-2)
+```
+
+---
+
+### `BigInt` — Large Integer Support
+
+```javascript
+// Regular JS numbers: safe up to 2^53 - 1 = 9007199254740991
+console.log(9007199254740991 + 1)   // 9007199254740992 ✅
+console.log(9007199254740991 + 2)   // 9007199254740992 ❌ (wrong!)
+console.log(Number.MAX_SAFE_INTEGER) // 9007199254740991
+
+// BigInt — arbitrary precision integers:
+const big = 9007199254740991n         // Append 'n' suffix
+const huge = BigInt("9007199254740991")  // Or BigInt() constructor
+
+console.log(9007199254740991n + 2n)   // 9007199254740993n ✅ Exact!
+console.log(typeof 42n)               // "bigint"
+
+// Operations — both operands must be BigInt:
+10n + 5n    // 15n ✅
+10n + 5     // ❌ TypeError — can't mix BigInt and Number!
+10n + BigInt(5)  // 15n ✅
+
+// Division — truncates (integer division):
+10n / 3n    // 3n (not 3.333...)
+10n % 3n    // 1n
+
+// Comparisons — can compare with regular numbers using ==:
+10n == 10   // true (type coercion)
+10n === 10  // false (strict — different types)
+10n > 5     // true
+
+// Use cases:
+// - Financial calculations (avoid float errors)
+// - Cryptography (large primes)
+// - Database IDs that exceed Number.MAX_SAFE_INTEGER
+// - Social media user IDs (Twitter/X had to switch to string IDs!)
+```
+
+---
+
+### `globalThis` — Universal Global Object
+
+```javascript
+// Different environments have different globals:
+// Browser: window
+// Node.js: global
+// Web Worker: self
+
+// ❌ Before globalThis — environment-specific:
+typeof window !== "undefined" ? window.setTimeout : global.setTimeout
+
+// ✅ globalThis — works everywhere:
+globalThis.setTimeout(() => {}, 1000)  // Works in browser, Node, Worker
+
+// Practical:
+function getGlobalStorage() {
+  return globalThis.localStorage   // undefined in Node.js (safely)
+}
+
+if (typeof globalThis.window !== "undefined") {
+  // We're in a browser
+}
+
+// Next.js uses this — code runs on both server (Node) and client (browser)
+const isClient = typeof globalThis.window !== "undefined"
+const isServer = !isClient
+```
+
+---
+
+### `WeakRef` — Weak References
+
+```javascript
+// WeakRef holds a "weak" reference — doesn't prevent garbage collection
+// Use: caching where you want automatic cleanup
+
+const cache = new Map()
+
+function processLargeData(key, createData) {
+  // Check if cached:
+  const weakRef = cache.get(key)
+  if (weakRef) {
+    const data = weakRef.deref()  // Get the referenced value
+    if (data !== undefined) {
+      console.log("Cache hit!")
+      return data
+    }
+  }
+
+  // Create new data:
+  const data = createData()
+  cache.set(key, new WeakRef(data))  // Weak reference — won't prevent GC
+  return data
+}
+
+// The referenced object can be garbage collected if memory is needed.
+// WeakRef.deref() returns undefined if the object was collected.
+
+// Use case: DOM element caching that auto-cleans when element is removed:
+const elementCache = new Map()
+
+function getCachedElement(id) {
+  const ref = elementCache.get(id)
+  if (ref) {
+    const el = ref.deref()
+    if (el) return el
+    elementCache.delete(id)  // Clean up stale entry
+  }
+  const el = document.getElementById(id)
+  elementCache.set(id, new WeakRef(el))
+  return el
+}
+```
+
+---
+
+### 🎯 Interview Questions — Section 8.4
+
+**Q1: What is the difference between `??` and `||`?**
+
+> `||` returns the right-hand value when the left is **any falsy value**: `false`, `0`, `-0`, `0n`, `""`, `null`, `undefined`, `NaN`. `??` (nullish coalescing) returns the right-hand value **only when the left is `null` or `undefined`** — it does NOT trigger for `0`, `false`, or `""`. Use `||` for "any falsy → use default." Use `??` when `0`, `false`, and `""` are valid values that should be preserved.
+
+**Q2: What is `structuredClone` and how does it compare to `JSON.parse(JSON.stringify())`?**
+
+> `structuredClone()` is a native browser/Node.js API for deep cloning. It correctly handles: `Date` (preserved as Date, not string), `Map` and `Set` (preserved with their type), `ArrayBuffer`, `TypedArrays`, `RegExp`, circular references, and `undefined` values. `JSON.parse(JSON.stringify())` loses or corrupts: functions (dropped), `undefined` (dropped from objects), `Date` (becomes string), `Map`/`Set` (become `{}`), and throws on circular references. Choose `structuredClone` for modern environments; `JSON.parse(JSON.stringify())` only for simple JSON-serializable data.
+
+**Q3: What is `Array.at()` and why was it introduced?**
+
+> `Array.at(-1)` provides **negative index access** — getting elements relative to the end of the array. Before `at()`, getting the last element required the verbose `arr[arr.length - 1]`. `at(n)` — positive: same as `arr[n]`; negative: `arr[arr.length + n]`. It was introduced because bracket notation (`arr[-1]`) doesn't work in JS (negative indices just become string property lookups returning `undefined`). `at()` also works on strings and TypedArrays.
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 8.5 Map, Set, WeakMap, WeakSet
+
+<a id="85-map-set-weakmap-weakset"></a>
+
+### Subtopic Breakdown
+
+| Collection | Keys | Values | Unique? | GC-friendly? |
+|------------|------|--------|---------|-------------|
+| `Object` | Strings/Symbols only | Any | Keys must be unique | No |
+| `Map` | Any type | Any | Keys must be unique | No |
+| `Set` | — | Any (unique) | ✅ Values are unique | No |
+| `WeakMap` | Objects only | Any | Keys must be unique | ✅ Yes |
+| `WeakSet` | Objects only | — | ✅ Values unique | ✅ Yes |
+
+---
+
+### `Map` — The Enhanced Object
+
+```javascript
+// Map allows ANY type as key — objects, functions, primitives!
+const map = new Map()
+
+// Setting values:
+map.set("string key", "value1")
+map.set(42, "number key")
+map.set(true, "boolean key")
+map.set({ id: 1 }, "object key")    // Object as key!
+map.set(function(){}, "fn key")     // Function as key!
+
+// Getting values:
+map.get("string key")   // "value1"
+map.get(42)             // "number key"
+
+// Properties & methods:
+map.size                // 5 — number of entries
+map.has("string key")   // true
+map.has("missing")      // false
+map.delete(42)          // true (returns boolean)
+map.clear()             // Removes all entries
+
+// Initialize from array of [key, value] pairs:
+const userMap = new Map([
+  ["id", 101],
+  ["name", "Rahul"],
+  ["role", "admin"]
+])
+
+// Iteration (insertion order guaranteed!):
+for (const [key, value] of userMap) {
+  console.log(`${key}: ${value}`)
+}
+
+userMap.keys()    // Iterator of keys
+userMap.values()  // Iterator of values
+userMap.entries() // Iterator of [key, value] pairs
+
+[...userMap.keys()]     // ["id", "name", "role"]
+[...userMap.values()]   // [101, "Rahul", "admin"]
+[...userMap.entries()]  // [["id", 101], ["name", "Rahul"], ...]
+
+// Convert Map to Object:
+Object.fromEntries(userMap)   // { id: 101, name: "Rahul", role: "admin" }
+
+// Convert Object to Map:
+const obj = { a: 1, b: 2 }
+const fromObj = new Map(Object.entries(obj))
+```
+
+---
+
+### Map vs Object — When to Use Which
+
+```javascript
+// ─── USE Map WHEN: ────────────────────────────────────────────────
+
+// 1. Keys are not strings/symbols:
+const elementMap = new Map()
+const div = document.getElementById("myDiv")
+elementMap.set(div, { clickCount: 0, hovered: false })   // DOM element as key!
+
+// 2. You need insertion order guaranteed:
+const requestCache = new Map()
+// Map always iterates in insertion order (Objects usually do, but not guaranteed for integers)
+
+// 3. You add/remove entries frequently:
+const cache = new Map()
+// map.size is O(1) — direct property
+// Object.keys(obj).length is O(n) — must count
+
+// 4. Keys might collide with prototype properties:
+const dangerousObj = {}
+dangerousObj["constructor"] = "user data"  // ← Overwrites constructor!
+dangerousObj["toString"] = "my value"      // ← Overwrites toString!
+
+const safeMap = new Map()
+safeMap.set("constructor", "user data")    // ✅ Safe — no prototype
+safeMap.set("toString", "my value")       // ✅ Safe
+
+// ─── USE Object WHEN: ────────────────────────────────────────────
+// 1. Keys are known strings → JSON serialization needed
+// 2. You want JavaScript's object literal syntax { key: value }
+// 3. Working with APIs that expect plain objects
+// 4. TypeScript interface compatibility
+// 5. Destructuring syntax
+
+// Performance comparison:
+// Map: better for frequent add/delete, larger datasets
+// Object: better for small, fixed-key structures with JSON needs
+```
+
+---
+
+### `Set` — Unique Values Collection
+
+```javascript
+// Set stores UNIQUE values — duplicates automatically ignored
+
+const set = new Set()
+set.add(1)
+set.add(2)
+set.add(3)
+set.add(2)    // Duplicate — IGNORED
+set.add(1)    // Duplicate — IGNORED
+
+set.size      // 3 (not 5!)
+set.has(1)    // true
+set.has(99)   // false
+set.delete(2) // true
+set.clear()   // Remove all
+
+// Initialize from array:
+const unique = new Set([1, 2, 3, 2, 1, 4, 3, 5])
+console.log([...unique])  // [1, 2, 3, 4, 5] — deduped!
+
+// ─── MOST COMMON USE: DEDUPLICATION ──────────────────────────────
+const numbers = [1, 2, 3, 2, 1, 4, 3, 5, 4]
+const uniqueNumbers = [...new Set(numbers)]   // [1, 2, 3, 4, 5]
+// OR:
+const uniqueNumbers2 = Array.from(new Set(numbers))
+
+// Remove duplicates from strings array:
+const tags = ["react", "js", "react", "next", "js"]
+const uniqueTags = [...new Set(tags)]   // ["react", "js", "next"]
+
+// ─── SET OPERATIONS ───────────────────────────────────────────────
+const a = new Set([1, 2, 3, 4])
+const b = new Set([3, 4, 5, 6])
+
+// Union (A ∪ B):
+const union = new Set([...a, ...b])
+// {1, 2, 3, 4, 5, 6}
+
+// Intersection (A ∩ B):
+const intersection = new Set([...a].filter(x => b.has(x)))
+// {3, 4}
+
+// Difference (A - B):
+const difference = new Set([...a].filter(x => !b.has(x)))
+// {1, 2}
+
+// Symmetric difference (A △ B):
+const symmetricDiff = new Set([
+  ...[...a].filter(x => !b.has(x)),
+  ...[...b].filter(x => !a.has(x))
+])
+// {1, 2, 5, 6}
+
+// ─── SET vs ARRAY PERFORMANCE ─────────────────────────────────────
+// Set.has() — O(1) lookup — hash table based
+// Array.includes() — O(n) lookup — linear scan
+
+const millionItems = new Set(Array.from({ length: 1000000 }, (_, i) => i))
+millionItems.has(999999)  // ✅ ~instant — O(1)
+
+const arr = Array.from({ length: 1000000 }, (_, i) => i)
+arr.includes(999999)  // ❌ slow — O(n) — scans 1M items
+```
+
+---
+
+### `WeakMap` — Memory-Efficient Private Data
+
+```javascript
+// WeakMap:
+// - Keys must be OBJECTS (not primitives)
+// - Keys are WEAKLY referenced — don't prevent garbage collection
+// - NOT iterable — can't get all keys/values
+// - NO size property
+
+const weakMap = new WeakMap()
+
+let obj1 = { name: "Rahul" }
+let obj2 = { name: "Priya" }
+
+weakMap.set(obj1, { clicks: 0, score: 100 })
+weakMap.set(obj2, { clicks: 5, score: 90 })
+
+weakMap.get(obj1)    // { clicks: 0, score: 100 }
+weakMap.has(obj1)    // true
+weakMap.delete(obj1) // true
+
+// When obj1 goes out of scope or is set to null:
+obj1 = null
+// ← The { name: "Rahul" } object AND its WeakMap entry
+// are eligible for garbage collection! Memory freed automatically.
+
+// ─── USE CASE 1: Private data for objects ────────────────────────
+const privateData = new WeakMap()
+
+class Person {
+  constructor(name, age) {
+    this.name = name
+    // Store private data — not accessible from outside:
+    privateData.set(this, { age, passwordHash: null })
+  }
+
+  getAge() {
+    return privateData.get(this).age  // Access private data
+  }
+
+  setPassword(password) {
+    const data = privateData.get(this)
+    data.passwordHash = hashPassword(password)
+  }
+}
+
+const p = new Person("Rahul", 25)
+p.getAge()    // 25 ✅
+p.age         // undefined — not on the instance!
+// When p is garbage collected, its private data is also cleaned up automatically!
+
+// ─── USE CASE 2: DOM element caching ─────────────────────────────
+const domMetadata = new WeakMap()
+
+function attachMetadata(element, data) {
+  domMetadata.set(element, data)  // element is the key
+}
+
+function getMetadata(element) {
+  return domMetadata.get(element)
+}
+
+const btn = document.getElementById("myBtn")
+attachMetadata(btn, { clickCount: 0, lastClicked: null })
+
+btn.addEventListener("click", () => {
+  const meta = getMetadata(btn)
+  meta.clickCount++
+  meta.lastClicked = new Date()
+})
+
+// When btn is removed from DOM and all references removed,
+// WeakMap entry is garbage collected automatically!
+```
+
+---
+
+### `WeakSet` — Tracking Object Membership
+
+```javascript
+// WeakSet:
+// - Values must be OBJECTS
+// - Weakly held — don't prevent GC
+// - Not iterable
+
+const weakSet = new WeakSet()
+
+let obj = { id: 1 }
+weakSet.add(obj)
+weakSet.has(obj)    // true
+weakSet.delete(obj) // true
+
+obj = null  // obj and its WeakSet membership cleaned up by GC
+
+// ─── USE CASE: Track "seen" objects ──────────────────────────────
+function processOnce(items) {
+  const seen = new WeakSet()  // Objects, not primitives
+
+  return items.filter(item => {
+    if (seen.has(item)) return false  // Already processed
+    seen.add(item)
+    return true
+  })
+}
+
+// ─── USE CASE: Circular reference detection ───────────────────────
+function detectCircular(obj, seen = new WeakSet()) {
+  if (typeof obj !== "object" || obj === null) return false
+  if (seen.has(obj)) return true   // Already seen this reference → circular!
+  seen.add(obj)
+  return Object.values(obj).some(value => detectCircular(value, seen))
+}
+
+const circular = {}
+circular.self = circular
+detectCircular(circular)  // true
+
+const normal = { a: { b: { c: 1 } } }
+detectCircular(normal)   // false
+```
+
+---
+
+### 🎯 Interview Questions — Section 8.5
+
+**Q1: What is the difference between `Map` and `Object`?**
+
+> **Keys:** Object keys must be strings or Symbols; Map keys can be ANY value including objects, functions, and primitives. **Order:** Map guarantees insertion order for all keys; Object guarantees it for string keys (but integers sort first). **Size:** `map.size` is O(1); `Object.keys(obj).length` is O(n). **Prototype:** Objects inherit from Object.prototype (potential key clashes with `constructor`, `toString`, etc.); Map has no such issue. **Iteration:** Maps are directly iterable with `for...of`; Objects need `Object.keys()`/`entries()`. **JSON:** Objects serialize natively with JSON; Maps don't. Choose Map for: frequent mutations, any-type keys, large datasets. Choose Object for: JSON data, string keys, destructuring.
+
+**Q2: What is the difference between `Set` and `Array`?**
+
+> **Uniqueness:** Set only allows unique values — duplicates are silently ignored; Arrays allow duplicates. **Lookup:** `set.has(item)` is O(1) (hash table); `arr.includes(item)` is O(n) (linear scan). **Ordering:** Both maintain insertion order. **Methods:** Arrays have rich transformation methods (map, filter, reduce); Sets don't. **Use case:** Use Set for unique collections, membership testing, deduplication. Use Array for ordered collections with duplicates, index-based access, and transformations.
+
+**Q3: Why does `WeakMap` not have a `size` property or iteration methods?**
+
+> `WeakMap` keys are weakly referenced — they can be garbage collected at any time when no other references exist. If `WeakMap` had a `size` property or iteration, the JS runtime would need to maintain a list of all keys, which would require keeping strong references to them — defeating the entire purpose of weak references. The garbage collector runs non-deterministically, so `size` would be unpredictable. Non-iterability is by design, not a limitation.
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 8.6 Symbol
+
+<a id="86-symbol"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is Symbol? | Unique primitive type |
+| Symbol creation | `Symbol()`, `Symbol.for()` |
+| Symbol description | Optional label for debugging |
+| Global registry | `Symbol.for()` / `Symbol.keyFor()` |
+| Well-known Symbols | `Symbol.iterator`, `Symbol.toPrimitive`, etc. |
+| Use cases | Unique keys, prevent name clashes |
+
+---
+
+### What is Symbol?
+
+**Symbol** is a **unique and immutable primitive** value. Every `Symbol()` call creates a new, guaranteed-unique value — even with the same description.
+
+> **Hinglish:** Symbol ek aisa unique ID hai jo kabhi duplicate nahi hota. Jaise Aadhaar number — har baar naya aur alag. `Symbol("name") !== Symbol("name")` — same label, different identity!
+
+```javascript
+// Every Symbol() call creates a UNIQUE value:
+const s1 = Symbol("user")
+const s2 = Symbol("user")
+console.log(s1 === s2)   // false! Always unique!
+console.log(s1 == s2)    // false!
+
+// The string is just a DESCRIPTION (for debugging, not identity):
+console.log(s1.toString())   // "Symbol(user)"
+console.log(s1.description)  // "user" (ES2019)
+
+// Symbol is a primitive:
+typeof Symbol()      // "symbol"
+
+// Cannot be coerced to string:
+// "Hello " + Symbol()  // ❌ TypeError!
+`Hello ${Symbol()}` // ❌ TypeError!
+String(Symbol("x")) // ✅ "Symbol(x)" — explicit conversion works
+```
+
+---
+
+### Symbols as Unique Object Keys
+
+```javascript
+// ─── AVOIDING PROPERTY NAME CLASHES ──────────────────────────────
+// Problem: third-party code might use same property names
+
+// ❌ String key — could clash with other libraries:
+const obj = { name: "Rahul" }
+obj.id = 101   // What if another library also sets obj.id?
+
+// ✅ Symbol key — guaranteed unique — no clash possible:
+const ID = Symbol("id")
+const SCORE = Symbol("score")
+
+obj[ID] = 101      // Unique key — no other library can accidentally overwrite
+obj[SCORE] = 99
+
+console.log(obj[ID])   // 101 ✅
+
+// Symbols DON'T appear in normal object enumeration:
+Object.keys(obj)                  // ["name"] — no symbols!
+for (const key in obj) {}         // Iterates only "name"
+JSON.stringify(obj)               // {"name":"Rahul"} — no symbols!
+Object.getOwnPropertyNames(obj)   // ["name"] — no symbols!
+
+// To get Symbol keys:
+Object.getOwnPropertySymbols(obj)  // [Symbol(id), Symbol(score)]
+Reflect.ownKeys(obj)               // ["name", Symbol(id), Symbol(score)]
+```
+
+---
+
+### Global Symbol Registry — `Symbol.for()`
+
+```javascript
+// Symbol.for() — shared symbols across different parts of code/modules
+
+const s1 = Symbol.for("app.user.id")   // Create or retrieve from registry
+const s2 = Symbol.for("app.user.id")   // Same key → returns SAME Symbol!
+console.log(s1 === s2)    // true! (unlike Symbol())
+
+// Symbol.keyFor() — look up the key of a registered Symbol:
+Symbol.keyFor(s1)         // "app.user.id"
+Symbol.keyFor(Symbol())   // undefined (not in registry)
+
+// Use case: cross-module shared constants
+// Module A:
+const TOKEN_KEY = Symbol.for("auth.token")
+// Module B (different file):
+const TOKEN_KEY = Symbol.for("auth.token")  // Same symbol!
+// Both modules share the same unique key
+```
+
+---
+
+### Well-Known Symbols — Hooks into JavaScript Behavior
+
+```javascript
+// ─── Symbol.iterator — Make custom objects iterable ───────────────
+class Range {
+  constructor(start, end) {
+    this.start = start
+    this.end = end
+  }
+
+  // Add Symbol.iterator to make it work with for...of, spread, destructuring:
+  [Symbol.iterator]() {
+    let current = this.start
+    const end = this.end
+    return {
+      next() {
+        if (current <= end) {
+          return { value: current++, done: false }
+        }
+        return { value: undefined, done: true }
+      }
+    }
+  }
+}
+
+const range = new Range(1, 5)
+for (const num of range) {
+  console.log(num)  // 1, 2, 3, 4, 5
+}
+
+console.log([...range])   // [1, 2, 3, 4, 5]
+const [first, , third] = range  // Destructuring works!
+console.log(first, third)  // 1, 3
+
+// ─── Symbol.toPrimitive — Custom type coercion ────────────────────
+class Money {
+  constructor(amount, currency) {
+    this.amount = amount
+    this.currency = currency
+  }
+
+  [Symbol.toPrimitive](hint) {
+    // hint: "number", "string", or "default"
+    if (hint === "number") return this.amount
+    if (hint === "string") return `${this.amount} ${this.currency}`
+    return this.amount  // default
+  }
+}
+
+const price = new Money(1000, "INR")
+console.log(+price)           // 1000 (number hint)
+console.log(`${price}`)       // "1000 INR" (string hint)
+console.log(price + 500)      // 1500 (default hint — adds as number)
+
+// ─── Symbol.hasInstance — Custom instanceof behavior ───────────────
+class MyArray {
+  static [Symbol.hasInstance](instance) {
+    return Array.isArray(instance)  // Make regular arrays "instanceof" MyArray
+  }
+}
+
+console.log([] instanceof MyArray)   // true
+console.log({} instanceof MyArray)   // false
+
+// ─── Symbol.toStringTag — Custom [object ???] tag ─────────────────
+class CustomCollection {
+  get [Symbol.toStringTag]() {
+    return "CustomCollection"
+  }
+}
+
+const col = new CustomCollection()
+Object.prototype.toString.call(col)  // "[object CustomCollection]"
+```
+
+---
+
+### 🎯 Interview Questions — Section 8.6
+
+**Q1: What is a Symbol and why is it useful?**
+
+> Symbol is a primitive type that creates guaranteed-unique values. `Symbol("id") !== Symbol("id")` — even with same description. Useful for: (1) **Unique object keys** that won't clash with string keys or other code's properties. (2) **Meta-programming hooks** via well-known symbols (Symbol.iterator, Symbol.toPrimitive). (3) **Hidden properties** — Symbol keys don't appear in `Object.keys()`, `JSON.stringify()`, or `for...in` loops. (4) **Constants** that are guaranteed unique — avoids magic strings.
+
+**Q2: What is `Symbol.iterator` and how does it work?**
+
+> `Symbol.iterator` is a well-known Symbol that defines the default iterator for an object. When you use `for...of`, spread `[...]`, or destructuring, JavaScript looks for the `[Symbol.iterator]()` method on the object. If found, it calls it to get an **iterator** — an object with a `next()` method that returns `{ value, done }` objects. Arrays, strings, Maps, Sets have built-in `[Symbol.iterator]`. You can make any custom class iterable by adding this method.
+
+**Q3: What is the difference between `Symbol()` and `Symbol.for()`?**
+
+> `Symbol()` creates a **new unique Symbol** every time — even with the same description, two calls produce different Symbols. `Symbol.for(key)` accesses a **global registry** — it creates a new Symbol with that key if none exists, or returns the existing one if it does. `Symbol.for("x") === Symbol.for("x")` is `true`. Use `Symbol()` for local unique keys. Use `Symbol.for()` when the same Symbol needs to be shared across different modules or code sections.
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 8.7 Generators & Iterators
+
+<a id="87-generators--iterators"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Iterator Protocol | `{ next() → { value, done } }` |
+| Iterable Protocol | `[Symbol.iterator]()` returns iterator |
+| Generator Functions | `function*` and `yield` |
+| Generator as Iterator | Auto-implements iterator protocol |
+| Lazy Evaluation | Values computed on demand |
+| `for...of` with generators | Consuming generators |
+| Infinite sequences | Generators for endless streams |
+
+---
+
+### Iterator Protocol
+
+```javascript
+// An ITERATOR is any object with a next() method that returns { value, done }
+
+// Manual iterator:
+function createCounter(start = 0, end = Infinity) {
+  let current = start
+
+  return {
+    next() {
+      if (current <= end) {
+        return { value: current++, done: false }
+      }
+      return { value: undefined, done: true }
+    }
+  }
+}
+
+const counter = createCounter(1, 3)
+console.log(counter.next())  // { value: 1, done: false }
+console.log(counter.next())  // { value: 2, done: false }
+console.log(counter.next())  // { value: 3, done: false }
+console.log(counter.next())  // { value: undefined, done: true }
+
+// An ITERABLE has a [Symbol.iterator]() method that returns an iterator:
+const myIterable = {
+  [Symbol.iterator]() {
+    let i = 0
+    return {
+      next() {
+        return i < 3
+          ? { value: i++, done: false }
+          : { value: undefined, done: true }
+      }
+    }
+  }
+}
+
+for (const val of myIterable) {
+  console.log(val)  // 0, 1, 2
+}
+
+[...myIterable]   // [0, 1, 2]
+```
+
+---
+
+### Generator Functions — `function*` and `yield`
+
+> **Hinglish:** Generator function ek special function hai jo ek saath sab return nahi karta — "thoda thoda" return karta hai. `yield` ek pause button hai — value do, ruko, dobara call karo toh aage chalo. Jaise ek tape cassette — play karo, pause karo, play karo.
+
+```mermaid
+flowchart LR
+    A["function* gen()"] --> B["yield 1\n(pause, return 1)"]
+    B --> C["gen.next() called again"]
+    C --> D["yield 2\n(pause, return 2)"]
+    D --> E["gen.next() called again"]
+    E --> F["yield 3\n(pause, return 3)"]
+    F --> G["gen.next() called again"]
+    G --> H["return → { done: true }"]
+
+    style B fill:#fff9c4
+    style D fill:#fff9c4
+    style F fill:#fff9c4
+```
+
+```javascript
+// Generator function syntax:
+function* simpleGenerator() {
+  console.log("Step 1")
+  yield 1            // Pause here, return { value: 1, done: false }
+  console.log("Step 2")
+  yield 2            // Pause here, return { value: 2, done: false }
+  console.log("Step 3")
+  yield 3            // Pause here, return { value: 3, done: false }
+  console.log("Done!")
+  // Implicit: return { value: undefined, done: true }
+}
+
+const gen = simpleGenerator()  // Creates generator object, doesn't start executing!
+
+console.log(gen.next())   // "Step 1" → { value: 1, done: false }
+console.log(gen.next())   // "Step 2" → { value: 2, done: false }
+console.log(gen.next())   // "Step 3" → { value: 3, done: false }
+console.log(gen.next())   // "Done!"  → { value: undefined, done: true }
+console.log(gen.next())   // { value: undefined, done: true } (stays done)
+```
+
+---
+
+### Generators as Iterables — Using `for...of`
+
+```javascript
+// Generator functions return a generator object that is BOTH iterator AND iterable
+
+function* range(start, end, step = 1) {
+  for (let i = start; i <= end; i += step) {
+    yield i
+  }
+}
+
+// for...of automatically calls next() and stops on done: true
+for (const num of range(1, 10, 2)) {
+  console.log(num)  // 1, 3, 5, 7, 9
+}
+
+// Spread:
+console.log([...range(1, 5)])  // [1, 2, 3, 4, 5]
+
+// Destructuring:
+const [first, second, third] = range(10, 50, 10)
+console.log(first, second, third)  // 10, 20, 30
+
+// ─── INFINITE GENERATOR ───────────────────────────────────────────
+function* naturals() {
+  let n = 1
+  while (true) {         // Infinite loop — OK because generator is lazy!
+    yield n++
+  }
+}
+
+const nat = naturals()
+nat.next().value   // 1
+nat.next().value   // 2
+nat.next().value   // 3
+
+// Take first N from infinite generator:
+function take(n, iterable) {
+  const result = []
+  for (const item of iterable) {
+    result.push(item)
+    if (result.length >= n) break
+  }
+  return result
+}
+
+take(5, naturals())  // [1, 2, 3, 4, 5]
+take(10, naturals()) // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+```
+
+---
+
+### Lazy Evaluation — Values on Demand
+
+```javascript
+// ─── EAGER (traditional) — computes ALL values upfront ────────────
+function eagerMap(arr, fn) {
+  return arr.map(fn)  // Creates entire new array immediately!
+}
+
+const result = eagerMap([1, 2, 3, 4, 5], x => {
+  console.log("Processing:", x)  // All 5 printed immediately
+  return x * 2
+})
+// "Processing: 1, 2, 3, 4, 5" all print before we use result
+
+// ─── LAZY (generator) — computes only when needed ─────────────────
+function* lazyMap(iterable, fn) {
+  for (const item of iterable) {
+    yield fn(item)  // Only processes when consumed!
+  }
+}
+
+const lazyResult = lazyMap([1, 2, 3, 4, 5], x => {
+  console.log("Processing:", x)  // Only prints when we call next()
+  return x * 2
+})
+
+const first = lazyResult.next()  // "Processing: 1" — only one!
+console.log(first.value)          // 2
+
+// Why lazy evaluation matters:
+// - Process only what you need (memory efficient)
+// - Handle infinite sequences
+// - Improve performance for early-exit scenarios
+
+// ─── REAL WORLD: Lazy data pipeline ──────────────────────────────
+function* filter(iterable, predicate) {
+  for (const item of iterable) {
+    if (predicate(item)) yield item
+  }
+}
+
+function* map(iterable, fn) {
+  for (const item of iterable) {
+    yield fn(item)
+  }
+}
+
+function* take(n, iterable) {
+  let count = 0
+  for (const item of iterable) {
+    if (count++ >= n) return
+    yield item
+  }
+}
+
+// Process 10 million numbers, but only compute first 5 matching ones:
+const MILLION = 10_000_000
+function* numbers() {
+  for (let i = 0; i < MILLION; i++) yield i
+}
+
+// This pipeline runs lazily — only processes what's needed:
+const result = take(5,
+  filter(
+    map(numbers(), x => x * x),  // Square all numbers (lazy)
+    x => x % 7 === 0             // Only multiples of 7 (lazy)
+  )
+)
+
+console.log([...result])  // [0, 49, 196, 441, 784]
+// Only computed ~30 values, not all 10 million!
+```
+
+---
+
+### Passing Values to Generators with `next(value)`
+
+```javascript
+// You can pass values BACK to the generator via next(value)!
+// The yielded expression receives the value passed to next()
+
+function* conversation() {
+  const name = yield "What is your name?"    // Pauses, then receives passed value
+  const age = yield `Hello ${name}! How old are you?`
+  yield `${name} is ${age} years old. Nice to meet you!`
+}
+
+const chat = conversation()
+console.log(chat.next().value)           // "What is your name?"
+console.log(chat.next("Rahul").value)    // "Hello Rahul! How old are you?"
+console.log(chat.next(25).value)         // "Rahul is 25 years old. Nice to meet you!"
+```
+
+---
+
+### Async Generators
+
+```javascript
+// Combine async with generators for streaming data:
+async function* fetchPages(baseUrl, totalPages) {
+  for (let page = 1; page <= totalPages; page++) {
+    const response = await fetch(`${baseUrl}?page=${page}`)
+    const data = await response.json()
+    yield data   // Yield one page at a time
+  }
+}
+
+// Process paginated API without loading all pages at once:
+async function processAllUsers() {
+  for await (const pageData of fetchPages("/api/users", 10)) {
+    for (const user of pageData.users) {
+      await processUser(user)   // Process one user at a time
+    }
+    console.log(`Processed page with ${pageData.users.length} users`)
+  }
+}
+```
+
+---
+
+### 🎯 Interview Questions — Section 8.7
+
+**Q1: What is an iterator and what is the iterator protocol?**
+
+> An **iterator** is any object that implements the **iterator protocol** — it has a `next()` method that returns an object with two properties: `value` (the current value) and `done` (a boolean — `true` when the sequence is exhausted, `false` otherwise). An **iterable** is an object that implements the **iterable protocol** — it has a `[Symbol.iterator]()` method that returns an iterator. Built-in iterables: arrays, strings, Maps, Sets, generators.
+
+**Q2: What is the difference between a generator function and a regular function?**
+
+> (1) **Syntax:** Generator uses `function*` and `yield`; regular uses `function` and `return`. (2) **Execution:** Regular functions run completely when called; generators pause at each `yield` and resume when `.next()` is called. (3) **Return value:** Regular functions return a single value; generator functions return a **generator object** (both iterator and iterable). (4) **State:** Generators maintain their local variable state between `yield` points; regular functions are stateless between calls. (5) **Lazy:** Generators produce values on demand; regular functions compute eagerly.
+
+**Q3: What is lazy evaluation and when is it useful?**
+
+> Lazy evaluation means computing values **only when they're actually needed** — not upfront. Generators enable lazy evaluation — `yield` pauses computation until the next `.next()` call. Benefits: (1) **Memory efficiency** — don't allocate results for unused values. (2) **Infinite sequences** — can represent infinite lists without infinite memory. (3) **Early exit optimization** — if you only need the first N matching items from a million-item list, lazy evaluation stops after finding them. (4) **Pipeline composition** — chain multiple transformations without creating intermediate arrays.
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 🧪 Mini Project: Modern JS Feature Showcase
+
+<a id="-mini-project-modern-js-feature-showcase"></a>
+
+### Problem Statement
+
+Build **ModernJS Playground** — an interactive Next.js application that demonstrates all Chapter 8 features with live code examples, performance comparisons, and interactive demos. This serves as both a learning tool and a reference implementation.
+
+### Architecture
+
+```mermaid
+flowchart TD
+    subgraph APP["Next.js App Router"]
+        HOME["Home Page\nFeature Navigator"]
+        MODULES["Modules Demo\nimport/export visualization"]
+        COLLECTIONS["Collections Demo\nMap vs Object, Set dedup"]
+        GENERATORS["Generator Playground\nLazy pipeline visualizer"]
+        SYMBOLS["Symbol Explorer\nIterator builder"]
+    end
+
+    subgraph API["Route Handlers"]
+        PERF["POST /api/perf\nMap vs Object benchmarks"]
+        LAZY["GET /api/lazy-data\nAsync generator streaming"]
+    end
+
+    HOME --> MODULES & COLLECTIONS & GENERATORS & SYMBOLS
+    COLLECTIONS --> PERF
+    GENERATORS --> LAZY
+
+    style APP fill:#e3f2fd
+    style API fill:#e8f5e9
+```
+
+### File Structure
+
+```
+modern-js-playground/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                          # Feature navigator
+│   ├── collections/page.tsx              # Map, Set, WeakMap demos
+│   ├── generators/page.tsx               # Generator visualizer
+│   ├── symbols/page.tsx                  # Symbol demo
+│   └── api/
+│       ├── benchmark/route.ts            # Map vs Object perf
+│       └── stream/route.ts              # Async generator streaming
+├── components/
+│   ├── FeatureCard.tsx
+│   ├── CodeDemo.tsx                      # Live code runner
+│   ├── PerformanceChart.tsx              # Benchmark visualization
+│   └── GeneratorVisualizer.tsx          # Step-by-step generator
+├── lib/
+│   ├── collections/
+│   │   ├── mapUtils.ts                   # Map utilities
+│   │   └── setUtils.ts                   # Set operations
+│   ├── generators/
+│   │   ├── lazyPipeline.ts              # Lazy evaluation demos
+│   │   └── asyncGenerators.ts           # Async generator examples
+│   └── modernFeatures/
+│       ├── optionalChaining.ts
+│       └── destructuring.ts
+└── types/
+    └── features.types.ts
+```
+
+### Core Implementations
+
+```typescript
+// lib/collections/setUtils.ts
+// Demonstrates all Set operations from Chapter 8
+
+export class SetUtils {
+  // Remove duplicates from array (most common use case):
+  static deduplicate<T>(arr: T[]): T[] {
+    return [...new Set(arr)]
+  }
+
+  // Set operations:
+  static union<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+    return new Set([...setA, ...setB])
+  }
+
+  static intersection<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+    return new Set([...setA].filter(item => setB.has(item)))
+  }
+
+  static difference<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+    return new Set([...setA].filter(item => !setB.has(item)))
+  }
+
+  static symmetricDifference<T>(setA: Set<T>, setB: Set<T>): Set<T> {
+    return new Set([
+      ...[...setA].filter(item => !setB.has(item)),
+      ...[...setB].filter(item => !setA.has(item))
+    ])
+  }
+
+  static isSubset<T>(setA: Set<T>, setB: Set<T>): boolean {
+    return [...setA].every(item => setB.has(item))
+  }
+
+  static isEqual<T>(setA: Set<T>, setB: Set<T>): boolean {
+    return setA.size === setB.size && this.isSubset(setA, setB)
+  }
+}
+
+// lib/generators/lazyPipeline.ts
+// Demonstrates lazy evaluation with generators
+
+export function* range(start: number, end: number, step = 1) {
+  for (let i = start; i <= end; i += step) {
+    yield i
+  }
+}
+
+export function* lazyFilter<T>(
+  iterable: Iterable<T>,
+  predicate: (item: T) => boolean
+): Generator<T> {
+  for (const item of iterable) {
+    if (predicate(item)) yield item
+  }
+}
+
+export function* lazyMap<T, R>(
+  iterable: Iterable<T>,
+  transform: (item: T) => R
+): Generator<R> {
+  for (const item of iterable) {
+    yield transform(item)
+  }
+}
+
+export function* lazyTake<T>(n: number, iterable: Iterable<T>): Generator<T> {
+  let count = 0
+  for (const item of iterable) {
+    if (count >= n) return
+    yield item
+    count++
+  }
+}
+
+export function* lazyFlatMap<T, R>(
+  iterable: Iterable<T>,
+  transform: (item: T) => Iterable<R>
+): Generator<R> {
+  for (const item of iterable) {
+    yield* transform(item)  // yield* delegates to another iterable
+  }
+}
+
+// Compose a lazy pipeline:
+export function createLazyPipeline<T>(source: Iterable<T>) {
+  return {
+    filter(predicate: (item: T) => boolean) {
+      return createLazyPipeline(lazyFilter(source, predicate))
+    },
+    map<R>(transform: (item: T) => R) {
+      return createLazyPipeline(lazyMap(source, transform))
+    },
+    take(n: number) {
+      return createLazyPipeline(lazyTake(n, source))
+    },
+    toArray(): T[] {
+      return [...source]
+    },
+    first(): T | undefined {
+      return source[Symbol.iterator]().next().value
+    }
+  }
+}
+
+// Usage:
+const result = createLazyPipeline(range(1, 1_000_000))
+  .filter(n => n % 3 === 0)      // Only multiples of 3
+  .map(n => n * n)                // Square them
+  .filter(n => n.toString().includes("9"))  // Contains digit 9
+  .take(5)                        // First 5 only
+  .toArray()
+
+console.log(result)  // Computed lazily! Only processes ~N items, not 1M
+```
+
+```typescript
+// components/GeneratorVisualizer.tsx
+'use client'
+
+import { useState, useCallback } from 'react'
+
+type GeneratorStep = {
+  step: number
+  yielded: unknown
+  done: boolean
+  description: string
+}
+
+export function GeneratorVisualizer() {
+  const [steps, setSteps] = useState<GeneratorStep[]>([])
+  const [gen, setGen] = useState<Generator | null>(null)
+  const [isComplete, setIsComplete] = useState(false)
+
+  const generators = {
+    fibonacci: function*() {
+      let [a, b] = [0, 1]
+      while (true) {
+        yield a;
+        [a, b] = [b, a + b]
+      }
+    },
+    range: function*() {
+      for (let i = 1; i <= 5; i++) {
+        yield i
+      }
+    },
+    countdown: function*() {
+      for (let i = 5; i >= 0; i--) {
+        yield i === 0 ? "Go! 🚀" : i
+      }
+    }
+  }
+
+  const start = useCallback((genName: keyof typeof generators) => {
+    const newGen = generators[genName]()
+    setGen(newGen)
+    setSteps([])
+    setIsComplete(false)
+  }, [])
+
+  const step = useCallback(() => {
+    if (!gen || isComplete) return
+
+    const result = gen.next()
+    setSteps(prev => [...prev, {
+      step: prev.length + 1,
+      yielded: result.value,
+      done: result.done ?? false,
+      description: result.done ? "Generator exhausted" : `Yielded: ${result.value}`
+    }])
+
+    if (result.done) setIsComplete(true)
+  }, [gen, isComplete])
+
+  return (
+    <div className="p-6 bg-gray-900 rounded-xl text-white">
+      <h2 className="text-xl font-bold mb-4">Generator Visualizer</h2>
+
+      <div className="flex gap-2 mb-4">
+        {Object.keys(generators).map(name => (
+          <button
+            key={name}
+            onClick={() => start(name as keyof typeof generators)}
+            className="px-3 py-1 bg-blue-600 rounded text-sm"
+          >
+            {name}
+          </button>
+        ))}
+      </div>
+
+      <button
+        onClick={step}
+        disabled={!gen || isComplete}
+        className="w-full py-2 bg-green-600 rounded mb-4 disabled:opacity-50"
+      >
+        {isComplete ? "Complete ✅" : "Next Step →"}
+      </button>
+
+      <div className="space-y-2 max-h-64 overflow-y-auto">
+        {steps.map((s, i) => (
+          <div
+            key={i}
+            className={`p-2 rounded font-mono text-sm ${
+              s.done ? "bg-gray-700" : "bg-gray-800"
+            } ${i === steps.length - 1 ? "border border-green-500" : ""}`}
+          >
+            <span className="text-gray-400">Step {s.step}:</span>{" "}
+            <span className={s.done ? "text-gray-500" : "text-yellow-300"}>
+              {s.done ? "{ value: undefined, done: true }" : `{ value: ${JSON.stringify(s.yielded)}, done: false }`}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+```
+
+```typescript
+// app/api/benchmark/route.ts
+// Performance comparison: Map vs Object, Set vs Array
+
+import { NextRequest, NextResponse } from "next/server"
+
+function benchmark(name: string, fn: () => void, iterations = 100_000) {
+  const start = performance.now()
+  for (let i = 0; i < iterations; i++) fn()
+  const end = performance.now()
+  return { name, time: end - start, iterations }
+}
+
+export async function POST(request: NextRequest) {
+  const { size = 1000 } = await request.json()
+
+  // Prepare test data:
+  const keys = Array.from({ length: size }, (_, i) => `key${i}`)
+  const lookupKey = `key${Math.floor(size / 2)}`
+
+  // Object benchmark:
+  const obj: Record<string, number> = {}
+  keys.forEach((k, i) => (obj[k] = i))
+
+  const objSet = benchmark("Object.set", () => {
+    obj[`key${Math.random()}`] = Math.random()
+  })
+
+  const objGet = benchmark("Object.get", () => {
+    const _ = obj[lookupKey]
+  })
+
+  // Map benchmark:
+  const map = new Map(keys.map((k, i) => [k, i]))
+
+  const mapSet = benchmark("Map.set", () => {
+    map.set(`key${Math.random()}`, Math.random())
+  })
+
+  const mapGet = benchmark("Map.get", () => {
+    const _ = map.get(lookupKey)
+  })
+
+  // Array vs Set lookup:
+  const arr = keys.slice()
+  const set = new Set(keys)
+
+  const arrLookup = benchmark("Array.includes", () => {
+    arr.includes(lookupKey)
+  })
+
+  const setLookup = benchmark("Set.has", () => {
+    set.has(lookupKey)
+  })
+
+  return NextResponse.json({
+    size,
+    results: {
+      objectVsMap: { objSet, objGet, mapSet, mapGet },
+      arrayVsSet: { arrLookup, setLookup },
+      winner: {
+        write: mapSet.time < objSet.time ? "Map" : "Object",
+        read: mapGet.time < objGet.time ? "Map" : "Object",
+        lookup: setLookup.time < arrLookup.time ? "Set" : "Array"
+      }
+    }
+  })
+}
+```
+
+### What This Project Demonstrates
+
+| Chapter 8 Concept | Demonstrated By |
+|-------------------|----------------|
+| Destructuring | Props destructuring throughout all components |
+| Spread/Rest | State updates, component props forwarding |
+| ES Modules | Proper import/export structure throughout |
+| Optional chaining | Safe API response access |
+| Nullish coalescing | Default value handling in configs |
+| `structuredClone` | Deep copy in state management |
+| `Array.at()` | Getting last items in history |
+| Map | `GeneratorVisualizer` step tracking |
+| Set | Deduplication demo in SetUtils |
+| WeakMap | Private generator state |
+| Symbol.iterator | Custom `Range` class with `for...of` |
+| Generators | `GeneratorVisualizer`, lazy pipeline |
+| Async generators | `/api/stream` route handler |
+| BigInt | Fibonacci generator (can produce huge numbers) |
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
+
+---
+
+## 📝 Practice Section
+
+<a id="-practice-section"></a>
+
+### 5 Coding Questions
+
+**C1: Implement a lazy pipeline library using generators**
+
+```javascript
+// Implement these lazy operations using generators:
+// pipe(source).filter(fn).map(fn).take(n).toArray()
+
+class LazyPipeline {
+  // Your implementation using generators
+  // Must be truly lazy — no intermediate arrays
+}
+
+// Test:
+const result = new LazyPipeline(function* () {
+  for (let i = 1; i <= 1_000_000; i++) yield i
+})
+  .filter(n => n % 2 === 0)
+  .map(n => n * n)
+  .take(5)
+  .toArray()
+
+console.log(result)  // [4, 16, 36, 64, 100] — computed lazily!
+console.log("Only computed ~10 values from 1M!")
+```
+
+---
+
+**C2: Implement a `MultiMap` using Map**
+
+```javascript
+// MultiMap: like Map but each key can have multiple values
+class MultiMap {
+  // map.set(key, value) → adds value to key's list (not replace)
+  // map.get(key) → returns array of all values for key
+  // map.getFirst(key) → returns first value
+  // map.delete(key, value) → removes specific value from key
+  // map.deleteAll(key) → removes all values for key
+  // map.has(key, value) → checks if specific value exists
+  // [Symbol.iterator]() → yields [key, value] for each entry
+}
+
+const mm = new MultiMap()
+mm.set("fruit", "apple")
+mm.set("fruit", "banana")
+mm.set("fruit", "cherry")
+mm.set("veggie", "carrot")
+
+mm.get("fruit")        // ["apple", "banana", "cherry"]
+mm.has("fruit", "banana")  // true
+mm.delete("fruit", "banana")
+mm.get("fruit")        // ["apple", "cherry"]
+
+for (const [key, value] of mm) {
+  console.log(key, value)
+}
+// fruit apple
+// fruit cherry
+// veggie carrot
+```
+
+---
+
+**C3: Implement `Symbol.iterator` for a `Tree` class**
+
+```javascript
+// Binary tree that is iterable in different orders
+class BinaryTree {
+  constructor(value, left = null, right = null) {
+    this.value = value
+    this.left = left
+    this.right = right
+  }
+
+  // Make it iterable — default: inorder traversal
+  [Symbol.iterator]() {
+    // Your implementation
+    // Must return iterator with next() method
+  }
+
+  *inorder() { /* yield left, current, right */ }
+  *preorder() { /* yield current, left, right */ }
+  *postorder() { /* yield left, right, current */ }
+}
+
+const tree = new BinaryTree(
+  4,
+  new BinaryTree(2, new BinaryTree(1), new BinaryTree(3)),
+  new BinaryTree(6, new BinaryTree(5), new BinaryTree(7))
+)
+
+console.log([...tree])           // [1, 2, 3, 4, 5, 6, 7] inorder
+console.log([...tree.preorder()]) // [4, 2, 1, 3, 6, 5, 7]
+```
+
+---
+
+**C4: Build a module system with circular dependency detection**
+
+```javascript
+// Implement a simple module loader that detects circular dependencies
+
+class ModuleRegistry {
+  #modules = new Map()
+  #loading = new Set()
+
+  register(name, factory) {
+    this.#modules.set(name, { factory, exports: null, loaded: false })
+  }
+
+  require(name) {
+    // Detect circular dependencies
+    // Cache loaded modules
+    // Your implementation
+  }
+}
+
+const registry = new ModuleRegistry()
+
+registry.register("A", (require) => {
+  const B = require("B")
+  return { name: "A", uses: B.name }
+})
+
+registry.register("B", (require) => {
+  return { name: "B" }
+})
+
+// Circular dep should throw:
+registry.register("C", (require) => require("D"))
+registry.register("D", (require) => require("C"))
+
+registry.require("A")  // ✅ works
+registry.require("C")  // ❌ throws: Circular dependency detected: C → D → C
+```
+
+---
+
+**C5: Implement a `WeakCache` using WeakMap + WeakRef**
+
+```javascript
+// Cache that:
+// - Uses objects as keys (WeakMap)
+// - Stores values via WeakRef (allows GC)
+// - Supports TTL (time-to-live)
+// - Auto-cleans expired entries
+
+class WeakCache {
+  // Your implementation using WeakMap + WeakRef
+
+  set(key, value, ttlMs = Infinity) {}  // Store with optional TTL
+  get(key) {}                           // Get if not expired/GC'd
+  has(key) {}                           // Check without deleting
+  delete(key) {}                        // Manual deletion
+}
+
+const cache = new WeakCache()
+let obj = { id: 1 }
+
+cache.set(obj, "expensive computation", 5000)  // 5 second TTL
+cache.get(obj)   // "expensive computation"
+
+await delay(6000)
+cache.get(obj)   // null (expired)
+
+obj = null
+// After GC, entry is automatically cleaned up (WeakRef)
+```
+
+---
+
+### 5 Theory Questions
+
+**T1: Explain ES Modules vs CommonJS in depth. Cover: module loading (static vs dynamic), how they handle circular dependencies differently, why ESM enables tree shaking but CJS doesn't, and how Next.js handles both in the same project.**
+
+**T2: Explain the complete lifecycle of a Generator function — from creation to exhaustion. How does `yield*` work? What happens when you call `next(value)` with an argument? How are generators used for async control flow (redux-saga pattern)?**
+
+**T3: Compare Map, Object, WeakMap for managing state in JavaScript. For each: what are the key constraints, performance characteristics, memory implications, and when would you choose one over the others? Include a real-world React scenario for each.**
+
+**T4: Explain the Symbol type and well-known Symbols. How does `Symbol.iterator` enable the iterable protocol? How does `Symbol.toPrimitive` override type coercion? Give three real-world use cases for creating your own Symbol-keyed properties.**
+
+**T5: Explain tree shaking in depth. What conditions must be true for a module to be tree-shakeable? Why do side effects prevent tree shaking? What is the `sideEffects` field in package.json? How do barrel files impact tree shaking in Next.js and what is `optimizePackageImports`?**
+
+---
+
+### 2 Machine Coding Problems
+
+**MCP 1: Build a Reactive State System with ES6+ Features**
+
+Implement a reactive state management system that uses modern ES6+ features:
+
+```typescript
+// Requirements:
+// - State stored in a Proxy (ES6)
+// - Computed values via generators
+// - Subscriptions via Map (listeners per key)
+// - Private internal state via WeakMap
+// - Immutable snapshots via structuredClone
+// - Symbol for internal metadata
+
+class ReactiveStore<T extends object> {
+  constructor(initialState: T) {}
+
+  get<K extends keyof T>(key: K): T[K] {}
+  set<K extends keyof T>(key: K, value: T[K]): void {}
+
+  subscribe<K extends keyof T>(
+    key: K,
+    listener: (newValue: T[K], oldValue: T[K]) => void
+  ): () => void {}  // Returns unsubscribe fn
+
+  *entries(): Generator<[keyof T, T[keyof T]]> {}  // Generator
+
+  snapshot(): Readonly<T> {}  // Deep clone via structuredClone
+
+  computed<R>(keys: (keyof T)[], compute: (values: Pick<T, keyof T>) => R): {
+    get: () => R
+    subscribe: (listener: (value: R) => void) => () => void
+  } {}
+}
+
+// Usage in Next.js:
+const store = new ReactiveStore({
+  user: null,
+  theme: "light",
+  count: 0
+})
+
+const unsubscribe = store.subscribe("count", (newVal, oldVal) => {
+  console.log(`Count: ${oldVal} → ${newVal}`)
+})
+
+const doubleCount = store.computed(
+  ["count"],
+  ({ count }) => count * 2
+)
+
+store.set("count", 5)  // Count: 0 → 5
+doubleCount.get()      // 10
+```
+
+---
+
+**MCP 2: Build a Type-Safe Event System using Symbol and Map**
+
+Build a production-ready, type-safe event emitter using Symbol keys for event types:
+
+```typescript
+// Requirements:
+// - Symbol-based event types (no string literal clashes)
+// - Type-safe event data per event type
+// - Wildcard listeners (receive all events)
+// - Once listeners
+// - Event history (replay capability)
+// - Priority queue for listeners (higher priority runs first)
+// - Async event handlers with proper error handling
+// - Memory-safe: WeakRef for listener cleanup
+
+// Define events with symbols:
+const Events = {
+  USER_LOGIN: Symbol("user.login"),
+  USER_LOGOUT: Symbol("user.logout"),
+  DATA_LOADED: Symbol("data.loaded"),
+  ERROR: Symbol("error"),
+} as const
+
+// Type mapping:
+type EventMap = {
+  [Events.USER_LOGIN]: { userId: string; timestamp: Date }
+  [Events.USER_LOGOUT]: { userId: string }
+  [Events.DATA_LOADED]: { data: unknown; source: string }
+  [Events.ERROR]: { error: Error; context: string }
+}
+
+// The emitter:
+const emitter = createTypedEmitter<typeof Events, EventMap>()
+
+emitter.on(Events.USER_LOGIN, async ({ userId, timestamp }) => {
+  await logUserActivity(userId, timestamp)
+})
+
+emitter.once(Events.DATA_LOADED, ({ data }) => {
+  console.log("First data load:", data)
+})
+
+emitter.emit(Events.USER_LOGIN, { userId: "123", timestamp: new Date() })
+
+// Build as a Next.js Route Handler that uses the event system
+// to notify all subscribers when data changes
+```
+
+---
+
+> [!NOTE]
+> **Chapter 8 Summary — Key Takeaways:**
+> 1. Destructuring extracts by name (object) or position (array) — use in function params for clean APIs
+> 2. Spread `...` expands (one→many); rest `...` collects (many→one) — same syntax, opposite directions
+> 3. Named exports = multiple per file; default export = one per file; both can coexist
+> 4. Tree shaking requires ESM (static imports) — CJS `require()` prevents it
+> 5. `??` only triggers on null/undefined; `||` triggers on any falsy value — use `??` for zero/false/empty string
+> 6. `structuredClone()` is the modern native deep copy — handles Date, Map, Set, circular refs
+> 7. Map keys can be ANY type; Object keys only strings/symbols — Map for dynamic keys, frequent mutations
+> 8. Set guarantees uniqueness with O(1) lookup (`has()`); Array allows duplicates with O(n) scan (`includes()`)
+> 9. WeakMap/WeakSet keys are weakly referenced — allow GC, perfect for caching/private data
+> 10. Generators produce values lazily via `yield` — enable infinite sequences, memory-efficient pipelines
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -12469,8 +24710,2594 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 <a id="9-dom-browser-apis"></a>
 
-## Chapter 9: DOM & Browser APIs
 
+
+# Chapter 9: DOM & Browser APIs
+
+> **Book:** React + Next.js — From Zero to Interview Ready
+> **Part:** A — JavaScript & Web Fundamentals (Pre-React)
+> **Chapter:** 9 of 56
+
+---
+
+<a id="chapter-index-table-9"></a>
+
+## Chapter Index Table
+
+| Topic No. | Topic Name | Subtopics |
+|-----------|------------|-----------|
+| 9.1 | [The DOM — Document Object Model](#91-the-dom--document-object-model) | What is the DOM<br>Node types (Element, Text, Comment, Document)<br>DOM tree structure<br>DOM vs HTML |
+| 9.2 | [Selecting Elements](#92-selecting-elements) | `getElementById`<br>`getElementsByClassName`<br>`getElementsByTagName`<br>`querySelector` / `querySelectorAll`<br>`closest()` |
+| 9.3 | [Manipulating the DOM](#93-manipulating-the-dom) | Creating & appending elements<br>Removing elements<br>`innerHTML` vs `textContent` vs `innerText`<br>Attributes<br>classList<br>Style manipulation |
+| 9.4 | [Event Handling](#94-event-handling) | `addEventListener` with options<br>`removeEventListener`<br>Event object properties<br>`DOMContentLoaded` vs `load` |
+| 9.5 | [Event Propagation](#95-event-propagation) | Bubbling phase<br>Capturing phase<br>`stopPropagation()`<br>`preventDefault()`<br>Difference between both |
+| 9.6 | [Event Delegation](#96-event-delegation) | One listener for many children<br>`e.target`<br>Benefits<br>React's internal delegation |
+| 9.7 | [Browser APIs Used in React](#97-browser-apis-used-in-react) | localStorage / sessionStorage<br>History API<br>IntersectionObserver<br>ResizeObserver<br>MutationObserver<br>Clipboard API<br>Geolocation<br>requestAnimationFrame<br>Web Workers |
+| 9.8 | [Performance APIs](#98-performance-apis) | `performance.now()`<br>PerformanceObserver<br>Navigation Timing<br>Web Vitals (LCP, FID, CLS) |
+| — | [Mini Project](#-mini-project-virtual-dom-inspector--event-tracer) | Virtual DOM Inspector & Event Tracer |
+| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding Problems |
+
+---
+
+## Table of Contents
+
+- [9.1 The DOM — Document Object Model](#91-the-dom--document-object-model)
+- [9.2 Selecting Elements](#92-selecting-elements)
+- [9.3 Manipulating the DOM](#93-manipulating-the-dom)
+- [9.4 Event Handling](#94-event-handling)
+- [9.5 Event Propagation](#95-event-propagation)
+- [9.6 Event Delegation](#96-event-delegation)
+- [9.7 Browser APIs Used in React](#97-browser-apis-used-in-react)
+- [9.8 Performance APIs](#98-performance-apis)
+- [🧪 Mini Project: Virtual DOM Inspector & Event Tracer](#-mini-project-virtual-dom-inspector--event-tracer)
+- [📝 Practice Section](#-practice-section)
+
+---
+
+## 9.1 The DOM — Document Object Model
+
+<a id="91-the-dom--document-object-model"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is the DOM? | Live tree of nodes representing a webpage |
+| Node Types | Element, Text, Comment, Document, DocumentFragment |
+| DOM Tree Structure | Parent-child-sibling relationships |
+| DOM vs HTML | HTML is static markup; DOM is live object |
+| Why DOM matters for React | Virtual DOM compares against real DOM |
+
+---
+
+### What is the DOM?
+
+The **Document Object Model (DOM)** is a **programming interface** for HTML and XML documents. It represents the document as a **tree of nodes** where every element, text, and comment is a node. The browser creates the DOM when it parses HTML, and it is **live** — any changes to it immediately affect what the user sees.
+
+> **Hinglish:** DOM ek live family tree hai jo browser banata hai jab HTML parse karta hai. HTML static text hai — ek baar likh do, wahi rahega. DOM ek live object hai — JavaScript se isko change karo, browser turant screen update kar deta hai. Jaise ek blueprint (HTML) se ek actual ghar (DOM) banana.
+
+```mermaid
+flowchart TD
+    DOC["Document\n(Root Node)"] --> HEAD["<head>\nElement Node"]
+    DOC --> BODY["<body>\nElement Node"]
+
+    HEAD --> TITLE["<title>\nElement Node"]
+    TITLE --> TITLE_TEXT["'My Page'\nText Node"]
+
+    BODY --> DIV["<div id='app'>\nElement Node"]
+    BODY --> COMMENT["<!-- comment -->\nComment Node"]
+
+    DIV --> H1["<h1>\nElement Node"]
+    DIV --> P["<p>\nElement Node"]
+
+    H1 --> H1_TEXT["'Hello World'\nText Node"]
+    P --> P_TEXT["'Welcome'\nText Node"]
+
+    style DOC fill:#fff3e0
+    style HEAD fill:#e3f2fd
+    style BODY fill:#e3f2fd
+    style TITLE fill:#e8f5e9
+    style DIV fill:#e8f5e9
+    style H1 fill:#e8f5e9
+    style P fill:#e8f5e9
+    style TITLE_TEXT fill:#fce4ec
+    style H1_TEXT fill:#fce4ec
+    style P_TEXT fill:#fce4ec
+    style COMMENT fill:#f3e5f5
+```
+
+---
+
+### Node Types — Complete Reference
+
+```javascript
+// Every DOM node has a nodeType property:
+// Node.ELEMENT_NODE     = 1  → <div>, <p>, <span>...
+// Node.TEXT_NODE        = 3  → text content between tags
+// Node.COMMENT_NODE     = 8  → <!-- comment -->
+// Node.DOCUMENT_NODE    = 9  → the document itself
+// Node.DOCUMENT_FRAGMENT_NODE = 11 → lightweight container
+
+// Checking node type:
+const div = document.getElementById("app")
+console.log(div.nodeType)      // 1 (ELEMENT_NODE)
+console.log(div.nodeName)      // "DIV"
+console.log(div.nodeValue)     // null (elements have no value)
+
+// Text node:
+const textNode = div.firstChild
+console.log(textNode.nodeType) // 3 (TEXT_NODE)
+console.log(textNode.nodeValue)// "Hello World" (actual text content)
+
+// Document node:
+console.log(document.nodeType) // 9 (DOCUMENT_NODE)
+
+// Checking if element or text:
+function isElement(node) {
+  return node.nodeType === Node.ELEMENT_NODE
+}
+
+function isText(node) {
+  return node.nodeType === Node.TEXT_NODE
+}
+```
+
+---
+
+### Navigating the DOM Tree
+
+```javascript
+// Given: <div id="parent"><p>First</p><p>Second</p></div>
+const parent = document.getElementById("parent")
+
+// Children (element nodes only):
+parent.children          // HTMLCollection [p, p] — element children only
+parent.childElementCount  // 2
+
+// All child nodes (including text, comments):
+parent.childNodes        // NodeList [text, p, text, p, text] — ALL nodes
+parent.firstChild        // Text node (whitespace before first <p>)
+parent.lastChild         // Text node (whitespace after last <p>)
+parent.firstElementChild // <p>First</p> — first element child
+parent.lastElementChild  // <p>Second</p> — last element child
+
+// Siblings:
+const firstP = parent.firstElementChild
+firstP.nextSibling         // Text node (whitespace)
+firstP.nextElementSibling  // <p>Second</p>
+firstP.previousElementSibling  // null (no prev sibling)
+
+// Parent:
+firstP.parentNode          // <div id="parent">
+firstP.parentElement       // <div id="parent"> (same for elements)
+```
+
+---
+
+### DOM vs HTML — Key Differences
+
+```html
+<!-- HTML source (static markup): -->
+<!DOCTYPE html>
+<html>
+  <head><title>Page</title></head>
+  <body>
+    <p id="msg">Hello</p>
+  </body>
+</html>
+```
+
+```javascript
+// DOM is LIVE — can be changed by JavaScript:
+document.getElementById("msg").textContent = "World"
+// The screen now shows "World" — HTML source unchanged
+
+// DOM can have MORE nodes than the HTML source:
+// Browser adds: <html>, <head>, <body> even if not in HTML
+// Browsers correct invalid HTML in the DOM
+
+// DOM reflects current state; HTML reflects initial source:
+const p = document.createElement("p")
+p.textContent = "Dynamically added"
+document.body.appendChild(p)
+// DOM has new <p> node; view-source still shows original HTML
+
+// React interacts with the DOM, not the HTML:
+// React creates Virtual DOM → compares → updates real DOM selectively
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.1
+
+**Q1: What is the DOM and how does it differ from HTML?**
+
+> The DOM (Document Object Model) is a **live, in-memory tree representation** of a webpage created by the browser when it parses HTML. HTML is static markup — text written in a file. The DOM is a programming interface — a live object tree accessible and modifiable via JavaScript. When JavaScript changes the DOM (`element.textContent = "new"`), the browser immediately re-renders. The original HTML source is unchanged. The DOM may also differ from HTML because browsers auto-correct invalid HTML and add missing tags.
+
+**Q2: What is the difference between `childNodes` and `children`?**
+
+> `childNodes` returns a **NodeList of ALL child nodes** — including text nodes (whitespace between tags), comment nodes, and element nodes. `children` returns an **HTMLCollection of only element nodes** — no text or comment nodes. In practice, `children` is used more often because you typically only care about element children. Example: `<div>\n  <p>text</p>\n</div>` — `childNodes` has 3 items (text, p, text); `children` has 1 item (p).
+
+**Q3: What is a DocumentFragment and why is it useful?**
+
+> A `DocumentFragment` is a lightweight DOM node that acts as a container but is not part of the live DOM tree. Adding elements to a fragment doesn't trigger reflows. Once you append the fragment to the live DOM, all its children are moved (the fragment itself isn't). This is a performance optimization — instead of appending 100 elements one at a time (100 reflows), you append them all to a fragment, then append the fragment once (1 reflow).
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 9.2 Selecting Elements
+
+<a id="92-selecting-elements"></a>
+
+### Subtopic Breakdown
+
+| Method | Returns | Live? | Speed | Use When |
+|--------|---------|-------|-------|---------|
+| `getElementById` | Single element or null | No | Fastest | Selecting by unique ID |
+| `getElementsByClassName` | HTMLCollection | ✅ Yes | Fast | Multiple elements by class |
+| `getElementsByTagName` | HTMLCollection | ✅ Yes | Fast | All elements of a tag |
+| `querySelector` | First match or null | No | Medium | CSS selector, first match |
+| `querySelectorAll` | NodeList (static) | No | Medium | CSS selector, all matches |
+| `closest` | Nearest ancestor match | No | Medium | Finding parent by selector |
+
+---
+
+### All Selection Methods — Complete Guide
+
+```javascript
+// ─── getElementById — fastest, by unique ID ──────────────────────
+const app = document.getElementById("app")
+// Returns: Element | null (if not found)
+// ✅ Fastest — ID lookup is O(1) via hash table
+
+// ─── getElementsByClassName — live HTMLCollection ─────────────────
+const cards = document.getElementsByClassName("card")
+// Returns: HTMLCollection (LIVE — updates if DOM changes!)
+// ⚠️ Not array — need Array.from() for array methods:
+Array.from(cards).filter(el => el.hasAttribute("data-active"))
+
+// ─── getElementsByTagName — all elements of a tag ─────────────────
+const allDivs = document.getElementsByTagName("div")
+const allElements = document.getElementsByTagName("*")  // Everything!
+
+// ─── querySelector — CSS selector, first match ────────────────────
+const btn = document.querySelector(".btn.primary")       // CSS class
+const nav = document.querySelector("nav > ul > li:first-child")  // Complex selector
+const input = document.querySelector("input[type='email']")      // Attribute
+const active = document.querySelector("[data-active='true']")    // Data attr
+const notFound = document.querySelector(".nonexistent")   // null
+
+// Scoped query (search within an element):
+const container = document.getElementById("container")
+const innerBtn = container.querySelector(".btn")  // Searches inside container only
+
+// ─── querySelectorAll — all matches, static NodeList ─────────────
+const allCards = document.querySelectorAll(".card")
+// Returns: NodeList (STATIC — doesn't update when DOM changes)
+// ✅ Supports array methods (forEach):
+allCards.forEach(card => card.classList.add("visible"))
+// ❌ No map/filter without conversion:
+[...allCards].map(card => card.textContent)
+
+// ─── closest — nearest ancestor matching selector ─────────────────
+// Starting from element, walks UP the DOM tree
+const btn = document.querySelector(".delete-btn")
+const card = btn.closest(".card")         // Nearest ancestor with class 'card'
+const form = btn.closest("form")          // Nearest ancestor form
+const article = btn.closest("[data-id]")  // Nearest ancestor with data-id attribute
+// Returns: null if no ancestor matches
+
+// ─── PRACTICAL: Event delegation using closest ────────────────────
+document.getElementById("list").addEventListener("click", (e) => {
+  const listItem = e.target.closest("li")  // Find clicked list item
+  if (listItem) {
+    const id = listItem.dataset.id
+    handleItemClick(id)
+  }
+})
+```
+
+---
+
+### Live HTMLCollection vs Static NodeList
+
+```javascript
+// ⚠️ CRITICAL DIFFERENCE — common interview trap!
+
+const ul = document.getElementById("my-list")
+
+// LIVE — updates automatically when DOM changes:
+const liveList = ul.getElementsByTagName("li")
+console.log(liveList.length)  // 3
+
+// Add a new li to the DOM:
+const newLi = document.createElement("li")
+ul.appendChild(newLi)
+
+console.log(liveList.length)  // 4 ← UPDATED automatically!
+
+// STATIC — snapshot at time of query:
+const staticList = ul.querySelectorAll("li")
+console.log(staticList.length)  // 3
+
+ul.appendChild(document.createElement("li"))
+
+console.log(staticList.length)  // Still 3 ← NOT updated!
+
+// ⚠️ Gotcha with live collections in loops:
+const items = document.getElementsByClassName("item")
+// DON'T do this — infinite loop if you add items inside!
+for (let i = 0; i < items.length; i++) {
+  // If you append a new .item inside, items.length grows!
+}
+
+// ✅ Safe: snapshot first
+const safeItems = [...items]  // or Array.from(items)
+safeItems.forEach(item => processItem(item))
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.2
+
+**Q1: What is the difference between `querySelector` and `getElementById`?**
+
+> `getElementById` only searches by ID, but it's the **fastest** DOM query method (O(1) hash lookup). `querySelector` accepts any valid **CSS selector** — classes, tags, attributes, pseudo-classes, combinations — but is slightly slower. `getElementById` returns `null` if not found; so does `querySelector`. Use `getElementById` when you know the ID; use `querySelector` for more complex selection logic or CSS-like queries.
+
+**Q2: What is the difference between a live HTMLCollection and a static NodeList?**
+
+> A **live HTMLCollection** (from `getElementsByClassName`, `getElementsByTagName`) automatically updates when the DOM changes — adding/removing matching elements changes the collection's length and contents immediately. A **static NodeList** (from `querySelectorAll`) is a snapshot at query time and doesn't update when the DOM changes. This distinction is critical in loops — iterating a live collection while modifying the DOM can cause bugs or infinite loops.
+
+**Q3: What does `closest()` do and when would you use it?**
+
+> `closest(selector)` traverses from the element itself up through its ancestors, returning the **first match** or `null`. It searches from child to parent (upward). Most useful in event delegation — when a click event fires on a deep child element, `e.target.closest(".card")` finds the nearest card ancestor. Contrast with `querySelector` which searches downward (parent to children).
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 9.3 Manipulating the DOM
+
+<a id="93-manipulating-the-dom"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Creating Elements | `createElement`, `createTextNode`, `cloneNode` |
+| Inserting Elements | `appendChild`, `append`, `prepend`, `insertBefore`, `insertAdjacentElement` |
+| Removing Elements | `remove()`, `removeChild()` |
+| Content Properties | `innerHTML`, `textContent`, `innerText` differences |
+| Attributes | `getAttribute`, `setAttribute`, `dataset` |
+| classList | `add`, `remove`, `toggle`, `contains`, `replace` |
+| Style | `element.style`, `getComputedStyle` |
+
+---
+
+### Creating & Inserting Elements
+
+```javascript
+// ─── CREATING ─────────────────────────────────────────────────────
+const div = document.createElement("div")
+const text = document.createTextNode("Hello World")
+const fragment = document.createDocumentFragment()
+
+// Set properties before inserting (performance):
+div.id = "hero-section"
+div.className = "section hero"
+div.setAttribute("data-visible", "true")
+div.textContent = "Hero content here"
+
+// ─── INSERTING ────────────────────────────────────────────────────
+const parent = document.getElementById("app")
+
+// Classic:
+parent.appendChild(div)         // Add as last child (returns appended node)
+parent.insertBefore(div, parent.firstElementChild)  // Insert before reference
+
+// Modern (ES2015+):
+parent.append(div)              // Append (no return value, accepts strings too)
+parent.prepend(div)             // Prepend as first child
+parent.append("text string", div, anotherNode)  // Multiple children at once!
+
+// Positional insertion:
+// insertAdjacentElement(position, element)
+// Positions: 'beforebegin', 'afterbegin', 'beforeend', 'afterend'
+referenceEl.insertAdjacentElement("beforebegin", newEl)  // Before the element
+referenceEl.insertAdjacentElement("afterbegin", newEl)   // First child
+referenceEl.insertAdjacentElement("beforeend", newEl)    // Last child
+referenceEl.insertAdjacentElement("afterend", newEl)     // After the element
+
+// insertAdjacentHTML — insert HTML string:
+referenceEl.insertAdjacentHTML("beforeend", "<p>Hello <strong>World</strong></p>")
+
+// ─── CLONING ─────────────────────────────────────────────────────
+const original = document.getElementById("template")
+const shallowClone = original.cloneNode(false)  // Clone element only (no children)
+const deepClone = original.cloneNode(true)      // Clone element + all children
+
+// Clone will have same content but NO id (to avoid duplicates):
+deepClone.removeAttribute("id")
+parent.appendChild(deepClone)
+
+// ─── DOCUMENT FRAGMENT — batch insert ────────────────────────────
+const frag = document.createDocumentFragment()
+const items = ["React", "Next.js", "TypeScript", "Tailwind"]
+
+items.forEach(item => {
+  const li = document.createElement("li")
+  li.textContent = item
+  frag.appendChild(li)  // Add to fragment — NO DOM reflow!
+})
+
+document.getElementById("list").appendChild(frag)  // ONE reflow for all items
+```
+
+---
+
+### Removing Elements
+
+```javascript
+// ─── MODERN (remove()) ────────────────────────────────────────────
+const el = document.getElementById("to-remove")
+el.remove()  // ← Clean, simple, returns undefined
+
+// ─── CLASSIC (removeChild()) ──────────────────────────────────────
+const parent = document.getElementById("parent")
+const child = document.getElementById("child")
+parent.removeChild(child)  // Returns the removed element
+
+// ─── CLEARING ALL CHILDREN ───────────────────────────────────────
+// Method 1 — innerHTML (simplest):
+parent.innerHTML = ""  // ⚠️ Removes all children + event listeners!
+
+// Method 2 — while loop (preserves event listeners on children):
+while (parent.firstChild) {
+  parent.removeChild(parent.firstChild)
+}
+
+// Method 3 — replaceChildren (modern, cleanest):
+parent.replaceChildren()  // Removes all children
+
+// Method 4 — replaceChildren with new content:
+parent.replaceChildren(newChild1, newChild2)  // Replace all children at once
+```
+
+---
+
+### `innerHTML` vs `textContent` vs `innerText` — Critical Differences
+
+> [!IMPORTANT]
+> **This is a very commonly asked interview question.** The three properties behave very differently for reading, writing, and security.
+
+```javascript
+const div = document.getElementById("demo")
+// Assume: <div id="demo"><strong>Hello</strong> World</div>
+
+// ─── innerHTML ────────────────────────────────────────────────────
+div.innerHTML
+// "<strong>Hello</strong> World"
+// Reads/writes HTML markup — parses HTML tags!
+
+div.innerHTML = "<em>New content</em>"
+// Writes HTML — <em> becomes an actual element
+
+// ⚠️ XSS SECURITY RISK:
+const userInput = '<script>alert("hacked!")</script>'
+div.innerHTML = userInput  // DANGEROUS! Executes script!
+// NEVER use innerHTML with untrusted user data!
+
+// ─── textContent ─────────────────────────────────────────────────
+div.textContent
+// "Hello World" — ALL text content, ignoring HTML tags
+// Also includes text in hidden elements (display:none)
+
+div.textContent = "<em>New content</em>"
+// Sets literal text — <em> shown as text, NOT as a tag!
+// ✅ SAFE — no HTML injection possible
+
+// ─── innerText ───────────────────────────────────────────────────
+div.innerText
+// "Hello World" — text AS RENDERED (respects CSS)
+// Does NOT include: display:none elements, <script>, <style> content
+// ⚠️ Causes layout reflow to compute styles
+
+// ─── COMPARISON TABLE ─────────────────────────────────────────────
+// Property     | Gets HTML | Sets HTML | Respects CSS | XSS Safe | Performance
+// innerHTML    | ✅        | ✅        | ❌            | ❌ (NO!) | Medium
+// textContent  | ❌ (text) | ❌ (text) | ❌            | ✅ (YES) | Fast
+// innerText    | ❌ (text) | ❌ (text) | ✅            | ✅ (YES) | Slow (reflow)
+
+// ─── WHEN TO USE WHICH ───────────────────────────────────────────
+// innerHTML: Trusted HTML content (templates, your own data)
+// textContent: Set text safely — no HTML interpretation
+// innerText: Get text as user sees it (respects CSS visibility)
+```
+
+---
+
+### Attributes & Dataset
+
+```javascript
+// ─── STANDARD ATTRIBUTES ─────────────────────────────────────────
+const img = document.querySelector("img")
+
+img.getAttribute("src")        // Get attribute value (or null)
+img.setAttribute("src", "/new-image.jpg")  // Set attribute
+img.removeAttribute("alt")     // Remove attribute
+img.hasAttribute("data-id")    // true/false
+
+// ─── HTML PROPERTIES vs ATTRIBUTES ───────────────────────────────
+// For standard attributes, there are BOTH properties and attributes:
+// They often (but not always) sync:
+
+const input = document.querySelector("input")
+
+// Property (reflects current state):
+input.value    // Current value (changes as user types)
+input.checked  // Current checked state (changes on click)
+
+// Attribute (reflects initial HTML value):
+input.getAttribute("value")   // Original value from HTML
+input.getAttribute("checked") // "checked" or null (doesn't update on click)
+
+// ─── DATA ATTRIBUTES (dataset) ───────────────────────────────────
+// HTML: <div id="card" data-user-id="123" data-role="admin" data-is-active="true">
+const card = document.getElementById("card")
+
+// Reading via dataset (camelCase conversion):
+card.dataset.userId    // "123" (data-user-id → userId)
+card.dataset.role      // "admin"
+card.dataset.isActive  // "true" (always string!)
+
+// Setting:
+card.dataset.score = 95        // Creates data-score="95"
+card.dataset.lastUpdated = new Date().toISOString()
+
+// Deleting:
+delete card.dataset.role
+
+// Iterating all data attributes:
+Object.entries(card.dataset).forEach(([key, value]) => {
+  console.log(key, value)  // userId 123, isActive true
+})
+```
+
+---
+
+### classList — The Modern Way to Manage CSS Classes
+
+```javascript
+const el = document.getElementById("card")
+// HTML: <div id="card" class="card featured active">
+
+// Reading:
+el.className              // "card featured active" (string)
+el.classList              // DOMTokenList ["card", "featured", "active"]
+el.classList.contains("featured")  // true
+el.classList.contains("hidden")    // false
+
+// Adding:
+el.classList.add("visible")           // Adds one class
+el.classList.add("loading", "error")  // Adds multiple classes
+
+// Removing:
+el.classList.remove("active")
+el.classList.remove("featured", "active")  // Multiple
+
+// Toggling (add if absent, remove if present):
+el.classList.toggle("dark-mode")       // Returns true if added, false if removed
+el.classList.toggle("active", true)    // Force add (second param = force)
+el.classList.toggle("active", false)   // Force remove
+
+// Replacing:
+el.classList.replace("active", "inactive")  // Returns true if replaced
+
+// Getting by index:
+el.classList.item(0)     // "card"
+el.classList[0]          // "card" (same)
+el.classList.length      // 3
+
+// Converting to array:
+[...el.classList]  // ["card", "featured", "active"]
+```
+
+---
+
+### Style Manipulation
+
+```javascript
+// ─── INLINE STYLES ────────────────────────────────────────────────
+const el = document.getElementById("box")
+
+// Setting (camelCase property names):
+el.style.backgroundColor = "red"     // background-color
+el.style.fontSize = "16px"           // font-size (must include unit!)
+el.style.display = "flex"
+el.style.transform = "translateX(100px)"
+el.style.cssText = "color: red; font-size: 20px"  // Set multiple at once
+
+// Reading inline styles:
+el.style.backgroundColor    // "red" (only if set inline)
+el.style.color              // "" (empty if not inline)
+
+// ─── COMPUTED STYLES (actual applied styles) ────────────────────
+// getComputedStyle returns ALL applied styles (from stylesheets too):
+const computed = getComputedStyle(el)
+computed.backgroundColor  // "rgb(255, 0, 0)" (resolved value)
+computed.fontSize         // "16px"
+computed.display          // "flex"
+
+// Reading pseudo-element styles:
+const beforeStyles = getComputedStyle(el, "::before")
+beforeStyles.content    // "''"
+
+// ─── CSS VARIABLES ────────────────────────────────────────────────
+// HTML: <div style="--primary: #3b82f6">
+document.documentElement.style.setProperty("--primary", "#3b82f6")
+const primary = getComputedStyle(document.documentElement)
+  .getPropertyValue("--primary")  // "#3b82f6"
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.3
+
+**Q1: What is the difference between `innerHTML`, `textContent`, and `innerText`?**
+
+> `innerHTML` reads/writes HTML markup — tags are interpreted. Setting `innerHTML = "<b>bold</b>"` creates an actual `<b>` element. `innerHTML` with untrusted data is a **XSS security risk**. `textContent` reads/writes **plain text** — HTML tags are treated as literal characters. Setting `textContent = "<b>text</b>"` renders the angle brackets visibly on screen. It's **XSS-safe** and faster. `innerText` is like `textContent` but **respects CSS styling** — it excludes hidden elements (`display: none`) and triggers a layout reflow to compute styles. Use `textContent` for setting text content safely; `innerText` for reading what the user sees.
+
+**Q2: What is the XSS risk with `innerHTML`?**
+
+> Cross-Site Scripting (XSS) occurs when malicious scripts are injected into the page. If user input is inserted via `element.innerHTML = userInput`, an attacker can inject `<script>alert('hacked')</script>` or `<img src="x" onerror="maliciousCode()">`. To prevent this: (1) Use `textContent` for plain text. (2) Sanitize HTML before using `innerHTML` with a library like DOMPurify. (3) Use `insertAdjacentText()` for text insertion. (4) Validate and encode user input on the server.
+
+**Q3: What is the difference between HTML attributes and DOM properties?**
+
+> HTML **attributes** are defined in the HTML markup and represent the **initial value** (e.g., `<input value="initial">`). DOM **properties** are JavaScript properties on the DOM object representing the **current state** (e.g., `input.value` updates as user types). For most attributes there's a corresponding property, but they can diverge — `input.getAttribute("value")` always returns "initial"; `input.value` returns what the user has typed. Boolean attributes (like `disabled`) behave differently — `el.disabled` is `true/false`; `el.getAttribute("disabled")` returns `""` (empty string) or `null`.
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 9.4 Event Handling
+
+<a id="94-event-handling"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| `addEventListener` | Signature, event types, options |
+| `removeEventListener` | Why same reference is needed |
+| Event object | Properties: target, currentTarget, type, etc. |
+| Event types | click, input, submit, keydown, scroll, etc. |
+| `DOMContentLoaded` vs `load` | When each fires |
+
+---
+
+### `addEventListener` — Complete Guide
+
+```javascript
+// Signature: element.addEventListener(type, listener, options?)
+
+// ─── BASIC USAGE ─────────────────────────────────────────────────
+const btn = document.getElementById("my-btn")
+
+btn.addEventListener("click", function(event) {
+  console.log("Clicked!")
+  console.log(event.target)      // The element that was clicked
+  console.log(event.currentTarget)  // The element the listener is attached to
+})
+
+// Arrow function (cannot be removed by reference!):
+btn.addEventListener("click", (e) => {
+  console.log("Arrow function listener")
+})
+
+// Named function reference (CAN be removed):
+function handleClick(e) {
+  console.log("Removable listener")
+}
+btn.addEventListener("click", handleClick)
+
+// ─── OPTIONS OBJECT ───────────────────────────────────────────────
+btn.addEventListener("click", handler, {
+  once: true,       // Remove listener after first invocation
+  capture: false,   // Use bubbling phase (default)
+  passive: true,    // Promise not to call preventDefault() (performance optimization)
+})
+
+// ─── once: true EXAMPLE ───────────────────────────────────────────
+btn.addEventListener("click", () => {
+  initializeApp()  // Only runs once — listener auto-removed after
+}, { once: true })
+
+// ─── passive: true EXAMPLE (scroll performance) ────────────────────
+// Browser can't scroll until it knows if preventDefault() was called
+// passive: true tells browser "I won't call preventDefault()"
+// → Browser can scroll immediately without waiting!
+document.addEventListener("scroll", () => {
+  updateScrollPosition()
+}, { passive: true })  // ← Massive scroll performance improvement!
+
+// ─── removeEventListener — must use SAME reference ────────────────
+function handleScroll() {
+  console.log("Scrolled")
+}
+
+window.addEventListener("scroll", handleScroll)
+// Later:
+window.removeEventListener("scroll", handleScroll)  // ✅ Same reference
+
+// ⚠️ CANNOT remove anonymous functions:
+btn.addEventListener("click", function() { console.log("x") })
+btn.removeEventListener("click", function() { console.log("x") })  // ❌ Different reference!
+
+// ⚠️ React common mistake — cleanup in useEffect:
+useEffect(() => {
+  const handler = () => doSomething()  // Named reference
+  window.addEventListener("resize", handler)
+  return () => window.removeEventListener("resize", handler)  // ✅ Same ref
+}, [])
+```
+
+---
+
+### Event Object — Complete Properties
+
+```javascript
+document.getElementById("container").addEventListener("click", function(event) {
+  // ─── WHAT was clicked ────────────────────────────────────────────
+  event.target          // Actual element that triggered event (could be child)
+  event.currentTarget   // Element the listener is attached to (always the container)
+  event.type            // "click"
+
+  // ─── WHERE it was clicked ────────────────────────────────────────
+  event.clientX         // X coordinate from viewport top-left
+  event.clientY         // Y coordinate from viewport top-left
+  event.pageX           // X coordinate from page top-left (including scroll)
+  event.pageY           // Y coordinate from page top-left
+  event.offsetX         // X coordinate within the target element
+  event.offsetY         // Y coordinate within the target element
+
+  // ─── PROPAGATION control ─────────────────────────────────────────
+  event.stopPropagation()          // Stop bubbling/capturing
+  event.stopImmediatePropagation() // Stop propagation + other listeners on same el
+  event.preventDefault()           // Prevent default browser action
+
+  // ─── KEYBOARD events ─────────────────────────────────────────────
+  event.key       // "Enter", "ArrowUp", "a", " " (space)
+  event.code      // "KeyA", "ArrowUp", "Space" (physical key)
+  event.keyCode   // (deprecated) numeric code
+  event.ctrlKey   // true/false
+  event.shiftKey  // true/false
+  event.altKey    // true/false
+  event.metaKey   // true/false (Cmd on Mac, Windows key on PC)
+
+  // ─── FORM events ─────────────────────────────────────────────────
+  // 'input' event on input:
+  event.target.value    // Current value of input
+  event.target.name     // name attribute of input
+
+  // 'submit' event on form:
+  event.preventDefault()  // Prevent default form submission (page reload)
+  new FormData(event.target)  // Collect all form data
+})
+```
+
+---
+
+### `DOMContentLoaded` vs `load`
+
+```mermaid
+flowchart LR
+    A["HTML received"] --> B["Parse HTML\nBuild DOM"]
+    B --> C["⚡ DOMContentLoaded fires\n'DOM is ready'\n(no images/styles yet)"]
+    C --> D["Download CSS,\nImages, Fonts, etc."]
+    D --> E["🖼️ load fires\n'Everything loaded'\n(images, styles, all assets)"]
+    E --> F["Page fully interactive"]
+
+    style C fill:#c8e6c9
+    style E fill:#bbdefb
+```
+
+```javascript
+// DOMContentLoaded — fires when HTML parsed + DOM built
+// (CSS/images not necessarily loaded)
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("DOM is ready!")
+  const el = document.getElementById("app")  // ✅ Safe to access DOM now
+  initApp()
+})
+
+// window.load — fires when EVERYTHING is loaded (images, CSS, scripts)
+window.addEventListener("load", () => {
+  console.log("All resources loaded!")
+  const img = document.querySelector("img")
+  console.log(img.naturalWidth)  // ✅ Image is loaded, dimensions available
+})
+
+// ─── PRACTICAL DIFFERENCE ────────────────────────────────────────
+// DOMContentLoaded: 150ms (fast — just HTML parsing)
+// load: 2000ms+ (slower — must wait for all images/fonts/CSS)
+
+// Use DOMContentLoaded for: DOM manipulation, event listener setup
+// Use load for: image processing (needing actual dimensions), canvas work
+
+// ─── REACT CONTEXT ────────────────────────────────────────────────
+// In React (Next.js), these aren't typically needed because:
+// React components mount AFTER DOMContentLoaded naturally
+// But in custom scripts or web workers, understanding timing matters
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.4
+
+**Q1: Why must `removeEventListener` use the same function reference?**
+
+> `removeEventListener` uses strict equality (`===`) to find and remove the listener. Anonymous functions create a new function object every time, so `removeEventListener` gets a different reference and can't find the listener to remove. You must store the function in a variable and use that same reference for both `addEventListener` and `removeEventListener`. This is why React's `useEffect` cleanup pattern stores the handler function first, then removes it in the cleanup return function.
+
+**Q2: What is the `passive` option in `addEventListener` and why does it improve performance?**
+
+> When a touch/scroll event listener fires, the browser must wait to find out if `preventDefault()` was called before it can scroll — because `preventDefault()` on scroll would prevent scrolling. This waiting causes scroll jank (delay). Setting `passive: true` tells the browser upfront "I will NOT call preventDefault()" — so the browser can start scrolling immediately without waiting for JavaScript. This dramatically improves scroll performance. Modern browsers set `passive: true` by default for scroll events on `window` and `document`.
+
+**Q3: What is the difference between `event.target` and `event.currentTarget`?**
+
+> `event.target` is the **actual element that received the event** — the element the user directly interacted with (e.g., a `<button>` inside a `<div>`). `event.currentTarget` is the element **the event listener is attached to**. If you click a `<button>` inside a `<div>` that has the listener, `event.target` = `<button>`, `event.currentTarget` = `<div>`. Inside the listener function, `this` equals `event.currentTarget` (for regular functions, not arrows).
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 9.5 Event Propagation
+
+<a id="95-event-propagation"></a>
+
+### Subtopic Breakdown
+
+| Phase | Direction | When | How to use |
+|-------|-----------|------|------------|
+| Capture phase | Parent → Child | Before target | `{ capture: true }` |
+| Target phase | At target | On target element | Default |
+| Bubble phase | Child → Parent | After target | Default (no option needed) |
+
+---
+
+### Event Propagation — How It Works
+
+```mermaid
+flowchart TD
+    subgraph PHASES["Event Propagation Phases"]
+        DOC["document"]
+        HTML["html"]
+        BODY["body"]
+        DIV["div#container"]
+        BTN["button#click-me"]
+
+        DOC ---|"1. CAPTURE PHASE\n(down)"| HTML
+        HTML ---|"capture ↓"| BODY
+        BODY ---|"capture ↓"| DIV
+        DIV ---|"capture ↓"| BTN
+
+        BTN ---|"2. TARGET PHASE\n(at button)"| BTN2["button#click-me\n(event fires here)"]
+
+        BTN2 ---|"3. BUBBLE PHASE\n(up)"| DIV2["div#container"]
+        DIV2 ---|"bubble ↑"| BODY2["body"]
+        BODY2 ---|"bubble ↑"| HTML2["html"]
+        HTML2 ---|"bubble ↑"| DOC2["document"]
+    end
+
+    style BTN fill:#ffcdd2
+    style BTN2 fill:#ffcdd2
+```
+
+> **Hinglish:** Event propagation ek pebble-in-pond ki tarah hai. Jab tum click karte ho, event pehle upar se neechey aata hai (capture phase), phir target par fire hota hai, phir wapas upar jaata hai (bubble phase). Default mein humlog bubble phase use karte hain.
+
+---
+
+### Bubbling, Capturing, and Stopping
+
+```javascript
+// HTML:
+// <div id="outer">
+//   <div id="middle">
+//     <button id="inner">Click Me</button>
+//   </div>
+// </div>
+
+// ─── BUBBLING PHASE (default — most common) ────────────────────
+document.getElementById("outer").addEventListener("click", () => {
+  console.log("Outer clicked (bubble)")
+})
+document.getElementById("middle").addEventListener("click", () => {
+  console.log("Middle clicked (bubble)")
+})
+document.getElementById("inner").addEventListener("click", () => {
+  console.log("Inner clicked (bubble)")
+})
+
+// Clicking "Click Me" button → Output order:
+// "Inner clicked (bubble)"   ← fires first (target)
+// "Middle clicked (bubble)"  ← then bubbles up
+// "Outer clicked (bubble)"   ← then bubbles up more
+
+// ─── CAPTURING PHASE ──────────────────────────────────────────────
+document.getElementById("outer").addEventListener("click", () => {
+  console.log("Outer clicked (CAPTURE)")
+}, { capture: true })
+
+document.getElementById("middle").addEventListener("click", () => {
+  console.log("Middle clicked (CAPTURE)")
+}, { capture: true })
+
+document.getElementById("inner").addEventListener("click", () => {
+  console.log("Inner clicked (bubble)")
+})
+
+// Clicking button → Output order:
+// "Outer clicked (CAPTURE)"   ← capture fires first (top-down)
+// "Middle clicked (CAPTURE)"  ← capture fires second
+// "Inner clicked (bubble)"    ← target fires third
+
+// ─── STOPPING PROPAGATION ─────────────────────────────────────────
+document.getElementById("middle").addEventListener("click", (e) => {
+  console.log("Middle — stopping here!")
+  e.stopPropagation()  // Stops event from reaching "outer"
+})
+
+document.getElementById("outer").addEventListener("click", () => {
+  console.log("Outer — will I fire?")  // ❌ NEVER fires (stopped at middle)
+})
+
+// ─── stopImmediatePropagation — also stops other listeners on SAME element
+const btn = document.getElementById("inner")
+btn.addEventListener("click", (e) => {
+  console.log("Listener 1")
+  e.stopImmediatePropagation()  // Stops both propagation AND other listeners on btn
+})
+btn.addEventListener("click", () => {
+  console.log("Listener 2")  // ❌ Never fires
+})
+```
+
+---
+
+### `preventDefault()` vs `stopPropagation()`
+
+```javascript
+// ─── preventDefault() — prevent DEFAULT BROWSER ACTION ────────────
+// Does NOT stop propagation!
+
+// Example 1: Prevent form submission (page reload):
+document.getElementById("my-form").addEventListener("submit", (e) => {
+  e.preventDefault()   // ← No page reload
+  handleFormSubmit(e)  // Handle with JS instead
+})
+
+// Example 2: Prevent link navigation:
+document.querySelector("a").addEventListener("click", (e) => {
+  e.preventDefault()  // ← No navigation
+  loadPageWithAJAX(e.target.href)
+})
+
+// Example 3: Prevent right-click menu:
+document.addEventListener("contextmenu", (e) => {
+  e.preventDefault()  // ← No browser context menu
+  showCustomMenu(e.clientX, e.clientY)
+})
+
+// Example 4: Prevent default scroll behavior on arrow keys:
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp") {
+    e.preventDefault()  // Don't scroll the page
+    moveCaretUp()
+  }
+})
+
+// ─── COMPARISON TABLE ─────────────────────────────────────────────
+// Method                  | Stops bubbling? | Stops default?
+// stopPropagation()       | ✅ Yes          | ❌ No
+// preventDefault()        | ❌ No           | ✅ Yes
+// stopImmediatePropagation| ✅ Yes + others | ❌ No
+// Both together           | ✅ Yes          | ✅ Yes
+
+// ─── CHECKING IF PREVENTED ────────────────────────────────────────
+document.addEventListener("click", (e) => {
+  // Check if preventDefault was called by a handler below:
+  if (!e.defaultPrevented) {
+    // Default action hasn't been prevented
+  }
+})
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.5
+
+**Q1: What is event bubbling and capturing?**
+
+> When an event fires on an element, it goes through three phases: (1) **Capture phase** — the event travels from the `document` down through the DOM tree to the target element. Listeners with `{ capture: true }` fire during this phase. (2) **Target phase** — the event fires on the element that triggered it. (3) **Bubble phase** — the event travels back up from the target through ancestors to `document`. Listeners without `capture: true` fire during bubbling (the default). Most events bubble; some don't (like `focus`, `blur`, `load`).
+
+**Q2: What is the difference between `stopPropagation()` and `preventDefault()`?**
+
+> `stopPropagation()` **stops the event from traveling** further up (or down) the DOM tree. It has nothing to do with the browser's default behavior — it only affects propagation. `preventDefault()` **cancels the browser's default action** for that event (page reload on submit, navigation on link click, scroll on spacebar) but the event continues propagating normally. They are completely independent — you can use either, both, or neither.
+
+**Q3: What is the output? Explain the order.**
+
+```javascript
+// HTML: <div id="A"><div id="B"><button id="C">Click</button></div></div>
+
+document.getElementById("A").addEventListener("click", () => console.log("A-bubble"))
+document.getElementById("B").addEventListener("click", (e) => {
+  console.log("B-bubble")
+  e.stopPropagation()
+})
+document.getElementById("A").addEventListener("click", () => console.log("A-capture"), true)
+document.getElementById("C").addEventListener("click", () => console.log("C"))
+```
+
+> **Output:** `A-capture` → `C` → `B-bubble`
+> Capture phase: A fires first (capture listener). Target: C fires. Bubble: B fires and calls `stopPropagation()`. A's bubble listener never fires.
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 9.6 Event Delegation
+
+<a id="96-event-delegation"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is Event Delegation? | One listener on parent, many children |
+| How It Works | `e.target` identifies the actual clicked element |
+| Benefits | Memory efficiency, dynamic elements |
+| Practical Patterns | `closest()` for complex delegation |
+| React's Internal Delegation | How React handles events at root |
+
+---
+
+### What is Event Delegation?
+
+**Event delegation** is attaching **ONE event listener to a parent element** to handle events from **all its children** (and descendants), using event bubbling. Instead of attaching listeners to each child individually, you let events bubble up and handle them at the parent level.
+
+> **Hinglish:** Event delegation matlab "ek supervisor baitha lo jo saare employees ke kaam dekhe" — sab ko alag-alag manager ki zarurat nahi. Ek parent listener sab children ke clicks handle karta hai. Bahut kam memory use hota hai.
+
+```mermaid
+flowchart TD
+    subgraph WITHOUT["❌ Without Delegation\n100 listeners for 100 items"]
+        L1["listener on item 1"]
+        L2["listener on item 2"]
+        L3["listener on item 3"]
+        DOTS["... 97 more listeners"]
+        L100["listener on item 100"]
+    end
+
+    subgraph WITH["✅ With Delegation\n1 listener on parent"]
+        PARENT["ONE listener on <ul>"]
+        I1["<li> item 1"]
+        I2["<li> item 2"]
+        I100["<li> item 100"]
+        PARENT -->|"click bubbles up"| I1 & I2 & I100
+    end
+
+    style WITHOUT fill:#ffcdd2
+    style WITH fill:#c8e6c9
+```
+
+---
+
+### Event Delegation — Implementation
+
+```javascript
+// HTML:
+// <ul id="product-list">
+//   <li data-id="1" class="product-item">Laptop <button class="delete">×</button></li>
+//   <li data-id="2" class="product-item">Phone <button class="delete">×</button></li>
+//   <li data-id="3" class="product-item">Tablet <button class="delete">×</button></li>
+// </ul>
+
+// ❌ WITHOUT delegation — attach listener to each item:
+document.querySelectorAll(".product-item").forEach(item => {
+  item.addEventListener("click", (e) => {
+    console.log("Item clicked:", item.dataset.id)
+  })
+})
+// Problem: Must re-attach when new items are added!
+
+// ✅ WITH delegation — ONE listener on parent:
+document.getElementById("product-list").addEventListener("click", (e) => {
+  // e.target = the actual element that was clicked (could be <button>, <li>, <span>)
+
+  // Pattern 1: Simple — check if target matches:
+  if (e.target.classList.contains("delete")) {
+    const item = e.target.closest(".product-item")
+    const id = item.dataset.id
+    console.log("Delete:", id)
+    item.remove()
+  }
+
+  // Pattern 2: closest() for robust matching:
+  const productItem = e.target.closest(".product-item")
+  if (productItem) {
+    console.log("Product selected:", productItem.dataset.id)
+  }
+})
+
+// Adding new items dynamically — delegation handles them automatically!
+function addProduct(id, name) {
+  const li = document.createElement("li")
+  li.className = "product-item"
+  li.dataset.id = id
+  li.innerHTML = `${name} <button class="delete">×</button>`
+  document.getElementById("product-list").appendChild(li)
+  // ← No need to add event listener to this new item — delegation handles it!
+}
+
+addProduct(4, "Keyboard")  // Click events on this item work immediately!
+```
+
+---
+
+### Advanced Delegation Patterns
+
+```javascript
+// ─── DATA-ACTION pattern (common in vanilla JS): ──────────────────
+// HTML: <button data-action="delete" data-id="123">Delete</button>
+// HTML: <button data-action="edit" data-id="123">Edit</button>
+// HTML: <button data-action="view" data-id="123">View</button>
+
+document.addEventListener("click", (e) => {
+  const action = e.target.dataset.action
+  if (!action) return
+
+  const id = e.target.dataset.id
+
+  const handlers = {
+    delete: (id) => deleteItem(id),
+    edit: (id) => openEditModal(id),
+    view: (id) => navigateTo(`/items/${id}`),
+  }
+
+  handlers[action]?.(id)  // Optional chaining — safe if action not in map
+})
+
+// ─── TABLE row delegation: ────────────────────────────────────────
+document.getElementById("users-table").addEventListener("click", (e) => {
+  const row = e.target.closest("tr")
+  if (!row || !row.dataset.userId) return  // Not a data row
+
+  const userId = row.dataset.userId
+  const action = e.target.dataset.action
+
+  if (action === "select") {
+    row.classList.toggle("selected")
+  } else if (action === "delete") {
+    row.remove()
+  }
+})
+
+// ─── Form delegation — multiple inputs: ──────────────────────────
+document.getElementById("form").addEventListener("input", (e) => {
+  const { name, value, type, checked } = e.target
+  if (!name) return
+
+  const fieldValue = type === "checkbox" ? checked : value
+  setState(prev => ({ ...prev, [name]: fieldValue }))
+})
+```
+
+---
+
+### How React Uses Event Delegation
+
+> **Hinglish:** React bhi event delegation use karta hai — lekin React 17 se pehle woh `document` par attach karta tha, React 17+ mein woh root container (`#root`) par attach karta hai. Isliye tum kisi bhi React element par `onClick`, `onChange` likho — actually ek listener root par hai.
+
+```javascript
+// React DOESN'T attach an event listener to each button, div, or input!
+// Instead, React attaches ONE listener to the root container.
+
+// React 16 and below: listeners attached to document
+// React 17+: listeners attached to root element (#root or wherever you render)
+
+// This is why React event handlers get SyntheticEvent objects:
+function Button({ onClick }) {
+  return (
+    // React doesn't add a native "click" event here!
+    // It creates a mapping: this element → this handler
+    // When user clicks, event bubbles to root → React's root listener fires
+    // → React finds the mapped handler → calls it with SyntheticEvent
+    <button onClick={onClick}>Click Me</button>
+  )
+}
+
+// Implications:
+// - React event system is consistent across browsers (Synthetic events normalize)
+// - Native addEventListener and React onClick don't conflict
+// - stopPropagation() in React stops React's synthetic bubbling
+// - To stop native bubbling you need nativeEvent.stopPropagation()
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.6
+
+**Q1: What is event delegation and what are its benefits?**
+
+> Event delegation is the pattern of attaching a single event listener to a parent element to handle events from all its descendants via event bubbling. Benefits: (1) **Memory efficiency** — 1 listener vs potentially thousands. (2) **Dynamic elements** — automatically handles elements added after the listener was set up. (3) **Less boilerplate** — no need to add/remove listeners per element. (4) **Simpler cleanup** — one listener to remove vs many. The key technique is using `e.target` and often `e.target.closest(selector)` to identify which child triggered the event.
+
+**Q2: How does React internally use event delegation?**
+
+> React uses event delegation by attaching a single event listener to the root DOM container (in React 17+) instead of attaching listeners to individual elements. When you write `<button onClick={handler}>`, React doesn't add a native click listener to that button. Instead, when a click occurs, it bubbles up to the root, React's root listener fires, React determines which component's handler to call based on its internal fiber tree, creates a `SyntheticEvent` (cross-browser normalized event object), and calls the appropriate handler. This is why React events are slightly different from native DOM events.
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 9.7 Browser APIs Used in React
+
+<a id="97-browser-apis-used-in-react"></a>
+
+### Subtopic Breakdown
+
+| API | Primary Use in React |
+|-----|---------------------|
+| `localStorage` / `sessionStorage` | Persist UI state, user preferences |
+| History API | Client-side routing (React Router uses this) |
+| IntersectionObserver | Lazy loading images, infinite scroll, animations |
+| ResizeObserver | Responsive components, chart resizing |
+| MutationObserver | Detect DOM changes (rarely in React) |
+| Clipboard API | Copy-to-clipboard buttons |
+| Geolocation API | Location-based features |
+| `requestAnimationFrame` | Smooth animations |
+| Web Workers | Heavy computation without blocking UI |
+
+---
+
+### localStorage & sessionStorage
+
+```javascript
+// ─── localStorage (persistent across tabs and sessions) ───────────
+localStorage.setItem("theme", "dark")
+localStorage.setItem("user", JSON.stringify({ id: 1, name: "Rahul" }))
+
+localStorage.getItem("theme")                     // "dark"
+JSON.parse(localStorage.getItem("user"))          // { id: 1, name: "Rahul" }
+localStorage.removeItem("theme")
+localStorage.clear()                              // Remove ALL
+
+// Length and iteration:
+localStorage.length                               // number of items
+localStorage.key(0)                               // First key name
+Object.keys(localStorage)                         // All keys as array
+
+// ─── sessionStorage (tab-specific, cleared on tab close) ──────────
+sessionStorage.setItem("formData", JSON.stringify(formState))
+// Cleared when tab closes — useful for temporary form data
+
+// ─── REACT CUSTOM HOOK ────────────────────────────────────────────
+function useLocalStorage<T>(key: string, initialValue: T) {
+  const [storedValue, setStoredValue] = useState<T>(() => {
+    // Initialize from localStorage (lazy initialization):
+    if (typeof window === "undefined") return initialValue  // SSR check!
+
+    try {
+      const item = window.localStorage.getItem(key)
+      return item ? JSON.parse(item) : initialValue
+    } catch {
+      return initialValue
+    }
+  })
+
+  const setValue = useCallback((value: T | ((val: T) => T)) => {
+    try {
+      const valueToStore = value instanceof Function ? value(storedValue) : value
+      setStoredValue(valueToStore)
+      window.localStorage.setItem(key, JSON.stringify(valueToStore))
+    } catch (error) {
+      console.error(`Error setting localStorage key "${key}":`, error)
+    }
+  }, [key, storedValue])
+
+  return [storedValue, setValue] as const
+}
+
+// Usage:
+function ThemeToggle() {
+  const [theme, setTheme] = useLocalStorage("theme", "light")
+
+  return (
+    <button onClick={() => setTheme(t => t === "light" ? "dark" : "light")}>
+      Current: {theme}
+    </button>
+  )
+}
+```
+
+---
+
+### History API — How React Router Works
+
+```javascript
+// The History API enables navigation WITHOUT page reload!
+
+// ─── Core methods ─────────────────────────────────────────────────
+history.pushState(state, title, url)    // Add new entry to history
+history.replaceState(state, title, url) // Replace current entry
+history.back()                          // Go back (like browser back button)
+history.forward()                       // Go forward
+history.go(-2)                          // Go back 2 steps
+
+// ─── EXAMPLE: SPA navigation ─────────────────────────────────────
+// User clicks a link:
+history.pushState({ page: "about" }, "About", "/about")
+// URL bar now shows: /about — no page reload!
+
+// On back button:
+window.addEventListener("popstate", (e) => {
+  console.log("Navigated to:", e.state)  // { page: "about" }
+  renderPage(e.state?.page ?? "home")
+})
+
+// ─── HOW REACT ROUTER v6 USES HISTORY API ────────────────────────
+// React Router's BrowserRouter:
+// - Wraps history API
+// - On <Link> click: calls history.pushState()
+// - On popstate: re-renders matching routes
+// - URL in browser stays clean (no #hash)
+
+// HashRouter (alternative):
+// Uses location.hash instead of pushState
+// URL looks like: /app#/about (more compatible with static hosts)
+
+// ─── READING URL STATE ────────────────────────────────────────────
+const currentPath = window.location.pathname    // "/about"
+const search = window.location.search           // "?tab=profile&page=2"
+const hash = window.location.hash              // "#section-3"
+const params = new URLSearchParams(search)
+params.get("tab")   // "profile"
+params.get("page")  // "2"
+```
+
+---
+
+### IntersectionObserver — Lazy Loading & Infinite Scroll
+
+```javascript
+// IntersectionObserver fires when an element enters/leaves the viewport
+
+// ─── BASIC SETUP ─────────────────────────────────────────────────
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Element is visible!
+        console.log(entry.target, "is visible")
+        console.log(entry.intersectionRatio)  // 0 to 1 (how much is visible)
+      }
+    })
+  },
+  {
+    root: null,           // null = viewport (or specify a scrollable element)
+    rootMargin: "0px",    // Margin around root (positive = observe before visible)
+    threshold: 0.1,       // Fire when 10% visible (array: [0, 0.25, 0.5, 1])
+  }
+)
+
+// Observe an element:
+observer.observe(document.getElementById("target"))
+// Stop observing:
+observer.unobserve(document.getElementById("target"))
+// Disconnect all observations:
+observer.disconnect()
+
+// ─── LAZY IMAGE LOADING ───────────────────────────────────────────
+// HTML: <img data-src="/large-image.jpg" src="/placeholder.jpg" class="lazy-img">
+
+const imageObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target
+      img.src = img.dataset.src           // Load actual image
+      img.classList.remove("lazy-img")
+      imageObserver.unobserve(img)        // Stop observing once loaded
+    }
+  })
+}, { rootMargin: "200px 0px" })  // Load 200px before entering viewport
+
+document.querySelectorAll(".lazy-img").forEach(img => imageObserver.observe(img))
+
+// ─── INFINITE SCROLL ──────────────────────────────────────────────
+const sentinel = document.getElementById("scroll-sentinel")  // Empty div at bottom
+
+const scrollObserver = new IntersectionObserver(async (entries) => {
+  if (entries[0].isIntersecting && !isLoading) {
+    isLoading = true
+    const newItems = await fetchMoreItems()
+    appendItems(newItems)
+    isLoading = false
+  }
+})
+
+scrollObserver.observe(sentinel)
+
+// ─── REACT HOOK ───────────────────────────────────────────────────
+function useIntersectionObserver(ref: RefObject<Element>, options = {}) {
+  const [isIntersecting, setIsIntersecting] = useState(false)
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
+
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting)
+    }, options)
+
+    observer.observe(element)
+    return () => observer.unobserve(element)
+  }, [ref, options])
+
+  return isIntersecting
+}
+
+// Component usage:
+function LazySection() {
+  const ref = useRef(null)
+  const isVisible = useIntersectionObserver(ref, { threshold: 0.1 })
+
+  return (
+    <section ref={ref} className={isVisible ? "animate-in" : ""}>
+      {isVisible && <ExpensiveContent />}
+    </section>
+  )
+}
+```
+
+---
+
+### ResizeObserver — Responsive Component Logic
+
+```javascript
+// Fires when an element's size changes
+
+const resizeObserver = new ResizeObserver((entries) => {
+  entries.forEach(entry => {
+    const { width, height } = entry.contentRect
+    console.log(`Element is ${width}px × ${height}px`)
+
+    // Adjust behavior based on size:
+    if (width < 600) {
+      entry.target.classList.add("mobile-layout")
+    } else {
+      entry.target.classList.remove("mobile-layout")
+    }
+  })
+})
+
+resizeObserver.observe(document.getElementById("responsive-chart"))
+resizeObserver.unobserve(element)
+resizeObserver.disconnect()
+
+// ─── REACT HOOK ───────────────────────────────────────────────────
+function useElementSize(ref: RefObject<Element>) {
+  const [size, setSize] = useState({ width: 0, height: 0 })
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
+
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect
+      setSize({ width, height })
+    })
+
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [ref])
+
+  return size
+}
+
+// Usage:
+function ResponsiveChart() {
+  const chartRef = useRef(null)
+  const { width, height } = useElementSize(chartRef)
+
+  return (
+    <div ref={chartRef} className="chart-container">
+      <canvas width={width} height={height} />
+    </div>
+  )
+}
+```
+
+---
+
+### Clipboard API
+
+```javascript
+// ─── MODERN Clipboard API (async) ────────────────────────────────
+async function copyToClipboard(text) {
+  try {
+    await navigator.clipboard.writeText(text)
+    console.log("Copied!")
+  } catch (err) {
+    console.error("Clipboard write failed:", err)
+    // Fallback for older browsers:
+    fallbackCopy(text)
+  }
+}
+
+async function readFromClipboard() {
+  try {
+    const text = await navigator.clipboard.readText()
+    return text
+  } catch (err) {
+    // User may have denied permission
+    return null
+  }
+}
+
+// Copy images/rich content:
+async function copyImage(imageBlob) {
+  await navigator.clipboard.write([
+    new ClipboardItem({ "image/png": imageBlob })
+  ])
+}
+
+// ─── REACT HOOK ───────────────────────────────────────────────────
+function useCopyToClipboard(resetDelay = 2000) {
+  const [copied, setCopied] = useState(false)
+
+  const copy = useCallback(async (text: string) => {
+    if (!navigator.clipboard) return false
+
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopied(true)
+      setTimeout(() => setCopied(false), resetDelay)
+      return true
+    } catch {
+      return false
+    }
+  }, [resetDelay])
+
+  return { copy, copied }
+}
+
+// Component:
+function CodeBlock({ code }) {
+  const { copy, copied } = useCopyToClipboard()
+
+  return (
+    <div className="code-block">
+      <pre>{code}</pre>
+      <button onClick={() => copy(code)}>
+        {copied ? "✅ Copied!" : "📋 Copy"}
+      </button>
+    </div>
+  )
+}
+```
+
+---
+
+### `requestAnimationFrame` — Smooth Animations
+
+```javascript
+// rAF runs your callback before the next repaint — for smooth animations
+
+// ─── BASIC ANIMATION ─────────────────────────────────────────────
+let position = 0
+let animationId
+
+function animate() {
+  position += 2  // Move 2px per frame
+  element.style.transform = `translateX(${position}px)`
+
+  if (position < 500) {
+    animationId = requestAnimationFrame(animate)  // Schedule next frame
+  }
+}
+
+animationId = requestAnimationFrame(animate)  // Start
+
+// Cancel:
+cancelAnimationFrame(animationId)
+
+// ─── PERFORMANCE: rAF vs setInterval ─────────────────────────────
+// setInterval(fn, 16) — runs every 16ms (NOT perfectly timed to display)
+//   → Frame skips, janky animations, runs even when tab is hidden!
+
+// requestAnimationFrame — runs before EACH display refresh
+//   → Perfectly synced, smooth, pauses when tab hidden (saves CPU!)
+
+// ─── REACT USE CASE: Counting animation ──────────────────────────
+function useCountAnimation(target: number, duration = 1000) {
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    const startTime = performance.now()
+    let frameId: number
+
+    function update(currentTime: number) {
+      const elapsed = currentTime - startTime
+      const progress = Math.min(elapsed / duration, 1)
+
+      // Ease-out function:
+      const eased = 1 - Math.pow(1 - progress, 3)
+      setCount(Math.round(eased * target))
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(update)
+      }
+    }
+
+    frameId = requestAnimationFrame(update)
+    return () => cancelAnimationFrame(frameId)
+  }, [target, duration])
+
+  return count
+}
+
+function StatsCounter({ targetValue }: { targetValue: number }) {
+  const count = useCountAnimation(targetValue, 1500)
+  return <span className="counter">{count.toLocaleString()}</span>
+}
+```
+
+---
+
+### Web Workers — Background Processing
+
+```javascript
+// Web Workers run JavaScript on a separate thread!
+// No access to DOM, but can do CPU-intensive work without blocking UI.
+
+// ─── MAIN THREAD ─────────────────────────────────────────────────
+const worker = new Worker("./heavy-worker.js")
+
+// Send data to worker:
+worker.postMessage({ data: largeArray, operation: "sort" })
+
+// Receive results:
+worker.addEventListener("message", (event) => {
+  const { result, error } = event.data
+  if (error) {
+    console.error("Worker failed:", error)
+  } else {
+    setProcessedData(result)
+  }
+})
+
+worker.addEventListener("error", (err) => {
+  console.error("Worker error:", err)
+  worker.terminate()
+})
+
+// Terminate when done:
+worker.terminate()
+
+// ─── WORKER FILE (heavy-worker.js) ───────────────────────────────
+// self = the worker's global scope (no 'window'!)
+self.addEventListener("message", (event) => {
+  const { data, operation } = event.data
+
+  try {
+    let result
+    if (operation === "sort") {
+      result = data.slice().sort((a, b) => a - b)  // Heavy sort
+    } else if (operation === "filter") {
+      result = data.filter(isPrime)                  // Heavy computation
+    }
+    self.postMessage({ result })
+  } catch (error) {
+    self.postMessage({ error: error.message })
+  }
+})
+
+// ─── REACT HOOK ───────────────────────────────────────────────────
+function useWorker<TInput, TOutput>(workerPath: string) {
+  const workerRef = useRef<Worker | null>(null)
+  const [status, setStatus] = useState<"idle" | "processing" | "done" | "error">("idle")
+  const [result, setResult] = useState<TOutput | null>(null)
+
+  useEffect(() => {
+    workerRef.current = new Worker(workerPath)
+
+    workerRef.current.addEventListener("message", (e) => {
+      setResult(e.data.result)
+      setStatus("done")
+    })
+
+    workerRef.current.addEventListener("error", () => setStatus("error"))
+
+    return () => workerRef.current?.terminate()
+  }, [workerPath])
+
+  const process = useCallback((input: TInput) => {
+    setStatus("processing")
+    workerRef.current?.postMessage(input)
+  }, [])
+
+  return { process, result, status }
+}
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.7
+
+**Q1: What is the `IntersectionObserver` and what are its use cases?**
+
+> `IntersectionObserver` is a browser API that asynchronously observes changes in the intersection of a target element with the viewport (or a specified root element). It fires a callback when the element enters or leaves the view. Use cases: (1) **Lazy loading images** — load high-resolution images only when they scroll into view. (2) **Infinite scroll** — load more content when the user reaches the bottom. (3) **Reveal animations** — trigger CSS animations when elements become visible. (4) **Ad impression tracking** — count impressions only when actually visible. It's far more performant than scroll event listeners.
+
+**Q2: What is a Web Worker and when would you use it?**
+
+> A Web Worker runs JavaScript in a separate background thread, isolated from the main UI thread. It cannot access the DOM, but it can do computational work without blocking the UI. Use cases: (1) Sorting/filtering large datasets. (2) Image/video processing. (3) Complex mathematical calculations. (4) Parsing large JSON payloads. (5) Running WebAssembly. Communication is via `postMessage` and `message` events. When computation is done, the worker posts the result back to the main thread.
+
+**Q3: Why should you check `typeof window !== "undefined"` in Next.js before accessing browser APIs?**
+
+> Next.js renders components on the **server side** (Node.js) as well as the client. `window`, `localStorage`, `sessionStorage`, `document`, `navigator` — these are browser-only globals that don't exist in Node.js. Accessing them server-side throws `ReferenceError`. The check `typeof window !== "undefined"` safely determines if code is running in the browser. For hooks like `useState` lazy initializers and `useEffect` bodies, this is handled automatically (effects don't run on the server). But for code outside hooks (like module-level code or class methods), the check is necessary.
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 9.8 Performance APIs
+
+<a id="98-performance-apis"></a>
+
+### Subtopic Breakdown
+
+| API | What It Measures |
+|-----|-----------------|
+| `performance.now()` | High-resolution timestamps for micro-benchmarks |
+| `PerformanceObserver` | Observe performance entries as they happen |
+| Navigation Timing | Page load breakdown (DNS, TCP, TLS, TTFB, etc.) |
+| Web Vitals | LCP, FID/INP, CLS — Core Web Vitals |
+
+---
+
+### `performance.now()` — High-Resolution Timestamps
+
+```javascript
+// ─── WHY performance.now() INSTEAD OF Date.now()? ────────────────
+// Date.now()        — millisecond precision, affected by system clock adjustments
+// performance.now() — sub-millisecond precision, monotonically increasing
+
+// Benchmarking:
+const start = performance.now()
+
+// Run code to benchmark:
+for (let i = 0; i < 1_000_000; i++) {
+  Math.sqrt(i)
+}
+
+const end = performance.now()
+console.log(`Took ${end - start}ms`)  // e.g., "23.456789ms"
+
+// ─── MEASURING RENDER PERFORMANCE ────────────────────────────────
+function measureRender(callback) {
+  const start = performance.now()
+  callback()
+  const end = performance.now()
+  return end - start
+}
+
+// React use case — measuring expensive renders:
+// useEffect(() => {
+//   const duration = measureRender(() => renderHeavyComponent())
+//   if (duration > 16) console.warn("Render over 16ms!")
+// })
+
+// ─── Performance marks and measures ──────────────────────────────
+performance.mark("startFetch")
+
+fetch("/api/data").then(r => r.json()).then(data => {
+  performance.mark("endFetch")
+  performance.measure("fetchDuration", "startFetch", "endFetch")
+
+  const measures = performance.getEntriesByName("fetchDuration")
+  console.log(`Fetch took: ${measures[0].duration}ms`)
+
+  performance.clearMarks()    // Clean up
+  performance.clearMeasures() // Clean up
+})
+```
+
+---
+
+### Web Vitals — Core Metrics
+
+```mermaid
+flowchart LR
+    subgraph VITALS["Core Web Vitals"]
+        LCP["LCP\nLargest Contentful Paint\nLoading Performance\nTarget: < 2.5s\n\nBiggest image or text block\nloading time"]
+        FID["FID / INP\nFirst Input Delay /\nInteraction to Next Paint\nInteractivity\nFID Target: < 100ms\nINP Target: < 200ms\n\nTime until page responds\nto first user interaction"]
+        CLS["CLS\nCumulative Layout Shift\nVisual Stability\nTarget: < 0.1\n\nSum of unexpected\nlayout shifts"]
+    end
+
+    style LCP fill:#c8e6c9
+    style FID fill:#bbdefb
+    style CLS fill:#f3e5f5
+```
+
+```javascript
+// ─── MEASURING CORE WEB VITALS ────────────────────────────────────
+// Using web-vitals library (used by Next.js):
+import { onLCP, onFID, onCLS, onINP, onTTFB } from "web-vitals"
+
+function sendToAnalytics(metric) {
+  const { name, value, rating } = metric
+  console.log(`${name}: ${value} (${rating})`)
+  // rating: "good", "needs-improvement", "poor"
+
+  // Send to analytics:
+  analytics.track("web_vital", {
+    metric_name: name,
+    metric_value: value,
+    metric_rating: rating,
+    page: window.location.pathname
+  })
+}
+
+onLCP(sendToAnalytics)   // Largest Contentful Paint
+onFID(sendToAnalytics)   // First Input Delay (deprecated, use INP)
+onINP(sendToAnalytics)   // Interaction to Next Paint
+onCLS(sendToAnalytics)   // Cumulative Layout Shift
+onTTFB(sendToAnalytics)  // Time to First Byte
+
+// ─── NEXT.JS BUILT-IN WEB VITALS ────────────────────────────────
+// In Next.js App Router, export this from layout.tsx or page.tsx:
+export function reportWebVitals(metric) {
+  if (metric.label === "web-vital") {
+    console.log(metric)
+  }
+}
+
+// Or use Next.js Speed Insights:
+import { SpeedInsights } from "@vercel/speed-insights/next"
+// Add <SpeedInsights /> to root layout — auto-tracks vitals
+
+// ─── What affects each metric ─────────────────────────────────────
+// LCP — affected by: large images, slow server, render-blocking CSS/JS
+//   Fix: next/image, optimized fonts, fast TTFB, CDN
+
+// CLS — affected by: images without dimensions, dynamic content insertion,
+//        fonts causing text jumps, iframes
+//   Fix: always set width/height on images, reserve space for dynamic content,
+//        use CSS containment, font-display: swap (then next/font)
+
+// INP — affected by: long JavaScript tasks, slow event handlers, large re-renders
+//   Fix: code splitting, useTransition, useDeferredValue, React.memo, Web Workers
+
+// ─── PerformanceObserver (measure in real code) ────────────────────
+const observer = new PerformanceObserver((entryList) => {
+  for (const entry of entryList.getEntries()) {
+    if (entry.entryType === "largest-contentful-paint") {
+      console.log("LCP:", entry.startTime)
+    }
+    if (entry.entryType === "layout-shift" && !entry.hadRecentInput) {
+      console.log("CLS contribution:", entry.value)
+    }
+  }
+})
+
+observer.observe({ entryTypes: ["largest-contentful-paint", "layout-shift"] })
+```
+
+---
+
+### Navigation Timing API
+
+```javascript
+// Detailed breakdown of page load performance:
+const timing = performance.timing  // deprecated but widely supported
+const navEntry = performance.getEntriesByType("navigation")[0]  // modern
+
+// Page load breakdown:
+console.log({
+  // DNS lookup time:
+  dns: navEntry.domainLookupEnd - navEntry.domainLookupStart,
+  // TCP connection time:
+  tcp: navEntry.connectEnd - navEntry.connectStart,
+  // TLS handshake:
+  tls: navEntry.secureConnectionStart > 0
+    ? navEntry.connectEnd - navEntry.secureConnectionStart : 0,
+  // Time to First Byte:
+  ttfb: navEntry.responseStart - navEntry.requestStart,
+  // HTML download time:
+  htmlDownload: navEntry.responseEnd - navEntry.responseStart,
+  // DOM processing:
+  domProcessing: navEntry.domComplete - navEntry.domInteractive,
+  // Total load:
+  totalLoad: navEntry.loadEventEnd - navEntry.startTime,
+})
+
+// Resource Timing (each asset):
+const resources = performance.getEntriesByType("resource")
+resources.forEach(res => {
+  console.log(`${res.name}: ${res.duration.toFixed(2)}ms`)
+})
+```
+
+---
+
+### 🎯 Interview Questions — Section 9.8
+
+**Q1: What are Core Web Vitals and why do they matter?**
+
+> Core Web Vitals are a set of metrics Google uses to measure user experience on web pages, and they directly impact SEO rankings: (1) **LCP (Largest Contentful Paint)** — measures loading performance: how long until the largest content element is visible. Target: < 2.5s. (2) **INP (Interaction to Next Paint)** — measures interactivity: how quickly the page responds to user interactions. Target: < 200ms. (3) **CLS (Cumulative Layout Shift)** — measures visual stability: how much the layout unexpectedly shifts during loading. Target: < 0.1. They matter because they directly correlate with user experience and business metrics (bounce rate, conversions).
+
+**Q2: How do you improve CLS (Cumulative Layout Shift) in a Next.js app?**
+
+> (1) Always set `width` and `height` attributes on `<img>` elements — `next/image` does this automatically. (2) Reserve space for dynamic content (ads, embeds) with CSS or `aspect-ratio`. (3) Avoid inserting content above existing content dynamically. (4) Use `next/font` to preload fonts — prevents font-swap layout shifts with `font-display: swap` properly handled. (5) Use CSS `contain: layout` for isolated layout sections. (6) Avoid width/height changes triggered by DOM manipulation. (7) Preload critical images with `priority` prop on `next/image`.
+
+**Q3: What is the difference between `performance.now()` and `Date.now()`?**
+
+> `Date.now()` returns milliseconds since Unix epoch (January 1, 1970) and has only millisecond precision. It can also jump backward if the system clock is adjusted. `performance.now()` returns a `DOMHighResTimeStamp` — a floating-point number with sub-millisecond precision, always relative to the page's `navigationStart` time (approximately when the page began loading). It's monotonically increasing (never goes backward), making it ideal for benchmarking, animation timing, and measuring precise durations.
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 🧪 Mini Project: Virtual DOM Inspector & Event Tracer
+
+<a id="-mini-project-virtual-dom-inspector--event-tracer"></a>
+
+### Problem Statement
+
+Build a **DOM Inspector & Event Tracer** — a Next.js DevTools-style application that visually demonstrates DOM structure, event propagation, and browser performance metrics. It serves as both a learning tool and a practical implementation of Chapter 9 concepts.
+
+### Architecture
+
+```mermaid
+flowchart TD
+    subgraph APP["Next.js App"]
+        subgraph CLIENT["Client Components"]
+            DOM_TREE["DOMTreeVisualizer\nRenders DOM as tree"]
+            EVENT_TRACER["EventTracer\nShows propagation visually"]
+            PERF_PANEL["PerformancePanel\nReal-time Web Vitals"]
+            OBSERVER_DEMO["ObserverDemo\nIntersection/Resize"]
+        end
+
+        subgraph HOOKS["Custom Hooks"]
+            USE_DOM["useDOMObserver\nMutationObserver"]
+            USE_IO["useIntersection\nIntersectionObserver"]
+            USE_RESIZE["useResizeObserver\nResizeObserver"]
+            USE_PERF["useWebVitals\nPerformanceObserver"]
+        end
+
+        subgraph API["Route Handlers"]
+            METRICS["POST /api/metrics\nCollect performance data"]
+        end
+    end
+
+    CLIENT --> HOOKS
+    HOOKS --> API
+
+    style CLIENT fill:#e3f2fd
+    style HOOKS fill:#e8f5e9
+    style API fill:#fff9c4
+```
+
+### File Structure
+
+```
+dom-inspector/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                           # Main dashboard
+│   ├── event-propagation/page.tsx         # Interactive propagation demo
+│   ├── observers/page.tsx                 # Observer API demos
+│   ├── performance/page.tsx               # Performance metrics
+│   └── api/
+│       └── metrics/route.ts              # Collect & store metrics
+├── components/
+│   ├── DOMTreeVisualizer.tsx             # Renders DOM as interactive tree
+│   ├── EventPropagationDemo.tsx          # Visual event bubble/capture
+│   ├── IntersectionDemo.tsx              # Scrolling intersection observer
+│   ├── ResizeDemo.tsx                    # Resizable element observer
+│   ├── WebVitalsPanel.tsx                # Real-time vitals display
+│   └── StorageExplorer.tsx               # localStorage/sessionStorage UI
+├── hooks/
+│   ├── useDOMObserver.ts                 # MutationObserver hook
+│   ├── useIntersectionObserver.ts        # IntersectionObserver hook
+│   ├── useResizeObserver.ts              # ResizeObserver hook
+│   └── useWebVitals.ts                   # Performance metrics hook
+└── workers/
+    └── heavy-computation.worker.ts       # Web Worker example
+```
+
+### Core Implementations
+
+```typescript
+// components/EventPropagationDemo.tsx
+'use client'
+
+import { useState, useCallback } from 'react'
+
+type PropagationStep = {
+  element: string
+  phase: 'capture' | 'target' | 'bubble'
+  timestamp: number
+}
+
+export function EventPropagationDemo() {
+  const [steps, setSteps] = useState<PropagationStep[]>([])
+  const [useCapture, setUseCapture] = useState(false)
+  const [stopAt, setStopAt] = useState<string | null>(null)
+
+  const addStep = useCallback((element: string, phase: PropagationStep['phase']) => {
+    setSteps(prev => [...prev, { element, phase, timestamp: performance.now() }])
+  }, [])
+
+  const handleClick = useCallback((elementId: string, phase: PropagationStep['phase']) =>
+    (e: React.MouseEvent) => {
+      addStep(elementId, phase)
+      if (stopAt === elementId) {
+        e.stopPropagation()
+      }
+    }, [addStep, stopAt])
+
+  const reset = () => setSteps([])
+
+  return (
+    <div className="p-6 bg-gray-900 text-white rounded-xl">
+      <h2 className="text-xl font-bold mb-4">Event Propagation Visualizer</h2>
+
+      <div className="flex gap-4 mb-4">
+        <label className="flex items-center gap-2">
+          <input
+            type="checkbox"
+            checked={useCapture}
+            onChange={e => setUseCapture(e.target.checked)}
+          />
+          Show capture phase
+        </label>
+        <button onClick={reset} className="px-3 py-1 bg-gray-700 rounded text-sm">
+          Reset
+        </button>
+      </div>
+
+      {/* Nested elements for propagation demo */}
+      <div
+        className="p-4 border-2 border-red-400 rounded cursor-pointer hover:bg-red-950"
+        onClick={handleClick("Outer div", "bubble")}
+        onClickCapture={useCapture ? handleClick("Outer div", "capture") : undefined}
+      >
+        <p className="text-red-400 text-sm mb-2">Outer div</p>
+
+        <div
+          className="p-4 border-2 border-orange-400 rounded cursor-pointer hover:bg-orange-950"
+          onClick={handleClick("Middle div", "bubble")}
+          onClickCapture={useCapture ? handleClick("Middle div", "capture") : undefined}
+        >
+          <p className="text-orange-400 text-sm mb-2">Middle div</p>
+
+          <button
+            className="px-4 py-2 bg-blue-600 rounded hover:bg-blue-700"
+            onClick={handleClick("Button", "target")}
+            onClickCapture={useCapture ? handleClick("Button", "capture") : undefined}
+          >
+            🖱️ Click Me!
+          </button>
+        </div>
+      </div>
+
+      {/* Propagation log */}
+      <div className="mt-4 space-y-1">
+        <h3 className="font-semibold text-sm text-gray-400">Propagation Log:</h3>
+        {steps.length === 0 ? (
+          <p className="text-gray-600 text-sm italic">Click the button to see propagation</p>
+        ) : (
+          steps.map((step, i) => (
+            <div
+              key={i}
+              className={`flex items-center gap-2 p-2 rounded text-sm font-mono
+                ${step.phase === 'capture' ? 'bg-yellow-900 text-yellow-300' :
+                  step.phase === 'target' ? 'bg-blue-900 text-blue-300' :
+                  'bg-green-900 text-green-300'}`}
+            >
+              <span className="text-gray-400">{i + 1}.</span>
+              <span className="uppercase text-xs px-1 rounded bg-black/30">
+                {step.phase}
+              </span>
+              <span>{step.element}</span>
+              <span className="ml-auto text-xs text-gray-500">
+                +{(step.timestamp - steps[0].timestamp).toFixed(2)}ms
+              </span>
+            </div>
+          ))
+        )}
+      </div>
+    </div>
+  )
+}
+```
+
+```typescript
+// hooks/useIntersectionObserver.ts
+import { useEffect, useRef, useState } from 'react'
+
+interface UseIntersectionObserverOptions {
+  threshold?: number | number[]
+  root?: Element | null
+  rootMargin?: string
+  freezeOnceVisible?: boolean
+}
+
+export function useIntersectionObserver(
+  options: UseIntersectionObserverOptions = {}
+) {
+  const {
+    threshold = 0,
+    root = null,
+    rootMargin = '0px',
+    freezeOnceVisible = false
+  } = options
+
+  const ref = useRef<Element | null>(null)
+  const [entry, setEntry] = useState<IntersectionObserverEntry | null>(null)
+  const frozen = entry?.isIntersecting && freezeOnceVisible
+
+  useEffect(() => {
+    const node = ref.current
+    if (!node || frozen) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setEntry(entry),
+      { threshold, root, rootMargin }
+    )
+
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [ref, threshold, root, rootMargin, frozen])
+
+  return { ref, entry, isIntersecting: entry?.isIntersecting ?? false }
+}
+
+// hooks/useWebVitals.ts
+import { useEffect, useState } from 'react'
+
+interface WebVitalMetric {
+  name: string
+  value: number
+  rating: 'good' | 'needs-improvement' | 'poor'
+  delta: number
+}
+
+export function useWebVitals() {
+  const [metrics, setMetrics] = useState<Record<string, WebVitalMetric>>({})
+
+  useEffect(() => {
+    // Dynamically import web-vitals to avoid SSR issues:
+    import('web-vitals').then(({ onLCP, onFID, onCLS, onINP, onTTFB }) => {
+      const handleMetric = (metric: WebVitalMetric) => {
+        setMetrics(prev => ({ ...prev, [metric.name]: metric }))
+      }
+
+      onLCP(handleMetric as any)
+      onFID(handleMetric as any)
+      onCLS(handleMetric as any)
+      onINP(handleMetric as any)
+      onTTFB(handleMetric as any)
+    })
+  }, [])
+
+  return metrics
+}
+```
+
+```typescript
+// components/WebVitalsPanel.tsx
+'use client'
+
+import { useWebVitals } from '@/hooks/useWebVitals'
+
+const ratings = {
+  good: { color: 'text-green-400', bg: 'bg-green-900/30' },
+  'needs-improvement': { color: 'text-yellow-400', bg: 'bg-yellow-900/30' },
+  poor: { color: 'text-red-400', bg: 'bg-red-900/30' },
+}
+
+const targets = {
+  LCP: { good: 2500, poor: 4000, unit: 'ms' },
+  FID: { good: 100, poor: 300, unit: 'ms' },
+  INP: { good: 200, poor: 500, unit: 'ms' },
+  CLS: { good: 0.1, poor: 0.25, unit: '' },
+  TTFB: { good: 800, poor: 1800, unit: 'ms' },
+}
+
+export function WebVitalsPanel() {
+  const metrics = useWebVitals()
+
+  return (
+    <div className="p-6 bg-gray-900 rounded-xl">
+      <h2 className="text-xl font-bold text-white mb-4">
+        📊 Core Web Vitals
+      </h2>
+
+      <div className="grid grid-cols-2 gap-3">
+        {Object.entries(targets).map(([name, target]) => {
+          const metric = metrics[name]
+
+          return (
+            <div
+              key={name}
+              className={`p-4 rounded-lg border ${
+                metric
+                  ? `${ratings[metric.rating].bg} border-current`
+                  : 'bg-gray-800 border-gray-700'
+              }`}
+            >
+              <div className="flex justify-between items-start">
+                <span className="font-mono font-bold text-sm text-gray-300">
+                  {name}
+                </span>
+                {metric && (
+                  <span className={`text-xs px-2 py-0.5 rounded capitalize
+                    ${ratings[metric.rating].color}`}>
+                    {metric.rating.replace('-', ' ')}
+                  </span>
+                )}
+              </div>
+
+              <div className="mt-2">
+                {metric ? (
+                  <span className={`text-2xl font-bold ${ratings[metric.rating].color}`}>
+                    {name === 'CLS'
+                      ? metric.value.toFixed(3)
+                      : `${Math.round(metric.value)}${target.unit}`
+                    }
+                  </span>
+                ) : (
+                  <span className="text-gray-600 text-sm animate-pulse">
+                    Measuring...
+                  </span>
+                )}
+              </div>
+
+              <div className="mt-2 text-xs text-gray-500">
+                Good: &lt;{name === 'CLS' ? target.good : `${target.good}${target.unit}`}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+```
+
+```typescript
+// app/api/metrics/route.ts — Store Web Vitals
+
+import { NextRequest, NextResponse } from 'next/server'
+
+// In-memory store for demo (use database in production):
+const metricsStore: Array<{
+  name: string
+  value: number
+  rating: string
+  page: string
+  timestamp: string
+}> = []
+
+export async function POST(request: NextRequest) {
+  const metric = await request.json()
+
+  metricsStore.push({
+    ...metric,
+    page: request.headers.get('referer') ?? '/',
+    timestamp: new Date().toISOString()
+  })
+
+  // Keep only last 1000 entries:
+  if (metricsStore.length > 1000) {
+    metricsStore.splice(0, metricsStore.length - 1000)
+  }
+
+  return NextResponse.json({ stored: true })
+}
+
+export async function GET() {
+  const summary = metricsStore.reduce((acc, m) => {
+    if (!acc[m.name]) acc[m.name] = { values: [], avg: 0, p75: 0 }
+    acc[m.name].values.push(m.value)
+    return acc
+  }, {} as Record<string, { values: number[]; avg: number; p75: number }>)
+
+  // Calculate averages and p75:
+  Object.keys(summary).forEach(name => {
+    const sorted = [...summary[name].values].sort((a, b) => a - b)
+    summary[name].avg = sorted.reduce((s, v) => s + v, 0) / sorted.length
+    summary[name].p75 = sorted[Math.floor(sorted.length * 0.75)]
+  })
+
+  return NextResponse.json({
+    total: metricsStore.length,
+    summary,
+    recent: metricsStore.slice(-10)
+  })
+}
+```
+
+### What This Project Demonstrates
+
+| Chapter 9 Concept | Demonstrated By |
+|------------------|----------------|
+| DOM tree structure | `DOMTreeVisualizer` renders live DOM |
+| Selecting elements | `querySelector` patterns throughout |
+| `addEventListener` with options | Event tracer's capture/bubble toggle |
+| Event bubbling/capturing | `EventPropagationDemo` visual |
+| `stopPropagation` | Interactive stop-at option |
+| Event delegation | List components with single listeners |
+| `localStorage` | `StorageExplorer` read/write UI |
+| History API | SPA navigation in Next.js |
+| `IntersectionObserver` | `useIntersectionObserver` hook |
+| `ResizeObserver` | `useResizeObserver` hook |
+| `performance.now()` | Propagation timing in event log |
+| Web Vitals | `WebVitalsPanel` with live metrics |
+| `PerformanceObserver` | `useWebVitals` hook |
+| Web Workers | Heavy computation example |
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
+
+---
+
+## 📝 Practice Section
+
+<a id="-practice-section"></a>
+
+### 5 Coding Questions
+
+**C1: Implement a custom `EventEmitter` that mirrors browser event behavior**
+
+```typescript
+// Implement a custom event emitter with:
+// - addEventListener, removeEventListener, dispatchEvent
+// - Event bubbling through a parent chain
+// - capture phase support
+// - stopPropagation(), preventDefault()
+// - once option
+
+class EventTarget {
+  addEventListener(type: string, listener: Function, options?: { capture?: boolean; once?: boolean }): void {}
+  removeEventListener(type: string, listener: Function, options?: { capture?: boolean }): void {}
+  dispatchEvent(event: CustomEvent): boolean {}
+}
+
+class DOMNode extends EventTarget {
+  parent: DOMNode | null = null
+
+  // Event should bubble up to parent
+}
+
+// Test:
+const parent = new DOMNode()
+const child = new DOMNode()
+child.parent = parent
+
+parent.addEventListener("click", (e) => console.log("parent bubble"))
+child.addEventListener("click", (e) => {
+  console.log("child")
+  // e.stopPropagation should prevent parent listener
+})
+
+child.dispatchEvent(new CustomEvent("click", { bubbles: true }))
+```
+
+---
+
+**C2: Implement a lazy image loading utility using IntersectionObserver**
+
+```typescript
+// Create a LazyImageLoader class:
+// - Observes images with data-src attribute
+// - Loads image when it enters viewport (with configurable rootMargin)
+// - Shows loading skeleton while loading
+// - Handles error states
+// - Supports progressive loading (low-res first, then high-res)
+// - Must clean up observers on disconnect()
+
+class LazyImageLoader {
+  constructor(options?: { rootMargin?: string; threshold?: number }) {}
+
+  observe(image: HTMLImageElement): void {}
+  unobserve(image: HTMLImageElement): void {}
+  disconnect(): void {}
+
+  static observeAll(selector = "[data-src]"): LazyImageLoader {}
+}
+
+// Usage:
+const loader = LazyImageLoader.observeAll("[data-lazy]")
+// Later (cleanup):
+loader.disconnect()
+```
+
+---
+
+**C3: Implement a virtual scroll list using IntersectionObserver**
+
+```typescript
+// VirtualScroll renders only visible items
+// Uses IntersectionObserver to track sentinel elements
+// Requirements:
+// - Render only items in the viewport + buffer
+// - Support 100,000+ items efficiently
+// - Maintain scroll position
+// - Smooth scroll behavior
+
+function VirtualScroll<T>({
+  items,
+  itemHeight,
+  containerHeight,
+  renderItem
+}: {
+  items: T[]
+  itemHeight: number
+  containerHeight: number
+  renderItem: (item: T, index: number) => React.ReactNode
+}) {
+  // Your implementation
+  // Calculate visible range from scroll position
+  // Render placeholder divs for non-visible items
+}
+```
+
+---
+
+**C4: Build a `useEventListener` hook with proper TypeScript types**
+
+```typescript
+// Generic hook that:
+// - Attaches event listener to any target (window, document, element)
+// - Properly typed for all event types
+// - Handles options (capture, passive, once)
+// - Cleans up on unmount
+// - Re-attaches when dependencies change
+
+function useEventListener<
+  KW extends keyof WindowEventMap,
+  KH extends keyof HTMLElementEventMap,
+  T extends HTMLElement | Window | Document
+>(
+  eventName: KW | KH,
+  handler: (event: WindowEventMap[KW] | HTMLElementEventMap[KH] | Event) => void,
+  element?: RefObject<T> | Window | Document | null,
+  options?: boolean | AddEventListenerOptions
+): void
+
+// Usage:
+useEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal()
+})
+
+useEventListener("scroll", handleScroll, window, { passive: true })
+
+useEventListener("click", handleClick, buttonRef)
+```
+
+---
+
+**C5: Implement a performance monitoring HOC for React components**
+
+```typescript
+// withPerformanceTracking(Component) wraps a component to:
+// - Measure render time with performance.now()
+// - Track how many times it re-renders
+// - Log renders that take > 16ms (above 60fps budget)
+// - Report metrics to an analytics endpoint
+// - Show overlay in development mode
+
+function withPerformanceTracking<P extends object>(
+  Component: React.ComponentType<P>,
+  options?: {
+    threshold?: number       // ms before logging warning
+    reportUrl?: string       // URL to POST metrics to
+    showOverlay?: boolean    // Show render time overlay
+  }
+): React.ComponentType<P>
+
+// Usage:
+const TrackedExpensiveList = withPerformanceTracking(ExpensiveList, {
+  threshold: 8,
+  showOverlay: process.env.NODE_ENV === 'development'
+})
+```
+
+---
+
+### 5 Theory Questions
+
+**T1: Explain event propagation in depth. Cover all three phases (capture, target, bubble), how `stopPropagation()` and `stopImmediatePropagation()` differ, which events do NOT bubble (and why), and how React's synthetic event system relates to native DOM events. How does React 17's change from document to root container affect `stopPropagation()`?**
+
+**T2: Compare all DOM selection methods (`getElementById`, `querySelector`, `querySelectorAll`, `getElementsByClassName`, `getElementsByTagName`, `closest`). For each: return type, live vs static, performance characteristics, and when you'd choose it. What is the difference between `children` and `childNodes`?**
+
+**T3: Explain the IntersectionObserver API — how it works, all configuration options (`root`, `rootMargin`, `threshold`), what `IntersectionObserverEntry` contains, and how it's more performant than scroll event listeners. Implement lazy loading and infinite scroll patterns using it.**
+
+**T4: What are Core Web Vitals (LCP, INP, CLS)? For each: what it measures, target values, what causes poor scores, and specific Next.js/React techniques to improve them. How do `next/image`, `next/font`, and React's concurrent features (`useTransition`) relate to these metrics?**
+
+**T5: Explain Web Workers. What JavaScript APIs are available in a worker? What isn't available? How does message passing work? When would you use a Shared Worker vs a dedicated Worker? How does OffscreenCanvas enable GPU operations in workers? Show a Next.js pattern for using workers safely.**
+
+---
+
+### 2 Machine Coding Problems
+
+**MCP 1: Build a Rich Text Editor with DOM Manipulation**
+
+Create a rich text editor component using raw DOM manipulation (no external libraries):
+
+```typescript
+// Requirements:
+// - Bold, Italic, Underline, Strikethrough formatting
+// - Font size, color selection
+// - Link insertion
+// - Image upload and embed
+// - Undo/Redo (History API for state, not navigation)
+// - Word count and character count
+// - Export as HTML or plain text
+// - Keyboard shortcuts (Ctrl+B = bold, etc.)
+// - Clipboard support (paste preserves formatting, paste as plain text)
+
+// Build in Next.js with:
+// - Client Component for the editor
+// - Server Action for saving content
+// - No dependency on external editor libraries
+// - Uses: document.execCommand (legacy) OR Selection/Range API (modern)
+// - IntersectionObserver for toolbar sticky behavior
+// - MutationObserver for real-time word count
+```
+
+---
+
+**MCP 2: Build a Performance Dashboard**
+
+Build a Next.js dashboard that monitors and displays real-time performance metrics:
+
+```typescript
+// Requirements:
+// - Collect Core Web Vitals in real-time using web-vitals library
+// - Show historical metrics with charts (using canvas or SVG, no chart library)
+// - PerformanceObserver for: LCP, CLS, layout-shift, longtask, resource
+// - Navigation timing breakdown (waterfall chart)
+// - Resource loading timeline (show each asset load time)
+// - Memory usage monitoring (if available: performance.memory)
+// - Frame rate monitoring using requestAnimationFrame
+// - Identify long tasks (>50ms blocks)
+// - Export performance report as JSON or PDF
+
+// Architecture:
+// - Server Component: render static performance dashboard shell
+// - Client Component: collect and display live metrics
+// - Route Handler: receive and aggregate metrics from multiple pages
+// - Web Worker: process large performance datasets without blocking UI
+// - localStorage: persist historical metrics across sessions
+```
+
+---
+
+> [!NOTE]
+> **Chapter 9 Summary — Key Takeaways:**
+> 1. The DOM is a live tree — changes immediately re-render; HTML is static markup
+> 2. `querySelectorAll` returns a static NodeList; `getElementsByClassName`/`TagName` return live HTMLCollections
+> 3. `innerHTML` parses HTML (XSS risk); `textContent` is XSS-safe text; `innerText` respects CSS
+> 4. Events go through 3 phases: capture (down) → target → bubble (up); default is bubble
+> 5. `stopPropagation()` stops event traveling; `preventDefault()` cancels browser's default action
+> 6. Event delegation: one listener on parent handles all descendants via `e.target` + `closest()`
+> 7. React uses delegation internally — one listener on root, not on each element
+> 8. Always check `typeof window !== "undefined"` before browser API usage in Next.js
+> 9. IntersectionObserver is far more performant than scroll event listeners for visibility detection
+> 10. Core Web Vitals (LCP, INP, CLS) directly impact SEO and user experience — optimize via next/image, next/font, useTransition
+
+<a href="#chapter-index-table-9">Go to Top 🔝</a>
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
 React • Next.js • JavaScript
@@ -12487,7 +27314,2563 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 
 <a id="10-introduction-to-react"></a>
 
-## Chapter 10: Introduction to React
+
+# Chapter 10: Introduction to React
+
+> **Book:** React + Next.js — From Zero to Interview Ready
+> **Part:** B — React Fundamentals
+> **Chapter:** 10 of 56
+
+---
+
+<a id="chapter-index-table-10"></a>
+
+## Chapter Index Table
+
+| Topic No. | Topic Name | Subtopics |
+|-----------|------------|-----------|
+| 10.1 | [What is React?](#101-what-is-react) | Library vs Framework<br>React as View Library (MVC)<br>React vs Angular vs Vue<br>Why Facebook created React<br>Core Philosophy (Declarative, Component-based, Unidirectional, State-Driven) |
+| 10.2 | [Why React?](#102-why-react) | Problems with vanilla JS at scale<br>Imperative vs Declarative<br>Component reusability<br>Ecosystem & community<br>React Native |
+| 10.3 | [SPA vs MPA](#103-spa-vs-mpa) | Single Page Application<br>Multi Page Application<br>CSR vs SSR intro<br>SEO challenges<br>React SPA routing |
+| 10.4 | [Virtual DOM — Deep Dive](#104-virtual-dom--deep-dive) | Real DOM slowness<br>Virtual DOM concept<br>4-Step VDOM process<br>Diffing algorithm<br>Is VDOM actually faster? |
+| 10.5 | [React Fiber Architecture](#105-react-fiber-architecture) | What is Fiber<br>Why Fiber (Stack Reconciler limits)<br>Fiber node<br>Render & Commit phases<br>Concurrent rendering<br>Priority lanes<br>Time slicing |
+| 10.6 | [React Ecosystem Overview](#106-react-ecosystem-overview) | Core packages<br>Routing<br>State management<br>Server state<br>Forms<br>Styling<br>Testing<br>Frameworks<br>UI Libraries |
+| 10.7 | [Development Environment Setup](#107-development-environment-setup) | Node.js & package managers<br>CRA vs Vite<br>Project structure<br>VS Code extensions<br>React DevTools |
+| 10.8 | [package.json Deep Dive](#108-packagejson-deep-dive) | Fields breakdown<br>dependencies vs devDependencies<br>Scripts<br>Semantic Versioning<br>package-lock.json |
+| 10.9 | [How React Renders — Under the Hood](#109-how-react-renders--under-the-hood) | `React.createElement`<br>`ReactDOM.createRoot`<br>`root.render`<br>Step-by-step rendering<br>JSX compilation |
+| — | [Mini Project](#-mini-project-react-mental-model-visualizer) | React Mental Model Visualizer |
+| — | [Practice Section](#-practice-section) | 5 Coding + 5 Theory + 2 Machine Coding |
+
+---
+
+## Table of Contents
+
+- [10.1 What is React?](#101-what-is-react)
+- [10.2 Why React?](#102-why-react)
+- [10.3 SPA vs MPA](#103-spa-vs-mpa)
+- [10.4 Virtual DOM — Deep Dive](#104-virtual-dom--deep-dive)
+- [10.5 React Fiber Architecture](#105-react-fiber-architecture)
+- [10.6 React Ecosystem Overview](#106-react-ecosystem-overview)
+- [10.7 Development Environment Setup](#107-development-environment-setup)
+- [10.8 package.json Deep Dive](#108-packagejson-deep-dive)
+- [10.9 How React Renders — Under the Hood](#109-how-react-renders--under-the-hood)
+- [🧪 Mini Project: React Mental Model Visualizer](#-mini-project-react-mental-model-visualizer)
+- [📝 Practice Section](#-practice-section)
+
+---
+
+## 10.1 What is React?
+
+<a id="101-what-is-react"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Official Definition | "A JavaScript library for building user interfaces" |
+| Library vs Framework | Inversion of control — who calls whom |
+| React as View Library | React is only the V in MVC |
+| React vs Angular vs Vue | Feature comparison table |
+| Why Facebook Built React | The origin story & problem solved |
+| Core Philosophy | Declarative, Component-based, Unidirectional, State-Driven |
+
+---
+
+### What is React?
+
+**React** (also known as React.js or ReactJS) is an **open-source JavaScript library** developed by **Meta (Facebook)** for building fast, interactive **user interfaces**. It was created by Jordan Walke in 2011 and open-sourced in **May 2013** at JSConf US.
+
+> **Hinglish:** React ek JavaScript library hai jo tumhare web app ka "face" banata hai — jo user screen par dekhta hai. Jaise ek painter sirf painting karta hai, baaki ghar ka kaam (routing, backend) doosre karte hain — React sirf UI banata hai.
+
+> [!NOTE]
+> **Official Definition:** "React is a JavaScript library for building user interfaces." — react.dev
+> Key word: **library** (not framework). React does ONE thing well — render UI.
+
+---
+
+### Library vs Framework — The Critical Distinction
+
+> **Hinglish:** Library aur Framework ka farak samajhna bahut important hai. Library woh hai jo tum call karte ho — jaise ek toolkit. Framework woh hai jo tumhe call karta hai — tum uske rules follow karte ho, woh decide karta hai "flow" kya hoga.
+
+```mermaid
+flowchart LR
+    subgraph LIBRARY["📚 Library (React)"]
+        direction TB
+        YOUR_CODE["Your Code\n(You are in control)"]
+        LIB["React Library\n(You call React functions)"]
+        YOUR_CODE -->|"You call"| LIB
+        LIB -->|"Returns result"| YOUR_CODE
+    end
+
+    subgraph FRAMEWORK["🏗️ Framework (Angular)"]
+        direction TB
+        FW["Angular Framework\n(Framework is in control)"]
+        YOUR_CODE2["Your Code\n(You fill in the blanks)"]
+        FW -->|"Framework calls"| YOUR_CODE2
+        YOUR_CODE2 -->|"Follows framework rules"| FW
+    end
+
+    style LIBRARY fill:#e8f5e9,stroke:#4CAF50
+    style FRAMEWORK fill:#e3f2fd,stroke:#2196F3
+```
+
+| Feature | Library (React) | Framework (Angular) |
+|---------|----------------|---------------------|
+| **Control** | You control the flow | Framework controls the flow |
+| **Inversion of Control** | ❌ You call the library | ✅ Framework calls your code |
+| **Flexibility** | High — mix & match | Low — must follow conventions |
+| **Learning curve** | Lower initially | Steeper (more opinions) |
+| **Decision making** | You choose routing, state, etc. | Included out of the box |
+| **Example** | React, Lodash, jQuery | Angular, Django, Rails |
+
+---
+
+### React is the "V" in MVC
+
+```mermaid
+flowchart LR
+    M["M — Model\n(Data & Business Logic)\nRedux, Zustand, API calls"]
+    V["V — View\n(User Interface)\n✅ THIS IS REACT"]
+    C["C — Controller\n(Routing, Logic)\nReact Router, custom hooks"]
+
+    M <-->|"State changes"| C
+    C -->|"Updates"| V
+    V -->|"User events"| C
+
+    style V fill:#ffcdd2,stroke:#f44336
+```
+
+> **Hinglish:** MVC ek software design pattern hai. React sirf "View" sambhalta hai — screen par kya dikhna chahiye. Model (data) ke liye Redux/Zustand, Controller (routing/logic) ke liye React Router ya custom code use karte hain. React is NOT a full MVC framework.
+
+---
+
+### React vs Angular vs Vue — Complete Comparison
+
+| Feature | React | Angular | Vue |
+|---------|-------|---------|-----|
+| **Type** | Library | Full Framework | Progressive Framework |
+| **Created by** | Meta (Facebook) | Google | Evan You (Community) |
+| **Created in** | 2013 | 2010 (AngularJS), 2016 (Angular) | 2014 |
+| **Language** | JavaScript / JSX | TypeScript (required) | JavaScript / TypeScript |
+| **Architecture** | Component-based | MVC + Components | Component-based |
+| **Data binding** | One-way (unidirectional) | Two-way | Two-way (v-model) |
+| **DOM** | Virtual DOM | Real DOM + Change Detection | Virtual DOM |
+| **Learning curve** | Medium | Steep | Easy |
+| **Ecosystem** | Community-driven | Built-in (opinionated) | Community-driven |
+| **State management** | External (Redux, Zustand) | Built-in services | Vuex/Pinia |
+| **Routing** | React Router (external) | Built-in | Vue Router (official) |
+| **Mobile** | React Native | Ionic / NativeScript | Vue Native |
+| **Job market** | 🔥 Highest demand | High | Moderate |
+| **Companies** | Facebook, Netflix, Airbnb | Google, Microsoft | Alibaba, Baidu |
+| **Bundle size** | ~45KB (minified+gzip) | ~180KB+ | ~34KB |
+| **GitHub Stars** | ~220k+ | ~90k+ | ~200k+ |
+
+> [!IMPORTANT]
+> **Interview Tip:** React is the **most in-demand front-end library** in the job market (2024). Understanding WHY React wins (flexibility, ecosystem, community) is as important as knowing how it works.
+
+---
+
+### Why Facebook Created React (The Origin Story)
+
+**The Problem Facebook Faced (2011-2012):**
+
+Facebook's News Feed had a critical bug — when you received a notification, the count would show "1 message" but when you opened the inbox, it would be empty. This happened because the DOM state was out of sync with the actual data.
+
+> **Hinglish:** Facebook ka News Feed bahut complex tha — ek jagah data change hota tha, doosri jagah update nahi hota. Yeh "state sync" ka problem tha. Traditional DOM manipulation se yeh solve nahi ho raha tha — isliye Jordan Walke ne React banaya.
+
+```mermaid
+timeline
+    title React Evolution Timeline
+    2011 : Jordan Walke creates "FaxJS"\n(React prototype) at Facebook
+    2012 : Used in Facebook Ads Manager\nto solve complex UI state problems
+    2013 : Open-sourced at JSConf US\nMay 2013
+    2014 : React Developer Tools released\nReact Router created by community
+    2015 : React Native announced\nRedux released
+    2016 : React Fiber rewrite begins\n(React 15 last Stack Reconciler)
+    2017 : React 16 released (with Fiber)\nError Boundaries introduced
+    2019 : React Hooks released (v16.8)\nGame changer for functional components
+    2020 : Concurrent Mode experimental
+    2022 : React 18 released\nConcurrent Features stable
+    2023 : React 19 (RC)\nServer Components stable
+```
+
+---
+
+### React's Core Philosophy — 4 Pillars
+
+```mermaid
+mindmap
+  root((React Core\nPhilosophy))
+    Declarative
+      Tell WHAT not HOW
+      You describe the UI
+      React figures out the updates
+      No manual DOM manipulation
+    Component-Based
+      Everything is a component
+      Reusable pieces of UI
+      Each has its own state & logic
+      Compose complex UIs from simple pieces
+    Unidirectional Data Flow
+      Data flows ONE way
+      Parent to Child via props
+      Child to Parent via callbacks
+      Predictable state changes
+    State-Driven UI
+      UI is a function of state
+      UI = f(state)
+      Change state → React updates UI
+      No manual DOM manipulation needed
+```
+
+**Pillar 1: Declarative**
+
+```javascript
+// ❌ IMPERATIVE — "HOW" to do it (Vanilla JS):
+// "Find the button, create a span, set its text, append it..."
+const btn = document.getElementById("btn")
+btn.addEventListener("click", () => {
+  const counter = document.getElementById("counter")
+  const current = parseInt(counter.textContent)
+  counter.textContent = current + 1
+})
+
+// ✅ DECLARATIVE — "WHAT" you want (React):
+// "I want: a button, and a count that increases when clicked"
+function Counter() {
+  const [count, setCount] = useState(0)
+  return (
+    <div>
+      <p id="counter">{count}</p>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+    </div>
+  )
+}
+// React figures out HOW to update the DOM!
+```
+
+**Pillar 2: Component-Based**
+
+```jsx
+// Every piece of UI is a component — reusable, self-contained:
+function Avatar({ src, name }) { return <img src={src} alt={name} /> }
+function UserName({ name }) { return <h2>{name}</h2> }
+function UserCard({ user }) {
+  return (
+    <div className="card">
+      <Avatar src={user.avatar} name={user.name} />
+      <UserName name={user.name} />
+    </div>
+  )
+}
+// Compose: small → medium → large components
+```
+
+**Pillar 3 & 4: Unidirectional Data Flow & State-Driven UI**
+
+```mermaid
+flowchart TD
+    subgraph REACT["React's Data Flow Model"]
+        STATE["🗃️ State\n(Source of Truth)"]
+        RENDER["🎨 Render\nUI = f(State)"]
+        UI["🖥️ User Interface\n(What user sees)"]
+        EVENT["👆 User Interaction\n(click, type, scroll)"]
+        UPDATE["⚡ State Update\nsetState / dispatch"]
+
+        STATE -->|"State changes"| RENDER
+        RENDER -->|"Produces"| UI
+        UI -->|"User triggers"| EVENT
+        EVENT -->|"Calls"| UPDATE
+        UPDATE -->|"Updates"| STATE
+    end
+
+    style STATE fill:#fff9c4
+    style RENDER fill:#e3f2fd
+    style UI fill:#e8f5e9
+    style EVENT fill:#fce4ec
+    style UPDATE fill:#f3e5f5
+```
+
+> **Hinglish:** React ka mantra hai — "UI = f(State)". State badlo, UI automatically update ho jaata hai. React unidirectional hai matlab data hamesha ek taraf flow karta hai — parent se child, kabhi ulta nahi. Yeh code ko predictable aur debug karna easy banata hai.
+
+---
+
+### 🎯 Interview Questions — Section 10.1
+
+**Q1: What is React and how does it differ from a framework like Angular?**
+
+> React is a **JavaScript library** developed by Meta for building user interfaces. Unlike Angular (a full framework), React focuses only on the **View layer** — it does not impose opinions about routing, state management, or HTTP calls. The key distinction is **Inversion of Control** — you call React (library); Angular calls your code (framework). React gives developers freedom to compose their own architecture using best-of-breed libraries for each concern.
+
+**Q2: What are the four core principles of React's philosophy?**
+
+> (1) **Declarative** — You describe *what* the UI should look like based on state; React handles *how* to update the DOM. (2) **Component-based** — UIs are built from small, reusable, isolated components that manage their own logic and state. (3) **Unidirectional data flow** — Data always flows one direction: parent → child via props. Children communicate to parents via callbacks. (4) **State-driven UI** — The UI is a pure function of state: `UI = f(state)`. Change state, and React automatically re-renders the affected parts.
+
+**Q3: Why did Facebook create React? What problem did it solve?**
+
+> Facebook faced a critical state synchronization problem in their News Feed — when data changed in one part of the UI, other parts didn't update correctly, causing bugs like phantom notification counts. Traditional imperative DOM manipulation made it impossible to keep complex UI in sync with data. React solved this by making the **UI a direct reflection of state** — state changes automatically trigger UI updates, eliminating the need for manual DOM synchronization.
+
+**Q4: What does "React is just the V in MVC" mean?**
+
+> React handles only the **View** layer — what the user sees on screen. It doesn't include built-in solutions for the Model (data layer) or Controller (routing, business logic). These are handled by separate libraries: Redux/Zustand for Model, React Router for routing. This makes React flexible but requires developers to compose their own architecture from multiple libraries.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.2 Why React?
+
+<a id="102-why-react"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Vanilla JS Problems | Why DOM manipulation at scale breaks down |
+| Imperative vs Declarative | The fundamental approach difference |
+| Component Reusability | Write once, use everywhere |
+| Ecosystem & Community | npm packages, StackOverflow, job market |
+| React Native | Cross-platform mobile development |
+
+---
+
+### Problems with Vanilla JS at Scale
+
+> **Hinglish:** Vanilla JS (bina kisi library ke JavaScript) chhoti websites ke liye theek hai, lekin jaise jaise app bada hota hai, code spaghetti ban jaata hai. State sync karna mushkil, bugs dhundhna zyada mushkil, team mein kaam karna aur mushkil.
+
+```mermaid
+flowchart TD
+    subgraph VANILLA["❌ Vanilla JS Problems at Scale"]
+        A["State scattered\nacross many variables"]
+        B["Manual DOM updates\n(error-prone)"]
+        C["State sync bugs\n(UI out of sync with data)"]
+        D["No component reuse\n(copy-paste code)"]
+        E["Hard to test\n(DOM-coupled code)"]
+        F["Team conflicts\n(no structure)"]
+
+        A --> C
+        B --> C
+        C --> E
+        D --> F
+    end
+
+    subgraph REACT["✅ React Solutions"]
+        R1["Single source of truth\n(state in components)"]
+        R2["Automatic DOM updates\n(Virtual DOM)"]
+        R3["Always in sync\n(UI = f(state))"]
+        R4["Reusable components\n(write once, use anywhere)"]
+        R5["Easily testable\n(pure functions)"]
+        R6["Clear structure\n(component hierarchy)"]
+    end
+
+    VANILLA -->|"React solves"| REACT
+
+    style VANILLA fill:#ffcdd2
+    style REACT fill:#c8e6c9
+```
+
+**Real-World Example — Building a Todo App:**
+
+```javascript
+// ❌ VANILLA JS — managing state manually (gets messy fast):
+let todos = []
+let nextId = 1
+
+function addTodo(text) {
+  todos.push({ id: nextId++, text, done: false })
+  renderTodos()     // Must manually call render
+}
+
+function toggleTodo(id) {
+  todos = todos.map(t => t.id === id ? { ...t, done: !t.done } : t)
+  renderTodos()     // Must manually call render again
+}
+
+function renderTodos() {
+  const list = document.getElementById("todo-list")
+  list.innerHTML = ""  // Clear and rebuild (expensive!)
+  todos.forEach(todo => {
+    const li = document.createElement("li")
+    li.textContent = todo.text
+    li.style.textDecoration = todo.done ? "line-through" : ""
+    li.onclick = () => toggleTodo(todo.id)
+    list.appendChild(li)
+  })
+  // Count also needs update:
+  document.getElementById("count").textContent =
+    `${todos.filter(t => !t.done).length} remaining`
+}
+// At scale: 50+ functions, all manually syncing DOM... nightmare!
+
+// ✅ REACT — declarative, automatic:
+function TodoApp() {
+  const [todos, setTodos] = useState([])
+  const addTodo = (text) => setTodos([...todos, { id: Date.now(), text, done: false }])
+  const toggle = (id) => setTodos(todos.map(t => t.id === id ? {...t, done: !t.done} : t))
+
+  return (
+    <>
+      <ul>{todos.map(t => <li key={t.id} onClick={() => toggle(t.id)}
+          style={{textDecoration: t.done ? "line-through" : ""}}>{t.text}</li>)}</ul>
+      <p>{todos.filter(t => !t.done).length} remaining</p>
+    </>
+  )
+  // React handles ALL the DOM updates automatically!
+}
+```
+
+---
+
+### Imperative vs Declarative
+
+```mermaid
+flowchart LR
+    subgraph IMPERATIVE["🔧 Imperative (HOW)"]
+        I1["Step 1: Find the element"]
+        I2["Step 2: Check current state"]
+        I3["Step 3: Compute new value"]
+        I4["Step 4: Update the DOM"]
+        I5["Step 5: Update related elements"]
+        I1 --> I2 --> I3 --> I4 --> I5
+    end
+
+    subgraph DECLARATIVE["🎯 Declarative (WHAT)"]
+        D1["Describe desired output"]
+        D2["React handles the rest"]
+        D1 --> D2
+    end
+
+    style IMPERATIVE fill:#ffcdd2
+    style DECLARATIVE fill:#c8e6c9
+```
+
+---
+
+### Component Reusability — Write Once, Use Everywhere
+
+```jsx
+// Define ONCE:
+function Button({ label, onClick, variant = "primary", size = "md" }) {
+  return (
+    <button
+      className={`btn btn-${variant} btn-${size}`}
+      onClick={onClick}
+    >
+      {label}
+    </button>
+  )
+}
+
+// Use EVERYWHERE — login page, dashboard, settings, product page:
+<Button label="Sign In" onClick={handleLogin} variant="primary" />
+<Button label="Delete" onClick={handleDelete} variant="danger" size="sm" />
+<Button label="Cancel" onClick={handleCancel} variant="secondary" />
+<Button label="Save Changes" onClick={handleSave} variant="primary" size="lg" />
+```
+
+---
+
+### React Native — One Codebase, Multiple Platforms
+
+> **Hinglish:** React Native ke saath tum ek hi React code likh ke iOS aur Android app bana sakte ho. 100% same nahi hota, lekin ~70-80% code share hota hai. This is the "learn once, write anywhere" philosophy.
+
+```mermaid
+flowchart TD
+    REACT_CODE["React / React Native Code\n(JavaScript + JSX)"]
+
+    REACT_CODE --> WEB["React DOM\n→ Web App\n(HTML + CSS)"]
+    REACT_CODE --> MOBILE["React Native\n→ Mobile App\n(Native iOS + Android components)"]
+    REACT_CODE --> DESKTOP["React Native for Windows/Mac\n→ Desktop App"]
+    REACT_CODE --> VR["React 360\n→ VR Experiences"]
+
+    style REACT_CODE fill:#fff9c4
+    style WEB fill:#e3f2fd
+    style MOBILE fill:#e8f5e9
+    style DESKTOP fill:#fce4ec
+    style VR fill:#f3e5f5
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.2
+
+**Q1: What are the main problems with vanilla JavaScript for large-scale apps?**
+
+> (1) **Manual DOM sync** — you must manually keep DOM in sync with data; any missed update causes bugs. (2) **Scattered state** — state lives in multiple variables/global scope; hard to track. (3) **No reusability** — UI elements must be copy-pasted or recreated with imperative code. (4) **Tight coupling** — business logic and DOM manipulation are intertwined, making testing hard. (5) **Team scalability** — no standard structure, teams conflict on conventions. React solves all of these with its component model and state-driven rendering.
+
+**Q2: What is the difference between imperative and declarative programming?**
+
+> **Imperative** programming tells the computer *how* to do something step by step — "find the element, check its value, compute the new value, update the DOM." **Declarative** programming tells the computer *what* you want — "I want a list of todos that looks like this based on this state." React is declarative — you describe the desired UI, and React figures out the DOM operations needed. Declarative code is generally easier to read, debug, and maintain.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.3 SPA vs MPA
+
+<a id="103-spa-vs-mpa"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| SPA Definition | Single page, dynamic content updates |
+| MPA Definition | Multiple pages, full reload on navigation |
+| CSR vs SSR | Client-side vs Server-side rendering intro |
+| SEO Challenges | Why SPAs struggle with search engines |
+| React SPA Routing | How React Router enables SPA navigation |
+
+---
+
+### SPA vs MPA — Core Comparison
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    Note over User,Server: MPA (Multi Page Application)
+    User->>Browser: Click "About" link
+    Browser->>Server: GET /about
+    Server-->>Browser: Full HTML page for About
+    Browser->>Browser: Full page reload 🔄 (White flash)
+    Note over Browser: User sees loading
+
+    Note over User,Server: SPA (Single Page Application)
+    User->>Browser: Click "About" link
+    Browser->>Browser: React Router intercepts click ⚡
+    Browser->>Server: GET /api/about-data (JSON only)
+    Server-->>Browser: JSON data
+    Browser->>Browser: React renders About component
+    Note over Browser: Instant UI update (no reload!)
+```
+
+| Feature | SPA | MPA |
+|---------|-----|-----|
+| **Initial load** | Slower (downloads all JS) | Faster (just HTML for that page) |
+| **Navigation** | Instant (no reload) | Full page reload each time |
+| **User experience** | App-like, smooth | Web-like, visible reloads |
+| **SEO** | Harder (JS-rendered content) | Better (server-rendered HTML) |
+| **Server load** | Less (serve APIs only) | More (render full pages) |
+| **First page** | Slower (bundle download) | Faster (minimal JS) |
+| **Subsequent pages** | Instant | Slow (full reload) |
+| **Examples** | Gmail, Google Maps, Twitter | Wikipedia, Amazon (traditional) |
+| **Technology** | React, Vue, Angular | PHP, Rails, Django + Jinja |
+
+---
+
+### CSR vs SSR — Introduction
+
+> **Hinglish:** CSR (Client-Side Rendering) matlab browser JavaScript chalata hai aur HTML generate karta hai. SSR (Server-Side Rendering) matlab server HTML already bana ke bhejta hai — yeh Next.js ka superpower hai. Deep dive Part G (Next.js chapters) mein hoga.
+
+```mermaid
+flowchart LR
+    subgraph CSR["CSR (Client-Side Rendering)\nReact Default"]
+        C1["Server sends:\nempty HTML + JS bundle"]
+        C2["Browser downloads JS"]
+        C3["JS renders HTML in browser"]
+        C4["User sees content"]
+        C1 --> C2 --> C3 --> C4
+    end
+
+    subgraph SSR["SSR (Server-Side Rendering)\nNext.js"]
+        S1["Server renders HTML\nwith data"]
+        S2["Server sends:\nFull HTML page"]
+        S3["User sees content\nimmediately"]
+        S4["React hydrates\n(adds interactivity)"]
+        S1 --> S2 --> S3 --> S4
+    end
+
+    style CSR fill:#fff3e0
+    style SSR fill:#e8f5e9
+```
+
+---
+
+### SEO Challenges with SPAs
+
+> **Hinglish:** Google ka crawler ek robot hai jo HTML padhta hai. Agar HTML empty hai (CSR SPA mein hota hai), toh crawler ko kuch nahi milta index karne ke liye. Isliye React + Next.js mein SSR/SSG use karte hain SEO ke liye.
+
+```html
+<!-- ❌ What Google bot sees with CSR React app (bad for SEO): -->
+<html>
+  <body>
+    <div id="root"></div>  <!-- EMPTY! JavaScript hasn't run yet -->
+  </body>
+</html>
+
+<!-- ✅ What Google bot sees with SSR (Next.js) — good for SEO: -->
+<html>
+  <body>
+    <div id="root">
+      <main>
+        <h1>React Tutorial — Learn React from Zero</h1>
+        <p>This comprehensive guide covers...</p>
+        <!-- Full content visible to crawler! -->
+      </main>
+    </div>
+  </body>
+</html>
+```
+
+**Solutions for SPA SEO:**
+1. **Next.js SSR/SSG** — Server renders HTML before sending (best solution)
+2. **React Helmet** — Dynamic `<title>` and `<meta>` tags
+3. **Prerendering services** — Tools that pre-render pages for crawlers
+4. **Dynamic rendering** — Serve different content to bots vs users
+
+---
+
+### How React Handles SPA Routing
+
+```jsx
+// React Router v6 — enables SPA navigation without page reloads:
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+
+function App() {
+  return (
+    <BrowserRouter>
+      {/* Navigation — no <a> tags! Link prevents page reload */}
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/products">Products</Link>
+      </nav>
+
+      {/* React renders the matching component — no page reload! */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+// Behind the scenes, React Router uses the History API:
+// history.pushState({}, "", "/about")  ← changes URL without reload!
+// Renders <About /> component instead of fetching new HTML from server
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.3
+
+**Q1: What is the difference between a Single Page Application and a Multi Page Application?**
+
+> An **SPA** loads a single HTML page and dynamically updates the content as users navigate — no full page reloads. JavaScript handles routing and rendering client-side. Navigation feels instant and app-like. An **MPA** makes a full HTTP request and receives a complete HTML page from the server for every navigation. SPAs provide better UX for complex apps; MPAs are simpler and naturally better for SEO.
+
+**Q2: Why do React SPAs have SEO challenges and how is this solved?**
+
+> React SPAs render HTML client-side using JavaScript. When search engine crawlers (Googlebot) visit the page, they receive an empty HTML shell (`<div id="root"></div>`), and the content is only generated after JavaScript executes — which crawlers may not wait for. Solutions: (1) **Next.js SSR** — renders HTML on the server and sends complete HTML to crawlers. (2) **Next.js SSG** — pre-generates HTML at build time. (3) **React Helmet** — for dynamic meta tags. Modern Google does index SPAs better now, but SSR/SSG is still best practice for SEO-critical content.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.4 Virtual DOM — Deep Dive
+
+<a id="104-virtual-dom--deep-dive"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Real DOM Problems | Why direct DOM manipulation is slow |
+| Virtual DOM Definition | Lightweight JS object tree |
+| 4-Step VDOM Process | Render → New Tree → Diff → Patch |
+| Diffing Algorithm | How React compares trees efficiently |
+| VDOM Speed Nuance | Is VDOM actually faster? The honest answer |
+
+---
+
+### What is the Real DOM and Why is It Slow?
+
+> **Hinglish:** Real DOM browser ka actual page representation hai. Yeh ek C++ se banaya gaya structure hai jise JavaScript se change karna expensive hai — jaise ek bade shahar mein ek road ka signboard badalna, poora traffic jam ho jaata hai.
+
+```javascript
+// Why real DOM is slow — every change triggers:
+// 1. Style recalculation
+// 2. Layout (reflow) — compute positions of ALL elements
+// 3. Paint — draw pixels
+// 4. Compositing — layer composition
+
+// ❌ These cause expensive reflows:
+element.style.width = "500px"         // Triggers layout
+element.textContent = "New content"   // Triggers layout + paint
+element.className = "new-class"       // Triggers style recalc + layout + paint
+
+// ❌ Reading layout after writing causes FORCED REFLOW (very expensive):
+element.style.width = "500px"         // Write
+const height = element.offsetHeight  // Read — forces synchronous reflow!
+element.style.height = height + "px" // Write
+// This pattern "thrashes" the DOM — browser can't batch
+
+// React solves this with batching and minimal targeted updates!
+```
+
+---
+
+### What is the Virtual DOM?
+
+The **Virtual DOM (VDOM)** is a **lightweight JavaScript object representation** of the real DOM tree. It lives in memory and is much faster to create and manipulate than the real DOM.
+
+> **Hinglish:** Virtual DOM ek JavaScript ka copy hai real DOM ka — jaise ek blueprint. Blueprint pe changes karna asaan hai (sirf JS objects hain). Phir actual ghar mein sirf woh badla jaata hai jo zaruri ho. Direct ghar mein changes karna expensive hai.
+
+```javascript
+// What the Real DOM looks like:
+// <div class="card">
+//   <h1>Hello</h1>
+//   <p>World</p>
+// </div>
+
+// What the Virtual DOM looks like (JavaScript object):
+const virtualDOMNode = {
+  type: "div",
+  props: { className: "card" },
+  children: [
+    {
+      type: "h1",
+      props: {},
+      children: [{ type: "TEXT", content: "Hello" }]
+    },
+    {
+      type: "p",
+      props: {},
+      children: [{ type: "TEXT", content: "World" }]
+    }
+  ]
+}
+
+// This is equivalent to React.createElement output:
+// React.createElement("div", { className: "card" },
+//   React.createElement("h1", null, "Hello"),
+//   React.createElement("p", null, "World")
+// )
+```
+
+---
+
+### How Virtual DOM Works — 4 Steps
+
+```mermaid
+flowchart TD
+    subgraph STEP1["Step 1: Initial Render"]
+        S1A["JSX written by developer"]
+        S1B["React creates Virtual DOM tree\n(JavaScript objects)"]
+        S1C["React syncs to Real DOM\n(one time, initial paint)"]
+        S1A --> S1B --> S1C
+    end
+
+    subgraph STEP2["Step 2: State/Props Change"]
+        S2A["setState() called\nor props updated"]
+        S2B["React creates NEW\nVirtual DOM tree"]
+        S2A --> S2B
+    end
+
+    subgraph STEP3["Step 3: Diffing (Reconciliation)"]
+        S3A["React compares\nOLD VDOM vs NEW VDOM"]
+        S3B["Identifies exactly what changed\n(diff algorithm)"]
+        S3C["Produces a list of changes\n(patch operations)"]
+        S3A --> S3B --> S3C
+    end
+
+    subgraph STEP4["Step 4: Patch (Commit)"]
+        S4A["React applies ONLY the changes\nto the Real DOM"]
+        S4B["Browser repaints\nonly changed areas"]
+        S4A --> S4B
+    end
+
+    STEP1 --> STEP2 --> STEP3 --> STEP4
+    STEP4 -->|"Next state change"| STEP2
+
+    style STEP1 fill:#e8f5e9
+    style STEP2 fill:#fff9c4
+    style STEP3 fill:#e3f2fd
+    style STEP4 fill:#fce4ec
+```
+
+**Visual Example — Only What Changed Gets Updated:**
+
+```
+Old VDOM:                    New VDOM:
+<ul>                         <ul>
+  <li>React</li>               <li>React</li>
+  <li>Vue</li>      →          <li>Vue</li>
+  <li>Angular</li>             <li>Angular</li>
+</ul>                          <li>Svelte</li>  ← NEW
+                             </ul>
+
+Diff result: "Add <li>Svelte</li> at position 3"
+Patch: React ONLY adds ONE li to the real DOM — no full rebuild!
+```
+
+---
+
+### React's Diffing Algorithm — Key Rules
+
+```mermaid
+flowchart TD
+    A["Compare VDOM trees"] --> B{"Same element type?"}
+    B -->|"No\ne.g., div → span"| C["❌ Destroy old subtree\n✅ Build new subtree from scratch"]
+    B -->|"Yes\ne.g., div → div"| D["Update changed attributes only"]
+    D --> E{"Has keys?"}
+    E -->|"Yes — keys provided"| F["Match by key\n(most efficient)"]
+    E -->|"No — no keys"| G["Match by position\n(may be wrong for reordering)"]
+    F --> H["Update only changed items"]
+    G --> H
+
+    style C fill:#ffcdd2
+    style F fill:#c8e6c9
+    style H fill:#c8e6c9
+```
+
+```jsx
+// WHY KEYS MATTER — diffing with lists:
+
+// ❌ Without keys — React can't track which item is which:
+{items.map((item) => <li>{item.text}</li>)}
+// If you insert at beginning, React thinks ALL items changed!
+
+// ✅ With stable unique keys — React knows exactly what changed:
+{items.map((item) => <li key={item.id}>{item.text}</li>)}
+// If you insert at beginning, React ONLY adds the new item!
+
+// ⚠️ BAD — using index as key (breaks when order changes):
+{items.map((item, index) => <li key={index}>{item.text}</li>)}
+// If items reorder, index keys cause incorrect reconciliation
+```
+
+---
+
+### Is Virtual DOM Actually Faster? — The Honest Answer
+
+> [!IMPORTANT]
+> **Interview Trap:** "Virtual DOM is always faster than real DOM" is **WRONG**. This is a common misconception. Here's the nuanced truth.
+
+> **Hinglish:** VDOM hamesha fastest nahi hota — actually sirf JavaScript objects ko compare karna (VDOM diffing) ek extra step hai. Real benefit hai batch updates aur minimal DOM changes. Kabhi kabhi vanilla JS manual updates faster ho sakti hain for simple cases.
+
+```
+VDOM Speed — The Truth:
+
+For SIMPLE updates (one element change):
+  Vanilla JS direct update → ⚡ FASTEST (direct, no overhead)
+  VDOM → slightly slower (diff calculation overhead)
+
+For COMPLEX updates (many components, unknown what changed):
+  Vanilla JS manual → ❌ Developer error-prone, slow to write
+  VDOM → ✅ Efficient batching, predictable performance
+
+VDOM's REAL advantages:
+  ✅ Batches multiple state updates into one DOM update
+  ✅ Always knows EXACTLY what changed (no guessing)
+  ✅ Predictable performance regardless of app complexity
+  ✅ Developer doesn't need to manually optimize DOM
+  ✅ Enables features like concurrent rendering, time slicing
+
+Frameworks like Svelte skip VDOM entirely:
+  Svelte: compiles to optimized vanilla JS (no VDOM overhead)
+  React: VDOM overhead worth it for ecosystem + DX benefits
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.4
+
+**Q1: What is the Virtual DOM and how does it work?**
+
+> The Virtual DOM is a lightweight in-memory JavaScript object representation of the real DOM. When state changes in React: (1) A new Virtual DOM tree is created. (2) React's diffing algorithm compares the new tree against the old one (reconciliation). (3) React identifies the minimal set of changes needed. (4) Only those specific changes are applied to the real DOM (patching). This is more efficient than rebuilding the entire DOM because JavaScript object manipulation is much faster than direct DOM manipulation, and React can batch updates to minimize browser reflows.
+
+**Q2: Why are keys important in lists? What happens without them?**
+
+> Keys help React identify which items in a list have changed, been added, or removed during reconciliation. Without keys, React compares list items by position — if an item is inserted at the beginning, React thinks every subsequent item changed and re-renders them all, which is very inefficient. With stable unique keys (like database IDs), React can match each item by key and only update the specific item that actually changed. Never use array index as key when the list can reorder, filter, or have items added/removed — this causes incorrect reconciliation behavior.
+
+**Q3: Is Virtual DOM actually faster than directly manipulating the real DOM?**
+
+> Not always — for simple, one-off DOM updates, direct vanilla JS can be faster since VDOM adds the overhead of creating JS objects and running the diff algorithm. The real advantage of VDOM is **predictable, efficient performance at scale**: (1) React batches multiple state updates into one DOM update. (2) Always applies only the minimal necessary changes. (3) Developers don't need to manually optimize DOM operations — React handles it. Frameworks like Svelte take a different approach — compiling to optimized vanilla JS without VDOM overhead — which can be faster for simple cases.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.5 React Fiber Architecture
+
+<a id="105-react-fiber-architecture"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| What is Fiber? | React's reconciliation engine rewritten in v16 |
+| Why Fiber? | Limitations of Stack Reconciler |
+| Fiber Node | Unit of work — data structure |
+| Render Phase | Pure, interruptible, no side effects |
+| Commit Phase | Synchronous, applies DOM changes |
+| Concurrent Rendering | Pause/resume work for better UX |
+| Priority Lanes | Different work gets different priority |
+| Time Slicing | Break work into chunks to avoid blocking |
+
+---
+
+### What is React Fiber?
+
+**React Fiber** is the **complete rewrite of React's core reconciliation algorithm**, released in React 16 (2017). The name "Fiber" refers to the data structure used — a **Fiber node** represents a unit of work.
+
+> **Hinglish:** React Fiber ek naya "engine" hai React ka jo React 16 mein aaya. Purana engine (Stack Reconciler) ek kaam shuru karta tha toh beech mein rok nahi sakta tha — jaise ek train jo station par ruk nahi sakti. Fiber ek aisa train hai jo kisi bhi station par rok sakti hai, important passengers pehle lo, phir continue karo.
+
+---
+
+### Why Fiber? — Stack Reconciler Limitations
+
+```mermaid
+flowchart TD
+    subgraph OLD["❌ Old Stack Reconciler (React 15 and below)"]
+        O1["Start rendering component tree"]
+        O2["Cannot pause or interrupt"]
+        O3["Must finish ENTIRE tree\nbefore doing anything else"]
+        O4["Large trees → JS thread blocked\nUI frozen, animations janky"]
+        O1 --> O2 --> O3 --> O4
+    end
+
+    subgraph NEW["✅ React Fiber (React 16+)"]
+        N1["Start rendering component tree"]
+        N2["Can pause after each Fiber node"]
+        N3["High priority work can\ninterrupt low priority"]
+        N4["Resume later when browser is idle"]
+        N5["Smooth animations, responsive UI"]
+        N1 --> N2 --> N3 --> N4 --> N5
+    end
+
+    style OLD fill:#ffcdd2
+    style NEW fill:#c8e6c9
+```
+
+**Stack Reconciler Problem:**
+
+```javascript
+// Imagine rendering 1000 components in a tree:
+// OLD STACK RECONCILER:
+// [Render App]
+//   [Render Header]     ← Must complete all this before
+//   [Render Main]       ← browser can respond to
+//     [Render List]     ← user input or
+//       [Render Item1]  ← animations!
+//       [Render Item2]
+//       ... (998 more)  ← If each takes 0.1ms = 100ms block!
+
+// 100ms block → User experiences 6 dropped frames → JANK!
+// This is why Fiber was needed.
+```
+
+---
+
+### Fiber Node — The Unit of Work
+
+```javascript
+// A Fiber node is a JavaScript object representing one component instance:
+const fiberNode = {
+  // Type:
+  type: "div",              // Component type (function, class, or DOM tag)
+  key: null,                // Key for reconciliation
+
+  // Instance:
+  stateNode: domElement,    // Actual DOM node or class instance
+
+  // Fiber relationships (linked list structure):
+  return: parentFiber,      // Parent fiber
+  child: firstChildFiber,   // First child fiber
+  sibling: nextFiber,       // Next sibling fiber
+
+  // Work:
+  pendingProps: {},          // Props at start of work
+  memoizedProps: {},         // Props from last completed render
+  memoizedState: {},         // State from last completed render
+
+  // Effects:
+  effectTag: 0,              // What kind of change (place, update, delete)
+  nextEffect: null,          // Next fiber with effects
+
+  // Priority:
+  expirationTime: 0,         // When this work expires (priority)
+  lanes: 0,                  // React 18+ priority lanes
+}
+
+// Fiber tree is a LINKED LIST (not a tree!):
+// This allows traversal to be paused/resumed (unlike recursive call stack)
+```
+
+```mermaid
+flowchart TD
+    subgraph FIBER_TREE["Fiber Tree Structure (Linked List)"]
+        APP["App Fiber\n← return: null\n↓ child: Header\n→ sibling: null"]
+        HEADER["Header Fiber\n← return: App\n↓ child: Logo\n→ sibling: Main"]
+        MAIN["Main Fiber\n← return: App\n↓ child: List\n→ sibling: null"]
+        LOGO["Logo Fiber\n← return: Header\n↓ child: null\n→ sibling: Nav"]
+        NAV["Nav Fiber\n← return: Header\n↓ child: null\n→ sibling: null"]
+        LIST["List Fiber\n← return: Main\n↓ child: Item1\n→ sibling: null"]
+        ITEM1["Item1 Fiber\n← return: List\n↓ child: null\n→ sibling: Item2"]
+        ITEM2["Item2 Fiber\n← return: List\n↓ child: null\n→ sibling: null"]
+    end
+
+    APP --> HEADER
+    APP --> MAIN
+    HEADER --> LOGO
+    LOGO --> NAV
+    MAIN --> LIST
+    LIST --> ITEM1
+    ITEM1 --> ITEM2
+
+    style APP fill:#fff9c4
+    style HEADER fill:#e3f2fd
+    style MAIN fill:#e3f2fd
+```
+
+---
+
+### Two Phases of Fiber — Render & Commit
+
+```mermaid
+sequenceDiagram
+    participant APP as Your Code
+    participant FIBER as React Fiber
+    participant DOM as Real DOM
+
+    Note over APP,DOM: PHASE 1: RENDER PHASE (interruptible)
+    APP->>FIBER: setState() triggers re-render
+    FIBER->>FIBER: Create new Fiber tree (WIP = Work In Progress)
+    FIBER->>FIBER: Diff new vs old Fiber tree
+    FIBER->>FIBER: ⏸️ Can pause here if high-priority work arrives
+    FIBER->>FIBER: Resume when browser has idle time
+    FIBER->>FIBER: Build list of effects (what needs to change)
+    Note over FIBER: "Render phase is PURE — no DOM changes, no side effects"
+
+    Note over APP,DOM: PHASE 2: COMMIT PHASE (synchronous, uninterruptible)
+    FIBER->>DOM: Apply all DOM changes at once
+    FIBER->>APP: Run useLayoutEffect (synchronous)
+    FIBER->>APP: Run useEffect (async, after paint)
+    Note over DOM: User sees updated UI 🎉
+```
+
+**Why the Commit Phase Must Be Synchronous:**
+
+> **Hinglish:** Commit phase ko rok nahi sakte — warna user adha update dekhe! Jaise ATM se paise nikal rahe ho aur beech mein transaction rok do — bahut problem hogi. Render phase mein plan banate hain, commit mein ek hi saath sab changes karte hain.
+
+---
+
+### Priority Lanes — Scheduling Work
+
+```mermaid
+flowchart LR
+    subgraph LANES["Priority Lanes (React 18)"]
+        L1["🚨 Sync Lane\nHighest priority\nUser clicks, inputs"]
+        L2["⚡ Input Continuous Lane\nDrag, hover events"]
+        L3["🔔 Default Lane\nNormal updates\nAPI responses"]
+        L4["⏳ Transition Lane\nuseTransition()\nnon-urgent updates"]
+        L5["💤 Idle Lane\nLowest priority\nBackground work"]
+    end
+
+    L1 --> L2 --> L3 --> L4 --> L5
+
+    style L1 fill:#ffcdd2
+    style L2 fill:#fff3e0
+    style L3 fill:#fff9c4
+    style L4 fill:#e3f2fd
+    style L5 fill:#e8f5e9
+```
+
+```jsx
+// React 18 useTransition — mark low-priority updates:
+import { useState, useTransition } from "react"
+
+function SearchComponent() {
+  const [query, setQuery] = useState("")
+  const [results, setResults] = useState([])
+  const [isPending, startTransition] = useTransition()
+
+  function handleSearch(e) {
+    setQuery(e.target.value)  // High priority — immediate update
+
+    startTransition(() => {
+      // LOW priority — can be interrupted by user input
+      setResults(searchDatabase(e.target.value))
+      // If user types again before this finishes, this gets interrupted!
+    })
+  }
+
+  return (
+    <>
+      <input value={query} onChange={handleSearch} />
+      {isPending && <Spinner />}  {/* Show while transitioning */}
+      <ResultsList results={results} />
+    </>
+  )
+}
+```
+
+---
+
+### Time Slicing — How React Stays Responsive
+
+> **Hinglish:** Time slicing matlab React apna kaam chhote-chhote 5ms chunks mein karta hai. Har 5ms baad check karta hai — "koi user input aaya?" Agar haan, input pehle handle karo, phir VDOM ka kaam resume karo. Isse browser kabhi 100ms+ blocked nahi hota aur UI smooth rehta hai.
+
+```
+Without Time Slicing (React 15):
+|============================| ← 100ms of JS work — UI FROZEN!
+[User click ignored during this]
+
+With Time Slicing (React 16+ Fiber):
+|====|                        ← 5ms work chunk
+     [Check: any input?] → No
+     |====|                   ← 5ms work chunk
+          [Check: any input?] → Yes! User clicked!
+          [Handle click — HIGH PRIORITY]
+               |====|         ← Resume VDOM work
+                    |====|    ← More work...
+                         [Done! Commit to DOM]
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.5
+
+**Q1: What is React Fiber and why was it introduced?**
+
+> React Fiber is the complete rewrite of React's reconciliation engine introduced in React 16. The old Stack Reconciler had a critical limitation — it was **synchronous and couldn't be interrupted**. For large component trees, rendering could block the JavaScript thread for 100ms+, causing dropped frames and janky animations. Fiber introduces an **incremental, interruptible rendering model**. It represents work as a linked list of Fiber nodes that can be paused, resumed, or aborted. This enables: priority-based scheduling (user input > animations > data loading), time slicing (break work into 5ms chunks), and concurrent rendering features.
+
+**Q2: What are the two phases of Fiber rendering and what happens in each?**
+
+> **Render Phase (Reconciliation):** Pure and interruptible. React creates a new Work-In-Progress fiber tree, diffs it against the current tree, and builds a list of effects (what needs to change in the DOM). No DOM modifications happen here. This phase can be paused, resumed, or thrown away if higher-priority work arrives. **Commit Phase:** Synchronous and uninterruptible. React applies all accumulated DOM changes at once, runs `useLayoutEffect` synchronously, and schedules `useEffect` to run after the browser paints. The commit phase cannot be interrupted because partial DOM updates would leave the UI in an inconsistent state.
+
+**Q3: What is time slicing in React Fiber?**
+
+> Time slicing is React Fiber's technique of breaking reconciliation work into small chunks (approximately 5ms each), yielding back to the browser between chunks. After each chunk, React checks if there's higher-priority work (like user input). If so, it pauses current work, handles the high-priority event, then resumes. This prevents the JS thread from being blocked for long periods, keeping the UI responsive. Enabled in React 18 with `useTransition` and `useDeferredValue` for marking non-urgent updates.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.6 React Ecosystem Overview
+
+<a id="106-react-ecosystem-overview"></a>
+
+### Subtopic Breakdown
+
+| Category | Libraries |
+|----------|-----------|
+| Core | `react`, `react-dom` |
+| Routing | React Router, TanStack Router |
+| Client State | Redux Toolkit, Zustand, Jotai, Recoil |
+| Server State | TanStack Query, SWR, RTK Query |
+| Forms | React Hook Form, Formik |
+| Styling | Tailwind CSS, Styled Components, CSS Modules |
+| Testing | Vitest/Jest, React Testing Library, Playwright |
+| Frameworks | Next.js, Remix, Gatsby |
+| UI Libraries | shadcn/ui, MUI, Chakra UI, Ant Design |
+
+---
+
+### The React Ecosystem Map
+
+```mermaid
+mindmap
+  root((React\nEcosystem))
+    Core
+      react
+      react-dom
+      react-native
+    Routing
+      React Router v6
+      TanStack Router
+      Next.js App Router
+    State Management
+      Redux Toolkit
+      Zustand
+      Jotai
+      Recoil
+      MobX
+    Server State
+      TanStack Query
+      SWR
+      RTK Query
+      Apollo Client
+    Forms
+      React Hook Form
+      Formik
+      Zod validation
+    Styling
+      Tailwind CSS
+      Styled Components
+      CSS Modules
+      Emotion
+    Testing
+      Vitest
+      Jest
+      React Testing Library
+      Playwright
+      Cypress
+    Frameworks
+      Next.js
+      Remix
+      Gatsby
+      Astro
+    UI Libraries
+      shadcn/ui
+      Material UI
+      Chakra UI
+      Ant Design
+      Radix UI
+```
+
+---
+
+### When to Use What — Decision Guide
+
+```mermaid
+flowchart TD
+    A["Starting a React Project"] --> B{"Need SSR/SSG/SEO?"}
+    B -->|"Yes"| C["✅ Use Next.js"]
+    B -->|"No — pure SPA"| D["✅ Use Vite + React"]
+
+    C --> E{"State Management?"}
+    D --> E
+
+    E -->|"Simple local state"| F["useState + useContext"]
+    E -->|"Complex client state"| G{"Team preference?"}
+    E -->|"Mainly server data"| H["✅ TanStack Query or SWR"]
+
+    G -->|"Redux ecosystem"| I["✅ Redux Toolkit"]
+    G -->|"Minimal boilerplate"| J["✅ Zustand"]
+    G -->|"Atomic state"| K["✅ Jotai"]
+
+    L["Forms?"] --> M{"Complexity?"}
+    M -->|"Simple"| N["useState"]
+    M -->|"Complex validation"| O["✅ React Hook Form + Zod"]
+
+    style C fill:#c8e6c9
+    style H fill:#c8e6c9
+    style J fill:#c8e6c9
+    style O fill:#c8e6c9
+```
+
+---
+
+### Key Libraries — Quick Reference
+
+```javascript
+// ─── ROUTING — React Router v6 ────────────────────────────────────
+import { BrowserRouter, Routes, Route, Link, useNavigate } from "react-router-dom"
+
+// ─── STATE — Zustand (simplest) ───────────────────────────────────
+import { create } from "zustand"
+const useStore = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 }))
+}))
+
+// ─── SERVER STATE — TanStack Query ────────────────────────────────
+import { useQuery } from "@tanstack/react-query"
+const { data, isLoading, error } = useQuery({
+  queryKey: ["user", userId],
+  queryFn: () => fetchUser(userId)
+})
+
+// ─── FORMS — React Hook Form + Zod ────────────────────────────────
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+
+const schema = z.object({ email: z.string().email(), password: z.string().min(8) })
+const { register, handleSubmit, formState: { errors } } = useForm({
+  resolver: zodResolver(schema)
+})
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.6
+
+**Q1: What is the difference between TanStack Query and Redux for state management?**
+
+> **TanStack Query** manages **server state** — data that comes from APIs: fetching, caching, background refetching, loading/error states. It knows when data is "stale" and needs refreshing. **Redux** manages **client state** — local application state that doesn't come from a server: UI state, user preferences, complex interactions. The modern recommendation: use TanStack Query for all server data (eliminates 80% of Redux use cases), and Zustand/Jotai for the remaining client state. Don't store server data in Redux anymore.
+
+**Q2: Why has Zustand become popular over Redux?**
+
+> Zustand provides global state management with far less boilerplate: no actions, reducers, dispatch — just a store with state and functions. API is simpler to learn and use. Same capabilities for most use cases. Redux Toolkit (RTK) reduced Redux boilerplate significantly, but Zustand is still simpler for small-medium apps. Choose Zustand for new projects needing global state; use Redux Toolkit if the team already knows Redux or needs its DevTools, middleware, or RTK Query features.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.7 Development Environment Setup
+
+<a id="107-development-environment-setup"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Node.js & Package Managers | npm vs yarn vs pnpm |
+| CRA vs Vite | Why Vite replaced CRA |
+| Next.js Setup | Full framework option |
+| Project Structure | Folder organization best practices |
+| VS Code Extensions | Essential developer tools |
+| React DevTools | Browser extension for debugging |
+
+---
+
+### Node.js & Package Managers
+
+```bash
+# Check Node.js version (required 18+ for modern React):
+node --version   # v20.11.0
+npm --version    # 10.2.4
+
+# Package managers — pick ONE for your project:
+npm install react     # Default, comes with Node.js
+yarn add react        # Faster, better workspace support
+pnpm add react        # Fastest, disk-space efficient (uses symlinks)
+
+# Comparison:
+# npm   — Universal, default, good enough for most projects
+# yarn  — Better for monorepos, deterministic installs
+# pnpm  — Fastest, most disk-efficient, strict node_modules
+```
+
+---
+
+### CRA vs Vite — Why Vite Won
+
+| Feature | CRA (Create React App) | Vite |
+|---------|------------------------|------|
+| **Status** | ⚠️ Deprecated (React team no longer recommends) | ✅ Modern, maintained |
+| **Dev server start** | 30-60 seconds | < 1 second |
+| **HMR (Hot Reload)** | Slow (webpack-based) | Instant (native ES modules) |
+| **Build speed** | Slow (Webpack) | Fast (Rollup + esbuild) |
+| **Bundle size** | Larger | Smaller |
+| **Configuration** | Hard to customize (eject) | Simple vite.config.js |
+| **TypeScript** | Needs setup | Built-in |
+| **React team recommendation** | No longer recommended | Recommended for client SPAs |
+
+```bash
+# ✅ Vite + React (recommended for SPAs):
+npm create vite@latest my-app -- --template react
+# or TypeScript:
+npm create vite@latest my-app -- --template react-ts
+
+cd my-app
+npm install
+npm run dev  # Starts dev server in < 1 second!
+
+# ✅ Next.js (recommended for production apps):
+npx create-next-app@latest my-app
+# Includes TypeScript, ESLint, Tailwind, App Router options
+```
+
+---
+
+### Project Structure — Vite + React
+
+```
+my-react-app/
+│
+├── public/                    # Static assets (served as-is)
+│   ├── favicon.ico
+│   └── robots.txt
+│
+├── src/                       # All source code
+│   ├── main.jsx               # 🚀 Entry point — mounts React app
+│   ├── App.jsx                # 🌳 Root component
+│   ├── App.css                # App-level styles
+│   │
+│   ├── components/            # Reusable UI components
+│   │   ├── ui/                # Generic: Button, Input, Modal
+│   │   │   ├── Button.jsx
+│   │   │   └── Input.jsx
+│   │   └── features/          # Feature-specific: UserCard, ProductList
+│   │       ├── UserCard.jsx
+│   │       └── ProductList.jsx
+│   │
+│   ├── pages/                 # Page-level components (for routing)
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   └── NotFound.jsx
+│   │
+│   ├── hooks/                 # Custom hooks
+│   │   ├── useLocalStorage.js
+│   │   ├── useFetch.js
+│   │   └── useDebounce.js
+│   │
+│   ├── context/               # React Context providers
+│   │   ├── AuthContext.jsx
+│   │   └── ThemeContext.jsx
+│   │
+│   ├── services/              # API calls
+│   │   ├── api.js             # Base axios/fetch config
+│   │   └── userService.js
+│   │
+│   ├── store/                 # State management (Zustand/Redux)
+│   │   └── useStore.js
+│   │
+│   ├── utils/                 # Pure utility functions
+│   │   ├── formatDate.js
+│   │   └── validation.js
+│   │
+│   ├── assets/                # Images, icons, fonts
+│   │   └── logo.svg
+│   │
+│   └── styles/                # Global styles, variables
+│       └── globals.css
+│
+├── index.html                 # HTML shell (Vite entry)
+├── vite.config.js             # Vite configuration
+├── package.json               # Dependencies & scripts
+├── .eslintrc.cjs              # ESLint config
+└── .prettierrc                # Prettier config
+```
+
+---
+
+### Essential VS Code Extensions
+
+```
+Essential:
+├── ES7+ React/Redux/React-Native snippets — rfce, useState, useEffect shortcuts
+├── ESLint — Real-time code quality checks
+├── Prettier — Code formatting
+├── Tailwind CSS IntelliSense — Tailwind autocomplete
+├── GitLens — Git blame, history
+└── Auto Rename Tag — Rename JSX opening/closing together
+
+Highly Recommended:
+├── TypeScript Error Translator — Human-readable TS errors
+├── React Developer Tools (browser extension)
+├── Path Intellisense — Autocomplete import paths
+├── Thunder Client — In-editor API testing (like Postman)
+└── Error Lens — Show errors inline in code
+
+Productivity:
+├── GitHub Copilot — AI pair programming
+└── CodeSnap — Share code screenshots
+```
+
+---
+
+### React Developer Tools
+
+> **Hinglish:** React DevTools browser extension ek superhero tool hai. Isse tum dekh sakte ho: kaun se components render hue, unka state kya hai, props kya hain, aur performance profiler se dekh sakte ho kaun sa component slow hai.
+
+```
+React DevTools Features:
+├── Components Tab
+│   ├── See component tree hierarchy
+│   ├── Inspect props of any component
+│   ├── Inspect state of any component
+│   ├── Trigger re-renders manually
+│   └── Find component by clicking in browser
+│
+└── Profiler Tab
+    ├── Record rendering sessions
+    ├── Flame chart — see which components rendered
+    ├── "Why did this render?" — identify unnecessary re-renders
+    └── Compare renders side by side
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.7
+
+**Q1: Why was Create React App (CRA) deprecated and what replaced it?**
+
+> CRA was deprecated because it used **Webpack** for bundling, which is slow — dev server startup could take 30-60 seconds, and hot module replacement was sluggish. The React team no longer recommends CRA for new projects. **Vite** replaced it for SPAs — it uses native ES modules for development (no bundling needed, instant startup) and esbuild/Rollup for production builds (10-100x faster than Webpack). For production apps, the React team recommends **Next.js** for its SSR/SSG capabilities, built-in routing, and optimization features.
+
+**Q2: What is the purpose of the `main.jsx` entry point?**
+
+> `main.jsx` is the entry point that **mounts the React application into the HTML**. It: (1) Imports React and ReactDOM. (2) Creates the root with `ReactDOM.createRoot(document.getElementById("root"))`. (3) Renders the root `<App />` component inside `<React.StrictMode>`. It connects the React component tree to the real DOM, specifically to the `<div id="root">` in `index.html`. Without this, React components would be defined but never displayed.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.8 package.json Deep Dive
+
+<a id="108-packagejson-deep-dive"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| Core Fields | name, version, description, main |
+| dependencies vs devDependencies | Production vs development-only |
+| scripts | Commands for building, testing, running |
+| Semantic Versioning | Major.Minor.Patch meaning |
+| Version Ranges | `^`, `~`, exact versions |
+| package-lock.json | Why it exists and matters |
+
+---
+
+### Complete `package.json` Breakdown
+
+```json
+{
+  // ─── IDENTITY ─────────────────────────────────────────────────
+  "name": "my-react-app",          // Package name (lowercase, no spaces)
+  "version": "1.0.0",              // Semantic version: MAJOR.MINOR.PATCH
+  "description": "A React application",
+  "author": "Rahul Sharma <rahul@example.com>",
+  "license": "MIT",
+  "private": true,                 // Prevent accidental npm publish
+
+  // ─── ENTRY POINTS ─────────────────────────────────────────────
+  "main": "src/index.js",         // CommonJS entry (for libraries)
+  "module": "src/index.mjs",      // ES Module entry
+  "types": "src/index.d.ts",      // TypeScript types
+
+  // ─── SCRIPTS ──────────────────────────────────────────────────
+  "scripts": {
+    "dev": "vite",                // Development server
+    "start": "vite",              // Same as dev (compatibility)
+    "build": "vite build",        // Production build
+    "preview": "vite preview",    // Preview production build locally
+    "test": "vitest",             // Run tests
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint src --ext js,jsx,ts,tsx",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write src",
+    "type-check": "tsc --noEmit"  // TypeScript check without build
+  },
+
+  // ─── PRODUCTION DEPENDENCIES ──────────────────────────────────
+  // Included in the final bundle sent to users
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.23.0",
+    "@tanstack/react-query": "^5.40.0",
+    "zustand": "^4.5.2",
+    "axios": "^1.7.2"
+  },
+
+  // ─── DEVELOPMENT DEPENDENCIES ─────────────────────────────────
+  // Only used during development/build — NOT in final bundle
+  "devDependencies": {
+    "vite": "^5.3.0",
+    "@vitejs/plugin-react": "^4.3.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.3.0",
+    "vitest": "^1.6.0",
+    "@testing-library/react": "^16.0.0",
+    "typescript": "^5.4.5",
+    "@types/react": "^18.3.3",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.19"
+  },
+
+  // ─── PEER DEPENDENCIES ────────────────────────────────────────
+  // For libraries — tells consumers what they also need to install
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+
+  // ─── ENGINE REQUIREMENTS ──────────────────────────────────────
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
+```
+
+---
+
+### Semantic Versioning — `MAJOR.MINOR.PATCH`
+
+```mermaid
+flowchart LR
+    VER["18.3.1"]
+    MAJOR["18\n= MAJOR\nBreaking changes\nUpdate may break code!"]
+    MINOR["3\n= MINOR\nNew features\nBackward compatible"]
+    PATCH["1\n= PATCH\nBug fixes\nAlways safe to update"]
+
+    VER -->|"First number"| MAJOR
+    VER -->|"Second number"| MINOR
+    VER -->|"Third number"| PATCH
+
+    style MAJOR fill:#ffcdd2
+    style MINOR fill:#fff9c4
+    style PATCH fill:#c8e6c9
+```
+
+```bash
+# Real examples of version bumps:
+
+# PATCH bump (1.0.0 → 1.0.1):
+# Fixed bug where button didn't work on Safari
+# Safe to upgrade — no API changes
+
+# MINOR bump (1.0.1 → 1.1.0):
+# Added new useAnimationTimer() hook
+# Safe to upgrade — new feature, nothing removed
+
+# MAJOR bump (1.1.0 → 2.0.0):
+# Removed deprecated componentWillMount lifecycle
+# MAY BREAK your code — read migration guide!
+```
+
+---
+
+### Version Range Symbols
+
+```json
+{
+  "dependencies": {
+    "react": "18.3.1",    // EXACT version only — 18.3.1
+    "react": "^18.3.1",   // CARET — compatible: >=18.3.1 <19.0.0 (same MAJOR)
+    "react": "~18.3.1",   // TILDE — patch only: >=18.3.1 <18.4.0 (same MAJOR.MINOR)
+    "react": ">=18.0.0",  // Greater than or equal to
+    "react": "*",         // ANY version (dangerous!)
+    "react": "latest"     // Latest published version
+  }
+}
+```
+
+```
+^ (caret) — Most common. Gets bug fixes AND new features, avoids breaking changes:
+  ^18.3.1 allows: 18.3.2, 18.4.0, 18.99.0 but NOT 19.0.0
+
+~ (tilde) — Conservative. Only bug fixes:
+  ~18.3.1 allows: 18.3.2, 18.3.99 but NOT 18.4.0
+
+Exact — Strictest. Exactly this version:
+  18.3.1 only — no updates at all
+```
+
+---
+
+### `package-lock.json` — Why It Matters
+
+> **Hinglish:** `package.json` mein `^18.3.1` likha hai — yeh ek range hai. `package-lock.json` mein exact version likhi hai jo tumhare machine par install hui. Yeh isliye important hai taki team mein sab ke paas same exact versions hon — "works on my machine" problem solve ho.
+
+```
+package.json:      "react": "^18.3.1"  ← allows any 18.x.x
+package-lock.json: "react": "18.3.1"   ← LOCKED to exactly this version
+
+Why this matters:
+Developer A (Jan 2024) → installs React 18.3.1
+Developer B (Jun 2024) → WITHOUT lock file, might get React 18.4.0
+→ Different behavior, hard-to-find bugs!
+
+WITH package-lock.json:
+Developer B → Gets exactly 18.3.1 (same as A)
+→ Consistent, reproducible builds!
+
+RULE: Always commit package-lock.json to git!
+NEVER commit node_modules/ to git!
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.8
+
+**Q1: What is the difference between `dependencies` and `devDependencies`?**
+
+> `dependencies` are packages required to **run the application in production** — they're bundled into the final JavaScript sent to users. Examples: React, React Router, Axios. `devDependencies` are packages only needed during **development and build** — not included in the production bundle. Examples: Vite (build tool), ESLint (linting), Vitest (testing), TypeScript (type checking). Using `devDependencies` correctly keeps the production bundle lean.
+
+**Q2: What does `^` (caret) mean in package versions?**
+
+> The caret `^` means "compatible with this version" — it allows npm to install newer **minor and patch** versions but never a higher **major** version. `^18.3.1` allows `18.3.2`, `18.4.0`, `18.99.99` but NOT `19.0.0`. This is because major version bumps indicate breaking changes. The caret is the default added by `npm install` and is safe for most use cases.
+
+**Q3: Why should you commit `package-lock.json` to git?**
+
+> `package-lock.json` records the **exact version** of every installed package (and their dependencies' dependencies). Without it, different developers or CI/CD servers might install slightly different versions (because `^` in package.json allows a range), causing "works on my machine" bugs. Committing the lock file ensures **reproducible, consistent installations** across all environments. Always commit it; never commit `node_modules/`.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 10.9 How React Renders — Under the Hood
+
+<a id="109-how-react-renders--under-the-hood"></a>
+
+### Subtopic Breakdown
+
+| Subtopic | What You'll Learn |
+|----------|-------------------|
+| `React.createElement` | What JSX compiles to |
+| JSX Transform | Old vs new JSX transform |
+| `ReactDOM.createRoot` | React 18 API for mounting |
+| `root.render` | Starting the React application |
+| Step-by-step rendering | What happens from JSX to pixels |
+
+---
+
+### JSX → `React.createElement` — The Transformation
+
+> **Hinglish:** JSX actual JavaScript nahi hai — browser samajh nahi sakta `<div>` ko JS mein. Babel/SWC JSX ko `React.createElement()` calls mein convert karta hai. Yeh compilation step automatically hoti hai — tumhe manually nahi karna padta.
+
+```jsx
+// ─── WHAT YOU WRITE (JSX): ────────────────────────────────────────
+function App() {
+  return (
+    <div className="container">
+      <h1>Hello, {name}!</h1>
+      <Button onClick={handleClick} disabled={false}>
+        Click Me
+      </Button>
+    </div>
+  )
+}
+
+// ─── WHAT BABEL/SWC COMPILES IT TO (Old Transform): ───────────────
+// React 16 and below — needed `import React from 'react'` at top
+function App() {
+  return React.createElement(
+    "div",                      // type
+    { className: "container" }, // props
+    React.createElement(
+      "h1",                     // type
+      null,                     // props (null = no props)
+      "Hello, ",                // children
+      name,                     // expression child
+      "!"
+    ),
+    React.createElement(
+      Button,                   // type (component reference)
+      { onClick: handleClick, disabled: false },  // props
+      "Click Me"                // children
+    )
+  )
+}
+
+// ─── NEW JSX TRANSFORM (React 17+): ─────────────────────────────
+// No need to import React! Babel auto-imports _jsx from 'react/jsx-runtime'
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime"
+
+function App() {
+  return _jsxs("div", {
+    className: "container",
+    children: [
+      _jsxs("h1", { children: ["Hello, ", name, "!"] }),
+      _jsx(Button, { onClick: handleClick, disabled: false, children: "Click Me" })
+    ]
+  })
+}
+```
+
+---
+
+### `React.createElement` — Return Value
+
+```javascript
+// React.createElement returns a React element (plain JS object):
+const element = React.createElement("h1", { className: "title" }, "Hello World")
+
+// This is what the element object looks like:
+{
+  $$typeof: Symbol(react.element),  // Security marker (prevents injection attacks)
+  type: "h1",
+  key: null,
+  ref: null,
+  props: {
+    className: "title",
+    children: "Hello World"
+  },
+  _owner: null,  // Used internally by React for debugging
+}
+
+// This React element is then used to:
+// 1. Create Virtual DOM nodes
+// 2. Build the Fiber tree
+// 3. Eventually render real DOM nodes
+```
+
+---
+
+### Complete Rendering Pipeline — Step by Step
+
+```mermaid
+flowchart TD
+    JSX["JSX Code\n`<App />`"]
+    BABEL["Babel/SWC Transform\n(build time)"]
+    CREATE["React.createElement()\nReturns React Element (JS object)"]
+    ROOT["ReactDOM.createRoot(document.getElementById('root'))"]
+    RENDER["root.render(<App />)"]
+    FIBER["React creates Fiber tree\n(Reconciliation begins)"]
+    VDOM["Virtual DOM created\n(from React elements)"]
+    DIFF["Diff against previous VDOM\n(initial render: empty → App tree)"]
+    COMMIT["Commit Phase:\nApply to Real DOM"]
+    REAL["Real DOM Updated\n<div id='root'><App's HTML></div>"]
+    PAINT["Browser Paint\nUser sees the app! 🎉"]
+    HYDRATION["React attaches event listeners\n(Hydration for SSR)"]
+
+    JSX --> BABEL --> CREATE --> ROOT
+    ROOT --> RENDER --> FIBER --> VDOM --> DIFF --> COMMIT --> REAL --> PAINT
+    REAL --> HYDRATION
+
+    style JSX fill:#fff9c4
+    style CREATE fill:#e3f2fd
+    style VDOM fill:#fce4ec
+    style REAL fill:#e8f5e9
+    style PAINT fill:#c8e6c9
+```
+
+---
+
+### The Entry Point — `main.jsx`
+
+```jsx
+// src/main.jsx — The complete entry point with explanations:
+
+import { StrictMode } from "react"
+import { createRoot } from "react-dom/client"
+import App from "./App.jsx"
+import "./index.css"     // Global CSS loaded here
+
+// 1. Find the DOM node where React will mount:
+const container = document.getElementById("root")
+// In index.html: <div id="root"></div>
+
+// 2. Create a React root (React 18 API):
+// This enables Concurrent Mode features!
+const root = createRoot(container)
+
+// 3. Render the root component:
+root.render(
+  // StrictMode is a development-only tool:
+  // - Double-invokes renders to detect side effects
+  // - Warns about deprecated lifecycle methods
+  // - Does NOT affect production!
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
+
+// What happens next:
+// React creates the App Fiber node
+// React recursively renders App's children
+// React builds the complete Virtual DOM tree
+// React commits the tree to the real DOM
+// Browser paints the initial UI
+```
+
+---
+
+### `useState` and `useEffect` — Internal Hooks Mechanism
+
+```javascript
+// React maintains a hooks list per component fiber node:
+
+function Counter() {
+  // React stores hook state in the fiber node's memoizedState linked list:
+  // Hook 1: { state: 0, queue: [], next: Hook2 }
+  const [count, setCount] = useState(0)
+
+  // Hook 2: { destroy: cleanup, deps: [], next: null }
+  useEffect(() => {
+    document.title = `Count: ${count}`
+    return () => { /* cleanup */ }
+  }, [count])
+
+  // CRITICAL RULE: Hooks must ALWAYS be called in the same order!
+  // React identifies hooks by their POSITION (index) in the fiber
+  // Calling hooks conditionally would shift all subsequent hook positions → BUGS!
+
+  return <button onClick={() => setCount(c => c + 1)}>{count}</button>
+}
+
+// Why hooks can't be in conditionals:
+// First render:   Hook1=useState, Hook2=useEffect, Hook3=useCallback
+// Second render:  Hook1=useState, Hook2=useEffect, Hook3=useCallback  ← MUST match!
+// IF conditional: Hook1=undefined, Hook2=useState (now "looks like" first hook!)
+// → React reads wrong state! CRASHES!
+```
+
+---
+
+### What Happens When `setState` is Called
+
+```mermaid
+sequenceDiagram
+    participant COMP as Component
+    participant REACT as React Scheduler
+    participant FIBER as Fiber
+    participant DOM as Real DOM
+
+    COMP->>REACT: setCount(count + 1)
+    REACT->>REACT: Enqueue update in fiber's updateQueue
+
+    Note over REACT: React batches multiple setState calls!
+    REACT->>REACT: Schedule reconciliation (microtask/async)
+
+    REACT->>FIBER: Start render phase
+    FIBER->>FIBER: Re-run component function
+    FIBER->>FIBER: Calculate new state (process updateQueue)
+    FIBER->>FIBER: Build new Virtual DOM tree
+
+    FIBER->>FIBER: Diff new vs old VDOM
+    FIBER->>FIBER: Identify changed elements
+
+    FIBER->>DOM: Commit phase: apply DOM changes
+    DOM->>COMP: useEffect runs after paint
+    Note over DOM: UI updated! User sees new count 🎉
+```
+
+---
+
+### 🎯 Interview Questions — Section 10.9
+
+**Q1: What is `React.createElement` and what does it return?**
+
+> `React.createElement(type, props, ...children)` is the function that JSX compiles to. It creates a **React element** — a plain JavaScript object describing what to render. The object contains: `type` (DOM tag string like "div" or a component function), `props` (object with all attributes including `children`), `key` and `ref` (special props), and `$$typeof: Symbol(react.element)` (prevents XSS injection attacks). This element is then used by React to build the Fiber tree and Virtual DOM.
+
+**Q2: What is the difference between `React.render` (React 17) and `createRoot.render` (React 18)?**
+
+> **React 17:** `ReactDOM.render(<App />, container)` — renders synchronously, uses the legacy rendering model. **React 18:** `ReactDOM.createRoot(container).render(<App />)` — enables **Concurrent Mode** features: automatic batching, `useTransition`, `useDeferredValue`, `startTransition`. The new API allows React to interrupt rendering for higher-priority work. Creating the root and rendering are now separate steps. React 18 also introduces automatic batching — multiple setState calls inside event handlers (and async code) are batched into one render.
+
+**Q3: What happens step-by-step when `root.render(<App />)` is called?**
+
+> (1) React receives the `<App />` React element (from JSX→createElement compilation). (2) React creates the root **Fiber node** for `<App />`. (3) React's reconciler recursively renders `App` and all its children, creating Fiber nodes for each (this is the **Render Phase** — can be interrupted). (4) For each component function, React calls it and processes the returned JSX into more Fiber nodes. (5) React builds a complete **Work-In-Progress tree** and identifies what DOM changes are needed. (6) **Commit Phase** begins — React applies all DOM mutations synchronously. (7) Browser paints the updated DOM. (8) React runs all `useEffect` callbacks asynchronously after paint.
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 🧪 Mini Project: React Mental Model Visualizer
+
+<a id="-mini-project-react-mental-model-visualizer"></a>
+
+### Problem Statement
+
+Build a **React Mental Model Visualizer** — an interactive Next.js app that visually demonstrates all Chapter 10 concepts: Virtual DOM diffing, the React rendering pipeline, component tree visualization, and the Fiber architecture. This project serves as both a learning tool and a practical Next.js application.
+
+### Architecture
+
+```mermaid
+flowchart TD
+    subgraph APP["Next.js App (Chapter 10 Concepts Demo)"]
+        HOME["Home Page\nChapter 10 Overview"]
+        VDOM["VDOM Demo Page\nVisual diffing animation"]
+        FIBER["Fiber Demo Page\nRender/Commit phase visualization"]
+        COMPARE["SPA vs MPA Demo\nNavigation comparison"]
+        RENDER["Render Pipeline Page\nJSX → createElement → DOM"]
+    end
+
+    subgraph COMPONENTS["Interactive Components"]
+        TREE_VIZ["ComponentTree\nVisualizer"]
+        DIFF_VIZ["VDOMDiffVisualizer\nBefore/After"]
+        FIBER_VIZ["FiberPhaseVisualizer\nRender/Commit animation"]
+        CODE_DEMO["LiveCodeDemo\nEditable JSX preview"]
+    end
+
+    HOME --> VDOM & FIBER & COMPARE & RENDER
+    VDOM --> DIFF_VIZ
+    FIBER --> FIBER_VIZ
+    RENDER --> TREE_VIZ & CODE_DEMO
+
+    style APP fill:#e3f2fd
+    style COMPONENTS fill:#e8f5e9
+```
+
+### File Structure
+
+```
+react-mental-model/
+├── app/
+│   ├── layout.tsx                        # Root layout
+│   ├── page.tsx                          # Home — Chapter 10 overview
+│   ├── vdom/page.tsx                     # Virtual DOM demo
+│   ├── fiber/page.tsx                    # Fiber phases demo
+│   ├── spa-vs-mpa/page.tsx              # SPA vs MPA visualization
+│   └── render-pipeline/page.tsx         # Rendering pipeline demo
+├── components/
+│   ├── chapter10/
+│   │   ├── VDOMDiffVisualizer.tsx        # Before/after VDOM diff
+│   │   ├── FiberPhaseVisualizer.tsx      # Render → Commit animation
+│   │   ├── ComponentTreeVisualizer.tsx   # Visual component hierarchy
+│   │   ├── JSXTransformDemo.tsx          # JSX → createElement live demo
+│   │   ├── RenderPipelineAnimated.tsx    # Animated render pipeline
+│   │   └── EcosystemMap.tsx             # React ecosystem visualization
+│   └── ui/
+│       ├── AnimatedNode.tsx             # Animated tree nodes
+│       └── CodeBlock.tsx                # Syntax-highlighted code
+├── hooks/
+│   └── useRenderCount.ts                # Track re-renders (for demo)
+└── lib/
+    └── vdomDiff.ts                      # VDOM diff algorithm demo
+```
+
+### Core Code Examples
+
+```typescript
+// components/chapter10/VDOMDiffVisualizer.tsx
+'use client'
+
+import { useState, useCallback } from 'react'
+
+type VDOMNode = {
+  type: string
+  props: Record<string, string>
+  children: (VDOMNode | string)[]
+  key?: string
+}
+
+type DiffOperation = {
+  type: 'ADD' | 'REMOVE' | 'UPDATE' | 'UNCHANGED'
+  path: string
+  oldValue?: string
+  newValue?: string
+}
+
+function diffVDOM(oldTree: VDOMNode, newTree: VDOMNode, path = "root"): DiffOperation[] {
+  const operations: DiffOperation[] = []
+
+  if (oldTree.type !== newTree.type) {
+    operations.push({ type: 'REMOVE', path, oldValue: oldTree.type })
+    operations.push({ type: 'ADD', path, newValue: newTree.type })
+    return operations
+  }
+
+  // Check prop changes:
+  const allProps = new Set([...Object.keys(oldTree.props), ...Object.keys(newTree.props)])
+  allProps.forEach(prop => {
+    if (oldTree.props[prop] !== newTree.props[prop]) {
+      operations.push({
+        type: 'UPDATE',
+        path: `${path}.${prop}`,
+        oldValue: oldTree.props[prop],
+        newValue: newTree.props[prop]
+      })
+    }
+  })
+
+  // Check children (simplified):
+  const maxLen = Math.max(oldTree.children.length, newTree.children.length)
+  for (let i = 0; i < maxLen; i++) {
+    const oldChild = oldTree.children[i]
+    const newChild = newTree.children[i]
+
+    if (!oldChild && newChild) {
+      operations.push({ type: 'ADD', path: `${path}.children[${i}]` })
+    } else if (oldChild && !newChild) {
+      operations.push({ type: 'REMOVE', path: `${path}.children[${i}]` })
+    } else if (typeof oldChild === 'object' && typeof newChild === 'object') {
+      operations.push(...diffVDOM(oldChild, newChild, `${path}.children[${i}]`))
+    }
+  }
+
+  if (operations.length === 0) {
+    operations.push({ type: 'UNCHANGED', path })
+  }
+
+  return operations
+}
+
+export function VDOMDiffVisualizer() {
+  const [step, setStep] = useState(0)
+
+  const states = [
+    { // Initial state
+      tree: {
+        type: 'div',
+        props: { className: 'card' },
+        children: [
+          { type: 'h1', props: {}, children: ['Hello React!'] },
+          { type: 'p', props: { className: 'text' }, children: ['This is paragraph one'] }
+        ]
+      },
+      label: "Initial Render"
+    },
+    { // After state change
+      tree: {
+        type: 'div',
+        props: { className: 'card active' },  // className changed!
+        children: [
+          { type: 'h1', props: {}, children: ['Hello React!'] },  // unchanged
+          { type: 'p', props: { className: 'text' }, children: ['Updated paragraph!'] },  // text changed!
+          { type: 'button', props: { className: 'btn' }, children: ['New Button'] }  // added!
+        ]
+      },
+      label: "After State Change"
+    }
+  ]
+
+  const operations = step > 0
+    ? diffVDOM(states[0].tree as VDOMNode, states[1].tree as VDOMNode)
+    : []
+
+  return (
+    <div className="grid grid-cols-3 gap-4 p-6">
+      {/* Old VDOM */}
+      <div className="bg-gray-900 rounded-xl p-4">
+        <h3 className="text-gray-400 text-sm font-mono mb-3">Old Virtual DOM</h3>
+        <VDOMTreeDisplay
+          tree={states[0].tree as VDOMNode}
+          highlights={operations.filter(o => o.type !== 'ADD').map(o => o.path)}
+          highlightColor="red"
+        />
+      </div>
+
+      {/* Diff Operations */}
+      <div className="bg-gray-900 rounded-xl p-4">
+        <h3 className="text-gray-400 text-sm font-mono mb-3">⚡ Diff Operations</h3>
+        {operations.length === 0 ? (
+          <p className="text-gray-600 italic text-sm">Click "Run Diff" to see changes</p>
+        ) : (
+          <div className="space-y-2">
+            {operations.map((op, i) => (
+              <div
+                key={i}
+                className={`text-xs font-mono px-2 py-1 rounded ${
+                  op.type === 'ADD' ? 'bg-green-900 text-green-300' :
+                  op.type === 'REMOVE' ? 'bg-red-900 text-red-300' :
+                  op.type === 'UPDATE' ? 'bg-yellow-900 text-yellow-300' :
+                  'bg-gray-800 text-gray-500'
+                }`}
+              >
+                [{op.type}] {op.path}
+                {op.oldValue && <span className="line-through ml-1 opacity-50">{op.oldValue}</span>}
+                {op.newValue && <span className="ml-1">→ {op.newValue}</span>}
+              </div>
+            ))}
+          </div>
+        )}
+
+        <button
+          onClick={() => setStep(s => s === 0 ? 1 : 0)}
+          className="mt-4 w-full py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm"
+        >
+          {step === 0 ? "▶ Run Diff" : "⟳ Reset"}
+        </button>
+      </div>
+
+      {/* New VDOM */}
+      <div className="bg-gray-900 rounded-xl p-4">
+        <h3 className="text-gray-400 text-sm font-mono mb-3">New Virtual DOM</h3>
+        <VDOMTreeDisplay
+          tree={states[step === 0 ? 0 : 1].tree as VDOMNode}
+          highlights={operations.filter(o => o.type !== 'REMOVE').map(o => o.path)}
+          highlightColor="green"
+        />
+      </div>
+    </div>
+  )
+}
+
+function VDOMTreeDisplay({
+  tree, highlights, highlightColor, path = "root"
+}: {
+  tree: VDOMNode
+  highlights: string[]
+  highlightColor: "red" | "green"
+  path?: string
+}) {
+  const isHighlighted = highlights.some(h => h.startsWith(path))
+  const bgClass = isHighlighted
+    ? highlightColor === 'red' ? 'border-red-500 bg-red-950' : 'border-green-500 bg-green-950'
+    : 'border-gray-700'
+
+  return (
+    <div className={`border rounded p-2 mb-1 ${bgClass} font-mono text-xs`}>
+      <span className={highlightColor === 'red' ? 'text-red-400' : 'text-blue-400'}>
+        &lt;{tree.type}
+      </span>
+      {Object.entries(tree.props).map(([k, v]) => (
+        <span key={k} className="text-yellow-300"> {k}="{v}"</span>
+      ))}
+      <span className={highlightColor === 'red' ? 'text-red-400' : 'text-blue-400'}>&gt;</span>
+
+      <div className="ml-4">
+        {tree.children.map((child, i) =>
+          typeof child === 'string' ? (
+            <div key={i} className="text-gray-300">{child}</div>
+          ) : (
+            <VDOMTreeDisplay
+              key={i}
+              tree={child}
+              highlights={highlights}
+              highlightColor={highlightColor}
+              path={`${path}.children[${i}]`}
+            />
+          )
+        )}
+      </div>
+    </div>
+  )
+}
+```
+
+```typescript
+// components/chapter10/JSXTransformDemo.tsx
+'use client'
+
+import { useState } from 'react'
+
+const examples = [
+  {
+    label: "Simple JSX",
+    jsx: `<div className="hello">Hello World</div>`,
+    compiled: `React.createElement("div", { className: "hello" }, "Hello World")`
+  },
+  {
+    label: "With Children",
+    jsx: `<div>
+  <h1>Title</h1>
+  <p>Paragraph</p>
+</div>`,
+    compiled: `React.createElement("div", null,
+  React.createElement("h1", null, "Title"),
+  React.createElement("p", null, "Paragraph")
+)`
+  },
+  {
+    label: "Component JSX",
+    jsx: `<Button onClick={handleClick} size="lg">
+  Click Me
+</Button>`,
+    compiled: `React.createElement(
+  Button,
+  { onClick: handleClick, size: "lg" },
+  "Click Me"
+)`
+  },
+  {
+    label: "With Expression",
+    jsx: `<h1>Hello, {name}!</h1>`,
+    compiled: `React.createElement("h1", null, "Hello, ", name, "!")`
+  }
+]
+
+export function JSXTransformDemo() {
+  const [activeExample, setActiveExample] = useState(0)
+
+  return (
+    <div className="bg-gray-900 rounded-xl overflow-hidden">
+      <div className="flex border-b border-gray-800">
+        {examples.map((ex, i) => (
+          <button
+            key={i}
+            onClick={() => setActiveExample(i)}
+            className={`px-4 py-2 text-sm font-medium transition-colors ${
+              activeExample === i
+                ? 'bg-blue-900 text-blue-300 border-b-2 border-blue-500'
+                : 'text-gray-400 hover:text-gray-200'
+            }`}
+          >
+            {ex.label}
+          </button>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-2 divide-x divide-gray-800">
+        <div className="p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-3 h-3 rounded-full bg-yellow-400" />
+            <span className="text-xs text-gray-400 font-mono">JSX (what you write)</span>
+          </div>
+          <pre className="text-green-300 font-mono text-sm whitespace-pre-wrap">
+            {examples[activeExample].jsx}
+          </pre>
+        </div>
+
+        <div className="p-4">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-3 h-3 rounded-full bg-blue-400" />
+            <span className="text-xs text-gray-400 font-mono">Compiled (what React sees)</span>
+          </div>
+          <pre className="text-blue-300 font-mono text-sm whitespace-pre-wrap">
+            {examples[activeExample].compiled}
+          </pre>
+        </div>
+      </div>
+
+      <div className="px-4 py-3 bg-gray-950 border-t border-gray-800">
+        <p className="text-xs text-gray-500 font-mono">
+          → JSX is syntactic sugar. Babel/SWC transforms it at build time.
+          React never sees JSX — only{' '}
+          <code className="text-blue-400">React.createElement()</code> calls.
+        </p>
+      </div>
+    </div>
+  )
+}
+```
+
+### What This Project Demonstrates
+
+| Chapter 10 Concept | Demonstrated By |
+|-------------------|----------------|
+| Virtual DOM | `VDOMDiffVisualizer` — visual before/after diffing |
+| React.createElement | `JSXTransformDemo` — JSX to createElement translation |
+| Component tree | `ComponentTreeVisualizer` — hierarchy visualization |
+| Fiber phases | `FiberPhaseVisualizer` — render → commit animation |
+| SPA vs MPA | `spa-vs-mpa/page.tsx` — navigation comparison |
+| React ecosystem | `EcosystemMap` — interactive ecosystem diagram |
+| Rendering pipeline | `RenderPipelineAnimated` — full pipeline animation |
+| StrictMode | `useRenderCount` hook shows double invocations |
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
+
+---
+
+## 📝 Practice Section
+
+<a id="-practice-section"></a>
+
+### 5 Coding Questions
+
+**C1: Implement a simplified `createElement` function from scratch**
+
+```javascript
+// Implement myCreateElement that mimics React.createElement
+// It should return a React-like element object
+
+function myCreateElement(type, props, ...children) {
+  // Your implementation
+  // Return: { type, props: { ...props, children }, key, ref }
+  // children can be strings, numbers, or other elements
+}
+
+// Test:
+const element = myCreateElement(
+  "div",
+  { className: "container" },
+  myCreateElement("h1", null, "Hello"),
+  myCreateElement("p", { id: "text" }, "World")
+)
+
+console.log(element.type)              // "div"
+console.log(element.props.className)   // "container"
+console.log(element.props.children[0].type)  // "h1"
+```
+
+---
+
+**C2: Build a simple Virtual DOM differ**
+
+```javascript
+// Implement a function that compares two Virtual DOM trees
+// and returns a list of patch operations needed
+
+function diff(oldTree, newTree) {
+  // Return array of operations:
+  // { op: 'INSERT', node, index }
+  // { op: 'REMOVE', index }
+  // { op: 'REPLACE', oldNode, newNode, index }
+  // { op: 'PROPS', changes: {added, removed, updated} }
+  // { op: 'TEXT', oldText, newText }
+}
+
+// Test:
+const old = { type: 'div', props: { class: 'box' }, children: ['Hello'] }
+const next = { type: 'div', props: { class: 'box active' }, children: ['Hello World'] }
+
+const patches = diff(old, next)
+// Should detect: PROPS change + TEXT change
+```
+
+---
+
+**C3: Create a `useRenderCount` custom hook**
+
+```javascript
+// Track how many times a component has rendered
+// Useful for debugging unnecessary re-renders
+
+function useRenderCount() {
+  // Your implementation
+  // Use useRef to avoid triggering re-renders
+  // Return the current render count
+}
+
+// Usage:
+function MyComponent() {
+  const renderCount = useRenderCount()
+  const [count, setCount] = useState(0)
+
+  return (
+    <div>
+      <p>Renders: {renderCount}</p>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(c => c + 1)}>Increment</button>
+    </div>
+  )
+}
+```
+
+---
+
+**C4: Build a component tree visualizer**
+
+```javascript
+// Given a React component's children, build a tree structure
+// that shows the hierarchy
+
+function buildComponentTree(element, depth = 0) {
+  // Traverse React element tree
+  // Return a data structure representing the hierarchy
+  // Handle: strings, numbers, arrays, React elements
+}
+
+// Test with:
+const tree = buildComponentTree(
+  <App>
+    <Header>
+      <Logo />
+      <Nav>
+        <NavItem>Home</NavItem>
+        <NavItem>About</NavItem>
+      </Nav>
+    </Header>
+    <Main>
+      <ProductList />
+    </Main>
+  </App>
+)
+```
+
+---
+
+**C5: Simulate React's batching behavior**
+
+```javascript
+// React 18 batches multiple setState calls
+// Implement a simple batcher that collects updates
+// and applies them all at once
+
+class ReactBatcher {
+  #pendingUpdates = []
+  #isBatching = false
+
+  setState(updater) {
+    // Queue the update
+  }
+
+  batch(callback) {
+    // Execute callback in batch mode
+    // All setState calls inside are queued
+    // At the end, run all updates once
+  }
+
+  flush() {
+    // Apply all pending updates
+  }
+}
+
+// Test:
+const batcher = new ReactBatcher()
+batcher.batch(() => {
+  batcher.setState(() => ({ count: 1 }))
+  batcher.setState(() => ({ name: "Rahul" }))
+  batcher.setState(() => ({ active: true }))
+  // Should only flush ONCE at the end!
+})
+```
+
+---
+
+### 5 Theory Questions
+
+**T1: Explain the complete Virtual DOM process — from JSX to actual DOM updates. What happens at each step, and why is this approach more maintainable than direct DOM manipulation at scale?**
+
+**T2: Compare React Fiber's architecture with the old Stack Reconciler. What specific problems does Fiber solve? Explain the Render Phase and Commit Phase and why each has its specific properties (interruptible vs synchronous).**
+
+**T3: Explain React's "State-Driven UI" model — `UI = f(state)`. How does this philosophy change the way you think about building web applications? What are the advantages and limitations of this approach?**
+
+**T4: Compare Single Page Applications and Multi Page Applications in depth — covering: initial load performance, subsequent navigation, SEO, development complexity, and when you would choose each. How does Next.js bridge the gap between SPA and MPA?**
+
+**T5: Explain the difference between React as a library and Angular as a framework using the "Inversion of Control" concept. What are the architectural implications of choosing React (library) for a large enterprise application? What additional decisions does the team need to make?**
+
+---
+
+### 2 Machine Coding Problems
+
+**MCP 1: Build a Mini React Clone**
+
+Implement a simplified version of React that demonstrates core concepts:
+
+```javascript
+// Requirements:
+// 1. createElement(type, props, ...children) — creates virtual elements
+// 2. render(element, container) — renders to real DOM
+// 3. useState(initialValue) — basic state management
+// 4. Simple reconciliation — update DOM when state changes
+// 5. Support functional components
+
+// Mini React implementation:
+const MiniReact = {
+  createElement(type, props, ...children) { /* ... */ },
+  render(element, container) { /* ... */ },
+  useState(initialState) { /* ... */ }
+}
+
+// Usage should work like:
+function Counter() {
+  const [count, MiniReact.useState(0)]
+  return MiniReact.createElement(
+    "div",
+    null,
+    MiniReact.createElement("p", null, `Count: ${count}`),
+    MiniReact.createElement("button", { onclick: () => setCount(c => c+1) }, "Increment")
+  )
+}
+
+MiniReact.render(
+  MiniReact.createElement(Counter, null),
+  document.getElementById("root")
+)
+```
+
+Requirements: No React imports, demonstrates Fiber-like concept, handles re-renders, TypeScript.
+
+---
+
+**MCP 2: Build a React Performance Dashboard**
+
+Build a Next.js app that monitors and visualizes React component performance:
+
+```typescript
+// Features:
+// 1. Component render tracker — shows which components rendered and when
+// 2. Props change detector — identifies unnecessary re-renders (same props)
+// 3. Render time chart — how long each component takes
+// 4. State flow visualizer — show state changes triggering renders
+// 5. Memory usage display — approximate component memory
+// 6. Export performance report
+
+// Implementation requirements:
+// - Custom DevTools hook using React DevTools API
+// - Performance.now() for timing
+// - React Profiler API
+// - Real-time chart updates
+// - Next.js App Router
+// - Server Component for initial shell
+// - Client Component for live metrics
+
+function PerformanceDashboard() {
+  // Track all renders in real-time
+  // Display in flamechart format
+  // Allow filtering by component name
+  // Show "wasted renders" (re-renders with unchanged props)
+}
+```
+
+---
+
+> [!NOTE]
+> **Chapter 10 Summary — Key Takeaways:**
+> 1. React is a **library** (not framework) — you call it; it doesn't call you. Focuses ONLY on the View layer.
+> 2. React's 4 core philosophies: **Declarative**, **Component-based**, **Unidirectional data flow**, **State-driven** (`UI = f(state)`)
+> 3. Facebook created React to solve state-sync bugs in complex UIs (News Feed problem, 2011-2013)
+> 4. **SPA** = one page, dynamic updates; **MPA** = full reload per page. SPAs have SEO challenges solved by SSR (Next.js)
+> 5. Virtual DOM is a lightweight JS object representation — enables batched, minimal DOM updates
+> 6. VDOM is NOT always faster than direct DOM — its advantage is **predictable, maintainable performance at scale**
+> 7. **React Fiber** (v16) is an incremental reconciler that can pause, resume, and prioritize rendering work
+> 8. Fiber has 2 phases: **Render Phase** (interruptible, no DOM changes) and **Commit Phase** (synchronous, DOM updates)
+> 9. **Time slicing** breaks rendering into 5ms chunks, yielding to browser between chunks for smooth UX
+> 10. JSX compiles to `React.createElement()` calls via Babel/SWC — React never sees JSX directly
+
+<a href="#chapter-index-table-10">Go to Top 🔝</a>
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
@@ -12502,6 +29885,8 @@ Built by Kshitij GULADHE| 🔗 [LinkedIn](www.linkedin.com/in/kshitij-guladhe) |
 <a id="11-jsx-javascript-xml"></a>
 
 ## Chapter 11: JSX — JavaScript XML
+
+
 
 ⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐
 
