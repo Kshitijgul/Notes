@@ -15,7 +15,7 @@ https://www.freemdtopdf.com/free-md-to-pdf
 
 
 <div align="center">
-<h1>📚DSA By AKSHAY SAINI </h1>
+<h1>📚DSA By AKSHAY SAINI (JAVAscript ) , ShashCodes (JAVA ) , Striver </h1>
 </div>
 
 ## Contents

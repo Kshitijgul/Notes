@@ -1,0 +1,2804 @@
+
+I want to create highly structured, Detailed ,interview-focused Markdown notes for the Below topic as part of my JAVA learning book. The output must be a clean .md file with a proper chapter title, a chapter-level index content table with anchor links(With topic name As per below Index table ) , and deeply structured subtopic tables inside each chapter.
+
+At the beginning of each chapter, include a structured index table in this format:
+Example : 
+Topic No. Topic Name Subtopics
+2.1 JavaScript Engine[#21-javascript-engine] - What is a JS Engine (V8, SpiderMonkey, JavaScriptCore) <br> javascript core 
+
+
+
+🔥 IMPORTANT NAVIGATION RULE (FIXED)
+
+Every chapter must have a unique chapter-level anchor system.
+
+📌 Chapter Index Section must look like:
+
+Chapter Index Table
+📌 Back to Top system must be UNIQUE per chapter:
+
+For Chapter 2:
+
+👉 <a href="#chapter-index-table-2">Go to Top 🔝</a>
+
+For Chapter 3:
+
+👉 <a href="#chapter-index-table-3">Go to Top 🔝</a>
+⚠️ RULE:
+NEVER reuse the same ID across chapters
+Every chapter must have its own:
+chapter-index-table-X
+back-to-top-X
+📘 Explanation Structure (UNCHANGED BUT IMPORTANT)
+
+For each topic:
+
+What is it
+Why it is needed
+How it works
+What problem it solves
+Where it is used
+Real-world analogy (with Hinglish intuition)
+Small code example if applicable
+💡 Interview Focus (MANDATORY)
+
+Each topic must include:
+
+5–10 interview questions:
+Conceptual
+Scenario-based
+Output-based
+🧠 Diagrams
+
+Use Mermaid diagrams for:
+
+Architecture
+Execution flow
+System design
+🚀 Mini Project (End of Chapter)
+
+Include:
+
+Problem statement
+Solution
+Architecture
+Flow diagram
+Code structure
+🧪 Practice Section
+5 coding questions
+5 theory questions
+2 machine coding problems
+🧾 Callout Boxes
+
+Use:
+
+[!NOTE]
+Important note
+
+[!TIP]
+Helpful tip
+
+[!IMPORTANT]
+Critical interview point
+🎯 FINAL REQUIREMENT
+
+The output must be:
+Detailed Notes - Essential Points 
+Highly structured
+Interview-focused
+Beginner-friendly
+Markdown book format
+Fully navigable using unique chapter anchors
+
+For this type of Links in Index table and content you can use Chapter No. (Here is two 2)Like below Example 
+| 🧪 | [Practice Problems](#2-practice-problems) | 5 Coding + 5 Theory |
+| 💡 | [Interview Questions](#2-interview-questions-10) | 10+ Conceptual · Scenario · Output-based |
+| 🚀 | [Mini Project: Browser Console Calculator](#2-mini-project-browser-console-calculator) | Problem · Architecture · Code · Flow |
+
+
+Whenever generating Mermaid diagrams, ensure they are optimized for visual clarity, readability, and rendering stability in Markdown environments such as GitHub and documentation viewers. All Mermaid nodes must contain only short keyword-style text (maximum 3–6 words per line) and must never include full sentences, paragraphs, or long explanations. If a concept requires more detail, it must be split into multiple smaller nodes instead of one large node. Use <br/> explicitly for controlled line breaks inside nodes, but avoid excessive multi-line content that causes visual clutter or truncation. Each diagram must follow a clean top-to-bottom flowchart TD structure with minimal depth and a maximum of 5–8 nodes per diagram to maintain simplicity. Prefer modular diagrams over complex overloaded ones. Ensure high contrast readability by avoiding overly light text or visually faint styling. Every node should behave like a “diagram bullet point” rather than an explanation block. Strictly avoid embedding explanations, reasoning, or descriptive sentences inside nodes. The goal is to produce interview-friendly, clean, and visually stable diagrams that resemble professional engineering documentation standards used in systems like React, Vercel, and MDN docs.
+
+NOte : you Can add the things or points in this notes That willbe essential and required . 
+
+
+
+
+JAVA Introduction 
+
+In this lecture, we will study about programming language, its type and memory management.
+Topics covered:
+1. What is a programming Language
+2. Machine Language
+3. Assembly Language
+4. High Level Language
+5. Procedural Language
+6. Functional Language
+7. Object Oriented Language
+8. Scripting Language
+9. Stack Memory
+10. Heap Memory
+11. Garbage Collection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+********************************************************************************************************
+
+
+
+
+
+# 📘 Complete Java Notes - Chapter-wise Detailed Contents
+
+## A Comprehensive Guide: From Zero to Interview Ready
+
+---
+
+# 📋 MASTER TABLE OF CONTENTS
+
+---
+
+## **PART 1: JAVA FUNDAMENTALS (Building Blocks)**
+
+---
+
+### **Chapter 1: Introduction to Java & Environment Setup**
+
+```
+1.1 What is Java?
+    1.1.1 Definition and Overview
+    1.1.2 Brief History of Java (James Gosling, Sun Microsystems, Oracle)
+    1.1.3 Java Versions Timeline (JDK 1.0 to JDK 21+)
+    1.1.4 Why Java is Still Relevant Today
+
+1.2 Features of Java
+    1.2.1 Platform Independent (Write Once, Run Anywhere - WORA)
+    1.2.2 Object-Oriented
+    1.2.3 Simple and Familiar
+    1.2.4 Robust and Secure
+    1.2.5 Architecture Neutral
+    1.2.6 Portable
+    1.2.7 High Performance (JIT Compiler)
+    1.2.8 Multithreaded
+    1.2.9 Distributed
+    1.2.10 Dynamic
+
+1.3 Java Ecosystem
+    1.3.1 JDK (Java Development Kit) - What it contains
+    1.3.2 JRE (Java Runtime Environment) - What it contains
+    1.3.3 JVM (Java Virtual Machine) - What it does
+    1.3.4 Difference between JDK vs JRE vs JVM (Interview Favorite)
+    1.3.5 JDK Directory Structure Explained
+
+1.4 How Java Program Executes (Step by Step)
+    1.4.1 Writing .java file (Source Code)
+    1.4.2 Compilation using javac (Source → Bytecode)
+    1.4.3 What is Bytecode? (.class file)
+    1.4.4 ClassLoader Subsystem
+    1.4.5 Bytecode Verification
+    1.4.6 Execution by JVM (Interpreter + JIT Compiler)
+    1.4.7 Complete Flow Diagram
+
+1.5 JVM Architecture (In-Depth)
+    1.5.1 ClassLoader Subsystem
+          - Bootstrap ClassLoader
+          - Extension/Platform ClassLoader
+          - Application/System ClassLoader
+          - ClassLoader Delegation Model (Parent Delegation)
+          - Phases: Loading → Linking → Initialization
+    1.5.2 Runtime Data Areas / Memory Areas
+          - Method Area (Metaspace in Java 8+)
+          - Heap Area (Object Storage)
+          - Stack Area (Per Thread)
+          - PC (Program Counter) Register
+          - Native Method Stack
+    1.5.3 Execution Engine
+          - Interpreter
+          - JIT (Just-In-Time) Compiler
+          - Garbage Collector
+    1.5.4 Java Native Interface (JNI)
+    1.5.5 Native Method Libraries
+
+1.6 Setting Up Development Environment
+    1.6.1 Downloading and Installing JDK
+    1.6.2 Setting PATH and JAVA_HOME
+    1.6.3 Verifying Installation
+    1.6.4 IDEs: IntelliJ IDEA, Eclipse, VS Code
+    1.6.5 Writing First Program using Notepad + Command Line
+    1.6.6 Writing First Program using IDE
+
+1.7 First Java Program - Deep Analysis
+    1.7.1 "Hello World" Program
+    1.7.2 Line-by-Line Explanation
+    1.7.3 Why public static void main(String[] args)?
+    1.7.4 What if we change main method signature?
+    1.7.5 Can we overload main method?
+    1.7.6 Can we override main method?
+    1.7.7 What happens if main is not static?
+    1.7.8 Role of String[] args
+    1.7.9 System.out.println() breakdown
+          - System class
+          - out (static field of type PrintStream)
+          - println() method
+
+1.8 Java Program Structure
+    1.8.1 Package Declaration
+    1.8.2 Import Statements
+    1.8.3 Class Declaration
+    1.8.4 Main Method
+    1.8.5 Statements and Expressions
+    1.8.6 Comments (Single-line, Multi-line, Documentation)
+
+1.9 Java Naming Conventions
+    1.9.1 Class Names (PascalCase)
+    1.9.2 Method Names (camelCase)
+    1.9.3 Variable Names (camelCase)
+    1.9.4 Constant Names (UPPER_SNAKE_CASE)
+    1.9.5 Package Names (all lowercase)
+
+1.10 Interview Questions on Chapter 1
+```
+
+---
+
+### **Chapter 2: Data Types, Variables & Operators**
+
+```
+2.1 Variables in Java
+    2.1.1 What is a Variable?
+    2.1.2 Variable Declaration and Initialization
+    2.1.3 Types of Variables
+          - Local Variables (Inside methods)
+          - Instance Variables (Non-static, belong to object)
+          - Static/Class Variables (Shared across all objects)
+    2.1.4 Scope and Lifetime of Variables
+    2.1.5 Variable Shadowing
+    2.1.6 Default Values of Variables
+          - Why local variables don't have default values?
+    2.1.7 var keyword (Java 10+ Local Variable Type Inference)
+
+2.2 Data Types in Java
+    2.2.1 Why Data Types are Important
+    2.2.2 Two Categories:
+          - Primitive Data Types
+          - Non-Primitive (Reference) Data Types
+
+2.3 Primitive Data Types (8 Types - Complete Details)
+    2.3.1 byte
+          - Size: 1 byte (8 bits)
+          - Range: -128 to 127
+          - Default Value: 0
+          - Use Cases
+    2.3.2 short
+          - Size: 2 bytes (16 bits)
+          - Range: -32,768 to 32,767
+          - Default Value: 0
+    2.3.3 int
+          - Size: 4 bytes (32 bits)
+          - Range: -2^31 to 2^31-1
+          - Default Value: 0
+          - Most commonly used integer type
+    2.3.4 long
+          - Size: 8 bytes (64 bits)
+          - Range: -2^63 to 2^63-1
+          - Default Value: 0L
+          - 'L' suffix requirement
+    2.3.5 float
+          - Size: 4 bytes (32 bits)
+          - IEEE 754 Standard
+          - Default Value: 0.0f
+          - 'f' suffix requirement
+          - Precision: ~6-7 decimal digits
+    2.3.6 double
+          - Size: 8 bytes (64 bits)
+          - IEEE 754 Standard
+          - Default Value: 0.0d
+          - Precision: ~15-16 decimal digits
+    2.3.7 char
+          - Size: 2 bytes (16 bits)
+          - Unicode (0 to 65,535)
+          - Default Value: '\u0000'
+          - Why 2 bytes? (Unicode support)
+    2.3.8 boolean
+          - Size: JVM dependent (not precisely defined)
+          - Values: true / false
+          - Default Value: false
+          - Not 0 or 1 like C/C++
+
+2.4 Non-Primitive (Reference) Data Types
+    2.4.1 String
+    2.4.2 Arrays
+    2.4.3 Classes
+    2.4.4 Interfaces
+    2.4.5 Difference between Primitive and Reference Types
+    2.4.6 Where they are stored (Stack vs Heap)
+    2.4.7 Null Reference
+
+2.5 Literals in Java
+    2.5.1 Integer Literals (Decimal, Octal, Hexadecimal, Binary)
+    2.5.2 Floating-Point Literals
+    2.5.3 Character Literals
+    2.5.4 String Literals
+    2.5.5 Boolean Literals
+    2.5.6 Null Literal
+    2.5.7 Underscore in Numeric Literals (Java 7+): 1_000_000
+
+2.6 Type Casting / Type Conversion
+    2.6.1 Implicit Casting (Widening) - Automatic
+          - byte → short → int → long → float → double
+          - char → int
+    2.6.2 Explicit Casting (Narrowing) - Manual
+          - Potential Data Loss
+    2.6.3 Type Promotion in Expressions
+          - Rules of Promotion
+          - Why byte + byte = int?
+    2.6.4 Casting between char and int
+    2.6.5 Object Type Casting (Upcasting & Downcasting) [Preview]
+
+2.7 Wrapper Classes (Primitive ↔ Object)
+    2.7.1 Why Wrapper Classes Exist
+    2.7.2 All 8 Wrapper Classes
+          - Byte, Short, Integer, Long
+          - Float, Double
+          - Character, Boolean
+    2.7.3 Autoboxing (Primitive → Wrapper)
+    2.7.4 Unboxing (Wrapper → Primitive)
+    2.7.5 Integer Cache / Object Pool (-128 to 127)
+    2.7.6 Parsing Methods: parseInt(), parseDouble(), etc.
+    2.7.7 valueOf() vs parseInt()
+    2.7.8 Comparing Wrapper Objects (== vs .equals())
+
+2.8 Operators in Java
+    2.8.1 Arithmetic Operators (+, -, *, /, %)
+          - Integer Division vs Floating-Point Division
+          - Modulus with negative numbers
+    2.8.2 Unary Operators (+, -, ++, --, !)
+          - Pre-increment vs Post-increment (Deep Explanation)
+          - Tricky output questions
+    2.8.3 Assignment Operators (=, +=, -=, *=, /=, %=)
+          - Compound assignment and implicit casting
+    2.8.4 Relational/Comparison Operators (==, !=, >, <, >=, <=)
+          - == for primitives vs reference types
+    2.8.5 Logical Operators (&&, ||, !)
+          - Short-circuit evaluation (&&, ||)
+          - Non-short-circuit (&, |)
+    2.8.6 Bitwise Operators (&, |, ^, ~)
+          - AND, OR, XOR, NOT
+          - Use Cases
+    2.8.7 Shift Operators (<<, >>, >>>)
+          - Left Shift
+          - Signed Right Shift
+          - Unsigned Right Shift
+    2.8.8 Ternary/Conditional Operator (? :)
+          - Nested Ternary
+    2.8.9 instanceof Operator
+          - Usage and Importance
+          - Pattern Matching instanceof (Java 16+)
+
+2.9 Operator Precedence and Associativity
+    2.9.1 Complete Precedence Table
+    2.9.2 Left-to-Right vs Right-to-Left Associativity
+    2.9.3 Tricky Questions on Precedence
+
+2.10 Scanner Class for User Input
+    2.10.1 Importing Scanner
+    2.10.2 nextInt(), nextDouble(), nextLine(), next()
+    2.10.3 Common Issue: nextLine() after nextInt()
+    2.10.4 BufferedReader as Alternative
+
+2.11 Interview Questions on Chapter 2
+```
+
+---
+
+### **Chapter 3: Control Flow Statements**
+
+```
+3.1 Decision-Making Statements
+    3.1.1 if Statement
+          - Syntax and Flow
+          - Single Statement vs Block
+    3.1.2 if-else Statement
+          - Syntax and Flow
+    3.1.3 if-else-if Ladder
+          - Multiple Conditions
+          - Best Practices
+    3.1.4 Nested if-else
+          - When to Use
+          - Readability Concerns
+    3.1.5 switch Statement
+          - Syntax and Flow
+          - Supported Types (byte, short, int, char, String, enum)
+          - Fall-through Behavior
+          - break in switch
+          - default Case
+          - Nested switch
+    3.1.6 Enhanced switch (Java 14+)
+          - Arrow Labels (case L ->)
+          - switch Expressions
+          - yield keyword
+          - Multiple Labels per Case
+          - Pattern Matching in switch (Java 17+)
+
+3.2 Looping Statements
+    3.2.1 for Loop
+          - Syntax and Components
+          - Initialization, Condition, Update
+          - Multiple Variables in for Loop
+          - Infinite for Loop
+    3.2.2 while Loop
+          - Syntax and Flow
+          - Entry-controlled Loop
+          - Infinite while Loop
+    3.2.3 do-while Loop
+          - Syntax and Flow
+          - Exit-controlled Loop
+          - Difference from while Loop
+          - Guaranteed Single Execution
+    3.2.4 Enhanced for Loop (for-each)
+          - Syntax
+          - When to Use
+          - Limitations (No index, No modification)
+          - Works with Arrays and Iterable
+    3.2.5 Nested Loops
+          - Patterns (Stars, Numbers, Alphabets)
+          - Time Complexity Implications
+    3.2.6 Labeled Loops
+
+3.3 Jump/Branching Statements
+    3.3.1 break Statement
+          - In Loops
+          - In switch
+          - Labeled break
+    3.3.2 continue Statement
+          - In Loops
+          - Labeled continue
+    3.3.3 return Statement
+          - In void Methods
+          - In Non-void Methods
+
+3.4 Pattern Programs (Practice Section)
+    3.4.1 Star Patterns (10+ patterns)
+    3.4.2 Number Patterns (10+ patterns)
+    3.4.3 Alphabet Patterns
+    3.4.4 Diamond, Pyramid, Pascal's Triangle
+
+3.5 Interview Questions on Chapter 3
+```
+
+---
+
+### **Chapter 4: Arrays**
+
+```
+4.1 Introduction to Arrays
+    4.1.1 What is an Array?
+    4.1.2 Why Arrays? (Need for Arrays)
+    4.1.3 Characteristics of Arrays
+          - Fixed Size
+          - Homogeneous Elements
+          - Contiguous Memory
+          - Index-based Access (0-based)
+    4.1.4 Arrays as Objects in Java
+
+4.2 One-Dimensional Arrays
+    4.2.1 Declaration
+    4.2.2 Instantiation (Memory Allocation)
+    4.2.3 Initialization
+    4.2.4 Declaration + Instantiation + Initialization
+    4.2.5 Accessing Elements
+    4.2.6 Array Length Property
+    4.2.7 ArrayIndexOutOfBoundsException
+    4.2.8 Default Values in Arrays
+    4.2.9 Iterating Arrays (for, for-each, while)
+
+4.3 Multi-Dimensional Arrays
+    4.3.1 Two-Dimensional Arrays (2D)
+          - Declaration and Initialization
+          - Matrix Representation
+          - Accessing Elements
+          - Iterating 2D Arrays
+    4.3.2 Jagged/Ragged Arrays
+          - Different Column Sizes
+          - Declaration and Usage
+    4.3.3 Three-Dimensional Arrays (3D)
+    4.3.4 Memory Layout of Multi-Dimensional Arrays
+
+4.4 Array Operations
+    4.4.1 Traversal
+    4.4.2 Searching (Linear Search, Binary Search)
+    4.4.3 Sorting (Bubble Sort, Selection Sort, Insertion Sort)
+    4.4.4 Insertion and Deletion (Challenges with fixed size)
+    4.4.5 Reversing an Array
+    4.4.6 Finding Min/Max
+    4.4.7 Copying Arrays
+    4.4.8 Merging Arrays
+    4.4.9 Removing Duplicates
+
+4.5 java.util.Arrays Class
+    4.5.1 Arrays.sort()
+    4.5.2 Arrays.binarySearch()
+    4.5.3 Arrays.copyOf()
+    4.5.4 Arrays.copyOfRange()
+    4.5.5 Arrays.fill()
+    4.5.6 Arrays.equals()
+    4.5.7 Arrays.deepEquals()
+    4.5.8 Arrays.toString()
+    4.5.9 Arrays.deepToString()
+    4.5.10 Arrays.asList()
+    4.5.11 Arrays.stream() (Java 8+)
+    4.5.12 Arrays.compare() (Java 9+)
+    4.5.13 Arrays.mismatch() (Java 9+)
+
+4.6 Array as Method Parameter and Return Type
+    4.6.1 Passing Array to a Method
+    4.6.2 Returning Array from a Method
+    4.6.3 Pass by Value of Reference (Important Concept)
+
+4.7 Variable Arguments (Varargs)
+    4.7.1 Syntax: methodName(int... numbers)
+    4.7.2 Rules for Varargs
+    4.7.3 Varargs with Other Parameters
+    4.7.4 Ambiguity Issues
+
+4.8 Anonymous Arrays
+    4.8.1 Creating Arrays without Name
+    4.8.2 Use Cases
+
+4.9 Array Common Interview Problems
+    4.9.1 Find Second Largest Element
+    4.9.2 Rotate Array
+    4.9.3 Two Sum Problem
+    4.9.4 Move Zeros to End
+    4.9.5 Kadane's Algorithm (Max Subarray Sum)
+    4.9.6 Dutch National Flag Problem
+
+4.10 Interview Questions on Chapter 4
+```
+
+---
+
+### **Chapter 5: Strings (In-Depth)**
+
+```
+5.1 Introduction to Strings
+    5.1.1 What is a String in Java?
+    5.1.2 String as an Object (Not Primitive)
+    5.1.3 String Class Hierarchy
+          - Implements: Serializable, Comparable<String>, CharSequence
+    5.1.4 Creating Strings
+          - String Literal (Using double quotes)
+          - Using new Keyword
+
+5.2 String Pool (String Constant Pool) ⭐
+    5.2.1 What is String Pool?
+    5.2.2 Where is it Located? (Heap - Metaspace area)
+    5.2.3 How String Pool Works (Diagram)
+    5.2.4 String Literal vs new String()
+    5.2.5 intern() Method
+    5.2.6 How many objects are created? (Common Interview Q)
+    5.2.7 String Pool in Java 7+ (Moved from PermGen to Heap)
+
+5.3 String Immutability ⭐⭐
+    5.3.1 What does Immutable Mean?
+    5.3.2 Why Strings are Immutable in Java?
+          - Security (Network, File, Database connections)
+          - String Pool Optimization
+          - Thread Safety
+          - Caching HashCode
+          - Class Loading Security
+    5.3.3 How String is Made Immutable (final class, final char[]/byte[])
+    5.3.4 Proof of Immutability with Examples
+    5.3.5 Can we Create Mutable String? (StringBuilder/StringBuffer)
+
+5.4 String Methods (Complete List with Examples)
+    5.4.1 Length and Access
+          - length()
+          - charAt(int index)
+          - toCharArray()
+          - getBytes()
+    5.4.2 Comparison
+          - equals(Object obj)
+          - equalsIgnoreCase(String str)
+          - compareTo(String str)
+          - compareToIgnoreCase(String str)
+          - == vs equals() for Strings ⭐
+    5.4.3 Searching
+          - indexOf(int ch / String str)
+          - lastIndexOf(int ch / String str)
+          - contains(CharSequence s)
+          - startsWith(String prefix)
+          - endsWith(String suffix)
+          - matches(String regex)
+    5.4.4 Extraction
+          - substring(int beginIndex)
+          - substring(int beginIndex, int endIndex)
+          - subSequence(int start, int end)
+    5.4.5 Modification (Returns New String)
+          - concat(String str)
+          - replace(char old, char new)
+          - replace(CharSequence old, CharSequence new)
+          - replaceAll(String regex, String replacement)
+          - replaceFirst(String regex, String replacement)
+          - toUpperCase()
+          - toLowerCase()
+          - trim()
+          - strip() (Java 11+ - Unicode aware)
+          - stripLeading() / stripTrailing()
+    5.4.6 Splitting and Joining
+          - split(String regex)
+          - split(String regex, int limit)
+          - String.join(delimiter, elements)
+    5.4.7 Formatting
+          - String.format()
+          - formatted() (Java 15+)
+    5.4.8 Conversion
+          - valueOf() (int, double, char[], etc.)
+          - toString()
+    5.4.9 Checking
+          - isEmpty()
+          - isBlank() (Java 11+)
+    5.4.10 New Methods
+          - repeat(int count) (Java 11+)
+          - lines() (Java 11+)
+          - indent(int n) (Java 12+)
+          - transform(Function f) (Java 12+)
+
+5.5 String Concatenation Internals
+    5.5.1 Using + Operator
+    5.5.2 How + Works Internally (StringBuilder before Java 9, StringConcatFactory Java 9+)
+    5.5.3 String Concatenation in Loops (Performance Issue)
+    5.5.4 concat() Method
+
+5.6 StringBuilder Class
+    5.6.1 What is StringBuilder?
+    5.6.2 Mutable Nature
+    5.6.3 Not Thread-Safe (No Synchronization)
+    5.6.4 Constructors
+    5.6.5 Important Methods
+          - append(), insert(), delete(), deleteCharAt()
+          - replace(), reverse(), capacity(), ensureCapacity()
+          - length(), charAt(), setCharAt(), indexOf()
+    5.6.6 Capacity vs Length
+    5.6.7 Capacity Growth Formula: (oldCapacity * 2) + 2
+    5.6.8 When to Use StringBuilder
+
+5.7 StringBuffer Class
+    5.7.1 What is StringBuffer?
+    5.7.2 Thread-Safe (Synchronized Methods)
+    5.7.3 Same Methods as StringBuilder
+    5.7.4 Performance Comparison: String vs StringBuilder vs StringBuffer
+
+5.8 String vs StringBuilder vs StringBuffer ⭐
+    5.8.1 Comparison Table
+    5.8.2 Immutability
+    5.8.3 Thread Safety
+    5.8.4 Performance
+    5.8.5 When to Use Which?
+
+5.9 StringTokenizer Class
+    5.9.1 What is StringTokenizer?
+    5.9.2 Constructors
+    5.9.3 Methods: hasMoreTokens(), nextToken(), countTokens()
+    5.9.4 StringTokenizer vs split()
+
+5.10 String Interview Problems
+    5.10.1 Reverse a String (Multiple Ways)
+    5.10.2 Check Palindrome
+    5.10.3 Count Vowels and Consonants
+    5.10.4 Check Anagram
+    5.10.5 Find Duplicate Characters
+    5.10.6 First Non-Repeating Character
+    5.10.7 String Permutations
+    5.10.8 Remove Whitespaces
+    5.10.9 Count Words in a String
+    5.10.10 Reverse Words in a String
+    5.10.11 Check if String Contains Only Digits
+    5.10.12 String Compression
+
+5.11 Regular Expressions (Basics)
+    5.11.1 Pattern Class
+    5.11.2 Matcher Class
+    5.11.3 Common Regex Patterns
+    5.11.4 matches(), find(), group()
+
+5.12 Interview Questions on Chapter 5
+```
+
+---
+
+## **PART 2: OBJECT-ORIENTED PROGRAMMING (OOP)**
+
+---
+
+### **Chapter 6: Introduction to OOP & Classes and Objects**
+
+```
+6.1 Programming Paradigms
+    6.1.1 Procedural Programming
+    6.1.2 Object-Oriented Programming
+    6.1.3 Functional Programming
+    6.1.4 Why OOP?
+    6.1.5 Advantages of OOP
+
+6.2 Four Pillars of OOP (Overview)
+    6.2.1 Encapsulation
+    6.2.2 Inheritance
+    6.2.3 Polymorphism
+    6.2.4 Abstraction
+
+6.3 Classes in Java
+    6.3.1 What is a Class?
+    6.3.2 Class as a Blueprint/Template
+    6.3.3 Class Declaration Syntax
+    6.3.4 Components of a Class
+          - Fields (Variables)
+          - Methods
+          - Constructors
+          - Blocks (Instance and Static)
+          - Nested Classes
+    6.3.5 Types of Classes
+          - Concrete Class
+          - Abstract Class
+          - Final Class
+          - Inner Class
+          - Anonymous Class
+          - POJO / Java Bean
+          - Record Class (Java 14+)
+          - Sealed Class (Java 17+)
+
+6.4 Objects in Java
+    6.4.1 What is an Object?
+    6.4.2 Object = State + Behavior + Identity
+    6.4.3 Creating Objects (new Keyword)
+    6.4.4 Other Ways to Create Objects
+          - new Keyword
+          - Class.forName().newInstance() (Reflection)
+          - Constructor.newInstance()
+          - clone() Method
+          - Deserialization
+          - Factory Methods
+    6.4.5 Object Lifecycle
+    6.4.6 Anonymous Objects
+    6.4.7 Memory Allocation for Objects (Heap)
+    6.4.8 What Happens When new is Executed?
+
+6.5 Fields (Instance Variables)
+    6.5.1 Declaration
+    6.5.2 Default Values
+    6.5.3 Accessing Fields (Using dot operator)
+    6.5.4 Instance Variables vs Local Variables
+
+6.6 Methods
+    6.6.1 What is a Method?
+    6.6.2 Method Declaration / Signature
+    6.6.3 Method Components
+          - Access Modifier
+          - Return Type
+          - Method Name
+          - Parameters (Formal Parameters)
+          - Method Body
+    6.6.4 Calling/Invoking Methods
+    6.6.5 Arguments vs Parameters
+    6.6.6 Return Statement
+    6.6.7 Void Methods
+    6.6.8 Method with Parameters
+    6.6.9 Method Overloading (Introduction)
+    6.6.10 Accessor (Getter) and Mutator (Setter) Methods
+    6.6.11 toString() Method
+
+6.7 'this' Keyword ⭐
+    6.7.1 What is 'this'?
+    6.7.2 'this' to Refer Current Object's Instance Variable
+    6.7.3 'this' to Call Current Object's Method
+    6.7.4 'this()' to Call Current Class Constructor (Constructor Chaining)
+    6.7.5 'this' to Pass Current Object as Argument
+    6.7.6 'this' to Return Current Object
+    6.7.7 Cannot Use 'this' in Static Context (Why?)
+
+6.8 Constructors ⭐⭐
+    6.8.1 What is a Constructor?
+    6.8.2 Purpose of Constructor
+    6.8.3 Rules for Constructors
+          - Same name as class
+          - No return type (not even void)
+          - Called automatically when object is created
+    6.8.4 Types of Constructors
+          - Default Constructor (No-arg)
+          - Parameterized Constructor
+          - Copy Constructor (Java doesn't provide by default)
+    6.8.5 Constructor Overloading
+    6.8.6 Constructor Chaining (this() and super())
+    6.8.7 Default Constructor Provided by Compiler
+    6.8.8 Constructor vs Method (Differences)
+    6.8.9 Can Constructor be private? (Yes - Singleton Pattern)
+    6.8.10 Can Constructor be final/abstract/static? (No)
+    6.8.11 Constructor in Inheritance
+
+6.9 Static Keyword ⭐⭐
+    6.9.1 What is Static?
+    6.9.2 Static Variables (Class Variables)
+          - Memory Allocation (Method Area)
+          - Shared Among All Objects
+          - Accessed via Class Name
+          - Use Cases (Counters, Constants)
+    6.9.3 Static Methods
+          - Can Access Only Static Members
+          - Cannot Use 'this' or 'super'
+          - Can be Called Without Object
+          - main() is Static - Why?
+    6.9.4 Static Block (Static Initializer)
+          - Executes When Class is Loaded
+          - Multiple Static Blocks (Order of Execution)
+          - Use Cases
+    6.9.5 Static Nested Class
+    6.9.6 Static Import
+    6.9.7 Why main() is static? (Detailed Explanation)
+    6.9.8 Can we Execute Program Without main()? (Before Java 7 - Yes using static block)
+    6.9.9 Instance Variable vs Static Variable vs Local Variable
+
+6.10 Instance Initializer Block
+    6.10.1 What is Instance Block?
+    6.10.2 Execution Order: Static Block → Instance Block → Constructor
+    6.10.3 Multiple Instance Blocks
+    6.10.4 Use Cases
+
+6.11 final Keyword (Part 1)
+    6.11.1 final Variable (Constant)
+    6.11.2 final Method (Cannot Override)
+    6.11.3 final Class (Cannot Extend)
+    6.11.4 Blank Final Variable
+    6.11.5 Static Final Variable
+    6.11.6 final Reference Variable (Reference is fixed, object can change)
+    6.11.7 final Parameter
+
+6.12 Pass by Value in Java ⭐
+    6.12.1 Java is Always Pass by Value
+    6.12.2 Pass by Value for Primitives
+    6.12.3 Pass by Value of Reference for Objects
+    6.12.4 Common Misconception: "Java passes objects by reference"
+    6.12.5 Proof with Examples
+
+6.13 Garbage Collection (Introduction)
+    6.13.1 What is Garbage Collection?
+    6.13.2 How Objects Become Eligible for GC
+          - Nullifying Reference
+          - Re-assigning Reference
+          - Object Created Inside Method
+          - Island of Isolation
+    6.13.3 System.gc() and Runtime.gc()
+    6.13.4 finalize() Method (Deprecated in Java 9)
+    6.13.5 We Cannot Force GC
+
+6.14 Interview Questions on Chapter 6
+```
+
+---
+
+### **Chapter 7: Encapsulation**
+
+```
+7.1 What is Encapsulation?
+    7.1.1 Definition
+    7.1.2 Wrapping Data + Methods Together
+    7.1.3 Data Hiding
+    7.1.4 Real-World Analogies (Capsule, ATM Machine)
+
+7.2 How to Achieve Encapsulation
+    7.2.1 Make Fields Private
+    7.2.2 Provide Public Getter and Setter Methods
+    7.2.3 Complete Example
+
+7.3 Access Modifiers ⭐⭐
+    7.3.1 private
+          - Accessible only within the same class
+          - Most restrictive
+    7.3.2 default (Package-Private / No modifier)
+          - Accessible within the same package
+    7.3.3 protected
+          - Accessible within same package + subclasses in other packages
+    7.3.4 public
+          - Accessible from everywhere
+    7.3.5 Access Modifier Comparison Table
+    7.3.6 Access Modifiers for Class (Only public and default)
+    7.3.7 Access Modifiers for Constructor, Method, Variable
+    7.3.8 Access Modifiers for Interface Members
+    7.3.9 Tricky Questions on Access Modifiers
+
+7.4 Getter and Setter Methods
+    7.4.1 Naming Conventions (getXxx, setXxx, isXxx for boolean)
+    7.4.2 Validation in Setters
+    7.4.3 Read-Only Class (Only Getters)
+    7.4.4 Write-Only Class (Only Setters)
+
+7.5 Java Bean / POJO
+    7.5.1 What is a Java Bean?
+    7.5.2 Rules for Java Bean
+    7.5.3 POJO vs Java Bean
+    7.5.4 DTO (Data Transfer Object)
+
+7.6 Advantages of Encapsulation
+    7.6.1 Data Hiding
+    7.6.2 Increased Flexibility
+    7.6.3 Reusability
+    7.6.4 Testing Ease
+
+7.7 Record Classes (Java 14+)
+    7.7.1 What are Records?
+    7.7.2 Compact Syntax
+    7.7.3 Auto-generated Methods (constructor, getters, equals, hashCode, toString)
+    7.7.4 Restrictions of Records
+    7.7.5 Custom Constructors in Records
+    7.7.6 Records vs POJO
+
+7.8 Interview Questions on Chapter 7
+```
+
+---
+
+### **Chapter 8: Inheritance**
+
+```
+8.1 What is Inheritance?
+    8.1.1 Definition
+    8.1.2 IS-A Relationship
+    8.1.3 Parent/Super/Base Class
+    8.1.4 Child/Sub/Derived Class
+    8.1.5 extends Keyword
+    8.1.6 Real-World Examples
+    8.1.7 Code Reusability
+
+8.2 Types of Inheritance
+    8.2.1 Single Inheritance
+          - One Parent, One Child
+          - Example with Code
+    8.2.2 Multilevel Inheritance
+          - A → B → C
+          - Example with Code
+    8.2.3 Hierarchical Inheritance
+          - One Parent, Multiple Children
+          - Example with Code
+    8.2.4 Multiple Inheritance (NOT Supported with Classes) ⭐
+          - Diamond Problem Explanation
+          - Why Java Doesn't Support
+          - Achieved via Interfaces
+    8.2.5 Hybrid Inheritance
+          - Combination of Multiple Types
+          - Not Directly Supported with Classes
+
+8.3 What is Inherited and What is NOT
+    8.3.1 Inherited: public and protected members
+    8.3.2 Not Inherited: private members
+    8.3.3 Not Inherited: Constructors
+    8.3.4 Default Members: Same package only
+    8.3.5 Static Members: Inherited but not Overridden
+
+8.4 super Keyword ⭐⭐
+    8.4.1 What is 'super'?
+    8.4.2 super to Access Parent Class Variable (Shadowed Variable)
+    8.4.3 super to Call Parent Class Method (Overridden Method)
+    8.4.4 super() to Call Parent Class Constructor
+    8.4.5 super() Must be First Statement in Constructor
+    8.4.6 Compiler Adds super() Automatically (If not explicitly called)
+    8.4.7 Constructor Chaining in Inheritance
+
+8.5 Method Overriding ⭐⭐⭐
+    8.5.1 What is Method Overriding?
+    8.5.2 Rules for Method Overriding
+          - Same Method Name
+          - Same Parameters (Number, Type, Order)
+          - Same or Covariant Return Type
+          - Cannot be More Restrictive Access Modifier
+          - Cannot Override static Methods (Method Hiding)
+          - Cannot Override final Methods
+          - Cannot Override private Methods
+          - Cannot Override Constructors
+    8.5.3 @Override Annotation (Why Use It?)
+    8.5.4 Covariant Return Type
+    8.5.5 Exception Handling in Overriding (Rules)
+    8.5.6 Method Overloading vs Method Overriding ⭐
+
+8.6 Method Overloading (Complete)
+    8.6.1 What is Method Overloading?
+    8.6.2 Rules:
+          - Same Method Name
+          - Different Parameters (Number/Type/Order)
+          - Return Type Doesn't Matter
+    8.6.3 Type Promotion in Overloading
+    8.6.4 Ambiguity in Overloading
+    8.6.5 Overloading main() Method
+    8.6.6 Overloading with Varargs
+    8.6.7 Overloading with Autoboxing and Widening
+
+8.7 Compile-time vs Runtime Polymorphism ⭐
+    8.7.1 Static/Compile-time Polymorphism (Method Overloading)
+    8.7.2 Dynamic/Runtime Polymorphism (Method Overriding)
+    8.7.3 Method Dispatch
+    8.7.4 Static Binding vs Dynamic Binding
+
+8.8 Object Class (The Root Class) ⭐
+    8.8.1 Every Class Extends Object
+    8.8.2 Important Methods of Object Class
+          - toString()
+          - equals(Object obj)
+          - hashCode()
+          - getClass()
+          - clone()
+          - finalize() (Deprecated)
+          - wait(), notify(), notifyAll()
+    8.8.3 Overriding toString()
+    8.8.4 equals() and hashCode() Contract ⭐⭐
+          - Why Override Both Together
+          - Contract Rules
+          - Implementation Examples
+    8.8.5 getClass() vs instanceof
+
+8.9 Upcasting and Downcasting ⭐
+    8.9.1 Upcasting (Child → Parent) - Implicit
+    8.9.2 Downcasting (Parent → Child) - Explicit
+    8.9.3 ClassCastException
+    8.9.4 instanceof Check Before Downcasting
+    8.9.5 Pattern Matching instanceof (Java 16+)
+
+8.10 Dynamic Method Dispatch (Runtime Polymorphism) ⭐
+    8.10.1 How It Works
+    8.10.2 Parent Reference → Child Object
+    8.10.3 Which Method Gets Called?
+    8.10.4 Real-World Use Cases
+    8.10.5 Polymorphism with Collections
+
+8.11 HAS-A Relationship (Composition & Aggregation)
+    8.11.1 IS-A vs HAS-A
+    8.11.2 Composition (Strong Relationship)
+    8.11.3 Aggregation (Weak Relationship)
+    8.11.4 Composition vs Inheritance
+    8.11.5 "Favor Composition over Inheritance" ⭐
+
+8.12 Inheritance Best Practices
+    8.12.1 When to Use Inheritance
+    8.12.2 When NOT to Use Inheritance
+    8.12.3 Liskov Substitution Principle
+
+8.13 Interview Questions on Chapter 8
+```
+
+---
+
+### **Chapter 9: Abstraction**
+
+```
+9.1 What is Abstraction?
+    9.1.1 Definition
+    9.1.2 Hiding Implementation, Showing Functionality
+    9.1.3 Real-World Analogies (Car Driving, ATM, Remote Control)
+    9.1.4 Abstraction vs Encapsulation (Differences) ⭐
+
+9.2 Abstract Classes ⭐⭐
+    9.2.1 What is an Abstract Class?
+    9.2.2 abstract Keyword
+    9.2.3 Abstract Method (No Body)
+    9.2.4 Concrete Method in Abstract Class (Can Have)
+    9.2.5 Rules for Abstract Class
+          - Cannot Instantiate (new AbstractClass() ✗)
+          - Can Have Constructors
+          - Can Have Static Methods
+          - Can Have Final Methods
+          - Can Have Instance Variables
+          - Child Must Override All Abstract Methods (or be abstract itself)
+    9.2.6 When to Use Abstract Class
+    9.2.7 Abstract Class with No Abstract Methods (Valid)
+    9.2.8 Abstract Class vs Concrete Class
+    9.2.9 Can Abstract Class Have main()?
+
+9.3 Interfaces ⭐⭐⭐
+    9.3.1 What is an Interface?
+    9.3.2 interface Keyword
+    9.3.3 implements Keyword
+    9.3.4 Rules for Interface
+          - All Methods are public abstract (by default, before Java 8)
+          - All Variables are public static final (Constants)
+          - Cannot Instantiate
+          - No Constructors
+          - A Class Can Implement Multiple Interfaces
+    9.3.5 Multiple Interface Implementation
+    9.3.6 Interface Extending Interface
+    9.3.7 Marker/Tagging Interface
+          - Serializable
+          - Cloneable
+          - Remote
+          - Purpose and Use Cases
+    9.3.8 Functional Interface (Java 8+) ⭐
+          - Exactly One Abstract Method
+          - @FunctionalInterface Annotation
+          - Examples: Runnable, Callable, Comparator, Comparable
+          - Lambda Expression Connection
+
+9.4 Interface Evolution (Java 8, 9, and Beyond) ⭐⭐
+    9.4.1 Default Methods (Java 8)
+          - Why Introduced? (Backward Compatibility)
+          - default Keyword
+          - Diamond Problem with Default Methods
+          - Resolution Rules
+    9.4.2 Static Methods in Interface (Java 8)
+          - Cannot be Overridden
+          - Called Using Interface Name
+    9.4.3 Private Methods in Interface (Java 9)
+          - Helper Methods for Default Methods
+          - Private Static Methods
+    9.4.4 sealed Interfaces (Java 17+)
+
+9.5 Abstract Class vs Interface ⭐⭐⭐
+    9.5.1 Complete Comparison Table
+    9.5.2 When to Use Abstract Class
+    9.5.3 When to Use Interface
+    9.5.4 Can We Have Both? (Yes)
+    9.5.5 Real-World Design Examples
+
+9.6 Interfaces in Real-World Design
+    9.6.1 Strategy Pattern
+    9.6.2 Observer Pattern
+    9.6.3 Repository Pattern
+    9.6.4 Dependency Injection
+
+9.7 Comparable Interface
+    9.7.1 What is Comparable?
+    9.7.2 compareTo() Method
+    9.7.3 Natural Ordering
+    9.7.4 Implementation Example
+
+9.8 Comparator Interface
+    9.8.1 What is Comparator?
+    9.8.2 compare() Method
+    9.8.3 Custom Ordering
+    9.8.4 Comparable vs Comparator ⭐
+    9.8.5 Comparator with Lambda (Java 8)
+    9.8.6 Comparator.comparing(), thenComparing(), reversed()
+
+9.9 Cloneable Interface and Object Cloning
+    9.9.1 What is Cloning?
+    9.9.2 clone() Method
+    9.9.3 Shallow Copy vs Deep Copy ⭐
+    9.9.4 Implementation of Both
+    9.9.5 Alternatives to clone() (Copy Constructor, Factory Method)
+
+9.10 Interview Questions on Chapter 9
+```
+
+---
+
+### **Chapter 10: Polymorphism (Complete)**
+
+```
+10.1 What is Polymorphism?
+    10.1.1 Definition ("Many Forms")
+    10.1.2 Real-World Analogies
+    10.1.3 Types of Polymorphism
+
+10.2 Compile-Time Polymorphism (Static Binding)
+    10.2.1 Method Overloading (Detailed Recap)
+    10.2.2 Constructor Overloading
+    10.2.3 Operator Overloading (+ for String Concatenation)
+    10.2.4 Resolution at Compile Time
+
+10.3 Runtime Polymorphism (Dynamic Binding) ⭐⭐
+    10.3.1 Method Overriding (Detailed Recap)
+    10.3.2 Dynamic Method Dispatch
+    10.3.3 Virtual Methods in Java
+    10.3.4 VTable Concept
+    10.3.5 Achieving Polymorphism with Interfaces
+    10.3.6 Real-World Design Examples
+
+10.4 Polymorphism with:
+    10.4.1 Instance Variables (Not Polymorphic - Decided at Compile Time)
+    10.4.2 Static Methods (Not Polymorphic - Method Hiding)
+    10.4.3 Private Methods (Not Polymorphic)
+    10.4.4 Final Methods (Not Polymorphic)
+    10.4.5 Constructors (Not Polymorphic)
+
+10.5 Covariant Return Types
+    10.5.1 What is Covariant Return?
+    10.5.2 Rules and Examples
+
+10.6 Polymorphism in Collections
+    10.6.1 List<Animal> with Dog, Cat Objects
+    10.6.2 Real-World Example
+
+10.7 Interview Questions on Chapter 10
+```
+
+---
+
+### **Chapter 11: Inner Classes & Anonymous Classes**
+
+```
+11.1 Types of Nested Classes
+    11.1.1 Overview and Classification
+
+11.2 Inner Class (Non-static Nested Class)
+    11.2.1 Regular Inner Class
+    11.2.2 Accessing Outer Class Members
+    11.2.3 Creating Inner Class Object
+    11.2.4 this in Inner Class (Outer.this)
+
+11.3 Static Nested Class
+    11.3.1 Definition
+    11.3.2 Can Only Access Static Members of Outer
+    11.3.3 Use Cases
+
+11.4 Local Inner Class
+    11.4.1 Class Inside a Method
+    11.4.2 Scope
+    11.4.3 Accessing Local Variables (Effectively Final)
+
+11.5 Anonymous Inner Class ⭐
+    11.5.1 What is Anonymous Class?
+    11.5.2 Implementing Interface
+    11.5.3 Extending Class
+    11.5.4 Anonymous Class vs Lambda Expression
+    11.5.5 Use Cases
+
+11.6 Interview Questions on Chapter 11
+```
+
+---
+
+## **PART 3: EXCEPTION HANDLING**
+
+---
+
+### **Chapter 12: Exception Handling (In-Depth)**
+
+```
+12.1 What is an Exception?
+    12.1.1 Definition
+    12.1.2 Error vs Exception
+    12.1.3 Why Exception Handling?
+    12.1.4 What Happens Without Exception Handling?
+
+12.2 Exception Hierarchy ⭐⭐
+    12.2.1 Throwable (Root)
+    12.2.2 Error (Unrecoverable)
+          - StackOverflowError
+          - OutOfMemoryError
+          - VirtualMachineError
+          - We should NOT catch Errors
+    12.2.3 Exception (Recoverable)
+          - Checked Exceptions (Compile-time)
+          - Unchecked Exceptions (Runtime)
+    12.2.4 RuntimeException
+          - NullPointerException
+          - ArrayIndexOutOfBoundsException
+          - ArithmeticException
+          - ClassCastException
+          - NumberFormatException
+          - IllegalArgumentException
+          - IllegalStateException
+          - ConcurrentModificationException
+          - StackOverflowError (Recursion)
+    12.2.5 Checked Exceptions
+          - IOException
+          - FileNotFoundException
+          - SQLException
+          - ClassNotFoundException
+          - InterruptedException
+          - ParseException
+    12.2.6 Complete Hierarchy Diagram
+
+12.3 Checked vs Unchecked Exceptions ⭐⭐
+    12.3.1 What are Checked Exceptions?
+    12.3.2 What are Unchecked Exceptions?
+    12.3.3 Comparison Table
+    12.3.4 When to Use Which?
+
+12.4 Exception Handling Keywords (5 Keywords)
+    12.4.1 try
+    12.4.2 catch
+    12.4.3 finally
+    12.4.4 throw
+    12.4.5 throws
+
+12.5 try-catch Block ⭐
+    12.5.1 Syntax
+    12.5.2 Flow of Execution
+    12.5.3 Multiple catch Blocks
+    12.5.4 Multi-catch Block (Java 7+): catch(IOException | SQLException e)
+    12.5.5 Catch Block Order (Specific to General)
+    12.5.6 Unreachable Catch Block (Compilation Error)
+    12.5.7 Exception Object Methods
+          - getMessage()
+          - toString()
+          - printStackTrace()
+          - getCause()
+
+12.6 finally Block ⭐⭐
+    12.6.1 What is finally?
+    12.6.2 Always Executes (Almost)
+    12.6.3 When finally Does NOT Execute
+          - System.exit()
+          - JVM Crash
+          - Thread Death
+    12.6.4 finally with return Statement (Tricky Questions)
+    12.6.5 try-finally (Without catch)
+    12.6.6 Nested try-catch-finally
+
+12.7 try-with-resources (Java 7+) ⭐⭐
+    12.7.1 What is try-with-resources?
+    12.7.2 AutoCloseable Interface
+    12.7.3 Closeable vs AutoCloseable
+    12.7.4 Multiple Resources
+    12.7.5 Effectively Final Variables in try (Java 9+)
+    12.7.6 Suppressed Exceptions
+
+12.8 throw Keyword ⭐
+    12.8.1 Throwing an Exception Manually
+    12.8.2 Throwing Checked vs Unchecked
+    12.8.3 Re-throwing an Exception
+    12.8.4 throw vs throws
+
+12.9 throws Keyword ⭐
+    12.9.1 Declaring Exceptions
+    12.9.2 Method Signature
+    12.9.3 Propagation of Exceptions
+    12.9.4 throws in Overriding (Rules)
+    12.9.5 throws with Multiple Exceptions
+
+12.10 Custom Exceptions ⭐⭐
+    12.10.1 Why Create Custom Exceptions?
+    12.10.2 Creating Custom Checked Exception
+    12.10.3 Creating Custom Unchecked Exception
+    12.10.4 Best Practices for Custom Exceptions
+    12.10.5 Exception Chaining (Wrapping Exceptions)
+
+12.11 Exception Handling Best Practices ⭐
+    12.11.1 Catch Specific Exceptions
+    12.11.2 Don't Catch Throwable or Error
+    12.11.3 Don't Swallow Exceptions (Empty catch)
+    12.11.4 Use finally or try-with-resources for Cleanup
+    12.11.5 Log Exceptions Properly
+    12.11.6 Throw Early, Catch Late
+    12.11.7 Use Custom Exceptions for Business Logic
+    12.11.8 Don't Use Exceptions for Flow Control
+
+12.12 Exception Handling in Method Overriding
+    12.12.1 Rules for Checked Exceptions
+    12.12.2 Rules for Unchecked Exceptions
+    12.12.3 Examples and Edge Cases
+
+12.13 Common Exceptions and When They Occur
+    12.13.1 NullPointerException
+    12.13.2 ArrayIndexOutOfBoundsException
+    12.13.3 ClassCastException
+    12.13.4 NumberFormatException
+    12.13.5 StackOverflowError
+    12.13.6 ConcurrentModificationException
+    12.13.7 UnsupportedOperationException
+
+12.14 Interview Questions on Chapter 12
+```
+
+---
+
+## **PART 4: COLLECTIONS FRAMEWORK**
+
+---
+
+### **Chapter 13: Collections Framework (Overview & List)**
+
+```
+13.1 What is Collections Framework?
+    13.1.1 Definition
+    13.1.2 Need for Collections (Limitations of Arrays)
+    13.1.3 Benefits of Collections Framework
+    13.1.4 Collections Hierarchy Diagram ⭐
+
+13.2 Core Interfaces
+    13.2.1 Iterable<E> (Root)
+    13.2.2 Collection<E>
+    13.2.3 List<E>
+    13.2.4 Set<E>
+    13.2.5 Queue<E>
+    13.2.6 Deque<E>
+    13.2.7 Map<K,V> (Does NOT extend Collection)
+    13.2.8 SortedSet<E>, NavigableSet<E>
+    13.2.9 SortedMap<K,V>, NavigableMap<K,V>
+
+13.3 Collection Interface Methods
+    13.3.1 add(), addAll()
+    13.3.2 remove(), removeAll(), removeIf()
+    13.3.3 contains(), containsAll()
+    13.3.4 size(), isEmpty()
+    13.3.5 clear()
+    13.3.6 toArray()
+    13.3.7 iterator()
+    13.3.8 stream(), parallelStream()
+
+13.4 List Interface ⭐⭐
+    13.4.1 Characteristics: Ordered, Indexed, Allows Duplicates
+    13.4.2 Additional List Methods
+          - get(int index)
+          - set(int index, E element)
+          - add(int index, E element)
+          - remove(int index)
+          - indexOf(), lastIndexOf()
+          - subList()
+          - listIterator()
+          - sort()
+    13.4.3 List.of() (Java 9+ Immutable List)
+    13.4.4 List.copyOf() (Java 10+)
+
+13.5 ArrayList ⭐⭐⭐
+    13.5.1 What is ArrayList?
+    13.5.2 Internal Working (Dynamic Array / Resizable Array)
+    13.5.3 Initial Capacity: 10
+    13.5.4 Growth Formula: (oldCapacity * 3) / 2 + 1 OR oldCapacity + (oldCapacity >> 1)
+    13.5.5 Constructors
+          - ArrayList()
+          - ArrayList(int initialCapacity)
+          - ArrayList(Collection c)
+    13.5.6 Time Complexity ⭐
+          - add(): O(1) amortized, O(n) worst case (resize)
+          - get(): O(1)
+          - set(): O(1)
+          - remove(): O(n)
+          - contains(): O(n)
+          - indexOf(): O(n)
+    13.5.7 When to Use ArrayList
+    13.5.8 ArrayList vs Array
+    13.5.9 Thread Safety: NOT Thread Safe
+    13.5.10 Synchronized ArrayList: Collections.synchronizedList()
+    13.5.11 CopyOnWriteArrayList (Alternative)
+
+13.6 LinkedList ⭐⭐
+    13.6.1 What is LinkedList?
+    13.6.2 Internal Working (Doubly Linked List)
+    13.6.3 Node Structure (prev, data, next)
+    13.6.4 Implements List AND Deque
+    13.6.5 Constructors
+    13.6.6 Time Complexity
+          - add(first/last): O(1)
+          - add(index): O(n)
+          - get(): O(n)
+          - remove(first/last): O(1)
+          - remove(index): O(n)
+          - contains(): O(n)
+    13.6.7 Additional Methods (addFirst, addLast, getFirst, getLast, etc.)
+    13.6.8 LinkedList as Queue and Deque
+
+13.7 ArrayList vs LinkedList ⭐⭐⭐
+    13.7.1 Internal Structure
+    13.7.2 Performance Comparison
+    13.7.3 Memory Usage
+    13.7.4 When to Use Which
+    13.7.5 Cache Locality (ArrayList Advantage)
+
+13.8 Vector
+    13.8.1 Legacy Class
+    13.8.2 Synchronized (Thread-Safe)
+    13.8.3 Growth: Doubles Capacity (oldCapacity * 2)
+    13.8.4 ArrayList vs Vector ⭐
+
+13.9 Stack
+    13.9.1 What is Stack? (LIFO)
+    13.9.2 Extends Vector
+    13.9.3 Methods: push(), pop(), peek(), empty(), search()
+    13.9.4 Why Deque is Preferred Over Stack
+    13.9.5 ArrayDeque as Stack
+
+13.10 Iterating Collections
+    13.10.1 for Loop (Index-based)
+    13.10.2 Enhanced for Loop (for-each)
+    13.10.3 Iterator
+    13.10.4 ListIterator (Bidirectional)
+    13.10.5 forEach() (Java 8+ with Lambda)
+    13.10.6 Spliterator (Java 8+)
+    13.10.7 ConcurrentModificationException ⭐
+          - Why It Happens
+          - Fail-Fast vs Fail-Safe Iterators
+          - How to Remove While Iterating
+
+13.11 Interview Questions on Chapter 13
+```
+
+---
+
+### **Chapter 14: Set Interface & Implementations**
+
+```
+14.1 Set Interface
+    14.1.1 Characteristics: No Duplicates, Unordered (mostly)
+    14.1.2 Set Methods (Same as Collection)
+    14.1.3 Set.of() (Java 9+ Immutable Set)
+    14.1.4 Set.copyOf() (Java 10+)
+
+14.2 HashSet ⭐⭐⭐
+    14.2.1 What is HashSet?
+    14.2.2 Internal Working: Backed by HashMap ⭐
+    14.2.3 How HashSet Ensures Uniqueness (hashCode + equals)
+    14.2.4 Initial Capacity: 16
+    14.2.5 Load Factor: 0.75
+    14.2.6 Rehashing
+    14.2.7 Null Element: Allowed (Only One)
+    14.2.8 Time Complexity: O(1) for add, remove, contains
+    14.2.9 Not Ordered, Not Sorted
+    14.2.10 Constructors
+
+14.3 LinkedHashSet
+    14.3.1 What is LinkedHashSet?
+    14.3.2 Internal Working: LinkedHashMap
+    14.3.3 Maintains Insertion Order
+    14.3.4 Slightly Slower than HashSet
+    14.3.5 When to Use LinkedHashSet
+
+14.4 TreeSet ⭐⭐
+    14.4.1 What is TreeSet?
+    14.4.2 Internal Working: Red-Black Tree (Self-Balancing BST)
+    14.4.3 Sorted Order (Natural or Custom)
+    14.4.4 Implements NavigableSet, SortedSet
+    14.4.5 Null: NOT Allowed (Throws NullPointerException)
+    14.4.6 Time Complexity: O(log n) for add, remove, contains
+    14.4.7 Constructors
+          - TreeSet()
+          - TreeSet(Comparator c)
+          - TreeSet(Collection c)
+          - TreeSet(SortedSet s)
+    14.4.8 NavigableSet Methods
+          - first(), last()
+          - higher(), lower()
+          - ceiling(), floor()
+          - pollFirst(), pollLast()
+          - descendingSet(), descendingIterator()
+          - headSet(), tailSet(), subSet()
+    14.4.9 Using TreeSet with Custom Comparator
+    14.4.10 ClassCastException in TreeSet
+
+14.5 EnumSet
+    14.5.1 What is EnumSet?
+    14.5.2 Factory Methods: of(), allOf(), noneOf(), range(), complementOf()
+    14.5.3 Performance: Bit Vector Implementation
+    14.5.4 When to Use
+
+14.6 HashSet vs LinkedHashSet vs TreeSet ⭐⭐
+    14.6.1 Comparison Table
+    14.6.2 Ordering
+    14.6.3 Performance
+    14.6.4 Null Handling
+    14.6.5 Use Cases
+
+14.7 Hashing in Java ⭐⭐⭐
+    14.7.1 What is Hashing?
+    14.7.2 hashCode() Method
+    14.7.3 Hash Function
+    14.7.4 Hash Collision
+    14.7.5 Collision Resolution: Separate Chaining
+    14.7.6 Treeification (Java 8+: LinkedList → Red-Black Tree when bucket size > 8)
+    14.7.7 equals() and hashCode() Contract ⭐⭐
+    14.7.8 What Happens if We Override equals() but not hashCode()?
+    14.7.9 Bucket Calculation: index = hash & (n-1)
+
+14.8 Interview Questions on Chapter 14
+```
+
+---
+
+### **Chapter 15: Map Interface & Implementations**
+
+```
+15.1 Map Interface
+    15.1.1 What is Map? (Key-Value Pairs)
+    15.1.2 Map Does NOT Extend Collection
+    15.1.3 Keys: Unique, Values: Can Duplicate
+    15.1.4 Map Methods
+          - put(K key, V value)
+          - get(Object key)
+          - getOrDefault(Object key, V defaultValue)
+          - remove(Object key)
+          - containsKey(Object key)
+          - containsValue(Object value)
+          - size(), isEmpty()
+          - keySet(), values(), entrySet()
+          - putAll(Map m)
+          - putIfAbsent(K key, V value) (Java 8+)
+          - compute(), computeIfAbsent(), computeIfPresent() (Java 8+)
+          - merge() (Java 8+)
+          - replace(), replaceAll() (Java 8+)
+          - forEach() (Java 8+)
+    15.1.5 Map.Entry<K,V> Interface
+    15.1.6 Map.of(), Map.ofEntries() (Java 9+ Immutable Map)
+    15.1.7 Map.copyOf() (Java 10+)
+
+15.2 HashMap ⭐⭐⭐ (Most Important for Interviews)
+    15.2.1 What is HashMap?
+    15.2.2 Internal Working (In-Depth) ⭐⭐⭐
+          - Array of Node<K,V> (Bucket Array)
+          - Node Structure: hash, key, value, next
+          - put() Method Flow
+            Step 1: Calculate hashCode() of key
+            Step 2: Calculate index: hash & (capacity-1)
+            Step 3: Check if bucket is empty → Add Node
+            Step 4: If collision → Check equals()
+            Step 5: If same key → Replace value
+            Step 6: If different key → Add to LinkedList/Tree
+          - get() Method Flow
+          - Rehashing/Resize
+    15.2.3 Initial Capacity: 16
+    15.2.4 Load Factor: 0.75
+    15.2.5 Threshold = Capacity * Load Factor = 12
+    15.2.6 Resize: Doubles (16 → 32 → 64...)
+    15.2.7 Treeification (Java 8+)
+          - TREEIFY_THRESHOLD = 8
+          - UNTREEIFY_THRESHOLD = 6
+          - MIN_TREEIFY_CAPACITY = 64
+    15.2.8 Null Key: Allowed (Only One, stored at index 0)
+    15.2.9 Null Value: Allowed (Multiple)
+    15.2.10 Time Complexity
+          - put(): O(1) average, O(log n) worst case (Java 8+)
+          - get(): O(1) average, O(log n) worst case
+    15.2.11 Not Thread Safe
+    15.2.12 Not Ordered
+    15.2.13 Constructors
+
+15.3 LinkedHashMap
+    15.3.1 Maintains Insertion Order
+    15.3.2 Internal Working: HashMap + Doubly Linked List
+    15.3.3 Access-Order Mode (LRU Cache Implementation) ⭐
+    15.3.4 removeEldestEntry() Method
+    15.3.5 Slightly Slower than HashMap
+
+15.4 TreeMap ⭐⭐
+    15.4.1 What is TreeMap?
+    15.4.2 Internal Working: Red-Black Tree
+    15.4.3 Sorted by Keys (Natural or Custom Order)
+    15.4.4 Implements NavigableMap, SortedMap
+    15.4.5 Null Key: NOT Allowed
+    15.4.6 Time Complexity: O(log n)
+    15.4.7 NavigableMap Methods
+          - firstKey(), lastKey(), firstEntry(), lastEntry()
+          - higherKey(), lowerKey(), ceilingKey(), floorKey()
+          - pollFirstEntry(), pollLastEntry()
+          - descendingMap()
+          - headMap(), tailMap(), subMap()
+    15.4.8 Custom Comparator with TreeMap
+
+15.5 Hashtable (Legacy)
+    15.5.1 Synchronized (Thread-Safe)
+    15.5.2 No Null Key or Value
+    15.5.3 Legacy Class
+    15.5.4 HashMap vs Hashtable ⭐⭐
+
+15.6 ConcurrentHashMap ⭐⭐
+    15.6.1 What is ConcurrentHashMap?
+    15.6.2 Thread-Safe without Synchronizing Entire Map
+    15.6.3 Segment Locking (Java 7) vs Node-Level Locking (Java 8+)
+    15.6.4 No Null Key or Value
+    15.6.5 ConcurrentHashMap vs HashMap vs Hashtable vs
+           Collections.synchronizedMap() ⭐⭐
+    15.6.6 Atomic Operations
+
+15.7 WeakHashMap
+    15.7.1 Weak References as Keys
+    15.7.2 Entries Removed When Key is GC'ed
+    15.7.3 Use Cases (Caching)
+
+15.8 IdentityHashMap
+    15.8.1 Uses == Instead of equals()
+    15.8.2 Use Cases
+
+15.9 EnumMap
+    15.9.1 Keys Must be Enum
+    15.9.2 Very Efficient
+    15.9.3 Maintained in Enum Order
+
+15.10 HashMap vs LinkedHashMap vs TreeMap ⭐⭐
+    15.10.1 Comparison Table
+    15.10.2 Ordering
+    15.10.3 Performance
+    15.10.4 Null Handling
+    15.10.5 Use Cases
+
+15.11 Interview Questions on Chapter 15
+```
+
+---
+
+### **Chapter 16: Queue, Deque & Priority Queue**
+
+```
+16.1 Queue Interface
+    16.1.1 FIFO (First In, First Out)
+    16.1.2 Queue Methods
+          - add() vs offer()
+          - remove() vs poll()
+          - element() vs peek()
+    16.1.3 Throws Exception vs Returns Special Value
+
+16.2 PriorityQueue ⭐⭐
+    16.2.1 What is PriorityQueue?
+    16.2.2 Internal Working: Binary Heap (Min-Heap by default)
+    16.2.3 Natural Ordering or Custom Comparator
+    16.2.4 NOT FIFO
+    16.2.5 Time Complexity
+          - offer(): O(log n)
+          - poll(): O(log n)
+          - peek(): O(1)
+    16.2.6 No Null Elements
+    16.2.7 Use Cases
+
+16.3 Deque Interface
+    16.3.1 Double-Ended Queue
+    16.3.2 Methods: addFirst, addLast, removeFirst, removeLast, etc.
+    16.3.3 Can Be Used as Stack AND Queue
+
+16.4 ArrayDeque ⭐
+    16.4.1 Resizable Array Implementation
+    16.4.2 Faster than Stack and LinkedList
+    16.4.3 No Null Elements
+    16.4.4 Use as Stack (push, pop, peek)
+    16.4.5 Use as Queue (offer, poll, peek)
+
+16.5 LinkedList as Queue/Deque
+    16.5.1 Implements Both List and Deque
+
+16.6 BlockingQueue (Preview for Multithreading)
+    16.6.1 ArrayBlockingQueue
+    16.6.2 LinkedBlockingQueue
+    16.6.3 PriorityBlockingQueue
+    16.6.4 Producer-Consumer Pattern
+
+16.7 Interview Questions on Chapter 16
+```
+
+---
+
+### **Chapter 17: Collections Utility Class & Sorting**
+
+```
+17.1 Collections Class (java.util.Collections)
+    17.1.1 sort()
+    17.1.2 reverse()
+    17.1.3 shuffle()
+    17.1.4 min(), max()
+    17.1.5 frequency()
+    17.1.6 binarySearch()
+    17.1.7 unmodifiableList/Set/Map()
+    17.1.8 synchronizedList/Set/Map()
+    17.1.9 singletonList/Set/Map()
+    17.1.10 emptyList/Set/Map()
+    17.1.11 disjoint()
+    17.1.12 swap()
+    17.1.13 rotate()
+    17.1.14 replaceAll()
+
+17.2 Sorting in Java ⭐⭐
+    17.2.1 Comparable Interface (Natural Ordering)
+          - compareTo() Method
+          - Single Sorting Criteria
+    17.2.2 Comparator Interface (Custom Ordering) ⭐
+          - compare() Method
+          - Multiple Sorting Criteria
+          - Anonymous Class Implementation
+          - Lambda Expression Implementation
+    17.2.3 Comparable vs Comparator ⭐⭐
+    17.2.4 Sorting with Java 8 Comparator Methods
+          - Comparator.comparing()
+          - thenComparing()
+          - reversed()
+          - naturalOrder(), reverseOrder()
+          - nullsFirst(), nullsLast()
+    17.2.5 Collections.sort() vs List.sort() vs Arrays.sort()
+    17.2.6 Sorting Algorithm Used (TimSort)
+
+17.3 Immutable Collections
+    17.3.1 Collections.unmodifiableXxx()
+    17.3.2 List.of(), Set.of(), Map.of() (Java 9+)
+    17.3.3 List.copyOf(), Set.copyOf(), Map.copyOf() (Java 10+)
+    17.3.4 UnsupportedOperationException
+
+17.4 Fail-Fast vs Fail-Safe Iterators ⭐
+    17.4.1 Fail-Fast: ArrayList, HashMap (ConcurrentModificationException)
+    17.4.2 Fail-Safe: CopyOnWriteArrayList, ConcurrentHashMap
+    17.4.3 modCount Mechanism
+
+17.5 Interview Questions on Chapter 17
+```
+
+---
+
+## **PART 5: GENERICS**
+
+---
+
+### **Chapter 18: Generics**
+
+```
+18.1 What are Generics?
+    18.1.1 Definition
+    18.1.2 Why Generics? (Type Safety)
+    18.1.3 Before Generics (Raw Types, Casting)
+    18.1.4 Compile-Time Type Checking
+
+18.2 Generic Classes
+    18.2.1 Syntax: class Box<T> { }
+    18.2.2 Type Parameters: T, E, K, V, N, S
+    18.2.3 Multiple Type Parameters: class Pair<K, V> { }
+    18.2.4 Creating Objects of Generic Class
+
+18.3 Generic Methods
+    18.3.1 Syntax: <T> void method(T param)
+    18.3.2 Type Inference
+    18.3.3 Generic Methods in Non-Generic Class
+
+18.4 Generic Interfaces
+    18.4.1 Defining and Implementing
+    18.4.2 Comparable<T> as Example
+
+18.5 Bounded Type Parameters ⭐
+    18.5.1 Upper Bound: <T extends Number>
+    18.5.2 Multiple Bounds: <T extends A & B & C>
+    18.5.3 Class + Interface Bounds
+
+18.6 Wildcards ⭐⭐
+    18.6.1 Unbounded Wildcard: <?>
+    18.6.2 Upper Bounded: <? extends Type> (Covariance)
+    18.6.3 Lower Bounded: <? super Type> (Contravariance)
+    18.6.4 PECS: Producer Extends, Consumer Super ⭐
+    18.6.5 When to Use Which Wildcard
+
+18.7 Type Erasure ⭐
+    18.7.1 What is Type Erasure?
+    18.7.2 How Generics Work at Compile Time vs Runtime
+    18.7.3 Bridge Methods
+    18.7.4 Restrictions Due to Type Erasure
+          - Cannot create instances of type parameter
+          - Cannot create arrays of parameterized types
+          - Cannot use instanceof with parameterized types
+          - Cannot create, catch, or throw generic exceptions
+
+18.8 Generic Restrictions
+    18.8.1 No Primitive Types (Use Wrappers)
+    18.8.2 No Static Fields of Type Parameter
+    18.8.3 No Generic Array Creation
+
+18.9 Raw Types and Backward Compatibility
+    18.9.1 What are Raw Types?
+    18.9.2 Unchecked Warnings
+    18.9.3 @SuppressWarnings("unchecked")
+
+18.10 Interview Questions on Chapter 18
+```
+
+---
+
+## **PART 6: JAVA 8+ FEATURES**
+
+---
+
+### **Chapter 19: Lambda Expressions**
+
+```
+19.1 What is a Lambda Expression?
+    19.1.1 Definition
+    19.1.2 Anonymous Function
+    19.1.3 Syntax: (parameters) -> expression/body
+    19.1.4 Evolution: Anonymous Class → Lambda
+
+19.2 Functional Interfaces ⭐⭐
+    19.2.1 What is a Functional Interface?
+    19.2.2 @FunctionalInterface Annotation
+    19.2.3 SAM (Single Abstract Method)
+    19.2.4 Built-in Functional Interfaces (java.util.function)
+          - Predicate<T> (test method, returns boolean)
+          - Function<T,R> (apply method, transforms)
+          - Consumer<T> (accept method, consumes)
+          - Supplier<T> (get method, produces)
+          - BiPredicate<T,U>
+          - BiFunction<T,U,R>
+          - BiConsumer<T,U>
+          - UnaryOperator<T> (extends Function)
+          - BinaryOperator<T> (extends BiFunction)
+    19.2.5 Method Chaining: and(), or(), negate(), compose(), andThen()
+
+19.3 Lambda Expression Syntax Variations
+    19.3.1 No Parameters: () -> expression
+    19.3.2 One Parameter: x -> expression (No parentheses needed)
+    19.3.3 Multiple Parameters: (x, y) -> expression
+    19.3.4 Multiple Statements: (x, y) -> { statements; return value; }
+    19.3.5 Type Inference in Parameters
+
+19.4 Lambda with Collections
+    19.4.1 forEach()
+    19.4.2 sort() with Comparator Lambda
+    19.4.3 removeIf()
+
+19.5 Variable Capture in Lambda
+    19.5.1 Effectively Final Variables
+    19.5.2 Cannot Modify Local Variables
+    19.5.3 Can Access Instance and Static Variables
+
+19.6 Method References ⭐⭐
+    19.6.1 What is Method Reference?
+    19.6.2 Types of Method References
+          - Static Method: ClassName::staticMethod
+          - Instance Method of Particular Object: obj::instanceMethod
+          - Instance Method of Arbitrary Object: ClassName::instanceMethod
+          - Constructor Reference: ClassName::new
+    19.6.3 When to Use Method Reference vs Lambda
+
+19.7 Lambda vs Anonymous Class
+    19.7.1 Comparison
+    19.7.2 'this' Keyword Difference
+    19.7.3 Performance
+    19.7.4 Scope
+
+19.8 Interview Questions on Chapter 19
+```
+
+---
+
+### **Chapter 20: Stream API ⭐⭐⭐**
+
+```
+20.1 What is Stream API?
+    20.1.1 Definition
+    20.1.2 Not a Data Structure
+    20.1.3 Declarative Style (What to do, not How)
+    20.1.4 Lazy Evaluation
+    20.1.5 Can Be Consumed Only Once
+    20.1.6 Pipeline: Source → Intermediate Ops → Terminal Op
+
+20.2 Creating Streams
+    20.2.1 From Collection: collection.stream()
+    20.2.2 From Array: Arrays.stream(arr) or Stream.of(arr)
+    20.2.3 Stream.of(values)
+    20.2.4 Stream.empty()
+    20.2.5 Stream.generate(Supplier)
+    20.2.6 Stream.iterate(seed, function)
+    20.2.7 Stream.iterate(seed, predicate, function) (Java 9+)
+    20.2.8 IntStream, LongStream, DoubleStream
+    20.2.9 IntStream.range(), IntStream.rangeClosed()
+    20.2.10 Files.lines() (Stream of Strings from File)
+    20.2.11 String.chars()
+
+20.3 Intermediate Operations (Lazy, Return Stream)
+    20.3.1 filter(Predicate<T>)
+    20.3.2 map(Function<T,R>)
+    20.3.3 flatMap(Function<T, Stream<R>>)
+    20.3.4 distinct()
+    20.3.5 sorted()
+    20.3.6 sorted(Comparator)
+    20.3.7 peek(Consumer) - For debugging
+    20.3.8 limit(long n)
+    20.3.9 skip(long n)
+    20.3.10 mapToInt(), mapToLong(), mapToDouble()
+    20.3.11 boxed()
+    20.3.12 takeWhile(Predicate) (Java 9+)
+    20.3.13 dropWhile(Predicate) (Java 9+)
+
+20.4 Terminal Operations (Eager, Trigger Processing)
+    20.4.1 forEach(Consumer)
+    20.4.2 forEachOrdered(Consumer)
+    20.4.3 toArray()
+    20.4.4 collect(Collector) ⭐
+    20.4.5 reduce(BinaryOperator) ⭐
+    20.4.6 reduce(identity, BinaryOperator)
+    20.4.7 count()
+    20.4.8 min(Comparator), max(Comparator)
+    20.4.9 findFirst()
+    20.4.10 findAny()
+    20.4.11 anyMatch(Predicate)
+    20.4.12 allMatch(Predicate)
+    20.4.13 noneMatch(Predicate)
+    20.4.14 toList() (Java 16+)
+
+20.5 Collectors Class ⭐⭐⭐
+    20.5.1 Collectors.toList()
+    20.5.2 Collectors.toUnmodifiableList()
+    20.5.3 Collectors.toSet()
+    20.5.4 Collectors.toMap()
+    20.5.5 Collectors.toCollection()
+    20.5.6 Collectors.joining()
+    20.5.7 Collectors.joining(delimiter)
+    20.5.8 Collectors.joining(delimiter, prefix, suffix)
+    20.5.9 Collectors.counting()
+    20.5.10 Collectors.summarizingInt/Long/Double()
+    20.5.11 Collectors.averagingInt/Long/Double()
+    20.5.12 Collectors.summingInt/Long/Double()
+    20.5.13 Collectors.maxBy(), minBy()
+    20.5.14 Collectors.groupingBy() ⭐⭐
+    20.5.15 Collectors.groupingBy() with downstream collector
+    20.5.16 Collectors.partitioningBy()
+    20.5.17 Collectors.mapping()
+    20.5.18 Collectors.reducing()
+    20.5.19 Collectors.collectingAndThen()
+    20.5.20 Custom Collector
+
+20.6 Parallel Streams
+    20.6.1 What is Parallel Stream?
+    20.6.2 parallelStream() or stream().parallel()
+    20.6.3 ForkJoinPool
+    20.6.4 When to Use Parallel Streams
+    20.6.5 When NOT to Use
+    20.6.6 Thread Safety Concerns
+    20.6.7 Order Preservation
+
+20.7 Optional Class ⭐⭐
+    20.7.1 What is Optional?
+    20.7.2 Why Optional? (Avoid NullPointerException)
+    20.7.3 Creating Optional
+          - Optional.of(value)
+          - Optional.ofNullable(value)
+          - Optional.empty()
+    20.7.4 Checking Value
+          - isPresent()
+          - isEmpty() (Java 11+)
+          - ifPresent(Consumer)
+          - ifPresentOrElse(Consumer, Runnable) (Java 9+)
+    20.7.5 Getting Value
+          - get() (Throws NoSuchElementException)
+          - orElse(defaultValue)
+          - orElseGet(Supplier)
+          - orElseThrow()
+          - orElseThrow(ExceptionSupplier)
+    20.7.6 Transforming
+          - map(Function)
+          - flatMap(Function)
+          - filter(Predicate)
+    20.7.7 Stream of Optional
+          - stream() (Java 9+)
+    20.7.8 or(Supplier<Optional>) (Java 9+)
+    20.7.9 Best Practices
+          - Don't Use as Method Parameter
+          - Use as Return Type
+          - Don't Use get() Without isPresent()
+
+20.8 Stream API Interview Problems
+    20.8.1 Find Second Highest Number
+    20.8.2 Find Duplicate Elements
+    20.8.3 Find First Non-Repeated Character
+    20.8.4 Count Occurrence of Each Character
+    20.8.5 Sort Map by Values
+    20.8.6 Flatten List of Lists
+    20.8.7 Group Employees by Department
+    20.8.8 Find Average Salary per Department
+    20.8.9 Palindrome Check Using Streams
+    20.8.10 FizzBuzz Using Streams
+
+20.9 Interview Questions on Chapter 20
+```
+
+---
+
+### **Chapter 21: Date and Time API (Java 8+)**
+
+```
+21.1 Problems with Old Date API
+    21.1.1 java.util.Date Issues
+    21.1.2 java.util.Calendar Issues
+    21.1.3 SimpleDateFormat Thread Safety Issue
+
+21.2 New Date-Time API (java.time package)
+    21.2.1 LocalDate
+    21.2.2 LocalTime
+    21.2.3 LocalDateTime
+    21.2.4 ZonedDateTime
+    21.2.5 Instant
+    21.2.6 Duration
+    21.2.7 Period
+    21.2.8 ZoneId
+    21.2.9 DateTimeFormatter
+    21.2.10 OffsetDateTime
+    21.2.11 OffsetTime
+
+21.3 Common Operations
+    21.3.1 Creating Date/Time Objects (now(), of(), parse())
+    21.3.2 Formatting (format())
+    21.3.3 Parsing (parse())
+    21.3.4 Adding/Subtracting (plusDays, minusHours, etc.)
+    21.3.5 Comparing (isBefore, isAfter, isEqual)
+    21.3.6 Converting Between Types
+    21.3.7 Date to LocalDate and Vice Versa
+
+21.4 Interview Questions on Chapter 21
+```
+
+---
+
+## **PART 7: MULTITHREADING & CONCURRENCY**
+
+---
+
+### **Chapter 22: Multithreading Fundamentals**
+
+```
+22.1 Introduction to Multithreading
+    22.1.1 What is a Process?
+    22.1.2 What is a Thread?
+    22.1.3 Process vs Thread ⭐
+    22.1.4 Multitasking vs Multithreading
+    22.1.5 Benefits of Multithreading
+    22.1.6 Challenges of Multithreading
+
+22.2 Creating Threads ⭐⭐
+    22.2.1 Extending Thread Class
+    22.2.2 Implementing Runnable Interface
+    22.2.3 Thread vs Runnable (Which is Better?) ⭐
+    22.2.4 Implementing Callable Interface (Returns Value)
+    22.2.5 Using Lambda with Runnable
+    22.2.6 Thread Class Constructors
+
+22.3 Thread Lifecycle (States) ⭐⭐
+    22.3.1 NEW
+    22.3.2 RUNNABLE
+    22.3.3 BLOCKED
+    22.3.4 WAITING
+    22.3.5 TIMED_WAITING
+    22.3.6 TERMINATED
+    22.3.7 State Transition Diagram
+    22.3.8 Thread.getState()
+
+22.4 Thread Class Methods ⭐
+    22.4.1 start() vs run() ⭐
+    22.4.2 sleep(long millis)
+    22.4.3 join() (Wait for Thread to Complete)
+    22.4.4 yield() (Give Chance to Other Threads)
+    22.4.5 interrupt(), isInterrupted(), interrupted()
+    22.4.6 setName(), getName()
+    22.4.7 setPriority(), getPriority()
+    22.4.8 isAlive()
+    22.4.9 setDaemon(), isDaemon()
+    22.4.10 currentThread()
+    22.4.11 getId()
+
+22.5 Thread Priority
+    22.5.1 MIN_PRIORITY (1)
+    22.5.2 NORM_PRIORITY (5) - Default
+    22.5.3 MAX_PRIORITY (10)
+    22.5.4 Priority is a Hint (Not Guaranteed)
+
+22.6 Daemon Threads
+    22.6.1 What is a Daemon Thread?
+    22.6.2 User Thread vs Daemon Thread
+    22.6.3 Garbage Collector as Daemon Thread
+    22.6.4 JVM Exits When All User Threads Finish
+    22.6.5 setDaemon() Before start()
+
+22.7 Thread Groups
+    22.7.1 What is ThreadGroup?
+    22.7.2 Purpose
+    22.7.3 Basic Usage
+
+22.8 Interview Questions on Chapter 22
+```
+
+---
+
+### **Chapter 23: Synchronization & Thread Safety**
+
+```
+23.1 Thread Safety Issues
+    23.1.1 Race Condition ⭐
+    23.1.2 Data Inconsistency
+    23.1.3 Visibility Problem
+    23.1.4 Atomicity Problem
+
+23.2 Synchronization ⭐⭐⭐
+    23.2.1 What is Synchronization?
+    23.2.2 Monitor/Lock Concept
+    23.2.3 Synchronized Method
+    23.2.4 Synchronized Block
+    23.2.5 Synchronized Method vs Synchronized Block ⭐
+    23.2.6 Object-Level Lock vs Class-Level Lock
+    23.2.7 Reentrant Synchronization
+    23.2.8 Performance Impact of Synchronization
+
+23.3 volatile Keyword ⭐⭐
+    23.3.1 What is volatile?
+    23.3.2 Visibility Guarantee
+    23.3.3 No Atomicity Guarantee
+    23.3.4 When to Use volatile
+    23.3.5 volatile vs synchronized ⭐
+
+23.4 Inter-Thread Communication ⭐⭐
+    23.4.1 wait() Method
+    23.4.2 notify() Method
+    23.4.3 notifyAll() Method
+    23.4.4 Producer-Consumer Problem
+    23.4.5 Why wait/notify Must Be in Synchronized Block
+    23.4.6 Spurious Wakeups
+
+23.5 Deadlock ⭐⭐⭐
+    23.5.1 What is Deadlock?
+    23.5.2 Deadlock Example (Classic)
+    23.5.3 Four Conditions for Deadlock
+          - Mutual Exclusion
+          - Hold and Wait
+          - No Preemption
+          - Circular Wait
+    23.5.4 How to Detect Deadlock
+          - Thread Dump
+          - jstack Tool
+          - ThreadMXBean
+    23.5.5 How to Prevent/Avoid Deadlock ⭐
+    23.5.6 Livelock
+    23.5.7 Starvation
+
+23.6 Thread-Safe Collections
+    23.6.1 Vector, Hashtable (Legacy Synchronized)
+    23.6.2 Collections.synchronizedXxx()
+    23.6.3 ConcurrentHashMap
+    23.6.4 CopyOnWriteArrayList
+    23.6.5 CopyOnWriteArraySet
+    23.6.6 BlockingQueue
+
+23.7 Atomic Classes (java.util.concurrent.atomic) ⭐
+    23.7.1 AtomicInteger
+    23.7.2 AtomicLong
+    23.7.3 AtomicBoolean
+    23.7.4 AtomicReference
+    23.7.5 CAS (Compare-And-Swap) Operation
+    23.7.6 Lock-Free Programming
+
+23.8 Interview Questions on Chapter 23
+```
+
+---
+
+### **Chapter 24: Concurrency Utilities (java.util.concurrent)**
+
+```
+24.1 Executor Framework ⭐⭐
+    24.1.1 Why Executor Framework?
+    24.1.2 Executor Interface
+    24.1.3 ExecutorService Interface
+    24.1.4 Executors Factory Class
+    24.1.5 Thread Pool Types
+          - newFixedThreadPool(int n)
+          - newCachedThreadPool()
+          - newSingleThreadExecutor()
+          - newScheduledThreadPool(int n)
+          - newWorkStealingPool() (Java 8+)
+    24.1.6 submit() vs execute()
+    24.1.7 Shutdown: shutdown() vs shutdownNow()
+    24.1.8 awaitTermination()
+
+24.2 Callable and Future ⭐⭐
+    24.2.1 Callable<V> Interface
+    24.2.2 Future<V> Interface
+    24.2.3 FutureTask
+    24.2.4 get(), isDone(), cancel(), isCancelled()
+    24.2.5 Callable vs Runnable ⭐
+    24.2.6 CompletableFuture (Java 8+) ⭐⭐
+          - supplyAsync(), runAsync()
+          - thenApply(), thenAccept(), thenRun()
+          - thenCompose(), thenCombine()
+          - exceptionally(), handle()
+          - allOf(), anyOf()
+
+24.3 Locks (java.util.concurrent.locks)
+    24.3.1 Lock Interface
+    24.3.2 ReentrantLock ⭐
+          - lock(), unlock(), tryLock()
+          - Fair vs Unfair Lock
+    24.3.3 ReadWriteLock
+    24.3.4 ReentrantReadWriteLock
+    24.3.5 StampedLock (Java 8+)
+    24.3.6 Lock vs synchronized ⭐
+
+24.4 Semaphore, CountDownLatch, CyclicBarrier
+    24.4.1 Semaphore
+    24.4.2 CountDownLatch ⭐
+    24.4.3 CyclicBarrier
+    24.4.4 CountDownLatch vs CyclicBarrier ⭐
+    24.4.5 Phaser
+    24.4.6 Exchanger
+
+24.5 Fork/Join Framework
+    24.5.1 ForkJoinPool
+    24.5.2 RecursiveTask (Returns Result)
+    24.5.3 RecursiveAction (No Result)
+    24.5.4 Work-Stealing Algorithm
+    24.5.5 fork() and join()
+
+24.6 ThreadLocal ⭐
+    24.6.1 What is ThreadLocal?
+    24.6.2 Use Cases
+    24.6.3 get(), set(), remove()
+    24.6.4 Memory Leak with ThreadLocal
+
+24.7 Interview Questions on Chapter 24
+```
+
+---
+
+## **PART 8: I/O AND FILE HANDLING**
+
+---
+
+### **Chapter 25: Input/Output (I/O)**
+
+```
+25.1 I/O Streams Overview
+    25.1.1 What is a Stream in I/O?
+    25.1.2 Byte Streams vs Character Streams ⭐
+    25.1.3 Input Streams vs Output Streams
+    25.1.4 I/O Class Hierarchy
+
+25.2 Byte Streams
+    25.2.1 InputStream (Abstract)
+    25.2.2 OutputStream (Abstract)
+    25.2.3 FileInputStream
+    25.2.4 FileOutputStream
+    25.2.5 BufferedInputStream
+    25.2.6 BufferedOutputStream
+    25.2.7 ByteArrayInputStream / ByteArrayOutputStream
+    25.2.8 DataInputStream / DataOutputStream
+    25.2.9 ObjectInputStream / ObjectOutputStream (Serialization)
+
+25.3 Character Streams
+    25.3.1 Reader (Abstract)
+    25.3.2 Writer (Abstract)
+    25.3.3 FileReader
+    25.3.4 FileWriter
+    25.3.5 BufferedReader
+    25.3.6 BufferedWriter
+    25.3.7 InputStreamReader (Bridge: Byte → Character)
+    25.3.8 OutputStreamWriter (Bridge: Character → Byte)
+    25.3.9 PrintWriter
+
+25.4 File Class
+    25.4.1 Creating File Objects
+    25.4.2 File Methods: exists(), isFile(), isDirectory(), getName(), etc.
+    25.4.3 Creating Files and Directories
+    25.4.4 Listing Files in Directory
+    25.4.5 Deleting Files
+
+25.5 Serialization and Deserialization ⭐⭐
+    25.5.1 What is Serialization?
+    25.5.2 Serializable Interface (Marker)
+    25.5.3 serialVersionUID ⭐
+    25.5.4 transient Keyword ⭐
+    25.5.5 ObjectOutputStream / ObjectInputStream
+    25.5.6 Custom Serialization (writeObject/readObject)
+    25.5.7 Externalizable Interface
+    25.5.8 Serialization with Inheritance
+    25.5.9 Serialization Best Practices
+
+25.6 NIO (New I/O) - java.nio
+    25.6.1 Path Interface (Java 7+)
+    25.6.2 Paths Class
+    25.6.3 Files Class ⭐
+          - Files.readAllLines()
+          - Files.write()
+          - Files.readString() (Java 11+)
+          - Files.writeString() (Java 11+)
+          - Files.copy(), Files.move(), Files.delete()
+          - Files.exists(), Files.isDirectory()
+          - Files.list(), Files.walk()
+          - Files.lines() (Stream)
+    25.6.4 Buffers, Channels (Overview)
+
+25.7 try-with-resources with I/O (Recap)
+
+25.8 Interview Questions on Chapter 25
+```
+
+---
+
+## **PART 9: ADVANCED JAVA CONCEPTS**
+
+---
+
+### **Chapter 26: Enum (Enumerations)**
+
+```
+26.1 What is an Enum?
+    26.1.1 Definition
+    26.1.2 Why Enums? (Type Safety)
+    26.1.3 Syntax
+    26.1.4 Enum Constants
+
+26.2 Enum Features
+    26.2.1 Enums are Implicitly final
+    26.2.2 Enum Extends java.lang.Enum
+    26.2.3 Cannot Extend Other Classes
+    26.2.4 Can Implement Interfaces
+    26.2.5 Enum Constructors (Always Private)
+    26.2.6 Fields and Methods in Enum
+    26.2.7 Abstract Methods in Enum (Constant-Specific Behavior)
+
+26.3 Enum Methods
+    26.3.1 values()
+    26.3.2 valueOf(String)
+    26.3.3 ordinal()
+    26.3.4 name()
+    26.3.5 compareTo()
+
+26.4 Enum in switch Statement
+26.5 EnumSet and EnumMap
+26.6 Enum vs Constants (public static final)
+26.7 Enum Singleton Pattern ⭐
+
+26.8 Interview Questions on Chapter 26
+```
+
+---
+
+### **Chapter 27: Annotations**
+
+```
+27.1 What are Annotations?
+    27.1.1 Definition
+    27.1.2 Purpose
+
+27.2 Built-in Annotations
+    27.2.1 @Override
+    27.2.2 @Deprecated
+    27.2.3 @SuppressWarnings
+    27.2.4 @FunctionalInterface
+    27.2.5 @SafeVarargs
+
+27.3 Meta-Annotations
+    27.3.1 @Target
+    27.3.2 @Retention
+    27.3.3 @Documented
+    27.3.4 @Inherited
+    27.3.5 @Repeatable
+
+27.4 Custom Annotations
+    27.4.1 Creating Custom Annotation
+    27.4.2 Elements/Attributes
+    27.4.3 Default Values
+    27.4.4 Processing with Reflection
+
+27.5 Interview Questions on Chapter 27
+```
+
+---
+
+### **Chapter 28: Reflection API**
+
+```
+28.1 What is Reflection?
+    28.1.1 Definition
+    28.1.2 java.lang.reflect Package
+
+28.2 Class Object
+    28.2.1 Getting Class Object (3 Ways)
+    28.2.2 Class Methods
+
+28.3 Reflection Operations
+    28.3.1 Getting Constructors, Methods, Fields
+    28.3.2 Accessing Private Members
+    28.3.3 Creating Instances
+    28.3.4 Invoking Methods
+
+28.4 Drawbacks of Reflection
+    28.4.1 Performance Overhead
+    28.4.2 Security Issues
+    28.4.3 Breaking Encapsulation
+
+28.5 Interview Questions on Chapter 28
+```
+
+---
+
+### **Chapter 29: Java Memory Management & Garbage Collection**
+
+```
+29.1 JVM Memory Areas (Detailed) ⭐⭐
+    29.1.1 Heap Area
+          - Young Generation (Eden, Survivor S0, S1)
+          - Old Generation (Tenured)
+    29.1.2 Stack Area
+          - Stack Frame: Local Variables, Operand Stack, Frame Data
+    29.1.3 Method Area / Metaspace
+    29.1.4 PC Register
+    29.1.5 Native Method Stack
+
+29.2 Stack vs Heap ⭐⭐
+    29.2.1 What is Stored Where?
+    29.2.2 Thread-Specific vs Shared
+    29.2.3 Lifetime
+    29.2.4 Performance
+
+29.3 Garbage Collection ⭐⭐
+    29.3.1 What is GC?
+    29.3.2 Reachability Analysis (GC Roots)
+    29.3.3 Mark and Sweep Algorithm
+    29.3.4 Minor GC (Young Generation)
+    29.3.5 Major/Full GC (Old Generation)
+    29.3.6 GC Algorithms
+          - Serial GC
+          - Parallel GC
+          - CMS (Concurrent Mark Sweep)
+          - G1 GC (Garbage First) ⭐
+          - ZGC (Java 11+)
+          - Shenandoah
+    29.3.7 System.gc() and Runtime.gc()
+    29.3.8 finalize() Method (Deprecated)
+
+29.4 Memory Leaks in Java ⭐
+    29.4.1 Common Causes
+    29.4.2 Static Collections
+    29.4.3 Unclosed Resources
+    29.4.4 ThreadLocal Misuse
+    29.4.5 Inner Class References
+    29.4.6 Listeners and Callbacks
+    29.4.7 String.intern() Misuse
+
+29.5 OutOfMemoryError
+    29.5.1 Java Heap Space
+    29.5.2 GC Overhead Limit Exceeded
+    29.5.3 Metaspace
+    29.5.4 StackOverflowError
+
+29.6 JVM Tuning Flags
+    29.6.1 -Xms, -Xmx
+    29.6.2 -Xss
+    29.6.3 -XX:MetaspaceSize
+    29.6.4 -XX:+UseG1GC
+    29.6.5 -XX:+PrintGCDetails
+
+29.7 Interview Questions on Chapter 29
+```
+
+---
+
+## **PART 10: DESIGN PATTERNS & BEST PRACTICES**
+
+---
+
+### **Chapter 30: Design Patterns in Java**
+
+```
+30.1 What are Design Patterns?
+    30.1.1 Definition
+    30.1.2 Categories: Creational, Structural, Behavioral
+    30.1.3 Gang of Four (GoF)
+
+30.2 Creational Patterns
+    30.2.1 Singleton Pattern ⭐⭐⭐
+          - Eager Initialization
+          - Lazy Initialization
+          - Thread-Safe Singleton
+          - Double-Checked Locking
+          - Bill Pugh Singleton (Inner Class)
+          - Enum Singleton
+          - Breaking Singleton (Reflection, Serialization, Cloning)
+          - Preventing Singleton Breakage
+    30.2.2 Factory Pattern ⭐⭐
+          - Simple Factory
+          - Factory Method Pattern
+    30.2.3 Abstract Factory Pattern
+    30.2.4 Builder Pattern ⭐⭐
+          - Telescoping Constructor Problem
+          - Builder Implementation
+          - Lombok @Builder
+    30.2.5 Prototype Pattern
+
+30.3 Structural Patterns
+    30.3.1 Adapter Pattern ⭐
+    30.3.2 Decorator Pattern ⭐
+    30.3.3 Proxy Pattern
+    30.3.4 Facade Pattern
+    30.3.5 Composite Pattern
+
+30.4 Behavioral Patterns
+    30.4.1 Observer Pattern ⭐
+    30.4.2 Strategy Pattern ⭐
+    30.4.3 Template Method Pattern
+    30.4.4 Iterator Pattern
+    30.4.5 Command Pattern
+
+30.5 Interview Questions on Chapter 30
+```
+
+---
+
+### **Chapter 31: SOLID Principles & Clean Code**
+
+```
+31.1 SOLID Principles ⭐⭐
+    31.1.1 S - Single Responsibility Principle
+    31.1.2 O - Open/Closed Principle
+    31.1.3 L - Liskov Substitution Principle
+    31.1.4 I - Interface Segregation Principle
+    31.1.5 D - Dependency Inversion Principle
+
+31.2 Other Important Principles
+    31.2.1 DRY (Don't Repeat Yourself)
+    31.2.2 KISS (Keep It Simple, Stupid)
+    31.2.3 YAGNI (You Ain't Gonna Need It)
+    31.2.4 Composition over Inheritance
+    31.2.5 Program to Interface, not Implementation
+    31.2.6 Favor Immutability
+
+31.3 Clean Code Practices
+    31.3.1 Meaningful Names
+    31.3.2 Small Methods
+    31.3.3 Single Level of Abstraction
+    31.3.4 Proper Exception Handling
+    31.3.5 Code Comments (When and When Not)
+
+31.4 Immutable Class ⭐⭐
+    31.4.1 What is an Immutable Class?
+    31.4.2 How to Create Immutable Class
+          - Class: final
+          - Fields: private final
+          - No Setters
+          - Deep Copy in Constructor
+          - Return Copies of Mutable Fields
+    31.4.3 String as Immutable Class Example
+    31.4.4 Advantages of Immutability
+    31.4.5 Record as Immutable (Java 14+)
+
+31.5 Interview Questions on Chapter 31
+```
+
+---
+
+## **PART 11: MODERN JAVA FEATURES**
+
+---
+
+### **Chapter 32: Java 9 to Java 21+ Features**
+
+```
+32.1 Java 9 Features
+    32.1.1 Module System (Project Jigsaw)
+    32.1.2 JShell (REPL)
+    32.1.3 Private Methods in Interface
+    32.1.4 Collection Factory Methods: List.of(), Set.of(), Map.of()
+    32.1.5 Stream Improvements: takeWhile, dropWhile, ofNullable, iterate
+    32.1.6 Optional Improvements: ifPresentOrElse, or, stream
+    32.1.7 try-with-resources Enhancement
+    32.1.8 CompletableFuture Improvements
+
+32.2 Java 10 Features
+    32.2.1 var (Local Variable Type Inference) ⭐
+    32.2.2 Unmodifiable Collections: List.copyOf(), Set.copyOf(), Map.copyOf()
+    32.2.3 Optional.orElseThrow()
+
+32.3 Java 11 Features (LTS)
+    32.3.1 String New Methods: isBlank(), lines(), strip(), repeat()
+    32.3.2 Files.readString(), Files.writeString()
+    32.3.3 var in Lambda Parameters
+    32.3.4 HttpClient (Standardized)
+    32.3.5 Running Single-File Programs: java HelloWorld.java
+
+32.4 Java 12-13 Features
+    32.4.1 Switch Expressions (Preview → Standard)
+    32.4.2 Text Blocks (Preview)
+    32.4.3 String Methods: indent(), transform()
+
+32.5 Java 14 Features
+    32.5.1 Records (Preview) ⭐⭐
+    32.5.2 Pattern Matching instanceof (Preview) ⭐
+    32.5.3 Helpful NullPointerExceptions
+    32.5.4 Switch Expressions (Standard)
+
+32.6 Java 15 Features
+    32.6.1 Text Blocks (Standard) ⭐
+    32.6.2 Sealed Classes (Preview)
+    32.6.3 String formatted()
+
+32.7 Java 16 Features
+    32.7.1 Records (Standard)
+    32.7.2 Pattern Matching instanceof (Standard)
+    32.7.3 Stream.toList()
+
+32.8 Java 17 Features (LTS) ⭐
+    32.8.1 Sealed Classes (Standard) ⭐
+    32.8.2 Pattern Matching for switch (Preview)
+    32.8.3 Enhanced Pseudo-Random Number Generators
+    32.8.4 Strong Encapsulation of JDK Internals
+
+32.9 Java 18-20 Features
+    32.9.1 Simple Web Server
+    32.9.2 UTF-8 by Default
+    32.9.3 Virtual Threads (Preview) ⭐⭐
+    32.9.4 Record Patterns
+    32.9.5 String Templates (Preview)
+
+32.10 Java 21 Features (LTS) ⭐⭐
+    32.10.1 Virtual Threads (Standard) ⭐⭐⭐
+    32.10.2 Pattern Matching for switch (Standard)
+    32.10.3 Record Patterns (Standard)
+    32.10.4 Sequenced Collections ⭐
+    32.10.5 String Templates (Preview)
+    32.10.6 Unnamed Patterns and Variables
+
+32.11 Interview Questions on Chapter 32
+```
+
+---
+
+## **PART 12: INTERVIEW PREPARATION**
+
+---
+
+### **Chapter 33: Java Coding Problems (Must Practice)**
+
+```
+33.1 String Problems (15 Problems)
+33.2 Array Problems (15 Problems)
+33.3 LinkedList Problems (10 Problems)
+33.4 Stack/Queue Problems (10 Problems)
+33.5 HashMap Problems (10 Problems)
+33.6 Stream API Problems (15 Problems)
+33.7 Multithreading Problems (10 Problems)
+33.8 OOP Design Problems (10 Problems)
+33.9 Pattern Programs (10 Problems)
+33.10 Miscellaneous Problems (10 Problems)
+```
+
+---
+
+### **Chapter 34: Top 200+ Java Interview Questions**
+
+```
+34.1 Core Java Questions (50 Questions)
+34.2 OOP Questions (30 Questions)
+34.3 String Questions (20 Questions)
+34.4 Collections Questions (30 Questions)
+34.5 Exception Handling Questions (15 Questions)
+34.6 Multithreading Questions (25 Questions)
+34.7 Java 8+ Features Questions (20 Questions)
+34.8 Memory Management & GC Questions (15 Questions)
+34.9 Design Pattern Questions (15 Questions)
+34.10 Tricky/Output-Based Questions (20 Questions)
+```
+
+---
+
+### **Chapter 35: Java Interview Quick Revision Sheet**
+
+```
+35.1 OOP Concepts - Quick Summary
+35.2 Collections Cheat Sheet
+35.3 String Cheat Sheet
+35.4 Exception Handling Cheat Sheet
+35.5 Multithreading Cheat Sheet
+35.6 Java 8+ Features Cheat Sheet
+35.7 Important Differences Table (30+ Comparisons)
+35.8 Common Mistakes and Pitfalls
+35.9 Java Keywords Reference (all 50+ keywords)
+35.10 Time Complexity Reference for Collections
+```
+
+---
+
+## 📊 SUMMARY TABLE
+
+| Part | Chapters | Topics |
+|------|----------|--------|
+| Part 1: Fundamentals | Ch 1-5 | Java Basics, Data Types, Control Flow, Arrays, Strings |
+| Part 2: OOP | Ch 6-11 | Classes, Encapsulation, Inheritance, Abstraction, Polymorphism, Inner Classes |
+| Part 3: Exceptions | Ch 12 | Exception Handling |
+| Part 4: Collections | Ch 13-17 | List, Set, Map, Queue, Sorting, Utilities |
+| Part 5: Generics | Ch 18 | Generic Classes, Methods, Wildcards, Type Erasure |
+| Part 6: Java 8+ | Ch 19-21 | Lambda, Streams, Optional, Date-Time API |
+| Part 7: Concurrency | Ch 22-24 | Threads, Synchronization, Executors, Concurrent Utils |
+| Part 8: I/O | Ch 25 | Streams, Files, Serialization, NIO |
+| Part 9: Advanced | Ch 26-29 | Enums, Annotations, Reflection, Memory Management |
+| Part 10: Design | Ch 30-31 | Design Patterns, SOLID, Clean Code |
+| Part 11: Modern Java | Ch 32 | Java 9-21 Features |
+| Part 12: Interview | Ch 33-35 | Coding Problems, 200+ Questions, Quick Revision |
+
+---
+
+> **📝 Note:** This table of contents covers **everything from absolute beginner to advanced interview preparation**. Each chapter is designed to be self-contained with theory, code examples, diagrams, and interview questions. Following this structure will give you a **complete book-quality Java reference** that doubles as an **interview preparation guide**.
