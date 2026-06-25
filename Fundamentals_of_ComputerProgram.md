@@ -9,29 +9,41 @@ I have **fixed the Mermaid syntax error** (the issue was that Mermaid requires a
 ## 📑 Table of Contents
 <a id="chapter-0-toc"></a>
 
-- <a href="#what-is-programming">0.1 What is Programming?</a>
-- <a href="#why-programs-are-made">0.2 Why Programs are Made?</a>
-- <a href="#program-execution-flow">0.3 What Happens When You Run a Program?</a>
-- <a href="#computer-components">0.4 Main Parts of Computer (Critical Analogy)</a>
-  - <a href="#storage-component">Storage (Hard Disk / SSD)</a>
-  - <a href="#ram-component">RAM (Memory)</a>
-  - <a href="#cpu-component">CPU (Brain of Computer)</a>
-- <a href="#full-program-flow">0.5 Full Program Execution Flow (Corrected Diagram)</a>
-- <a href="#program-storage-location">0.6 Where Programs are Stored?</a>
-- <a href="#computer-language">0.7 What Language Computer Understands?</a>
-- <a href="#programming-languages">0.8 Types of Programming Languages</a>
-- <a href="#compiler-vs-interpreter">0.9 Compiler vs Interpreter (Deep)</a>
-- <a href="#memory-layout">0.10 Memory Layout (Ultra Critical)</a>
-  - <a href="#code-section">Code Section</a>
-  - <a href="#data-section">Data Section</a>
-  - <a href="#bss-section">BSS Section</a>
-  - <a href="#heap-section">Heap</a>
-  - <a href="#stack-section">Stack</a>
-- <a href="#function-call-stack">0.11 Function Call Stack (Example)</a>
-- <a href="#recursion-memory">0.12 Recursion Memory (Deep)</a>
-- <a href="#program-crash">0.13 Why Programs Crash? (Visualized)</a>
-- <a href="#os-role">0.14 Operating System Role (Deep)</a>
-- <a href="#ultra-deep-topics">0.15 Ultra Deep Topics (Optional)</a>
+- [🚀 JavaScript Deep Dive Notes - Chapter 0: Fundamentals of Program Execution ](#-javascript-deep-dive-notes---chapter-0-fundamentals-of-program-execution-)
+  - [📑 Table of Contents](#-table-of-contents)
+  - [0.1 What is Programming?](#01-what-is-programming)
+  - [0.2 Why Programs are Made?](#02-why-programs-are-made)
+  - [0.3 What Happens When You Run a Program?](#03-what-happens-when-you-run-a-program)
+    - [Step-by-Step Execution Flow](#step-by-step-execution-flow)
+  - [0.4 Main Parts of Computer (Critical Analogy)](#04-main-parts-of-computer-critical-analogy)
+    - [1. Storage (Hard Disk / SSD) 📦](#1-storage-hard-disk--ssd-)
+    - [2. RAM (Memory) ⚡](#2-ram-memory-)
+    - [3. CPU (Brain of Computer) 🧠](#3-cpu-brain-of-computer-)
+  - [0.5 Full Program Execution Flow (Corrected Diagram)](#05-full-program-execution-flow-corrected-diagram)
+  - [0.6 Where Programs are Stored?](#06-where-programs-are-stored)
+  - [0.7 What Language Computer Understands?](#07-what-language-computer-understands)
+  - [0.8 Types of Programming Languages](#08-types-of-programming-languages)
+  - [0.9 Compiler vs Interpreter (Deep)](#09-compiler-vs-interpreter-deep)
+    - [Compiler (Used by C/C++)](#compiler-used-by-cc)
+    - [Interpreter (Used by Python/JavaScript)](#interpreter-used-by-pythonjavascript)
+  - [0.10 Memory Layout (Ultra Critical)](#010-memory-layout-ultra-critical)
+    - [Visualizing RAM (ASCII Representation)](#visualizing-ram-ascii-representation)
+    - [Breakdown of Sections:](#breakdown-of-sections)
+      - [1. Code Section (Text)](#1-code-section-text)
+      - [2. Data Section](#2-data-section)
+      - [3. BSS Section](#3-bss-section)
+      - [4. Heap](#4-heap)
+      - [5. Stack](#5-stack)
+  - [0.11 Function Call Stack (Example)](#011-function-call-stack-example)
+    - [Execution Flow](#execution-flow)
+  - [0.12 Recursion Memory (Deep)](#012-recursion-memory-deep)
+    - [Stack During Execution](#stack-during-execution)
+  - [0.13 Why Programs Crash? (Visualized)](#013-why-programs-crash-visualized)
+    - [1. Stack Overflow](#1-stack-overflow)
+    - [2. Heap Memory Leak](#2-heap-memory-leak)
+    - [3. Segmentation Fault](#3-segmentation-fault)
+  - [0.14 Operating System Role (Deep)](#014-operating-system-role-deep)
+  - [0.15 Ultra Deep Topics (Optional)](#015-ultra-deep-topics-optional)
 
 <a href="#chapter-0-top">⬆ Back to Top</a>
 

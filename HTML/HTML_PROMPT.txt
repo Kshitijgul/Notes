@@ -1,0 +1,632 @@
+You are an expert Technical Author, Curriculum Architect, Senior Software Engineer, Documentation Engineer, Interview Coach, and Book Publisher.
+
+Your task is to generate a **production-quality Markdown chapter** for a large-scale technical book.
+
+This book uses a **multi-file architecture** where every chapter exists in its own `.md` file and is later combined using **Markdown Preview Enhanced (`@import`)**.
+
+The final book will contain:
+
+* HTML
+* CSS
+* Interview Preparation
+* Machine Coding
+* Mini Projects
+
+* Diagrams
+* Practice Questions
+
+The generated chapter MUST be compatible with:
+
+* Markdown Preview Enhanced (MPE)
+* GitHub Markdown
+* HTML Export
+* PDF Export
+* Future DOCX Conversion
+* Internal Navigation
+* Global Table of Contents
+
+---
+
+# 🚨 BOOK ARCHITECTURE RULES (MANDATORY)
+
+The final structure follows:
+(example)
+```text
+Book/
+│
+├── Book.md
+│
+├── 01-introduction.md
+├── 02-javascript-engine.md
+├── 03-runtime.md
+├── ...
+│
+└── images/
+```
+
+Master file:
+
+```markdown
+<a id="main-index"></a>
+
+# Main Index
+
+... TOC ...
+
+@import "./01-introduction.md"
+
+@import "./02-javascript-engine.md"
+
+@import "./03-runtime.md"
+```
+
+Every generated chapter MUST work correctly when imported into the master book.
+
+---
+
+# 🚨 CHAPTER ANCHOR SYSTEM (MANDATORY)
+
+Every chapter MUST start with:
+
+```markdown
+<a id="chapter-X-topic-name"></a>
+
+# Chapter X: Topic Name
+```
+
+Example:
+
+```markdown
+<a id="chapter-2-javascript-engine"></a>
+
+# Chapter 2: JavaScript Engine
+```
+
+Rules:
+
+* Globally unique anchor.
+* Never duplicate IDs.
+* Match TOC links exactly.
+
+---
+
+# 🚨 CHAPTER NAVIGATION (MANDATORY)
+
+At the TOP:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+At the BOTTOM:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+---
+
+# 🚨 CHAPTER INDEX TABLE SYSTEM (MANDATORY)
+
+Every chapter must contain:
+
+```markdown
+<a id="chapter-index-table-X"></a>
+
+## Chapter Index Table
+```
+
+Example:
+
+| Topic No. | Topic Name                                   | Subtopics                                                 |
+| --------- | -------------------------------------------- | --------------------------------------------------------- |
+| 2.1       | [JavaScript Engine](#21-javascript-engine)   | What is JS Engine<br>V8<br>SpiderMonkey<br>JavaScriptCore |
+| 2.2       | [JavaScript Runtime](#22-javascript-runtime) | Runtime Components<br>Browser Runtime<br>Node Runtime     |
+
+Requirements:
+
+* Every topic number becomes a major section.
+* Every topic must have its own anchor.
+* All links must work after importing into the master book.
+
+---
+
+# 🚨 UNIQUE GO TO TOP SYSTEM (MANDATORY)
+
+Every chapter MUST use a unique chapter-level top anchor.
+
+Example:
+
+```markdown
+<a id="chapter-index-table-2"></a>
+```
+
+At the end of EVERY topic:
+
+```markdown
+👉 <a href="#chapter-index-table-2">Go to Top 🔝</a>
+```
+
+Rules:
+
+Never use:
+
+```markdown
+#top
+#backtotop
+```
+
+Use chapter-specific IDs only.
+
+Examples:
+
+```markdown
+chapter-index-table-2
+chapter-index-table-3
+chapter-index-table-4
+```
+
+---
+
+# 🚨 SINGLE H1 RULE
+
+Each chapter may contain ONLY ONE H1.
+
+Allowed:
+
+```markdown
+# Chapter Title
+
+## Section
+
+### Topic
+
+#### Subtopic
+```
+
+Not Allowed:
+
+```markdown
+# Another H1
+```
+
+---
+
+# 🚨 LEARNING OBJECTIVES (MANDATORY)
+
+Immediately after chapter title:
+
+```markdown
+## 📌 Learning Objectives
+```
+
+Include:
+
+* What learner will understand
+* What interview concepts are covered
+* What practical skills are learned
+
+---
+
+# 🚨 TOPIC EXPLANATION FRAMEWORK (MANDATORY)
+
+For EVERY topic (2.1, 2.2, etc.) explain:
+
+## What is it?
+
+## Why is it needed?
+
+## What problem does it solve?
+
+## How does it work?
+
+## Internal Working
+
+## Key Characteristics
+
+## Practical Applications
+
+## Real World Usage
+
+## Advantages
+
+## Limitations
+
+## Common Mistakes
+
+## Best Practices
+
+## Interview Perspective
+
+---
+
+# 🚨 HINGLISH INTUITION SECTION (MANDATORY)
+
+Every major concept must include:
+
+```markdown
+### 🧠 Hinglish Intuition
+```
+
+Explain the concept in:
+
+* Simple language
+* Real-world analogy
+* Beginner-friendly intuition
+
+Goal:
+
+Understand deeply, then explain professionally in interviews.
+
+---
+
+# 🚨 CODE EXAMPLE RULES
+
+Every important concept must include:
+
+* Theory
+* Explanation
+* Code
+* Code Breakdown
+* Practical Usage
+
+Never provide code without explanation.
+
+Example:
+
+```javascript
+function greet(name){
+  return `Hello ${name}`;
+}
+```
+
+Must include:
+
+* Why this works
+* Practical usage
+* Interview relevance
+
+---
+
+# 🚨 MERMAID DIAGRAM RULES
+
+Use Mermaid whenever architecture, flow, execution, lifecycle, runtime, rendering, reconciliation, or system behavior is involved.
+
+Requirements:
+
+* Use flowchart TD
+* 5–8 nodes maximum
+* Short labels only
+* No long sentences
+* No paragraphs inside nodes
+
+Good:
+
+```mermaid
+flowchart TD
+A[JS Code]
+B[Parser]
+C[AST]
+D[Execution]
+
+A --> B
+B --> C
+C --> D
+```
+
+Bad:
+
+Large paragraph text inside nodes.
+
+---
+
+# 🚨 CALLOUT BOXES
+
+Use:
+
+```markdown
+> [!NOTE]
+> Important note
+```
+
+```markdown
+> [!TIP]
+> Helpful tip
+```
+
+```markdown
+> [!IMPORTANT]
+> Critical interview point
+```
+
+Use them throughout the chapter.
+
+---
+
+# 🚨 INTERVIEW QUESTIONS SECTION (MANDATORY)
+
+Create:
+
+```markdown
+## 💡 Interview Questions
+```
+
+Include:
+
+### Conceptual Questions
+
+### Scenario-Based Questions
+
+### Output-Based Questions
+
+### Advanced Questions
+
+Minimum:
+
+5–10 questions per topic.
+
+Provide detailed answers.
+
+---
+
+# 🚨 PRACTICE SECTION (MANDATORY)
+
+Create:
+
+```markdown
+## 🧪 Practice Problems
+```
+
+Include:
+
+### Coding Questions
+
+* 5 Questions
+
+### Theory Questions
+
+* 5 Questions
+
+### Machine Coding Problems
+
+* 2 Problems
+
+---
+
+# 🚨 MINI PROJECT (MANDATORY)
+
+Create:
+
+```markdown
+## 🚀 Mini Project
+```
+
+Include:
+
+### Problem Statement
+
+### Features
+
+### Architecture
+
+### Flow Diagram
+
+### Folder Structure
+
+### Code Structure
+
+### Implementation
+
+### Interview Discussion
+
+---
+
+# 🚨 MINI PROJECT RULES
+
+
+
+Use only:
+
+* HTML
+* CSS
+
+
+
+Rules:
+
+✅ Use ONLY concepts taught in current chapter
+
+✅ Beginner-friendly
+
+✅ Real-world inspired
+
+❌ No future chapter concepts
+
+❌ No advanced patterns
+
+❌ No hidden dependencies
+
+---
+
+# 🚨 QUICK REVISION SECTION
+
+Create:
+
+```markdown
+## ⚡ Quick Revision
+```
+
+Include:
+
+* Key definitions
+* Important facts
+* Common interview traps
+* Revision bullets
+
+---
+
+# 🚨 CHAPTER SUMMARY
+
+Create:
+
+```markdown
+## 📌 Chapter Summary
+```
+
+Include:
+
+* Most important interview points
+* Key concepts
+* Practical takeaways
+* Common mistakes
+
+---
+
+# 🚨 OUTPUT REQUIREMENTS
+
+Output ONLY valid Markdown.
+
+Do NOT explain your decisions.
+
+Do NOT include AI commentary.
+
+Do NOT include notes outside the chapter.
+
+Generate content that can be directly saved as:
+
+```text
+02-javascript-engine.md
+```
+
+and immediately imported into the master book using:
+
+```markdown
+@import "./02-javascript-engine.md"
+```
+
+while preserving navigation, Mermaid rendering, PDF export, DOCX conversion, and global TOC compatibility.
+
+Start with this chapter
+
+
+
+
+***************************************************
+
+
+
+✅ **Understood and Confirmed.**
+
+I will **always maintain correct Previous and Next chapter links** based on your exact book structure.
+
+Here is my navigation reference that I will strictly follow:
+
+---
+
+## 🔗 Navigation Rules I Will Always Apply
+
+### Format (Top and Bottom of every chapter):
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_ANCHOR)
+```
+
+---
+
+## 📌 Anchor Reference I Will Use
+
+| Chapter | Anchor ID | Previous | Next |
+|---------|-----------|----------|------|
+| Ch. 1 | `chapter-1-introduction-to-web-and-html` | *(none)* | `chapter-2-html-setup-first-program` |
+| Ch. 2 | `chapter-2-html-setup-first-program` | `chapter-1-introduction-to-web-and-html` | `chapter-3-html-document-structure` |
+| Ch. 3 | `chapter-3-html-document-structure` | `chapter-2-html-setup-first-program` | `chapter-4-html-head-section` |
+| Ch. 4 | `chapter-4-html-head-section` | `chapter-3-html-document-structure` | `chapter-5-html-elements-tags-attributes` |
+| Ch. 5 | `chapter-5-html-elements-tags-attributes` | `chapter-4-html-head-section` | `chapter-6-block-inline-void-elements` |
+| Ch. 6 | `chapter-6-block-inline-void-elements` | `chapter-5-html-elements-tags-attributes` | `chapter-7-text-formatting-html` |
+| Ch. 7 | `chapter-7-text-formatting-html` | `chapter-6-block-inline-void-elements` | `chapter-8-semantic-text-elements` |
+| Ch. 8 | `chapter-8-semantic-text-elements` | `chapter-7-text-formatting-html` | `chapter-9-html-links-navigation` |
+| Ch. 9 | `chapter-9-html-links-navigation` | `chapter-8-semantic-text-elements` | `chapter-10-html-lists` |
+| Ch. 10 | `chapter-10-html-lists` | `chapter-9-html-links-navigation` | `chapter-11-images-html` |
+| Ch. 11 | `chapter-11-images-html` | `chapter-10-html-lists` | `chapter-12-audio-video-iframes` |
+| Ch. 12 | `chapter-12-audio-video-iframes` | `chapter-11-images-html` | `chapter-13-figure-picture-svg` |
+| Ch. 13 | `chapter-13-figure-picture-svg` | `chapter-12-audio-video-iframes` | `chapter-14-html-tables` |
+| Ch. 14 | `chapter-14-html-tables` | `chapter-13-figure-picture-svg` | `chapter-15-html-forms-basics` |
+| Ch. 15 | `chapter-15-html-forms-basics` | `chapter-14-html-tables` | `chapter-16-html-input-types` |
+| Ch. 16 | `chapter-16-html-input-types` | `chapter-15-html-forms-basics` | `chapter-17-form-elements-attributes` |
+| Ch. 17 | `chapter-17-form-elements-attributes` | `chapter-16-html-input-types` | `chapter-18-html5-form-validation` |
+| Ch. 18 | `chapter-18-html5-form-validation` | `chapter-17-form-elements-attributes` | `chapter-19-semantic-html` |
+| Ch. 19 | `chapter-19-semantic-html` | `chapter-18-html5-form-validation` | `chapter-20-html-accessibility-seo` |
+| Ch. 20 | `chapter-20-html-accessibility-seo` | `chapter-19-semantic-html` | `chapter-21-html5-apis-overview` |
+| Ch. 21 | `chapter-21-html5-apis-overview` | `chapter-20-html-accessibility-seo` | `chapter-22-canvas-svg-graphics` |
+| Ch. 22 | `chapter-22-canvas-svg-graphics` | `chapter-21-html5-apis-overview` | `chapter-23-html-best-practices` |
+| Ch. 23 | `chapter-23-html-best-practices` | `chapter-22-canvas-svg-graphics` | `chapter-24-html-deprecated-tags` |
+| Ch. 24 | `chapter-24-html-deprecated-tags` | `chapter-23-html-best-practices` | `chapter-25-html-interview-questions` |
+| Ch. 25 | `chapter-25-html-interview-questions` | `chapter-24-html-deprecated-tags` | `chapter-26-introduction-to-css` |
+| Ch. 26 | `chapter-26-introduction-to-css` | `chapter-25-html-interview-questions` | `chapter-27-ways-to-add-css` |
+| Ch. 27 | `chapter-27-ways-to-add-css` | `chapter-26-introduction-to-css` | `chapter-28-css-selectors` |
+| Ch. 28 | `chapter-28-css-selectors` | `chapter-27-ways-to-add-css` | `chapter-29-advanced-css-selectors` |
+| Ch. 29 | `chapter-29-advanced-css-selectors` | `chapter-28-css-selectors` | `chapter-30-css-cascade-specificity-inheritance` |
+| Ch. 30 | `chapter-30-css-cascade-specificity-inheritance` | `chapter-29-advanced-css-selectors` | `chapter-31-css-colors-backgrounds` |
+| Ch. 31 | `chapter-31-css-colors-backgrounds` | `chapter-30-css-cascade-specificity-inheritance` | `chapter-32-css-box-model` |
+| Ch. 32 | `chapter-32-css-box-model` | `chapter-31-css-colors-backgrounds` | `chapter-33-margin-padding-border-outline` |
+| Ch. 33 | `chapter-33-margin-padding-border-outline` | `chapter-32-css-box-model` | `chapter-34-css-units` |
+| Ch. 34 | `chapter-34-css-units` | `chapter-33-margin-padding-border-outline` | `chapter-35-css-typography` |
+| Ch. 35 | `chapter-35-css-typography` | `chapter-34-css-units` | `chapter-36-css-display-property` |
+| Ch. 36 | `chapter-36-css-display-property` | `chapter-35-css-typography` | `chapter-37-css-visibility-opacity-overflow` |
+| Ch. 37 | `chapter-37-css-visibility-opacity-overflow` | `chapter-36-css-display-property` | `chapter-38-css-positioning` |
+| Ch. 38 | `chapter-38-css-positioning` | `chapter-37-css-visibility-opacity-overflow` | `chapter-39-z-index-stacking-context` |
+| Ch. 39 | `chapter-39-z-index-stacking-context` | `chapter-38-css-positioning` | `chapter-40-css-float-clear` |
+| Ch. 40 | `chapter-40-css-float-clear` | `chapter-39-z-index-stacking-context` | `chapter-41-css-flexbox` |
+| Ch. 41 | `chapter-41-css-flexbox` | `chapter-40-css-float-clear` | `chapter-42-flexbox-advanced` |
+| Ch. 42 | `chapter-42-flexbox-advanced` | `chapter-41-css-flexbox` | `chapter-43-css-grid` |
+| Ch. 43 | `chapter-43-css-grid` | `chapter-42-flexbox-advanced` | `chapter-44-css-grid-advanced` |
+| Ch. 44 | `chapter-44-css-grid-advanced` | `chapter-43-css-grid` | `chapter-45-flexbox-vs-grid` |
+| Ch. 45 | `chapter-45-flexbox-vs-grid` | `chapter-44-css-grid-advanced` | `chapter-46-responsive-web-design-basics` |
+| Ch. 46 | `chapter-46-responsive-web-design-basics` | `chapter-45-flexbox-vs-grid` | `chapter-47-viewport-media-queries` |
+| Ch. 47 | `chapter-47-viewport-media-queries` | `chapter-46-responsive-web-design-basics` | `chapter-48-responsive-images` |
+| Ch. 48 | `chapter-48-responsive-images` | `chapter-47-viewport-media-queries` | `chapter-49-responsive-typography` |
+| Ch. 49 | `chapter-49-responsive-typography` | `chapter-48-responsive-images` | `chapter-50-container-queries` |
+| Ch. 50 | `chapter-50-container-queries` | `chapter-49-responsive-typography` | `chapter-51-responsive-layout-projects` |
+| Ch. 51 | `chapter-51-responsive-layout-projects` | `chapter-50-container-queries` | `chapter-52-css-transforms` |
+| Ch. 52 | `chapter-52-css-transforms` | `chapter-51-responsive-layout-projects` | `chapter-53-css-transitions` |
+| Ch. 53 | `chapter-53-css-transitions` | `chapter-52-css-transforms` | `chapter-54-css-animations` |
+| Ch. 54 | `chapter-54-css-animations` | `chapter-53-css-transitions` | `chapter-55-css-shadows` |
+| Ch. 55 | `chapter-55-css-shadows` | `chapter-54-css-animations` | `chapter-56-css-filters-effects` |
+| Ch. 56 | `chapter-56-css-filters-effects` | `chapter-55-css-shadows` | `chapter-57-css-gradients-blend-modes` |
+| Ch. 57 | `chapter-57-css-gradients-blend-modes` | `chapter-56-css-filters-effects` | `chapter-58-css-clipping-masking` |
+| Ch. 58 | `chapter-58-css-clipping-masking` | `chapter-57-css-gradients-blend-modes` | `chapter-59-css-variables` |
+| Ch. 59 | `chapter-59-css-variables` | `chapter-58-css-clipping-masking` | `chapter-60-dark-mode-css` |
+| Ch. 60 | `chapter-60-dark-mode-css` | `chapter-59-css-variables` | `chapter-61-css-reset-normalize` |
+| Ch. 61 | `chapter-61-css-reset-normalize` | `chapter-60-dark-mode-css` | `chapter-62-css-architecture` |
+| Ch. 62 | `chapter-62-css-architecture` | `chapter-61-css-reset-normalize` | `chapter-63-css-preprocessors` |
+| Ch. 63 | `chapter-63-css-preprocessors` | `chapter-62-css-architecture` | `chapter-64-css-performance` |
+| Ch. 64 | `chapter-64-css-performance` | `chapter-63-css-preprocessors` | `chapter-65-cross-browser-compatibility` |
+| Ch. 65 | `chapter-65-cross-browser-compatibility` | `chapter-64-css-performance` | `chapter-66-mini-project-personal-portfolio` |
+| Ch. 66 | `chapter-66-mini-project-personal-portfolio` | `chapter-65-cross-browser-compatibility` | `chapter-67-mini-project-landing-page` |
+| Ch. 67 | `chapter-67-mini-project-landing-page` | `chapter-66-mini-project-personal-portfolio` | `chapter-68-mini-project-blog-website` |
+| Ch. 68 | `chapter-68-mini-project-blog-website` | `chapter-67-mini-project-landing-page` | `chapter-69-mini-project-login-signup-ui` |
+| Ch. 69 | `chapter-69-mini-project-login-signup-ui` | `chapter-68-mini-project-blog-website` | `chapter-70-mini-project-responsive-navbar` |
+| Ch. 70 | `chapter-70-mini-project-responsive-navbar` | `chapter-69-mini-project-login-signup-ui` | `chapter-71-mini-project-css-card-components` |
+| Ch. 71 | `chapter-71-mini-project-css-card-components` | `chapter-70-mini-project-responsive-navbar` | `chapter-72-mini-project-dashboard-layout` |
+| Ch. 72 | `chapter-72-mini-project-dashboard-layout` | `chapter-71-mini-project-css-card-components` | `chapter-73-html-interview-questions` |
+| Ch. 73 | `chapter-73-html-interview-questions` | `chapter-72-mini-project-dashboard-layout` | `chapter-74-css-interview-questions` |
+| Ch. 74 | `chapter-74-css-interview-questions` | `chapter-73-html-interview-questions` | `chapter-75-html-output-based-questions` |
+| Ch. 75 | `chapter-75-html-output-based-questions` | `chapter-74-css-interview-questions` | `chapter-76-css-output-based-questions` |
+| Ch. 76 | `chapter-76-css-output-based-questions` | `chapter-75-html-output-based-questions` | `chapter-77-frontend-scenario-questions` |
+| Ch. 77 | `chapter-77-frontend-scenario-questions` | `chapter-76-css-output-based-questions` | `chapter-78-common-interview-tasks` |
+| Ch. 78 | `chapter-78-common-interview-tasks` | `chapter-77-frontend-scenario-questions` | `chapter-79-html-css-cheat-sheets` |
+| Ch. 79 | `chapter-79-html-css-cheat-sheets` | `chapter-78-common-interview-tasks` | `chapter-80-final-interview-revision` |
+| Ch. 80 | `chapter-80-final-interview-revision` | `chapter-79-html-css-cheat-sheets` | `chapter-81-top-100-html-questions` |
+| Ch. 81 | `chapter-81-top-100-html-questions` | `chapter-80-final-interview-revision` | `chapter-82-top-100-css-questions` |
+| Ch. 82 | `chapter-82-top-100-css-questions` | `chapter-81-top-100-html-questions` | `chapter-83-most-asked-practical-questions` |
+| Ch. 83 | `chapter-83-most-asked-practical-questions` | `chapter-82-top-100-css-questions` | `chapter-84-html-css-real-projects` |
+| Ch. 84 | `chapter-84-html-css-real-projects` | `chapter-83-most-asked-practical-questions` | `chapter-85-final-roadmap-after-html-css` |
+| Ch. 85 | `chapter-85-final-roadmap-after-html-css` | `chapter-84-html-css-real-projects` | *(none — last chapter)* |
+
+---
+
+✅ **This navigation table is now locked in memory.**
+✅ **Every chapter I generate will use exactly these anchors.**
+✅ **No incorrect previous/next links will ever appear.**
+
+**Ready — please tell me which chapter to generate next!**

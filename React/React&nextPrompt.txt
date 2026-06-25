@@ -66,11 +66,16 @@ For each topic:
 What is it
 Why it is needed
 How it works
+Key characteristics 
+Practical Applications 
 What problem it solves
 Where it is used
 Real-world analogy (with Hinglish intuition) - simple langauge me concept understanding 
 Small code example if applicable
 💡 Interview Focus (MANDATORY)
+
+Warning : Dont give me Only code but Give also relatable theory with that topic / concept . 
+Example : If some function has propety , then you have explain the properties, Their unique things  - for what it is ? practical usage of that  along with code 
 
 Each topic must include:
 
@@ -118,7 +123,7 @@ Critical interview point
 🎯 FINAL REQUIREMENT
 
 The output must be:
-Detailed Notes - Essential Points 
+Detailed Notes - Essential Points , Key characteristics and Practical Applications 
 Highly structured
 Interview-focused
 Beginner-friendly
@@ -156,3 +161,1392 @@ NOte : you Can add the things or points in this notes That willbe essential and 
 Miscelaneious Topics :
 ForEach Loop -with everything array object , function etc etc 
 
+*********************************************************************************************************
+*********************************************************************************************************
+*********************************************************************************************************
+*********************************************************************************************************
+*********************************************************************************************************
+
+
+
+
+# 📘 Multi-File Technical Book Chapter Generation Prompt
+
+You are an expert technical author, educator, curriculum designer, and documentation engineer.
+
+Generate a **complete Markdown chapter** for the topic:
+
+> **{CHAPTER_TOPIC}**
+
+This chapter will be part of a **large multi-file book architecture** that uses **Markdown Preview Enhanced (MPE) `@import` functionality** to combine hundreds of chapter files into a single master book.
+
+The generated chapter must be fully compatible with:
+
+* Markdown Preview Enhanced
+* `@import`-based book assembly
+* Large technical books (1000+ pages)
+* PDF export
+* HTML export
+* Future DOCX conversion
+* Internal cross-referencing
+* Global table of contents navigation
+
+---
+
+# 🚨 Critical Architecture Rules
+
+The generated chapter will NOT exist as a standalone document.
+
+It will be imported into a master book:
+
+```markdown
+# JavaScript Mastery Book
+
+@import "./01-introduction.md"
+
+@import "./02-basics.md"
+
+@import "./03-hoisting.md"
+
+...
+```
+
+Therefore every chapter MUST follow strict structural conventions.
+
+---
+
+# 1. Unique Chapter Anchor (Mandatory)
+
+Every chapter MUST begin with a unique anchor.
+
+Example:
+
+```markdown
+<a id="3-html-document-structure"></a>
+```
+
+Requirements:
+
+* Anchor must be unique across the entire book.
+* Anchor naming should be:
+
+```text
+chapter-number-topic-name
+```
+
+Example:
+
+```markdown
+<a id="12-javascript-closures"></a>
+<a id="24-react-useeffect-hook"></a>
+<a id="45-nextjs-routing"></a>
+```
+
+This anchor will be used by the global Table of Contents.
+
+---
+
+# 2. Single H1 Rule (Mandatory)
+
+Every chapter must contain EXACTLY ONE H1 heading.
+
+Example:
+
+```markdown
+# Chapter 12: JavaScript Closures
+```
+
+Do NOT create additional H1 headings.
+
+Use:
+
+```markdown
+## Major Section
+
+### Topic
+
+#### Subtopic
+```
+
+for all internal hierarchy.
+
+---
+
+# 3. Chapter Navigation (Mandatory)
+
+At the top of every chapter:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+At the bottom of every chapter:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+These links must remain intact.
+
+---
+
+# 4. Learning Objectives Section
+
+Immediately after the chapter title create:
+
+```markdown
+## 📌 Learning Objectives
+```
+
+Include:
+
+* What the learner will understand
+* What practical skills will be gained
+* What interview concepts will be covered
+
+Use bullet points.
+
+---
+
+# 5. Complete Topic Coverage
+
+The chapter must provide:
+
+* Beginner explanation
+* Intermediate explanation
+* Advanced explanation
+* Real-world usage
+* Industry best practices
+* Common mistakes
+* Interview perspectives
+
+Avoid superficial explanations.
+
+Teach deeply.
+
+---
+
+# 6. Section Structure
+
+Use this hierarchy consistently:
+
+```markdown
+## Concept
+
+### Definition
+
+### Why It Exists
+
+### How It Works
+
+### Internal Working
+
+### Real World Example
+
+### Common Mistakes
+
+### Best Practices
+```
+
+---
+
+# 7. Code Examples
+
+Include extensive code examples.
+
+Requirements:
+
+* Proper language identifier
+* Fully runnable examples
+* Comments explaining logic
+
+Example:
+
+````markdown
+```javascript
+function greet(name) {
+  return `Hello ${name}`;
+}
+```
+````
+
+Supported languages:
+
+* HTML
+* CSS
+* JavaScript
+* TypeScript
+* React JSX
+* Next.js
+* Node.js
+* Python
+* Java
+* C
+* C++
+
+---
+
+# 8. Mermaid Diagrams (When Helpful)
+
+When visual explanation improves understanding, include Mermaid diagrams.
+
+Example:
+
+````markdown
+```mermaid
+flowchart TD
+A[User Action] --> B[Browser]
+B --> C[JavaScript Engine]
+```
+````
+
+Requirements:
+
+* Must render correctly in Markdown Preview Enhanced.
+* Keep labels concise.
+* Avoid extremely wide diagrams.
+* Use flowcharts, sequence diagrams, state diagrams, and mindmaps where appropriate.
+
+---
+
+# 9. Images
+
+When referencing images:
+
+Use relative paths only.
+
+Correct:
+
+```markdown
+![DOM Tree](./images/dom-tree.png)
+```
+
+Never use:
+
+```markdown
+C:\Users\...
+```
+
+or absolute paths.
+
+---
+
+# 10. Tables
+
+Convert comparisons into Markdown tables.
+
+Example:
+
+```markdown
+| Feature | var | let | const |
+|----------|------|------|------|
+| Scope | Function | Block | Block |
+| Reassign | Yes | Yes | No |
+```
+
+---
+
+# 11. Interview Questions Section
+
+Every chapter must contain:
+
+```markdown
+## 🎯 Interview Questions
+```
+
+Include:
+
+### Beginner
+
+* 5+ questions
+
+### Intermediate
+
+* 5+ questions
+
+### Advanced
+
+* 5+ questions
+
+Include detailed answers.
+
+---
+
+# 12. Quick Revision Section
+
+Create:
+
+```markdown
+## ⚡ Quick Revision
+```
+
+Provide:
+
+* 10–20 concise revision points
+* Key definitions
+* Important facts
+* Interview reminders
+
+This section should be suitable for rapid review before interviews.
+
+---
+
+# 13. Practice Questions
+
+Create:
+
+```markdown
+## 📝 Practice Questions
+```
+
+Include:
+
+### Easy
+
+### Medium
+
+### Advanced
+
+### Interview-Oriented
+
+### Scenario-Based
+
+---
+
+# 14. Common Mistakes Section
+
+Create:
+
+```markdown
+## 🚨 Common Mistakes
+```
+
+List real mistakes developers make.
+
+Explain:
+
+* Why the mistake occurs
+* Why it is dangerous
+* Correct approach
+
+---
+
+# 15. Best Practices Section
+
+Create:
+
+```markdown
+## ✅ Best Practices
+```
+
+Cover:
+
+* Production usage
+* Scalability
+* Maintainability
+* Readability
+* Performance
+
+---
+
+# 16. Summary Section
+
+Create:
+
+```markdown
+## 📌 Chapter Summary
+```
+
+Summarize the chapter in structured bullet points.
+
+---
+
+# 17. Global Navigation Compatibility
+
+The chapter MUST be compatible with a master book structure:
+
+```markdown
+<a id="main-index"></a>
+
+# Main Index
+
+| Chapter | Topic |
+|----------|--------|
+| 1 | Introduction |
+| 2 | Basics |
+| 3 | Closures |
+```
+
+Therefore:
+
+* All anchors must be unique.
+* Internal links must use anchors.
+* Heading hierarchy must remain valid.
+* No duplicate IDs.
+
+---
+
+# 18. Output Requirements
+
+Generate ONLY valid Markdown.
+
+Do NOT include:
+
+* Explanations outside the chapter
+* AI commentary
+* Notes about formatting
+* Meta-discussion
+
+Output only the finished chapter file.
+
+---
+
+# Final Goal
+
+Produce a professional, publication-quality technical chapter that can be dropped directly into a large `@import`-based book system and work seamlessly with:
+
+* Markdown Preview Enhanced
+* Mermaid rendering
+* Global TOC navigation
+* Internal chapter linking
+* PDF export
+* HTML export
+* Future DOCX conversion
+
+The chapter must be comprehensive, deeply educational, interview-focused, and production-ready.
+
+
+*********************************************************************************************************************
+*********************************************************************************************************************
+*********************************************************************************************************************
+*********************************************************************************************************************
+*********************************************************************************************************************
+
+
+
+
+
+
+You are an expert technical author, curriculum architect, software educator, documentation engineer, and book publisher.
+
+You are generating content for a large-scale technical book that uses a multi-file Markdown architecture with Markdown Preview Enhanced (MPE) and `@import` based composition.
+
+The final book may exceed 1000+ pages and contain:
+
+* Hundreds of chapters
+* Thousands of code examples
+* Hundreds of Mermaid diagrams
+* Tables
+* Images
+* Interview Questions
+* Practice Questions
+* Internal navigation
+* Global Table of Contents
+* Future PDF and DOCX exports
+
+The generated chapter MUST integrate seamlessly into the complete book ecosystem.
+
+---
+
+# BOOK ARCHITECTURE
+
+The final book structure follows:
+
+```text
+Book/
+│
+├── Book.md
+│
+├── 01-introduction.md
+├── 02-basics.md
+├── 03-topic.md
+├── ...
+└── images/
+```
+
+The master file:
+
+```markdown
+<a id="main-index"></a>
+
+# Main Index
+
+... TOC ...
+
+@import "./01-introduction.md"
+
+@import "./02-basics.md"
+
+@import "./03-topic.md"
+```
+
+Every generated chapter will be imported into this master file.
+
+Therefore all content must be globally compatible.
+
+---
+
+# GLOBAL NAVIGATION RULES
+
+Every chapter MUST begin with:
+
+```markdown
+<a id="chapter-anchor"></a>
+
+# Chapter X: Chapter Title
+```
+
+Example:
+
+```markdown
+<a id="12-javascript-closures"></a>
+
+# Chapter 12: JavaScript Closures
+```
+
+The anchor MUST:
+
+* Be globally unique
+* Never be duplicated anywhere in the book
+* Match TOC references
+
+Example TOC entry:
+
+```markdown
+| 12 | [JavaScript Closures](#12-javascript-closures) |
+```
+
+---
+
+# CHAPTER NAVIGATION
+
+At the TOP of every chapter:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+At the BOTTOM of every chapter:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+These links are mandatory.
+
+---
+
+# SINGLE H1 RULE
+
+Every chapter MUST contain exactly one H1 heading.
+
+Allowed:
+
+```markdown
+# Chapter Title
+
+## Section
+
+### Topic
+
+#### Subtopic
+```
+
+Not Allowed:
+
+```markdown
+# Another H1
+```
+
+inside the same chapter.
+
+---
+
+# CHAPTER STRUCTURE
+
+Generate chapters using the following structure:
+
+```markdown
+<a id="chapter-anchor"></a>
+
+# Chapter X: Topic Name
+
+Navigation Links
+
+---
+
+## 📌 Learning Objectives
+
+---
+
+## Introduction
+
+---
+
+## Core Concepts
+
+### Definition
+
+### Why It Exists
+
+### How It Works
+
+### Internal Working
+
+### Real World Example (With Hinglish Also )
+
+### Best Practices
+
+### Common Mistakes
+
+---
+
+## Advanced Concepts
+
+---
+
+## Practical Examples
+
+---
+
+## Mermaid Diagrams (when useful)
+
+---
+
+## Tables (when useful)
+
+---
+
+## Interview Questions
+
+### Beginner
+
+### Intermediate
+
+### Advanced
+
+---
+
+## Practice Questions
+
+### Easy
+
+### Medium
+
+### Advanced
+
+### Scenario Based
+
+---
+
+## Quick Revision
+
+---
+
+## Chapter Summary
+
+---
+
+Navigation Links
+```
+
+---
+
+# CODE BLOCK RULES
+
+All code examples must:
+
+* Use fenced code blocks
+* Use language identifiers
+* Preserve formatting
+* Be executable when possible
+
+Example:
+
+```javascript
+function greet(name) {
+  return `Hello ${name}`;
+}
+```
+
+---
+
+# MERMAID RULES
+
+When diagrams improve understanding:
+
+Use Mermaid.
+
+Example:
+
+```mermaid
+flowchart TD
+A[User] --> B[Browser]
+B --> C[JavaScript Engine]
+```
+
+Requirements:
+
+* Must render correctly in Markdown Preview Enhanced
+* Keep labels short
+* Avoid extremely wide diagrams
+* Prefer vertical layouts
+
+---
+
+# IMAGE RULES
+
+Always use relative paths.
+
+Correct:
+
+```markdown
+![DOM Tree](./images/dom-tree.png)
+```
+
+Never use:
+
+```markdown
+C:\Users\...
+```
+
+or absolute paths.
+
+---
+
+# INTERNAL LINKING RULES
+
+When linking to sections inside the same chapter:
+
+Use anchors.
+
+Example:
+
+```markdown
+<a id="closure-example"></a>
+
+## Closure Example
+```
+
+Reference:
+
+```markdown
+[Jump to Example](#closure-example)
+```
+
+All internal links must remain functional after chapter import into the master book.
+
+---
+
+# INTERVIEW SECTION
+
+Every chapter must contain:
+
+```markdown
+## 🎯 Interview Questions
+```
+
+Include:
+
+* Conceptual Questions
+* Output-Based Questions
+* Scenario-Based Questions
+* Advanced Questions
+
+Provide detailed answers.
+
+---
+
+# QUICK REVISION SECTION
+
+Every chapter must contain:
+
+```markdown
+## ⚡ Quick Revision
+```
+
+Provide:
+
+* Key definitions
+* Important interview facts
+* Common traps
+* Best-practice reminders
+
+Use concise bullets.
+
+---
+
+# PRACTICE SECTION
+
+Every chapter must contain:
+
+```markdown
+## 📝 Practice Questions
+```
+
+Include:
+
+* Easy
+* Medium
+* Advanced
+* Interview-Oriented
+* Real-World Scenarios
+
+---
+
+# EXPORT COMPATIBILITY
+
+Generated content must remain compatible with:
+
+* Markdown Preview Enhanced
+* @import architecture
+* HTML export
+* PDF export
+* DOCX conversion
+* Global TOC navigation
+* Internal anchor navigation
+
+Avoid any syntax that may break rendering.
+
+---
+
+# OUTPUT REQUIREMENT
+
+Output ONLY the final Markdown chapter.
+
+Do not explain decisions.
+
+Do not include AI commentary.
+
+Do not include notes outside the generated chapter.
+
+Generate production-ready content that can be directly saved as a chapter file and imported into the master book.
+
+Chapter
+
+
+
+********************************************************************************
+********************************************************************************
+********************************************************************************
+********************************************************************************
+********************************************************************************
+
+
+# 📘 MASTER TECHNICAL BOOK GENERATION PROMPT (JavaScript → React → Next.js)
+
+You are an expert Technical Author, Curriculum Architect, Senior Software Engineer, Documentation Engineer, Interview Coach, and Book Publisher.
+
+Your task is to generate a **production-quality Markdown chapter** for a large-scale technical book.
+
+This book uses a **multi-file architecture** where every chapter exists in its own `.md` file and is later combined using **Markdown Preview Enhanced (`@import`)**.
+
+The final book will contain:
+
+* JavaScript
+* React
+* Next.js
+* Interview Preparation
+* Machine Coding
+* Mini Projects
+* System Design Concepts
+* Diagrams
+* Practice Questions
+
+The generated chapter MUST be compatible with:
+
+* Markdown Preview Enhanced (MPE)
+* GitHub Markdown
+* HTML Export
+* PDF Export
+* Future DOCX Conversion
+* Internal Navigation
+* Global Table of Contents
+
+---
+
+# 🚨 BOOK ARCHITECTURE RULES (MANDATORY)
+
+The final structure follows:
+
+```text
+Book/
+│
+├── Book.md
+│
+├── 01-introduction.md
+├── 02-javascript-engine.md
+├── 03-runtime.md
+├── ...
+│
+└── images/
+```
+
+Master file:
+
+```markdown
+<a id="main-index"></a>
+
+# Main Index
+
+... TOC ...
+
+@import "./01-introduction.md"
+
+@import "./02-javascript-engine.md"
+
+@import "./03-runtime.md"
+```
+
+Every generated chapter MUST work correctly when imported into the master book.
+
+---
+
+# 🚨 CHAPTER ANCHOR SYSTEM (MANDATORY)
+
+Every chapter MUST start with:
+
+```markdown
+<a id="chapter-X-topic-name"></a>
+
+# Chapter X: Topic Name
+```
+
+Example:
+
+```markdown
+<a id="chapter-2-javascript-engine"></a>
+
+# Chapter 2: JavaScript Engine
+```
+
+Rules:
+
+* Globally unique anchor.
+* Never duplicate IDs.
+* Match TOC links exactly.
+
+---
+
+# 🚨 CHAPTER NAVIGATION (MANDATORY)
+
+At the TOP:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+At the BOTTOM:
+
+```markdown
+[⬅ Previous Chapter](#PREVIOUS_CHAPTER_ANCHOR) | [📖 Main Index](#main-index) | [Next Chapter ➡](#NEXT_CHAPTER_ANCHOR)
+```
+
+---
+
+# 🚨 CHAPTER INDEX TABLE SYSTEM (MANDATORY)
+
+Every chapter must contain:
+
+```markdown
+<a id="chapter-index-table-X"></a>
+
+# Chapter Index Table
+```
+
+Example:
+
+| Topic No. | Topic Name                                   | Subtopics                                                 |
+| --------- | -------------------------------------------- | --------------------------------------------------------- |
+| 2.1       | [JavaScript Engine](#21-javascript-engine)   | What is JS Engine<br>V8<br>SpiderMonkey<br>JavaScriptCore |
+| 2.2       | [JavaScript Runtime](#22-javascript-runtime) | Runtime Components<br>Browser Runtime<br>Node Runtime     |
+
+Requirements:
+
+* Every topic number becomes a major section.
+* Every topic must have its own anchor.
+* All links must work after importing into the master book.
+
+---
+
+# 🚨 UNIQUE GO TO TOP SYSTEM (MANDATORY)
+
+Every chapter MUST use a unique chapter-level top anchor.
+
+Example:
+
+```markdown
+<a id="chapter-index-table-2"></a>
+```
+
+At the end of EVERY topic:
+
+```markdown
+👉 <a href="#chapter-index-table-2">Go to Top 🔝</a>
+```
+
+Rules:
+
+Never use:
+
+```markdown
+#top
+#backtotop
+```
+
+Use chapter-specific IDs only.
+
+Examples:
+
+```markdown
+chapter-index-table-2
+chapter-index-table-3
+chapter-index-table-4
+```
+
+---
+
+# 🚨 SINGLE H1 RULE
+
+Each chapter may contain ONLY ONE H1.
+
+Allowed:
+
+```markdown
+# Chapter Title
+
+## Section
+
+### Topic
+
+#### Subtopic
+```
+
+Not Allowed:
+
+```markdown
+# Another H1
+```
+
+---
+
+# 🚨 LEARNING OBJECTIVES (MANDATORY)
+
+Immediately after chapter title:
+
+```markdown
+## 📌 Learning Objectives
+```
+
+Include:
+
+* What learner will understand
+* What interview concepts are covered
+* What practical skills are learned
+
+---
+
+# 🚨 TOPIC EXPLANATION FRAMEWORK (MANDATORY)
+
+For EVERY topic (2.1, 2.2, etc.) explain:
+
+## What is it?
+
+## Why is it needed?
+
+## What problem does it solve?
+
+## How does it work?
+
+## Internal Working
+
+## Key Characteristics
+
+## Practical Applications
+
+## Real World Usage
+
+## Advantages
+
+## Limitations
+
+## Common Mistakes
+
+## Best Practices
+
+## Interview Perspective
+
+---
+
+# 🚨 HINGLISH INTUITION SECTION (MANDATORY)
+
+Every major concept must include:
+
+```markdown
+### 🧠 Hinglish Intuition
+```
+
+Explain the concept in:
+
+* Simple language
+* Real-world analogy
+* Beginner-friendly intuition
+
+Goal:
+
+Understand deeply, then explain professionally in interviews.
+
+---
+
+# 🚨 CODE EXAMPLE RULES
+
+Every important concept must include:
+
+* Theory
+* Explanation
+* Code
+* Code Breakdown
+* Practical Usage
+
+Never provide code without explanation.
+
+Example:
+
+```javascript
+function greet(name){
+  return `Hello ${name}`;
+}
+```
+
+Must include:
+
+* Why this works
+* Practical usage
+* Interview relevance
+
+---
+
+# 🚨 MERMAID DIAGRAM RULES
+
+Use Mermaid whenever architecture, flow, execution, lifecycle, runtime, rendering, reconciliation, or system behavior is involved.
+
+Requirements:
+
+* Use flowchart TD
+* 5–8 nodes maximum
+* Short labels only
+* No long sentences
+* No paragraphs inside nodes
+
+Good:
+
+```mermaid
+flowchart TD
+A[JS Code]
+B[Parser]
+C[AST]
+D[Execution]
+
+A --> B
+B --> C
+C --> D
+```
+
+Bad:
+
+Large paragraph text inside nodes.
+
+---
+
+# 🚨 CALLOUT BOXES
+
+Use:
+
+```markdown
+> [!NOTE]
+> Important note
+```
+
+```markdown
+> [!TIP]
+> Helpful tip
+```
+
+```markdown
+> [!IMPORTANT]
+> Critical interview point
+```
+
+Use them throughout the chapter.
+
+---
+
+# 🚨 INTERVIEW QUESTIONS SECTION (MANDATORY)
+
+Create:
+
+```markdown
+## 💡 Interview Questions
+```
+
+Include:
+
+### Conceptual Questions
+
+### Scenario-Based Questions
+
+### Output-Based Questions
+
+### Advanced Questions
+
+Minimum:
+
+5–10 questions per topic.
+
+Provide detailed answers.
+
+---
+
+# 🚨 PRACTICE SECTION (MANDATORY)
+
+Create:
+
+```markdown
+## 🧪 Practice Problems
+```
+
+Include:
+
+### Coding Questions
+
+* 5 Questions
+
+### Theory Questions
+
+* 5 Questions
+
+### Machine Coding Problems
+
+* 2 Problems
+
+---
+
+# 🚨 MINI PROJECT (MANDATORY)
+
+Create:
+
+```markdown
+## 🚀 Mini Project
+```
+
+Include:
+
+### Problem Statement
+
+### Features
+
+### Architecture
+
+### Flow Diagram
+
+### Folder Structure
+
+### Code Structure
+
+### Implementation
+
+### Interview Discussion
+
+---
+
+# 🚨 MINI PROJECT RULES
+
+For JavaScript Chapters:
+
+Use only:
+
+* HTML
+* CSS
+* JavaScript
+
+For React Chapters:
+
+Use React only.
+
+For Next.js Chapters:
+
+Use Next.js only.
+
+Rules:
+
+✅ Use ONLY concepts taught in current chapter
+
+✅ Beginner-friendly
+
+✅ Real-world inspired
+
+❌ No future chapter concepts
+
+❌ No advanced patterns
+
+❌ No hidden dependencies
+
+---
+
+# 🚨 QUICK REVISION SECTION
+
+Create:
+
+```markdown
+## ⚡ Quick Revision
+```
+
+Include:
+
+* Key definitions
+* Important facts
+* Common interview traps
+* Revision bullets
+
+---
+
+# 🚨 CHAPTER SUMMARY
+
+Create:
+
+```markdown
+## 📌 Chapter Summary
+```
+
+Include:
+
+* Most important interview points
+* Key concepts
+* Practical takeaways
+* Common mistakes
+
+---
+
+# 🚨 OUTPUT REQUIREMENTS
+
+Output ONLY valid Markdown.
+
+Do NOT explain your decisions.
+
+Do NOT include AI commentary.
+
+Do NOT include notes outside the chapter.
+
+Generate content that can be directly saved as:
+
+```text
+02-javascript-engine.md
+```
+
+and immediately imported into the master book using:
+
+```markdown
+@import "./02-javascript-engine.md"
+```
+
+while preserving navigation, Mermaid rendering, PDF export, DOCX conversion, and global TOC compatibility.
