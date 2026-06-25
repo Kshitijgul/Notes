@@ -354,7 +354,7 @@ After completing these notes, you should be able to:
 
 @import "./38-CSS_Positioning.md"
 
-@import "./39-Z_Index_&_Stacking_Context.md"
+@import "./39-Z-Index_&_Stacking_Context.md"
 
 @import "./40-CSS_Float_&_Clear.md"
 
