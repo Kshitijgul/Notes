@@ -294,7 +294,7 @@ After completing these notes, you should be able to:
 
 @import "./08-Semantic_Text_Elements.md"
 
-@import "./09-HTML_Links_&_Navigation.md"
+@import "./09-HTML_LInks_&_Navigation.md"
 
 @import "./10-HTML_Lists.md"
 
