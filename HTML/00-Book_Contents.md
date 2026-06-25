@@ -284,4 +284,4 @@ After completing these notes, you should be able to:
 
 @import "./04-HTML_Head_Section.md"
 
-@import "./05-HTML_Elements_Tags_Attributes.md"
+@import "./05-HTML_Elements_Tags_&_Attributes.md"
