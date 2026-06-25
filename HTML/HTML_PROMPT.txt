@@ -512,12 +512,14 @@ Start with this chapter
 
 
 ***************************************************
+***************************************************
+***************************************************
 
 
 
-✅ **Understood and Confirmed.**
+Ima making notes based on chapter i will give you content for chapter generation 
 
-I will **always maintain correct Previous and Next chapter links** based on your exact book structure.
+You have to  **always maintain correct Previous and Next chapter links** based on your exact book structure.
 
 Here is my navigation reference that I will strictly follow:
 
@@ -629,4 +631,170 @@ Here is my navigation reference that I will strictly follow:
 ✅ **Every chapter I generate will use exactly these anchors.**
 ✅ **No incorrect previous/next links will ever appear.**
 
-**Ready — please tell me which chapter to generate next!**
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+*******************************************************************************
+
+
+
+
+@import "./06-Block_Inline_Void_Elements.md"
+
+@import "./07-Text_Formatting_in_HTML.md"
+
+@import "./08-Semantic_Text_Elements.md"
+
+@import "./09-HTML_Links_Navigation.md"
+
+@import "./10-HTML_Lists.md"
+
+@import "./11-Images_In_HTML.md"
+
+@import "./12-Audio_Video_&_Iframes.md"
+
+@import "./13-Figure_Picture_&_SVG.md"
+
+@import "./14-HTML_Tables.md"
+
+@import "./15-HTML_Forms_Basics.md"
+
+@import "./16-HTML_Input_Types.md"
+
+@import "./17-Form_Elements_Attributes.md"
+
+@import "./18-HTML5_Form_Validation.md"
+
+@import "./19-Semantic_HTML.md"
+
+@import "./20-HTML_Accessibility_SEO.md"
+
+@import "./21-HTML5_APIs_Overview.md"
+
+@import "./22-Canvas_SVG_Graphics.md"
+
+@import "./23-HTML_Best_Practices.md"
+
+@import "./24-HTML_Deprecated_Tags.md"
+
+@import "./25-HTML_Interview_Questions.md"
+
+@import "./26-Introduction_to_CSS.md"
+
+@import "./27-Ways_to_Add_CSS.md"
+
+@import "./28-CSS_Selectors.md"
+
+@import "./29-Advanced_CSS_Selectors.md"
+
+@import "./30-CSS_Cascade_Specificity_Inheritance.md"
+
+@import "./31-CSS_Colors_Backgrounds.md"
+
+@import "./32-CSS_Box_Model.md"
+
+@import "./33-Margin_Padding_Border_Outline.md"
+
+@import "./34-CSS_Units.md"
+
+@import "./35-CSS_Typography.md"
+
+@import "./36-CSS_Display_Property.md"
+
+@import "./37-CSS_Visibility_Opacity_Overflow.md"
+
+@import "./38-CSS_Positioning.md"
+
+@import "./39-Z_Index_Stacking_Context.md"
+
+@import "./40-CSS_Float_Clear.md"
+
+@import "./41-CSS_Flexbox.md"
+
+@import "./42-Flexbox_Advanced.md"
+
+@import "./43-CSS_Grid.md"
+
+@import "./44-CSS_Grid_Advanced.md"
+
+@import "./45-Flexbox_vs_Grid.md"
+
+@import "./46-Responsive_Web_Design_Basics.md"
+
+@import "./47-Viewport_Media_Queries.md"
+
+@import "./48-Responsive_Images.md"
+
+@import "./49-Responsive_Typography.md"
+
+@import "./50-Container_Queries.md"
+
+@import "./51-Responsive_Layout_Projects.md"
+
+@import "./52-CSS_Transforms.md"
+
+@import "./53-CSS_Transitions.md"
+
+@import "./54-CSS_Animations.md"
+
+@import "./55-CSS_Shadows.md"
+
+@import "./56-CSS_Filters_Effects.md"
+
+@import "./57-CSS_Gradients_Blend_Modes.md"
+
+@import "./58-CSS_Clipping_Masking.md"
+
+@import "./59-CSS_Variables.md"
+
+@import "./60-Dark_Mode_with_CSS.md"
+
+@import "./61-CSS_Reset_Normalize.md"
+
+@import "./62-CSS_Architecture.md"
+
+@import "./63-CSS_Preprocessors.md"
+
+@import "./64-CSS_Performance.md"
+
+@import "./65-Cross_Browser_Compatibility.md"
+
+@import "./66-Mini_Project_Personal_Portfolio.md"
+
+@import "./67-Mini_Project_Landing_Page.md"
+
+@import "./68-Mini_Project_Blog_Website.md"
+
+@import "./69-Mini_Project_Login_Signup_UI.md"
+
+@import "./70-Mini_Project_Responsive_Navbar.md"
+
+@import "./71-Mini_Project_CSS_Card_Components.md"
+
+@import "./72-Mini_Project_Dashboard_Layout.md"
+
+@import "./73-HTML_Interview_Questions.md"
+
+@import "./74-CSS_Interview_Questions.md"
+
+@import "./75-HTML_Output_Based_Questions.md"
+
+@import "./76-CSS_Output_Based_Questions.md"
+
+@import "./77-Frontend_Scenario_Questions.md"
+
+@import "./78-Common_Interview_Tasks.md"
+
+@import "./79-HTML_CSS_Cheat_Sheets.md"
+
+@import "./80-Final_Interview_Revision.md"
+
+@import "./81-Top_100_HTML_Questions.md"
+
+@import "./82-Top_100_CSS_Questions.md"
+
+@import "./83-Most_Asked_Practical_Questions.md"
+
+@import "./84-HTML_CSS_Real_Projects.md"
+
+@import "./85-Final_Roadmap_After_HTML_CSS.md"
