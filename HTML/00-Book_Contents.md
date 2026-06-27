@@ -275,34 +275,31 @@ After completing these notes, you should be able to:
 - Build portfolio-level frontend projects
 
 ---
+@import "./01-Introduction_to_Web_HTML.md"
 
-@import "./01-Introduction_to_Web_&_HTML.md"
-
-@import "./02-HTML_Setup_&_First_Program.md"
+@import "./02-HTML_Setup_First_Program.md"
 
 @import "./03-HTML_Document_Structure.md"
 
 @import "./04-HTML_Head_Section.md"
 
-@import "./05-HTML_Elements_Tags_&_Attributes.md"
+@import "./05-HTML_Elements_Tags_Attributes.md"
 
-
-
-@import "./06-Block_Inline_&_Void_Elements.md"
+@import "./06-Block_Inline_Void_Elements.md"
 
 @import "./07-Text_Formatting_in_HTML.md"
 
 @import "./08-Semantic_Text_Elements.md"
 
-@import "./09-HTML_LInks_&_Navigation.md"
+@import "./09-HTML_LInks_Navigation.md"
 
 @import "./10-HTML_Lists.md"
 
 @import "./11-Images_In_HTML.md"
 
-@import "./12-Audio_Video_&_Iframes.md"
+@import "./12-Audio_Video_Iframes.md"
 
-@import "./13-Figure_Picture_&_SVG.md"
+@import "./13-Figure_Picture_SVG.md"
 
 @import "./14-HTML_Tables.md"
 
@@ -310,17 +307,17 @@ After completing these notes, you should be able to:
 
 @import "./16-HTML_Input_Types.md"
 
-@import "./17-Form_Elements_&_Attributes.md"
+@import "./17-Form_Elements_Attributes.md"
 
 @import "./18-HTML5_Form_Validation.md"
 
 @import "./19-Semantic_HTML.md"
 
-@import "./20-HTML_Accessibility_&_SEO.md"
+@import "./20-HTML_Accessibility_SEO.md"
 
 @import "./21-HTML5_APIs_Overview.md"
 
-@import "./22-Canvas_SVG_&_Graphics.md"
+@import "./22-Canvas_SVG_Graphics.md"
 
 @import "./23-HTML_Best_Practices.md"
 
@@ -336,13 +333,13 @@ After completing these notes, you should be able to:
 
 @import "./29-Advanced_CSS_Selectors.md"
 
-@import "./30-CSS_Cascade_Specificity_&_Inheritance.md"
+@import "./30-CSS_Cascade_Specificity_Inheritance.md"
 
-@import "./31-CSS_Colors_&_Backgrounds.md"
+@import "./31-CSS_Colors_Backgrounds.md"
 
 @import "./32-CSS_Box_Model.md"
 
-@import "./33-Margin_Padding_Border_&_Outline.md"
+@import "./33-Margin_Padding_Border_Outline.md"
 
 @import "./34-CSS_Units.md"
 
@@ -350,13 +347,13 @@ After completing these notes, you should be able to:
 
 @import "./36-CSS_Display_Property.md"
 
-@import "./37-CSS_Visibility_Opacity_&_Overflow.md"
+@import "./37-CSS_Visibility_Opacity_Overflow.md"
 
 @import "./38-CSS_Positioning.md"
 
-@import "./39-Z-Index_&_Stacking_Context.md"
+@import "./39-Z-Index_Stacking_Context.md"
 
-@import "./40-CSS_Float_&_Clear.md"
+@import "./40-CSS_Float_Clear.md"
 
 @import "./41-CSS_Flexbox.md"
 
@@ -370,7 +367,7 @@ After completing these notes, you should be able to:
 
 @import "./46-Responsive_Web_Design_Basics.md"
 
-@import "./47-Viewport_&_Media_Queries.md"
+@import "./47-Viewport_Media_Queries.md"
 
 @import "./48-Responsive_Images.md"
 
@@ -388,17 +385,17 @@ After completing these notes, you should be able to:
 
 @import "./55-CSS_Shadows.md"
 
-@import "./56-CSS_Filters_&_Effects.md"
+@import "./56-CSS_Filters_Effects.md"
 
-@import "./57-CSS_Gradients_&_Blend_Modes.md"
+@import "./57-CSS_Gradients_Blend_Modes.md"
 
-@import "./58-CSS_Clipping_&_Masking.md"
+@import "./58-CSS_Clipping_Masking.md"
 
 @import "./59-CSS_Variables.md"
 
 @import "./60-Dark_Mode_with_CSS.md"
 
-@import "./61-CSS_Reset_&_Normalize.md"
+@import "./61-CSS_Reset_Normalize.md"
 
 @import "./62-CSS_Architecture.md"
 
@@ -414,7 +411,7 @@ After completing these notes, you should be able to:
 
 @import "./68-Mini_Project_Blog_Website.md"
 
-@import "./69-Mini_Project_Login_&_Signup_UI.md"
+@import "./69-Mini_Project_Login_Signup_UI.md"
 
 @import "./70-Mini_Project_Responsive_Navbar.md"
 
