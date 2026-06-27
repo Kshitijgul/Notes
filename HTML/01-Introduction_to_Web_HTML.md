@@ -1,4 +1,4 @@
-<a id="chapter-1-introduction-to-web-and-html"></a>
+<a id="chapter-1-introduction-to-web-html"></a>
 
 # Chapter 1: Introduction to Web & HTML
 

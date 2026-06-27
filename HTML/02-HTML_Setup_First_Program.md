@@ -2,7 +2,7 @@
 
 # Chapter 2: HTML Setup & First Program
 
-[⬅ Previous Chapter](#chapter-1-introduction-to-web-and-html) | [📖 Main Index](#main-index) | [Next Chapter ➡](#chapter-3-html-document-structure)
+[⬅ Previous Chapter](#chapter-1-introduction-to-web-html) | [📖 Main Index](#main-index) | [Next Chapter ➡](#chapter-3-html-document-structure)
 
 ---
 
@@ -2255,7 +2255,7 @@ developer-setup/
 
 ---
 
-[⬅ Previous Chapter](#chapter-1-introduction-to-web-and-html) | [📖 Main Index](#main-index) | [Next Chapter ➡](#chapter-3-html-document-structure)
+[⬅ Previous Chapter](#chapter-1-introduction-to-web-html) | [📖 Main Index](#main-index) | [Next Chapter ➡](#chapter-3-html-document-structure)
 
 ---
 
