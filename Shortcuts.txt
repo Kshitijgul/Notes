@@ -1,0 +1,346 @@
+If you're learning **React, JavaScript, HTML, CSS, Node.js**, then you don't need to memorize all 500+ VS Code shortcuts. Around **70-80 shortcuts** will cover 95% of your daily work.
+
+I'll group them by category.
+
+---
+
+# 📁 1. File Management
+
+| Shortcut             | Action               |
+| -------------------- | -------------------- |
+| `Ctrl + N`           | New File             |
+| `Ctrl + O`           | Open File            |
+| `Ctrl + Shift + N`   | New Window           |
+| `Ctrl + S`           | Save                 |
+| `Ctrl + Shift + S`   | Save As              |
+| `Ctrl + K S`         | Save All             |
+| `Ctrl + W`           | Close File           |
+| `Ctrl + Shift + T`   | Reopen Closed Editor |
+| `Ctrl + Tab`         | Next Open File       |
+| `Ctrl + Shift + Tab` | Previous File        |
+
+---
+
+# 📂 2. Explorer
+
+| Shortcut           | Action                |
+| ------------------ | --------------------- |
+| `Ctrl + Shift + E` | Open Explorer         |
+| `Ctrl + B`         | Toggle Sidebar        |
+| `Ctrl + Shift + F` | Search Entire Project |
+| `Ctrl + Shift + G` | Source Control        |
+| `Ctrl + Shift + X` | Extensions            |
+
+---
+
+# 🔍 3. Searching
+
+| Shortcut           | Action           |
+| ------------------ | ---------------- |
+| `Ctrl + F`         | Find             |
+| `Ctrl + H`         | Replace          |
+| `Ctrl + Shift + H` | Replace in Files |
+| `F3`               | Find Next        |
+| `Shift + F3`       | Previous Match   |
+| `Ctrl + P`         | Quick Open File  |
+| `Ctrl + Shift + P` | Command Palette  |
+| `Ctrl + T`         | Go to Symbol     |
+| `Ctrl + G`         | Go to Line       |
+
+---
+
+# ✍️ 4. Editing
+
+| Shortcut    | Action       |
+| ----------- | ------------ |
+| `Ctrl + Z`  | Undo         |
+| `Ctrl + Y`  | Redo         |
+| `Ctrl + X`  | Cut          |
+| `Ctrl + C`  | Copy         |
+| `Ctrl + V`  | Paste        |
+| `Ctrl + A`  | Select All   |
+| `Delete`    | Delete Right |
+| `Backspace` | Delete Left  |
+
+---
+
+# 🚀 5. Multi Cursor (Must Know)
+
+| Shortcut             | Action                 |
+| -------------------- | ---------------------- |
+| `Alt + Click`        | Add Cursor             |
+| `Ctrl + Alt + ↑/↓`   | Add Cursor Above/Below |
+| `Ctrl + D`           | Select Next Same Word  |
+| `Ctrl + Shift + L`   | Select All Same Words  |
+| `Alt + Shift + Drag` | Column Selection       |
+| `Esc`                | Remove Extra Cursors   |
+
+Example:
+
+```js
+const name;
+const name;
+const name;
+```
+
+Press
+
+```
+Ctrl + D
+```
+
+Multiple times
+
+↓
+
+Rename all together.
+
+---
+
+# 📑 6. Line Operations
+
+| Shortcut               | Action         |
+| ---------------------- | -------------- |
+| `Alt + ↑`              | Move Line Up   |
+| `Alt + ↓`              | Move Line Down |
+| `Shift + Alt + ↑`      | Copy Line Up   |
+| `Shift + Alt + ↓`      | Copy Line Down |
+| `Ctrl + Shift + K`     | Delete Line    |
+| `Ctrl + Enter`         | New Line Below |
+| `Ctrl + Shift + Enter` | New Line Above |
+
+---
+
+# 📌 7. Commenting
+
+| Shortcut          | Action              |
+| ----------------- | ------------------- |
+| `Ctrl + /`        | Toggle Line Comment |
+| `Shift + Alt + A` | Block Comment       |
+
+Example
+
+```js
+// Single Line
+```
+
+or
+
+```css
+/*
+Multiple
+Lines
+*/
+```
+
+---
+
+# 🔤 8. Rename & Refactor
+
+| Shortcut       | Action           |
+| -------------- | ---------------- |
+| `F2`           | Rename Symbol    |
+| `Ctrl + .`     | Quick Fix        |
+| `Shift + F12`  | Find References  |
+| `F12`          | Go to Definition |
+| `Alt + F12`    | Peek Definition  |
+| `Ctrl + Click` | Go to Definition |
+
+---
+
+# 🧠 9. IntelliSense
+
+| Shortcut               | Action             |
+| ---------------------- | ------------------ |
+| `Ctrl + Space`         | Suggestions        |
+| `Tab`                  | Accept Suggestion  |
+| `Ctrl + Shift + Space` | Parameter Hints    |
+| `Ctrl + I`             | Trigger Suggestion |
+
+---
+
+# 📦 10. Folding
+
+| Shortcut            | Action     |
+| ------------------- | ---------- |
+| `Ctrl + Shift + [`  | Fold       |
+| `Ctrl + Shift + ]`  | Unfold     |
+| `Ctrl + K Ctrl + 0` | Fold All   |
+| `Ctrl + K Ctrl + J` | Unfold All |
+
+---
+
+# 🧭 11. Navigation
+
+| Shortcut      | Action         |
+| ------------- | -------------- |
+| `Ctrl + Home` | Top of File    |
+| `Ctrl + End`  | Bottom of File |
+| `Home`        | Line Start     |
+| `End`         | Line End       |
+| `Ctrl + ←`    | Previous Word  |
+| `Ctrl + →`    | Next Word      |
+
+---
+
+# 📚 12. Tabs
+
+| Shortcut          | Action         |
+| ----------------- | -------------- |
+| `Ctrl + 1`        | Focus Editor 1 |
+| `Ctrl + 2`        | Focus Editor 2 |
+| `Ctrl + 3`        | Focus Editor 3 |
+| `Ctrl + PageUp`   | Previous Tab   |
+| `Ctrl + PageDown` | Next Tab       |
+
+---
+
+# 🖥️ 13. Terminal
+
+| Shortcut           | Action                 |
+| ------------------ | ---------------------- |
+| `` Ctrl + ` ``     | Toggle Terminal        |
+| `Ctrl + Shift + `` | New Terminal           |
+| `Ctrl + Shift + 5` | Split Terminal         |
+| `Ctrl + Shift + C` | Open External Terminal |
+
+---
+
+# 🧩 14. Panels
+
+| Shortcut     | Action              |
+| ------------ | ------------------- |
+| `Ctrl + J`   | Toggle Bottom Panel |
+| `F8`         | Next Error          |
+| `Shift + F8` | Previous Error      |
+
+---
+
+# 🌳 15. Code Navigation (Very Important)
+
+| Shortcut           | Action                      |
+| ------------------ | --------------------------- |
+| `Ctrl + Click`     | Go to Definition            |
+| `Alt + ←`          | Go Back                     |
+| `Alt + →`          | Go Forward                  |
+| `Ctrl + Shift + O` | Go to Symbol in File        |
+| `Ctrl + T`         | Search Symbols in Workspace |
+
+---
+
+# 🧹 16. Formatting
+
+| Shortcut            | Action           |
+| ------------------- | ---------------- |
+| `Shift + Alt + F`   | Format Document  |
+| `Ctrl + K Ctrl + F` | Format Selection |
+
+---
+
+# ⚡ 17. Emmet (HTML/CSS Superpower)
+
+Type
+
+```html
+ul>li*5
+```
+
+Press
+
+```
+Tab
+```
+
+↓
+
+```html
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+```
+
+---
+
+Type
+
+```html
+div.container>h1+p
+```
+
+↓
+
+```html
+<div class="container">
+    <h1></h1>
+    <p></p>
+</div>
+```
+
+---
+
+Type
+
+```html
+nav>ul>li*4>a
+```
+
+↓
+
+```html
+<nav>
+    <ul>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+        <li><a href=""></a></li>
+    </ul>
+</nav>
+```
+
+---
+
+# 🔥 18. React Shortcuts (ES7+ React Snippets Extension)
+
+| Shortcut      | Expands To                                 |
+| ------------- | ------------------------------------------ |
+| `rafce`       | React Arrow Function Component with Export |
+| `rfce`        | Function Component with Export             |
+| `useState`    | `useState` Hook                            |
+| `useEffect`   | `useEffect` Hook                           |
+| `useContext`  | `useContext` Hook                          |
+| `useMemo`     | `useMemo` Hook                             |
+| `useCallback` | `useCallback` Hook                         |
+| `useRef`      | `useRef` Hook                              |
+
+---
+
+# ⭐ Top 20 Shortcuts to Master First
+
+If you learn only these, you'll be productive in VS Code:
+
+1. `Ctrl + Shift + P` → Command Palette
+2. `Ctrl + P` → Open File
+3. `Ctrl + Shift + F` → Search Project
+4. `Ctrl + F` → Find
+5. `Ctrl + H` → Replace
+6. `Ctrl + /` → Comment
+7. `Alt + ↑/↓` → Move Line
+8. `Shift + Alt + ↓` → Duplicate Line
+9. `Ctrl + D` → Select Next Match
+10. `Ctrl + Shift + L` → Select All Matches
+11. `F2` → Rename Symbol
+12. `F12` → Go to Definition
+13. `Alt + ←` → Go Back
+14. `Ctrl + Space` → IntelliSense
+15. `Shift + Alt + F` → Format Document
+16. ``Ctrl + ` `` → Toggle Terminal
+17. `Ctrl + B` → Toggle Sidebar
+18. `Ctrl + Tab` → Switch Between Files
+19. `Ctrl + Shift + E` → Explorer
+20. `Ctrl + Shift + X` → Extensions
+
+Mastering these shortcuts will make everyday development in React and other web technologies significantly faster.
