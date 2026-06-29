@@ -1,3 +1,7 @@
+
+
+<a id="4-variables-data-types-type-conversion"></a>
+
 # 📘 Chapter 4: Variables, Data Types & Type Conversion
 
 > **Part A: Java Fundamentals — Beginner Foundation**
@@ -17,23 +21,25 @@ Java • Core Java • Interview Preparation
 
 | No. | Topic | Subtopics |
 |-----|-------|-----------|
-| 4.1 | [What is a Variable](#41-what-is-a-variable) | Definition, Memory Location, Declaration, Initialization, Vary + Able |
-| 4.2 | [Types of Variables](#42-types-of-variables) | Local Variable, Instance Variable, Static Variable, Differences |
-| 4.3 | [Scope and Lifetime of Variables](#43-scope-and-lifetime-of-variables) | Block Scope, Method Scope, Class Scope, Variable Shadowing |
-| 4.4 | [Default Values](#44-default-values) | Default Values Table, Why Local Variables Have No Default |
-| 4.5 | [Primitive Data Types (8 Types)](#45-primitive-data-types-8-types) | byte, short, int, long, float, double, char, boolean, Size-Range Table |
-| 4.6 | [Non-Primitive Data Types](#46-non-primitive-data-types) | Class, Object, String, Array, Interface, Primitive vs Non-Primitive |
-| 4.7 | [Type Casting — Widening](#47-type-casting--widening) | Automatic Conversion, Hierarchy, Compatible Types |
-| 4.8 | [Type Casting — Narrowing](#48-type-casting--narrowing) | Explicit Cast, Data Loss, Wrapping of Data Types |
-| 4.9 | [Type Promotion in Expressions](#49-type-promotion-in-expressions) | Implicit Promotion, Explicit Casting in Expressions, Automatic Type Promotion |
-| 4.10 | [Wrapper Classes](#410-wrapper-classes) | 8 Wrapper Classes, Why Needed, Utility Methods |
-| 4.11 | [Autoboxing and Unboxing](#411-autoboxing-and-unboxing) | Auto Conversion, Performance Impact |
-| 4.12 | [Integer Cache Pool](#412-integer-cache-pool) | Cache Range -128 to 127, == vs equals() Trap |
-| 4.13 | [var Keyword (Java 10+)](#413-var-keyword-java-10) | Type Inference, Rules, Restrictions |
-| 4.14 | [Overflow and Underflow](#414-overflow-and-underflow) | Wrapping Behavior, Max/Min Values, Modulo Logic |
-| 4.15 | [Constants using final](#415-constants-using-final) | final Keyword, Naming Convention, Blank Final, JVM Caching |
-| 4.16 | [Input in Java](#416-input-in-java) | Scanner Class, BufferedReader, Methods, Common Pitfalls, Command Line Args |
-| 🔥 | [Java vs Other Languages](#4-java-vs-other-languages) | Unique Differences in Variables, Types, Memory, Input |
+| 4.1 | [What is a Variable](#41-what-is-a-variable) | Definition, Memory Location, Declaration, Initialization, Vary+Able, How Stored in RAM |
+| 4.2 | [Types of Variables](#42-types-of-variables) | Local Variable, Instance Variable, Static/Class Variable, Comparison Table, Memory Diagram |
+| 4.3 | [Scope and Lifetime of Variables](#43-scope-and-lifetime-of-variables) | Block Scope, Method Scope, Class Scope, Variable Shadowing, this Keyword |
+| 4.4 | [Default Values](#44-default-values) | Default Values Table, Why Local Variables Don't Have Default, Proof with Code |
+| 4.5 | [Primitive Data Types (8 Types)](#45-primitive-data-types-8-types) | byte, short, int, long, float, double, char, boolean — Size, Range, Default, Use Cases, IEEE 754, Unicode |
+| 4.6 | [Non-Primitive Data Types](#46-non-primitive-data-types) | String, Array, Class, Interface, Null Reference, Primitive vs Reference, Stack vs Heap Storage |
+| 4.7 | [Literals in Java](#47-literals-in-java) | Integer (4 bases), Floating-Point, Character (4 ways), String, Boolean, Null, Underscore in Literals |
+| 4.8 | [Type Casting — Widening](#48-type-casting--widening) | Automatic Conversion, Hierarchy, char→int, Compatible Types |
+| 4.9 | [Type Casting — Narrowing](#49-type-casting--narrowing) | Explicit Cast, Data Loss, Wrapping Logic, Modulo Calculation |
+| 4.10 | [Type Promotion in Expressions](#410-type-promotion-in-expressions) | Implicit Promotion Rules, Why byte+byte=int, Explicit Cast in Expressions, Method Argument Promotion |
+| 4.11 | [Wrapper Classes](#411-wrapper-classes) | 8 Wrapper Classes, Why Needed, Parsing Methods, valueOf vs parseInt |
+| 4.12 | [Autoboxing and Unboxing](#412-autoboxing-and-unboxing) | Auto Conversion, Performance Impact, Collections Usage |
+| 4.13 | [Integer Cache Pool](#413-integer-cache-pool) | Cache Range -128 to 127, == vs equals() Trap, Visual Diagram |
+| 4.14 | [Comparing Wrapper Objects](#414-comparing-wrapper-objects) | == vs equals(), String Pool, Integer Cache, Golden Rule |
+| 4.15 | [var Keyword (Java 10+)](#415-var-keyword-java-10) | Type Inference, Rules, Restrictions, Still Static Typing |
+| 4.16 | [Overflow and Underflow](#416-overflow-and-underflow) | Wrapping Behavior, Circular Number Line, Math.addExact() |
+| 4.17 | [Constants using final](#417-constants-using-final) | final Keyword, Blank Final, Final Reference, JVM Caching, Naming Convention |
+| 4.18 | [Input in Java](#418-input-in-java) | Scanner Class, BufferedReader, All Methods Table, Newline Pitfall, Command Line Args, Scanner vs BufferedReader |
+| 🔥 | [Java vs Other Languages](#4-java-vs-other-languages) | Unique Differences in Variables, Types, Memory, Input, Boolean |
 | 💡 | [Interview Questions](#4-interview-questions) | 15+ Conceptual · Scenario · Output-based |
 | 🧪 | [Practice Problems](#4-practice-problems) | 5 Coding + 5 Theory |
 
@@ -54,87 +60,81 @@ It is assigned with a DATA TYPE.
 
 The word "Variable" = "Vary" + "Able"
 → Its value CAN BE CHANGED during program execution.
-
-Syntax:
-dataType variableName;           // Declaration
-dataType variableName = value;   // Declaration + Initialization
 ```
 
-### 📌 How Variables are Stored in Memory (RAM)
-
-```
-When you declare a variable:
-→ JVM allocates MEMORY in RAM for that variable
-→ The variable NAME is a label for that memory location
-→ The DATA TYPE tells HOW MUCH memory to allocate
-→ The VALUE is stored at that memory location
-
-int age = 25;
-→ JVM allocates 4 bytes of memory (int = 4 bytes)
-→ Labels it as "age"
-→ Stores value 25 in binary: 00000000 00000000 00000000 00011001
-```
-
-### 📊 Variable in Memory
-
-```mermaid
-flowchart LR
-    A["Java Code\nint age = 25"] --> B["RAM\nMemory Allocation"]
-    B --> C["Address: 0x1A2B\nName: age\nSize: 4 bytes\nValue: 25"]
-```
-
-### 📌 Storing Data in RAM
-
-```
-ALL data in a computer is stored in RAM as BINARY (0s and 1s).
-
-When you write: int x = 10;
-→ '10' is converted to binary: 00000000 00000000 00000000 00001010
-→ This binary pattern is stored in 4 bytes of RAM
-→ The variable name 'x' maps to this memory address
-
-When you write: char c = 'A';
-→ 'A' has Unicode value 65
-→ 65 in binary: 00000000 01000001
-→ Stored in 2 bytes of RAM (char = 2 bytes in Java)
-
-When you RETRIEVE data: System.out.println(x);
-→ JVM looks up the memory address mapped to 'x'
-→ Reads the binary pattern from that address
-→ Converts it back to decimal: 10
-→ Displays it on screen
-```
+### 📌 Variable Declaration and Initialization
 
 ```java
-public class VariableDemo {
-    public static void main(String[] args) {
+// DECLARATION — Tells JVM to allocate memory
+int age;                    // JVM reserves 4 bytes for 'age'
+String name;                // JVM reserves reference space
 
-        // DECLARATION (tells JVM to allocate memory)
-        int age;
+// INITIALIZATION — Stores value in allocated memory
+age = 25;                   // Stores 25 in those 4 bytes
+name = "Rahul";             // Points to "Rahul" on Heap
 
-        // INITIALIZATION (stores value in that memory)
-        age = 25;
+// DECLARATION + INITIALIZATION (Most common)
+double salary = 50000.50;
+boolean isActive = true;
+char grade = 'A';
 
-        // DECLARATION + INITIALIZATION (both at once)
-        String name = "Rahul";
-        double salary = 50000.50;
-        boolean isActive = true;
+// MULTIPLE DECLARATIONS
+int x = 1, y = 2, z = 3;   // Same type, same line
+```
 
-        // USING the variable (reading from memory)
-        System.out.println("Name: " + name);       // Rahul
-        System.out.println("Age: " + age);          // 25
-        System.out.println("Salary: " + salary);    // 50000.5
-        System.out.println("Active: " + isActive);  // true
+### 📌 How Variables are Stored in RAM
 
-        // CHANGING the value (vary + able!)
-        age = 26;  // New value stored at same memory location
-        System.out.println("New Age: " + age);      // 26
-    }
-}
+```
+When you write: int x = 10;
+
+STEP 1: JVM allocates 4 bytes in RAM (int = 4 bytes)
+STEP 2: Labels that memory location as "x"
+STEP 3: Converts 10 to binary: 00000000 00000000 00000000 00001010
+STEP 4: Stores that binary pattern in the allocated memory
+
+When you READ: System.out.println(x);
+STEP 1: JVM finds memory address mapped to "x"
+STEP 2: Reads the binary pattern from that address
+STEP 3: Converts binary back to decimal: 10
+STEP 4: Displays on screen
+
+When you CHANGE: x = 20;
+→ New binary pattern replaces old one at SAME memory location
+→ Old value (10) is gone forever
+```
+
+### 📊 Variable in Memory Diagram
+
+```mermaid
+flowchart TD
+    A["Java Code\nint age = 25"] --> B["JVM allocates\n4 bytes in RAM"]
+    B --> C["Memory Address: 0x1A2B\nLabel: age\nSize: 4 bytes"]
+    C --> D["Binary stored:\n00000000 00000000\n00000000 00011001"]
+    D --> E["Decimal: 25"]
+```
+
+### 🌍 Real-World Analogy (Hinglish)
+
+```
+Variable ek DABBA (box) ki tarah hai:
+
+DABBA ka naam    = Variable name (age)
+DABBA ka size    = Data type (int = 4 bytes)
+DABBA mein saman = Value (25)
+
+int age = 25;
+→ "age" naam ka dabba banao
+→ 4 bytes ka size rakhna (kyunki int hai)
+→ Usme 25 rakh do
+
+age = 30;
+→ Purana saman (25) nikalo
+→ Naya saman (30) rakh do
+→ Dabba wahi hai, saman badal gaya = Vary + Able!
 ```
 
 > [!NOTE]
-> A variable is essentially a **named memory location**. When you declare `int x = 10;`, the JVM allocates 4 bytes in RAM, stores the binary representation of 10, and labels that location as "x". When you access `x`, JVM retrieves the value from that memory address.
+> ALL data in a computer is stored as **BINARY (0s and 1s)**. When you write `int x = 10`, the JVM converts 10 to binary and stores it. When you read `x`, the JVM converts binary back to decimal. The variable name is just a **human-readable label** for a memory address.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
@@ -149,111 +149,130 @@ public class VariableDemo {
 ```java
 public class VariableTypes {
 
-    // ─────────────────────────────────────────────────────
-    // TYPE 1: INSTANCE VARIABLE (Non-Static)
-    // ─────────────────────────────────────────────────────
-    // → Declared INSIDE class, OUTSIDE method
-    // → Each object has its OWN COPY
-    // → Stored in HEAP memory (with the object)
-    // → Has DEFAULT values (0, null, false)
-    // → Can use access specifiers (public, private, etc.)
+    // ═══════════════════════════════════════════════════════════
+    // TYPE 1: INSTANCE VARIABLE (Non-Static Field)
+    // ═══════════════════════════════════════════════════════════
+    // → Declared INSIDE class, OUTSIDE any method/block
+    // → Each object gets its OWN SEPARATE COPY
+    // → Stored in HEAP memory (lives with the object)
+    // → Has DEFAULT values (0, null, false, '\u0000')
+    // → Can use access specifiers (public, private, protected)
     // → If no access specifier → default (package-private)
-    // → Called INSTANCE variable because its value is
-    //   INSTANCE-SPECIFIC and NOT shared among instances
+    // → Called "instance" because value is INSTANCE-SPECIFIC
+    //   and NOT shared among instances
+    // → Created when object is created, destroyed when object is GC'd
     String name;        // default = null
     int age;            // default = 0
+    double salary;      // default = 0.0
 
-    // ─────────────────────────────────────────────────────
+    // ═══════════════════════════════════════════════════════════
     // TYPE 2: STATIC VARIABLE (Class Variable)
-    // ─────────────────────────────────────────────────────
-    // → Declared with 'static' keyword
+    // ═══════════════════════════════════════════════════════════
+    // → Declared with 'static' keyword inside class
     // → CANNOT be local (inside method)
-    // → Single COPY shared among ALL instances
-    // → Stored in METHOD AREA (Metaspace)
+    // → SINGLE COPY shared among ALL instances of the class
+    // → Stored in METHOD AREA (Metaspace in Java 8+)
     // → Memory allocation happens ONLY ONCE when class loads
-    // → Accessed via ClassName.variableName
+    // → Has DEFAULT values
+    // → Accessed via ClassName.variableName (recommended)
     // → If accessed via object → compiler shows WARNING
-    //   (compiler replaces object name with class name auto)
-    static int count = 0;  // Shared among all objects
+    //   and replaces object name with class name automatically
+    // → Created when class loads, destroyed when class unloads
+    static int employeeCount = 0;   // Shared among all objects
+    static String companyName = "TechCorp";
 
-    // ─────────────────────────────────────────────────────
+    // ═══════════════════════════════════════════════════════════
     // TYPE 3: LOCAL VARIABLE
-    // ─────────────────────────────────────────────────────
-    public void myMethod() {
-        // → Declared INSIDE method/block/constructor
+    // ═══════════════════════════════════════════════════════════
+    public void calculateBonus() {
+        // → Declared INSIDE method, block, or constructor
         // → Stored in STACK memory
-        // → NO default value (MUST initialize before use)
-        // → Cannot use access specifiers
+        // → NO default value — MUST initialize before use!
+        // → CANNOT use access specifiers (public, private, etc.)
         // → CANNOT be defined with 'static' keyword
-        // → Scope: ONLY within the method/block
-        // → Other methods don't even know it exists!
-        // → Destroyed when method ends
-        int localVar = 10;  // MUST initialize!
-        System.out.println(localVar);
+        // → Scope limited to the method/block it's declared in
+        // → Other methods in the class DON'T KNOW it exists
+        // → Created when method is called, destroyed when method returns
+        int bonus = 5000;           // MUST initialize!
+        double taxRate = 0.30;      // MUST initialize!
+        System.out.println("Bonus: " + bonus);
+    }
+
+    // Constructor
+    VariableTypes(String name, int age) {
+        this.name = name;
+        this.age = age;
+        employeeCount++;  // Increment shared counter
     }
 
     public static void main(String[] args) {
-        VariableTypes obj1 = new VariableTypes();
-        VariableTypes obj2 = new VariableTypes();
+        VariableTypes emp1 = new VariableTypes("Alice", 25);
+        VariableTypes emp2 = new VariableTypes("Bob", 30);
 
-        // Instance variable: Each object has OWN copy
-        obj1.name = "Alice";
-        obj2.name = "Bob";
-        System.out.println(obj1.name);  // Alice
-        System.out.println(obj2.name);  // Bob (different!)
+        // Instance: Each object has OWN copy
+        System.out.println(emp1.name);  // Alice
+        System.out.println(emp2.name);  // Bob (different!)
 
-        // Static variable: SHARED among all
-        VariableTypes.count = 5;
-        System.out.println(VariableTypes.count); // 5
-        System.out.println(obj1.count);  // 5 (WARNING! Use ClassName)
-        System.out.println(obj2.count);  // 5 (same shared value)
+        // Static: SHARED among all objects
+        System.out.println(VariableTypes.employeeCount); // 2
+        System.out.println(emp1.employeeCount);  // 2 (WARNING! Use ClassName)
+        System.out.println(emp2.employeeCount);  // 2 (same shared value)
     }
 }
 ```
 
-### 📌 Comparison Table
+### 📌 Complete Comparison Table
 
 ```
 ┌──────────────────┬─────────────────┬──────────────────┬──────────────────┐
 │  Feature         │  Local          │  Instance        │  Static          │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
 │  Declared In     │  Method/Block   │  Class (outside  │  Class with      │
-│                  │                 │  methods)        │  'static'        │
+│                  │  /Constructor   │  methods)        │  'static'        │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
-│  Memory          │  Stack          │  Heap (with obj) │  Method Area     │
+│  Memory          │  STACK          │  HEAP (with obj) │  METHOD AREA     │
+│                  │                 │                  │  (Metaspace)     │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
-│  Default Value   │  ❌ None        │  ✅ Yes (0,null) │  ✅ Yes (0,null) │
+│  Default Value   │  ❌ NONE        │  ✅ Yes (0,null) │  ✅ Yes (0,null) │
+│                  │  (MUST init!)   │  (auto by JVM)   │  (auto by JVM)   │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
-│  Scope           │  Within method  │  Within object   │  Entire class    │
+│  Scope           │  Within method  │  Entire object   │  Entire class    │
+│                  │  /block only    │                  │                  │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
-│  Copies          │  Per method call│  Per object      │  ONE for class   │
+│  Copies          │  Per method call│  Per OBJECT      │  ONE for class   │
+│                  │                 │  (each obj owns) │  (all obj share) │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
 │  Access Modifier │  ❌ Cannot use  │  ✅ Can use      │  ✅ Can use      │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
 │  static keyword  │  ❌ Cannot use  │  ❌ Not used     │  ✅ Required     │
 ├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
-│  Lifetime        │  Method duration│  Object lifetime │  Class lifetime  │
+│  Created         │  Method called  │  Object created  │  Class loaded    │
+├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
+│  Destroyed       │  Method returns │  Object GC'd     │  Class unloaded  │
+├──────────────────┼─────────────────┼──────────────────┼──────────────────┤
+│  Accessed via    │  Direct name    │  objectRef.var   │  ClassName.var   │
+│                  │                 │  or this.var     │  (recommended)   │
 └──────────────────┴─────────────────┴──────────────────┴──────────────────┘
 ```
 
-### 📊 Variable Types in Memory
+### 📊 Variables in Memory — Complete Picture
 
 ```mermaid
 flowchart TD
-    A["METHOD AREA\n(Metaspace)"] --> B["Static Variable\ncount = 5\nONE copy for class"]
+    A["METHOD AREA\n(Metaspace)"] --> B["Static Variables\nemployeeCount = 2\ncompanyName = TechCorp\nONE copy shared"]
 
-    C["HEAP"] --> D["Object 1\nname = Alice\nage = 0"]
-    C --> E["Object 2\nname = Bob\nage = 0"]
+    C["HEAP"] --> D["Object 1 (emp1)\nname = Alice\nage = 25\nOWN instance vars"]
+    C --> E["Object 2 (emp2)\nname = Bob\nage = 30\nOWN instance vars"]
 
-    F["STACK\n(Thread)"] --> G["main() Frame\nobj1 ref, obj2 ref"]
-    F --> H["myMethod() Frame\nlocalVar = 10"]
-
-    G --"points to"--> D
-    G --"points to"--> E
+    F["STACK\n(Thread-specific)"] --> G["main() Frame\nemp1 ref → Object 1\nemp2 ref → Object 2"]
+    F --> H["calculateBonus() Frame\nbonus = 5000\ntaxRate = 0.30\n(destroyed after return)"]
 ```
 
 > [!IMPORTANT]
-> **Key Difference:** Local variables **MUST** be initialized before use (no default values). Instance and static variables get default values automatically (0, null, false). This is because instance/static vars exist on Heap/Method Area where JVM initializes memory, but Stack doesn't do this.
+> **Memory Rule for Interviews:**
+> - **Local variables** → STACK (fast access, auto-destroyed)
+> - **Instance variables** → HEAP (with the object, GC handles cleanup)
+> - **Static variables** → METHOD AREA/Metaspace (class-level, loaded once)
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
@@ -263,57 +282,45 @@ flowchart TD
 
 <a id="43-scope-and-lifetime-of-variables"></a>
 
-### 📌 What is Scope?
+### 📌 Scope = Where, Lifetime = How Long
 
 ```
-SCOPE = Where a variable can be ACCESSED from.
-LIFETIME = How LONG a variable exists in memory.
+SCOPE    = Where a variable can be ACCESSED from
+LIFETIME = How LONG a variable EXISTS in memory
 ```
 
 ```java
 public class ScopeDemo {
 
-    static int classLevel = 100;    // Class scope (everywhere)
-    int objectLevel = 200;         // Object scope (per object)
+    static int classScope = 100;    // Scope: Entire class
+    int objectScope = 200;         // Scope: Within object
 
     public void methodA() {
-        int methodLevel = 300;     // Method scope
-        System.out.println(classLevel);  // ✅ Accessible
-        System.out.println(objectLevel); // ✅ Accessible
-        System.out.println(methodLevel); // ✅ Accessible
+        int methodScope = 300;     // Scope: This method only
 
-        // Block scope
-        {
-            int blockLevel = 400;  // Block scope ONLY
-            System.out.println(blockLevel); // ✅ Inside block
+        System.out.println(classScope);  // ✅
+        System.out.println(objectScope); // ✅
+        System.out.println(methodScope); // ✅
+
+        // BLOCK scope
+        if (true) {
+            int blockScope = 400;  // Scope: This block only
+            System.out.println(blockScope); // ✅ Inside block
         }
-        // System.out.println(blockLevel); // ❌ Outside block!
+        // System.out.println(blockScope); // ❌ Outside block!
 
-    } // methodLevel destroyed here
+        // LOOP scope
+        for (int i = 0; i < 3; i++) {
+            System.out.println(i);  // ✅ Inside loop
+        }
+        // System.out.println(i); // ❌ Outside loop!
+
+    } // methodScope destroyed here
 
     public void methodB() {
-        System.out.println(classLevel);  // ✅
-        System.out.println(objectLevel); // ✅
-        // System.out.println(methodLevel); // ❌ Not visible here!
-    }
-
-    public static void main(String[] args) {
-
-        // Loop variable scope
-        for (int i = 0; i < 3; i++) {
-            System.out.println(i);  // ✅ i is accessible
-        }
-        // System.out.println(i); // ❌ i not accessible after loop!
-
-        // Nested block scope
-        int x;
-        {
-            x = 50;             // ✅ Outer var assigned in block
-            int y = 60;         // y lives ONLY in this block
-            System.out.println(x + " " + y); // ✅
-        }
-        System.out.println(x); // ✅ x declared outside block
-        // System.out.println(y); // ❌ y not accessible!
+        System.out.println(classScope);  // ✅
+        System.out.println(objectScope); // ✅
+        // System.out.println(methodScope); // ❌ Different method!
     }
 }
 ```
@@ -325,18 +332,40 @@ public class ShadowingDemo {
 
     int x = 10;   // Instance variable
 
-    public void method() {
-        int x = 20;   // Local variable SHADOWS instance variable
+    public void method(int x) {  // Parameter SHADOWS instance variable
+        // 'x' here refers to the PARAMETER, not instance variable!
+        System.out.println(x);      // Parameter value
+        System.out.println(this.x); // Instance value (use 'this' to access)
+    }
 
-        System.out.println(x);      // 20 (local wins)
+    public void anotherMethod() {
+        int x = 30;   // Local variable SHADOWS instance variable
+        System.out.println(x);      // 30 (local wins)
         System.out.println(this.x); // 10 (instance via 'this')
     }
 
     public static void main(String[] args) {
-        new ShadowingDemo().method();
+        ShadowingDemo obj = new ShadowingDemo();
+        obj.method(20);
         // Output: 20, 10
+
+        obj.anotherMethod();
+        // Output: 30, 10
     }
 }
+```
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│  SHADOWING RULE:                                             │
+│  When a local variable has the SAME NAME as an instance      │
+│  variable, the local variable "shadows" (hides) the          │
+│  instance variable within that scope.                        │
+│                                                              │
+│  To access the instance variable → use 'this' keyword        │
+│  this.x = instance variable                                  │
+│  x = local variable                                          │
+└──────────────────────────────────────────────────────────────┘
 ```
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
@@ -347,52 +376,49 @@ public class ShadowingDemo {
 
 <a id="44-default-values"></a>
 
-### 📌 Default Values Table
+### 📌 Complete Default Values Table
 
 ```
-┌──────────────────────┬─────────────────────────────────────┐
-│  Data Type           │  Default Value                      │
-├──────────────────────┼─────────────────────────────────────┤
-│  byte                │  0                                  │
-│  short               │  0                                  │
-│  int                 │  0                                  │
-│  long                │  0L                                 │
-│  float               │  0.0f                               │
-│  double              │  0.0d                               │
-│  char                │  '\u0000' (null character)          │
-│  boolean             │  false                              │
-│  String (any Object) │  null                               │
-│  Array               │  null                               │
-└──────────────────────┴─────────────────────────────────────┘
-
-📌 CRITICAL RULE:
-→ Instance variables and static variables → HAVE default values
-→ Local variables → NO default values (MUST initialize!)
+┌──────────────────────┬──────────────────────┬──────────────────────┐
+│  Data Type           │  Default Value        │  Applies To          │
+├──────────────────────┼──────────────────────┼──────────────────────┤
+│  byte                │  0                    │  Instance & Static   │
+│  short               │  0                    │  Instance & Static   │
+│  int                 │  0                    │  Instance & Static   │
+│  long                │  0L                   │  Instance & Static   │
+│  float               │  0.0f                 │  Instance & Static   │
+│  double              │  0.0d                 │  Instance & Static   │
+│  char                │  '\u0000' (null char) │  Instance & Static   │
+│  boolean             │  false                │  Instance & Static   │
+│  String (any Object) │  null                 │  Instance & Static   │
+│  Array               │  null                 │  Instance & Static   │
+├──────────────────────┼──────────────────────┼──────────────────────┤
+│  LOCAL variables     │  ❌ NO DEFAULT!       │  MUST initialize!    │
+└──────────────────────┴──────────────────────┴──────────────────────┘
 ```
+
+### 📌 Why Local Variables Don't Have Default Values? ⭐
 
 ```java
-public class DefaultValueDemo {
+public class DefaultDemo {
 
-    // Instance variables — auto-initialized
-    int num;          // default: 0
-    double decimal;   // default: 0.0
-    boolean flag;     // default: false
-    String text;      // default: null
-    char letter;      // default: '\u0000'
+    // Instance variables — auto-initialized by JVM
+    int num;          // 0
+    double decimal;   // 0.0
+    boolean flag;     // false
+    String text;      // null
+    char letter;      // '\u0000'
 
     public static void main(String[] args) {
-        DefaultValueDemo obj = new DefaultValueDemo();
-
+        DefaultDemo obj = new DefaultDemo();
         System.out.println(obj.num);      // 0
-        System.out.println(obj.decimal);  // 0.0
         System.out.println(obj.flag);     // false
         System.out.println(obj.text);     // null
-        System.out.println(obj.letter);   // (empty/null char)
 
-        // Local variable — NO default value!
+        // Local variable — NO default!
         int localVar;
         // System.out.println(localVar); // ❌ COMPILE ERROR!
-        // Error: variable localVar might not have been initialized
+        // "variable localVar might not have been initialized"
 
         localVar = 10;  // NOW initialized
         System.out.println(localVar); // ✅ 10
@@ -400,9 +426,24 @@ public class DefaultValueDemo {
 }
 ```
 
+```
+WHY no default for local variables?
+
+1. PERFORMANCE: Stack memory is optimized for SPEED.
+   JVM doesn't zero out stack memory during allocation.
+   Heap/Method Area IS zeroed out during object creation.
+
+2. BUG PREVENTION: If you forgot to set a value, the compiler
+   TELLS YOU immediately (compile-time error). This catches
+   bugs EARLY — much better than silent wrong behavior.
+
+3. DESIGN PHILOSOPHY: Local variables have short lifespan.
+   The developer SHOULD know what value they want.
+   Giving defaults would hide programmer mistakes.
+```
+
 > [!IMPORTANT]
-> **Interview Question:** *"Why do local variables not have default values?"*
-> **Answer:** Local variables live on the **Stack** which is optimized for speed — JVM doesn't zero out stack memory. Instance/static variables live on **Heap/Method Area** where JVM initializes memory blocks to zero during allocation. Also, requiring explicit initialization for local variables catches bugs early — if you forgot to set a value, the compiler tells you immediately.
+> **Interview Answer:** Local variables don't have defaults because: (1) Stack memory isn't zeroed for performance, (2) It catches bugs at compile-time, (3) It's a design choice to force explicit initialization. Instance/static variables get defaults because the JVM initializes Heap/Method Area memory blocks to zero.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
@@ -418,92 +459,141 @@ public class DefaultValueDemo {
 A PRIMITIVE data type specifies the SIZE and TYPE of variable values,
 and it has NO additional methods.
 
-Java has exactly 8 primitive data types.
-They are NOT objects — they hold ACTUAL VALUES directly.
+Java has exactly 8 primitive data types — they are NOT objects.
+They hold ACTUAL VALUES directly (not references).
+They are stored DIRECTLY in the memory location.
 ```
 
-### 📌 Complete Size-Range Table
+### 📌 Complete Size-Range-Default Table
 
 ```
-┌──────────┬────────┬───────────────────────────────────────┬──────────┐
-│  Type    │  Size  │  Range                                 │ Default  │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  byte    │ 1 byte │  -128 to 127                           │  0       │
-│          │ (8 bit)│  (-2⁷ to 2⁷-1)                        │          │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  short   │ 2 bytes│  -32,768 to 32,767                     │  0       │
-│          │(16 bit)│  (-2¹⁵ to 2¹⁵-1)                      │          │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  int     │ 4 bytes│  -2,147,483,648 to 2,147,483,647       │  0       │
-│          │(32 bit)│  (-2³¹ to 2³¹-1) ≈ ±2.1 billion       │          │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  long    │ 8 bytes│  -9,223,372,036,854,775,808 to         │  0L      │
-│          │(64 bit)│   9,223,372,036,854,775,807             │          │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  float   │ 4 bytes│  ≈ ±3.4 × 10³⁸                        │  0.0f    │
-│          │(32 bit)│  Precision: 6-7 decimal digits          │          │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  double  │ 8 bytes│  ≈ ±1.7 × 10³⁰⁸                       │  0.0d    │
-│          │(64 bit)│  Precision: 15-16 decimal digits        │          │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  char    │ 2 bytes│  0 to 65,535 (Unicode)                  │ '\u0000' │
-│          │(16 bit)│  (\u0000 to \uFFFF)                    │          │
-├──────────┼────────┼───────────────────────────────────────┼──────────┤
-│  boolean │ 1 bit  │  true or false ONLY                     │  false   │
-│          │ (JVM)  │  NOT 0 or 1 like C++!                   │          │
-└──────────┴────────┴───────────────────────────────────────┴──────────┘
+┌──────────┬────────┬────────────────────────────────────────┬──────────┬───────────────────┐
+│  Type    │  Size  │  Range                                  │ Default  │  Use Case         │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  byte    │ 1 byte │  -128 to 127                            │  0       │  Save memory in   │
+│          │ 8 bits │  (-2⁷ to 2⁷-1)                         │          │  large arrays     │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  short   │ 2 bytes│  -32,768 to 32,767                      │  0       │  Save memory,     │
+│          │ 16 bits│  (-2¹⁵ to 2¹⁵-1)                       │          │  rarely used      │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  int     │ 4 bytes│  -2,147,483,648 to 2,147,483,647        │  0       │  MOST COMMON      │
+│          │ 32 bits│  (-2³¹ to 2³¹-1) ≈ ±2.1 billion        │          │  integer type     │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  long    │ 8 bytes│  -9,223,372,036,854,775,808 to          │  0L      │  When int is      │
+│          │ 64 bits│   9,223,372,036,854,775,807              │          │  not enough       │
+│          │        │  Suffix: L or l required                 │          │  (timestamps)     │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  float   │ 4 bytes│  ≈ ±3.4 × 10³⁸                         │  0.0f    │  Precision:       │
+│          │ 32 bits│  IEEE 754 Standard                       │          │  6-7 decimal      │
+│          │        │  Suffix: f or F required                 │          │  digits           │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  double  │ 8 bytes│  ≈ ±1.7 × 10³⁰⁸                        │  0.0d    │  MOST COMMON      │
+│          │ 64 bits│  IEEE 754 Standard                       │          │  decimal type     │
+│          │        │  Precision: 15-16 decimal digits         │          │  15-16 digits     │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  char    │ 2 bytes│  0 to 65,535                             │ '\u0000' │  Unicode chars    │
+│          │ 16 bits│  Unicode: \u0000 to \uFFFF               │          │  ALL languages    │
+│          │        │  WHY 2 bytes? → Unicode support!          │          │                   │
+├──────────┼────────┼────────────────────────────────────────┼──────────┼───────────────────┤
+│  boolean │ ~1 bit │  true or false ONLY                      │  false   │  Flags, conditions│
+│          │ (JVM)  │  NOT 0 or 1 like C/C++!                  │          │  boolean logic    │
+│          │        │  Size is JVM dependent                    │          │                   │
+└──────────┴────────┴────────────────────────────────────────┴──────────┴───────────────────┘
+```
 
-📌 Total memory for all 8 types:
-byte(1) + short(2) + int(4) + long(8) + float(4) + double(8) + char(2) = 29 bytes
-+ boolean (JVM dependent)
+### 📌 Each Type — Deep Details
+
+```java
+public class AllPrimitivesDemo {
+    public static void main(String[] args) {
+
+        // ═══════════════════ byte ═══════════════════
+        // Size: 1 byte (8 bits) | Range: -128 to 127
+        byte b = 127;       // Max value
+        // byte b2 = 128;   // ❌ Out of range!
+        System.out.println("byte max: " + Byte.MAX_VALUE);   // 127
+        System.out.println("byte min: " + Byte.MIN_VALUE);   // -128
+        System.out.println("byte size: " + Byte.BYTES + " byte"); // 1
+
+        // ═══════════════════ short ═══════════════════
+        // Size: 2 bytes (16 bits) | Range: -32768 to 32767
+        short s = 32767;
+        System.out.println("short max: " + Short.MAX_VALUE);  // 32767
+
+        // ═══════════════════ int ═══════════════════
+        // Size: 4 bytes (32 bits) | MOST COMMONLY used integer
+        int i = 2_147_483_647;  // Max int value (underscore for readability)
+        System.out.println("int max: " + Integer.MAX_VALUE);  // 2147483647
+
+        // ═══════════════════ long ═══════════════════
+        // Size: 8 bytes (64 bits) | MUST suffix with L or l
+        long l = 9_223_372_036_854_775_807L;  // MUST have 'L'!
+        // long l2 = 9223372036854775807;  // ❌ Without L → compiler thinks int!
+        System.out.println("long max: " + Long.MAX_VALUE);
+
+        // ═══════════════════ float ═══════════════════
+        // Size: 4 bytes | IEEE 754 | Precision: 6-7 decimal digits
+        // MUST suffix with f or F
+        float f = 3.14f;          // MUST have 'f'!
+        // float f2 = 3.14;       // ❌ ERROR! 3.14 is double by default
+        float f3 = (float) 3.14;  // ✅ Explicit cast works too
+        System.out.println("float precision: ~6-7 digits");
+
+        // ═══════════════════ double ═══════════════════
+        // Size: 8 bytes | IEEE 754 | Precision: 15-16 decimal digits
+        // DEFAULT floating-point type (no suffix needed)
+        double d = 3.14159265358979;  // No suffix needed
+        double d2 = 3.14d;           // Optional 'd' suffix
+        double d3 = 1.5e3;           // Scientific: 1500.0
+        System.out.println("double precision: ~15-16 digits");
+
+        // ═══════════════════ char ═══════════════════
+        // Size: 2 bytes (16 bits) | Unicode: 0 to 65535
+        // WHY 2 bytes? Java uses Unicode (not ASCII like C++)
+        // Supports ALL world languages natively
+        char c = 'A';               // Single quote
+        char c2 = 65;               // Unicode value for 'A'
+        char c3 = '\u0041';         // Unicode representation of 'A'
+        char c4 = '\n';             // Escape sequence
+        System.out.println("char c1=" + c + ", c2=" + c2 + ", c3=" + c3);
+        // Range: \u0000 (lowest) to \uFFFF (highest)
+
+        // ═══════════════════ boolean ═══════════════════
+        // ONLY true or false — NOT 0 or 1 like C/C++!
+        boolean flag = true;
+        // boolean b = 1;    // ❌ ERROR! 1 is NOT boolean in Java
+        // if (1) { }        // ❌ ERROR! Java requires boolean in if
+        // if (flag) { }     // ✅ Only boolean works in conditions
+        System.out.println("boolean: " + flag);
+    }
+}
 ```
 
 ### 📌 Range Formula
 
 ```
-For any n-bit signed integer type:
-→ Minimum value = -2^(n-1)
-→ Maximum value =  2^(n-1) - 1
+For any n-bit SIGNED integer type:
+→ Minimum = -2^(n-1)
+→ Maximum =  2^(n-1) - 1
+→ Total values = 2^n
 
-byte  (8 bits):  -2⁷  to 2⁷-1  = -128 to 127
-short (16 bits): -2¹⁵ to 2¹⁵-1 = -32768 to 32767
-int   (32 bits): -2³¹ to 2³¹-1 = -2,147,483,648 to 2,147,483,647
-long  (64 bits): -2⁶³ to 2⁶³-1
+byte  (8 bits):  -2⁷  to 2⁷-1  = -128 to 127        (256 values)
+short (16 bits): -2¹⁵ to 2¹⁵-1 = -32768 to 32767     (65536 values)
+int   (32 bits): -2³¹ to 2³¹-1 ≈ ±2.1 billion         
+long  (64 bits): -2⁶³ to 2⁶³-1 (very large)
 
 WHY -128 to 127 (not -128 to 128)?
-→ 8 bits = 256 values total (2⁸)
-→ Half for negative: -128 to -1 (128 values)
-→ Half for non-negative: 0 to 127 (128 values)
-→ Zero takes one spot from the positive side
+→ 8 bits = 256 total values
+→ Negative: -128 to -1 = 128 values
+→ Non-negative: 0 to 127 = 128 values
+→ ZERO takes one spot from the positive side!
 ```
 
-```java
-public class DataTypesDemo {
-    public static void main(String[] args) {
-
-        byte   b = 127;            // Max byte value
-        short  s = 32767;          // Max short value
-        int    i = 2147483647;     // Max int value
-        long   l = 9_223_372_036_854_775_807L; // Max long (needs 'L')
-        float  f = 3.14f;          // MUST have 'f' suffix
-        double d = 3.14159265358979; // Default floating type
-        char   c = 'A';            // 2 bytes (Unicode)
-        boolean flag = true;       // ONLY true or false
-
-        // Getting Min/Max values programmatically
-        System.out.println("byte max: " + Byte.MAX_VALUE);       // 127
-        System.out.println("byte min: " + Byte.MIN_VALUE);       // -128
-        System.out.println("int max: " + Integer.MAX_VALUE);     // 2147483647
-        System.out.println("int min: " + Integer.MIN_VALUE);     // -2147483648
-        System.out.println("long max: " + Long.MAX_VALUE);
-        System.out.println("double max: " + Double.MAX_VALUE);
-
-        // Size of each type
-        System.out.println("int size: " + Integer.BYTES + " bytes"); // 4
-        System.out.println("long size: " + Long.BYTES + " bytes");  // 8
-    }
-}
-```
+> [!IMPORTANT]
+> **3 Rules to Remember:**
+> 1. **long** needs `L` suffix: `long l = 100L;`
+> 2. **float** needs `f` suffix: `float f = 3.14f;` (because 3.14 is double by default)
+> 3. **boolean** is NOT 0/1 — `if(1)` is ❌ ERROR in Java (unlike C/C++)
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
@@ -528,21 +618,31 @@ Therefore, a non-primitive data type variable is also called:
 → OBJECT REFERENCE variable
 ```
 
-### 📌 Types of Non-Primitive
+### 📌 5 Types of Non-Primitive
 
-```
-┌──────────────────────────────────────────────────────────────┐
-│  Non-Primitive Type  │  Description                         │
-├──────────────────────┼──────────────────────────────────────┤
-│  1. Class            │  Blueprint for creating objects       │
-│  2. Object           │  Instance of a class                  │
-│  3. String           │  Sequence of characters (immutable)   │
-│  4. Array            │  Collection of same-type elements     │
-│  5. Interface        │  Contract for classes to implement    │
-└──────────────────────┴──────────────────────────────────────┘
+```java
+// 1. CLASS — Blueprint for objects
+class Student {
+    String name;
+    int age;
+}
+
+// 2. OBJECT — Instance of a class
+Student s = new Student();  // 's' is reference, Student is object
+
+// 3. STRING — Sequence of characters (immutable object)
+String greeting = "Hello World";
+
+// 4. ARRAY — Collection of same-type elements
+int[] numbers = {1, 2, 3, 4, 5};
+
+// 5. INTERFACE — Contract for classes
+interface Printable {
+    void print();
+}
 ```
 
-### 📌 Primitive vs Non-Primitive
+### 📌 Primitive vs Non-Primitive (Reference) Types ⭐
 
 ```
 ┌──────────────────┬─────────────────────┬────────────────────────┐
@@ -551,9 +651,10 @@ Therefore, a non-primitive data type variable is also called:
 │  Defined By      │  Java (predefined)  │  Programmer (user)     │
 ├──────────────────┼─────────────────────┼────────────────────────┤
 │  Stores          │  Actual VALUE       │  REFERENCE (address)   │
+│                  │  directly           │  to object on Heap     │
 ├──────────────────┼─────────────────────┼────────────────────────┤
-│  Memory          │  Stack (local vars) │  Reference on Stack,   │
-│                  │                     │  Object on HEAP        │
+│  Memory          │  Stack (local vars) │  Ref on Stack,         │
+│                  │  or Heap (fields)   │  Object on HEAP        │
 ├──────────────────┼─────────────────────┼────────────────────────┤
 │  Size            │  Fixed (1-8 bytes)  │  Variable              │
 ├──────────────────┼─────────────────────┼────────────────────────┤
@@ -564,59 +665,169 @@ Therefore, a non-primitive data type variable is also called:
 │  Default         │  0, false, \u0000   │  null                  │
 ├──────────────────┼─────────────────────┼────────────────────────┤
 │  Examples        │  int, char, boolean │  String, Array, Class  │
+├──────────────────┼─────────────────────┼────────────────────────┤
+│  == compares     │  VALUES             │  REFERENCES (addresses)│
 └──────────────────┴─────────────────────┴────────────────────────┘
 ```
 
+### 📌 Null Reference
+
 ```java
-public class PrimVsNonPrim {
-    public static void main(String[] args) {
+// null = reference that points to NOTHING (no object)
+String name = null;       // Valid for reference types
+// int x = null;          // ❌ ERROR! Primitives can't be null
 
-        // PRIMITIVE: stores VALUE directly on Stack
-        int x = 10;       // x contains value 10 directly
+// Accessing null reference → NullPointerException
+// name.length();         // ❌ NullPointerException at runtime!
 
-        // NON-PRIMITIVE: stores REFERENCE on Stack, OBJECT on Heap
-        String s = "Hello"; // s contains ADDRESS of "Hello" object
-        int[] arr = {1,2,3}; // arr contains ADDRESS of array object
-
-        // Primitive cannot be null
-        // int a = null;      // ❌ COMPILE ERROR!
-
-        // Non-primitive CAN be null
-        String name = null;   // ✅ Reference points to nothing
-        // name.length();     // ❌ NullPointerException at runtime!
-
-        // Primitive has NO methods
-        // x.toString();      // ❌ Not possible!
-
-        // Non-primitive HAS methods
-        System.out.println(s.length());     // 5
-        System.out.println(s.toUpperCase()); // HELLO
-    }
+// Always check before using:
+if (name != null) {
+    System.out.println(name.length());
+} else {
+    System.out.println("Name is null!");
 }
+
+// Java 14+ Helpful NullPointerException:
+// "Cannot invoke String.length() because 'name' is null"
 ```
 
-> [!NOTE]
-> **Memory Rule:** Primitive variables store **actual values** directly. Non-primitive variables store **references** (memory addresses) to objects. The objects themselves live on the **Heap**. When you pass a non-primitive to a method, you pass a **copy of the reference**, not the object itself.
+### 📊 Stack vs Heap Storage
+
+```mermaid
+flowchart TD
+    A["STACK\n(References + Primitives)"] --> B["int x = 10\n(value: 10 directly)"]
+    A --> C["String s = ref → 0x1A\n(reference only)"]
+    A --> D["int[] arr = ref → 0x2B\n(reference only)"]
+
+    E["HEAP\n(Objects)"] --> F["String Object\n@0x1A\n'Hello World'"]
+    E --> G["Array Object\n@0x2B\n{1, 2, 3}"]
+
+    C --> F
+    D --> G
+```
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.7 Type Casting — Widening
+## 4.7 Literals in Java
 
-<a id="47-type-casting--widening"></a>
+<a id="47-literals-in-java"></a>
 
-### 📌 What is Widening?
+### 📌 What are Literals?
 
 ```
-WIDENING (Automatic Type Conversion) takes place when:
+Literals in Java are SYNTHETIC REPRESENTATIONS of
+boolean, numeric, character, or string data.
+
+A literal is the ACTUAL VALUE written directly in source code.
+```
+
+### 📌 1. Integer Literals (4 Number Systems)
+
+```java
+public class IntegerLiterals {
+    public static void main(String[] args) {
+
+        // a) DECIMAL (Base 10) — No prefix, digits 0-9
+        int dec = 101;
+
+        // b) OCTAL (Base 8) — Prefix with 0, digits 0-7
+        int oct = 0146;  // = 102 in decimal
+
+        // c) HEXADECIMAL (Base 16) — Prefix 0x or 0X, digits 0-9 + A-F
+        int hex = 0X123Face;
+        // Note: Java is case-sensitive but 0X = 0x (exception!)
+
+        // d) BINARY (Base 2) — Prefix 0b or 0B, digits 0-1 (Java 7+)
+        int bin = 0b1111;  // = 15 in decimal
+
+        // DEFAULT: Every integral literal is INT type
+        // For LONG: suffix with L or l
+        long bigNum = 100L;
+
+        // For BYTE/SHORT: No explicit literal suffix!
+        // Compiler auto-converts if value is within range
+        byte b = 50;     // ✅ 50 within byte range → auto-treats as byte
+        // byte b2 = 200; // ❌ 200 exceeds byte range → Error!
+
+        // UNDERSCORE in numeric literals (Java 7+)
+        int million = 1_000_000;         // Readability!
+        long phone = 98_765_43_210L;
+        int binReadable = 0b1010_1100;
+
+        System.out.println(dec);  // 101
+        System.out.println(oct);  // 102
+        System.out.println(hex);  // 19152846
+        System.out.println(bin);  // 15
+    }
+}
+```
+
+### 📌 2. Floating-Point Literals
+
+```java
+// Can specify in DECIMAL form ONLY
+// Cannot specify in Octal or Hexadecimal!
+
+double d = 123.456;    // Default: double
+float f = 101.230f;    // MUST add 'f' for float!
+double d2 = 1.5e3;     // Scientific: 1500.0
+double d3 = 1.5E-3;    // 0.0015
+
+// DEFAULT: Every floating-point literal is DOUBLE
+// float f = 3.14;     // ❌ ERROR! 3.14 is double
+// float f = 3.14f;    // ✅ Explicitly marked as float
+```
+
+### 📌 3. Character Literals (4 Ways)
+
+```java
+// WAY 1: Single Quote
+char ch1 = 'a';
+
+// WAY 2: Integral Literal (Unicode value) — range 0 to 65535
+char ch2 = 97;            // 97 = 'a'
+
+// WAY 3: Unicode Representation
+char ch3 = '\u0061';      // \u0061 = 'a'
+
+// WAY 4: Escape Sequence
+char ch4 = '\n';          // Newline
+```
+
+### 📌 4. String, Boolean, Null Literals
+
+```java
+// STRING: Double quotes
+String s = "Hello World";
+
+// BOOLEAN: Only true or false (NOT 0 or 1!)
+boolean b = true;
+
+// NULL: Only for reference types
+String nullRef = null;
+// int x = null;  // ❌ Primitives can't be null!
+```
+
+<a href="#chapter-index-table-4">Go to Top 🔝</a>
+
+---
+
+## 4.8 Type Casting — Widening
+
+<a id="48-type-casting--widening"></a>
+
+### 📌 Widening = Automatic = No Data Loss
+
+```
+WIDENING conversion takes place when:
 a. The two data types are COMPATIBLE
-b. We assign a value of SMALLER data type to BIGGER data type
+b. When we assign value of SMALLER type to BIGGER type
 
-It is done AUTOMATICALLY by the compiler.
-NO data loss occurs (smaller fits inside bigger).
+Done AUTOMATICALLY by compiler — no cast needed.
 
-Widening Hierarchy:
+Hierarchy:
 byte → short → int → long → float → double
               char ↗
 ```
@@ -632,114 +843,94 @@ public class WideningDemo {
         float  f = l;     // long → float  ✅ Auto
         double d = f;     // float → double ✅ Auto
 
-        System.out.println("byte  : " + b);  // 10
-        System.out.println("short : " + s);  // 10
-        System.out.println("int   : " + i);  // 10
-        System.out.println("long  : " + l);  // 10
-        System.out.println("float : " + f);  // 10.0
-        System.out.println("double: " + d);  // 10.0
-
-        // char to int (widening)
+        // char → int (widening)
         char ch = 'A';
-        int ascii = ch;          // char → int ✅ Auto
-        System.out.println(ascii); // 65
+        int ascii = ch;   // char → int ✅ Auto (65)
 
-        // NO explicit cast needed for widening
-        // Compiler handles it automatically
+        // NOTE: char → byte or char → short is NOT widening!
+        // char is unsigned (0-65535), byte is signed (-128 to 127)
+        // char c = 'A'; byte b2 = c;  // ❌ ERROR!
     }
 }
 ```
-
-> [!TIP]
-> **Remember the hierarchy:** `byte → short → int → long → float → double`. Widening always goes **left to right** in this chain. The compiler does it automatically because a smaller type always fits inside a bigger type without data loss.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.8 Type Casting — Narrowing
+## 4.9 Type Casting — Narrowing
 
-<a id="48-type-casting--narrowing"></a>
+<a id="49-type-casting--narrowing"></a>
 
-### 📌 What is Narrowing?
+### 📌 Narrowing = Manual = Potential Data Loss
 
 ```
-NARROWING (Explicit Type Conversion) is needed when:
-→ We assign a value of LARGER data type to SMALLER data type
-→ This is useful for INCOMPATIBLE data types where
-  automatic conversion CANNOT be done
+NARROWING is needed when:
+→ Assigning value of LARGER type to SMALLER type
+→ Useful for INCOMPATIBLE data types
+→ Automatic conversion CANNOT be done
 → DATA LOSS is possible!
 
-Syntax:
-targetType variable = (targetType) value;
+Syntax: targetType variable = (targetType) value;
 ```
 
 ```java
 public class NarrowingDemo {
     public static void main(String[] args) {
 
-        // double → int (decimal part LOST)
+        // double → int (decimal TRUNCATED, not rounded!)
         double d = 9.99;
-        int i = (int) d;   // Explicit cast required
-        System.out.println(i); // 9 (TRUNCATION, not rounding!)
+        int i = (int) d;
+        System.out.println(i);  // 9 (NOT 10!)
 
-        // int → byte (data WRAPPING)
-        int bigInt = 257;
-        byte b = (byte) bigInt;
-        System.out.println(b);  // 1
-
-        // WHY 1? → WRAPPING LOGIC:
-        // byte range: -128 to 127 (total 256 values)
-        // 257 % 256 = 1
-        // So b = 1
+        // long → int
+        long l = 100L;
+        int x = (int) l;       // ✅ If within int range
 
         // float → int
         float f = 123.456f;
         int n = (int) f;
-        System.out.println(n);  // 123 (decimal truncated)
-
-        // long → int
-        long l = 123456789012345L;
-        int x = (int) l;
-        System.out.println(x);  // Some unexpected value (data loss!)
+        System.out.println(n);  // 123
     }
 }
 ```
 
-### 📌 Wrapping of Data Types (Interesting Fact!) ⭐
+### 📌 Wrapping of Data Types ⭐⭐ (Interesting Fact!)
 
 ```java
 public class WrappingDemo {
     public static void main(String[] args) {
 
-        // When an int value exceeds byte range and is cast to byte:
-        // Result = value % 256 (if positive)
-        // Then adjust for signed range
+        // When int exceeds byte range and cast to byte:
+        // Java performs MODULO with range size (256 for byte)
 
         int i1 = 257;
         byte b1 = (byte) i1;
-        System.out.println(b1);  // 1 (257 % 256 = 1)
+        System.out.println(b1);  // 1
 
         int i2 = 300;
         byte b2 = (byte) i2;
-        System.out.println(b2);  // 44 (300 % 256 = 44)
+        System.out.println(b2);  // 44
 
         int i3 = 128;
         byte b3 = (byte) i3;
-        System.out.println(b3);  // -128 (128 wraps to -128!)
+        System.out.println(b3);  // -128
 
         int i4 = 130;
         byte b4 = (byte) i4;
-        System.out.println(b4);  // -126 (130 - 256 = -126)
+        System.out.println(b4);  // -126
 
-        // FORMULA for int → byte:
-        // If result of (value % 256) > 127: subtract 256
-        // If result <= 127: keep as is
+        /*
+        WRAPPING FORMULA (int → byte):
+        Step 1: result = value % 256
+        Step 2: If result > 127 → result = result - 256
+                If result <= 127 → keep as is
 
-        // 257 % 256 = 1   → 1 (within range)     → 1
-        // 128 % 256 = 128 → 128 > 127 → 128-256  → -128
-        // 130 % 256 = 130 → 130 > 127 → 130-256  → -126
-        // 300 % 256 = 44  → 44 (within range)     → 44
+        257 % 256 = 1   → 1 ≤ 127   → 1      ✅
+        300 % 256 = 44  → 44 ≤ 127  → 44     ✅
+        128 % 256 = 128 → 128 > 127 → 128-256 = -128 ✅
+        130 % 256 = 130 → 130 > 127 → 130-256 = -126 ✅
+        */
     }
 }
 ```
@@ -748,228 +939,177 @@ public class WrappingDemo {
 
 ```mermaid
 flowchart TD
-    A["int value = 257"] --> B["Cast: (byte) 257"]
-    B --> C["Step 1: 257 % 256 = 1"]
-    C --> D["Step 2: 1 <= 127?\nYES → Result = 1"]
+    A["int val = 257"] --> B["(byte) 257"]
+    B --> C["257 % 256 = 1"]
+    C --> D["1 ≤ 127 ?\nYES → Result = 1"]
 
-    E["int value = 130"] --> F["Cast: (byte) 130"]
-    F --> G["Step 1: 130 % 256 = 130"]
-    G --> H["Step 2: 130 > 127?\nYES → 130 - 256 = -126"]
+    E["int val = 130"] --> F["(byte) 130"]
+    F --> G["130 % 256 = 130"]
+    G --> H["130 > 127 ?\nYES → 130-256 = -126"]
 ```
 
 > [!IMPORTANT]
-> **Interview Favorite:** `int i = 257; byte b = (byte) i;` — What is `b`?
-> **Answer:** `b = 1`. Because byte has 256 values (0-255 unsigned), 257 % 256 = 1. The wrapping formula is: take modulo 256, then if result > 127, subtract 256 to get the signed value.
+> **Interview Classic:** `int i = 257; byte b = (byte)i;` → Answer: `b = 1` (257 % 256 = 1). Also: `int i = 128; byte b = (byte)i;` → Answer: `b = -128` (128 % 256 = 128, then 128 > 127 → 128-256 = -128). This wrapping behavior is a **very common interview question**.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.9 Type Promotion in Expressions
+## 4.10 Type Promotion in Expressions
 
-<a id="49-type-promotion-in-expressions"></a>
+<a id="410-type-promotion-in-expressions"></a>
 
-### 📌 Implicit Type Promotion
+### 📌 Rules of Automatic Type Promotion
 
 ```
 While evaluating expressions, the intermediate value may
-EXCEED the range of operands and hence the expression
-value will be PROMOTED.
+EXCEED the range of operands → expression value is PROMOTED.
 
-RULES for Automatic Type Promotion:
+RULES:
+1. byte, short, char → automatically promoted to INT
+   in ANY expression
 
-1. Java automatically promotes each byte, short, or char
-   operand to INT when evaluating an expression
-
-2. If ONE operand is long → whole expression promoted to long
-3. If ONE operand is float → whole expression promoted to float
-4. If ONE operand is double → whole expression promoted to double
+2. If one operand is long → whole expression → long
+3. If one operand is float → whole expression → float
+4. If one operand is double → whole expression → double
 ```
 
 ```java
 public class TypePromotionDemo {
     public static void main(String[] args) {
 
-        // RULE 1: byte/short/char → int in expressions
-        byte a = 10;
-        byte b = 20;
-        // byte c = a + b;  // ❌ COMPILE ERROR!
-        // WHY? a+b is promoted to int → int can't fit in byte
-        int c = a + b;      // ✅ Result is int
-        byte d = (byte)(a + b); // ✅ Explicit cast back to byte
+        // RULE 1: byte + byte = int (NOT byte!)
+        byte a = 10, b = 20;
+        // byte c = a + b;      // ❌ ERROR! a+b is int
+        int c = a + b;          // ✅ Result is int
+        byte d = (byte)(a + b); // ✅ Explicit cast back
 
-        // RULE 2: One long → everything becomes long
+        // RULE 2: int + long = long
         int x = 10;
         long y = 100L;
-        long result1 = x + y;  // int promoted to long
-        // int bad = x + y;    // ❌ long can't fit in int
+        long res1 = x + y;     // int promoted to long
 
-        // RULE 3: One float → everything becomes float
-        int m = 5;
-        float n = 2.5f;
-        float result2 = m + n;  // int promoted to float
+        // RULE 3: int + float = float
+        float res2 = x + 2.5f;
 
-        // RULE 4: One double → everything becomes double
-        float p = 5.0f;
-        double q = 2.5;
-        double result3 = p + q; // float promoted to double
+        // RULE 4: float + double = double
+        double res3 = 5.0f + 2.5;
 
-        System.out.println(c);       // 30
-        System.out.println(result1); // 110
-        System.out.println(result2); // 7.5
-        System.out.println(result3); // 7.5
+        // WHY byte + byte = int?
+        // Because 100 + 100 = 200, which EXCEEDS byte range (127)!
+        // Java promotes to int to PREVENT overflow during computation
+        // This is a SAFETY MECHANISM unique to Java
+
+        System.out.println(c);    // 30
+        System.out.println(res1); // 110
     }
 }
 ```
 
-### 📌 Explicit Type Casting in Expressions
+### 📌 Explicit Casting in Expressions
 
 ```java
-public class ExplicitInExpression {
-    public static void main(String[] args) {
+// When result is auto-promoted but you need smaller type:
+byte a = 50, b = 50;
+// byte c = a * b;     // ❌ a*b = 2500, promoted to int
+byte c = (byte)(a * b); // ✅ But data loss! 2500 wraps → -60
 
-        // While evaluating, result is automatically promoted
-        // If we store in smaller type → COMPILE ERROR
-        // We need EXPLICIT CAST
-
-        byte a = 50;
-        byte b = 50;
-        // byte c = a * b; // ❌ a*b = 2500, promoted to int
-
-        // Fix: Explicit cast
-        byte c = (byte)(a * b); // ✅ But data loss! 2500 → wraps
-
-        System.out.println(c);  // -60 (2500 wrapped in byte range)
-
-        // short example
-        short s1 = 100;
-        short s2 = 200;
-        // short s3 = s1 + s2; // ❌ Promoted to int
-        short s3 = (short)(s1 + s2); // ✅
-        System.out.println(s3);      // 300
-    }
-}
+short s1 = 100, s2 = 200;
+// short s3 = s1 + s2; // ❌ Promoted to int
+short s3 = (short)(s1 + s2); // ✅
 ```
 
-### 📌 Automatic Type Promotion (Method Arguments)
-
-```
-The name TYPE PROMOTION specifies that a small size datatype
-can be PROMOTED to a large size datatype.
-
-This Automatic Type Promotion is also done when any method
-which accepts a HIGHER SIZE data type argument is called
-with the SMALLER data type.
-```
+### 📌 Automatic Type Promotion in Method Arguments
 
 ```java
 public class MethodPromotion {
 
-    // Method accepts double
     static void display(double val) {
         System.out.println("Value: " + val);
     }
 
     public static void main(String[] args) {
-        int x = 10;
-        display(x);  // int automatically promoted to double
-        // Output: Value: 10.0
+        display(10);     // int → double (auto promotion)
+        display('A');    // char → double (65.0)
+        display(3.14f);  // float → double
 
-        byte b = 5;
-        display(b);  // byte → int → long → float → double
-        // Output: Value: 5.0
-
-        char c = 'A';
-        display(c);  // char (65) → int → double
-        // Output: Value: 65.0
+        // Small type CAN be promoted to larger type
+        // when method parameter expects larger type
     }
 }
 ```
-
-### 📊 Type Promotion Hierarchy
-
-```mermaid
-flowchart LR
-    A["byte"] --> B["short"]
-    B --> C["int"]
-    D["char"] --> C
-    C --> E["long"]
-    E --> F["float"]
-    F --> G["double"]
-
-    style A fill:#ffcccc
-    style B fill:#ffddcc
-    style C fill:#ffeecc
-    style D fill:#ffcccc
-    style E fill:#ffffcc
-    style F fill:#ccffcc
-    style G fill:#ccccff
-```
-
-> [!IMPORTANT]
-> **Why does `byte + byte = int`?**
-> Because the result of adding two bytes could **exceed byte range** (max 127). For example, 100 + 100 = 200, which doesn't fit in byte. So Java promotes BOTH operands to int before performing the operation, to prevent overflow. This is a safety mechanism unique to Java — C/C++ doesn't do this automatically.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.10 Wrapper Classes
+## 4.11 Wrapper Classes
 
-<a id="410-wrapper-classes"></a>
+<a id="411-wrapper-classes"></a>
 
-### 📌 What are Wrapper Classes?
+### 📌 Why Wrapper Classes Exist
 
 ```
-WRAPPER CLASSES convert primitive data types into OBJECTS.
-Every primitive has a corresponding Wrapper class.
+Wrapper Classes convert primitive data types into OBJECTS.
 
 WHY NEEDED?
-→ Collections (List, Map) only work with OBJECTS, not primitives
-→ Wrapper classes provide UTILITY METHODS (parseInt, valueOf, etc.)
+→ Collections (List, Map, Set) work ONLY with Objects
+→ Provides UTILITY METHODS (parseInt, valueOf, etc.)
 → Needed for GENERICS (List<Integer>, not List<int>)
 → Can hold NULL value (primitives cannot)
-→ Used in method arguments that expect Object type
+→ Used in Reflection API, Serialization
 ```
 
+### 📌 All 8 Wrapper Classes
+
 ```
-┌──────────────────┬────────────────────────────────────────┐
-│  Primitive       │  Wrapper Class                         │
-├──────────────────┼────────────────────────────────────────┤
-│  byte            │  Byte                                  │
-│  short           │  Short                                 │
-│  int             │  Integer  (NOT Int!)                   │
-│  long            │  Long                                  │
-│  float           │  Float                                 │
-│  double          │  Double                                │
-│  char            │  Character (NOT Char!)                 │
-│  boolean         │  Boolean                               │
-└──────────────────┴────────────────────────────────────────┘
+┌──────────────────┬────────────────────┐
+│  Primitive       │  Wrapper Class      │
+├──────────────────┼────────────────────┤
+│  byte            │  Byte               │
+│  short           │  Short              │
+│  int             │  Integer  (NOT Int!)│
+│  long            │  Long               │
+│  float           │  Float              │
+│  double          │  Double             │
+│  char            │  Character (NOT Char!)│
+│  boolean         │  Boolean            │
+└──────────────────┴────────────────────┘
 ```
+
+### 📌 Parsing and Utility Methods
 
 ```java
-public class WrapperDemo {
+public class WrapperMethods {
     public static void main(String[] args) {
 
-        // Creating Wrapper objects
-        Integer i1 = Integer.valueOf(10);  // Recommended way
-        Integer i2 = 10;                   // Autoboxing (auto conversion)
+        // ═══ PARSING: String → Primitive ═══
+        int parsed = Integer.parseInt("123");         // "123" → 123
+        double d = Double.parseDouble("3.14");        // "3.14" → 3.14
+        long l = Long.parseLong("9876543210");
+        boolean b = Boolean.parseBoolean("true");     // "true" → true
 
-        // Utility Methods
-        int parsed = Integer.parseInt("123");        // String → int
-        double d = Double.parseDouble("3.14");       // String → double
-        String s = Integer.toString(42);             // int → String
-        String bin = Integer.toBinaryString(10);     // "1010"
-        String hex = Integer.toHexString(255);       // "ff"
+        // ═══ valueOf(): String → Wrapper Object ═══
+        Integer obj = Integer.valueOf("123");          // "123" → Integer(123)
+        Integer obj2 = Integer.valueOf(123);           // int → Integer
 
-        // Min/Max values
+        // ═══ DIFFERENCE: parseInt vs valueOf ═══
+        int prim = Integer.parseInt("100");   // Returns PRIMITIVE int
+        Integer wrap = Integer.valueOf("100"); // Returns WRAPPER Integer
+        // valueOf() may use cache for -128 to 127
+
+        // ═══ Conversion Methods ═══
+        String s1 = Integer.toString(42);              // int → "42"
+        String s2 = String.valueOf(42);                // int → "42"
+        String bin = Integer.toBinaryString(10);       // → "1010"
+        String hex = Integer.toHexString(255);         // → "ff"
+        String oct = Integer.toOctalString(8);         // → "10"
+
+        // ═══ Constants ═══
         System.out.println(Integer.MAX_VALUE);  // 2147483647
         System.out.println(Integer.MIN_VALUE);  // -2147483648
-        System.out.println(Byte.MAX_VALUE);     // 127
-
-        System.out.println(parsed);  // 123
-        System.out.println(bin);     // 1010
-        System.out.println(hex);     // ff
+        System.out.println(Integer.BYTES);      // 4
+        System.out.println(Integer.SIZE);       // 32 (bits)
     }
 }
 ```
@@ -978,77 +1118,62 @@ public class WrapperDemo {
 
 ---
 
-## 4.11 Autoboxing and Unboxing
+## 4.12 Autoboxing and Unboxing
 
-<a id="411-autoboxing-and-unboxing"></a>
+<a id="412-autoboxing-and-unboxing"></a>
 
-### 📌 What is Autoboxing and Unboxing?
-
-```
-AUTOBOXING:  Automatic conversion of Primitive → Wrapper Object
-UNBOXING:    Automatic conversion of Wrapper Object → Primitive
-
-Introduced in Java 5.
-Compiler handles it internally using valueOf() and xxxValue() methods.
-```
+### 📌 Automatic Conversion (Java 5+)
 
 ```java
 public class AutoboxDemo {
     public static void main(String[] args) {
 
-        // AUTOBOXING: primitive → Wrapper (Automatic)
+        // AUTOBOXING: Primitive → Wrapper (Automatic)
         int primitive = 50;
         Integer wrapper = primitive;  // Autoboxing!
-        // Internally: Integer wrapper = Integer.valueOf(50);
-        System.out.println(wrapper);  // 50
+        // Internally: Integer.valueOf(50)
 
-        // UNBOXING: Wrapper → primitive (Automatic)
+        // UNBOXING: Wrapper → Primitive (Automatic)
         Integer wrapperObj = Integer.valueOf(100);
         int prim = wrapperObj;  // Unboxing!
-        // Internally: int prim = wrapperObj.intValue();
-        System.out.println(prim);  // 100
+        // Internally: wrapperObj.intValue()
 
-        // Autoboxing in Collections
+        // In Collections (most common use)
         java.util.List<Integer> list = new java.util.ArrayList<>();
-        list.add(10);     // Autoboxing: 10 → Integer.valueOf(10)
-        list.add(20);     // Autoboxing
-
+        list.add(10);     // Autoboxing: int → Integer
+        list.add(20);
         int val = list.get(0);  // Unboxing: Integer → int
-        System.out.println(val); // 10
 
-        // Autoboxing in expressions
-        Integer a = 10;     // Autoboxing
-        Integer b = 20;     // Autoboxing
-        int sum = a + b;    // Unboxing both, adding, result is int
-        System.out.println(sum); // 30
+        // In Expressions
+        Integer a = 10, b = 20;
+        int sum = a + b;    // Both unboxed, added, result is int
+
+        // ⚠️ PERFORMANCE WARNING:
+        // Each autobox creates object on Heap
+        // In tight loops, prefer primitives over wrappers!
+        // BAD:
+        Long total = 0L;
+        for (int i = 0; i < 1000000; i++) {
+            total += i;  // Creates new Long object each time!
+        }
+        // GOOD:
+        long totalPrim = 0L;
+        for (int i = 0; i < 1000000; i++) {
+            totalPrim += i;  // No object creation!
+        }
     }
 }
 ```
-
-> [!NOTE]
-> **Performance Warning:** Autoboxing/unboxing creates objects and has overhead. In performance-critical code (tight loops, millions of operations), prefer primitives over wrappers. Each autobox creates a new object on the heap (unless cached).
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.12 Integer Cache Pool
+## 4.13 Integer Cache Pool
 
-<a id="412-integer-cache-pool"></a>
+<a id="413-integer-cache-pool"></a>
 
-### 📌 What is Integer Cache?
-
-```
-Java caches Integer objects for values -128 to 127.
-
-When you use Integer.valueOf() or autoboxing for values
-in this range, the SAME CACHED OBJECT is returned.
-
-For values OUTSIDE this range, a NEW OBJECT is created each time.
-
-This is done for PERFORMANCE OPTIMIZATION — most programs
-use small numbers frequently.
-```
+### 📌 Cache Range: -128 to 127
 
 ```java
 public class IntegerCacheDemo {
@@ -1057,158 +1182,211 @@ public class IntegerCacheDemo {
         // WITHIN cache range (-128 to 127)
         Integer a = 100;  // Autoboxed → from cache
         Integer b = 100;  // Autoboxed → SAME cached object!
-        System.out.println(a == b);      // TRUE (same object!)
-        System.out.println(a.equals(b)); // TRUE (same value)
+        System.out.println(a == b);      // TRUE ← same object!
+        System.out.println(a.equals(b)); // TRUE ← same value
 
         // OUTSIDE cache range (128+)
-        Integer c = 200;  // Autoboxed → NEW object created
-        Integer d = 200;  // Autoboxed → DIFFERENT new object!
-        System.out.println(c == d);      // FALSE (different objects!)
-        System.out.println(c.equals(d)); // TRUE (same value)
+        Integer c = 200;  // NEW object created
+        Integer d = 200;  // DIFFERENT new object!
+        System.out.println(c == d);      // FALSE ← different objects!
+        System.out.println(c.equals(d)); // TRUE  ← same value
 
-        // WHY?
-        // For -128 to 127: Integer.valueOf() returns CACHED objects
-        // For others: Integer.valueOf() creates NEW objects each time
+        // ═══ HOW IT WORKS ═══
+        // Integer.valueOf(n):
+        //   if n >= -128 && n <= 127 → return CACHED object
+        //   else → return NEW Integer(n)
 
-        // LESSON:
-        // ALWAYS use .equals() to compare Integer/Wrapper objects
-        // NEVER use == for Wrapper comparison (unless you know cache)
+        // ═══ WHY CACHING? ═══
+        // Small numbers are used VERY frequently
+        // Caching avoids creating millions of Integer objects
+        // Performance optimization by JVM
     }
 }
 ```
 
-### 📊 Integer Cache Visual
+### 📊 Cache Visual
 
 ```mermaid
 flowchart TD
-    A["Integer a = 100"] --> B["Cache Hit!\n@0xABC"]
+    A["Integer a = 100"] --> B["Cache Hit!\nReturn @0xABC"]
     C["Integer b = 100"] --> B
-    D["a == b\nTRUE\n(same object)"]
+    D["a == b → TRUE\nSame object"]
 
     E["Integer c = 200"] --> F["New Object\n@0xDEF"]
     G["Integer d = 200"] --> H["New Object\n@0x123"]
-    I["c == d\nFALSE\n(different objects)"]
+    I["c == d → FALSE\nDifferent objects"]
 ```
-
-> [!IMPORTANT]
-> **Interview Trap #1:** `Integer a = 127; Integer b = 127; System.out.println(a == b);` → **TRUE** (cached)
-> **Interview Trap #2:** `Integer a = 128; Integer b = 128; System.out.println(a == b);` → **FALSE** (not cached!)
-> **Rule:** ALWAYS use `.equals()` for comparing Wrapper objects. `==` compares **references** (memory addresses), `.equals()` compares **values**.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.13 var Keyword (Java 10+)
+## 4.14 Comparing Wrapper Objects
 
-<a id="413-var-keyword-java-10"></a>
+<a id="414-comparing-wrapper-objects"></a>
 
-### 📌 What is var?
+### 📌 == vs .equals() — The Golden Rule ⭐⭐
+
+```java
+public class ComparisonDemo {
+    public static void main(String[] args) {
+
+        // ═══════════════════════════════════════════
+        // FOR PRIMITIVES: == compares VALUES ✅
+        // ═══════════════════════════════════════════
+        int a = 5, b = 5;
+        System.out.println(a == b);  // true
+
+        // ═══════════════════════════════════════════
+        // FOR WRAPPER OBJECTS: == compares REFERENCES ⚠️
+        // ═══════════════════════════════════════════
+        Integer x = new Integer(100);
+        Integer y = new Integer(100);
+        System.out.println(x == y);      // FALSE (different objects!)
+        System.out.println(x.equals(y)); // TRUE (same value)
+
+        // ═══════════════════════════════════════════
+        // INTEGER CACHE TRAP
+        // ═══════════════════════════════════════════
+        Integer m = 127;
+        Integer n = 127;
+        System.out.println(m == n);      // TRUE (cached!)
+
+        Integer p = 128;
+        Integer q = 128;
+        System.out.println(p == q);      // FALSE (not cached!)
+        System.out.println(p.equals(q)); // TRUE
+
+        // ═══════════════════════════════════════════
+        // STRING POOL
+        // ═══════════════════════════════════════════
+        String s1 = "Hello";           // String Pool
+        String s2 = "Hello";           // Same Pool object
+        String s3 = new String("Hello"); // New object on Heap
+
+        System.out.println(s1 == s2);      // TRUE (same pool object)
+        System.out.println(s1 == s3);      // FALSE (pool vs heap)
+        System.out.println(s1.equals(s3)); // TRUE (same content)
+    }
+}
+```
 
 ```
-var = LOCAL VARIABLE TYPE INFERENCE (Java 10+)
-
-The compiler AUTOMATICALLY infers the type from the
-right-hand side value. You don't need to write the type explicitly.
-
-IMPORTANT: var is NOT dynamic typing!
-Java is STILL statically typed.
-The type is fixed AT COMPILE TIME.
-Once inferred, it CANNOT change.
+┌──────────────────────────────────────────────────────────────┐
+│                    GOLDEN RULE ⭐⭐⭐                        │
+│                                                              │
+│  For PRIMITIVES → Use == (compares values)                   │
+│  For OBJECTS    → Use .equals() (compares content)           │
+│                                                              │
+│  NEVER use == for comparing Wrapper objects!                  │
+│  (Unless you intentionally want reference comparison)        │
+│                                                              │
+│  Exception (but don't rely on):                               │
+│  → Integer cache (-128 to 127): == works by coincidence      │
+│  → String Pool literals: == works by coincidence             │
+└──────────────────────────────────────────────────────────────┘
 ```
+
+<a href="#chapter-index-table-4">Go to Top 🔝</a>
+
+---
+
+## 4.15 var Keyword (Java 10+)
+
+<a id="415-var-keyword-java-10"></a>
+
+### 📌 Local Variable Type Inference
 
 ```java
 public class VarDemo {
     public static void main(String[] args) {
 
-        // Instead of:
+        // INSTEAD OF explicit types:
         String name = "Rahul";
         int age = 25;
-        double salary = 50000.0;
+        java.util.ArrayList<String> list = new java.util.ArrayList<>();
 
-        // You can write:
-        var name2 = "Rahul";      // Inferred as String
-        var age2 = 25;             // Inferred as int
-        var salary2 = 50000.0;     // Inferred as double
-        var list = new java.util.ArrayList<String>(); // ArrayList<String>
+        // USE var (compiler infers type):
+        var name2 = "Rahul";       // Inferred: String
+        var age2 = 25;              // Inferred: int
+        var list2 = new java.util.ArrayList<String>(); // ArrayList<String>
 
-        System.out.println(name2.getClass()); // class java.lang.String
-        System.out.println(age2);             // 25
-
-        // STILL statically typed — type CANNOT change after inference
+        // var is STILL statically typed!
+        // Type is fixed at COMPILE TIME
         // var x = 10;
-        // x = "text";  // ❌ COMPILE ERROR! x is int, not String
+        // x = "text";  // ❌ ERROR! x is int, cannot become String
 
         /*
-        RESTRICTIONS of var:
-        ❌ Cannot use for instance variables (class fields)
-        ❌ Cannot use for method parameters
-        ❌ Cannot use for method return types
-        ❌ Cannot initialize with null: var x = null;
-        ❌ Cannot declare without initialization: var x;
-        ❌ Cannot use in catch block parameters
+        ═══ RESTRICTIONS ═══
+        ❌ Cannot use for INSTANCE variables (class fields)
+        ❌ Cannot use for METHOD PARAMETERS
+        ❌ Cannot use for RETURN TYPES
+        ❌ Cannot initialize with NULL: var x = null;
+        ❌ Cannot declare WITHOUT initialization: var x;
+        ❌ Cannot use for LAMBDA parameters (Java 10, allowed Java 11+)
+        ✅ ONLY for LOCAL variables inside methods/blocks
         */
     }
+
+    // var name;           // ❌ Instance variable
+    // void method(var x)  // ❌ Parameter
+    // var method()        // ❌ Return type
 }
 ```
+
+> [!NOTE]
+> `var` is NOT a keyword — it's a "reserved type name." It doesn't make Java dynamically typed. The type is inferred at compile time and **cannot change** afterward. It's just syntactic sugar for cleaner code.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.14 Overflow and Underflow
+## 4.16 Overflow and Underflow
 
-<a id="414-overflow-and-underflow"></a>
+<a id="416-overflow-and-underflow"></a>
 
-### 📌 What is Overflow and Underflow?
-
-```
-OVERFLOW:  Value exceeds MAXIMUM → wraps around to MINIMUM
-UNDERFLOW: Value goes below MINIMUM → wraps around to MAXIMUM
-
-Java does NOT throw an exception for overflow/underflow!
-It silently WRAPS AROUND. This is a common source of bugs.
-```
+### 📌 Wrapping Behavior
 
 ```java
 public class OverflowDemo {
     public static void main(String[] args) {
 
-        // OVERFLOW: Exceeds maximum
-        byte b = 127;      // Max byte value
-        b++;                // 127 + 1 = ?
-        System.out.println(b);  // -128 (OVERFLOW! Wrapped to minimum)
+        // OVERFLOW: Exceeds maximum → wraps to minimum
+        byte b = 127;
+        b++;
+        System.out.println(b);  // -128 (OVERFLOW!)
 
-        // UNDERFLOW: Goes below minimum
-        byte c = -128;     // Min byte value
-        c--;               // -128 - 1 = ?
-        System.out.println(c);  // 127 (UNDERFLOW! Wrapped to maximum)
+        int maxInt = Integer.MAX_VALUE;     // 2147483647
+        System.out.println(maxInt + 1);     // -2147483648 (OVERFLOW!)
 
-        // Integer overflow
-        int maxInt = Integer.MAX_VALUE;  // 2147483647
-        System.out.println(maxInt + 1);  // -2147483648 (OVERFLOW!)
+        // UNDERFLOW: Below minimum → wraps to maximum
+        byte c = -128;
+        c--;
+        System.out.println(c);  // 127 (UNDERFLOW!)
 
-        int minInt = Integer.MIN_VALUE;  // -2147483648
-        System.out.println(minInt - 1);  // 2147483647 (UNDERFLOW!)
+        int minInt = Integer.MIN_VALUE;     // -2147483648
+        System.out.println(minInt - 1);     // 2147483647 (UNDERFLOW!)
 
-        // How to PREVENT overflow
-        // Solution: Use bigger type
+        // ⚠️ Java does NOT throw exception for overflow!
+        // It silently wraps around — DANGEROUS!
+
+        // ✅ SAFE overflow detection (Java 8+):
+        try {
+            int safe = Math.addExact(maxInt, 1);  // Throws ArithmeticException!
+        } catch (ArithmeticException e) {
+            System.out.println("Overflow detected: " + e.getMessage());
+        }
+
+        // PREVENTION: Use bigger type
         long bigResult = (long) maxInt + 1;
-        System.out.println(bigResult);   // 2147483648 (correct!)
-
-        // Wrapping in narrowing cast
-        int val = 257;
-        byte narrow = (byte) val;
-        System.out.println(narrow);  // 1 (257 % 256 = 1)
+        System.out.println(bigResult);  // 2147483648 (correct!)
     }
 }
 ```
 
-### 📊 Overflow Wrapping Visual (byte)
-
 ```
 ┌───────────────────────────────────────────────────────┐
-│           BYTE OVERFLOW CIRCLE                         │
+│        CIRCULAR NUMBER LINE (byte example)             │
 │                                                       │
 │              0                                        │
 │         -1 ┌───┐ 1                                    │
@@ -1217,173 +1395,127 @@ public class OverflowDemo {
 │   -127 │           │ 127                               │
 │   -128 └─────┬─────┘                                   │
 │              │                                        │
-│         127 + 1 = -128 (OVERFLOW)                     │
-│        -128 - 1 =  127 (UNDERFLOW)                    │
-│                                                       │
-│   It's a CIRCULAR number line!                         │
-│   After max, it goes back to min                       │
+│      127 + 1 = -128 (OVERFLOW ↩️)                     │
+│     -128 - 1 =  127 (UNDERFLOW ↪️)                    │
 └───────────────────────────────────────────────────────┘
 ```
-
-> [!IMPORTANT]
-> **Java does NOT throw ArithmeticException for integer overflow!** It silently wraps around. This is different from some other languages. To detect overflow, use `Math.addExact()`, `Math.multiplyExact()` (Java 8+) which throw `ArithmeticException` on overflow.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.15 Constants using final
+## 4.17 Constants using final
 
-<a id="415-constants-using-final"></a>
+<a id="417-constants-using-final"></a>
 
-### 📌 What is a Constant?
-
-```
-A CONSTANT is a variable whose value CANNOT CHANGE
-once it has been assigned.
-
-Java doesn't have a built-in "const" keyword (like C++).
-Instead, we use the keyword "final" in front of the variable
-declaration to make it a constant.
-
-BENEFITS:
-→ A constant is CACHED by the JVM as well as the application
-→ Using a constant can improve PERFORMANCE
-→ Prevents accidental modification of important values
-→ Makes code more readable and maintainable
-```
+### 📌 final Keyword for Constants
 
 ```java
 public class ConstantDemo {
-    
-    // Class-level constant (most common usage)
+
+    // CLASS-LEVEL CONSTANTS (most common)
     static final double PI = 3.14159265358979;
-    static final int MAX_SIZE = 100;
-    static final String APP_NAME = "MyJavaApp";
+    static final int MAX_RETRY = 3;
+    static final String APP_NAME = "JavaMastery";
+
+    // Constants are CACHED by JVM → improves PERFORMANCE!
 
     public static void main(String[] args) {
 
-        // Local constant
+        // LOCAL CONSTANT
         final int SPEED_LIMIT = 120;
-        // SPEED_LIMIT = 130; // ❌ COMPILE ERROR!
-        // Error: cannot assign a value to final variable
+        // SPEED_LIMIT = 130;  // ❌ "cannot assign value to final variable"
 
-        System.out.println("PI: " + PI);
-        System.out.println("Max Size: " + MAX_SIZE);
-        System.out.println("Speed Limit: " + SPEED_LIMIT);
-
-        // BLANK FINAL variable (initialized later, ONLY once)
+        // BLANK FINAL — initialized later, but ONLY ONCE
         final int x;
-        x = 10;        // ✅ First assignment is OK
+        x = 10;        // ✅ First assignment OK
         // x = 20;     // ❌ Cannot assign again!
 
-        // FINAL REFERENCE (reference is fixed, object can change!)
+        // FINAL REFERENCE — reference fixed, object can change!
         final StringBuilder sb = new StringBuilder("Hello");
-        sb.append(" World");  // ✅ Modifying the OBJECT is fine!
-        // sb = new StringBuilder("New"); // ❌ Cannot reassign REFERENCE!
+        sb.append(" World");  // ✅ Modifying OBJECT is fine!
+        // sb = new StringBuilder("New"); // ❌ Cannot change REFERENCE!
         System.out.println(sb);  // Hello World
 
         // NAMING CONVENTION:
-        // Constants use UPPER_SNAKE_CASE
-        // static final int MAX_RETRY_COUNT = 3;
-        // static final String DATABASE_URL = "jdbc:mysql://...";
+        // Constants → UPPER_SNAKE_CASE
+        System.out.println(PI);
+        System.out.println(MAX_RETRY);
+        System.out.println(SPEED_LIMIT);
     }
 }
 ```
 
-> [!TIP]
-> **Important Distinction:** `final` makes the **variable** (reference) constant, NOT the **object**. For a final object reference, you can still modify the object's internal state. Only the reference itself cannot point to a different object.
+```
+Java doesn't have built-in support for "const" keyword
+(unlike C++). Instead, we use "final" keyword.
+
+final variable → value cannot change after assignment
+static final  → class-level constant, shared, cached by JVM
+
+BENEFITS:
+✅ Prevents accidental modification
+✅ Cached by JVM → performance boost
+✅ Makes code readable (meaningful names)
+✅ Thread-safe (value never changes)
+```
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
 ---
 
-## 4.16 Input in Java
+## 4.18 Input in Java
 
-<a id="416-input-in-java"></a>
-
-### 📌 Why Input is Important
-
-```
-Programs need to RECEIVE data from users at runtime.
-Java provides multiple ways to take input:
-
-1. Scanner Class (Most Common — java.util.Scanner)
-2. BufferedReader (Faster for large input)
-3. Command Line Arguments (String[] args)
-4. Console Class (for password input)
-```
-
----
+<a id="418-input-in-java"></a>
 
 ### 📌 1. Scanner Class (Most Common)
 
 ```java
 import java.util.Scanner;  // Must import!
 
-public class ScannerDemo {
+public class ScannerComplete {
     public static void main(String[] args) {
 
-        // Create Scanner object (reads from System.in = keyboard)
         Scanner sc = new Scanner(System.in);
 
-        // ─────────────────────────────────────────
-        // READING DIFFERENT TYPES
-        // ─────────────────────────────────────────
+        // ═══ READING DIFFERENT TYPES ═══
 
-        // Reading String (one word — stops at space)
-        System.out.print("Enter first name: ");
-        String firstName = sc.next();       // "Rahul"
+        System.out.print("Enter integer: ");
+        int age = sc.nextInt();
 
-        // Reading String (full line — including spaces)
-        System.out.print("Enter full name: ");
-        sc.nextLine(); // Consume leftover newline (IMPORTANT!)
-        String fullName = sc.nextLine();    // "Rahul Sharma"
+        System.out.print("Enter decimal: ");
+        double salary = sc.nextDouble();
 
-        // Reading int
-        System.out.print("Enter age: ");
-        int age = sc.nextInt();             // 25
+        System.out.print("Enter float: ");
+        float gpa = sc.nextFloat();
 
-        // Reading double
-        System.out.print("Enter salary: ");
-        double salary = sc.nextDouble();    // 50000.50
+        System.out.print("Enter long: ");
+        long phone = sc.nextLong();
 
-        // Reading float
-        System.out.print("Enter GPA: ");
-        float gpa = sc.nextFloat();         // 8.75
+        System.out.print("Enter boolean (true/false): ");
+        boolean isStudent = sc.nextBoolean();
 
-        // Reading long
-        System.out.print("Enter phone: ");
-        long phone = sc.nextLong();         // 9876543210
+        System.out.print("Enter one word: ");
+        String word = sc.next();          // Stops at whitespace
 
-        // Reading boolean
-        System.out.print("Are you student? ");
-        boolean isStudent = sc.nextBoolean(); // true
+        sc.nextLine();  // ⚠️ CONSUME LEFTOVER NEWLINE!
 
-        // Reading char (no direct method!)
-        System.out.print("Enter grade: ");
-        char grade = sc.next().charAt(0);   // 'A'
+        System.out.print("Enter full line: ");
+        String fullLine = sc.nextLine();  // Reads entire line
 
-        // Print all inputs
-        System.out.println("\n--- Your Details ---");
-        System.out.println("Name: " + fullName);
-        System.out.println("Age: " + age);
-        System.out.println("Salary: " + salary);
-        System.out.println("GPA: " + gpa);
-        System.out.println("Phone: " + phone);
-        System.out.println("Student: " + isStudent);
-        System.out.println("Grade: " + grade);
+        System.out.print("Enter character: ");
+        char grade = sc.next().charAt(0); // No direct char method!
 
-        sc.close();  // Always close Scanner when done!
+        sc.close();  // Always close!
     }
 }
 ```
 
-### 📌 Scanner Methods Reference Table
+### 📌 Scanner Methods Reference
 
 ```
 ┌─────────────────────┬──────────────────────────────────────────┐
-│  Method             │  Reads                                   │
+│  Method             │  Reads / Returns                         │
 ├─────────────────────┼──────────────────────────────────────────┤
 │  nextInt()          │  Integer value                           │
 │  nextLong()         │  Long value                              │
@@ -1392,17 +1524,17 @@ public class ScannerDemo {
 │  nextByte()         │  Byte value                              │
 │  nextShort()        │  Short value                             │
 │  nextBoolean()      │  Boolean (true/false)                    │
-│  next()             │  ONE WORD (stops at whitespace)          │
-│  nextLine()         │  FULL LINE (including spaces)            │
+│  next()             │  ONE word (stops at whitespace)          │
+│  nextLine()         │  FULL line (including spaces)            │
 │  next().charAt(0)   │  Single character (workaround)           │
 │  hasNext()          │  true if more input exists               │
 │  hasNextInt()       │  true if next token is integer           │
 │  hasNextLine()      │  true if another line exists             │
-│  close()            │  Closes the scanner                      │
+│  close()            │  Closes the scanner resource             │
 └─────────────────────┴──────────────────────────────────────────┘
 ```
 
-### ⚠️ Common Scanner Pitfall (VERY IMPORTANT!)
+### ⚠️ The Newline Pitfall — MOST COMMON SCANNER BUG ⭐⭐
 
 ```java
 import java.util.Scanner;
@@ -1413,27 +1545,38 @@ public class ScannerPitfall {
 
         System.out.print("Enter age: ");
         int age = sc.nextInt();
-
-        // ⚠️ PROBLEM:
-        // After nextInt(), the NEWLINE character '\n' is
-        // LEFT IN THE BUFFER (when user pressed Enter)
-        // nextLine() reads that leftover '\n' as empty string!
-
-        // ❌ WRONG — skips the name input!
-        // System.out.print("Enter name: ");
-        // String name = sc.nextLine(); // Gets "" (empty!)
-
-        // ✅ FIX 1: Add extra sc.nextLine() to consume '\n'
-        sc.nextLine();  // Consume the leftover newline
+        // User types: 25[Enter]
+        // nextInt() reads "25" but LEAVES "\n" in buffer!
 
         System.out.print("Enter name: ");
-        String name = sc.nextLine();  // Now reads correctly!
+        String name = sc.nextLine();
+        // nextLine() reads the LEFTOVER "\n" → gets empty string!
+        // User never gets to type their name!
 
-        System.out.println("Age: " + age + ", Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Name: '" + name + "'"); // Name: '' (EMPTY!)
 
         sc.close();
     }
 }
+```
+
+### ✅ 3 Fixes for the Pitfall
+
+```java
+// ═══ FIX 1: Add extra sc.nextLine() to consume '\n' ═══
+int age = sc.nextInt();
+sc.nextLine();  // Consume the leftover newline
+String name = sc.nextLine();  // Now reads correctly!
+
+// ═══ FIX 2: Use parseInt(nextLine()) for numbers ═══
+int age = Integer.parseInt(sc.nextLine());  // Reads entire line including \n
+String name = sc.nextLine();  // Works perfectly!
+
+// ═══ FIX 3: Use next() instead of nextLine() (for single words) ═══
+int age = sc.nextInt();
+String name = sc.next();  // Reads one word, no newline issue
+// But won't work for multi-word input like "John Doe"
 ```
 
 ```
@@ -1441,23 +1584,20 @@ public class ScannerPitfall {
 │  ⚠️ THE SCANNER NEWLINE PROBLEM                              │
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
-│  nextInt() reads: "25" but LEAVES "\n" in buffer             │
-│  nextLine() reads: "\n" (empty string!)                      │
-│                                                              │
-│  FIXES:                                                      │
-│  1. Add sc.nextLine() after nextInt() to consume '\n'         │
-│  2. Use next() instead of nextLine() for single words        │
-│  3. Use Integer.parseInt(sc.nextLine()) for numbers          │
-│                                                              │
-│  This happens with: nextInt(), nextDouble(), nextFloat(),    │
+│  Affected methods: nextInt(), nextDouble(), nextFloat(),     │
 │  nextLong(), nextByte(), nextShort(), next()                 │
-│  It does NOT happen with: nextLine() (reads whole line)      │
+│  → All leave '\n' in buffer after reading                     │
+│                                                              │
+│  NOT affected: nextLine() (reads entire line including \n)    │
+│                                                              │
+│  BEST PRACTICE: Always use Integer.parseInt(sc.nextLine())    │
+│  instead of sc.nextInt() to avoid this problem entirely.     │
 └──────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-### 📌 2. BufferedReader (Faster for Large Input)
+### 📌 2. BufferedReader (Faster)
 
 ```java
 import java.io.BufferedReader;
@@ -1471,23 +1611,42 @@ public class BufferedReaderDemo {
             new InputStreamReader(System.in)
         );
 
-        // BufferedReader reads ONLY Strings
-        // Must parse manually for other types
-
+        // BufferedReader reads ONLY Strings — must parse manually
         System.out.print("Enter name: ");
-        String name = br.readLine();          // Reads full line
+        String name = br.readLine();
 
         System.out.print("Enter age: ");
-        int age = Integer.parseInt(br.readLine());  // Parse to int
+        int age = Integer.parseInt(br.readLine());
 
         System.out.print("Enter salary: ");
-        double salary = Double.parseDouble(br.readLine()); // Parse
+        double salary = Double.parseDouble(br.readLine());
 
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
         System.out.println("Salary: " + salary);
 
         br.close();
+    }
+}
+```
+
+### 📌 3. Command Line Arguments
+
+```java
+public class CommandLineDemo {
+    public static void main(String[] args) {
+        // Run: java CommandLineDemo Rahul 25 Pune
+
+        if (args.length >= 3) {
+            String name = args[0];                // "Rahul"
+            int age = Integer.parseInt(args[1]);   // 25
+            String city = args[2];                 // "Pune"
+
+            System.out.println(name + ", " + age + ", " + city);
+        } else {
+            System.out.println("Usage: java CommandLineDemo <name> <age> <city>");
+        }
+        System.out.println("Total args: " + args.length);
     }
 }
 ```
@@ -1500,100 +1659,32 @@ public class BufferedReaderDemo {
 ├──────────────────┼─────────────────────┼────────────────────────┤
 │  Package         │  java.util          │  java.io               │
 ├──────────────────┼─────────────────────┼────────────────────────┤
-│  Parsing         │  Built-in methods   │  Manual parsing needed │
-│                  │  (nextInt, etc.)    │  (parseInt, etc.)      │
+│  Parsing         │  Built-in methods   │  Manual (parseInt etc.)│
+│                  │  (nextInt, etc.)    │                        │
 ├──────────────────┼─────────────────────┼────────────────────────┤
-│  Speed           │  Slower             │  FASTER (buffered)     │
+│  Speed           │  SLOWER             │  FASTER (8KB buffer)   │
 ├──────────────────┼─────────────────────┼────────────────────────┤
-│  Buffer Size     │  1KB                │  8KB (larger buffer)   │
+│  Buffer Size     │  1KB (small)        │  8KB (larger)          │
 ├──────────────────┼─────────────────────┼────────────────────────┤
 │  Thread Safe     │  ❌ No             │  ✅ Yes                │
 ├──────────────────┼─────────────────────┼────────────────────────┤
 │  Exception       │  No checked except. │  Throws IOException    │
 ├──────────────────┼─────────────────────┼────────────────────────┤
-│  Best For        │  Simple input       │  Competitive programming│
-│                  │  Small programs     │  Large input volumes   │
+│  Newline Issue   │  ⚠️ Yes (pitfall)   │  ❌ No issue           │
+├──────────────────┼─────────────────────┼────────────────────────┤
+│  Best For        │  Simple programs    │  Competitive coding    │
+│                  │  Learning           │  Large input volumes   │
 └──────────────────┴─────────────────────┴────────────────────────┘
 ```
 
----
-
-### 📌 3. Command Line Arguments
-
-```java
-public class CommandLineDemo {
-    public static void main(String[] args) {
-
-        // args[] contains command-line arguments
-        // Run: java CommandLineDemo Rahul 25 Pune
-
-        if (args.length > 0) {
-            System.out.println("Name: " + args[0]);     // Rahul
-            System.out.println("Age: " + args[1]);      // 25 (String!)
-            System.out.println("City: " + args[2]);     // Pune
-
-            // Parse to int if needed
-            int age = Integer.parseInt(args[1]);
-            System.out.println("Age + 1: " + (age + 1)); // 26
-        } else {
-            System.out.println("No arguments provided!");
-        }
-
-        System.out.println("Total args: " + args.length);
-    }
-}
-
-// Run from terminal:
-// javac CommandLineDemo.java
-// java CommandLineDemo Rahul 25 Pune
-// Output:
-// Name: Rahul
-// Age: 25
-// City: Pune
-// Age + 1: 26
-// Total args: 3
-```
-
----
-
-### 📌 4. Taking Multiple Inputs on Same Line
-
-```java
-import java.util.Scanner;
-
-public class MultipleInputDemo {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        // Method 1: Read multiple values from one line
-        System.out.println("Enter 3 numbers separated by space:");
-        // Input: 10 20 30
-        int a = sc.nextInt();  // 10
-        int b = sc.nextInt();  // 20
-        int c = sc.nextInt();  // 30
-        System.out.println("Sum: " + (a + b + c)); // 60
-
-        // Method 2: Read until user stops
-        System.out.println("Enter numbers (type 'done' to stop):");
-        int sum = 0;
-        while (sc.hasNextInt()) {
-            sum += sc.nextInt();
-        }
-        System.out.println("Total sum: " + sum);
-
-        sc.close();
-    }
-}
-```
-
 > [!TIP]
-> **For Competitive Programming:** Use `BufferedReader` with `StringTokenizer` for fastest input:
+> **For Competitive Programming:** Use BufferedReader + StringTokenizer:
 > ```java
 > BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 > StringTokenizer st = new StringTokenizer(br.readLine());
 > int n = Integer.parseInt(st.nextToken());
 > ```
-> This is significantly faster than Scanner for large inputs.
+> This is **significantly faster** than Scanner for large inputs.
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
 
@@ -1604,78 +1695,68 @@ public class MultipleInputDemo {
 ## 🔥 What Makes Java DIFFERENT — Variables, Types & Input
 
 > [!IMPORTANT]
-> Java handles variables, data types, and input DIFFERENTLY from C++, Python, and JavaScript. These differences are **frequently asked in interviews**.
+> Java handles variables, data types, and input **DIFFERENTLY** from other languages. These differences are **interview gold**.
 
 ```
 ┌──────────────────────┬────────────┬────────────┬────────────┬────────────┐
 │  Feature             │  Java      │  C++       │  Python    │  JavaScript│
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
 │  Type System         │ Static +   │ Static +   │ Dynamic +  │ Dynamic +  │
-│                      │ Strong     │ Weak       │ Strong     │ Weak       │
+│                      │ STRONG     │ Weak       │ Strong     │ Weak       │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  Variable            │ Must declare│ Must declare│ No type   │ var/let/   │
-│  Declaration         │ type       │ type       │ keyword    │ const      │
-├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  boolean             │ ONLY true/ │ 0 = false  │ True/False │ truthy/    │
+│  boolean type        │ ONLY true/ │ 0=false,   │ True/False │ truthy/    │
 │                      │ false      │ non-zero=T │ + truthy   │ falsy      │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  if(1)               │ ❌ ERROR   │ ✅ Valid   │ ✅ Valid   │ ✅ Valid   │
-│                      │ (not bool!)│ (true)     │ (true)     │ (true)     │
+│  if(1) valid?        │ ❌ ERROR!  │ ✅ Yes     │ ✅ Yes     │ ✅ Yes     │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
 │  char Size           │ 2 bytes    │ 1 byte     │ No char    │ No char   │
 │                      │ (Unicode)  │ (ASCII)    │ type       │ type      │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  Default Values      │ Instance:  │ ❌ Garbage │ N/A        │ undefined  │
-│  (for fields)        │ 0/null/false│ values    │ (dynamic)  │            │
+│  Default values      │ ✅ Fields  │ ❌ Garbage │ N/A        │ undefined  │
+│  (for fields)        │ (0/null)   │ values!    │            │            │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  Overflow Behavior   │ Silent wrap│ Undefined  │ No overflow│ No overflow│
-│                      │ (no error!)│ behavior   │ (arbitrary)│ (Infinity) │
+│  Overflow            │ Silent     │ Undefined  │ No overflow│ Infinity   │
+│  behavior            │ WRAP!      │ behavior   │ (big int)  │            │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  Type Promotion      │ byte+byte  │ char+char  │ N/A        │ N/A       │
-│  in Expressions      │ = int!     │ = int      │ (dynamic)  │ (dynamic)  │
+│  byte+byte           │ = int!     │ = int      │ N/A        │ N/A       │
+│  (type promotion)    │ (unique)   │            │            │            │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  Constants           │ final      │ const      │ No const   │ const     │
-│                      │ keyword    │ keyword    │ (convention)│ keyword   │
+│  Constants           │ final      │ const      │ Convention │ const     │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
 │  Input               │ Scanner    │ cin >>     │ input()    │ prompt()  │
 │                      │ (import!)  │ (built-in) │ (built-in) │ (browser) │
 ├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
-│  String Type         │ Non-prim   │ char[]     │ Primitive  │ Primitive │
-│                      │ (Object)   │ or string  │ (immutable)│ (immutable)│
+│  Everything in       │ ✅ Yes!    │ ❌ No      │ ❌ No      │ ❌ No     │
+│  a class?            │ (no free   │ (free      │ (free      │ (free     │
+│                      │ functions) │ functions) │ functions) │ functions) │
+├──────────────────────┼────────────┼────────────┼────────────┼────────────┤
+│  String immutable?   │ ✅ Yes     │ ❌ Mutable │ ✅ Yes     │ ✅ Yes    │
+│                      │ (Object)   │ (char[])   │ (Object)   │ (Primitive)│
 └──────────────────────┴────────────┴────────────┴────────────┴────────────┘
 ```
 
-### 🎯 Key UNIQUE Points About Java
+### 🎯 6 Key UNIQUE Points
 
 ```
 1. BOOLEAN IS STRICTLY true/false:
-   → if(1) is ❌ ERROR in Java (1 is int, not boolean!)
-   → if(true) is ✅
-   → C++ allows if(1), if(0), if(pointer)
+   if(1) → ❌ ERROR in Java! (C++ allows it)
 
 2. byte + byte = int (NOT byte!):
-   → Java auto-promotes to int in ALL expressions
-   → C++ keeps the original type
-   → This prevents accidental overflow during computation
+   Java auto-promotes to prevent overflow — C++ doesn't!
 
-3. CHAR IS 2 BYTES (not 1):
-   → Java uses Unicode (65536 chars)
-   → C++ uses ASCII (128 chars)
-   → Java char can store ANY language character
+3. CHAR IS 2 BYTES (Unicode, not ASCII):
+   Java supports ALL world languages natively
 
-4. NO GARBAGE VALUES:
-   → Instance variables get DEFAULT values (0, null, false)
-   → C++ leaves memory UNINITIALIZED (garbage!)
-   → But Java LOCAL vars also must be explicitly initialized
+4. NO GARBAGE VALUES for instance fields:
+   C++ leaves uninitialized memory → bugs!
+   Java initializes to 0/null/false → safer
 
-5. OVERFLOW IS SILENT:
-   → int max + 1 = min (wraps around, NO exception!)
-   → Use Math.addExact() for overflow detection (Java 8+)
+5. OVERFLOW IS SILENT (no exception):
+   Use Math.addExact() for detection (Java 8+)
 
 6. INPUT REQUIRES IMPORT:
-   → Must import java.util.Scanner
-   → C++ cin is built-in, Python input() is built-in
-   → Java's Scanner has the nextLine() pitfall after nextInt()
+   Must import Scanner — not built-in like Python's input()
+   Has the famous nextLine() pitfall after nextInt()
 ```
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
@@ -1690,327 +1771,154 @@ public class MultipleInputDemo {
 
 ### 🔵 Conceptual Questions
 
----
-
-**Q1. What are the 8 primitive data types in Java? Give size and range of each.**
+**Q1. What are the 8 primitive data types? Give size and range.**
 
 ```
-byte    → 1 byte  → -128 to 127
-short   → 2 bytes → -32768 to 32767
-int     → 4 bytes → -2.1B to 2.1B
-long    → 8 bytes → very large
-float   → 4 bytes → 6-7 decimal digits precision
-double  → 8 bytes → 15-16 decimal digits precision
-char    → 2 bytes → 0 to 65535 (Unicode)
-boolean → JVM dependent → only true or false
-
-IMPORTANT: boolean is NOT 0/1 in Java (unlike C++).
-char is 2 bytes (not 1 like C++).
+byte    → 1B  → -128 to 127
+short   → 2B  → -32768 to 32767
+int     → 4B  → ±2.1 billion (MOST COMMON integer)
+long    → 8B  → very large (needs 'L' suffix)
+float   → 4B  → 6-7 digits precision (needs 'f' suffix)
+double  → 8B  → 15-16 digits precision (DEFAULT decimal)
+char    → 2B  → 0 to 65535 Unicode (NOT 1 byte like C++)
+boolean → JVM → ONLY true/false (NOT 0/1 like C++)
 ```
 
 ---
 
-**Q2. What is the difference between local, instance, and static variables?**
+**Q2. Difference between local, instance, and static variables?**
 
 ```
-LOCAL:
-→ Inside method/block, Stack memory, NO default value
-→ Must initialize before use, cannot use access modifiers
-→ Cannot be static, destroyed when method ends
-
-INSTANCE:
-→ Inside class (outside methods), Heap (with object)
-→ Has default values, each object gets OWN copy
-→ Can use access modifiers, not shared
-
-STATIC:
-→ Declared with 'static', Method Area (Metaspace)
-→ Has default values, ONE copy shared among all objects
-→ Memory allocated ONCE when class loads
-→ Accessed via ClassName.variable
+LOCAL: Inside method → Stack → No default → Must initialize
+INSTANCE: Class field → Heap → Has defaults → Per object copy
+STATIC: Class + static → Method Area → Has defaults → ONE shared copy
 ```
 
 ---
 
-**Q3. What is the difference between Widening and Narrowing?**
+**Q3. Why do local variables not have default values?**
 
 ```
-WIDENING (Automatic):
-→ Smaller type → Bigger type
-→ Done automatically by compiler
-→ No data loss
-→ byte → short → int → long → float → double
-→ Example: int x = 10; double d = x; // Auto
-
-NARROWING (Explicit):
-→ Bigger type → Smaller type
-→ MUST cast explicitly
-→ DATA LOSS possible (truncation/wrapping)
-→ Example: double d = 9.99; int x = (int)d; // x = 9
-→ int i = 257; byte b = (byte)i; // b = 1 (wrapping)
+1. Stack not zeroed (performance optimization)
+2. Catches bugs at compile-time (safety)
+3. Forces explicit initialization (good practice)
+Instance/static vars get defaults because Heap/Method Area is zeroed.
 ```
 
 ---
 
-**Q4. Why does byte + byte = int in Java?**
+**Q4. What is Widening vs Narrowing?**
 
 ```
-Because Java automatically promotes byte, short, and char
-to INT when evaluating expressions.
+WIDENING: Smaller → Bigger, automatic, no data loss
+byte→short→int→long→float→double
 
-REASON: The result of adding two bytes could EXCEED
-byte range. Example: 100 + 100 = 200 > 127 (byte max).
-
-So Java promotes BOTH operands to int BEFORE performing
-the operation, to prevent overflow during computation.
-
-byte a = 10, b = 20;
-byte c = a + b;      // ❌ ERROR! a+b is int
-byte c = (byte)(a+b); // ✅ Must cast back explicitly
-
-This is a SAFETY MECHANISM unique to Java.
-C/C++ does NOT do this.
+NARROWING: Bigger → Smaller, explicit cast, data loss possible
+double d=9.99; int i=(int)d; → i=9 (truncation!)
+int i=257; byte b=(byte)i; → b=1 (wrapping: 257%256=1)
 ```
 
 ---
 
-**Q5. What is the Integer Cache in Java?**
+**Q5. Why does byte + byte = int?**
 
 ```
-Java caches Integer objects for values -128 to 127.
-
-Integer a = 100, b = 100;
-a == b → TRUE (same cached object)
-
-Integer c = 200, d = 200;
-c == d → FALSE (different objects!)
-
-WHY? Performance optimization — small numbers are used
-frequently, so JVM reuses cached objects.
-
-RULE: Always use .equals() to compare Wrapper objects,
-never == (which compares references, not values).
+Java promotes byte/short/char to int in expressions.
+Reason: 100+100=200, exceeds byte max (127).
+This prevents overflow during computation.
+UNIQUE to Java — C++ doesn't do this.
 ```
 
 ---
 
-**Q6. What is the common Scanner pitfall and how to fix it?**
+**Q6. What is Integer Cache Pool?**
 
 ```
-PROBLEM:
-After nextInt() (or nextDouble(), etc.), a newline '\n'
-is LEFT in the input buffer. When nextLine() is called next,
-it reads this leftover '\n' as an empty string.
-
-int age = sc.nextInt();      // Reads 25, leaves '\n'
-String name = sc.nextLine(); // Reads '\n' → empty string!
-
-FIXES:
-1. Add sc.nextLine() after nextInt() to consume '\n'
-   sc.nextInt();
-   sc.nextLine(); // consume newline
-   String name = sc.nextLine(); // now reads correctly
-
-2. Use Integer.parseInt(sc.nextLine()) instead
-   int age = Integer.parseInt(sc.nextLine());
-   String name = sc.nextLine(); // works fine
-
-3. Use next() instead of nextLine() for single words
+Java caches Integer objects for -128 to 127.
+Integer a=100, b=100; a==b → TRUE (cached)
+Integer c=200, d=200; c==d → FALSE (not cached)
+RULE: Always use .equals() for Wrapper comparison!
 ```
 
 ---
 
-**Q7. What is the difference between Scanner and BufferedReader?**
+**Q7. What is the Scanner newline pitfall?**
 
 ```
-SCANNER:
-→ Package: java.util
-→ Built-in parsing (nextInt, nextDouble, etc.)
-→ Buffer: 1KB (smaller)
-→ Slower
-→ Not thread-safe
-→ Best for: simple programs, learning
+After nextInt(), '\n' is LEFT in buffer.
+nextLine() reads this '\n' → gets empty string!
 
-BUFFERED READER:
-→ Package: java.io
-→ Reads only Strings (manual parsing needed)
-→ Buffer: 8KB (larger, hence faster)
-→ Thread-safe
-→ Throws IOException (checked exception)
-→ Best for: competitive programming, large inputs
+FIX 1: Add sc.nextLine() after nextInt()
+FIX 2: Use Integer.parseInt(sc.nextLine())
+FIX 3: Use next() for single words
 ```
 
 ---
 
-### 🟡 Scenario-Based Questions
+**Q8. Difference between parseInt() and valueOf()?**
+
+```
+parseInt("100") → Returns PRIMITIVE int (100)
+valueOf("100")  → Returns WRAPPER Integer object
+valueOf() may use Integer Cache for -128 to 127
+```
 
 ---
 
-**Q8. What happens when you assign a float literal without 'f' suffix?**
+### 🟡 Scenario-Based
+
+**Q9. What if you assign float literal without 'f'?**
 
 ```java
-float f = 3.14;  // ❌ COMPILE ERROR!
-// "incompatible types: possible lossy conversion from double to float"
-
-// REASON: 3.14 is DOUBLE by default (8 bytes)
-// Cannot fit in float (4 bytes) without explicit conversion
-
-// FIXES:
-float f1 = 3.14f;        // ✅ Add 'f' suffix
-float f2 = (float) 3.14; // ✅ Explicit cast
-double d = 3.14;          // ✅ Use double instead
+float f = 3.14;  // ❌ ERROR! 3.14 is double by default
+float f = 3.14f; // ✅ Explicit float suffix
+float f = (float)3.14; // ✅ Explicit cast
 ```
 
 ---
 
-**Q9. Can you use var for instance variables?**
+### 🔴 Output-Based
 
-```java
-class Test {
-    // var name = "Hello"; // ❌ ERROR! var cannot be used for fields
-    String name = "Hello"; // ✅ Must use explicit type
-
-    void method() {
-        var x = 10;    // ✅ var works for LOCAL variables only
-    }
-
-    // void method(var x) {} // ❌ Cannot use for parameters
-    // var method() {}       // ❌ Cannot use for return types
-}
-
-// var is ONLY for local variables inside methods/blocks
-// It is NOT a keyword — it's a "reserved type name"
-// var is still STATIC typing (type inferred at compile time)
-```
-
----
-
-### 🔴 Output-Based Questions
-
----
-
-**Q10. What is the output?**
-
-```java
-int i = 257;
-byte b = (byte) i;
-System.out.println(b);
-```
+**Q10.** `int i=257; byte b=(byte)i; System.out.println(b);`
 
 ```
-OUTPUT: 1
-
-REASON:
-byte range: -128 to 127 (256 values)
-257 % 256 = 1
-1 <= 127 → result = 1
+OUTPUT: 1 (257%256=1, 1≤127 → result=1)
 ```
 
----
-
-**Q11. What is the output?**
-
-```java
-byte a = 127;
-a++;
-System.out.println(a);
-```
+**Q11.** `byte b=127; b++; System.out.println(b);`
 
 ```
-OUTPUT: -128
-
-REASON: Overflow!
-127 + 1 exceeds byte max (127)
-Wraps around to minimum value: -128
+OUTPUT: -128 (overflow! wraps to minimum)
 ```
 
----
-
-**Q12. What is the output?**
-
-```java
-Integer a = 127;
-Integer b = 127;
-Integer c = 128;
-Integer d = 128;
-
-System.out.println(a == b);
-System.out.println(c == d);
-System.out.println(c.equals(d));
-```
+**Q12.** `Integer a=127, b=127; System.out.println(a==b);`
+`Integer c=128, d=128; System.out.println(c==d);`
 
 ```
-OUTPUT:
-true
-false
-true
-
-REASON:
-127 is within cache range (-128 to 127) → same object → == true
-128 is outside cache → different objects → == false
-.equals() compares VALUES → 128 == 128 → true
+OUTPUT: true, false
+127 cached → same object → ==true
+128 not cached → different objects → ==false
 ```
 
----
-
-**Q13. What is the output?**
-
-```java
-byte a = 50;
-byte b = 50;
-byte c = (byte)(a * b);
-System.out.println(c);
-```
+**Q13.** `byte a=50, b=50; byte c=(byte)(a*b); System.out.println(c);`
 
 ```
 OUTPUT: -60
-
-REASON:
-a * b = 2500 (promoted to int during multiplication)
-Cast to byte: 2500 % 256 = 196
-196 > 127 → 196 - 256 = -60
+a*b=2500, (byte)2500: 2500%256=196, 196>127 → 196-256=-60
 ```
 
----
-
-**Q14. Is this valid? What's the output?**
-
-```java
-final int MAX = 100;
-// MAX = 200; // Will this work?
-System.out.println(MAX);
-```
+**Q14.** `final int MAX=100; MAX=200;`
 
 ```
-OUTPUT: 100 (prints successfully)
-If MAX = 200 is uncommented: ❌ COMPILE ERROR
-"cannot assign a value to final variable MAX"
-
-final makes the variable a CONSTANT — cannot be reassigned.
+❌ COMPILE ERROR: cannot assign value to final variable
 ```
 
----
-
-**Q15. What is the output?**
-
-```java
-char c = 'A';
-int x = c + 1;
-char d = (char)(c + 1);
-System.out.println(x);
-System.out.println(d);
-```
+**Q15.** `char c='A'; System.out.println(c+1); System.out.println((char)(c+1));`
 
 ```
-OUTPUT:
-66
-B
-
-REASON:
-'A' has Unicode value 65
-c + 1 = 65 + 1 = 66 (promoted to int)
-x = 66 (int)
-d = (char)66 = 'B' (cast back to char)
+OUTPUT: 66, B
+c+1: char promoted to int → 65+1=66
+(char)(c+1): cast back to char → 'B'
 ```
 
 <a href="#chapter-index-table-4">Go to Top 🔝</a>
@@ -2024,105 +1932,73 @@ d = (char)66 = 'B' (cast back to char)
 ### 📝 5 Theory Questions
 
 ```
-1. Explain the 3 types of variables in Java with memory location,
-   default values, scope, and lifetime. Draw a memory diagram
-   showing where each type is stored.
+1. Explain the 3 types of variables with memory diagram.
+   Where is each stored? What are default values?
+   Why don't local variables have defaults?
 
-2. What is the wrapping logic when narrowing an int to byte?
-   Show step-by-step calculation for values: 128, 130, 257, 300, -130.
+2. Explain the wrapping logic for narrowing cast (int→byte).
+   Calculate step-by-step for: 128, 130, 257, 300, -130.
 
-3. Explain Type Promotion in expressions. Why does Java promote
-   byte, short, char to int during evaluation? What problem does
-   this solve compared to C++?
+3. Compare Scanner vs BufferedReader. Explain the newline
+   pitfall with code example showing the bug AND 3 fixes.
 
-4. Compare Scanner vs BufferedReader for Java input.
-   Explain the newline pitfall with Scanner and 3 ways to fix it.
+4. What is Integer Cache Pool? Show code where == gives
+   unexpected results. Why should we always use .equals()?
 
-5. What is Integer Cache Pool? Why does Java cache -128 to 127?
-   Show code where == gives unexpected results and explain why
-   .equals() should always be used for Wrapper comparison.
+5. Compare Java's type system with C++, Python, and JavaScript:
+   boolean behavior, char size, default values, overflow,
+   type promotion, constants, and input mechanisms.
 ```
-
----
 
 ### 💻 5 Coding Questions
 
 ```java
-// Q1: Write a program that demonstrates ALL 8 primitive data types
-// Print: type name, size, min value, max value, and a sample value
-
-public class AllPrimitivesDemo {
+// Q1: Demonstrate ALL 8 primitive types
+// Print: type, size, min, max, sample value as formatted table
+public class AllPrimitivesTable {
     public static void main(String[] args) {
-        // TODO: For each of the 8 types:
-        // Declare a variable
-        // Print its size using Wrapper.BYTES
-        // Print min and max using Wrapper.MIN_VALUE, MAX_VALUE
-        // Print the sample value
-        // Format output as a clean table
+        // TODO: Use Byte.BYTES, Byte.MIN_VALUE, Byte.MAX_VALUE etc.
     }
 }
 ```
 
 ```java
-// Q2: Build a simple calculator using Scanner input
-// Take 2 numbers and operator (+,-,*,/,%) from user
-// Perform the operation and print result
-// Handle division by zero
-// Handle invalid operator
-
-import java.util.Scanner;
-
+// Q2: Build calculator using Scanner
+// Read 2 numbers and operator, handle division by zero
 public class Calculator {
     public static void main(String[] args) {
-        // TODO: Read num1, operator, num2 from user
-        // Perform calculation using switch
-        // Handle edge cases
+        // TODO: Scanner input, switch for operators
     }
 }
 ```
 
 ```java
-// Q3: Write a program that demonstrates ALL narrowing cast scenarios
-// int → byte, double → int, long → short
-// Show wrapping for values: 128, 130, 257, 300, 500
-
-public class NarrowingChallenge {
+// Q3: Demonstrate narrowing cast wrapping
+// Cast values 128,130,257,300,500 to byte
+// Print: "int X → byte Y (calculation)"
+public class WrappingCalculator {
     public static void main(String[] args) {
-        // TODO: For each value, cast to byte
-        // Print: "int X → byte Y"
-        // Also explain the wrapping calculation in comments
+        // TODO: Show wrapping for each value with formula
     }
 }
 ```
 
 ```java
-// Q4: Write a program demonstrating the Scanner newline pitfall
-// Show the WRONG way first, then the 3 CORRECT fixes
-
-import java.util.Scanner;
-
-public class ScannerPitfallDemo {
+// Q4: Show Scanner pitfall and all 3 fixes
+public class ScannerFixDemo {
     public static void main(String[] args) {
-        // TODO: Show the bug
-        // Fix 1: Extra nextLine()
-        // Fix 2: parseInt(nextLine())
-        // Fix 3: next() instead of nextLine()
+        // TODO: Show the BUG, then Fix 1, Fix 2, Fix 3
     }
 }
 ```
 
 ```java
-// Q5: Integer Cache Pool Tester
-// Write a program that finds EXACTLY where the cache boundary is
-// Test Integer values from 125 to 135 with == and .equals()
-
-public class CachePoolTester {
+// Q5: Integer Cache boundary finder
+// Test values 125-135 with == and .equals()
+// Find exact boundary where == stops working
+public class CacheFinder {
     public static void main(String[] args) {
-        // TODO: Loop from 125 to 135
-        // For each value, create two Integer objects via autoboxing
-        // Compare with == and .equals()
-        // Print table showing which ones are == true vs false
-        // Find the exact boundary
+        // TODO: Loop, create Integer pairs, compare with ==
     }
 }
 ```
@@ -2136,27 +2012,30 @@ public class CachePoolTester {
 │                  ✅ CHAPTER 4 COMPLETE                      │
 │                                                             │
 │  Topics Covered:                                            │
-│  ✅ 4.1  What is a Variable — Memory Location, RAM Storage  │
+│  ✅ 4.1  What is a Variable — Memory, RAM Storage           │
 │  ✅ 4.2  Types of Variables — Local, Instance, Static       │
-│  ✅ 4.3  Scope and Lifetime — Block, Method, Class, Shadow  │
+│  ✅ 4.3  Scope & Lifetime — Block, Method, Shadowing, this  │
 │  ✅ 4.4  Default Values — Table, Why Local Has No Default   │
-│  ✅ 4.5  Primitive Data Types — All 8 with Size & Range     │
-│  ✅ 4.6  Non-Primitive Data Types — Reference Types, vs Prim│
-│  ✅ 4.7  Widening — Automatic Type Conversion               │
-│  ✅ 4.8  Narrowing — Explicit Cast, Wrapping Logic          │
-│  ✅ 4.9  Type Promotion — Implicit & Explicit in Expressions│
-│  ✅ 4.10 Wrapper Classes — 8 Types, Utility Methods         │
-│  ✅ 4.11 Autoboxing & Unboxing — Auto Conversion            │
-│  ✅ 4.12 Integer Cache Pool — -128 to 127, == Trap          │
-│  ✅ 4.13 var Keyword — Java 10+, Type Inference             │
-│  ✅ 4.14 Overflow & Underflow — Wrapping, Silent Behavior   │
-│  ✅ 4.15 Constants — final Keyword, JVM Caching             │
-│  ✅ 4.16 Input in Java — Scanner, BufferedReader, Pitfalls  │
+│  ✅ 4.5  Primitive Types — All 8 Deep (Size,Range,Use,IEEE) │
+│  ✅ 4.6  Non-Primitive — String,Array,Class,Null,Stack/Heap │
+│  ✅ 4.7  Literals — Integer(4 bases),Float,Char(4 ways),    │
+│         String, Boolean, Null, Underscore                   │
+│  ✅ 4.8  Widening — Auto Type Conversion, Hierarchy         │
+│  ✅ 4.9  Narrowing — Explicit Cast, Wrapping Formula        │
+│  ✅ 4.10 Type Promotion — Rules, byte+byte=int, Method Args │
+│  ✅ 4.11 Wrapper Classes — 8 Types, parseInt vs valueOf     │
+│  ✅ 4.12 Autoboxing & Unboxing — Performance Warning        │
+│  ✅ 4.13 Integer Cache — -128 to 127, == Trap               │
+│  ✅ 4.14 Comparing Wrappers — == vs .equals() Golden Rule   │
+│  ✅ 4.15 var Keyword — Java 10+, Restrictions               │
+│  ✅ 4.16 Overflow & Underflow — Wrapping, Math.addExact()   │
+│  ✅ 4.17 Constants — final, Blank Final, JVM Caching        │
+│  ✅ 4.18 Input — Scanner, BufferedReader, Pitfall, CmdArgs  │
 │  ✅ 🔥   Java vs Others — 6 UNIQUE Differences              │
 │  ✅ 15+  Interview Questions with Detailed Answers           │
 │  ✅ 5    Theory + 5 Coding Practice Problems                 │
 │                                                             │
-│  ⭐ Next Chapter: Operators in Java (Chapter 5)             │
+│  ⭐ Next: Operators in Java (Chapter 5)                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
