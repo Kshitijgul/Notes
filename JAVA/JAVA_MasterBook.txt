@@ -2844,3 +2844,15 @@ Topics covered:
 ---
 
 > **📝 Note:** This table of contents covers **everything from absolute beginner to advanced interview preparation**. Each chapter is designed to be self-contained with theory, code examples, diagrams, and interview questions. Following this structure will give you a **complete book-quality Java reference** that doubles as an **interview preparation guide**.
+
+
+
+Miscellaneous topics :
+
+. inbuilt packages
+3. user-defined packages
+4. generating packages
+
+Interview :
+Pass by reference vs passby call
+Abigius in function overloading 
