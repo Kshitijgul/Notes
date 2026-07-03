@@ -876,62 +876,688 @@ public class SplitJoinDemo {
 <a href="#chapter-index-table-8">Go to Top 🔝</a>
 
 ---
-
-## 8.14 String.format() & Formatting
+## 8.14 String.format() & Formatting (UPDATED — Complete)
 
 <a id="814-string-format"></a>
 
+### 📌 Three Ways to Format Strings in Java
+
 ```java
-public class StringFormatting {
+public class FormattingWays {
     public static void main(String[] args) {
 
-        // ═══ printf() — Formatted print ═══
-        int rollNum = 40;
-        int myClass = 10;
-        System.out.printf("My roll number is %d and my class is %d%n",
-                          rollNum, myClass);
-        // My roll number is 40 and my class is 10
+        String name = "Shashwat";
+        int rollNumber = 37;
+        double percent = 98.34467;
 
-        float percent = 98.34467f;
-        System.out.printf("My percentage is %.2f%n", percent);
-        // My percentage is 98.34
+        // ═══ WAY 1: printf() — Prints formatted output directly ═══
+        // Returns: void (just prints, doesn't return String)
+        System.out.printf("Name: %s, Roll: %d%n", name, rollNumber);
+        System.out.printf("Percentage: %.2f%n", percent);
+        // Output: Percentage: 98.34
 
-        // ═══ String.format() — Returns formatted String ═══
-        String s = String.format("Name: %s, Age: %d", "Rahul", 25);
-        System.out.println(s);  // Name: Rahul, Age: 25
+        // ═══ WAY 2: String.format() — Returns formatted String ═══
+        // Returns: String (doesn't print, you store/use it)
+        String result = String.format("Name: %s, Roll: %d", name, rollNumber);
+        System.out.println(result);
+        // Output: Name: Shashwat, Roll: 37
 
-        // ═══ formatted() — Java 15+ ═══
-        String s2 = "Name: %s, Age: %d".formatted("Priya", 22);
-        System.out.println(s2); // Name: Priya, Age: 22
+        // ═══ WAY 3: formatted() — Java 15+ ═══
+        // Called on the format string itself
+        String result2 = "Name: %s, Roll: %d".formatted(name, rollNumber);
+        System.out.println(result2);
     }
 }
 ```
 
-### 📌 Format Specifiers Table
+### 📌 printf() vs String.format() — Key Difference ⭐
 
 ```
-┌────────────┬─────────────────────────────────────────────┐
-│  Specifier │  Meaning                                    │
-├────────────┼─────────────────────────────────────────────┤
-│  %d        │  Integer (decimal)                          │
-│  %f        │  Floating point (6 decimals default)        │
-│  %.2f      │  Float with 2 decimal places                │
-│  %s        │  String                                     │
-│  %c        │  Character                                  │
-│  %b        │  Boolean                                    │
-│  %n        │  Newline (platform-independent)             │
-│  %x, %X    │  Hexadecimal (lowercase/uppercase)          │
-│  %o        │  Octal                                      │
-│  %e        │  Scientific notation                        │
-│  %10d      │  Integer padded to 10 chars (right-aligned) │
-│  %-10d     │  Integer padded to 10 chars (left-aligned)  │
-│  %05d      │  Integer padded with zeros (e.g., 00042)    │
-└────────────┴─────────────────────────────────────────────┘
+┌───────────────────┬──────────────────────────────────────────────┐
+│  Feature          │  printf()            │  String.format()      │
+├───────────────────┼──────────────────────┼───────────────────────┤
+│  Returns          │  void (just prints)  │  String (returns it)  │
+├───────────────────┼──────────────────────┼───────────────────────┤
+│  Output           │  Directly to console │  Into a variable      │
+├───────────────────┼──────────────────────┼───────────────────────┤
+│  Usage            │  Quick display       │  Store for later use  │
+├───────────────────┼──────────────────────┼───────────────────────┤
+│  Syntax           │  System.out.printf() │  String.format()      │
+├───────────────────┼──────────────────────┼───────────────────────┤
+│  Newline          │  Must add %n or \n   │  Must add %n or \n    │
+│                   │  manually            │  manually             │
+└───────────────────┴──────────────────────┴───────────────────────┘
 ```
+
+```java
+public class PrintfVsFormat {
+    public static void main(String[] args) {
+
+        double num = 67.86789765;
+        String address = "India";
+
+        // ═══ printf() → Directly prints, returns nothing ═══
+        System.out.printf("Number is %.2f%n", num);
+        // Output: Number is 67.87
+
+        // You CANNOT store printf's output:
+        // String s = System.out.printf(...); // ❌ ERROR! printf returns void
+
+        // ═══ String.format() → Returns String, doesn't print ═══
+        String formatted = String.format("Number is %.2f, Address: %s", num, address);
+        System.out.println(formatted);
+        // Output: Number is 67.87, Address: India
+
+        // Can use the formatted string later:
+        String logMessage = String.format("[%s] %s logged in at %.2f", "INFO", "Rahul", 10.30);
+        // Use logMessage in file writing, database, etc.
+
+        // ═══ formatted() → Java 15+ (called on String directly) ═══
+        String result = "Name: %s, Score: %.1f".formatted("Priya", 95.6);
+        System.out.println(result); // Name: Priya, Score: 95.6
+    }
+}
+```
+
+### 📌 Complete Format Specifiers Table ⭐⭐ (All Specifiers)
+
+```
+┌────────────┬──────────────────────────────────────────────────────────┐
+│  Specifier │  Meaning                              │ Example         │
+├────────────┼───────────────────────────────────────┼─────────────────┤
+│  %d        │  Decimal INTEGER                       │ 42              │
+│  %f        │  Decimal FLOATING-POINT                │ 3.141593        │
+│            │  (6 decimal places default)            │                 │
+│  %.2f      │  Float with N decimal places           │ 3.14            │
+│  %e        │  Scientific notation (lowercase)       │ 3.14e+00        │
+│  %E        │  Scientific notation (UPPERCASE)       │ 3.14E+00        │
+│  %g        │  Uses %f or %e WHICHEVER IS SHORTER    │ 3.14159         │
+│  %a        │  Floating-point hexadecimal (lowercase)│ 0x1.91p+1       │
+│  %A        │  Floating-point hexadecimal (UPPERCASE)│ 0X1.91P+1       │
+├────────────┼───────────────────────────────────────┼─────────────────┤
+│  %s        │  String (lowercase)                    │ hello           │
+│  %S        │  String (UPPERCASE forced)             │ HELLO           │
+│  %c        │  Single CHARACTER                      │ A               │
+│  %b        │  Boolean (lowercase)                   │ true            │
+│  %B        │  Boolean (UPPERCASE)                   │ TRUE            │
+├────────────┼───────────────────────────────────────┼─────────────────┤
+│  %x        │  Integer HEXADECIMAL (lowercase)       │ ff              │
+│  %X        │  Integer HEXADECIMAL (UPPERCASE)       │ FF              │
+│  %o        │  OCTAL integer                         │ 17 (for 15)     │
+│  %h        │  HASH CODE of argument (lowercase)     │ 1a2b3c          │
+│  %H        │  HASH CODE of argument (UPPERCASE)     │ 1A2B3C          │
+├────────────┼───────────────────────────────────────┼─────────────────┤
+│  %t        │  TIME and Date prefix (lowercase)      │ (see below)     │
+│  %T        │  TIME and Date prefix (UPPERCASE)      │ (see below)     │
+├────────────┼───────────────────────────────────────┼─────────────────┤
+│  %n        │  Platform-independent NEWLINE           │ (line break)    │
+│  %%        │  Literal PERCENT sign (escaping %)      │ %               │
+└────────────┴───────────────────────────────────────┴─────────────────┘
+```
+
+### 📌 Width, Padding & Alignment Specifiers
+
+```
+┌─────────────┬──────────────────────────────────────────────────────────┐
+│  Specifier  │  Meaning                              │ Example         │
+├─────────────┼───────────────────────────────────────┼─────────────────┤
+│  %10d       │  Right-aligned, padded to 10 chars     │ "        42"   │
+│  %-10d      │  Left-aligned, padded to 10 chars      │ "42        "   │
+│  %05d       │  Zero-padded to 5 digits               │ "00042"         │
+│  %+d        │  Show sign (+/-) for numbers           │ "+42" or "-42"  │
+│  %,d        │  Comma separator for thousands         │ "1,000,000"     │
+│  %(d        │  Negative numbers in parentheses       │ "(42)"          │
+│  %10.2f     │  Width 10, 2 decimal places            │ "     67.87"   │
+│  %-10.2f    │  Left-aligned, width 10, 2 decimals    │ "67.87     "   │
+└─────────────┴───────────────────────────────────────┴─────────────────┘
+```
+
+### 📌 Complete Code Examples for Every Specifier
+
+```java
+public class AllFormatSpecifiers {
+    public static void main(String[] args) {
+
+        // ═══ INTEGER Specifiers ═══
+        int num = 255;
+        System.out.printf("Decimal:     %d%n", num);       // 255
+        System.out.printf("Octal:       %o%n", num);       // 377
+        System.out.printf("Hex (lower): %x%n", num);       // ff
+        System.out.printf("Hex (UPPER): %X%n", num);       // FF
+
+        // ═══ FLOATING-POINT Specifiers ═══
+        double pi = 3.14159265358979;
+        System.out.printf("Default:     %f%n", pi);        // 3.141593 (6 decimals)
+        System.out.printf("2 decimals:  %.2f%n", pi);      // 3.14
+        System.out.printf("Scientific:  %e%n", pi);        // 3.141593e+00
+        System.out.printf("Sci UPPER:   %E%n", pi);        // 3.141593E+00
+        System.out.printf("Short form:  %g%n", pi);        // 3.14159
+        System.out.printf("Hex float:   %a%n", pi);        // 0x1.921fb54442d18p+1
+        System.out.printf("Hex UPPER:   %A%n", pi);        // 0X1.921FB54442D18P+1
+
+        // ═══ STRING Specifiers ═══
+        String name = "Java";
+        System.out.printf("String:      %s%n", name);      // Java
+        System.out.printf("String UPPER:%S%n", name);      // JAVA ← Forces uppercase!
+
+        // ═══ CHARACTER Specifier ═══
+        char ch = 'A';
+        System.out.printf("Character:   %c%n", ch);        // A
+
+        // ═══ BOOLEAN Specifiers ═══
+        boolean flag = true;
+        System.out.printf("Boolean:     %b%n", flag);      // true
+        System.out.printf("Bool UPPER:  %B%n", flag);      // TRUE
+
+        // ═══ HASH CODE Specifiers ═══
+        String s = "Hello";
+        System.out.printf("Hash (lower):%h%n", s);         // 42628b2 (hashCode in hex)
+        System.out.printf("Hash (UPPER):%H%n", s);         // 42628B2
+
+        // ═══ PERCENT Sign ═══
+        System.out.printf("Score: 98.5%% %n");             // Score: 98.5%
+        // %% prints literal % sign
+
+        // ═══ NEWLINE ═══
+        System.out.printf("Line 1%nLine 2%n");
+        // %n is platform-independent (unlike \n)
+        // Windows: \r\n, Unix: \n, Mac: \r
+
+        // ═══ WIDTH and PADDING ═══
+        System.out.printf("Right-aligned: '%10d'%n", 42);   // '        42'
+        System.out.printf("Left-aligned:  '%-10d'%n", 42);  // '42        '
+        System.out.printf("Zero-padded:   '%05d'%n", 42);   // '00042'
+        System.out.printf("Sign shown:    '%+d'%n", 42);    // '+42'
+        System.out.printf("Sign shown:    '%+d'%n", -42);   // '-42'
+        System.out.printf("Comma sep:     '%,d'%n", 1000000); // '1,000,000'
+        System.out.printf("Parentheses:   '%(d'%n", -42);   // '(42)'
+        System.out.printf("Width+Decimal: '%10.2f'%n", 67.867); // '     67.87'
+    }
+}
+```
+
+### 📌 Date/Time Formatting with %t
+
+```java
+import java.util.Date;
+
+public class DateFormatDemo {
+    public static void main(String[] args) {
+        Date now = new Date();
+
+        // %t is prefix for time/date — must follow with a conversion char
+        System.out.printf("Full Date/Time: %tc%n", now);     // Full date+time
+        System.out.printf("Date only:      %tD%n", now);     // MM/dd/yy
+        System.out.printf("ISO Date:       %tF%n", now);     // yyyy-MM-dd
+        System.out.printf("Time (12hr):    %tr%n", now);     // hh:mm:ss AM/PM
+        System.out.printf("Time (24hr):    %tT%n", now);     // HH:mm:ss
+        System.out.printf("Hours:          %tH%n", now);     // HH (24-hour)
+        System.out.printf("Minutes:        %tM%n", now);     // mm
+        System.out.printf("Seconds:        %tS%n", now);     // ss
+        System.out.printf("Year:           %tY%n", now);     // yyyy
+        System.out.printf("Month:          %tm%n", now);     // MM (01-12)
+        System.out.printf("Day:            %td%n", now);     // dd (01-31)
+
+        // UPPERCASE %T works same way
+        System.out.printf("UPPERCASE:      %TC%n", now);
+    }
+}
+```
+
+### ⚠️ String.format() Argument Order Trap!
+
+```java
+public class FormatTrap {
+    public static void main(String[] args) {
+
+        double num = 67.86789765;
+        String address = "India";
+
+        // ✅ CORRECT: Arguments match format specifiers IN ORDER
+        String correct = String.format("Number: %.2f, Address: %s", num, address);
+        System.out.println(correct);
+        // Output: Number: 67.87, Address: India
+
+        // ❌ WRONG: Arguments in WRONG ORDER!
+        // String wrong = String.format("Number: %f, Address: %s", address, num);
+        // ❌ IllegalFormatConversionException!
+        // %f expects number but got String ("India")
+        // %s expects String but got double
+
+        /*
+        RULE: Arguments MUST match specifiers in LEFT-TO-RIGHT order!
+        
+        String.format("Name: %s, Age: %d, GPA: %.2f", name, age, gpa)
+                       ↕         ↕         ↕
+                       name      age       gpa
+                       
+        If order is wrong → IllegalFormatConversionException at RUNTIME
+        (not compile time — because format string is just a String)
+        */
+
+        // ═══ COMMON FORMAT EXAMPLES ═══
+        int rollNum = 40;
+        int myClass = 10;
+        float percent = 98.34467f;
+
+        System.out.printf("Roll: %d, Class: %d%n", rollNum, myClass);
+        // Roll: 40, Class: 10
+
+        System.out.printf("Percentage: %.2f%n", percent);
+        // Percentage: 98.34
+
+        System.out.printf("Percentage: %.4f%n", percent);
+        // Percentage: 98.3447
+
+        // Formatted table
+        System.out.printf("%-15s %5s %8s%n", "Name", "Roll", "Percent");
+        System.out.printf("%-15s %5d %8.2f%n", "Shashwat", 40, 98.34);
+        System.out.printf("%-15s %5d %8.2f%n", "Amit", 37, 87.50);
+        // Name              Roll  Percent
+        // Shashwat             40    98.34
+        // Amit                 37    87.50
+    }
+}
+```
+
+> [!IMPORTANT]
+> **Argument Order Rule:** Arguments in `String.format()` and `printf()` MUST match the format specifiers **left-to-right**. `%f` expects a number, `%s` expects a String, `%d` expects an integer. Wrong order = `IllegalFormatConversionException` at **runtime** (not compile time, because the format string is just a regular String).
+
+> [!TIP]
+> **%n vs \n:** Use `%n` for platform-independent newlines in `printf()/format()`. `%n` produces `\r\n` on Windows and `\n` on Unix/Linux. Using `\n` may not work correctly on all platforms. But inside `println()`, `\n` is fine.
 
 <a href="#chapter-index-table-8">Go to Top 🔝</a>
 
 ---
+
+## 8.15 String Concatenation Internals (UPDATED — Complete)
+
+<a id="815-concatenation-internals"></a>
+
+### 📌 How + Operator Works Internally
+
+```java
+public class ConcatInternals {
+    public static void main(String[] args) {
+
+        // What you write:
+        String s = "Hello" + " " + "World";
+
+        // BEFORE Java 9 (internally uses StringBuilder):
+        // StringBuilder sb = new StringBuilder();
+        // sb.append("Hello").append(" ").append("World");
+        // String s = sb.toString();
+
+        // Java 9+ (uses StringConcatFactory — invokedynamic):
+        // Much more optimized — JVM decides best strategy at runtime
+        // Avoids unnecessary StringBuilder creation
+    }
+}
+```
+
+### 📌 Compile-Time vs Runtime Concatenation
+
+```java
+public class CompileVsRuntime {
+    public static void main(String[] args) {
+
+        // ═══ COMPILE-TIME Concatenation ═══
+        // If ALL operands are compile-time CONSTANTS → optimized at compile time
+        String s1 = "Hello" + " " + "World";  // Compiler → "Hello World"
+        String s2 = "Hello World";
+        System.out.println(s1 == s2);  // true! Both are same pool object
+
+        // Even this:
+        final String a = "Hello";
+        final String b = " World";
+        String s3 = a + b;  // final variables are constants → compile-time
+        System.out.println(s2 == s3);  // true!
+
+        // ═══ RUNTIME Concatenation ═══
+        // If any operand is a VARIABLE → runtime concatenation
+        String hello = "Hello";  // NOT final → variable
+        String s4 = hello + " World";  // Runtime → New object
+        System.out.println(s2 == s4);   // false (s4 is new object)
+    }
+}
+```
+
+### 📌 String Concatenation Left-to-Right — Tricky Examples ⭐⭐⭐
+
+```java
+public class ConcatTricky {
+    public static void main(String[] args) {
+
+        // ═══════════════════════════════════════════════════════
+        // RULE: Java evaluates LEFT to RIGHT
+        //       int + int = int (arithmetic)
+        //       String + anything = String (concatenation)
+        //       Once String is encountered → everything is concat
+        // ═══════════════════════════════════════════════════════
+
+        // ═══ TRICKY 1: String at the START ═══
+        System.out.println("shashwat" + 64 + 87.99);
+        // Step 1: "shashwat" + 64 = "shashwat64" (String + int = String)
+        // Step 2: "shashwat64" + 87.99 = "shashwat6487.99"
+        // OUTPUT: shashwat6487.99
+
+        // ═══ TRICKY 2: Parentheses FORCE arithmetic first ═══
+        System.out.println("shashwat" + (64 + 87.99));
+        // Step 1: (64 + 87.99) = 151.99 (arithmetic inside parentheses)
+        // Step 2: "shashwat" + 151.99 = "shashwat151.99"
+        // OUTPUT: shashwat151.99
+
+        // ═══ TRICKY 3: Numbers at the START ═══
+        System.out.println(64 + 87.99 + "shashwat");
+        // Step 1: 64 + 87.99 = 151.99 (int + double = double arithmetic)
+        // Step 2: 151.99 + "shashwat" = "151.99shashwat"
+        // OUTPUT: 151.99shashwat
+
+        // ═══ TRICKY 4: Mixed with variable ═══
+        String name = "shashwat";
+        int rollNumber = 37;
+        System.out.println("My name is " + name + " My roll number is " + rollNumber);
+        // OUTPUT: My name is shashwat My roll number is 37
+
+        // ═══ TRICKY 5: Storing concatenation result ═══
+        String cal = 64 + 87.99 + "shashwat";
+        System.out.println(cal);
+        // OUTPUT: 151.99shashwat
+        // (64 + 87.99) is computed as double first → 151.99
+        // Then concat with "shashwat"
+
+        // ═══ TRICKY 6: Multiple sections ═══
+        System.out.println(5 + 3 + "Hello" + 5 + 3);
+        // Step 1: 5 + 3 = 8 (int + int = int)
+        // Step 2: 8 + "Hello" = "8Hello" (String concat starts!)
+        // Step 3: "8Hello" + 5 = "8Hello5"
+        // Step 4: "8Hello5" + 3 = "8Hello53"
+        // OUTPUT: 8Hello53
+
+        // ═══ TRICKY 7: Empty string at start ═══
+        System.out.println("" + 1 + 2 + 3);
+        // Step 1: "" + 1 = "1" (String concat from start!)
+        // Step 2: "1" + 2 = "12"
+        // Step 3: "12" + 3 = "123"
+        // OUTPUT: 123
+
+        // ═══ TRICKY 8: Empty string in middle ═══
+        System.out.println(1 + 2 + "" + 3 + 4);
+        // Step 1: 1 + 2 = 3 (arithmetic)
+        // Step 2: 3 + "" = "3" (String concat starts!)
+        // Step 3: "3" + 3 = "33"
+        // Step 4: "33" + 4 = "334"
+        // OUTPUT: 334
+
+        // ═══ TRICKY 9: char + int ═══
+        System.out.println('A' + 1);              // 66 (char → int arithmetic!)
+        System.out.println("" + 'A' + 1);         // A1 (String concat)
+        System.out.println('A' + 1 + "");          // 66 (arithmetic first, then concat)
+        System.out.println('A' + 'B');             // 131 (65 + 66 = int)
+        System.out.println("" + 'A' + 'B');        // AB (String concat)
+        System.out.println('A' + 'B' + "");        // 131 (arithmetic then concat)
+
+        // ═══ TRICKY 10: Boolean in concatenation ═══
+        System.out.println("Result: " + true);     // Result: true
+        System.out.println("Result: " + (5 > 3));  // Result: true
+    }
+}
+```
+
+### 📊 Concatenation Rule Diagram
+
+```mermaid
+flowchart TD
+    A["Expression:\n5 + 3 + 'Hello' + 5 + 3"] --> B["5 + 3 = 8\n(int + int = int)"]
+    B --> C["8 + 'Hello' = '8Hello'\n(int + String = String)"]
+    C --> D["'8Hello' + 5 = '8Hello5'\n(String + int = String)"]
+    D --> E["'8Hello5' + 3 = '8Hello53'\n(String + int = String)"]
+    E --> F["FINAL: '8Hello53'"]
+```
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│               CONCATENATION GOLDEN RULES                     │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  1. Evaluation is LEFT TO RIGHT                              │
+│                                                              │
+│  2. int + int = int (arithmetic)                             │
+│  3. double + int = double (type promotion, arithmetic)       │
+│  4. char + char = int (Unicode values added!)                │
+│  5. char + int = int (Unicode value + int)                   │
+│                                                              │
+│  6. String + ANYTHING = String (concatenation!)              │
+│     Once a String is encountered, EVERYTHING after is concat │
+│                                                              │
+│  7. Use PARENTHESES to force arithmetic before concat        │
+│     "Hello" + (5 + 3) = "Hello8" ✅                         │
+│     "Hello" + 5 + 3   = "Hello53" ← Common mistake!         │
+│                                                              │
+│  8. Empty string "" converts EVERYTHING to String            │
+│     "" + 1 + 2 + 3 = "123" (all concat, no arithmetic)      │
+│                                                              │
+└──────────────────────────────────────────────────────────────┘
+```
+
+### 📌 concat() Method vs + Operator
+
+```java
+public class ConcatVsPlus {
+    public static void main(String[] args) {
+
+        String s1 = "Hello";
+        String s2 = "World";
+
+        // ═══ + Operator ═══
+        // Can concatenate ANY type (auto converts to String)
+        String r1 = s1 + " " + s2;         // ✅ String + String
+        String r2 = s1 + 42;               // ✅ String + int → "Hello42"
+        String r3 = s1 + 3.14;             // ✅ String + double → "Hello3.14"
+        String r4 = s1 + true;             // ✅ String + boolean → "Hellotrue"
+        String r5 = s1 + null;             // ✅ String + null → "Hellonull"
+
+        // ═══ concat() Method ═══
+        // ONLY accepts String argument!
+        String r6 = s1.concat(" ").concat(s2); // ✅ String + String
+        // s1.concat(42);     // ❌ ERROR! concat needs String, not int
+        // s1.concat(null);   // ❌ NullPointerException!
+
+        /*
+        DIFFERENCES:
+        ┌─────────────┬────────────────────────┬────────────────────────┐
+        │  Feature    │  + Operator            │  concat() Method       │
+        ├─────────────┼────────────────────────┼────────────────────────┤
+        │  Accepts    │  ANY type              │  ONLY String           │
+        │  null       │  Treats as "null"      │  NullPointerException! │
+        │  Internals  │  StringBuilder/Factory │  Direct char copy      │
+        │  Performance│  Slightly slower       │  Slightly faster       │
+        │  Readability│  More readable         │  Less readable         │
+        │  Chaining   │  "a" + "b" + "c"      │  "a".concat("b")      │
+        │             │                        │  .concat("c")         │
+        └─────────────┴────────────────────────┴────────────────────────┘
+        */
+    }
+}
+```
+
+### 📌 String Concatenation in Loops — PERFORMANCE ISSUE! ⭐
+
+```java
+public class LoopConcat {
+    public static void main(String[] args) {
+
+        // ═══ ❌ BAD: String + in loop ═══
+        // Creates NEW String object EVERY iteration!
+        // Old objects become garbage → GC overhead
+        // Time complexity: O(n²) — each concat copies entire string
+        String result = "";
+        for (int i = 0; i < 1000; i++) {
+            result = result + i;  // New String each time!
+        }
+        // Creates 1000+ String objects → SLOW and memory-heavy!
+
+        // ═══ ✅ GOOD: StringBuilder in loop ═══
+        // Uses SAME object throughout — just extends internal array
+        // Time complexity: O(n)
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 1000; i++) {
+            sb.append(i);  // Modifies same object!
+        }
+        String result2 = sb.toString();
+
+        // ═══ Performance comparison ═══
+        // For 100,000 iterations:
+        // String +:       ~5000 ms (very slow)
+        // StringBuilder:  ~5 ms (very fast!)
+        // That's 1000x difference!
+
+        // ═══ WHY is String + slow in loops? ═══
+        // result = result + i;
+        // Internally becomes:
+        // result = new StringBuilder(result).append(i).toString();
+        // A NEW StringBuilder is created EVERY iteration!
+        // The entire existing string is COPIED each time.
+    }
+}
+```
+
+### 📌 Scanner Pitfall with String Input ⭐⭐
+
+```java
+import java.util.Scanner;
+
+public class ScannerStringPitfall {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // ═══════════════════════════════════════════════════════
+        // SCENARIO: Mix of nextInt/next with nextLine
+        // ═══════════════════════════════════════════════════════
+
+        System.out.println("Enter a number:");
+        int word1 = sc.nextInt();     // User types: 42[Enter]
+        // nextInt() reads "42" but LEAVES "\n" in buffer!
+
+        System.out.println("Enter another number:");
+        int word2 = sc.nextInt();     // User types: 56[Enter]
+        // nextInt() reads "56" but LEAVES "\n" in buffer!
+
+        System.out.println("Enter a line:");
+        String line1 = sc.nextLine(); // Reads LEFTOVER "\n" → gets ""!
+        // User never gets to type! line1 = "" (empty!)
+
+        System.out.println("Enter next line:");
+        String line2 = sc.nextLine(); // NOW reads user input
+
+        // ═══ OUTPUT (with markers) ═══
+        System.out.print("word1:" + word1 + ",");    // word1:42,
+        System.out.print("word2:" + word2 + ",");    // word2:56,
+        System.out.print("line1:" + line1 + "*");    // line1:*    ← EMPTY!
+        System.out.print("line2:" + line2 + "*");    // line2:whatever user typed*
+
+        sc.close();
+    }
+}
+```
+
+### ⚠️ The Buffer Problem Explained
+
+```
+User types: 42[Enter]56[Enter]Hello World[Enter]Java[Enter]
+
+Buffer after nextInt():  "42\n56\nHello World\nJava\n"
+                         ↑ reads "42", leaves "\n56\n..."
+
+Buffer after nextInt():  "\n56\nHello World\nJava\n"
+                         ↑ skips \n, reads "56", leaves "\nHello World\n..."
+
+Buffer after nextLine(): "\nHello World\nJava\n"
+                         ↑ reads "\n" → returns "" (EMPTY!)
+
+Buffer after nextLine(): "Hello World\nJava\n"
+                         ↑ reads "Hello World"
+
+line1 got the LEFTOVER "\n" — user's input went to line2!
+```
+
+### ✅ 3 Fixes for Scanner String Pitfall
+
+```java
+import java.util.Scanner;
+
+public class ScannerFixes {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // ═══ FIX 1: Add extra sc.nextLine() to CONSUME '\n' ═══
+        System.out.print("Enter age: ");
+        int age = sc.nextInt();
+        sc.nextLine();  // 🔥 CONSUME the leftover '\n'
+
+        System.out.print("Enter name: ");
+        String name = sc.nextLine();  // Now reads correctly!
+        System.out.println("Name: " + name + ", Age: " + age);
+
+        // ═══ FIX 2: Use parseInt(nextLine()) for numbers ═══
+        // Read EVERYTHING as nextLine(), then parse
+        System.out.print("Enter roll number: ");
+        int roll = Integer.parseInt(sc.nextLine());  // Reads full line + parses
+
+        System.out.print("Enter city: ");
+        String city = sc.nextLine();  // Works perfectly!
+        System.out.println("Roll: " + roll + ", City: " + city);
+
+        // ═══ FIX 3: Use next() instead of nextLine() (single words only) ═══
+        System.out.print("Enter first name: ");
+        int id = sc.nextInt();
+        String firstName = sc.next();  // Reads one word, no '\n' issue
+        // BUT: won't work for multi-word input like "John Doe"
+
+        sc.close();
+    }
+}
+```
+
+```
+┌──────────────────────────────────────────────────────────────┐
+│              SCANNER NEWLINE PROBLEM — SUMMARY               │
+├──────────────────────────────────────────────────────────────┤
+│                                                              │
+│  AFFECTED methods (leave '\n' in buffer):                     │
+│  → nextInt(), nextDouble(), nextFloat(), nextLong()          │
+│  → nextByte(), nextShort(), next()                           │
+│                                                              │
+│  NOT affected:                                               │
+│  → nextLine() (reads entire line INCLUDING '\n')              │
+│                                                              │
+│  BEST PRACTICE:                                              │
+│  → Use Integer.parseInt(sc.nextLine()) for ALL numeric input │
+│  → This avoids the problem entirely                          │
+│  → Slightly more code but ZERO bugs!                         │
+│                                                              │
+│  FIX 1: sc.nextLine() after every nextInt/nextDouble         │
+│  FIX 2: parseInt(sc.nextLine()) instead of nextInt()         │
+│  FIX 3: next() instead of nextLine() (single word only)     │
+└──────────────────────────────────────────────────────────────┘
+```
+
+> [!IMPORTANT]
+> **Interview Must-Know:** The Scanner `nextLine()` pitfall after `nextInt()` is one of the most common beginner bugs in Java. The `\n` character stays in the buffer, and `nextLine()` reads it as an empty string. The best fix is to use `Integer.parseInt(sc.nextLine())` consistently for all input.
+
+> [!TIP]
+> **Quick Reference — Common Format Patterns:**
+> ```java
+> System.out.printf("%-10s %5d %8.2f%%%n", "Name", 42, 98.34);
+> // "Name           42    98.34%"
+> // %-10s = left-aligned string, 10 chars
+> // %5d = right-aligned int, 5 chars
+> // %8.2f = right-aligned float, 8 chars, 2 decimals
+> // %% = literal percent sign
+> // %n = newline
+> ```
+
+<a href="#chapter-index-table-8">Go to Top 🔝</a>
 
 ## 8.15 String Concatenation Internals ⭐
 
