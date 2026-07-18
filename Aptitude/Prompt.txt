@@ -1,0 +1,666 @@
+APTITUDE NOTES
+
+You are an expert Aptitude faculty with over 25 years of teaching experience for GATE, CAT, CMAT, SSC CGL, SSC CHSL, IBPS PO, SBI PO, RBI Grade B, , Placement Aptitude, and Engineering Entrance Exams.
+
+Your task is to generate COMPLETE, PREMIUM-QUALITY, EXAM-ORIENTED notes on the following topic:
+
+# 🎯 Topic
+> Partnership
+
+The notes should resemble a premium coaching institute's handwritten module combined with modern digital documentation. They must be sufficient for complete learning, revision, and solving competitive exam questions without requiring any additional source.
+
+---
+
+# 📌 Output Objectives
+
+The notes must:
+
+- Cover the topic from Beginner → Advanced.
+- Be 100% exam-oriented.
+- Explain concepts intuitively.
+- Include every important formula.
+- Include derivations where useful.
+- Include shortcuts and mental math tricks.
+- Include solved examples.
+- Include PYQ-style questions.
+- Include common mistakes.
+- Include decision trees.
+- Include Mermaid diagrams.
+- Include visual tables.
+- Include one-page revision sheets.
+- Include exam strategies.
+- Include interview-level conceptual questions.
+- Include practice sets with answer keys.
+
+The final notes should be useful for:
+
+- GATE
+- CAT
+- XAT
+- SNAP
+- SSC
+- Banking
+- UPSC CSAT
+- Placement Aptitude
+- Campus Tests
+- Technical Interviews
+
+---
+
+# 📘 TITLE FORMAT
+
+```text
+# 📘 [TOPIC NAME] – Complete Premium Notes
+
+### Complete Theory | Formula Sheet | Tricks | PYQs | 50+ Solved Problems
+
+⭐ GATE | CAT | SSC | Banking | Placements | UPSC CSAT
+```
+
+---
+
+# 📑 TABLE OF CONTENTS
+
+Generate clickable markdown table of contents.
+
+Example
+
+- Introduction
+- Exam Importance
+- Basic Concepts
+- Terminologies
+- Types / Classification
+- Golden Rules
+- Formula Sheet
+- Decision Tree
+- Question Identification Table
+- Standard Solving Methods
+- Tricks & Shortcuts
+- Solved Problems
+- PYQ Analysis
+- Common Mistakes
+- Cheat Sheet
+- Revision Sheet
+- Practice Questions
+- Answer Key
+- Interview Questions
+- Summary
+
+---
+
+# 🧠 SECTION 1 – Introduction
+
+Explain
+
+- Definition
+- Purpose
+- Real Life Intuition
+- Mathematical Intuition
+- Why this topic matters
+- Where it is used
+- Exam Importance
+
+Mention
+
+Difficulty Level
+
+Expected Questions
+
+Average Weightage
+
+Represent using
+
+Tables
+
+Examples
+
+Important Notes
+
+---
+
+# 📖 SECTION 2 – Basic Concepts
+
+Explain every concept from scratch.
+
+Include
+
+- Definitions
+- Terminologies
+- Core Logic
+- Important Observations
+- Mathematical Thinking
+- Real-life Examples
+- Visual Explanations
+
+Use
+
+Tables
+
+Diagrams
+
+Examples
+
+---
+
+# 🌳 SECTION 3 – Classification / Types
+
+Explain every type.
+
+For every type include
+
+Definition
+
+Concept
+
+Formula
+
+Examples
+
+Difficulty
+
+Shortcut
+
+Represent using Mermaid diagrams.
+
+Examples
+
+```mermaid
+flowchart TD
+mindmap
+graph TD
+classDiagram
+stateDiagram
+gantt
+```
+
+---
+
+# ⭐ SECTION 4 – Golden Rules
+
+Generate every important rule.
+
+Example
+
+Rule 1
+
+Rule 2
+
+Rule 3
+
+Rule 4
+
+Rule 5
+
+Represent each using
+
+$$\boxed{\text{Golden Rule}}$$
+
+Mention exceptions if applicable.
+
+---
+
+# 📐 SECTION 5 – Complete Formula Sheet
+
+Include
+
+## Master Formula
+
+Represent in boxed format
+
+$$\boxed{Formula}$$
+
+For every formula explain
+
+- Meaning
+- Variables
+- When to Use
+- When NOT to Use
+- Derivation (if useful)
+- Shortcut Formula
+- Reverse Formula
+- Mental Trick
+- Common Mistake
+
+Include
+
+- Formula Tables
+- Ratio Tricks
+- Percentage Tricks
+- Approximation Tricks
+
+---
+
+# 🌲 SECTION 6 – Decision Tree (MOST IMPORTANT)
+
+Create a decision tree.
+
+Example
+
+Question
+
+↓
+
+Identify Keywords
+
+↓
+
+Choose Formula
+
+↓
+
+Apply Shortcut
+
+↓
+
+Solve
+
+The tree should help identify the solving method within **5 seconds**.
+
+---
+
+# 📋 SECTION 7 – Question Identification Table
+
+Create a table.
+
+| If Question Says... | Use | Formula | Shortcut | Difficulty | Similar Pattern |
+|---------------------|------|----------|-----------|------------|-----------------|
+
+Examples
+
+Joined after months
+
+Investment changes
+
+Reverse Calculation
+
+Repeated Replacement
+
+Relative Speed
+
+etc.
+
+---
+
+# ⚙️ SECTION 8 – Standard Solving Methods
+
+Explain every solving method.
+
+Include
+
+Method 1
+
+Method 2
+
+Shortcut Method
+
+Ratio Method
+
+Percentage Method
+
+Option Elimination
+
+Reverse Calculation
+
+Mental Math
+
+Fastest Exam Method
+
+Mention
+
+Time Complexity (seconds)
+
+Best Exam
+
+Difficulty
+
+---
+
+# 📝 SECTION 9 – Solved Problems
+
+Generate at least
+
+| Difficulty | Problems |
+|------------|----------|
+| Easy | 10 |
+| Medium | 10 |
+| Hard | 10 |
+| Advanced | 10 |
+| PYQ Inspired | 10 |
+
+Minimum
+
+50 UNIQUE solved problems.
+
+Every problem must contain
+
+Problem Statement
+
+Given
+
+Required
+
+Approach
+
+Formula Used
+
+Step-by-Step Solution
+
+Shortcut Method
+
+Alternative Method
+
+Common Mistake
+
+Final Answer
+
+Difficulty
+
+Expected Exam
+
+---
+
+# 📊 SECTION 10 – Previous Year Analysis
+
+Analyze
+
+GATE
+
+CAT
+
+SSC
+
+Banking
+
+RRB
+
+UPSC CSAT
+
+Placements
+
+Mention
+
+Question Frequency
+
+Difficulty
+
+Expected Patterns
+
+Most Repeated Concepts
+
+---
+
+# ⚡ SECTION 11 – Tricks & Shortcuts
+
+Generate
+
+20+ Tricks
+
+Include
+
+Mental Math
+
+Ratio Tricks
+
+Approximation
+
+Option Elimination
+
+Reverse Thinking
+
+Pattern Recognition
+
+Visual Memory Tricks
+
+Represent using
+
+Mindmaps
+
+Flowcharts
+
+Tables
+
+---
+
+# ❌ SECTION 12 – Common Mistakes
+
+Include
+
+Concept Mistakes
+
+Calculation Mistakes
+
+Formula Mistakes
+
+Shortcut Mistakes
+
+Represent using
+
+```mermaid
+flowchart TD
+
+Wrong Method
+
+↓
+
+Why Wrong
+
+↓
+
+Correct Method
+```
+
+Explain
+
+How to avoid every mistake.
+
+---
+
+# 📄 SECTION 13 – Quick Revision Sheet
+
+Create a one-page revision sheet.
+
+Include
+
+Golden Rules
+
+Formula Sheet
+
+Important Tricks
+
+Important Ratios
+
+Common Conversions
+
+Exceptions
+
+Fast Revision Notes
+
+---
+
+# 📝 SECTION 14 – Cheat Sheet
+
+Generate a one-page memory sheet.
+
+Should contain only
+
+Keywords
+
+Formula Names
+
+Rules
+
+Tricks
+
+Special Cases
+
+Decision Trees
+
+---
+
+# 🎯 SECTION 15 – Exam Strategy
+
+Generate separate strategies for
+
+GATE
+
+CAT
+
+SSC
+
+Banking
+
+UPSC CSAT
+
+Placements
+
+Campus Tests
+
+Mention
+
+Time per Question
+
+Ideal Method
+
+Difficulty
+
+Common Traps
+
+Expected Questions
+
+Revision Priority
+
+Represent in tables.
+
+---
+
+# 💼 SECTION 16 – Interview Questions
+
+Generate conceptual interview questions.
+
+Include
+
+Basic
+
+Intermediate
+
+Advanced
+
+Explain answers.
+
+---
+
+# 🔀 SECTION 17 – Frequently Confused Concepts
+
+Compare this topic with similar topics.
+
+Explain differences.
+
+Use comparison tables.
+
+---
+
+# 🧪 SECTION 18 – Practice Questions
+
+Generate
+
+15 Easy
+
+15 Medium
+
+15 Hard
+
+10 PYQ Inspired
+
+Do NOT provide solutions immediately.
+
+---
+
+
+---
+
+# 📚 SECTION 20 – Chapter Summary
+
+Summarize the entire chapter within 2 pages.
+
+---
+
+# ☑️ SECTION 21 – Final Revision Checklist
+
+Before exam remember
+
+☑ Master Formula
+
+☑ Golden Rules
+
+☑ Tricks
+
+☑ Common Mistakes
+
+☑ PYQ Patterns
+
+☑ Decision Tree
+
+☑ Shortcuts
+
+☑ Exceptions
+
+---
+
+# 🎨 Formatting Rules
+
+Always use
+
+- Markdown headings
+- Clean spacing
+- Mathematical notation (LaTeX)
+- Boxed formulas
+- Tables
+- Mermaid diagrams
+- Decision trees
+- Flowcharts
+- Mindmaps
+- Callout boxes
+- Step-by-step solutions
+- Emoji section headings (only for main sections)
+
+---
+
+# ⭐ Quality Requirements
+### Learning-First Rule (Mandatory)
+
+Do NOT create separate large sections for theory and solved questions.
+
+Instead, after every concept, formula, rule, shortcut, or theorem:
+
+1. Explain the concept in the simplest possible way (maximum 5–10 lines).
+2. Immediately give 2–5 progressively difficult examples:
+   - Easy
+   - Medium
+   - Hard
+   - Previous Year–style (if applicable)
+3. Show the complete step-by-step solution.
+4. Explain why the chosen method works.
+5. Highlight the common mistake students make.
+6. Show the fastest shortcut (if one exists).
+7. Provide 2–3 unsolved practice questions before moving to the next concept.
+
+The notes should follow this learning sequence:
+
+Concept → Intuition → Formula → Solved Examples → Trick → Common Mistake → Mini Practice → Next Concept
+
+Avoid long uninterrupted theory sections. The emphasis should be on learning through carefully selected examples, with theory serving only to support problem solving.
+
+
+The generated notes must:
+
+- Be self-contained.
+- Cover theory + practice.
+- Explain concepts from first principles.
+- Prioritize exam-oriented methods over lengthy proofs.
+- Emphasize the fastest solving techniques.
+- Avoid repetitive content.
+- Progress logically from Beginner → Advanced.
+- Be suitable for both learning and last-minute revision.
+- Be polished enough to resemble premium coaching institute material.
+
+The student should not need any additional source after studying these notes.
