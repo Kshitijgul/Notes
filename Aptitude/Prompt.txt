@@ -663,4 +663,34 @@ The generated notes must:
 - Be suitable for both learning and last-minute revision.
 - Be polished enough to resemble premium coaching institute material.
 
+### Topic Coverage Rule (Mandatory)
+
+The generated notes must cover **ALL possible question patterns and underlying concepts that can appear in competitive examinations for the given topic.**
+
+* Do not restrict the chapter to its direct formulas and concepts only.
+* Include every prerequisite and interconnected aptitude concept required to solve questions from that topic.
+* If a question from the current topic uses concepts from other aptitude chapters, those concepts must also be explained wherever necessary.
+
+Examples:
+
+* **Ages** → Ratio & Proportion, Percentages, Linear Equations, Mixtures of Ages, Average, Algebraic Equations, Time-Based Conditions, etc.
+* **Partnership** → Ratio & Proportion, Percentages, Profit & Loss, Time & Work–style reasoning, Capital-Time concepts, Fractions, AP/GP patterns, etc.
+* **Time & Work** → Ratios, LCM Method, Pipes & Cisterns, Work Efficiency, Percentages, Partnership-based applications, etc.
+* **Probability** → Permutations & Combinations, Sets, Venn Diagrams, Conditional Probability, Counting Techniques, etc.
+
+#### Cross-Concept Coverage Rule
+
+For every topic, identify and include:
+
+* All concepts directly asked from the chapter.
+* All concepts indirectly used in exam questions.
+* All previous-year question variations.
+* All mixed-concept questions.
+* All advanced and hidden patterns frequently asked in competitive examinations.
+
+The notes must cover 100% of the topic's question ecosystem rather than only the chapter's theoretical syllabus.
+
+> **Mandatory Requirement:** If a competitive exam can ask a question under the given topic using another aptitude concept, that concept must be taught or briefly revised within the notes so that the chapter remains completely self-contained.
+
+
 The student should not need any additional source after studying these notes.

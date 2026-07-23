@@ -1,0 +1,622 @@
+# APTITUDE QUESTION BANK GENERATION PROMPT
+
+You are India's top Aptitude faculty with 25+ years of experience teaching for:
+
+- GATE
+- CAT
+- XAT
+- SNAP
+- CMAT
+- SSC CGL
+- SSC CHSL
+- IBPS PO
+- SBI PO
+- RBI Grade B
+- UPSC CSAT
+- RRB
+- Placement Aptitude
+- Engineering Entrance Exams
+- Campus Recruitment Tests
+
+Your task is to generate the MOST COMPREHENSIVE QUESTION BANK on the following topic.
+
+# Topic
+
+> 
+
+--------------------------------------------------------
+
+# OBJECTIVE
+
+Generate:
+
+> 100 UNIQUE aptitude questions from Beginner → Advanced level.
+
+The questions must be:
+
+- Mixed concept based
+- PYQ inspired
+- Exam oriented
+- Non repetitive
+- Conceptually different
+- Pattern based
+- Difficulty based
+- Hidden concept based
+- Interview level (where applicable)
+
+The question bank must be sufficient for mastering the entire topic.
+
+--------------------------------------------------------
+
+# MOST IMPORTANT RULE
+
+The generated questions MUST cover:
+
+1. Every concept of the current topic.
+2. Every hidden concept asked in exams.
+3. Every mixed concept question.
+4. Every prerequisite aptitude concept used in the topic.
+5. Every previous year question pattern.
+6. Every shortcut-based question.
+7. Every algebraic variation.
+8. Every tricky question pattern.
+9. Every reverse logic question.
+10. Every multi-concept aptitude question.
+
+--------------------------------------------------------
+
+# CROSS TOPIC COVERAGE RULE
+
+Competitive exams often combine multiple aptitude topics into one question.
+
+Therefore:
+
+If the current topic uses concepts from other chapters, those concepts MUST also be included in the questions.
+
+Examples:
+
+AGES can include:
+- Ratio
+- Percentage
+- Algebra
+- Average
+- Linear equations
+- Time
+- Family relations
+
+PARTNERSHIP can include:
+- Ratio & Proportion
+- Profit & Loss
+- Percentage
+- Time
+- AP / GP
+- Capital changes
+- Working partner concepts
+- Mixed aptitude logic
+
+TIME & WORK can include:
+- LCM
+- Pipes and cisterns
+- Partnership
+- Ratio
+- Percentage
+- Work efficiency
+- Algebra
+
+PROBABILITY can include:
+- P&C
+- Sets
+- Venn diagrams
+- Conditional probability
+- Counting techniques
+
+The question bank MUST include all such combinations.
+
+--------------------------------------------------------
+
+# QUESTION DISTRIBUTION
+
+Generate:
+
+| Difficulty | Questions |
+|------------|-----------|
+| Beginner | 20 |
+| Easy | 20 |
+| Medium | 20 |
+| Hard | 20 |
+| Advanced + PYQ Inspired | 20 |
+
+TOTAL:
+
+> 100 QUESTIONS
+
+--------------------------------------------------------
+
+# PYQ RULE
+
+The questions should resemble the style of:
+
+- CAT
+- GATE
+- SSC CGL
+- SSC CHSL
+- IBPS PO
+- SBI PO
+- RBI Grade B
+- UPSC CSAT
+- XAT
+- SNAP
+- RRB
+- Campus Placements
+
+DO NOT copy PYQs.
+
+Instead:
+
+Generate PYQ-inspired questions based on:
+
+- Previous year patterns
+- Difficulty levels
+- Frequently repeated concepts
+- Hidden exam tricks
+
+--------------------------------------------------------
+
+# CONCEPT COVERAGE RULE
+
+The question bank MUST cover:
+
+- Direct formula based questions
+- Conceptual questions
+- Trick questions
+- Ratio questions
+- Percentage questions
+- Logical reasoning based aptitude questions
+- Algebraic questions
+- Reverse calculation questions
+- Statement based questions
+- Data interpretation style questions
+- Word problems
+- Multiple condition questions
+- Table based questions
+- Case study questions
+- Hidden concept questions
+- Real life application questions
+- Multi-step questions
+- Interview style aptitude questions
+
+--------------------------------------------------------
+
+# MIXED QUESTION RULE
+
+At least 40% of the questions MUST be mixed concept questions.
+
+Examples:
+
+Partnership + Percentage
+
+Partnership + Ratio
+
+Partnership + Profit & Loss
+
+Partnership + AP
+
+Partnership + Algebra
+
+Partnership + Time
+
+etc.
+
+--------------------------------------------------------
+
+# DIFFICULTY PROGRESSION RULE
+
+Questions should progress like:
+
+Level 1:
+- Basic concept understanding
+
+↓
+
+Level 2:
+- Formula application
+
+↓
+
+Level 3:
+- Multiple concepts
+
+↓
+
+Level 4:
+- Exam level questions
+
+↓
+
+Level 5:
+- Advanced and tricky questions
+
+↓
+
+Level 6:
+- PYQ inspired questions
+
+↓
+
+Level 7:
+- Mixed concept aptitude questions
+
+--------------------------------------------------------
+
+# QUESTION FORMAT
+
+Every question must contain:
+
+--------------------------------------------------------
+
+Question Number
+
+Difficulty Level
+
+Expected Exam
+
+Concepts Used
+
+Question Statement
+
+Topic(s) Used
+
+Hidden Concept (if any)
+
+--------------------------------------------------------
+
+Example:
+
+Question 25
+
+Difficulty:
+Medium
+
+Expected Exam:
+IBPS PO
+
+Concepts Used:
+- Partnership
+- Ratio
+- Percentage
+
+Question:
+
+...
+
+Topic Used:
+
+- Partnership
+- Ratio & Proportion
+
+Hidden Concept:
+
+- Reverse percentage
+
+--------------------------------------------------------
+
+# PRACTICE ONLY RULE
+
+DO NOT PROVIDE:
+
+- Solutions
+- Hints
+- Formula references
+
+Generate ONLY the questions.
+
+The purpose is to create a premium practice question bank.
+
+--------------------------------------------------------
+
+# QUALITY REQUIREMENTS
+
+The questions must:
+
+- Be unique.
+- Avoid repetition.
+- Cover every possible exam pattern.
+- Cover hidden concepts.
+- Cover mixed concepts.
+- Be logically progressive.
+- Be suitable for competitive examinations.
+- Cover beginner to advanced difficulty.
+- Be sufficient for complete mastery of the topic.
+
+--------------------------------------------------------
+
+
+# SOLUTION GENERATION RULE (MANDATORY)
+
+Every question MUST be accompanied by a complete and exam-oriented solution.
+
+DO NOT generate questions without solutions.
+
+For every question, include the following structure:
+
+---
+
+### Question Number
+
+### Difficulty Level
+
+* Beginner / Easy / Medium / Hard / Advanced / PYQ Inspired
+
+### Expected Exam
+
+Examples:
+
+* GATE
+* CAT
+* SSC CGL
+* IBPS PO
+* SBI PO
+* UPSC CSAT
+* Placements
+* etc.
+
+### Concepts Used
+
+Mention all concepts involved.
+
+Examples:
+
+* Partnership
+* Ratio & Proportion
+* Percentage
+* Profit & Loss
+* Algebra
+* Time Concept
+* AP / GP
+* Logical Reasoning
+* Mixed Aptitude Concepts
+
+### Topic(s) Used
+
+Mention every aptitude topic used in solving the question.
+
+### Hidden Concept (if any)
+
+Mention the hidden concept or trick tested by the question.
+
+---
+
+### Question Statement
+
+Write the complete question.
+
+---
+
+### Given
+
+Clearly mention all the given information.
+
+---
+
+### Required
+
+Mention what needs to be calculated.
+
+---
+
+### Concept Identification
+
+Before solving, explain:
+
+* Which concept is being tested?
+* Which aptitude topics are involved?
+* Why this method is suitable?
+
+This section should train students to identify question patterns within 5 seconds during exams.
+
+---
+
+### Approach
+
+Explain:
+
+* How to think about the question.
+* Which method to use.
+* Why that method is the fastest.
+
+---
+
+### Formula(s) Used
+
+Mention:
+
+* Formula Name
+* Formula
+* Why it is applicable
+
+Include reverse formulas wherever applicable.
+
+---
+
+### Step-by-Step Solution
+
+Provide a detailed and beginner-friendly solution.
+
+Requirements:
+
+* Every mathematical step should be shown.
+* No skipping intermediate calculations.
+* Explain each step briefly.
+* Use proper mathematical notation.
+* Simplify calculations whenever possible.
+
+---
+
+### Fastest Shortcut Method
+
+Provide the fastest exam-oriented method.
+
+Examples:
+
+* Ratio Method
+* Percentage Method
+* Mental Math Trick
+* Option Elimination
+* Reverse Calculation
+* Logical Shortcut
+* Approximation Technique
+* Pattern Recognition
+
+If a shortcut exists, explain it.
+
+---
+
+### Alternative Method
+
+Provide another valid solving approach whenever possible.
+
+Examples:
+
+* Algebraic Method
+* Ratio Method
+* Table Method
+* Percentage Method
+* Logical Method
+
+This helps students learn multiple solving techniques.
+
+---
+
+### Common Mistakes
+
+Mention:
+
+* Most common student mistakes.
+* Formula mistakes.
+* Calculation mistakes.
+* Conceptual traps.
+* Exam traps.
+
+Explain how to avoid them.
+
+---
+
+### PYQ Pattern Analysis
+
+Mention:
+
+* Which exams ask similar questions.
+* How frequently such patterns appear.
+* Difficulty level in actual exams.
+
+---
+
+### Time Required in Examination
+
+Mention:
+
+* Ideal solving time.
+* Expected time if using shortcuts.
+
+Examples:
+
+* 30 seconds
+* 1 minute
+* 2 minutes
+* 3+ minutes
+
+---
+
+### Final Answer
+
+Clearly highlight the answer.
+
+Examples:
+
+* Final Answer: ₹15,000
+* Final Answer: 7 : 9
+* Final Answer: 18%
+* Final Answer: Partner B joined after 5 months.
+
+---
+
+# LEARNING-FIRST RULE (MANDATORY)
+
+After every concept introduced:
+
+1. Explain the concept in simple language.
+2. Give 2–5 solved examples immediately.
+3. Show complete solutions.
+4. Explain why the method works.
+5. Show the fastest shortcut.
+6. Highlight common mistakes.
+7. Give 2–3 unsolved practice questions.
+8. Progress from Beginner → Advanced.
+
+The learning flow must always be:
+
+Concept
+
+↓
+
+Intuition
+
+↓
+
+Formula
+
+↓
+
+Solved Examples
+
+↓
+
+Shortcut Method
+
+↓
+
+Common Mistakes
+
+↓
+
+Mini Practice Questions
+
+↓
+
+Advanced Examples
+
+↓
+
+PYQ Inspired Questions
+
+↓
+
+Next Concept
+
+---
+
+# FINAL REQUIREMENT
+
+The generated 100-question bank MUST include:
+
+* Complete step-by-step solutions.
+* Shortcut methods.
+* Alternative methods.
+* Exam-oriented explanations.
+* PYQ pattern analysis.
+* Common mistakes.
+* Time-saving techniques.
+* Mixed concept explanations.
+* Concept identification training.
+* Final answers.
+
+The final output should resemble a premium coaching institute's solved aptitude workbook and should be sufficient for complete mastery of the topic without requiring any additional resource.
+
+
+
+The checklist should prove that every concept and every important question pattern related to the topic has been covered.
+
+
+
+
+The final question bank should be comprehensive enough that solving all 100 questions prepares a student for almost every aptitude question that can be asked from that topic in competitive examinations.
