@@ -1,0 +1,25 @@
+DSA NOTES 
+
+
+Arrays :
+Introduction 
+Array Creation 
+Arrays - Input  , output and Updates
+Find the average of array elelemets 
+Multiuply each element of array by 10
+Return sum of +ve and _ve numbers 
+Count the number of zeroes and ones 
+find the Unsorted element in Array 
+Arrays as function arguments 
+Linear Search 
+Largest in array 
+
+Binary search 
+reverse in array 
+pairs in array 
+print subarrays 
+maximum subarray (brute force )
+maximum subarray (prefix sum  )
+maximum subarray (kadanes algorithm)
+Tapping rainwater 
+Best time to buy and sell stocks 
